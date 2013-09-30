@@ -8,7 +8,7 @@ name := "DSL-Test-Java"
 
 version := "0.0.0-SNAPSHOT"
 
-unmanagedSourceDirectories in Compile := 
+unmanagedSourceDirectories in Compile :=
   (javaSource in Compile).value / ".." / ".." / "generated" / "java" ::
   (javaSource in Compile).value :: Nil
 
