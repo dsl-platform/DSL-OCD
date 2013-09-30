@@ -1,19 +1,14 @@
-package com.dslplatform.ocd.setup
+package com.dslplatform.ocd
 
 import com.dslplatform.compiler.client.api.params.Credentials
 import com.dslplatform.compiler.client.api.params.ProjectID
 import com.dslplatform.compiler.client.cmdline.logger.LoggerSystem
 import com.dslplatform.compiler.client.api.ApiCall
 import com.dslplatform.compiler.client.api.Actions
-import java.util.Properties
-import org.slf4j.Logger
-import scalax.file._
-import scalax.io._
-import io.jvm.uuid._
 
 trait ITestSettings {
-  val credentials: Credentials
-  val projectID: ProjectID
+  def credentials: Credentials
+  def projectID: ProjectID
 }
 
 class TestSettingsLoader(logger: Logger) {
@@ -37,15 +32,14 @@ class TestSettingsLoader(logger: Logger) {
     val settings = new ITestSettings {
       logger.trace("Extracting credentials ...")
       val credentials = new Credentials(
-        properties getProperty "user"
-      , properties getProperty "password"
+        properties getProperty "username" ensuring(_ ne null, "Username could not be read!")
+      , properties getProperty "password" ensuring(_ ne null, "Password could not be read!")
       )
 
       logger.trace("Extracting project ID ...")
       val projectID = new ProjectID(
-        UUID(properties getProperty "project-id")
+        UUID(properties getProperty "project-id") ensuring(_ ne null, "ProjectID could not be read!")
       )
-
     }
 
     logger.debug("Test settings successfully extracted!")

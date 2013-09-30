@@ -12,18 +12,19 @@ version := "0.0.0-SNAPSHOT"
 
 unmanagedSourceDirectories in Compile := (scalaSource in Compile).value :: Nil
 
-unmanagedSourceDirectories in Test := Nil
+unmanagedSourceDirectories in Test := (scalaSource in Test).value :: Nil
 
 
 // ### DEPENDENCIES ### //
 
 libraryDependencies ++= Seq(
-  "com.dslplatform" % "dsl-compiler-client-cmdline" % "0.8.0-SNAPSHOT"
+  "com.dslplatform" % "dsl-compiler-client-cmdline" % "0.8.4"
 , "com.dslplatform" % "dsl-client-http" % "0.4.9"
-, "io.jvm" %% "scala-uuid" % "0.1.1"
-, "com.github.scala-incubator.io" %% "scala-io-file" % "0.4.2"
+, "hr.element.etb" %% "etb-util" % "0.2.20"
 , "ch.qos.logback" % "logback-classic" % "1.0.13" % "compile->default"
 , "hr.ngs" %% "ngs-core" % "0.3.19"
+, "junit" % "junit" % "4.11" % "test"
+, "org.scalatest" %% "scalatest" % "2.0.M8" % "test"
 )
 
 // ### RESOLVERS ### //
@@ -43,7 +44,7 @@ publishArtifact in (Compile, packageDoc) := false
 
 // ### COMPILE SETTINGS ### //
 
-crossScalaVersions := Seq("2.10.2")
+crossScalaVersions := Seq("2.10.3-RC3")
 
 scalaVersion := crossScalaVersions.value.head
 
@@ -83,3 +84,5 @@ javacOptions := Seq(
 EclipseKeys.executionEnvironment := Some(EclipseExecutionEnvironment.JavaSE16)
 
 EclipseKeys.createSrc := EclipseCreateSrc.Default + EclipseCreateSrc.Resource
+
+EclipseKeys.eclipseOutput := Some(".target")

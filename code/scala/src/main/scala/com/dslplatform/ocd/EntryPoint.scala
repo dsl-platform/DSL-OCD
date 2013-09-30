@@ -1,7 +1,10 @@
 package com.dslplatform.ocd
 
-import setup._
-
 object EntryPoint extends App {
-  Locator[ITestDeployer].deploy()
+  val packageNamePrefix = "com.dslplatform.ocd.stub"
+
+  Locator[ITestDeployer].deploy(
+    new TestOneBoolInValueJava { def packageStub = packageNamePrefix }
+  , new TestOptSetOptBoolInValueJava { def packageStub = packageNamePrefix }
+  )
 }

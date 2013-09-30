@@ -1,13 +1,11 @@
-package com.dslplatform
+package com.dslplatform.ocd
 
-import ocd.setup._
-
-import org.slf4j.{ Logger, LoggerFactory }
 import hr.ngs.patterns.DependencyContainer
 import hr.ngs.patterns.IServiceLocator
+import org.slf4j.LoggerFactory
 
-package object ocd extends io.jvm.uuid.Imports {
-  val Locator: IServiceLocator = {
+object ServiceLocator {
+  val locator: IServiceLocator = {
     val logger = LoggerFactory getLogger "DSL-OCD"
     val tsl = new TestSettingsLoader(logger)
     val tpl = new TestProjectLoader(logger)

@@ -1,0 +1,3 @@
+package com.dslplatform.ocd
+
+trait DslSimpleReferenceAggregateRootType extends DslNonSurrogateAggregateRootType

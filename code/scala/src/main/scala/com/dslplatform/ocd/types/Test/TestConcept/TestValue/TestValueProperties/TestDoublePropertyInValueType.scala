@@ -1,0 +1,3 @@
+package com.dslplatform.ocd
+
+trait TestDoublePropertyInValueType extends TestValuePropertiesType
