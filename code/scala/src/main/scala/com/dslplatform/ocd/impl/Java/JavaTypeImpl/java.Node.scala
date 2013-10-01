@@ -1,6 +1,11 @@
 package com.dslplatform.ocd
 
-sealed trait JavaNodeStub extends JavaImplStub with TipeXmlType with TipeComplexType with TipeUnconstrainedType with TipeStableType
+sealed trait JavaNodeStub
+extends JavaImplStub
+with TipeXmlType
+with TipeComplexType
+with TipeUnconstrainedType
+with TipeStableType
 
 case object `java.Xml` extends JavaNodeStub with JavaOneImpl {
   def javaType = "org.w3c.dom.Node"

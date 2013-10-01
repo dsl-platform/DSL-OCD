@@ -3,7 +3,7 @@ package com.dslplatform.ocd
 sealed trait JavaBigDecimalStub
 extends JavaImplStub
 with TipeDecimalType
-with TipeEqualsType
+with TipeEqualsComparableType
 with TipeConstrainedType
 with TipeStableType
 

@@ -1,6 +1,11 @@
 package com.dslplatform.ocd
 
-sealed trait JavaStringStub extends JavaImplStub with TipeStringType with TipeComplexType with TipeConstrainedType with TipeStableType
+sealed trait JavaStringStub
+extends JavaImplStub
+with TipeStringType
+with TipeComplexType
+with TipeConstrainedType
+with TipeStableType
 
 case object `java.String` extends JavaStringStub with JavaOneImpl {
   def javaType = "String"
