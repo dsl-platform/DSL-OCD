@@ -1,6 +1,4 @@
-package com.dslplatform.ocd.types.Tipe.TipeComplexity.TipeComplex.TipeEqualness
-
-import com.dslplatform.ocd.types.Tipe.TipeComplexity.TipeComplex.TipeEqualnessType
+package com.dslplatform.ocd
 
 trait TipeSpecialEqualsType extends TipeEqualnessType {
   def canBeComparedUsingEquals = false
