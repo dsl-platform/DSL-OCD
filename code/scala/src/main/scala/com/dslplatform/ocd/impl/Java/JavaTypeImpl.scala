@@ -1,96 +1,69 @@
 package com.dslplatform.ocd
 
 trait JavaImplStub
-    extends JavaImpl
+    extends JavaBoxImplStub
     with TipeConstrainnessType
-    with BoxOnenessType
-    with BoxNullnessType
     with TipeStablenessType
-    with TipeComplexityType {
-
-  def javaType: String
-  def defaultValue: String
-}
+    with TipeComplexityType
 
 trait JavaImplNullableStub
     extends JavaImplStub
-    with BoxNullableType {
-  def defaultValue = "null"
-}
+    with JavaBoxImplNullableStub
 
 // ------------------------------------
 
 trait JavaOneImpl
     extends JavaImplStub
-    with BoxOneType
-    with BoxNonNullableType
+    with JavaBoxOneImpl
 
 trait JavaOptImpl
     extends JavaImplNullableStub
-    with BoxOneType
+    with JavaBoxOptImpl
 
 trait JavaArrImpl
     extends JavaImplStub
-    with BoxArrayType
-    with BoxNonNullableType
-    with BoxElementsNonNullableType
+    with JavaBoxArrImpl
 
 trait JavaListImpl
     extends JavaImplStub
-    with BoxListType
-    with BoxNonNullableType
-    with BoxElementsNonNullableType
+    with JavaBoxListImpl
 
 trait JavaSetImpl
     extends JavaImplStub
-    with BoxSetType
-    with BoxNonNullableType
-    with BoxElementsNonNullableType
+    with JavaBoxSetImpl
 
 trait JavaOptArrImpl
     extends JavaImplNullableStub
-    with BoxArrayType
-    with BoxElementsNonNullableType
+    with JavaBoxOptArrImpl
 
 trait JavaOptListImpl
     extends JavaImplNullableStub
-    with BoxListType
-    with BoxElementsNonNullableType
+    with JavaBoxOptListImpl
 
 trait JavaOptSetImpl
     extends JavaImplNullableStub
-    with BoxSetType
-    with BoxElementsNonNullableType
+    with JavaBoxOptSetImpl
 
 trait JavaArrOptImpl
     extends JavaImplStub
-    with BoxArrayType
-    with BoxNonNullableType
-    with BoxElementsNullableType
+    with JavaBoxArrOptImpl
 
 trait JavaListOptImpl
     extends JavaImplStub
-    with BoxListType
-    with BoxNonNullableType
-    with BoxElementsNullableType
+    with JavaBoxListOptImpl
 
 trait JavaSetOptImpl
     extends JavaImplStub
-    with BoxSetType
-    with BoxNonNullableType
-    with BoxElementsNullableType
+    with JavaBoxSetOptImpl
 
 trait JavaOptArrOptImpl
     extends JavaImplNullableStub
-    with BoxArrayType
-    with BoxElementsNullableType
+    with JavaBoxOptArrOptImpl
 
 trait JavaOptListOptImpl
     extends JavaImplNullableStub
-    with BoxListType
-    with BoxElementsNullableType
+    with JavaBoxOptListOptImpl
 
 trait JavaOptSetOptImpl
     extends JavaImplNullableStub
-    with BoxSetType
-    with BoxElementsNullableType
+    with JavaBoxOptSetOptImpl
