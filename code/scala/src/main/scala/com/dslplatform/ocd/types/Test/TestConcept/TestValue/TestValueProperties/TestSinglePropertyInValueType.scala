@@ -1,3 +1,0 @@
-package com.dslplatform.ocd
-
-trait TestSinglePropertyInValueType extends TestValuePropertiesType
