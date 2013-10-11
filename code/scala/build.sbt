@@ -10,7 +10,10 @@ name := "DSL-OCD"
 
 version := "0.0.0-SNAPSHOT"
 
-unmanagedSourceDirectories in Compile := (scalaSource in Compile).value :: Nil
+unmanagedSourceDirectories in Compile :=
+  Seq("interfaces", "services", "types", "impl", "dsl").map {
+    baseDirectory.value / "src" / _ / "scala"
+  } :+ (scalaSource in Compile).value
 
 unmanagedSourceDirectories in Test := (scalaSource in Test).value :: Nil
 
@@ -18,13 +21,12 @@ unmanagedSourceDirectories in Test := (scalaSource in Test).value :: Nil
 // ### DEPENDENCIES ### //
 
 libraryDependencies ++= Seq(
-  "com.dslplatform" % "dsl-compiler-client-cmdline" % "0.8.4"
-, "com.dslplatform" % "dsl-client-http" % "0.4.9"
+  "com.dslplatform" % "dsl-compiler-client-cmdline" % "0.8.7"
 , "hr.element.etb" %% "etb-util" % "0.2.20"
 , "ch.qos.logback" % "logback-classic" % "1.0.13" % "compile->default"
 , "hr.ngs" %% "ngs-core" % "0.3.19"
 , "junit" % "junit" % "4.11" % "test"
-, "org.scalatest" %% "scalatest" % "2.0.M8" % "test"
+, "org.scalatest" %% "scalatest" % "2.0.RC1" % "test"
 )
 
 // ### RESOLVERS ### //
@@ -44,7 +46,7 @@ publishArtifact in (Compile, packageDoc) := false
 
 // ### COMPILE SETTINGS ### //
 
-crossScalaVersions := Seq("2.10.3-RC3")
+crossScalaVersions := Seq("2.10.3")
 
 scalaVersion := crossScalaVersions.value.head
 
@@ -66,6 +68,7 @@ scalacOptions := Seq(
 , "-language:postfixOps"
 , "-language:implicitConversions"
 , "-language:existentials"
+, "-language:dynamics"
 )
 
 javaHome := sys.env.get("JDK16_HOME").map(file(_))
@@ -81,7 +84,7 @@ javacOptions := Seq(
 
 // ### ECLIPSE ### //
 
-EclipseKeys.executionEnvironment := Some(EclipseExecutionEnvironment.JavaSE16)
+EclipseKeys.executionEnvironment := Some(EclipseExecutionEnvironment.JavaSE17)
 
 EclipseKeys.createSrc := EclipseCreateSrc.Default + EclipseCreateSrc.Resource
 

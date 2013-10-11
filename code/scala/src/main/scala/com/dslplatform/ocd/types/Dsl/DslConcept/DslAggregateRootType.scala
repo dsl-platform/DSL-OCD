@@ -1,4 +1,0 @@
-package com.dslplatform.ocd
-
-trait DslAggregateRootType extends DslConceptType
-trait DslAggregateRootComponentType extends DslConceptType

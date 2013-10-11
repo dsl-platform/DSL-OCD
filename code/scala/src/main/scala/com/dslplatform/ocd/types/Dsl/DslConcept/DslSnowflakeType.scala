@@ -1,4 +1,0 @@
-package com.dslplatform.ocd
-
-trait DslSnowflakeType extends DslConceptType
-trait DslSnowflakeComponentType extends DslConceptType
