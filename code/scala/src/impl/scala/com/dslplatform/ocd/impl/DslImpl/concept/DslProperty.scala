@@ -11,7 +11,7 @@ trait DslPropertyStub
     with DslValueComponent
     with DslPropertyType
     with DslPropertyStubPrinter {
-  def tipe: String
+  def tipe: DslImpl
   def name: String
   type children = DslPropertyComponent
 }
@@ -22,7 +22,7 @@ trait DslPropertyStub
 import dsl._
 
 object DslProperty extends Dynamic {
-  def apply(tipe: String, name: String) =
+  def apply(tipe: DslImpl, name: String) =
     new DslProperty(tipe, name, None) {
       def apply(unit: Unit) =
         new DslProperty(tipe, name, Some(Nil))
@@ -31,15 +31,15 @@ object DslProperty extends Dynamic {
         new DslProperty(tipe, name, Some(components))
     }
 
-  def selectDynamic(tipe: String, name: String) =
+  def selectDynamic(tipe: DslImpl, name: String) =
     new DslProperty(tipe, name, None)
 
-  def applyDynamic(tipe: String, name: String)(components: DslPropertyComponent*) =
+  def applyDynamic(tipe: DslImpl, name: String)(components: DslPropertyComponent*) =
     new DslProperty(tipe, name, Some(components))
 }
 
 class DslProperty private[impl] (
-    val tipe: String
+    val tipe: DslImpl
   , val name: String
   , val components: Option[Seq[DslPropertyComponent]]
 ) extends DslPropertyStub

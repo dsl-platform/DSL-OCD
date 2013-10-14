@@ -1,7 +1,5 @@
 package com.dslplatform.ocd
 
-import com.dslplatform.ocd.impl.dsl.DslPropertyComponent
-
 package object impl {
   implicit class ImpaleStringOps(val name: String)
       extends AnyVal with Dynamic {
@@ -11,14 +9,16 @@ package object impl {
     def tab = name.split("\n").map("  " +).mkString("\n")
   }
 
+  import dsl._
+
   implicit def StringToStringlyPropertyComponent(component: String) =
-    new impl.dsl.StringlyTypedDslPropertyComponent(component)
+    new StringlyTypedDslPropertyComponent(component)
 
   implicit def StringToStringlyPropertyComponent(component: (String, String)) = {
-    val tipe = "" + dsl.DslRaw.extract(component._1)
+    val tipe = DslRaw.extract(component._1)
 
     new DslProperty(tipe, component._2, None) {
-      def apply(_components: DslPropertyComponent*) =
+      def apply(_components: dsl.DslPropertyComponent*) =
         new DslProperty(tipe, name, Some(_components))
     }
   }

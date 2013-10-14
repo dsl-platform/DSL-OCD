@@ -16,11 +16,11 @@ trait DslImpl
   def dslDesc: String
 
   def apply(name: String) =
-    DslProperty(toString, name)
+    DslProperty(this, name)
 
   def selectDynamic(name: String) =
-    DslProperty(toString, name)
+    DslProperty(this, name)
 
   def applyDynamic(name: String)(components: DslPropertyComponent*) =
-    DslProperty(toString, name)(components: _*)
+    DslProperty(this, name)(components: _*)
 }

@@ -3,6 +3,8 @@ package impl
 package dsl
 package printer
 
+import types.box.BoxNullableType
+
 trait DslPropertyStubPrinter
     extends DslComponentPrinter { this: DslPropertyStub =>
 
@@ -12,7 +14,10 @@ trait DslPropertyStubPrinter
   override protected def tabOption = identity
 
   private val tipeSpacing =
-    if (tipe.endsWith("?")) " " else "  "
+    tipe match {
+      case n: BoxNullableType => "?"
+      case _ => ""
+    }
 
   protected val toStringHeader =
     tipe + tipeSpacing + name
