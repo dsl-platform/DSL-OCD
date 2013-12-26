@@ -18,5 +18,6 @@ object ServiceLocator {
       .register[TestDeployer, ITestDeployer]
       .register[TestGenerator, ITestGenerator]
       .register[ApiActions, IApiActions]
+      .register[EntryPoint]
   }
 }

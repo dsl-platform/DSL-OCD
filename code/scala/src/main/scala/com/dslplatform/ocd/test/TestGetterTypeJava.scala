@@ -2,9 +2,9 @@ package com.dslplatform.ocd
 package test
 package java
 
-trait TestJavaFieldType
+trait TestGetterTypeJava
     extends TestJavaTemplate
-    with types.TestFieldType {
+    with types.TestGetterType {
 
   def javaClass: String
   def fieldName: String
@@ -12,7 +12,7 @@ trait TestJavaFieldType
 
   def testJavaFieldType = s"""
     @Test
-    public void TestFieldType() throw NoSuchFieldException {
+    public void TestGetterType() throw NoSuchFieldException {
         assertTrue(new FieldTester(${javaClass}.class, "${fieldName}").typeEquals(${fieldClass}.class));
     }
 """

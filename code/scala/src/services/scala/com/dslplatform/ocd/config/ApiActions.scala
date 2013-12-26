@@ -42,9 +42,9 @@ private [config] class ApiActions(
   def create(projectName: String) = {
     ProjectIni.fromByteArray(
 """username=ngsutil@dsl-platform.com
-project-id=b29a8a93-8036-45d9-87bb-afebb996508f
-api-url=https://node0.dsl-platform.com/beta_f6f4b26d2b40c8bff2be93/
-package-name=model
+project-id=e3429ea9-901c-4778-af52-07997cf1b97b
+api-url=https://node0.dsl-platform.com/beta_2877f7a0c144938612104d/
+package-name=com.dslplatform.ocd.values
 """ getBytes "UTF-8")
 
 //    val create = actions.create(auth, new ProjectName(projectName))
