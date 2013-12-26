@@ -21,7 +21,7 @@ unmanagedSourceDirectories in Test := (scalaSource in Test).value :: Nil
 // ### DEPENDENCIES ### //
 
 libraryDependencies ++= Seq(
-  "com.dslplatform" % "dsl-compiler-client-cmdline" % "0.8.7"
+  "com.dslplatform" % "dsl-compiler-client-cmdline" % "0.8.10"
 , "hr.element.etb" %% "etb-util" % "0.2.20"
 , "ch.qos.logback" % "logback-classic" % "1.0.13" % "compile->default"
 , "hr.ngs" %% "ngs-core" % "0.3.19"
@@ -84,7 +84,7 @@ javacOptions := Seq(
 
 // ### ECLIPSE ### //
 
-EclipseKeys.executionEnvironment := Some(EclipseExecutionEnvironment.JavaSE17)
+EclipseKeys.executionEnvironment := Some(EclipseExecutionEnvironment.JavaSE16)
 
 EclipseKeys.createSrc := EclipseCreateSrc.Default + EclipseCreateSrc.Resource
 
