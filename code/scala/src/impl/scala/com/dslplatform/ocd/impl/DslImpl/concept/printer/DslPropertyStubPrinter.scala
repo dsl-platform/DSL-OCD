@@ -15,8 +15,8 @@ trait DslPropertyStubPrinter
 
   private val tipeSpacing =
     tipe match {
-      case n: BoxNullableType => "?"
-      case _ => ""
+      case n: BoxNullableType => " "
+      case _ => "  "
     }
 
   protected val toStringHeader =

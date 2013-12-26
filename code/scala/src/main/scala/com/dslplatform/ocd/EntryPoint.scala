@@ -1,11 +1,30 @@
 package com.dslplatform.ocd
-import scala.language.dynamics
 
 import config._
 import com.dslplatform.compiler.client.api.params.Language
+import impl.dsl.setup.SetupOptSetOptBoolInValueDsl
 
 object EntryPoint extends App {
 
+  val su = new SetupOptSetOptBoolInValueDsl {}
+
+  val valueTests = new ITest {
+    def packageName = "com.dslplatform.ocd.values"
+
+    def dslFiles =
+      Map((su.ModuleName + ".dsl") -> su.dslTemplate.toString)
+
+    def testFiles = Map(
+      Language.JAVA -> Map("a1.java" -> "// keke")
+    )
+  }
+
+
+
+  println(valueTests)
+
+
+  sys.exit(0)
 
   val packageNamePrefix = "com.dslplatform.ocd.stub"
 
@@ -26,7 +45,6 @@ object EntryPoint extends App {
     def testFiles = Map(Language.JAVA -> Map("a2.java" -> "JavaTest"),
         Language.SCALA -> Map("a2.java" -> "JavaTest"))
   }
-
 
 //  val ts = Locator[ITestGenerator].generateTests(t1 :: t2 :: Nil)
 
