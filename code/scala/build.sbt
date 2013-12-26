@@ -25,7 +25,6 @@ libraryDependencies ++= Seq(
 , "hr.element.etb" %% "etb-util" % "0.2.20"
 , "ch.qos.logback" % "logback-classic" % "1.0.13" % "compile->default"
 , "hr.ngs" %% "ngs-core" % "0.3.19"
-, "org.clapper" %% "classutil" % "1.0.2"
 , "junit" % "junit" % "4.11" % "test"
 , "org.scalatest" %% "scalatest" % "2.0.RC1" % "test"
 )

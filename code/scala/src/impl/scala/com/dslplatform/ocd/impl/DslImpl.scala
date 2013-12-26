@@ -23,4 +23,7 @@ trait DslImpl
 
   def applyDynamic(name: String)(components: DslPropertyComponent*) =
     DslProperty(this, name)(components: _*)
+
+  def ->(name: String) =
+    DslProperty(this, name)
 }
