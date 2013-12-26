@@ -1,6 +1,6 @@
 val NGSNexus     = "NGS Nexus"     at "http://ngs.hr/nexus/content/groups/public/"
-val NGSReleases  = "NGS Releases"  at "http://ngs.hr/nexus/content/repositories/releases/"
-val NGSSnapshots = "NGS Snapshots" at "http://ngs.hr/nexus/content/repositories/snapshots/"
+val NGSPrivateReleases  = "NGS Private Releases"  at "http://ngs.hr/nexus/content/repositories/releases-private/"
+val NGSPrivateSnapshots = "NGS Private Snapshots" at "http://ngs.hr/nexus/content/repositories/snapshots-private/"
 
 // ### BASIC SETTINGS ### //
 
@@ -11,7 +11,7 @@ name := "DSL-OCD"
 version := "0.0.0-SNAPSHOT"
 
 unmanagedSourceDirectories in Compile :=
-  Seq("interfaces", "services", "types", "impl").map {
+  Seq("types", "impl", "test", "interfaces", "services").map {
     baseDirectory.value / "src" / _ / "scala"
   } :+ (scalaSource in Compile).value
 
@@ -31,12 +31,12 @@ libraryDependencies ++= Seq(
 
 // ### RESOLVERS ### //
 
-resolvers := Seq(NGSNexus)
+resolvers := Seq(NGSNexus, NGSPrivateReleases, NGSPrivateSnapshots)
 
 externalResolvers := Resolver.withDefaultResolvers(resolvers.value, mavenCentral = false)
 
 publishTo := Some(
-  if (version.value endsWith "SNAPSHOT") NGSSnapshots else NGSReleases
+  if (version.value endsWith "SNAPSHOT") NGSPrivateSnapshots else NGSPrivateReleases
 )
 
 credentials += Credentials(Path.userHome / ".config" / "DSL-OCD" / "nexus.config")

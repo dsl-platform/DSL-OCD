@@ -3,8 +3,8 @@ package types
 
 import lang._
 
-trait `lang.C#`
+trait `lang.CSharp`
     extends LangDestinationType {
 
-  def langDesc = "C#"
+  def langDesc = "CSharp"
 }
