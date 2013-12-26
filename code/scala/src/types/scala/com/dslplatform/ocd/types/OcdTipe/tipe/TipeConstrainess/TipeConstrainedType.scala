@@ -3,7 +3,7 @@ package types
 package tipe
 
 trait TipeConstrainedType
-    extends TipeConstrainnessType {
+    extends TipeConstrainessType {
 
   def hasConstraints = true
 }

@@ -8,7 +8,7 @@ trait DslImpl
     extends OcdImpl
     with box.BoxOnenessType
     with box.BoxNullnessType
-    with tipe.TipeConstrainnessType
+    with tipe.TipeConstrainessType
     with `lang.DSL`
     with dsl.printer.DslImplPrinter
     with Dynamic {
