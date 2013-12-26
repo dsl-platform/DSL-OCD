@@ -4,7 +4,8 @@ package java
 
 import types._
 
-trait TestJava {
+trait TestJava
+    extends types.OcdTest {
   def javaTemplate: String
 }
 
@@ -20,6 +21,7 @@ trait TestJavaTemplate
     extends TestJava {
 
   def packageName: String
+  def testName: String
   def imports: String
   def staticFields: String
   def beforeClass: String
@@ -37,13 +39,13 @@ ${imports}
 import com.dslplatform.client.Bootstrap;
 import com.dslplatform.patterns.ServiceLocator;
 
-public class TestArrBool {
+public class ${testName} {
     private static ServiceLocator locator;
 ${staticFields}
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        locator = Bootstrap.init(Main.class.getResourceAsStream("/project.ini"));
+        locator = Bootstrap.init(${testName}.class.getResourceAsStream("/dsl-project.ini"));
 ${beforeClass}
     }
 

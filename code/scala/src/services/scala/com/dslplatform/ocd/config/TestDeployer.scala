@@ -1,88 +1,82 @@
 package com.dslplatform.ocd
 package config
 
+import scalax.file._
+import com.dslplatform.compiler.client.api.params.Language
+
 private [config] class TestDeployer(
     logger: Logger
+  , testSettings: ITestSettings
   ) extends ITestDeployer {
 
-  private def cleanDsl() {}
-  private def cleanCode() {}
-  private def cleanTests() {}
+  private val root = testSettings.workspace.path
 
-  def deployDsl(dslFiles: Map[String, String]) = {}
-  def deployCode(codeFiles: Map[String, String]) = {}
-  def deployTests(testsFiles: Map[String, String]) = {}
+  private def languagePath(language: Language) =
+    root / language.language.toLowerCase
 
-  def deployTests(tests: Seq[ITestSetup]) = {
+  private def generatedPath(language: Language) =
+    languagePath(language) / "src" / "generated"
+
+  private def testPath(language: Language) =
+    languagePath(language) / "src" / "test"
+
+  private def clean(languages: Set[Language]) {
+    logger.debug("Cleaning generated DSL ...")
+    val remaining = (root / "dsl").deleteRecursively(true, true)._2
+    if (remaining > 0) {
+      logger.warn(s"Could not delete all generated DSL ($remaining)!")
+    }
+
+    languages foreach { language =>
+      logger.debug(s"Cleaning code and tests ($language) ...")
+      val path = languagePath(language)
+      val remaining = path.deleteRecursively(true, true)._2
+      if (remaining > 0) {
+        logger.warn(s"Could not delete all code for $language ($remaining)!")
+      }
+    }
+  }
+
+  def deployDsl(dslFiles: Map[String, String]) {
+    dslFiles foreach { case (filename, body) =>
+      logger.trace("Deploying DSL: " + filename)
+      (root / "dsl" / (filename, '/')).write(body)
+    }
+  }
+
+  def deployCode(codeFiles: Map[Language, Map[String, String]]) {
+    codeFiles foreach { case (language, files) =>
+      val languageRoot = generatedPath(language)
+      files foreach { case (filename, body) =>
+        logger.trace("Deploying code: " + filename)
+        (languageRoot / (filename, '/')).write(body)
+      }
+    }
+  }
+
+  def deployTest(testFiles: Map[Language, Map[String, String]]) {
+    testFiles foreach { case (language, files) =>
+      val languageRoot = testPath(language)
+      files foreach { case (filename, body) =>
+        logger.trace("Deploying tests: " + filename)
+        (languageRoot / (filename, '/')).write(body)
+      }
+    }
+  }
+
+  def deployTests(tests: Seq[ITestSetup]) {
+    val languages =
+      tests.flatMap{ curTest =>
+        curTest.codeFiles.keySet ++
+        curTest.test.testFiles.keySet
+      }.toSet
+
+    clean(languages)
+
     tests foreach { curTest =>
-      val dslFiles = curTest.test.dslFiles
-      val testFiles = curTest.test.testFiles
-      val codeFiles = curTest.codeFiles
+      deployDsl(curTest.test.dslFiles)
+      deployCode(curTest.codeFiles)
+      deployTest(curTest.test.testFiles)
     }
   }
 }
-//class TestProjectLoader(
-//    logger: Logger) {
-//
-//  def load(path: String) = {
-//    val project = new ITestProject() {
-//      logger.debug("Initializing test project at " + path)
-//      val root = Path(path.replace('\\', '/'), '/')
-//
-//      private val dsl = root / "dsl"
-//      private val code = root / "src" / "generated"
-//      private val tests = root / "src" / "test" / "java"
-//
-//      private def cleanDsl() {
-//        logger.debug("Cleaning generated DSL ...")
-//        val remaining = dsl.deleteRecursively(true, true)._2
-//        if (remaining > 0) {
-//          logger.warn(s"Could not delete all generated DSL ($remaining)!")
-//        }
-//      }
-//
-//      private def cleanCode() {
-//        logger.debug("Cleaning compiled code ...")
-//        val remaining = code.deleteRecursively(true, true)._2
-//        if (remaining > 0) {
-//          logger.warn(s"Could not delete all compiled code ($remaining)!")
-//        }
-//      }
-//
-//      private def cleanTests() {
-//        logger.debug("Cleaning generated tests ...")
-//        val remaining = tests.deleteRecursively(true, true)._2
-//        if (remaining > 0) {
-//          logger.warn(s"Could not delete all generated tests ($remaining)!")
-//        }
-//      }
-//
-//      def clean() {
-//        cleanDsl()
-//        cleanCode()
-//        cleanTests()
-//      }
-//
-//      def deployDsl(dslFiles: Map[String, String]) =
-//        dslFiles foreach { case (filename, body) =>
-//          logger.trace("Deploying DSL: " + filename)
-//          (dsl / (filename, '/')).write(body)
-//        }
-//
-//      def deployCode(codeFiles: Map[String, String]) =
-//        codeFiles foreach { case (filename, body) =>
-//          logger.trace("Deploying code: " + filename)
-//          (code / (filename, '/')).write(body)
-//        }
-//
-//      def deployTests(testFiles: Map[String, String]) =
-//        testFiles foreach { case (filename, body) =>
-//          logger.trace("Deploying test: " + filename)
-//          (tests / (filename, '/')).write(body)
-//        }
-//
-//      logger.info("Initialized test project!")
-//    }
-//
-//    project
-//  }
