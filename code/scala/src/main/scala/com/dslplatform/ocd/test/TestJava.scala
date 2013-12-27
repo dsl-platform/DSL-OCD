@@ -3,10 +3,16 @@ package test
 package java
 
 import types._
+import scala.collection.immutable.TreeSet
 
 trait TestJava
     extends types.OcdTest {
-  def javaTemplate: String
+  def testBody: String
+}
+
+trait TestComponentJava {
+  def imports: Seq[String]
+  def testComponentBody: String
 }
 
 private object TestJavaTemplate {
@@ -22,22 +28,30 @@ trait TestJavaTemplate
 
   def packageName: String
   def testName: String
-  def imports: String
   def staticFields: String
   def beforeClass: String
   def afterClass: String
   def beforeTest: String
   def afterTest: String
 
-  def tests: String
+  def testComponents: Seq[TestComponentJava]
+  def testComponentsString =
+    testComponents.map(_.testComponentBody).mkString
 
-  def javaTemplate = TestJavaTemplate.cleanup(s"""
+  def imports: Seq[String]
+  def importsString = (
+      TreeSet(
+        "org.junit.*"
+      , "com.dslplatform.client.Bootstrap"
+      , "com.dslplatform.patterns.ServiceLocator"
+      ) ++ imports
+      ++ testComponents.flatMap(_.imports)
+    ) map("import " + _  + ";") mkString("\n")
+
+  def testBody = TestJavaTemplate.cleanup(s"""
 package ${packageName};
 
-${imports}
-
-import com.dslplatform.client.Bootstrap;
-import com.dslplatform.patterns.ServiceLocator;
+${importsString}
 
 public class ${testName} {
     private static ServiceLocator locator;
@@ -65,7 +79,7 @@ ${beforeTest}
     public void tearDown() throws Exception {
 ${afterTest}
     }
-${tests}
+${testComponentsString}
 }
 """)
 }

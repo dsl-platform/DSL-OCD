@@ -1,13 +1,13 @@
 package com.dslplatform.ocd
 package impl
 
-import types._
+import types.{ box => tbox }
 import dsl._
 
 trait DslImpl
     extends OcdImpl
-    with box.BoxOnenessType
-    with box.BoxNullnessType
+    with tbox.BoxOnenessType
+    with tbox.BoxNullnessType
     with tipe.TipeConstrainessType
     with `lang.DSL`
     with dsl.printer.DslImplPrinter

@@ -29,7 +29,16 @@ private [config] class TestDeployer(
 
     languages foreach { language =>
       logger.debug(s"Cleaning code and tests ($language) ...")
-      val path = languagePath(language)
+      val path = generatedPath(language)
+      val remaining = path.deleteRecursively(true, true)._2
+      if (remaining > 0) {
+        logger.warn(s"Could not delete all code for $language ($remaining)!")
+      }
+    }
+
+    languages foreach { language =>
+      logger.debug(s"Cleaning code and tests ($language) ...")
+      val path = testPath(language)
       val remaining = path.deleteRecursively(true, true)._2
       if (remaining > 0) {
         logger.warn(s"Could not delete all code for $language ($remaining)!")
@@ -54,9 +63,17 @@ private [config] class TestDeployer(
     }
   }
 
-  def deployTest(testFiles: Map[Language, Map[String, String]]) {
+  def deployTest(
+      projectIni: ProjectIni,
+      testFiles: Map[Language, Map[String, String]]) {
+
     testFiles foreach { case (language, files) =>
       val languageRoot = testPath(language)
+
+      val projectIniPath = languageRoot / "resources" / "dsl-project.ini"
+      logger.trace("Writing project file: " + projectIniPath)
+      projectIniPath.write(projectIni.toByteArray)
+
       files foreach { case (filename, body) =>
         logger.trace("Deploying tests: " + filename)
         (languageRoot / (filename, '/')).write(body)
@@ -64,7 +81,7 @@ private [config] class TestDeployer(
     }
   }
 
-  def deployTests(tests: Seq[ITestSetup]) {
+  def deployTests(projectIni: ProjectIni, tests: Seq[ITestSetup]) {
     val languages =
       tests.flatMap{ curTest =>
         curTest.codeFiles.keySet ++
@@ -76,7 +93,7 @@ private [config] class TestDeployer(
     tests foreach { curTest =>
       deployDsl(curTest.test.dslFiles)
       deployCode(curTest.codeFiles)
-      deployTest(curTest.test.testFiles)
+      deployTest(projectIni, curTest.test.testFiles)
     }
   }
 }
