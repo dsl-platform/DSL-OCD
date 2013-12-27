@@ -40,6 +40,6 @@ private [config] class TestGenerator(
     logger.info("Deleting the generator project ...")
 //    actions.delete(projectIni.projectID)
 
-    testSetup
+    (projectIni, testSetup)
   }
 }

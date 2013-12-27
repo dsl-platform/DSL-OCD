@@ -3,10 +3,12 @@ package impl
 package box
 
 import types._
+import tipe._
 
 trait JavaPrimitiveType
-    extends JavaImpl {
+    extends JavaImpl
+    with TipePrimitiveType {
 
-  def scalarClass: String
-  def referenceClass: String
+//  def scalarClass: String
+//  def nonScalarClass: String
 }

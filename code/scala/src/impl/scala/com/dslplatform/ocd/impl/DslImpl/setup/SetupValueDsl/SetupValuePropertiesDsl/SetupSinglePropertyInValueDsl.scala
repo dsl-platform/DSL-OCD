@@ -9,14 +9,15 @@ trait SetupSinglePropertyInValueDsl
     extends SetupValuePropertiesDsl
     with SetupSinglePropertyInValueType {
 
-  def ModuleName = propertyName + "InValue"
-  def ValueName = propertyName + "Value"
+  def ModuleName = PropertyName + "InValue"
+  def ValueName = PropertyName + "Value"
 
   def propertyType: DslImpl
-  def propertyName = propertyType.boxDesc + propertyType.dslDesc
+  def PropertyName = propertyType.boxDesc + propertyType.dslDesc
+  def propertyName = PropertyName.fcil
 
-  def property: DslPropertyStub = propertyType -> propertyName.fcil
+  def property: DslPropertyStub = propertyType -> propertyName
   def valueProperties = Seq(property)
 
-  def setupDesc = "SetupSinglePropertyInValueDsl: " + propertyName
+  def setupDesc = "SetupSinglePropertyInValueDsl: " + PropertyName
 }

@@ -15,6 +15,4 @@ trait JavaImpl
 
   def javaDesc: String
   def javaClass: String
-  def constructor: String
-  def defaultValue: String
 }

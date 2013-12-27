@@ -7,13 +7,9 @@ import types._
 sealed trait JavaBoxStub
     extends JavaImpl {
 
-  def javaClass = javaDesc
-  def referenceClass = javaClass
-
-  def constructor = s"new ${javaClass} {}"
-
-  def defaultValue =
-    if (isNullable) "null" else constructor
+  def javaClass: String
+//  def constructor: String
+//  def defaultValue: String
 }
 
 trait JavaOne         extends JavaBoxStub with `box.One`
