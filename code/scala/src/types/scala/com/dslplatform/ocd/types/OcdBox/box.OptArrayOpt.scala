@@ -10,3 +10,5 @@ trait `box.OptArrayOpt`
 
   def boxDesc = "OptArrayOpt"
 }
+
+object `box.OptArrayOpt` extends `box.OptArrayOpt`

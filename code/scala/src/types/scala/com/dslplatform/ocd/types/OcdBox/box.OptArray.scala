@@ -8,5 +8,7 @@ trait `box.OptArray`
     with BoxArrayType
     with BoxElementsNonNullableType {
 
-  def boxDesc = "Array"
+  def boxDesc = "OptArray"
 }
+
+object `box.OptArray` extends `box.OptArray`

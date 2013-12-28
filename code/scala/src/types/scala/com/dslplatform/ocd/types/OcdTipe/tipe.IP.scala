@@ -6,3 +6,5 @@ trait `tipe.IP`
 
   def tipeDesc = "IP"
 }
+
+object `tipe.IP` extends `tipe.IP`

@@ -2,10 +2,9 @@ package com.dslplatform.ocd
 
 import config._
 import com.dslplatform.compiler.client.api.params.Language
-import impl.dsl.setup.SetupOneBoolInValueDsl
-import impl.dsl.setup.SetupOptBoolInValueDsl
-import impl.dsl.setup.SetupOptSetOptBoolInValueDsl
 import test.java._
+import types._
+import com.dslplatform.ocd.impl.dsl.setup.SetupSinglePropertyInValueDsl
 
 object EntryPoint extends App {
   Locator[EntryPoint].simpleTest()
@@ -17,80 +16,81 @@ class EntryPoint(
 
   def simpleTest() {
 
-    import types._
+    val boxes = Seq(
+      `box.One`
+    , `box.Opt`
+    , `box.OptSetOpt`
+    )
 
-    val setup = new SetupOptSetOptBoolInValueDsl {}
-    val tipe = setup.propertyType
+    val types = Seq(
+      `tipe.Bool`
+    )
 
-    println(tipe.getClass)
-//    tipe.getClass.getInterfaces.foreach(println)
+    val setups = for {
+      box <- boxes
+      tipe <- types
+    } yield {
+      new SetupSinglePropertyInValueDsl {
+        val propertyType = impl.box.DslTypeResolver.resolve(tipe, box)
+      }
+    }
 
-//    JavaTypeResolver.locate[
-//      _root_.com.dslplatform.ocd.types.`tipe.Bool`
-//    ]
+    val valueTests = setups map { setup =>
+      new ITest { test =>
+        def packageName = "com.dslplatform.ocd.values"
 
-//
-//
-//    val valueTests = Seq(
-//      new SetupOneBoolInValueDsl {}
-//    , new SetupOptBoolInValueDsl {}
-//    , new SetupOptSetOptBoolInValueDsl {}
-//    ) map { setup =>
-//      new ITest { test =>
-//        def packageName = "com.dslplatform.ocd.values"
-//
-//        def dslFiles =
-//          Map((setup.ModuleName + ".dsl", setup.dslTemplate.toString))
-//
-//        val template = new TestJavaTemplate() {
-//          val packageName = test.packageName
-//          val testName = "Test" + System.currentTimeMillis()
-//          val testDesc = testName
-//
-//          val imports = Seq(
-//            packageName + "." + setup.ModuleName + "." + setup.ValueName
-//          )
-//
-//          val afterClass: String = ""
-//          val afterTest: String = ""
-//          val beforeClass: String = ""
-//          val beforeTest: String = ""
-//          val staticFields = ""
-//
-//          val testComponents = Seq(
-//            new TestJavaFieldType {
-//              def javaClass = setup.ValueName
-//              def fieldClass = impl.`java.Boolean`.javaClass
-//              def fieldName = setup.property.name
-//              def underlying = impl.`java.Boolean`.underlying
-//            }
-//          , new TestJavaGetterType {
-//              def javaClass = setup.ValueName
-//              def fieldClass = impl.`java.Boolean`.javaClass
-//              def fieldName = setup.property.name
-//              def underlying = impl.`java.Boolean`.underlying
-//            }
-//          , new TestJavaSetterType {
-//              def javaClass = setup.ValueName
-//              def fieldClass = impl.`java.Boolean`.javaClass
-//              def fieldName = setup.property.name
-//              def underlying = impl.`java.Boolean`.underlying
-//            }
-//          )
-//        }
-//
-//        val filePath =
-//          "java/" +
-//          template.packageName.replace('.', '/') + "/" +
-//          template.testName + ".java"
-//
-//        def testFiles = Map(
-//          Language.JAVA -> Map(filePath -> template.testBody)
-//        )
-//      }
-//    }
-//
-//    val tests = testGenerator.generateTests(valueTests)
-//    testDeployer.deployTests(Seq(tests))
+        def dslFiles =
+          Map((setup.ModuleName + ".dsl", setup.dslTemplate.toString))
+
+        val template = new TestJavaTemplate() {
+          val packageName = test.packageName
+          val testName = "Test" + setup.ValueName
+          val testDesc = testName
+
+          val imports = Seq(
+            packageName + "." + setup.ModuleName + "." + setup.ValueName
+          )
+
+          val afterClass: String = ""
+          val afterTest: String = ""
+          val beforeClass: String = ""
+          val beforeTest: String = ""
+          val staticFields = ""
+
+          val testComponents = Seq(
+            new TestJavaFieldType {
+              def javaClass = setup.ValueName
+              def fieldClass = impl.JavaTypes.resolve(setup.propertyType).javaClass
+              def fieldName = setup.property.name
+              def underlying = impl.JavaTypes.resolve(setup.propertyType).underlying
+            }
+          , new TestJavaGetterType {
+              def javaClass = setup.ValueName
+              def fieldClass = impl.JavaTypes.resolve(setup.propertyType).javaClass
+              def fieldName = setup.property.name
+              def underlying = impl.JavaTypes.resolve(setup.propertyType).underlying
+            }
+          , new TestJavaSetterType {
+              def javaClass = setup.ValueName
+              def fieldClass = impl.JavaTypes.resolve(setup.propertyType).javaClass
+              def fieldName = setup.property.name
+              def underlying = impl.JavaTypes.resolve(setup.propertyType).underlying
+            }
+          )
+        }
+
+        val filePath =
+          "java/" +
+          template.packageName.replace('.', '/') + "/" +
+          template.testName + ".java"
+
+        def testFiles = Map(
+          Language.JAVA -> Map(filePath -> template.testBody)
+        )
+      }
+    }
+
+    val tests = testGenerator.generateTests(valueTests)
+    testDeployer.deployTests(Seq(tests))
   }
 }

@@ -10,3 +10,5 @@ trait `box.OptLinkedListOpt`
 
   def boxDesc = "OptLinkedListOpt"
 }
+
+object `box.OptLinkedListOpt` extends `box.OptLinkedListOpt`

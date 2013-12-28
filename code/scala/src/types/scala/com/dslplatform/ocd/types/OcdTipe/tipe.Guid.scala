@@ -6,3 +6,5 @@ trait `tipe.Guid`
 
   def tipeDesc = "Guid"
 }
+
+object `tipe.Guid` extends `tipe.Guid`

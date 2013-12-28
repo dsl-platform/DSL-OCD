@@ -6,3 +6,5 @@ trait `tipe.Rectangle`
 
   def tipeDesc = "Rectangle"
 }
+
+object `tipe.Rectangle` extends `tipe.Rectangle`

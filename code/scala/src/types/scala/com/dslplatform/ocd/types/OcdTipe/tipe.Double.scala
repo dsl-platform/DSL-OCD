@@ -6,3 +6,5 @@ trait `tipe.Double`
 
   def tipeDesc = "Double"
 }
+
+object `tipe.Double` extends `tipe.Double`

@@ -6,3 +6,5 @@ trait `tipe.Money`
 
   def tipeDesc = "Money"
 }
+
+object `tipe.Money` extends `tipe.Money`

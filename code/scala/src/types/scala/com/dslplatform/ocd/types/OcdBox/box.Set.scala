@@ -10,3 +10,5 @@ trait `box.Set`
 
   def boxDesc = "Set"
 }
+
+object `box.Set` extends `box.Set`

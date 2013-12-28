@@ -6,3 +6,5 @@ trait `tipe.Point`
 
   def tipeDesc = "Point"
 }
+
+object `tipe.Point` extends `tipe.Point`

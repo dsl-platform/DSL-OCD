@@ -6,3 +6,5 @@ trait `tipe.Date`
 
   def tipeDesc = "Date"
 }
+
+object `tipe.Date` extends `tipe.Date`

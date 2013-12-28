@@ -6,3 +6,5 @@ trait `tipe.Json`
 
   def tipeDesc = "Json"
 }
+
+object `tipe.Json` extends `tipe.Json`

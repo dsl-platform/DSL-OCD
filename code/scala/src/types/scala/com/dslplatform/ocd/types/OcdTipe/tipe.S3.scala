@@ -6,3 +6,5 @@ trait `tipe.S3`
 
   def tipeDesc = "S3"
 }
+
+object `tipe.S3` extends `tipe.S3`

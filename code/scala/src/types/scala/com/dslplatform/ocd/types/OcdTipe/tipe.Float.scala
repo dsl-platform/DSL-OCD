@@ -6,3 +6,5 @@ trait `tipe.Float`
 
   def tipeDesc = "Float"
 }
+
+object `tipe.Float` extends `tipe.Float`

@@ -6,3 +6,5 @@ trait `tipe.Xml`
 
   def tipeDesc = "Xml"
 }
+
+object `tipe.Xml` extends `tipe.Xml`

@@ -6,3 +6,5 @@ trait `tipe.Color`
 
   def tipeDesc = "Color"
 }
+
+object `tipe.Color` extends `tipe.Color`

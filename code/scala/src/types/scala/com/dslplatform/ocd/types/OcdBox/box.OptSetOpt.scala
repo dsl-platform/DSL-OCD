@@ -10,3 +10,5 @@ trait `box.OptSetOpt`
 
   def boxDesc = "OptSetOpt"
 }
+
+object `box.OptSetOpt` extends `box.OptSetOpt`

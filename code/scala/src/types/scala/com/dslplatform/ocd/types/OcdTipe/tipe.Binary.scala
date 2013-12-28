@@ -6,3 +6,5 @@ trait `tipe.Binary`
 
   def tipeDesc = "Binary"
 }
+
+object `tipe.Binary` extends `tipe.Binary`
