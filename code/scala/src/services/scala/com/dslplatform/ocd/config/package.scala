@@ -5,6 +5,9 @@ import scala.collection.mutable.LinkedHashMap
 
 package object config {
   implicit class ITestSetupHelper(testSetup: ITestSetup) {
+    def packageName =
+      testSetup.tests.head.packageName
+
     def aggregatedLanguages =
       testSetup.codeFiles.keySet ++
       testSetup.tests.flatMap(_.testFiles.keySet)

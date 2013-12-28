@@ -65,13 +65,15 @@ private [config] class TestDeployer(
   }
 
   def deployTest(
-      projectIni: ProjectIni,
-      testFiles: Map[Language, Map[String, String]]) {
+      projectIni: ProjectIni
+    , testFiles: Map[Language, Map[String, String]]) {
 
     testFiles foreach { case (language, files) =>
       val languageRoot = testPath(language)
 
-      val projectIniPath = languageRoot / "resources" / "dsl-project.ini"
+      val projectIniPath = languageRoot / "resources" /
+        (projectIni.packageName, '.') / "dsl-project.ini"
+
       logger.trace("Writing project file: " + projectIniPath)
       projectIniPath.write(projectIni.toByteArray)
 

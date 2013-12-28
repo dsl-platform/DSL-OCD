@@ -19,11 +19,27 @@ class EntryPoint(
     val boxes = Seq(
       `box.One`
     , `box.Opt`
+    , `box.Array`
+    , `box.List`
+    , `box.Set`
+    , `box.OptArray`
+    , `box.OptList`
+    , `box.OptSet`
+    , `box.ArrayOpt`
+    , `box.ListOpt`
+    , `box.SetOpt`
+    , `box.OptArrayOpt`
+    , `box.OptListOpt`
     , `box.OptSetOpt`
     )
 
     val types = Seq(
-      `tipe.Bool`
+      `tipe.Binary`
+    , `tipe.Bool`
+    , `tipe.Integer`
+    , `tipe.Long`
+    , `tipe.String`
+    , `tipe.Guid`
     )
 
     val setups = for {
@@ -31,7 +47,7 @@ class EntryPoint(
       tipe <- types
     } yield {
       new SetupSinglePropertyInValueDsl {
-        val propertyType = impl.box.DslTypeResolver.resolve(tipe, box)
+        val propertyType = impl.DslTypeResolver.resolve(tipe, box)
       }
     }
 

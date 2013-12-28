@@ -59,7 +59,7 @@ ${staticFields}
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        locator = Bootstrap.init(${testName}.class.getResourceAsStream("/dsl-project.ini"));
+        locator = Bootstrap.init(${testName}.class.getResourceAsStream("dsl-project.ini"));
 ${beforeClass}
     }
 

@@ -13,7 +13,6 @@ sealed trait JavaBooleanStub
     with JavaPrimitiveType {
 
   def javaDesc = "boolean"
-  def underlying: Option[String]
 }
 
 case object `java.Boolean` extends JavaBooleanStub with JavaOne {
@@ -28,25 +27,25 @@ case object `java.Boolean?` extends JavaBooleanStub with JavaOpt {
 
 case object `java.Boolean[]` extends JavaBooleanStub with JavaArray {
   def javaClass = "boolean[]"
-  def underlying = Some("boolean")
+  def underlying = None
 }
 
 case object `java.Boolean?[]` extends JavaBooleanStub with JavaArrayOpt {
   def javaClass = "Boolean[]"
-  def underlying = Some("Boolean")
+  def underlying = None
 }
 
 case object `java.Boolean[]?` extends JavaBooleanStub with JavaOptArray {
   def javaClass = "boolean[]"
-  def underlying = Some("boolean")
+  def underlying = None
 }
 
 case object `java.Boolean?[]?` extends JavaBooleanStub with JavaOptArrayOpt {
   def javaClass = "Boolean[]"
-  def underlying = Some("Boolean")
+  def underlying = None
 }
 
-case object `java.List` extends JavaBooleanStub with JavaList {
+case object `java.List<Boolean>` extends JavaBooleanStub with JavaList {
   def javaClass = "List"
   def underlying = Some("Boolean")
 }
@@ -56,7 +55,7 @@ case object `java.List<Boolean?>` extends JavaBooleanStub with JavaListOpt {
   def underlying = Some("Boolean")
 }
 
-case object `java.List?` extends JavaBooleanStub with JavaOptList {
+case object `java.List<Boolean>?` extends JavaBooleanStub with JavaOptList {
   def javaClass = "List"
   def underlying = Some("Boolean")
 }
@@ -66,7 +65,7 @@ case object `java.List<Boolean?>?` extends JavaBooleanStub with JavaOptListOpt {
   def underlying = Some("Boolean")
 }
 
-case object `java.Set` extends JavaBooleanStub with JavaSet {
+case object `java.Set<Boolean>` extends JavaBooleanStub with JavaSet {
   def javaClass = "Set"
   def underlying = Some("Boolean")
 }
@@ -76,7 +75,7 @@ case object `java.Set<Boolean?>` extends JavaBooleanStub with JavaSetOpt {
   def underlying = Some("Boolean")
 }
 
-case object `java.Set?` extends JavaBooleanStub with JavaOptSet {
+case object `java.Set<Boolean>?` extends JavaBooleanStub with JavaOptSet {
   def javaClass = "Set"
   def underlying = Some("Boolean")
 }
