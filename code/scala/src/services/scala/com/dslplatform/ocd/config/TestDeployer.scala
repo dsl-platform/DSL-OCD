@@ -3,6 +3,7 @@ package config
 
 import scalax.file._
 import com.dslplatform.compiler.client.api.params.Language
+import scala.collection.mutable.LinkedHashMap
 
 private [config] class TestDeployer(
     logger: Logger
@@ -81,19 +82,15 @@ private [config] class TestDeployer(
     }
   }
 
-  def deployTests(projectIni: ProjectIni, tests: Seq[ITestSetup]) {
-    val languages =
-      tests.flatMap{ curTest =>
-        curTest.codeFiles.keySet ++
-        curTest.test.testFiles.keySet
-      }.toSet
-
-    clean(languages)
+  def deployTests(tests: Seq[ITestSetup]) {
+    clean(
+      languages = tests.flatMap(_.aggregatedLanguages).toSet
+    )
 
     tests foreach { curTest =>
-      deployDsl(curTest.test.dslFiles)
+      deployDsl(curTest.aggregatedDslFiles)
       deployCode(curTest.codeFiles)
-      deployTest(projectIni, curTest.test.testFiles)
+      deployTest(curTest.projectIni, curTest.aggregatedTestFiles)
     }
   }
 }
