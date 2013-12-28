@@ -6,3 +6,5 @@ trait `tipe.Integer`
 
   def tipeDesc = "Integer"
 }
+
+object `tipe.Integer` extends `tipe.Integer`

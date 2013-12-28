@@ -6,3 +6,5 @@ trait `tipe.Decimal`
 
   def tipeDesc = "Decimal"
 }
+
+object `tipe.Decimal` extends `tipe.Decimal`

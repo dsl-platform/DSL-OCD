@@ -6,3 +6,5 @@ trait `tipe.Url`
 
   def tipeDesc = "Url"
 }
+
+object `tipe.Url` extends `tipe.Url`

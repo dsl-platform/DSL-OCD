@@ -2,18 +2,18 @@ package com.dslplatform.ocd.values;
 
 import com.dslplatform.client.Bootstrap;
 import com.dslplatform.ocd.test.TypeTester;
-import com.dslplatform.ocd.values.OptBoolInValue.OptBoolValue;
+import com.dslplatform.ocd.values.OptSetOptBoolInValue.OptSetOptBoolValue;
 import com.dslplatform.patterns.ServiceLocator;
 import java.util.Set;
 import org.junit.*;
 import static org.junit.Assert.*;
 
-public class Test1388182863850 {
+public class TestOptSetOptBoolValue {
     private static ServiceLocator locator;
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        locator = Bootstrap.init(Test1388182863850.class.getResourceAsStream("/dsl-project.ini"));
+        locator = Bootstrap.init(TestOptSetOptBoolValue.class.getResourceAsStream("/dsl-project.ini"));
     }
 
     @AfterClass
@@ -32,19 +32,19 @@ public class Test1388182863850 {
 
     @Test
     public void testFieldType() throws NoSuchFieldException {
-        assertTrue(TypeTester.testField(OptBoolValue.class, "optBool")
-                .resultEquals(boolean.class));
+        assertTrue(TypeTester.testField(OptSetOptBoolValue.class, "optSetOptBool")
+                .resultEquals(Set.class, Boolean.class));
     }
 
     @Test
     public void testGetterType() throws NoSuchMethodException {
-        assertTrue(TypeTester.testGetter(OptBoolValue.class, "getOptBool")
-                .resultEquals(boolean.class));
+        assertTrue(TypeTester.testGetter(OptSetOptBoolValue.class, "getOptSetOptBool")
+                .resultEquals(Set.class, Boolean.class));
     }
 
     @Test
     public void testSetterType() throws NoSuchMethodException {
-        assertTrue(TypeTester.testSetter(OptBoolValue.class, "setOptBool", boolean.class)
-                .resultEquals(OptBoolValue.class));
+        assertTrue(TypeTester.testSetter(OptSetOptBoolValue.class, "setOptSetOptBool", Set.class, Boolean.class)
+                .resultEquals(OptSetOptBoolValue.class));
     }
 }

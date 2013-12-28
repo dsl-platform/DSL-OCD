@@ -6,3 +6,5 @@ trait `tipe.Long`
 
   def tipeDesc = "Long"
 }
+
+object `tipe.Long` extends `tipe.Long`

@@ -6,3 +6,5 @@ trait `tipe.KeyValue`
 
   def tipeDesc = "KeyValue"
 }
+
+object `tipe.KeyValue` extends `tipe.KeyValue`

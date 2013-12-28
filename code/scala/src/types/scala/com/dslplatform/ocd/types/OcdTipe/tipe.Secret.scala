@@ -6,3 +6,5 @@ trait `tipe.Secret`
 
   def tipeDesc = "Secret"
 }
+
+object `tipe.Secret` extends `tipe.Secret`

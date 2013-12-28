@@ -6,3 +6,5 @@ trait `tipe.Bool`
 
   def tipeDesc = "Bool"
 }
+
+object `tipe.Bool` extends `tipe.Bool`

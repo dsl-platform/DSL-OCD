@@ -6,3 +6,5 @@ trait `tipe.Native`
 
   def tipeDesc = "Native"
 }
+
+object `tipe.Native` extends `tipe.Native`

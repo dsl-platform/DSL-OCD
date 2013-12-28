@@ -6,3 +6,5 @@ trait `tipe.String`
 
   def tipeDesc = "String"
 }
+
+object `tipe.String` extends `tipe.String`

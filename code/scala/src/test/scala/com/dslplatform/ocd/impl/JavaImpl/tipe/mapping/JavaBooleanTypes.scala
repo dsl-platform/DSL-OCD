@@ -1,27 +1,21 @@
 package com.dslplatform.ocd
 package impl.mapping
 
-import impl._
-
 object JavaBooleanTypes {
-  val typens =
-    Map((`Bool`, `java.Boolean`))
-
-
-
-    /*
-  , `Bool?`        -> `java.Boolean?`
-  , `Bool[]`       -> `java.Boolean[]`
-  , `Bool?[]`      -> `java.Boolean?[]`
-  , `Bool[]?`      -> `java.Boolean[]?`
-  , `Bool?[]?`     -> `java.Boolean?[]?`
-  , `List<Bool>`   -> `java.List`
-  , `List<Bool?>`  -> `java.List<Boolean?>`
-  , `List<Bool>?`  -> `java.List?`
-  , `List<Bool?>?` -> `java.List<Boolean?>?`
-  , `Set<Bool>`    -> `java.Set`
-  , `Set<Bool?>`   -> `java.Set<Boolean?>`
-  , `Set<Bool>?`   -> `java.Set?`
-  , `Set<Bool?>?`  -> `java.Set<Boolean?>?`
-  )*/
+  val types: Map[impl.DslBoolStub, impl.JavaBooleanStub] = Map(
+    impl.`Bool`        -> impl.`java.Boolean`
+  , impl.`Bool?`       -> impl.`java.Boolean?`
+  , impl.`Bool[]`      -> impl.`java.Boolean[]`
+  , impl.`Bool?[]`     -> impl.`java.Boolean?[]`
+  , impl.`Bool[]?`     -> impl.`java.Boolean[]?`
+  , impl.`Bool?[]?`    -> impl.`java.Boolean?[]?`
+  , impl.`List<Bool>`  -> impl.`java.List`
+  , impl.`List<Bool?>` -> impl.`java.List<Boolean?>`
+  , impl.`List<Bool>?` -> impl.`java.List?`
+  , impl.`List<Bool?>?`-> impl.`java.List<Boolean?>?`
+  , impl.`Set<Bool>`   -> impl.`java.Set`
+  , impl.`Set<Bool?>`  -> impl.`java.Set<Boolean?>`
+  , impl.`Set<Bool>?`  -> impl.`java.Set?`
+  , impl.`Set<Bool?>?` -> impl.`java.Set<Boolean?>?`
+  )
 }

@@ -6,3 +6,5 @@ trait `tipe.Image`
 
   def tipeDesc = "Image"
 }
+
+object `tipe.Image` extends `tipe.Image`
