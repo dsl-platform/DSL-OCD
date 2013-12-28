@@ -11,6 +11,7 @@ trait TestJavaGetterType
   val imports = Seq(
     "com.dslplatform.ocd.test.TypeTester"
   , "static org.junit.Assert.*"
+  , "java.util.*"
   )
 
   def javaClass: String

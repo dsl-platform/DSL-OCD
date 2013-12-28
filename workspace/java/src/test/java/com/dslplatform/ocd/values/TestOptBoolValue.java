@@ -4,7 +4,7 @@ import com.dslplatform.client.Bootstrap;
 import com.dslplatform.ocd.test.TypeTester;
 import com.dslplatform.ocd.values.OptBoolInValue.OptBoolValue;
 import com.dslplatform.patterns.ServiceLocator;
-import java.util.Set;
+import java.util.*;
 import org.junit.*;
 import static org.junit.Assert.*;
 
@@ -13,7 +13,7 @@ public class TestOptBoolValue {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        locator = Bootstrap.init(TestOptBoolValue.class.getResourceAsStream("/dsl-project.ini"));
+        locator = Bootstrap.init(TestOptBoolValue.class.getResourceAsStream("dsl-project.ini"));
     }
 
     @AfterClass

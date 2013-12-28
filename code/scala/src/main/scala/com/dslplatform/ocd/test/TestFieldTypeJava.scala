@@ -11,7 +11,7 @@ trait TestJavaFieldType
   val imports = Seq(
     "com.dslplatform.ocd.test.TypeTester"
   , "static org.junit.Assert.*"
-  , "java.util.Set"
+  , "java.util.*"
   )
 
   def javaClass: String
