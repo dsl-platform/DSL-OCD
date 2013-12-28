@@ -4,6 +4,7 @@ package config
 import com.dslplatform.compiler.client.api.params.Language
 
 trait ITestSetup {
-  def test: ITest
+  def projectIni: ProjectIni
+  def tests: Seq[ITest]
   def codeFiles: Map[Language, Map[String, String]]
 }

@@ -11,10 +11,10 @@ package object impl {
 
   import dsl._
 
-  implicit def StringToStringlyPropertyComponent(component: String) =
+  implicit def stringToStringlyPropertyComponent(component: String) =
     new StringlyTypedDslPropertyComponent(component)
 
-  implicit def StringToStringlyPropertyComponent(component: (String, String)) = {
+  implicit def stringToStringlyPropertyComponent(component: (String, String)) = {
     val tipe = DslRaw.extract(component._1)
 
     new DslProperty(tipe, component._2, None) {

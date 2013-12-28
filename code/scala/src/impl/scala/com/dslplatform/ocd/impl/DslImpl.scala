@@ -1,15 +1,12 @@
 package com.dslplatform.ocd
 package impl
 
-import types.{ box => tbox }
-import dsl._
-
 trait DslImpl
     extends OcdImpl
-    with tbox.BoxOnenessType
-    with tbox.BoxNullnessType
-    with tipe.TipeConstrainessType
-    with `lang.DSL`
+    with types.box.BoxOnenessType
+    with types.box.BoxNullnessType
+    with types.tipe.TipeConstrainessType
+    with types.`lang.DSL`
     with dsl.printer.DslImplPrinter
     with Dynamic {
 
@@ -21,7 +18,7 @@ trait DslImpl
   def selectDynamic(name: String) =
     DslProperty(this, name)
 
-  def applyDynamic(name: String)(components: DslPropertyComponent*) =
+  def applyDynamic(name: String)(components: dsl.DslPropertyComponent*) =
     DslProperty(this, name)(components: _*)
 
   def ->(name: String) =

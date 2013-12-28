@@ -18,28 +18,36 @@ private [config] class TestGenerator(
     val projectName = ("Test-" + testSettings.xkcd).replace('-', '_')
     logger.info("Creating the generator project ...")
 
-    val projectIni = actions.create(projectName)
+    val _packageName = tests.head.packageName.ensuring(pn =>
+      tests.tail.forall(_.packageName == pn)
+    , "All package names within a test batch must be equal!"
+    )
+
+    val _projectIni = actions.create(projectName)
+    val _tests = tests
+    val _languages = tests.flatMap(_.testFiles.keySet).toSet
+    val _dslFiles = tests.flatMap(_.dslFiles).toMap
 
     logger.info("Generating sources ...")
-    val testSetup =
-      tests map { case curTest =>
-        val generatedCode =
-          actions.deployDsl(
-            projectID = projectIni.projectID
-          , packageName = curTest.packageName
-          , languages = curTest.testFiles.keySet
-          , dslFiles = curTest.dslFiles
-          )
 
-        new ITestSetup {
-          def test = curTest
-          def codeFiles = generatedCode
-        }
+    val _codeFiles =
+      actions.deployDsl(
+        projectID = _projectIni.projectID
+      , packageName = _packageName
+      , languages = _languages
+      , dslFiles = _dslFiles
+      )
+
+    val testSetup =
+      new ITestSetup {
+        def projectIni = _projectIni
+        def tests = _tests
+        def codeFiles = _codeFiles
       }
 
-    logger.info("Deleting the generator project ...")
+//    logger.info("Deleting the generator project ...")
 //    actions.delete(projectIni.projectID)
 
-    (projectIni, testSetup)
+    testSetup
   }
 }
