@@ -1,10 +1,8 @@
 package com.dslplatform.ocd.values;
 
 import com.dslplatform.client.Bootstrap;
-import com.dslplatform.ocd.test.TypeTester;
 import com.dslplatform.ocd.values.OneBinaryInValue.OneBinaryValue;
 import com.dslplatform.patterns.ServiceLocator;
-import java.util.*;
 import org.junit.*;
 import static org.junit.Assert.*;
 
@@ -13,13 +11,13 @@ public class TestOneBinaryValue {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        locator = Bootstrap.init(TestOneBinaryValue.class.getResourceAsStream("dsl-project.ini"));
+//        locator = Bootstrap.init(TestOneBinaryValue.class.getResourceAsStream("dsl-project.ini"));
     }
 
     @AfterClass
     public static void tearDownClass() throws Exception {
-        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
-        locator = null;
+//        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
+//        locator = null;
     }
 
     @Before
@@ -32,19 +30,29 @@ public class TestOneBinaryValue {
 
     @Test
     public void testFieldType() throws NoSuchFieldException {
-        assertTrue(TypeTester.testField(OneBinaryValue.class, "oneBinary")
-                .resultEquals(boolean.class));
+        assertEquals(
+                byte[].class,
+                OneBinaryValue.class.getDeclaredField("oneBinary").getGenericType());
     }
 
     @Test
     public void testGetterType() throws NoSuchMethodException {
-        assertTrue(TypeTester.testGetter(OneBinaryValue.class, "getOneBinary")
-                .resultEquals(boolean.class));
+        assertEquals(
+                byte[].class,
+                OneBinaryValue.class.getMethod("getOneBinary").getGenericReturnType());
     }
 
     @Test
     public void testSetterType() throws NoSuchMethodException {
-        assertTrue(TypeTester.testSetter(OneBinaryValue.class, "setOneBinary", boolean.class)
-                .resultEquals(OneBinaryValue.class));
+        assertEquals(
+                OneBinaryValue.class,
+                OneBinaryValue.class.getMethod("setOneBinary", byte[].class).getReturnType());
+    }
+
+    @Test
+    public void testDefaultPropertyValue() {
+        assertArrayEquals(
+                new byte[0],
+                new OneBinaryValue().getOneBinary());
     }
 }

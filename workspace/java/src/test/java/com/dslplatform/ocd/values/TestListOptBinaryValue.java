@@ -1,9 +1,9 @@
 package com.dslplatform.ocd.values;
 
 import com.dslplatform.client.Bootstrap;
-import com.dslplatform.ocd.test.TypeTester;
 import com.dslplatform.ocd.values.ListOptBinaryInValue.ListOptBinaryValue;
 import com.dslplatform.patterns.ServiceLocator;
+import java.lang.reflect.*;
 import java.util.*;
 import org.junit.*;
 import static org.junit.Assert.*;
@@ -13,13 +13,13 @@ public class TestListOptBinaryValue {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        locator = Bootstrap.init(TestListOptBinaryValue.class.getResourceAsStream("dsl-project.ini"));
+//        locator = Bootstrap.init(TestListOptBinaryValue.class.getResourceAsStream("dsl-project.ini"));
     }
 
     @AfterClass
     public static void tearDownClass() throws Exception {
-        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
-        locator = null;
+//        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
+//        locator = null;
     }
 
     @Before
@@ -32,19 +32,44 @@ public class TestListOptBinaryValue {
 
     @Test
     public void testFieldType() throws NoSuchFieldException {
-        assertTrue(TypeTester.testField(ListOptBinaryValue.class, "listOptBinary")
-                .resultEquals(List.class, Binary.class));
+        assertEquals(
+                new Object() {
+                    @SuppressWarnings("unused")
+                    private final List<byte[]> etalon = null;
+                }.getClass().getDeclaredField("etalon").getGenericType(),
+                ListOptBinaryValue.class.getDeclaredField("listOptBinary").getGenericType());
     }
 
     @Test
     public void testGetterType() throws NoSuchMethodException {
-        assertTrue(TypeTester.testGetter(ListOptBinaryValue.class, "getListOptBinary")
-                .resultEquals(List.class, Binary.class));
+        assertEquals(
+                new Object() {
+                    @SuppressWarnings("unused")
+                    public List<byte[]> getEtalon() { return null; }
+                }.getClass().getMethod("getEtalon").getGenericReturnType(),
+                ListOptBinaryValue.class.getMethod("getListOptBinary").getGenericReturnType());
     }
 
     @Test
     public void testSetterType() throws NoSuchMethodException {
-        assertTrue(TypeTester.testSetter(ListOptBinaryValue.class, "setListOptBinary", List.class, Binary.class)
-                .resultEquals(ListOptBinaryValue.class));
+        final Method method = ListOptBinaryValue.class.getMethod("setListOptBinary", List.class);
+
+        assertEquals(
+                new Object() {
+                    @SuppressWarnings("unused")
+                    public ListOptBinaryValue setEtalon(final List<byte[]> etalon) { return null; }
+                }.getClass().getMethod("setEtalon", List.class).getGenericParameterTypes()[0],
+                method.getGenericParameterTypes()[0]);
+
+        assertEquals(
+                ListOptBinaryValue.class,
+                method.getGenericReturnType());
+    }
+
+    @Test
+    public void testDefaultPropertyValue() {
+        assertEquals(
+                new ArrayList<byte[]>(),
+                new ListOptBinaryValue().getListOptBinary());
     }
 }

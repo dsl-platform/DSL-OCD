@@ -1,9 +1,9 @@
 package com.dslplatform.ocd.values;
 
 import com.dslplatform.client.Bootstrap;
-import com.dslplatform.ocd.test.TypeTester;
 import com.dslplatform.ocd.values.OptSetOptStringInValue.OptSetOptStringValue;
 import com.dslplatform.patterns.ServiceLocator;
+import java.lang.reflect.*;
 import java.util.*;
 import org.junit.*;
 import static org.junit.Assert.*;
@@ -13,13 +13,13 @@ public class TestOptSetOptStringValue {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        locator = Bootstrap.init(TestOptSetOptStringValue.class.getResourceAsStream("dsl-project.ini"));
+//        locator = Bootstrap.init(TestOptSetOptStringValue.class.getResourceAsStream("dsl-project.ini"));
     }
 
     @AfterClass
     public static void tearDownClass() throws Exception {
-        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
-        locator = null;
+//        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
+//        locator = null;
     }
 
     @Before
@@ -32,19 +32,42 @@ public class TestOptSetOptStringValue {
 
     @Test
     public void testFieldType() throws NoSuchFieldException {
-        assertTrue(TypeTester.testField(OptSetOptStringValue.class, "optSetOptString")
-                .resultEquals(Set.class, String.class));
+        assertEquals(
+                new Object() {
+                    @SuppressWarnings("unused")
+                    private final Set<String> etalon = null;
+                }.getClass().getDeclaredField("etalon").getGenericType(),
+                OptSetOptStringValue.class.getDeclaredField("optSetOptString").getGenericType());
     }
 
     @Test
     public void testGetterType() throws NoSuchMethodException {
-        assertTrue(TypeTester.testGetter(OptSetOptStringValue.class, "getOptSetOptString")
-                .resultEquals(Set.class, String.class));
+        assertEquals(
+                new Object() {
+                    @SuppressWarnings("unused")
+                    public Set<String> getEtalon() { return null; }
+                }.getClass().getMethod("getEtalon").getGenericReturnType(),
+                OptSetOptStringValue.class.getMethod("getOptSetOptString").getGenericReturnType());
     }
 
     @Test
     public void testSetterType() throws NoSuchMethodException {
-        assertTrue(TypeTester.testSetter(OptSetOptStringValue.class, "setOptSetOptString", Set.class, String.class)
-                .resultEquals(OptSetOptStringValue.class));
+        final Method method = OptSetOptStringValue.class.getMethod("setOptSetOptString", Set.class);
+
+        assertEquals(
+                new Object() {
+                    @SuppressWarnings("unused")
+                    public OptSetOptStringValue setEtalon(final Set<String> etalon) { return null; }
+                }.getClass().getMethod("setEtalon", Set.class).getGenericParameterTypes()[0],
+                method.getGenericParameterTypes()[0]);
+
+        assertEquals(
+                OptSetOptStringValue.class,
+                method.getGenericReturnType());
+    }
+
+    @Test
+    public void testDefaultPropertyValue() {
+        assertNull(new OptSetOptStringValue().getOptSetOptString());
     }
 }

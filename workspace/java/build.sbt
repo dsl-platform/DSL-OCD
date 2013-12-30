@@ -14,13 +14,11 @@ unmanagedSourceDirectories in Compile :=
 
 unmanagedSourceDirectories in Test := (javaSource in Test).value :: Nil
 
-
 // ### DEPENDENCIES ### //
 
 libraryDependencies ++= Seq(
   "com.dslplatform" % "dsl-client-http" % "0.4.13"
 , "ch.qos.logback" % "logback-classic" % "1.0.13" % "compile->default"
-, "com.dslplatform" % "dsl-compiler-client-cmdline" % "0.8.10" % "test"
 , "junit" % "junit" % "4.11" % "test"
 , "com.novocode" % "junit-interface" % "0.10" % "test"
 )
@@ -30,7 +28,6 @@ libraryDependencies ++= Seq(
 resolvers := Seq(NGSNexus)
 
 externalResolvers := Resolver.withDefaultResolvers(resolvers.value, mavenCentral = false)
-
 
 // ### COMPILE SETTINGS ### //
 
@@ -72,6 +69,7 @@ autoScalaLibrary := false
 
 crossPaths := false
 
+net.virtualvoid.sbt.graph.Plugin.graphSettings
 
 // ### ECLIPSE ### //
 

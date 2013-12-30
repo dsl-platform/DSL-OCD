@@ -1,10 +1,8 @@
 package com.dslplatform.ocd.values;
 
 import com.dslplatform.client.Bootstrap;
-import com.dslplatform.ocd.test.TypeTester;
 import com.dslplatform.ocd.values.OneIntInValue.OneIntValue;
 import com.dslplatform.patterns.ServiceLocator;
-import java.util.*;
 import org.junit.*;
 import static org.junit.Assert.*;
 
@@ -13,13 +11,13 @@ public class TestOneIntValue {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        locator = Bootstrap.init(TestOneIntValue.class.getResourceAsStream("dsl-project.ini"));
+//        locator = Bootstrap.init(TestOneIntValue.class.getResourceAsStream("dsl-project.ini"));
     }
 
     @AfterClass
     public static void tearDownClass() throws Exception {
-        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
-        locator = null;
+//        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
+//        locator = null;
     }
 
     @Before
@@ -32,19 +30,29 @@ public class TestOneIntValue {
 
     @Test
     public void testFieldType() throws NoSuchFieldException {
-        assertTrue(TypeTester.testField(OneIntValue.class, "oneInt")
-                .resultEquals(int.class));
+        assertEquals(
+                int.class,
+                OneIntValue.class.getDeclaredField("oneInt").getGenericType());
     }
 
     @Test
     public void testGetterType() throws NoSuchMethodException {
-        assertTrue(TypeTester.testGetter(OneIntValue.class, "getOneInt")
-                .resultEquals(int.class));
+        assertEquals(
+                int.class,
+                OneIntValue.class.getMethod("getOneInt").getGenericReturnType());
     }
 
     @Test
     public void testSetterType() throws NoSuchMethodException {
-        assertTrue(TypeTester.testSetter(OneIntValue.class, "setOneInt", int.class)
-                .resultEquals(OneIntValue.class));
+        assertEquals(
+                OneIntValue.class,
+                OneIntValue.class.getMethod("setOneInt", int.class).getReturnType());
+    }
+
+    @Test
+    public void testDefaultPropertyValue() {
+        assertEquals(
+                0,
+                new OneIntValue().getOneInt());
     }
 }

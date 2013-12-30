@@ -1,10 +1,8 @@
 package com.dslplatform.ocd.values;
 
 import com.dslplatform.client.Bootstrap;
-import com.dslplatform.ocd.test.TypeTester;
 import com.dslplatform.ocd.values.OneUUIDInValue.OneUUIDValue;
 import com.dslplatform.patterns.ServiceLocator;
-import java.util.*;
 import org.junit.*;
 import static org.junit.Assert.*;
 
@@ -13,13 +11,13 @@ public class TestOneUUIDValue {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        locator = Bootstrap.init(TestOneUUIDValue.class.getResourceAsStream("dsl-project.ini"));
+//        locator = Bootstrap.init(TestOneUUIDValue.class.getResourceAsStream("dsl-project.ini"));
     }
 
     @AfterClass
     public static void tearDownClass() throws Exception {
-        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
-        locator = null;
+//        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
+//        locator = null;
     }
 
     @Before
@@ -32,19 +30,27 @@ public class TestOneUUIDValue {
 
     @Test
     public void testFieldType() throws NoSuchFieldException {
-        assertTrue(TypeTester.testField(OneUUIDValue.class, "oneUUID")
-                .resultEquals(UUID.class));
+        assertEquals(
+                java.util.UUID.class,
+                OneUUIDValue.class.getDeclaredField("oneUUID").getGenericType());
     }
 
     @Test
     public void testGetterType() throws NoSuchMethodException {
-        assertTrue(TypeTester.testGetter(OneUUIDValue.class, "getOneUUID")
-                .resultEquals(UUID.class));
+        assertEquals(
+                java.util.UUID.class,
+                OneUUIDValue.class.getMethod("getOneUUID").getGenericReturnType());
     }
 
     @Test
     public void testSetterType() throws NoSuchMethodException {
-        assertTrue(TypeTester.testSetter(OneUUIDValue.class, "setOneUUID", UUID.class)
-                .resultEquals(OneUUIDValue.class));
+        assertEquals(
+                OneUUIDValue.class,
+                OneUUIDValue.class.getMethod("setOneUUID", java.util.UUID.class).getReturnType());
+    }
+
+    @Test
+    public void testDefaultPropertyValue() {
+        assertNotNull(new OneUUIDValue().getOneUUID());
     }
 }

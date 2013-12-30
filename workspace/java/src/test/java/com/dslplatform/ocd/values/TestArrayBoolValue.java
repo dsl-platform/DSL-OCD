@@ -1,10 +1,8 @@
 package com.dslplatform.ocd.values;
 
 import com.dslplatform.client.Bootstrap;
-import com.dslplatform.ocd.test.TypeTester;
 import com.dslplatform.ocd.values.ArrayBoolInValue.ArrayBoolValue;
 import com.dslplatform.patterns.ServiceLocator;
-import java.util.*;
 import org.junit.*;
 import static org.junit.Assert.*;
 
@@ -13,13 +11,13 @@ public class TestArrayBoolValue {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        locator = Bootstrap.init(TestArrayBoolValue.class.getResourceAsStream("dsl-project.ini"));
+//        locator = Bootstrap.init(TestArrayBoolValue.class.getResourceAsStream("dsl-project.ini"));
     }
 
     @AfterClass
     public static void tearDownClass() throws Exception {
-        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
-        locator = null;
+//        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
+//        locator = null;
     }
 
     @Before
@@ -32,19 +30,29 @@ public class TestArrayBoolValue {
 
     @Test
     public void testFieldType() throws NoSuchFieldException {
-        assertTrue(TypeTester.testField(ArrayBoolValue.class, "arrayBool")
-                .resultEquals(boolean[].class));
+        assertEquals(
+                boolean[].class,
+                ArrayBoolValue.class.getDeclaredField("arrayBool").getGenericType());
     }
 
     @Test
     public void testGetterType() throws NoSuchMethodException {
-        assertTrue(TypeTester.testGetter(ArrayBoolValue.class, "getArrayBool")
-                .resultEquals(boolean[].class));
+        assertEquals(
+                boolean[].class,
+                ArrayBoolValue.class.getMethod("getArrayBool").getGenericReturnType());
     }
 
     @Test
     public void testSetterType() throws NoSuchMethodException {
-        assertTrue(TypeTester.testSetter(ArrayBoolValue.class, "setArrayBool", boolean[].class)
-                .resultEquals(ArrayBoolValue.class));
+        assertEquals(
+                ArrayBoolValue.class,
+                ArrayBoolValue.class.getMethod("setArrayBool", boolean[].class).getReturnType());
+    }
+
+    @Test
+    public void testDefaultPropertyValue() {
+        AssertExtensions.assertArrayEquals(
+                new boolean[0],
+                new ArrayBoolValue().getArrayBool());
     }
 }
