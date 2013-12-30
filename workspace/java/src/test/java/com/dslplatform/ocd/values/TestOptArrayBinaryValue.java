@@ -1,10 +1,8 @@
 package com.dslplatform.ocd.values;
 
 import com.dslplatform.client.Bootstrap;
-import com.dslplatform.ocd.test.TypeTester;
 import com.dslplatform.ocd.values.OptArrayBinaryInValue.OptArrayBinaryValue;
 import com.dslplatform.patterns.ServiceLocator;
-import java.util.*;
 import org.junit.*;
 import static org.junit.Assert.*;
 
@@ -13,13 +11,13 @@ public class TestOptArrayBinaryValue {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        locator = Bootstrap.init(TestOptArrayBinaryValue.class.getResourceAsStream("dsl-project.ini"));
+//        locator = Bootstrap.init(TestOptArrayBinaryValue.class.getResourceAsStream("dsl-project.ini"));
     }
 
     @AfterClass
     public static void tearDownClass() throws Exception {
-        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
-        locator = null;
+//        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
+//        locator = null;
     }
 
     @Before
@@ -32,19 +30,27 @@ public class TestOptArrayBinaryValue {
 
     @Test
     public void testFieldType() throws NoSuchFieldException {
-        assertTrue(TypeTester.testField(OptArrayBinaryValue.class, "optArrayBinary")
-                .resultEquals(boolean[].class));
+        assertEquals(
+                byte[][].class,
+                OptArrayBinaryValue.class.getDeclaredField("optArrayBinary").getGenericType());
     }
 
     @Test
     public void testGetterType() throws NoSuchMethodException {
-        assertTrue(TypeTester.testGetter(OptArrayBinaryValue.class, "getOptArrayBinary")
-                .resultEquals(boolean[].class));
+        assertEquals(
+                byte[][].class,
+                OptArrayBinaryValue.class.getMethod("getOptArrayBinary").getGenericReturnType());
     }
 
     @Test
     public void testSetterType() throws NoSuchMethodException {
-        assertTrue(TypeTester.testSetter(OptArrayBinaryValue.class, "setOptArrayBinary", boolean[].class)
-                .resultEquals(OptArrayBinaryValue.class));
+        assertEquals(
+                OptArrayBinaryValue.class,
+                OptArrayBinaryValue.class.getMethod("setOptArrayBinary", byte[][].class).getReturnType());
+    }
+
+    @Test
+    public void testDefaultPropertyValue() {
+        assertNull(new OptArrayBinaryValue().getOptArrayBinary());
     }
 }

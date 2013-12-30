@@ -1,9 +1,9 @@
 package com.dslplatform.ocd.values;
 
 import com.dslplatform.client.Bootstrap;
-import com.dslplatform.ocd.test.TypeTester;
 import com.dslplatform.ocd.values.SetIntInValue.SetIntValue;
 import com.dslplatform.patterns.ServiceLocator;
+import java.lang.reflect.*;
 import java.util.*;
 import org.junit.*;
 import static org.junit.Assert.*;
@@ -13,13 +13,13 @@ public class TestSetIntValue {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        locator = Bootstrap.init(TestSetIntValue.class.getResourceAsStream("dsl-project.ini"));
+//        locator = Bootstrap.init(TestSetIntValue.class.getResourceAsStream("dsl-project.ini"));
     }
 
     @AfterClass
     public static void tearDownClass() throws Exception {
-        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
-        locator = null;
+//        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
+//        locator = null;
     }
 
     @Before
@@ -32,19 +32,44 @@ public class TestSetIntValue {
 
     @Test
     public void testFieldType() throws NoSuchFieldException {
-        assertTrue(TypeTester.testField(SetIntValue.class, "setInt")
-                .resultEquals(Set.class, Integer.class));
+        assertEquals(
+                new Object() {
+                    @SuppressWarnings("unused")
+                    private final Set<Integer> etalon = null;
+                }.getClass().getDeclaredField("etalon").getGenericType(),
+                SetIntValue.class.getDeclaredField("setInt").getGenericType());
     }
 
     @Test
     public void testGetterType() throws NoSuchMethodException {
-        assertTrue(TypeTester.testGetter(SetIntValue.class, "getSetInt")
-                .resultEquals(Set.class, Integer.class));
+        assertEquals(
+                new Object() {
+                    @SuppressWarnings("unused")
+                    public Set<Integer> getEtalon() { return null; }
+                }.getClass().getMethod("getEtalon").getGenericReturnType(),
+                SetIntValue.class.getMethod("getSetInt").getGenericReturnType());
     }
 
     @Test
     public void testSetterType() throws NoSuchMethodException {
-        assertTrue(TypeTester.testSetter(SetIntValue.class, "setSetInt", Set.class, Integer.class)
-                .resultEquals(SetIntValue.class));
+        final Method method = SetIntValue.class.getMethod("setSetInt", Set.class);
+
+        assertEquals(
+                new Object() {
+                    @SuppressWarnings("unused")
+                    public SetIntValue setEtalon(final Set<Integer> etalon) { return null; }
+                }.getClass().getMethod("setEtalon", Set.class).getGenericParameterTypes()[0],
+                method.getGenericParameterTypes()[0]);
+
+        assertEquals(
+                SetIntValue.class,
+                method.getGenericReturnType());
+    }
+
+    @Test
+    public void testDefaultPropertyValue() {
+        assertEquals(
+                new HashSet<Integer>(0),
+                new SetIntValue().getSetInt());
     }
 }

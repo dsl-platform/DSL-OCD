@@ -1,9 +1,9 @@
 package com.dslplatform.ocd.values;
 
 import com.dslplatform.client.Bootstrap;
-import com.dslplatform.ocd.test.TypeTester;
 import com.dslplatform.ocd.values.SetOptBinaryInValue.SetOptBinaryValue;
 import com.dslplatform.patterns.ServiceLocator;
+import java.lang.reflect.*;
 import java.util.*;
 import org.junit.*;
 import static org.junit.Assert.*;
@@ -13,13 +13,13 @@ public class TestSetOptBinaryValue {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        locator = Bootstrap.init(TestSetOptBinaryValue.class.getResourceAsStream("dsl-project.ini"));
+//        locator = Bootstrap.init(TestSetOptBinaryValue.class.getResourceAsStream("dsl-project.ini"));
     }
 
     @AfterClass
     public static void tearDownClass() throws Exception {
-        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
-        locator = null;
+//        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
+//        locator = null;
     }
 
     @Before
@@ -32,19 +32,44 @@ public class TestSetOptBinaryValue {
 
     @Test
     public void testFieldType() throws NoSuchFieldException {
-        assertTrue(TypeTester.testField(SetOptBinaryValue.class, "setOptBinary")
-                .resultEquals(Set.class, Binary.class));
+        assertEquals(
+                new Object() {
+                    @SuppressWarnings("unused")
+                    private final Set<byte[]> etalon = null;
+                }.getClass().getDeclaredField("etalon").getGenericType(),
+                SetOptBinaryValue.class.getDeclaredField("setOptBinary").getGenericType());
     }
 
     @Test
     public void testGetterType() throws NoSuchMethodException {
-        assertTrue(TypeTester.testGetter(SetOptBinaryValue.class, "getSetOptBinary")
-                .resultEquals(Set.class, Binary.class));
+        assertEquals(
+                new Object() {
+                    @SuppressWarnings("unused")
+                    public Set<byte[]> getEtalon() { return null; }
+                }.getClass().getMethod("getEtalon").getGenericReturnType(),
+                SetOptBinaryValue.class.getMethod("getSetOptBinary").getGenericReturnType());
     }
 
     @Test
     public void testSetterType() throws NoSuchMethodException {
-        assertTrue(TypeTester.testSetter(SetOptBinaryValue.class, "setSetOptBinary", Set.class, Binary.class)
-                .resultEquals(SetOptBinaryValue.class));
+        final Method method = SetOptBinaryValue.class.getMethod("setSetOptBinary", Set.class);
+
+        assertEquals(
+                new Object() {
+                    @SuppressWarnings("unused")
+                    public SetOptBinaryValue setEtalon(final Set<byte[]> etalon) { return null; }
+                }.getClass().getMethod("setEtalon", Set.class).getGenericParameterTypes()[0],
+                method.getGenericParameterTypes()[0]);
+
+        assertEquals(
+                SetOptBinaryValue.class,
+                method.getGenericReturnType());
+    }
+
+    @Test
+    public void testDefaultPropertyValue() {
+        assertEquals(
+                new HashSet<byte[]>(),
+                new SetOptBinaryValue().getSetOptBinary());
     }
 }

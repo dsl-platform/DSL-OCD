@@ -1,10 +1,8 @@
 package com.dslplatform.ocd.values;
 
 import com.dslplatform.client.Bootstrap;
-import com.dslplatform.ocd.test.TypeTester;
 import com.dslplatform.ocd.values.OptArrayUUIDInValue.OptArrayUUIDValue;
 import com.dslplatform.patterns.ServiceLocator;
-import java.util.*;
 import org.junit.*;
 import static org.junit.Assert.*;
 
@@ -13,13 +11,13 @@ public class TestOptArrayUUIDValue {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        locator = Bootstrap.init(TestOptArrayUUIDValue.class.getResourceAsStream("dsl-project.ini"));
+//        locator = Bootstrap.init(TestOptArrayUUIDValue.class.getResourceAsStream("dsl-project.ini"));
     }
 
     @AfterClass
     public static void tearDownClass() throws Exception {
-        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
-        locator = null;
+//        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
+//        locator = null;
     }
 
     @Before
@@ -32,19 +30,27 @@ public class TestOptArrayUUIDValue {
 
     @Test
     public void testFieldType() throws NoSuchFieldException {
-        assertTrue(TypeTester.testField(OptArrayUUIDValue.class, "optArrayUUID")
-                .resultEquals(UUID[].class));
+        assertEquals(
+                java.util.UUID[].class,
+                OptArrayUUIDValue.class.getDeclaredField("optArrayUUID").getGenericType());
     }
 
     @Test
     public void testGetterType() throws NoSuchMethodException {
-        assertTrue(TypeTester.testGetter(OptArrayUUIDValue.class, "getOptArrayUUID")
-                .resultEquals(UUID[].class));
+        assertEquals(
+                java.util.UUID[].class,
+                OptArrayUUIDValue.class.getMethod("getOptArrayUUID").getGenericReturnType());
     }
 
     @Test
     public void testSetterType() throws NoSuchMethodException {
-        assertTrue(TypeTester.testSetter(OptArrayUUIDValue.class, "setOptArrayUUID", UUID[].class)
-                .resultEquals(OptArrayUUIDValue.class));
+        assertEquals(
+                OptArrayUUIDValue.class,
+                OptArrayUUIDValue.class.getMethod("setOptArrayUUID", java.util.UUID[].class).getReturnType());
+    }
+
+    @Test
+    public void testDefaultPropertyValue() {
+        assertNull(new OptArrayUUIDValue().getOptArrayUUID());
     }
 }

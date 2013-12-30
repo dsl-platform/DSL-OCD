@@ -1,10 +1,8 @@
 package com.dslplatform.ocd.values;
 
 import com.dslplatform.client.Bootstrap;
-import com.dslplatform.ocd.test.TypeTester;
 import com.dslplatform.ocd.values.ArrayBinaryInValue.ArrayBinaryValue;
 import com.dslplatform.patterns.ServiceLocator;
-import java.util.*;
 import org.junit.*;
 import static org.junit.Assert.*;
 
@@ -13,13 +11,13 @@ public class TestArrayBinaryValue {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        locator = Bootstrap.init(TestArrayBinaryValue.class.getResourceAsStream("dsl-project.ini"));
+//        locator = Bootstrap.init(TestArrayBinaryValue.class.getResourceAsStream("dsl-project.ini"));
     }
 
     @AfterClass
     public static void tearDownClass() throws Exception {
-        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
-        locator = null;
+//        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
+//        locator = null;
     }
 
     @Before
@@ -32,19 +30,29 @@ public class TestArrayBinaryValue {
 
     @Test
     public void testFieldType() throws NoSuchFieldException {
-        assertTrue(TypeTester.testField(ArrayBinaryValue.class, "arrayBinary")
-                .resultEquals(boolean[].class));
+        assertEquals(
+                byte[][].class,
+                ArrayBinaryValue.class.getDeclaredField("arrayBinary").getGenericType());
     }
 
     @Test
     public void testGetterType() throws NoSuchMethodException {
-        assertTrue(TypeTester.testGetter(ArrayBinaryValue.class, "getArrayBinary")
-                .resultEquals(boolean[].class));
+        assertEquals(
+                byte[][].class,
+                ArrayBinaryValue.class.getMethod("getArrayBinary").getGenericReturnType());
     }
 
     @Test
     public void testSetterType() throws NoSuchMethodException {
-        assertTrue(TypeTester.testSetter(ArrayBinaryValue.class, "setArrayBinary", boolean[].class)
-                .resultEquals(ArrayBinaryValue.class));
+        assertEquals(
+                ArrayBinaryValue.class,
+                ArrayBinaryValue.class.getMethod("setArrayBinary", byte[][].class).getReturnType());
+    }
+
+    @Test
+    public void testDefaultPropertyValue() {
+        assertArrayEquals(
+                new byte[0][],
+                new ArrayBinaryValue().getArrayBinary());
     }
 }

@@ -1,10 +1,8 @@
 package com.dslplatform.ocd.values;
 
 import com.dslplatform.client.Bootstrap;
-import com.dslplatform.ocd.test.TypeTester;
 import com.dslplatform.ocd.values.OptArrayOptIntInValue.OptArrayOptIntValue;
 import com.dslplatform.patterns.ServiceLocator;
-import java.util.*;
 import org.junit.*;
 import static org.junit.Assert.*;
 
@@ -13,13 +11,13 @@ public class TestOptArrayOptIntValue {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        locator = Bootstrap.init(TestOptArrayOptIntValue.class.getResourceAsStream("dsl-project.ini"));
+//        locator = Bootstrap.init(TestOptArrayOptIntValue.class.getResourceAsStream("dsl-project.ini"));
     }
 
     @AfterClass
     public static void tearDownClass() throws Exception {
-        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
-        locator = null;
+//        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
+//        locator = null;
     }
 
     @Before
@@ -32,19 +30,27 @@ public class TestOptArrayOptIntValue {
 
     @Test
     public void testFieldType() throws NoSuchFieldException {
-        assertTrue(TypeTester.testField(OptArrayOptIntValue.class, "optArrayOptInt")
-                .resultEquals(Integer[].class));
+        assertEquals(
+                Integer[].class,
+                OptArrayOptIntValue.class.getDeclaredField("optArrayOptInt").getGenericType());
     }
 
     @Test
     public void testGetterType() throws NoSuchMethodException {
-        assertTrue(TypeTester.testGetter(OptArrayOptIntValue.class, "getOptArrayOptInt")
-                .resultEquals(Integer[].class));
+        assertEquals(
+                Integer[].class,
+                OptArrayOptIntValue.class.getMethod("getOptArrayOptInt").getGenericReturnType());
     }
 
     @Test
     public void testSetterType() throws NoSuchMethodException {
-        assertTrue(TypeTester.testSetter(OptArrayOptIntValue.class, "setOptArrayOptInt", Integer[].class)
-                .resultEquals(OptArrayOptIntValue.class));
+        assertEquals(
+                OptArrayOptIntValue.class,
+                OptArrayOptIntValue.class.getMethod("setOptArrayOptInt", Integer[].class).getReturnType());
+    }
+
+    @Test
+    public void testDefaultPropertyValue() {
+        assertNull(new OptArrayOptIntValue().getOptArrayOptInt());
     }
 }

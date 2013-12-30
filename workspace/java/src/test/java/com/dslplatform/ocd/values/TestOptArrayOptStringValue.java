@@ -1,10 +1,8 @@
 package com.dslplatform.ocd.values;
 
 import com.dslplatform.client.Bootstrap;
-import com.dslplatform.ocd.test.TypeTester;
 import com.dslplatform.ocd.values.OptArrayOptStringInValue.OptArrayOptStringValue;
 import com.dslplatform.patterns.ServiceLocator;
-import java.util.*;
 import org.junit.*;
 import static org.junit.Assert.*;
 
@@ -13,13 +11,13 @@ public class TestOptArrayOptStringValue {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        locator = Bootstrap.init(TestOptArrayOptStringValue.class.getResourceAsStream("dsl-project.ini"));
+//        locator = Bootstrap.init(TestOptArrayOptStringValue.class.getResourceAsStream("dsl-project.ini"));
     }
 
     @AfterClass
     public static void tearDownClass() throws Exception {
-        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
-        locator = null;
+//        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
+//        locator = null;
     }
 
     @Before
@@ -32,19 +30,27 @@ public class TestOptArrayOptStringValue {
 
     @Test
     public void testFieldType() throws NoSuchFieldException {
-        assertTrue(TypeTester.testField(OptArrayOptStringValue.class, "optArrayOptString")
-                .resultEquals(String[].class));
+        assertEquals(
+                String[].class,
+                OptArrayOptStringValue.class.getDeclaredField("optArrayOptString").getGenericType());
     }
 
     @Test
     public void testGetterType() throws NoSuchMethodException {
-        assertTrue(TypeTester.testGetter(OptArrayOptStringValue.class, "getOptArrayOptString")
-                .resultEquals(String[].class));
+        assertEquals(
+                String[].class,
+                OptArrayOptStringValue.class.getMethod("getOptArrayOptString").getGenericReturnType());
     }
 
     @Test
     public void testSetterType() throws NoSuchMethodException {
-        assertTrue(TypeTester.testSetter(OptArrayOptStringValue.class, "setOptArrayOptString", String[].class)
-                .resultEquals(OptArrayOptStringValue.class));
+        assertEquals(
+                OptArrayOptStringValue.class,
+                OptArrayOptStringValue.class.getMethod("setOptArrayOptString", String[].class).getReturnType());
+    }
+
+    @Test
+    public void testDefaultPropertyValue() {
+        assertNull(new OptArrayOptStringValue().getOptArrayOptString());
     }
 }

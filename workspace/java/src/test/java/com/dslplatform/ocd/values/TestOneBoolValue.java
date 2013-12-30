@@ -1,10 +1,8 @@
 package com.dslplatform.ocd.values;
 
 import com.dslplatform.client.Bootstrap;
-import com.dslplatform.ocd.test.TypeTester;
 import com.dslplatform.ocd.values.OneBoolInValue.OneBoolValue;
 import com.dslplatform.patterns.ServiceLocator;
-import java.util.*;
 import org.junit.*;
 import static org.junit.Assert.*;
 
@@ -13,13 +11,13 @@ public class TestOneBoolValue {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        locator = Bootstrap.init(TestOneBoolValue.class.getResourceAsStream("dsl-project.ini"));
+//        locator = Bootstrap.init(TestOneBoolValue.class.getResourceAsStream("dsl-project.ini"));
     }
 
     @AfterClass
     public static void tearDownClass() throws Exception {
-        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
-        locator = null;
+//        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
+//        locator = null;
     }
 
     @Before
@@ -32,19 +30,29 @@ public class TestOneBoolValue {
 
     @Test
     public void testFieldType() throws NoSuchFieldException {
-        assertTrue(TypeTester.testField(OneBoolValue.class, "oneBool")
-                .resultEquals(boolean.class));
+        assertEquals(
+                boolean.class,
+                OneBoolValue.class.getDeclaredField("oneBool").getGenericType());
     }
 
     @Test
     public void testGetterType() throws NoSuchMethodException {
-        assertTrue(TypeTester.testGetter(OneBoolValue.class, "getOneBool")
-                .resultEquals(boolean.class));
+        assertEquals(
+                boolean.class,
+                OneBoolValue.class.getMethod("getOneBool").getGenericReturnType());
     }
 
     @Test
     public void testSetterType() throws NoSuchMethodException {
-        assertTrue(TypeTester.testSetter(OneBoolValue.class, "setOneBool", boolean.class)
-                .resultEquals(OneBoolValue.class));
+        assertEquals(
+                OneBoolValue.class,
+                OneBoolValue.class.getMethod("setOneBool", boolean.class).getReturnType());
+    }
+
+    @Test
+    public void testDefaultPropertyValue() {
+        assertEquals(
+                false,
+                new OneBoolValue().getOneBool());
     }
 }

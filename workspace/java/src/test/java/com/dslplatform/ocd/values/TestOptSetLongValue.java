@@ -1,9 +1,9 @@
 package com.dslplatform.ocd.values;
 
 import com.dslplatform.client.Bootstrap;
-import com.dslplatform.ocd.test.TypeTester;
 import com.dslplatform.ocd.values.OptSetLongInValue.OptSetLongValue;
 import com.dslplatform.patterns.ServiceLocator;
+import java.lang.reflect.*;
 import java.util.*;
 import org.junit.*;
 import static org.junit.Assert.*;
@@ -13,13 +13,13 @@ public class TestOptSetLongValue {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        locator = Bootstrap.init(TestOptSetLongValue.class.getResourceAsStream("dsl-project.ini"));
+//        locator = Bootstrap.init(TestOptSetLongValue.class.getResourceAsStream("dsl-project.ini"));
     }
 
     @AfterClass
     public static void tearDownClass() throws Exception {
-        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
-        locator = null;
+//        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
+//        locator = null;
     }
 
     @Before
@@ -32,19 +32,42 @@ public class TestOptSetLongValue {
 
     @Test
     public void testFieldType() throws NoSuchFieldException {
-        assertTrue(TypeTester.testField(OptSetLongValue.class, "optSetLong")
-                .resultEquals(Set.class, Long.class));
+        assertEquals(
+                new Object() {
+                    @SuppressWarnings("unused")
+                    private final Set<Long> etalon = null;
+                }.getClass().getDeclaredField("etalon").getGenericType(),
+                OptSetLongValue.class.getDeclaredField("optSetLong").getGenericType());
     }
 
     @Test
     public void testGetterType() throws NoSuchMethodException {
-        assertTrue(TypeTester.testGetter(OptSetLongValue.class, "getOptSetLong")
-                .resultEquals(Set.class, Long.class));
+        assertEquals(
+                new Object() {
+                    @SuppressWarnings("unused")
+                    public Set<Long> getEtalon() { return null; }
+                }.getClass().getMethod("getEtalon").getGenericReturnType(),
+                OptSetLongValue.class.getMethod("getOptSetLong").getGenericReturnType());
     }
 
     @Test
     public void testSetterType() throws NoSuchMethodException {
-        assertTrue(TypeTester.testSetter(OptSetLongValue.class, "setOptSetLong", Set.class, Long.class)
-                .resultEquals(OptSetLongValue.class));
+        final Method method = OptSetLongValue.class.getMethod("setOptSetLong", Set.class);
+
+        assertEquals(
+                new Object() {
+                    @SuppressWarnings("unused")
+                    public OptSetLongValue setEtalon(final Set<Long> etalon) { return null; }
+                }.getClass().getMethod("setEtalon", Set.class).getGenericParameterTypes()[0],
+                method.getGenericParameterTypes()[0]);
+
+        assertEquals(
+                OptSetLongValue.class,
+                method.getGenericReturnType());
+    }
+
+    @Test
+    public void testDefaultPropertyValue() {
+        assertNull(new OptSetLongValue().getOptSetLong());
     }
 }

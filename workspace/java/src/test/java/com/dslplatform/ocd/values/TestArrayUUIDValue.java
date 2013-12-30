@@ -1,10 +1,8 @@
 package com.dslplatform.ocd.values;
 
 import com.dslplatform.client.Bootstrap;
-import com.dslplatform.ocd.test.TypeTester;
 import com.dslplatform.ocd.values.ArrayUUIDInValue.ArrayUUIDValue;
 import com.dslplatform.patterns.ServiceLocator;
-import java.util.*;
 import org.junit.*;
 import static org.junit.Assert.*;
 
@@ -13,13 +11,13 @@ public class TestArrayUUIDValue {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        locator = Bootstrap.init(TestArrayUUIDValue.class.getResourceAsStream("dsl-project.ini"));
+//        locator = Bootstrap.init(TestArrayUUIDValue.class.getResourceAsStream("dsl-project.ini"));
     }
 
     @AfterClass
     public static void tearDownClass() throws Exception {
-        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
-        locator = null;
+//        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
+//        locator = null;
     }
 
     @Before
@@ -32,19 +30,29 @@ public class TestArrayUUIDValue {
 
     @Test
     public void testFieldType() throws NoSuchFieldException {
-        assertTrue(TypeTester.testField(ArrayUUIDValue.class, "arrayUUID")
-                .resultEquals(UUID[].class));
+        assertEquals(
+                java.util.UUID[].class,
+                ArrayUUIDValue.class.getDeclaredField("arrayUUID").getGenericType());
     }
 
     @Test
     public void testGetterType() throws NoSuchMethodException {
-        assertTrue(TypeTester.testGetter(ArrayUUIDValue.class, "getArrayUUID")
-                .resultEquals(UUID[].class));
+        assertEquals(
+                java.util.UUID[].class,
+                ArrayUUIDValue.class.getMethod("getArrayUUID").getGenericReturnType());
     }
 
     @Test
     public void testSetterType() throws NoSuchMethodException {
-        assertTrue(TypeTester.testSetter(ArrayUUIDValue.class, "setArrayUUID", UUID[].class)
-                .resultEquals(ArrayUUIDValue.class));
+        assertEquals(
+                ArrayUUIDValue.class,
+                ArrayUUIDValue.class.getMethod("setArrayUUID", java.util.UUID[].class).getReturnType());
+    }
+
+    @Test
+    public void testDefaultPropertyValue() {
+        assertArrayEquals(
+                new java.util.UUID[0],
+                new ArrayUUIDValue().getArrayUUID());
     }
 }

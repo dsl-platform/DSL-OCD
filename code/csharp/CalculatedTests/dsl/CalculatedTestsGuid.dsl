@@ -5,9 +5,9 @@
 module CalculatedTestsGuid {
   root TestGuid {
     Guid originalGuid;
-    
+
     // calculated String calculatedStringFromGuid from 'it => it.originalGuid.ToString()';
-    
+
     // calculated Binary calculatedBinaryFromGuid from 'it => it.originalGuid.ToByteArray()';
-  }  
+  }
 }

@@ -1,9 +1,9 @@
 package com.dslplatform.ocd.values;
 
 import com.dslplatform.client.Bootstrap;
-import com.dslplatform.ocd.test.TypeTester;
 import com.dslplatform.ocd.values.ListUUIDInValue.ListUUIDValue;
 import com.dslplatform.patterns.ServiceLocator;
+import java.lang.reflect.*;
 import java.util.*;
 import org.junit.*;
 import static org.junit.Assert.*;
@@ -13,13 +13,13 @@ public class TestListUUIDValue {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        locator = Bootstrap.init(TestListUUIDValue.class.getResourceAsStream("dsl-project.ini"));
+//        locator = Bootstrap.init(TestListUUIDValue.class.getResourceAsStream("dsl-project.ini"));
     }
 
     @AfterClass
     public static void tearDownClass() throws Exception {
-        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
-        locator = null;
+//        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
+//        locator = null;
     }
 
     @Before
@@ -32,19 +32,44 @@ public class TestListUUIDValue {
 
     @Test
     public void testFieldType() throws NoSuchFieldException {
-        assertTrue(TypeTester.testField(ListUUIDValue.class, "listUUID")
-                .resultEquals(List.class, UUID.class));
+        assertEquals(
+                new Object() {
+                    @SuppressWarnings("unused")
+                    private final List<java.util.UUID> etalon = null;
+                }.getClass().getDeclaredField("etalon").getGenericType(),
+                ListUUIDValue.class.getDeclaredField("listUUID").getGenericType());
     }
 
     @Test
     public void testGetterType() throws NoSuchMethodException {
-        assertTrue(TypeTester.testGetter(ListUUIDValue.class, "getListUUID")
-                .resultEquals(List.class, UUID.class));
+        assertEquals(
+                new Object() {
+                    @SuppressWarnings("unused")
+                    public List<java.util.UUID> getEtalon() { return null; }
+                }.getClass().getMethod("getEtalon").getGenericReturnType(),
+                ListUUIDValue.class.getMethod("getListUUID").getGenericReturnType());
     }
 
     @Test
     public void testSetterType() throws NoSuchMethodException {
-        assertTrue(TypeTester.testSetter(ListUUIDValue.class, "setListUUID", List.class, UUID.class)
-                .resultEquals(ListUUIDValue.class));
+        final Method method = ListUUIDValue.class.getMethod("setListUUID", List.class);
+
+        assertEquals(
+                new Object() {
+                    @SuppressWarnings("unused")
+                    public ListUUIDValue setEtalon(final List<java.util.UUID> etalon) { return null; }
+                }.getClass().getMethod("setEtalon", List.class).getGenericParameterTypes()[0],
+                method.getGenericParameterTypes()[0]);
+
+        assertEquals(
+                ListUUIDValue.class,
+                method.getGenericReturnType());
+    }
+
+    @Test
+    public void testDefaultPropertyValue() {
+        assertEquals(
+                new ArrayList<java.util.UUID>(0),
+                new ListUUIDValue().getListUUID());
     }
 }

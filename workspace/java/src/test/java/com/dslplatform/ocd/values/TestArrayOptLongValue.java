@@ -1,10 +1,8 @@
 package com.dslplatform.ocd.values;
 
 import com.dslplatform.client.Bootstrap;
-import com.dslplatform.ocd.test.TypeTester;
 import com.dslplatform.ocd.values.ArrayOptLongInValue.ArrayOptLongValue;
 import com.dslplatform.patterns.ServiceLocator;
-import java.util.*;
 import org.junit.*;
 import static org.junit.Assert.*;
 
@@ -13,13 +11,13 @@ public class TestArrayOptLongValue {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        locator = Bootstrap.init(TestArrayOptLongValue.class.getResourceAsStream("dsl-project.ini"));
+//        locator = Bootstrap.init(TestArrayOptLongValue.class.getResourceAsStream("dsl-project.ini"));
     }
 
     @AfterClass
     public static void tearDownClass() throws Exception {
-        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
-        locator = null;
+//        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
+//        locator = null;
     }
 
     @Before
@@ -32,19 +30,29 @@ public class TestArrayOptLongValue {
 
     @Test
     public void testFieldType() throws NoSuchFieldException {
-        assertTrue(TypeTester.testField(ArrayOptLongValue.class, "arrayOptLong")
-                .resultEquals(Long[].class));
+        assertEquals(
+                Long[].class,
+                ArrayOptLongValue.class.getDeclaredField("arrayOptLong").getGenericType());
     }
 
     @Test
     public void testGetterType() throws NoSuchMethodException {
-        assertTrue(TypeTester.testGetter(ArrayOptLongValue.class, "getArrayOptLong")
-                .resultEquals(Long[].class));
+        assertEquals(
+                Long[].class,
+                ArrayOptLongValue.class.getMethod("getArrayOptLong").getGenericReturnType());
     }
 
     @Test
     public void testSetterType() throws NoSuchMethodException {
-        assertTrue(TypeTester.testSetter(ArrayOptLongValue.class, "setArrayOptLong", Long[].class)
-                .resultEquals(ArrayOptLongValue.class));
+        assertEquals(
+                ArrayOptLongValue.class,
+                ArrayOptLongValue.class.getMethod("setArrayOptLong", Long[].class).getReturnType());
+    }
+
+    @Test
+    public void testDefaultPropertyValue() {
+        assertArrayEquals(
+                new Long[0],
+                new ArrayOptLongValue().getArrayOptLong());
     }
 }
