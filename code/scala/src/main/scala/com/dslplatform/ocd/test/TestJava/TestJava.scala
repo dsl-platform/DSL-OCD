@@ -1,9 +1,8 @@
 package com.dslplatform.ocd
 package test
-package java
+package TestJava
 
-import types._
-import scala.collection.immutable.TreeSet
+import _root_.scala.collection.immutable.TreeSet
 
 trait TestJava
     extends types.OcdTest {
@@ -16,11 +15,34 @@ trait TestComponentJava {
 }
 
 private object TestJavaTemplate {
-  private def cleanup(text: String) = text
-    .trim
-    .replaceAll("(\n\n)\n+", "$1")
-    .replaceAll("(\\{\n)\n+", "$1")
-    .replaceAll("\n+(\n *\\})", "$1")
+  private def cleanup(text: String) = {
+
+    val noUtil = (content: String) =>
+      " ((Hash)?Set|(Hash)?Map|(Array)?List)".r findFirstIn content match {
+        case None => content.replace("import java.util.*;\n", "")
+        case _ => content
+      }
+
+    val noReflect = (content: String) =>
+      "final Method".r findFirstIn content match {
+        case None => content.replace("import java.lang.reflect.*;\n", "")
+        case _ => content
+      }
+
+    val noAssert = (content: String) =>
+      " assert".r findFirstIn content match {
+        case None => content.replace("import static org.junit.Assert.*;\n", "")
+        case _ => content
+      }
+
+    val trims = (_: String)
+      .trim
+      .replaceAll("(\n\n)\n+", "$1")
+      .replaceAll("(\\{\n)\n+", "$1")
+      .replaceAll("\n+(\n *\\})", "$1")
+
+    (noUtil andThen noReflect andThen noAssert andThen trims)(text) + "\n"
+  }
 }
 
 trait TestJavaTemplate
@@ -59,15 +81,15 @@ ${staticFields}
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        locator = Bootstrap.init(${testName}.class.getResourceAsStream("dsl-project.ini"));
+//        locator = Bootstrap.init(${testName}.class.getResourceAsStream("dsl-project.ini"));
 ${beforeClass}
     }
 
     @AfterClass
     public static void tearDownClass() throws Exception {
 ${afterClass}
-        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
-        locator = null;
+//        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
+//        locator = null;
     }
 
     @Before

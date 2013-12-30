@@ -6,10 +6,6 @@ import types._
 
 sealed trait JavaBoxStub
     extends JavaImpl {
-
-  def javaClass: String
-//  def constructor: String
-//  def defaultValue: String
 }
 
 trait JavaOne         extends JavaBoxStub with `box.One`
