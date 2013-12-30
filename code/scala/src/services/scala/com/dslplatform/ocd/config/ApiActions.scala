@@ -75,12 +75,19 @@ package-name=com.dslplatform.ocd.values
       val ext = ApiActions.Extensions(language)
       val langFiles = files
         .filter(_._1 endsWith ext)
-        .mapValues(new String(_, "UTF-8")).toMap
+        .mapValues(p => patch(new String(p, "UTF-8"))).toMap
 
       logger.debug(s"Generated ${langFiles.size} ${language.language} files.")
 
       language -> langFiles
     }).toMap
+  }
+
+  private def patch(body: String) = {
+    body.replaceAll(
+      """(\n +?)(public(?:[^{]+?\{[^{]+?)new java\.util\.Map)<String, String>(\[\] \{\})"""
+    , """$1@SuppressWarnings("unchecked")$1$2$3"""
+    ) + "\n"
   }
 
   def delete(projectID: UUID) =

@@ -12,4 +12,3 @@ trait `box.ArrayOpt`
 }
 
 object `box.ArrayOpt` extends `box.ArrayOpt`
-

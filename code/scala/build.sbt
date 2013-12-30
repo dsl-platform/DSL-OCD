@@ -1,4 +1,4 @@
-val NGSNexus     = "NGS Nexus"     at "http://ngs.hr/nexus/content/groups/public/"
+val NGSNexus            = "NGS Nexus"     at "http://ngs.hr/nexus/content/groups/public/"
 val NGSPrivateReleases  = "NGS Private Releases"  at "http://ngs.hr/nexus/content/repositories/releases-private/"
 val NGSPrivateSnapshots = "NGS Private Snapshots" at "http://ngs.hr/nexus/content/repositories/snapshots-private/"
 
@@ -81,6 +81,7 @@ javacOptions := Seq(
 , "-target", "1.6"
 )
 
+net.virtualvoid.sbt.graph.Plugin.graphSettings
 
 // ### ECLIPSE ### //
 
