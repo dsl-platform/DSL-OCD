@@ -6,9 +6,13 @@ import org.scalatest._
 import scala.reflect.runtime.universe._
 
 class TestArrayBinaryValue extends SpecExtensions {
-  def `Check single property type via reflection: Array[Array[Byte]]`() =
+  def `Test property field type: Array[Array[Byte]]`() =
     checkType(
       typeOf[Array[Array[Byte]]]
     , typeOf[ArrayBinaryValue].member("arrayBinary": TermName).asMethod.returnType
     )
+
+  def `Test property default value: Array.empty[Array[Byte]]`() {
+    assert(ArrayBinaryValue().arrayBinary === Array.empty[Array[Byte]])
+  }
 }

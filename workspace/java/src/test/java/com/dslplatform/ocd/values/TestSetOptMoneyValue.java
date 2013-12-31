@@ -13,13 +13,14 @@ public class TestSetOptMoneyValue {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-//        locator = Bootstrap.init(TestSetOptMoneyValue.class.getResourceAsStream("dsl-project.ini"));
+        System.setProperty(org.slf4j.impl.SimpleLogger.DEFAULT_LOG_LEVEL_KEY, "TRACE");
+        locator = Bootstrap.init(TestSetOptMoneyValue.class.getResourceAsStream("dsl-project.ini"));
     }
 
     @AfterClass
     public static void tearDownClass() throws Exception {
-//        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
-//        locator = null;
+        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
+        locator = null;
     }
 
     @Before
@@ -30,8 +31,9 @@ public class TestSetOptMoneyValue {
     public void tearDown() throws Exception {
     }
 
+    /* Testing the property field type via reflection (no instantiation) */
     @Test
-    public void testFieldType() throws NoSuchFieldException {
+    public void testPropertyFieldType() throws NoSuchFieldException {
         assertEquals(
                 new Object() {
                     @SuppressWarnings("unused")
@@ -40,8 +42,9 @@ public class TestSetOptMoneyValue {
                 SetOptMoneyValue.class.getDeclaredField("setOptMoney").getGenericType());
     }
 
+    /* Testing the property getter method type via reflection (no instantiation) */
     @Test
-    public void testGetterType() throws NoSuchMethodException {
+    public void testPropertyGetterType() throws NoSuchMethodException {
         assertEquals(
                 new Object() {
                     @SuppressWarnings("unused")
@@ -50,8 +53,9 @@ public class TestSetOptMoneyValue {
                 SetOptMoneyValue.class.getMethod("getSetOptMoney").getGenericReturnType());
     }
 
+    /* Testing the property setter method type via reflection (no instantiation) */
     @Test
-    public void testSetterType() throws NoSuchMethodException {
+    public void testPropertySetterType() throws NoSuchMethodException {
         final Method method = SetOptMoneyValue.class.getMethod("setSetOptMoney", Set.class);
 
         assertEquals(
@@ -66,10 +70,36 @@ public class TestSetOptMoneyValue {
                 method.getGenericReturnType());
     }
 
+    /* Testing the default property value */
     @Test
-    public void testDefaultPropertyValue() {
+    public void testPropertyDefaultValue() {
         assertEquals(
                 new HashSet<java.math.BigDecimal>(0),
                 new SetOptMoneyValue().getSetOptMoney());
+    }
+
+    /* Setting a non-nullable property to null should trigger an exception */
+    @Test(expected = IllegalArgumentException.class)
+    public void testSetterNullGuard() {
+        try {
+            new SetOptMoneyValue().setSetOptMoney(null);
+        }
+        catch (final IllegalArgumentException e) {
+            assertEquals(
+                    "Property \"setOptMoney\" cannot be null!",
+                    e.getMessage());
+            throw e;
+        }
+    }
+
+    /* Value objects should be equal when instantiated with default properties */
+    @Test
+    public void testValueEquality() {
+      final SetOptMoneyValue v1 = new SetOptMoneyValue();
+      final SetOptMoneyValue v2 = new SetOptMoneyValue();
+
+      // hashCode equality implies object equality, thus hashCode must be equal
+      assertEquals(v1.hashCode(), v2.hashCode());
+      assertEquals(v1, v2);
     }
 }

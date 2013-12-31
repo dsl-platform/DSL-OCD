@@ -6,9 +6,13 @@ import org.scalatest._
 import scala.reflect.runtime.universe._
 
 class TestOptListOptStringValue extends SpecExtensions {
-  def `Check single property type via reflection: Option[IndexedSeq[Option[String]]]`() =
+  def `Test property field type: Option[IndexedSeq[Option[String]]]`() =
     checkType(
       typeOf[Option[IndexedSeq[Option[String]]]]
     , typeOf[OptListOptStringValue].member("optListOptString": TermName).asMethod.returnType
     )
+
+  def `Test property default value: None`() {
+    assert(OptListOptStringValue().optListOptString === None)
+  }
 }

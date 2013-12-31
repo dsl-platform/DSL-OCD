@@ -6,9 +6,13 @@ import org.scalatest._
 import scala.reflect.runtime.universe._
 
 class TestListMoneyValue extends SpecExtensions {
-  def `Check single property type via reflection: IndexedSeq[BigDecimal]`() =
+  def `Test property field type: IndexedSeq[BigDecimal]`() =
     checkType(
       typeOf[IndexedSeq[BigDecimal]]
     , typeOf[ListMoneyValue].member("listMoney": TermName).asMethod.returnType
     )
+
+  def `Test property default value: IndexedSeq.empty[BigDecimal]`() {
+    assert(ListMoneyValue().listMoney === IndexedSeq.empty[BigDecimal])
+  }
 }

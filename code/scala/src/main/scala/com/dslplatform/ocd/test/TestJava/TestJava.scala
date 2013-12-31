@@ -81,15 +81,16 @@ ${staticFields}
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-//        locator = Bootstrap.init(${testName}.class.getResourceAsStream("dsl-project.ini"));
+        System.setProperty(org.slf4j.impl.SimpleLogger.DEFAULT_LOG_LEVEL_KEY, "TRACE");
+        locator = Bootstrap.init(${testName}.class.getResourceAsStream("dsl-project.ini"));
 ${beforeClass}
     }
 
     @AfterClass
     public static void tearDownClass() throws Exception {
 ${afterClass}
-//        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
-//        locator = null;
+        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
+        locator = null;
     }
 
     @Before

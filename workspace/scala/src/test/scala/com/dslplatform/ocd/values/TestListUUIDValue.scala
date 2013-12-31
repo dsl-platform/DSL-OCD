@@ -6,9 +6,13 @@ import org.scalatest._
 import scala.reflect.runtime.universe._
 
 class TestListUUIDValue extends SpecExtensions {
-  def `Check single property type via reflection: IndexedSeq[java.util.UUID]`() =
+  def `Test property field type: IndexedSeq[java.util.UUID]`() =
     checkType(
       typeOf[IndexedSeq[java.util.UUID]]
     , typeOf[ListUUIDValue].member("listUUID": TermName).asMethod.returnType
     )
+
+  def `Test property default value: IndexedSeq.empty[java.util.UUID]`() {
+    assert(ListUUIDValue().listUUID === IndexedSeq.empty[java.util.UUID])
+  }
 }

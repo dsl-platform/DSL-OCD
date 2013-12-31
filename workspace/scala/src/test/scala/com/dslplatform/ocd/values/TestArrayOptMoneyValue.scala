@@ -6,9 +6,13 @@ import org.scalatest._
 import scala.reflect.runtime.universe._
 
 class TestArrayOptMoneyValue extends SpecExtensions {
-  def `Check single property type via reflection: Array[Option[BigDecimal]]`() =
+  def `Test property field type: Array[Option[BigDecimal]]`() =
     checkType(
       typeOf[Array[Option[BigDecimal]]]
     , typeOf[ArrayOptMoneyValue].member("arrayOptMoney": TermName).asMethod.returnType
     )
+
+  def `Test property default value: Array.empty[Option[BigDecimal]]`() {
+    assert(ArrayOptMoneyValue().arrayOptMoney === Array.empty[Option[BigDecimal]])
+  }
 }

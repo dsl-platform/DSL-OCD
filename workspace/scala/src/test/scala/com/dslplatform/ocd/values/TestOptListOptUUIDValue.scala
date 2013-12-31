@@ -6,9 +6,13 @@ import org.scalatest._
 import scala.reflect.runtime.universe._
 
 class TestOptListOptUUIDValue extends SpecExtensions {
-  def `Check single property type via reflection: Option[IndexedSeq[Option[java.util.UUID]]]`() =
+  def `Test property field type: Option[IndexedSeq[Option[java.util.UUID]]]`() =
     checkType(
       typeOf[Option[IndexedSeq[Option[java.util.UUID]]]]
     , typeOf[OptListOptUUIDValue].member("optListOptUUID": TermName).asMethod.returnType
     )
+
+  def `Test property default value: None`() {
+    assert(OptListOptUUIDValue().optListOptUUID === None)
+  }
 }

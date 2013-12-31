@@ -46,7 +46,7 @@ trait TestScalaTemplate
     ) map("import "+) mkString("\n")
 
   def testBody = TestScalaTemplate.cleanup(s"""
-package com.dslplatform.ocd.values
+package ${packageName}
 
 ${importsString}
 

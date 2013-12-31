@@ -6,9 +6,13 @@ import org.scalatest._
 import scala.reflect.runtime.universe._
 
 class TestOptBoolValue extends SpecExtensions {
-  def `Check single property type via reflection: Option[Boolean]`() =
+  def `Test property field type: Option[Boolean]`() =
     checkType(
       typeOf[Option[Boolean]]
     , typeOf[OptBoolValue].member("optBool": TermName).asMethod.returnType
     )
+
+  def `Test property default value: None`() {
+    assert(OptBoolValue().optBool === None)
+  }
 }

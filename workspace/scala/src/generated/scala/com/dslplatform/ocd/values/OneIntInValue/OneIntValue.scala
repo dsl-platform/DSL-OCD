@@ -10,6 +10,6 @@ case class OneIntValue @JsonIgnore() (
     @JacksonInject("_locator") _locator: com.dslplatform.api.patterns.ServiceLocator
   , @JsonProperty("oneInt") oneInt: Int
   ) =
-    this( oneInt = if (oneInt == null) 0 else oneInt)
+    this(oneInt)
 
 }

@@ -39,18 +39,29 @@ private [config] class ApiActions(
   , new String(testSettings.password, "UTF-8")
   )
 
-  def create(projectName: String) = {
+  def create(projectName: String, packageName: String) = {
     ProjectIni.fromByteArray(
-"""username=ngsutil@dsl-platform.com
+s"""username=ngsutil@dsl-platform.com
 project-id=e3429ea9-901c-4778-af52-07997cf1b97b
 api-url=https://node0.dsl-platform.com/beta_2877f7a0c144938612104d/
-package-name=com.dslplatform.ocd.values
+package-name=${packageName}
 """ getBytes "UTF-8")
 
 //    val create = actions.create(auth, new ProjectName(projectName))
 //    logger.info("Project successfully created: " + create.getProjectID)
 //    ProjectIni.fromByteArray(create.getProjectIni())
   }
+
+  def upgradeDatabase(
+      projectID: UUID
+    , dslFiles: Map[String, String]): Unit =
+    actions.updateUnsafe(
+      auth
+    , new DSL(dslFiles.asJava)
+    , new ProjectID(projectID)
+    , new PackageName("model")
+    , Language.JAVA
+    )
 
   def deployDsl(
       projectID: UUID
@@ -85,9 +96,16 @@ package-name=com.dslplatform.ocd.values
 
   private def patch(body: String) = {
     body.replaceAll(
-      """(\n +?)(public(?:[^{]+?\{[^{]+?)new java\.util\.Map)<String, String>(\[\] \{\})"""
+      """(\n +?)((?:public|private)(?:[^{]+?\{[^{]+?)new java\.util\.Map)<String, String>(\[\] \{\})"""
     , """$1@SuppressWarnings("unchecked")$1$2$3"""
-    ) + "\n"
+    ).replace(
+      """if (!(this.oneXML.equals(other.oneXML))) return false;"""
+    , """if (!(this.oneXML == other.oneXML || this.oneXML != null
+                && this.oneXML.equals(other.oneXML))) return false;"""
+    ).replaceAll(
+      """this\( (.+?) = if \((.+?) == null\) (0|false|0\.0f) else (.+?)\)"""
+    , """this($1)"""
+    )
   }
 
   def delete(projectID: UUID) =

@@ -6,9 +6,13 @@ import org.scalatest._
 import scala.reflect.runtime.universe._
 
 class TestOptSetIntValue extends SpecExtensions {
-  def `Check single property type via reflection: Option[Set[Int]]`() =
+  def `Test property field type: Option[Set[Int]]`() =
     checkType(
       typeOf[Option[Set[Int]]]
     , typeOf[OptSetIntValue].member("optSetInt": TermName).asMethod.returnType
     )
+
+  def `Test property default value: None`() {
+    assert(OptSetIntValue().optSetInt === None)
+  }
 }

@@ -6,9 +6,13 @@ import org.scalatest._
 import scala.reflect.runtime.universe._
 
 class TestOptListMapValue extends SpecExtensions {
-  def `Check single property type via reflection: Option[IndexedSeq[Map[String, String]]]`() =
+  def `Test property field type: Option[IndexedSeq[Map[String, String]]]`() =
     checkType(
       typeOf[Option[IndexedSeq[Map[String, String]]]]
     , typeOf[OptListMapValue].member("optListMap": TermName).asMethod.returnType
     )
+
+  def `Test property default value: None`() {
+    assert(OptListMapValue().optListMap === None)
+  }
 }

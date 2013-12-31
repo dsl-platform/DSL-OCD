@@ -18,7 +18,8 @@ unmanagedSourceDirectories in Test := (javaSource in Test).value :: Nil
 
 libraryDependencies ++= Seq(
   "com.dslplatform" % "dsl-client-http" % "0.4.13"
-, "ch.qos.logback" % "logback-classic" % "1.0.13" % "compile->default"
+//, "ch.qos.logback" % "logback-classic" % "1.0.13" % "compile->default"
+, "org.slf4j" % "slf4j-simple" % "1.7.5"
 , "junit" % "junit" % "4.11" % "test"
 , "com.novocode" % "junit-interface" % "0.10" % "test"
 )

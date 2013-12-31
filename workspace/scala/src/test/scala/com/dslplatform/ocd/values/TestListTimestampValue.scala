@@ -6,9 +6,13 @@ import org.scalatest._
 import scala.reflect.runtime.universe._
 
 class TestListTimestampValue extends SpecExtensions {
-  def `Check single property type via reflection: IndexedSeq[org.joda.time.DateTime]`() =
+  def `Test property field type: IndexedSeq[org.joda.time.DateTime]`() =
     checkType(
       typeOf[IndexedSeq[org.joda.time.DateTime]]
     , typeOf[ListTimestampValue].member("listTimestamp": TermName).asMethod.returnType
     )
+
+  def `Test property default value: IndexedSeq.empty[org.joda.time.DateTime]`() {
+    assert(ListTimestampValue().listTimestamp === IndexedSeq.empty[org.joda.time.DateTime])
+  }
 }

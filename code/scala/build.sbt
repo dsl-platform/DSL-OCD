@@ -66,6 +66,7 @@ scalacOptions := Seq(
 , "-Ywarn-all"
 , "-feature"
 , "-language:postfixOps"
+, "-language:reflectiveCalls"
 , "-language:implicitConversions"
 , "-language:existentials"
 , "-language:dynamics"

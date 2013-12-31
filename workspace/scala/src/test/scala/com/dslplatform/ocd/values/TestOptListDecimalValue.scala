@@ -6,9 +6,13 @@ import org.scalatest._
 import scala.reflect.runtime.universe._
 
 class TestOptListDecimalValue extends SpecExtensions {
-  def `Check single property type via reflection: Option[IndexedSeq[BigDecimal]]`() =
+  def `Test property field type: Option[IndexedSeq[BigDecimal]]`() =
     checkType(
       typeOf[Option[IndexedSeq[BigDecimal]]]
     , typeOf[OptListDecimalValue].member("optListDecimal": TermName).asMethod.returnType
     )
+
+  def `Test property default value: None`() {
+    assert(OptListDecimalValue().optListDecimal === None)
+  }
 }

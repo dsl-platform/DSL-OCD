@@ -6,9 +6,13 @@ import org.scalatest._
 import scala.reflect.runtime.universe._
 
 class TestSetUUIDValue extends SpecExtensions {
-  def `Check single property type via reflection: Set[java.util.UUID]`() =
+  def `Test property field type: Set[java.util.UUID]`() =
     checkType(
       typeOf[Set[java.util.UUID]]
     , typeOf[SetUUIDValue].member("setUUID": TermName).asMethod.returnType
     )
+
+  def `Test property default value: Set.empty[java.util.UUID]`() {
+    assert(SetUUIDValue().setUUID === Set.empty[java.util.UUID])
+  }
 }

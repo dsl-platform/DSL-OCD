@@ -6,9 +6,13 @@ import org.scalatest._
 import scala.reflect.runtime.universe._
 
 class TestArrayMapValue extends SpecExtensions {
-  def `Check single property type via reflection: Array[Map[String, String]]`() =
+  def `Test property field type: Array[Map[String, String]]`() =
     checkType(
       typeOf[Array[Map[String, String]]]
     , typeOf[ArrayMapValue].member("arrayMap": TermName).asMethod.returnType
     )
+
+  def `Test property default value: Array.empty[Map[String, String]]`() {
+    assert(ArrayMapValue().arrayMap === Array.empty[Map[String, String]])
+  }
 }

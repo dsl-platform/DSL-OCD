@@ -12,12 +12,23 @@ trait SetupValuePropertiesDsl
   def ModuleName: String
   def ValueName: String
 
-  def valueProperties: Seq[DslPropertyStub]
+  def valueProperties: Option[Seq[DslPropertyStub]]
 
   def dslTemplate =
-    module (ModuleName) {
-      value (ValueName) {
-        valueProperties: _*
-      }
-    }
+    valueProperties match {
+      case Some(vp) =>
+
+        module (ModuleName) {
+          value (ValueName) {
+            vp: _*
+          }
+        }
+
+      case _ =>
+
+        module (ModuleName) {
+          value (ValueName);
+        }
+
+  }
 }

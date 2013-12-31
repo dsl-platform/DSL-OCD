@@ -6,9 +6,13 @@ import org.scalatest._
 import scala.reflect.runtime.universe._
 
 class TestOptSetDoubleValue extends SpecExtensions {
-  def `Check single property type via reflection: Option[Set[Double]]`() =
+  def `Test property field type: Option[Set[Double]]`() =
     checkType(
       typeOf[Option[Set[Double]]]
     , typeOf[OptSetDoubleValue].member("optSetDouble": TermName).asMethod.returnType
     )
+
+  def `Test property default value: None`() {
+    assert(OptSetDoubleValue().optSetDouble === None)
+  }
 }

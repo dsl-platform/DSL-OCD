@@ -3,6 +3,7 @@ package com.dslplatform.ocd.values;
 import com.dslplatform.client.Bootstrap;
 import com.dslplatform.ocd.values.ArrayDecimalInValue.ArrayDecimalValue;
 import com.dslplatform.patterns.ServiceLocator;
+import java.util.*;
 import org.junit.*;
 import static org.junit.Assert.*;
 
@@ -11,13 +12,14 @@ public class TestArrayDecimalValue {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-//        locator = Bootstrap.init(TestArrayDecimalValue.class.getResourceAsStream("dsl-project.ini"));
+        System.setProperty(org.slf4j.impl.SimpleLogger.DEFAULT_LOG_LEVEL_KEY, "TRACE");
+        locator = Bootstrap.init(TestArrayDecimalValue.class.getResourceAsStream("dsl-project.ini"));
     }
 
     @AfterClass
     public static void tearDownClass() throws Exception {
-//        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
-//        locator = null;
+        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
+        locator = null;
     }
 
     @Before
@@ -28,31 +30,60 @@ public class TestArrayDecimalValue {
     public void tearDown() throws Exception {
     }
 
+    /* Testing the property field type via reflection (no instantiation) */
     @Test
-    public void testFieldType() throws NoSuchFieldException {
+    public void testPropertyFieldType() throws NoSuchFieldException {
         assertEquals(
                 java.math.BigDecimal[].class,
                 ArrayDecimalValue.class.getDeclaredField("arrayDecimal").getGenericType());
     }
 
+    /* Testing the property getter method type via reflection (no instantiation) */
     @Test
-    public void testGetterType() throws NoSuchMethodException {
+    public void testPropertyGetterType() throws NoSuchMethodException {
         assertEquals(
                 java.math.BigDecimal[].class,
                 ArrayDecimalValue.class.getMethod("getArrayDecimal").getGenericReturnType());
     }
 
+    /* Testing the property setter method type via reflection (no instantiation) */
     @Test
-    public void testSetterType() throws NoSuchMethodException {
+    public void testPropertySetterType() throws NoSuchMethodException {
         assertEquals(
                 ArrayDecimalValue.class,
                 ArrayDecimalValue.class.getMethod("setArrayDecimal", java.math.BigDecimal[].class).getReturnType());
     }
 
+    /* Testing the default property value */
     @Test
-    public void testDefaultPropertyValue() {
+    public void testPropertyDefaultValue() {
         assertArrayEquals(
                 new java.math.BigDecimal[0],
                 new ArrayDecimalValue().getArrayDecimal());
+    }
+
+    /* Setting a non-nullable property to null should trigger an exception */
+    @Test(expected = IllegalArgumentException.class)
+    public void testSetterNullGuard() {
+        try {
+            new ArrayDecimalValue().setArrayDecimal(null);
+        }
+        catch (final IllegalArgumentException e) {
+            assertEquals(
+                    "Property \"arrayDecimal\" cannot be null!",
+                    e.getMessage());
+            throw e;
+        }
+    }
+
+    /* Value objects should be equal when instantiated with default properties */
+    @Test
+    public void testValueEquality() {
+      final ArrayDecimalValue v1 = new ArrayDecimalValue();
+      final ArrayDecimalValue v2 = new ArrayDecimalValue();
+
+      // hashCode equality implies object equality, thus hashCode must be equal
+      assertEquals(v1.hashCode(), v2.hashCode());
+      assertEquals(v1, v2);
     }
 }
