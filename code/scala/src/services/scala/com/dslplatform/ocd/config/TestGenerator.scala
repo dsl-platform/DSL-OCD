@@ -23,7 +23,7 @@ private [config] class TestGenerator(
     , "All package names within a test batch must be equal!"
     )
 
-    val _projectIni = actions.create(projectName)
+    val _projectIni = actions.create(projectName, _packageName)
     val _tests = tests
     val _languages = tests.flatMap(_.testFiles.keySet).toSet
     val _dslFiles = tests.flatMap(_.dslFiles).toMap

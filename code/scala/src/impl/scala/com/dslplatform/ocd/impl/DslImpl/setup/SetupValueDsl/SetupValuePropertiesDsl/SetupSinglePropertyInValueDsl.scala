@@ -17,7 +17,7 @@ trait SetupSinglePropertyInValueDsl
   def propertyName = PropertyName.fcil
 
   def property: DslPropertyStub = propertyType -> propertyName
-  def valueProperties = Seq(property)
+  def valueProperties = Some(Seq(property))
 
   def setupDesc = "SetupSinglePropertyInValueDsl: " + PropertyName
 }

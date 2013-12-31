@@ -10,6 +10,6 @@ case class OneBoolValue @JsonIgnore() (
     @JacksonInject("_locator") _locator: com.dslplatform.api.patterns.ServiceLocator
   , @JsonProperty("oneBool") oneBool: Boolean
   ) =
-    this( oneBool = if (oneBool == null) false else oneBool)
+    this(oneBool)
 
 }

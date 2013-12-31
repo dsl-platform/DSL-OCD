@@ -13,13 +13,14 @@ public class TestOptListOptMoneyValue {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-//        locator = Bootstrap.init(TestOptListOptMoneyValue.class.getResourceAsStream("dsl-project.ini"));
+        System.setProperty(org.slf4j.impl.SimpleLogger.DEFAULT_LOG_LEVEL_KEY, "TRACE");
+        locator = Bootstrap.init(TestOptListOptMoneyValue.class.getResourceAsStream("dsl-project.ini"));
     }
 
     @AfterClass
     public static void tearDownClass() throws Exception {
-//        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
-//        locator = null;
+        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
+        locator = null;
     }
 
     @Before
@@ -30,8 +31,9 @@ public class TestOptListOptMoneyValue {
     public void tearDown() throws Exception {
     }
 
+    /* Testing the property field type via reflection (no instantiation) */
     @Test
-    public void testFieldType() throws NoSuchFieldException {
+    public void testPropertyFieldType() throws NoSuchFieldException {
         assertEquals(
                 new Object() {
                     @SuppressWarnings("unused")
@@ -40,8 +42,9 @@ public class TestOptListOptMoneyValue {
                 OptListOptMoneyValue.class.getDeclaredField("optListOptMoney").getGenericType());
     }
 
+    /* Testing the property getter method type via reflection (no instantiation) */
     @Test
-    public void testGetterType() throws NoSuchMethodException {
+    public void testPropertyGetterType() throws NoSuchMethodException {
         assertEquals(
                 new Object() {
                     @SuppressWarnings("unused")
@@ -50,8 +53,9 @@ public class TestOptListOptMoneyValue {
                 OptListOptMoneyValue.class.getMethod("getOptListOptMoney").getGenericReturnType());
     }
 
+    /* Testing the property setter method type via reflection (no instantiation) */
     @Test
-    public void testSetterType() throws NoSuchMethodException {
+    public void testPropertySetterType() throws NoSuchMethodException {
         final Method method = OptListOptMoneyValue.class.getMethod("setOptListOptMoney", List.class);
 
         assertEquals(
@@ -66,8 +70,27 @@ public class TestOptListOptMoneyValue {
                 method.getGenericReturnType());
     }
 
+    /* Testing the default property value */
     @Test
-    public void testDefaultPropertyValue() {
+    public void testPropertyDefaultValue() {
         assertNull(new OptListOptMoneyValue().getOptListOptMoney());
+    }
+
+    /* Setting a nullable property to null should not trigger an exception */
+    @Test
+    public void testLackOfSetterNullGuard() {
+        final OptListOptMoneyValue value = new OptListOptMoneyValue();
+        assertSame(value.setOptListOptMoney(null), value);
+    }
+
+    /* Value objects should be equal when instantiated with default properties */
+    @Test
+    public void testValueEquality() {
+      final OptListOptMoneyValue v1 = new OptListOptMoneyValue();
+      final OptListOptMoneyValue v2 = new OptListOptMoneyValue();
+
+      // hashCode equality implies object equality, thus hashCode must be equal
+      assertEquals(v1.hashCode(), v2.hashCode());
+      assertEquals(v1, v2);
     }
 }

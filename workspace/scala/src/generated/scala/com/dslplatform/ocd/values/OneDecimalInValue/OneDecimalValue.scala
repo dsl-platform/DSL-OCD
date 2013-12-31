@@ -10,6 +10,6 @@ case class OneDecimalValue @JsonIgnore() (
     @JacksonInject("_locator") _locator: com.dslplatform.api.patterns.ServiceLocator
   , @JsonProperty("oneDecimal") oneDecimal: BigDecimal
   ) =
-    this( oneDecimal = if (oneDecimal == null) 0 else oneDecimal)
+    this(oneDecimal)
 
 }

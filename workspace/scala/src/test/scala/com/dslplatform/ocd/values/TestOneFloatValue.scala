@@ -6,9 +6,13 @@ import org.scalatest._
 import scala.reflect.runtime.universe._
 
 class TestOneFloatValue extends SpecExtensions {
-  def `Check single property type via reflection: Float`() =
+  def `Test property field type: Float`() =
     checkType(
       typeOf[Float]
     , typeOf[OneFloatValue].member("oneFloat": TermName).asMethod.returnType
     )
+
+  def `Test property default value: 0.0f`() {
+    assert(OneFloatValue().oneFloat === 0.0f)
+  }
 }

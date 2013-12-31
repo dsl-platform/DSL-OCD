@@ -6,9 +6,13 @@ import org.scalatest._
 import scala.reflect.runtime.universe._
 
 class TestOneLongValue extends SpecExtensions {
-  def `Check single property type via reflection: Long`() =
+  def `Test property field type: Long`() =
     checkType(
       typeOf[Long]
     , typeOf[OneLongValue].member("oneLong": TermName).asMethod.returnType
     )
+
+  def `Test property default value: 0L`() {
+    assert(OneLongValue().oneLong === 0L)
+  }
 }

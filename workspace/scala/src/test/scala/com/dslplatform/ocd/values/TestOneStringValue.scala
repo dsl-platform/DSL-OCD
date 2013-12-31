@@ -6,9 +6,13 @@ import org.scalatest._
 import scala.reflect.runtime.universe._
 
 class TestOneStringValue extends SpecExtensions {
-  def `Check single property type via reflection: String`() =
+  def `Test property field type: String`() =
     checkType(
       typeOf[String]
     , typeOf[OneStringValue].member("oneString": TermName).asMethod.returnType
     )
+
+  def `Test property default value: ""`() {
+    assert(OneStringValue().oneString === "")
+  }
 }

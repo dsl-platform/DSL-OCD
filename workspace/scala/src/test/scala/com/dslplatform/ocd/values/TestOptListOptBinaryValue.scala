@@ -6,9 +6,13 @@ import org.scalatest._
 import scala.reflect.runtime.universe._
 
 class TestOptListOptBinaryValue extends SpecExtensions {
-  def `Check single property type via reflection: Option[IndexedSeq[Option[Array[Byte]]]]`() =
+  def `Test property field type: Option[IndexedSeq[Option[Array[Byte]]]]`() =
     checkType(
       typeOf[Option[IndexedSeq[Option[Array[Byte]]]]]
     , typeOf[OptListOptBinaryValue].member("optListOptBinary": TermName).asMethod.returnType
     )
+
+  def `Test property default value: None`() {
+    assert(OptListOptBinaryValue().optListOptBinary === None)
+  }
 }

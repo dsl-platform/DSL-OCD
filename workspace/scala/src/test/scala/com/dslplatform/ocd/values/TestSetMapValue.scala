@@ -6,9 +6,13 @@ import org.scalatest._
 import scala.reflect.runtime.universe._
 
 class TestSetMapValue extends SpecExtensions {
-  def `Check single property type via reflection: Set[Map[String, String]]`() =
+  def `Test property field type: Set[Map[String, String]]`() =
     checkType(
       typeOf[Set[Map[String, String]]]
     , typeOf[SetMapValue].member("setMap": TermName).asMethod.returnType
     )
+
+  def `Test property default value: Set.empty[Map[String, String]]`() {
+    assert(SetMapValue().setMap === Set.empty[Map[String, String]])
+  }
 }

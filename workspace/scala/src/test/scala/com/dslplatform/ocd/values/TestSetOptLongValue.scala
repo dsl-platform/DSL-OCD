@@ -6,9 +6,13 @@ import org.scalatest._
 import scala.reflect.runtime.universe._
 
 class TestSetOptLongValue extends SpecExtensions {
-  def `Check single property type via reflection: Set[Option[Long]]`() =
+  def `Test property field type: Set[Option[Long]]`() =
     checkType(
       typeOf[Set[Option[Long]]]
     , typeOf[SetOptLongValue].member("setOptLong": TermName).asMethod.returnType
     )
+
+  def `Test property default value: Set.empty[Option[Long]]`() {
+    assert(SetOptLongValue().setOptLong === Set.empty[Option[Long]])
+  }
 }

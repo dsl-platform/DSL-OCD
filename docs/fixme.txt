@@ -1,0 +1,64 @@
+Zamjeniti Map[] inicijalizaciju iz:
+
+  metoda {
+    ... = new java.util.Map<String, String>[] {}
+  }
+
+u 
+		
+  @SuppressWarnings("unchecked")
+  metoda {
+    ... = new java.util.Map[0]
+  }
+
+// ---
+
+XML je jedini ne-nullabilni tip koji je po defaultu null
+
+Zbog toga se baca NPE ako value sa XML poljem usporedimo,
+potrebno je u equals metodi zamjeniti:
+
+    if (!(this.polje.equals(other.polje))) return false;
+		
+sa
+    
+    if (!(this.polje == other.polje || this.polje != null
+                && this.polje.equals(other.polje))) return false;
+
+// ---
+
+Value objekti sa 0 polja imaju unused polje u equals metodi:
+
+    @Override
+    public boolean equals(final Object obj) {
+        if (this == obj) return true;
+        if (obj == null) return false;
+
+        if (!(obj instanceof ZeroPropertiesValue)) return false;
+        final ZeroPropertiesValue other = (ZeroPropertiesValue) obj;
+
+        return true;
+    }
+
+// ---
+
+Hashcode je trenutacno platform dependent, posto koristi native C# GetHashCode(),
+pa æe se ovisnosti o arhitekturi vraæati razlièiti hashevi za isto ime objekta.
+Treba to zamjeniti za nešto standardizirano, a'la SHA-1.
+
+Usto, ima jako puno objekata koji imaju ne hash-abilne propertyje, u kojima bi se ovo:
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ##;
+        return result;
+    }
+
+dalo zamjeniti sa:
+
+    @Override
+    public int hashCode() {
+        return ##;
+		}

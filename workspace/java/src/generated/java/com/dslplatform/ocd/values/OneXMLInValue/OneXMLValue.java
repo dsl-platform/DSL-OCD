@@ -28,7 +28,8 @@ public final class OneXMLValue implements java.io.Serializable {
         if (!(obj instanceof OneXMLValue)) return false;
         final OneXMLValue other = (OneXMLValue) obj;
 
-        if (!(this.oneXML.equals(other.oneXML))) return false;
+        if (!(this.oneXML == other.oneXML || this.oneXML != null
+                && this.oneXML.equals(other.oneXML))) return false;
 
         return true;
     }

@@ -6,9 +6,13 @@ import org.scalatest._
 import scala.reflect.runtime.universe._
 
 class TestSetTimestampValue extends SpecExtensions {
-  def `Check single property type via reflection: Set[org.joda.time.DateTime]`() =
+  def `Test property field type: Set[org.joda.time.DateTime]`() =
     checkType(
       typeOf[Set[org.joda.time.DateTime]]
     , typeOf[SetTimestampValue].member("setTimestamp": TermName).asMethod.returnType
     )
+
+  def `Test property default value: Set.empty[org.joda.time.DateTime]`() {
+    assert(SetTimestampValue().setTimestamp === Set.empty[org.joda.time.DateTime])
+  }
 }

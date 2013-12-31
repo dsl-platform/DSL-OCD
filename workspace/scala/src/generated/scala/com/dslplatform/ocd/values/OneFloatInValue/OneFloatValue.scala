@@ -10,6 +10,6 @@ case class OneFloatValue @JsonIgnore() (
     @JacksonInject("_locator") _locator: com.dslplatform.api.patterns.ServiceLocator
   , @JsonProperty("oneFloat") oneFloat: Float
   ) =
-    this( oneFloat = if (oneFloat == null) 0.0f else oneFloat)
+    this(oneFloat)
 
 }

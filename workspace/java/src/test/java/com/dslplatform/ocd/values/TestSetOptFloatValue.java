@@ -13,13 +13,14 @@ public class TestSetOptFloatValue {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-//        locator = Bootstrap.init(TestSetOptFloatValue.class.getResourceAsStream("dsl-project.ini"));
+        System.setProperty(org.slf4j.impl.SimpleLogger.DEFAULT_LOG_LEVEL_KEY, "TRACE");
+        locator = Bootstrap.init(TestSetOptFloatValue.class.getResourceAsStream("dsl-project.ini"));
     }
 
     @AfterClass
     public static void tearDownClass() throws Exception {
-//        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
-//        locator = null;
+        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
+        locator = null;
     }
 
     @Before
@@ -30,8 +31,9 @@ public class TestSetOptFloatValue {
     public void tearDown() throws Exception {
     }
 
+    /* Testing the property field type via reflection (no instantiation) */
     @Test
-    public void testFieldType() throws NoSuchFieldException {
+    public void testPropertyFieldType() throws NoSuchFieldException {
         assertEquals(
                 new Object() {
                     @SuppressWarnings("unused")
@@ -40,8 +42,9 @@ public class TestSetOptFloatValue {
                 SetOptFloatValue.class.getDeclaredField("setOptFloat").getGenericType());
     }
 
+    /* Testing the property getter method type via reflection (no instantiation) */
     @Test
-    public void testGetterType() throws NoSuchMethodException {
+    public void testPropertyGetterType() throws NoSuchMethodException {
         assertEquals(
                 new Object() {
                     @SuppressWarnings("unused")
@@ -50,8 +53,9 @@ public class TestSetOptFloatValue {
                 SetOptFloatValue.class.getMethod("getSetOptFloat").getGenericReturnType());
     }
 
+    /* Testing the property setter method type via reflection (no instantiation) */
     @Test
-    public void testSetterType() throws NoSuchMethodException {
+    public void testPropertySetterType() throws NoSuchMethodException {
         final Method method = SetOptFloatValue.class.getMethod("setSetOptFloat", Set.class);
 
         assertEquals(
@@ -66,10 +70,36 @@ public class TestSetOptFloatValue {
                 method.getGenericReturnType());
     }
 
+    /* Testing the default property value */
     @Test
-    public void testDefaultPropertyValue() {
+    public void testPropertyDefaultValue() {
         assertEquals(
                 new HashSet<Float>(0),
                 new SetOptFloatValue().getSetOptFloat());
+    }
+
+    /* Setting a non-nullable property to null should trigger an exception */
+    @Test(expected = IllegalArgumentException.class)
+    public void testSetterNullGuard() {
+        try {
+            new SetOptFloatValue().setSetOptFloat(null);
+        }
+        catch (final IllegalArgumentException e) {
+            assertEquals(
+                    "Property \"setOptFloat\" cannot be null!",
+                    e.getMessage());
+            throw e;
+        }
+    }
+
+    /* Value objects should be equal when instantiated with default properties */
+    @Test
+    public void testValueEquality() {
+      final SetOptFloatValue v1 = new SetOptFloatValue();
+      final SetOptFloatValue v2 = new SetOptFloatValue();
+
+      // hashCode equality implies object equality, thus hashCode must be equal
+      assertEquals(v1.hashCode(), v2.hashCode());
+      assertEquals(v1, v2);
     }
 }

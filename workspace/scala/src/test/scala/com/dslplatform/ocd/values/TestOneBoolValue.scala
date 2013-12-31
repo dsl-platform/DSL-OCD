@@ -6,9 +6,13 @@ import org.scalatest._
 import scala.reflect.runtime.universe._
 
 class TestOneBoolValue extends SpecExtensions {
-  def `Check single property type via reflection: Boolean`() =
+  def `Test property field type: Boolean`() =
     checkType(
       typeOf[Boolean]
     , typeOf[OneBoolValue].member("oneBool": TermName).asMethod.returnType
     )
+
+  def `Test property default value: false`() {
+    assert(OneBoolValue().oneBool === false)
+  }
 }

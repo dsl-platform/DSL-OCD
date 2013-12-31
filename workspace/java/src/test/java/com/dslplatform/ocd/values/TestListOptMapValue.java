@@ -13,13 +13,14 @@ public class TestListOptMapValue {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-//        locator = Bootstrap.init(TestListOptMapValue.class.getResourceAsStream("dsl-project.ini"));
+        System.setProperty(org.slf4j.impl.SimpleLogger.DEFAULT_LOG_LEVEL_KEY, "TRACE");
+        locator = Bootstrap.init(TestListOptMapValue.class.getResourceAsStream("dsl-project.ini"));
     }
 
     @AfterClass
     public static void tearDownClass() throws Exception {
-//        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
-//        locator = null;
+        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
+        locator = null;
     }
 
     @Before
@@ -30,8 +31,9 @@ public class TestListOptMapValue {
     public void tearDown() throws Exception {
     }
 
+    /* Testing the property field type via reflection (no instantiation) */
     @Test
-    public void testFieldType() throws NoSuchFieldException {
+    public void testPropertyFieldType() throws NoSuchFieldException {
         assertEquals(
                 new Object() {
                     @SuppressWarnings("unused")
@@ -40,8 +42,9 @@ public class TestListOptMapValue {
                 ListOptMapValue.class.getDeclaredField("listOptMap").getGenericType());
     }
 
+    /* Testing the property getter method type via reflection (no instantiation) */
     @Test
-    public void testGetterType() throws NoSuchMethodException {
+    public void testPropertyGetterType() throws NoSuchMethodException {
         assertEquals(
                 new Object() {
                     @SuppressWarnings("unused")
@@ -50,8 +53,9 @@ public class TestListOptMapValue {
                 ListOptMapValue.class.getMethod("getListOptMap").getGenericReturnType());
     }
 
+    /* Testing the property setter method type via reflection (no instantiation) */
     @Test
-    public void testSetterType() throws NoSuchMethodException {
+    public void testPropertySetterType() throws NoSuchMethodException {
         final Method method = ListOptMapValue.class.getMethod("setListOptMap", List.class);
 
         assertEquals(
@@ -66,10 +70,36 @@ public class TestListOptMapValue {
                 method.getGenericReturnType());
     }
 
+    /* Testing the default property value */
     @Test
-    public void testDefaultPropertyValue() {
+    public void testPropertyDefaultValue() {
         assertEquals(
                 new ArrayList<Map<String, String>>(0),
                 new ListOptMapValue().getListOptMap());
+    }
+
+    /* Setting a non-nullable property to null should trigger an exception */
+    @Test(expected = IllegalArgumentException.class)
+    public void testSetterNullGuard() {
+        try {
+            new ListOptMapValue().setListOptMap(null);
+        }
+        catch (final IllegalArgumentException e) {
+            assertEquals(
+                    "Property \"listOptMap\" cannot be null!",
+                    e.getMessage());
+            throw e;
+        }
+    }
+
+    /* Value objects should be equal when instantiated with default properties */
+    @Test
+    public void testValueEquality() {
+      final ListOptMapValue v1 = new ListOptMapValue();
+      final ListOptMapValue v2 = new ListOptMapValue();
+
+      // hashCode equality implies object equality, thus hashCode must be equal
+      assertEquals(v1.hashCode(), v2.hashCode());
+      assertEquals(v1, v2);
     }
 }

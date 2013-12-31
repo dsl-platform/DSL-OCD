@@ -6,9 +6,13 @@ import org.scalatest._
 import scala.reflect.runtime.universe._
 
 class TestArrayOptTimestampValue extends SpecExtensions {
-  def `Check single property type via reflection: Array[Option[org.joda.time.DateTime]]`() =
+  def `Test property field type: Array[Option[org.joda.time.DateTime]]`() =
     checkType(
       typeOf[Array[Option[org.joda.time.DateTime]]]
     , typeOf[ArrayOptTimestampValue].member("arrayOptTimestamp": TermName).asMethod.returnType
     )
+
+  def `Test property default value: Array.empty[Option[org.joda.time.DateTime]]`() {
+    assert(ArrayOptTimestampValue().arrayOptTimestamp === Array.empty[Option[org.joda.time.DateTime]])
+  }
 }

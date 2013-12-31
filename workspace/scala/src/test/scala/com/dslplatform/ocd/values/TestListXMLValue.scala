@@ -6,9 +6,13 @@ import org.scalatest._
 import scala.reflect.runtime.universe._
 
 class TestListXMLValue extends SpecExtensions {
-  def `Check single property type via reflection: IndexedSeq[scala.xml.Elem]`() =
+  def `Test property field type: IndexedSeq[scala.xml.Elem]`() =
     checkType(
       typeOf[IndexedSeq[scala.xml.Elem]]
     , typeOf[ListXMLValue].member("listXML": TermName).asMethod.returnType
     )
+
+  def `Test property default value: IndexedSeq.empty[scala.xml.Elem]`() {
+    assert(ListXMLValue().listXML === IndexedSeq.empty[scala.xml.Elem])
+  }
 }

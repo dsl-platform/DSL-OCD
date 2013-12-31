@@ -6,9 +6,13 @@ import org.scalatest._
 import scala.reflect.runtime.universe._
 
 class TestListStringValue extends SpecExtensions {
-  def `Check single property type via reflection: IndexedSeq[String]`() =
+  def `Test property field type: IndexedSeq[String]`() =
     checkType(
       typeOf[IndexedSeq[String]]
     , typeOf[ListStringValue].member("listString": TermName).asMethod.returnType
     )
+
+  def `Test property default value: IndexedSeq.empty[String]`() {
+    assert(ListStringValue().listString === IndexedSeq.empty[String])
+  }
 }

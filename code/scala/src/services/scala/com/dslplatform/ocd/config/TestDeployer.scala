@@ -7,6 +7,7 @@ import scala.collection.mutable.LinkedHashMap
 
 private [config] class TestDeployer(
     logger: Logger
+  , apiActions: IApiActions
   , testSettings: ITestSettings
   ) extends ITestDeployer {
 
@@ -48,7 +49,7 @@ private [config] class TestDeployer(
   }
 
   def deployDsl(dslFiles: Map[String, String]) {
-    dslFiles foreach { case (filename, body) =>
+    dslFiles.par foreach { case (filename, body) =>
       logger.trace("Deploying DSL: " + filename)
       (root / "dsl" / (filename, '/')).write(body)
     }
@@ -57,7 +58,7 @@ private [config] class TestDeployer(
   def deployCode(codeFiles: Map[Language, Map[String, String]]) {
     codeFiles foreach { case (language, files) =>
       val languageRoot = generatedPath(language)
-      files foreach { case (filename, body) =>
+      files.par foreach { case (filename, body) =>
         logger.trace("Deploying code: " + filename)
         (languageRoot / (filename, '/')).write(body)
       }
@@ -77,7 +78,7 @@ private [config] class TestDeployer(
       logger.trace("Writing project file: " + projectIniPath)
       projectIniPath.write(projectIni.toByteArray)
 
-      files foreach { case (filename, body) =>
+      files.par foreach { case (filename, body) =>
         logger.trace("Deploying tests: " + filename)
         (languageRoot / (filename, '/')).write(body)
       }
@@ -93,6 +94,17 @@ private [config] class TestDeployer(
       deployDsl(curTest.aggregatedDslFiles)
       deployCode(curTest.codeFiles)
       deployTest(curTest.projectIni, curTest.aggregatedTestFiles)
+    }
+
+    if (tests.size > 1) {
+      val projectID = tests.head.projectIni.projectID
+      val aggregatedDslFiles = tests.flatMap(_.aggregatedDslFiles).toMap
+
+      logger.info("About to consolidate all DSLs into the database ...")
+      apiActions.upgradeDatabase(
+        projectID = projectID
+      , dslFiles = aggregatedDslFiles
+      )
     }
   }
 }

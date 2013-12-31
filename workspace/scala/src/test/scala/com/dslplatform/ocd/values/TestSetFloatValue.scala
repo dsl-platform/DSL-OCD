@@ -6,9 +6,13 @@ import org.scalatest._
 import scala.reflect.runtime.universe._
 
 class TestSetFloatValue extends SpecExtensions {
-  def `Check single property type via reflection: Set[Float]`() =
+  def `Test property field type: Set[Float]`() =
     checkType(
       typeOf[Set[Float]]
     , typeOf[SetFloatValue].member("setFloat": TermName).asMethod.returnType
     )
+
+  def `Test property default value: Set.empty[Float]`() {
+    assert(SetFloatValue().setFloat === Set.empty[Float])
+  }
 }

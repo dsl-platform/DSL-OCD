@@ -6,9 +6,13 @@ import org.scalatest._
 import scala.reflect.runtime.universe._
 
 class TestArrayFloatValue extends SpecExtensions {
-  def `Check single property type via reflection: Array[Float]`() =
+  def `Test property field type: Array[Float]`() =
     checkType(
       typeOf[Array[Float]]
     , typeOf[ArrayFloatValue].member("arrayFloat": TermName).asMethod.returnType
     )
+
+  def `Test property default value: Array.empty[Float]`() {
+    assert(ArrayFloatValue().arrayFloat === Array.empty[Float])
+  }
 }

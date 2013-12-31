@@ -3,6 +3,7 @@ package com.dslplatform.ocd.values;
 import com.dslplatform.client.Bootstrap;
 import com.dslplatform.ocd.values.OptArrayIntInValue.OptArrayIntValue;
 import com.dslplatform.patterns.ServiceLocator;
+import java.util.*;
 import org.junit.*;
 import static org.junit.Assert.*;
 
@@ -11,13 +12,14 @@ public class TestOptArrayIntValue {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-//        locator = Bootstrap.init(TestOptArrayIntValue.class.getResourceAsStream("dsl-project.ini"));
+        System.setProperty(org.slf4j.impl.SimpleLogger.DEFAULT_LOG_LEVEL_KEY, "TRACE");
+        locator = Bootstrap.init(TestOptArrayIntValue.class.getResourceAsStream("dsl-project.ini"));
     }
 
     @AfterClass
     public static void tearDownClass() throws Exception {
-//        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
-//        locator = null;
+        locator.resolve(java.util.concurrent.ExecutorService.class).shutdown();
+        locator = null;
     }
 
     @Before
@@ -28,29 +30,51 @@ public class TestOptArrayIntValue {
     public void tearDown() throws Exception {
     }
 
+    /* Testing the property field type via reflection (no instantiation) */
     @Test
-    public void testFieldType() throws NoSuchFieldException {
+    public void testPropertyFieldType() throws NoSuchFieldException {
         assertEquals(
                 int[].class,
                 OptArrayIntValue.class.getDeclaredField("optArrayInt").getGenericType());
     }
 
+    /* Testing the property getter method type via reflection (no instantiation) */
     @Test
-    public void testGetterType() throws NoSuchMethodException {
+    public void testPropertyGetterType() throws NoSuchMethodException {
         assertEquals(
                 int[].class,
                 OptArrayIntValue.class.getMethod("getOptArrayInt").getGenericReturnType());
     }
 
+    /* Testing the property setter method type via reflection (no instantiation) */
     @Test
-    public void testSetterType() throws NoSuchMethodException {
+    public void testPropertySetterType() throws NoSuchMethodException {
         assertEquals(
                 OptArrayIntValue.class,
                 OptArrayIntValue.class.getMethod("setOptArrayInt", int[].class).getReturnType());
     }
 
+    /* Testing the default property value */
     @Test
-    public void testDefaultPropertyValue() {
+    public void testPropertyDefaultValue() {
         assertNull(new OptArrayIntValue().getOptArrayInt());
+    }
+
+    /* Setting a nullable property to null should not trigger an exception */
+    @Test
+    public void testLackOfSetterNullGuard() {
+        final OptArrayIntValue value = new OptArrayIntValue();
+        assertSame(value.setOptArrayInt(null), value);
+    }
+
+    /* Value objects should be equal when instantiated with default properties */
+    @Test
+    public void testValueEquality() {
+      final OptArrayIntValue v1 = new OptArrayIntValue();
+      final OptArrayIntValue v2 = new OptArrayIntValue();
+
+      // hashCode equality implies object equality, thus hashCode must be equal
+      assertEquals(v1.hashCode(), v2.hashCode());
+      assertEquals(v1, v2);
     }
 }

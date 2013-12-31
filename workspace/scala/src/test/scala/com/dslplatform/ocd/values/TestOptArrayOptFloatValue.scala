@@ -6,9 +6,13 @@ import org.scalatest._
 import scala.reflect.runtime.universe._
 
 class TestOptArrayOptFloatValue extends SpecExtensions {
-  def `Check single property type via reflection: Option[Array[Option[Float]]]`() =
+  def `Test property field type: Option[Array[Option[Float]]]`() =
     checkType(
       typeOf[Option[Array[Option[Float]]]]
     , typeOf[OptArrayOptFloatValue].member("optArrayOptFloat": TermName).asMethod.returnType
     )
+
+  def `Test property default value: None`() {
+    assert(OptArrayOptFloatValue().optArrayOptFloat === None)
+  }
 }

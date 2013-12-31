@@ -6,9 +6,13 @@ import org.scalatest._
 import scala.reflect.runtime.universe._
 
 class TestOptSetMoneyValue extends SpecExtensions {
-  def `Check single property type via reflection: Option[Set[BigDecimal]]`() =
+  def `Test property field type: Option[Set[BigDecimal]]`() =
     checkType(
       typeOf[Option[Set[BigDecimal]]]
     , typeOf[OptSetMoneyValue].member("optSetMoney": TermName).asMethod.returnType
     )
+
+  def `Test property default value: None`() {
+    assert(OptSetMoneyValue().optSetMoney === None)
+  }
 }

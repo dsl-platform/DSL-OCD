@@ -6,9 +6,13 @@ import org.scalatest._
 import scala.reflect.runtime.universe._
 
 class TestArrayIntValue extends SpecExtensions {
-  def `Check single property type via reflection: Array[Int]`() =
+  def `Test property field type: Array[Int]`() =
     checkType(
       typeOf[Array[Int]]
     , typeOf[ArrayIntValue].member("arrayInt": TermName).asMethod.returnType
     )
+
+  def `Test property default value: Array.empty[Int]`() {
+    assert(ArrayIntValue().arrayInt === Array.empty[Int])
+  }
 }

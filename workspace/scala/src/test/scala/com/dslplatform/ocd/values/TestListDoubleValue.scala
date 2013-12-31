@@ -6,9 +6,13 @@ import org.scalatest._
 import scala.reflect.runtime.universe._
 
 class TestListDoubleValue extends SpecExtensions {
-  def `Check single property type via reflection: IndexedSeq[Double]`() =
+  def `Test property field type: IndexedSeq[Double]`() =
     checkType(
       typeOf[IndexedSeq[Double]]
     , typeOf[ListDoubleValue].member("listDouble": TermName).asMethod.returnType
     )
+
+  def `Test property default value: IndexedSeq.empty[Double]`() {
+    assert(ListDoubleValue().listDouble === IndexedSeq.empty[Double])
+  }
 }

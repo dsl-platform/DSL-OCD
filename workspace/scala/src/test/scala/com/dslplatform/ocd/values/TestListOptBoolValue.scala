@@ -6,9 +6,13 @@ import org.scalatest._
 import scala.reflect.runtime.universe._
 
 class TestListOptBoolValue extends SpecExtensions {
-  def `Check single property type via reflection: IndexedSeq[Option[Boolean]]`() =
+  def `Test property field type: IndexedSeq[Option[Boolean]]`() =
     checkType(
       typeOf[IndexedSeq[Option[Boolean]]]
     , typeOf[ListOptBoolValue].member("listOptBool": TermName).asMethod.returnType
     )
+
+  def `Test property default value: IndexedSeq.empty[Option[Boolean]]`() {
+    assert(ListOptBoolValue().listOptBool === IndexedSeq.empty[Option[Boolean]])
+  }
 }
