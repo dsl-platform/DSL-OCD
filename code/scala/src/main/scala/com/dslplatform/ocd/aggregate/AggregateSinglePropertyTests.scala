@@ -43,12 +43,19 @@ private object AggregateSinglePropertyTests {
   , `tipe.Timestamp`
   )
 
+  val constraints = Seq(
+    `constraint.Free`
+  , `constraint.Length`
+  , `constraint.Scale`
+  )
+
   val setups = for {
     box <- boxes
     tipe <- types
+    constraint <- constraints
   } yield {
     new SetupSinglePropertyInAggregateDsl {
-      val propertyType = DslTypeResolver.resolve(tipe, box)
+      val propertyType = DslTypeResolver.resolve(tipe, box, constraint)
     }
   }
 }
@@ -84,18 +91,22 @@ trait AggregateSinglePropertyTests {
         def afterClass: String = s"""
         repository = null;"""
 
-        def beforeTest: String = s"""
-        if (repository.countAll().get() > 0) {
-          repository.delete(repository.findAll().get()).get();
-
-          final long remaining = repository.countAll().get();
-          assertEquals(0L, remaining);
-        }"""
-
+        def beforeTest: String = ""
         def afterTest: String = ""
 
         val staticFields = s"""
         private static ${repositoryClass} repository;"""
+
+        val helperMethods = s"""
+    private static void cleanup()
+            throws InterruptedException, ExecutionException {
+        if (repository.countAll().get() > 0) {
+            repository.delete(repository.findAll().get()).get();
+
+            final long remaining = repository.countAll().get();
+            assertEquals(0L, remaining);
+        }
+    }"""
 
         def javaType = impl.JavaTypes.resolve(setup.propertyType)
 

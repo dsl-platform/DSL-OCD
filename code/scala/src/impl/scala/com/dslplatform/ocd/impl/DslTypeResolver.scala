@@ -8,7 +8,8 @@ import types.box._
 object DslTypeResolver {
   def resolve(
       tipe: OcdTipe
-    , box: BoxNullnessType with BoxOnenessType) =
+    , box: BoxNullnessType with BoxOnenessType
+    , constraint: OcdConstraint) =
     tipe match {
       case `tipe.Binary`    => DslBinaryBoxes.boxes(box)
       case `tipe.Bool`      => DslBoolBoxes.boxes(box)

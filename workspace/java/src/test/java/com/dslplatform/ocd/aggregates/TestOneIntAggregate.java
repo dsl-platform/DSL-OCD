@@ -4,7 +4,6 @@ import com.dslplatform.client.Bootstrap;
 import com.dslplatform.ocd.aggregates.OneIntInAggregate.OneIntAggregate;
 import com.dslplatform.ocd.aggregates.OneIntInAggregate.repositories.OneIntAggregateRepository;
 import com.dslplatform.patterns.ServiceLocator;
-import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 import org.junit.*;
 import static org.junit.Assert.*;
@@ -31,16 +30,20 @@ public class TestOneIntAggregate {
 
     @Before
     public void setUp() throws Exception {
-        if (repository.countAll().get() > 0) {
-          repository.delete(repository.findAll().get()).get();
-
-          final long remaining = repository.countAll().get();
-          assertEquals(0L, remaining);
-        }
     }
 
     @After
     public void tearDown() throws Exception {
+    }
+
+    private static void cleanup()
+            throws InterruptedException, ExecutionException {
+        if (repository.countAll().get() > 0) {
+            repository.delete(repository.findAll().get()).get();
+
+            final long remaining = repository.countAll().get();
+            assertEquals(0L, remaining);
+        }
     }
 
     /* Testing the property field type via reflection (no instantiation) */
@@ -78,16 +81,13 @@ public class TestOneIntAggregate {
     /* Testing the default property value after persist */
     @Test
     public void testPropertyDefaultValueAfterPersist()
-            throws IOException, InterruptedException, ExecutionException {
+            throws InterruptedException, ExecutionException {
+        cleanup();
         final OneIntAggregate aggregate = new OneIntAggregate();
 
         // Will not mutate the original aggregate
         final String uri = repository.insert(aggregate).get();
         final OneIntAggregate persisted = repository.find(uri).get();
-
-        assertEquals(
-                0,
-                persisted.getOneInt());
 
         assertEquals(
                 aggregate.getOneInt(),

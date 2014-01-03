@@ -18,7 +18,7 @@ import types._
 import impl.DslTypeResolver
 
 private object ValueSinglePropertyTests {
-    val boxes = Seq(
+  val boxes = Seq(
     `box.One`
   , `box.Opt`
   , `box.Array`
@@ -52,12 +52,19 @@ private object ValueSinglePropertyTests {
   , `tipe.Xml`
   )
 
+  val constraints = Seq(
+    `constraint.Free`
+  , `constraint.Length`
+  , `constraint.Scale`
+  )
+
   val setups = for {
     box <- boxes
     tipe <- types
+    constraint <- constraints
   } yield {
     new SetupSinglePropertyInValueDsl {
-      val propertyType = DslTypeResolver.resolve(tipe, box)
+      val propertyType = DslTypeResolver.resolve(tipe, box, constraint)
     }
   }
 }
@@ -82,11 +89,12 @@ trait ValueSinglePropertyTests {
           packageName + "." + setup.ModuleName + "." + setup.ValueName
         )
 
-        val afterClass: String = ""
-        val afterTest: String = ""
-        val beforeClass: String = ""
-        val beforeTest: String = ""
         val staticFields = ""
+        val beforeClass = ""
+        val afterClass = ""
+        val beforeTest = ""
+        val afterTest = ""
+        val helperMethods = ""
 
         val javaType = impl.JavaTypes.resolve(setup.propertyType)
 

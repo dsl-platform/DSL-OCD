@@ -12,7 +12,6 @@ trait TestJavaPropertyDefaultValueAfterPersist
   val imports = Seq(
     "static org.junit.Assert.*"
   , "java.util.*"
-  , "java.io.IOException"
   , "java.util.concurrent.ExecutionException"
   )
 
@@ -27,7 +26,8 @@ trait TestJavaPropertyDefaultValueAfterPersist
     /* Testing the default property value after persist */
     @Test
     public void testPropertyDefaultValueAfterPersist()
-            throws IOException, InterruptedException, ExecutionException {
+            throws InterruptedException, ExecutionException {
+        cleanup();
         final ${javaClass} aggregate = new ${javaClass}();
 
         // Will not mutate the original aggregate
@@ -40,37 +40,17 @@ trait TestJavaPropertyDefaultValueAfterPersist
 
   private def testSwitcher =
     defaultPropertyValue match {
-      case "null" => nullTester
       case x if x.last == ']' => arrayTester
       case _ => equalsTester
     }
 
-  private def nullTester =
-    s"""assertNull(persisted.${getterName}());"""
-
-  private def nonNullTester =
-    s"""assertNotNull(persisted.${getterName}());"""
-
-  private def runtimeClassTester(clazz: String) =
-    s"""assertEquals(
-                ${fieldClass}.class, // unstable type, cannot test for equality
-                persisted.${getterName}().getClass());"""
-
   private def arrayTester =
     s"""${jUnitExtender}assertArrayEquals(
-                ${defaultPropertyValue},
-                persisted.${getterName}()${precisionSwitcher});
-
-        ${jUnitExtender}assertArrayEquals(
                 aggregate.${getterName}(),
                 persisted.${getterName}()${precisionSwitcher});"""
 
   private def equalsTester =
     s"""${jUnitExtender}assertEquals(
-                ${defaultPropertyValue},
-                persisted.${getterName}()${precisionSwitcher});
-
-        ${jUnitExtender}assertEquals(
                 aggregate.${getterName}(),
                 persisted.${getterName}()${precisionSwitcher});"""
 

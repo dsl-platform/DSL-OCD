@@ -11,6 +11,7 @@ import com.dslplatform.compiler.client.api.params.PackageName
 import com.dslplatform.compiler.client.api.params.ProjectID
 import com.dslplatform.compiler.client.api.params.ProjectName
 import com.dslplatform.compiler.client.cmdline.logger.LoggerSLF4J
+import com.dslplatform.compiler.client.api.ApiProperties
 
 private object ApiActions {
   val Extensions = Map(
@@ -30,7 +31,16 @@ private [config] class ApiActions(
     val apiLogger = new LoggerSLF4J(logger)
     apiLogger.debug("Initialized DSL-CLC ApiLogger")
 
-    val apiCall = new ApiCall(apiLogger)
+    val apiProperties = new ApiProperties(apiLogger, {
+      val properties = new java.util.Properties
+      properties.put("api-url", "http://localhost:9993/")
+      properties.put("version", "0.8.13")
+      properties.put("timeout", "8000")
+      properties.put("poll-interval", "1000")
+      properties
+    })
+
+    val apiCall = new ApiCall(apiLogger, apiProperties)
     new Actions(apiLogger, apiCall)
   }
 
@@ -41,9 +51,9 @@ private [config] class ApiActions(
 
   def create(projectName: String, packageName: String) = {
     ProjectIni.fromByteArray(
-s"""username=ngsutil@dsl-platform.com
-project-id=e3429ea9-901c-4778-af52-07997cf1b97b
-api-url=https://node0.dsl-platform.com/beta_2877f7a0c144938612104d/
+s"""username=ocd@dsl-platform.com
+project-id=e7cc4459-82fd-47d7-a92c-964f4398309a
+api-url=https://compiler-actionbunny.dsl-platform.com:8443/beta_07fb37a8704594af5578b4/
 package-name=${packageName}
 """ getBytes "UTF-8")
 

@@ -4,7 +4,6 @@ import com.dslplatform.client.Bootstrap;
 import com.dslplatform.ocd.aggregates.SetOptMoneyInAggregate.SetOptMoneyAggregate;
 import com.dslplatform.ocd.aggregates.SetOptMoneyInAggregate.repositories.SetOptMoneyAggregateRepository;
 import com.dslplatform.patterns.ServiceLocator;
-import java.io.IOException;
 import java.lang.reflect.*;
 import java.util.*;
 import java.util.concurrent.ExecutionException;
@@ -33,16 +32,20 @@ public class TestSetOptMoneyAggregate {
 
     @Before
     public void setUp() throws Exception {
-        if (repository.countAll().get() > 0) {
-          repository.delete(repository.findAll().get()).get();
-
-          final long remaining = repository.countAll().get();
-          assertEquals(0L, remaining);
-        }
     }
 
     @After
     public void tearDown() throws Exception {
+    }
+
+    private static void cleanup()
+            throws InterruptedException, ExecutionException {
+        if (repository.countAll().get() > 0) {
+            repository.delete(repository.findAll().get()).get();
+
+            final long remaining = repository.countAll().get();
+            assertEquals(0L, remaining);
+        }
     }
 
     /* Testing the property field type via reflection (no instantiation) */
@@ -109,16 +112,13 @@ public class TestSetOptMoneyAggregate {
     /* Testing the default property value after persist */
     @Test
     public void testPropertyDefaultValueAfterPersist()
-            throws IOException, InterruptedException, ExecutionException {
+            throws InterruptedException, ExecutionException {
+        cleanup();
         final SetOptMoneyAggregate aggregate = new SetOptMoneyAggregate();
 
         // Will not mutate the original aggregate
         final String uri = repository.insert(aggregate).get();
         final SetOptMoneyAggregate persisted = repository.find(uri).get();
-
-        assertEquals(
-                new HashSet<java.math.BigDecimal>(0),
-                persisted.getSetOptMoney());
 
         assertEquals(
                 aggregate.getSetOptMoney(),

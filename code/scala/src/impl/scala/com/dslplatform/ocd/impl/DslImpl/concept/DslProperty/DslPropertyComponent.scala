@@ -28,3 +28,6 @@ case object Indexed
 
 case object Unique
     extends { val body = "Unique" } with DslPropertyComponent
+
+case object Sequence
+    extends { val body = "Sequence" } with DslPropertyComponent

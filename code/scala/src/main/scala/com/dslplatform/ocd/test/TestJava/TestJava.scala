@@ -55,6 +55,7 @@ trait TestJavaTemplate
   def afterClass: String
   def beforeTest: String
   def afterTest: String
+	def helperMethods: String
 
   def testComponents: Seq[TestComponentJava]
   def testComponentsString =
@@ -102,6 +103,9 @@ ${beforeTest}
     public void tearDown() throws Exception {
 ${afterTest}
     }
+
+${helperMethods}
+
 ${testComponentsString}
 }
 """)

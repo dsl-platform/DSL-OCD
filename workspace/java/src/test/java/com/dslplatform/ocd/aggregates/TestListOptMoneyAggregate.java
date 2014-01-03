@@ -4,7 +4,6 @@ import com.dslplatform.client.Bootstrap;
 import com.dslplatform.ocd.aggregates.ListOptMoneyInAggregate.ListOptMoneyAggregate;
 import com.dslplatform.ocd.aggregates.ListOptMoneyInAggregate.repositories.ListOptMoneyAggregateRepository;
 import com.dslplatform.patterns.ServiceLocator;
-import java.io.IOException;
 import java.lang.reflect.*;
 import java.util.*;
 import java.util.concurrent.ExecutionException;
@@ -33,16 +32,20 @@ public class TestListOptMoneyAggregate {
 
     @Before
     public void setUp() throws Exception {
-        if (repository.countAll().get() > 0) {
-          repository.delete(repository.findAll().get()).get();
-
-          final long remaining = repository.countAll().get();
-          assertEquals(0L, remaining);
-        }
     }
 
     @After
     public void tearDown() throws Exception {
+    }
+
+    private static void cleanup()
+            throws InterruptedException, ExecutionException {
+        if (repository.countAll().get() > 0) {
+            repository.delete(repository.findAll().get()).get();
+
+            final long remaining = repository.countAll().get();
+            assertEquals(0L, remaining);
+        }
     }
 
     /* Testing the property field type via reflection (no instantiation) */
@@ -109,16 +112,13 @@ public class TestListOptMoneyAggregate {
     /* Testing the default property value after persist */
     @Test
     public void testPropertyDefaultValueAfterPersist()
-            throws IOException, InterruptedException, ExecutionException {
+            throws InterruptedException, ExecutionException {
+        cleanup();
         final ListOptMoneyAggregate aggregate = new ListOptMoneyAggregate();
 
         // Will not mutate the original aggregate
         final String uri = repository.insert(aggregate).get();
         final ListOptMoneyAggregate persisted = repository.find(uri).get();
-
-        assertEquals(
-                new ArrayList<java.math.BigDecimal>(0),
-                persisted.getListOptMoney());
 
         assertEquals(
                 aggregate.getListOptMoney(),
