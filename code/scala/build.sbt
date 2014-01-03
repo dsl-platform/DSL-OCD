@@ -21,12 +21,12 @@ unmanagedSourceDirectories in Test := (scalaSource in Test).value :: Nil
 // ### DEPENDENCIES ### //
 
 libraryDependencies ++= Seq(
-  "com.dslplatform" % "dsl-compiler-client-cmdline" % "0.8.10"
+  "com.dslplatform" % "dsl-compiler-client-cmdline" % "0.8.13"
 , "hr.element.etb" %% "etb-util" % "0.2.20"
 , "ch.qos.logback" % "logback-classic" % "1.0.13" % "compile->default"
 , "hr.ngs" %% "ngs-core" % "0.3.19"
 , "junit" % "junit" % "4.11" % "test"
-, "org.scalatest" %% "scalatest" % "2.0.RC1" % "test"
+, "org.scalatest" %% "scalatest" % "2.0" % "test"
 )
 
 // ### RESOLVERS ### //

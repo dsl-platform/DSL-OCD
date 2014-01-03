@@ -4,7 +4,6 @@ import com.dslplatform.client.Bootstrap;
 import com.dslplatform.ocd.aggregates.ArrayUUIDInAggregate.ArrayUUIDAggregate;
 import com.dslplatform.ocd.aggregates.ArrayUUIDInAggregate.repositories.ArrayUUIDAggregateRepository;
 import com.dslplatform.patterns.ServiceLocator;
-import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.ExecutionException;
 import org.junit.*;
@@ -32,16 +31,20 @@ public class TestArrayUUIDAggregate {
 
     @Before
     public void setUp() throws Exception {
-        if (repository.countAll().get() > 0) {
-          repository.delete(repository.findAll().get()).get();
-
-          final long remaining = repository.countAll().get();
-          assertEquals(0L, remaining);
-        }
     }
 
     @After
     public void tearDown() throws Exception {
+    }
+
+    private static void cleanup()
+            throws InterruptedException, ExecutionException {
+        if (repository.countAll().get() > 0) {
+            repository.delete(repository.findAll().get()).get();
+
+            final long remaining = repository.countAll().get();
+            assertEquals(0L, remaining);
+        }
     }
 
     /* Testing the property field type via reflection (no instantiation) */
@@ -93,16 +96,13 @@ public class TestArrayUUIDAggregate {
     /* Testing the default property value after persist */
     @Test
     public void testPropertyDefaultValueAfterPersist()
-            throws IOException, InterruptedException, ExecutionException {
+            throws InterruptedException, ExecutionException {
+        cleanup();
         final ArrayUUIDAggregate aggregate = new ArrayUUIDAggregate();
 
         // Will not mutate the original aggregate
         final String uri = repository.insert(aggregate).get();
         final ArrayUUIDAggregate persisted = repository.find(uri).get();
-
-        assertArrayEquals(
-                new java.util.UUID[0],
-                persisted.getArrayUUID());
 
         assertArrayEquals(
                 aggregate.getArrayUUID(),

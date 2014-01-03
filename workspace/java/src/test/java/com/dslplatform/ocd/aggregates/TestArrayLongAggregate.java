@@ -4,7 +4,6 @@ import com.dslplatform.client.Bootstrap;
 import com.dslplatform.ocd.aggregates.ArrayLongInAggregate.ArrayLongAggregate;
 import com.dslplatform.ocd.aggregates.ArrayLongInAggregate.repositories.ArrayLongAggregateRepository;
 import com.dslplatform.patterns.ServiceLocator;
-import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.ExecutionException;
 import org.junit.*;
@@ -32,16 +31,20 @@ public class TestArrayLongAggregate {
 
     @Before
     public void setUp() throws Exception {
-        if (repository.countAll().get() > 0) {
-          repository.delete(repository.findAll().get()).get();
-
-          final long remaining = repository.countAll().get();
-          assertEquals(0L, remaining);
-        }
     }
 
     @After
     public void tearDown() throws Exception {
+    }
+
+    private static void cleanup()
+            throws InterruptedException, ExecutionException {
+        if (repository.countAll().get() > 0) {
+            repository.delete(repository.findAll().get()).get();
+
+            final long remaining = repository.countAll().get();
+            assertEquals(0L, remaining);
+        }
     }
 
     /* Testing the property field type via reflection (no instantiation) */
@@ -93,16 +96,13 @@ public class TestArrayLongAggregate {
     /* Testing the default property value after persist */
     @Test
     public void testPropertyDefaultValueAfterPersist()
-            throws IOException, InterruptedException, ExecutionException {
+            throws InterruptedException, ExecutionException {
+        cleanup();
         final ArrayLongAggregate aggregate = new ArrayLongAggregate();
 
         // Will not mutate the original aggregate
         final String uri = repository.insert(aggregate).get();
         final ArrayLongAggregate persisted = repository.find(uri).get();
-
-        assertArrayEquals(
-                new long[0],
-                persisted.getArrayLong());
 
         assertArrayEquals(
                 aggregate.getArrayLong(),

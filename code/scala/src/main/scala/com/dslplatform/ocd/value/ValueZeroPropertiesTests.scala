@@ -38,11 +38,12 @@ trait ValueZeroPropertiesTests {
           packageName + "." + setup.ModuleName + "." + setup.ValueName
         )
 
-        val afterClass: String = ""
-        val afterTest: String = ""
-        val beforeClass: String = ""
-        val beforeTest: String = ""
-        val staticFields = ""
+				val staticFields = ""
+				val beforeClass = ""
+				val afterClass = ""
+				val beforeTest = ""
+				val afterTest = ""
+				val helperMethods = ""
 
         val testComponents = Seq(
           new TestJavaValueEquality {

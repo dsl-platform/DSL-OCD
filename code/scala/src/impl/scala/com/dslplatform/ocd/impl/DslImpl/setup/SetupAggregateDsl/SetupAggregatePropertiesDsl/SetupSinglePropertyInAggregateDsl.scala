@@ -18,6 +18,7 @@ trait SetupSinglePropertyInAggregateDsl
 
   def primaryKey = propertyName
   def property: DslPropertyStub = propertyType -> propertyName
+
   def aggregateProperties = Seq(property)
 
   def setupDesc = "SetupSinglePropertyInAggregateDsl: " + PropertyName

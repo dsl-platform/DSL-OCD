@@ -1,4 +1,0 @@
-package com.dslplatform.ocd.values.ZeroPropertiesInValue
-
-sealed trait ZeroPropertiesValue
-case object ZeroPropertiesValue extends ZeroPropertiesValue

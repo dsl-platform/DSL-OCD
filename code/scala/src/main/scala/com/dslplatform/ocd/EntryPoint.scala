@@ -13,7 +13,8 @@ class EntryPoint(
     val testDeployer: ITestDeployer)
     extends ValueZeroPropertiesTests
     with ValueSinglePropertyTests
-    with AggregateSinglePropertyTests  {
+    with AggregateSinglePropertyTests
+    with AggregateSinglePropertyWithSurrogateTests {
 
   def simpleTest() {
     val valueTests =
@@ -23,7 +24,8 @@ class EntryPoint(
     )
 
     val aggregateTests = testGenerator.generateTests(
-      aggregateSinglePropertyTests
+      aggregateSinglePropertyTests ++
+      aggregateSinglePropertyWithSurrogateTests
     )
 
     testDeployer.deployTests(Seq(
