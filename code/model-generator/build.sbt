@@ -1,4 +1,4 @@
-val NGSNexus            = "NGS Nexus"     at "http://ngs.hr/nexus/content/groups/public/"
+val NGSNexus            = "NGS Nexus"             at "http://ngs.hr/nexus/content/groups/public/"
 val NGSPrivateReleases  = "NGS Private Releases"  at "http://ngs.hr/nexus/content/repositories/releases-private/"
 val NGSPrivateSnapshots = "NGS Private Snapshots" at "http://ngs.hr/nexus/content/repositories/snapshots-private/"
 
@@ -6,27 +6,19 @@ val NGSPrivateSnapshots = "NGS Private Snapshots" at "http://ngs.hr/nexus/conten
 
 organization := "com.dslplatform"
 
-name := "DSL-OCD"
+name := "DSL-OCD-Model-Generator"
 
 version := "0.0.0-SNAPSHOT"
 
-unmanagedSourceDirectories in Compile :=
-  Seq("types", "impl", "test", "interfaces", "services").map {
-    baseDirectory.value / "src" / _ / "scala"
-  } :+ (scalaSource in Compile).value
+unmanagedSourceDirectories in Compile := (scalaSource in Compile).value :: Nil
 
-unmanagedSourceDirectories in Test := (scalaSource in Test).value :: Nil
+unmanagedSourceDirectories in Test := Nil
 
 
 // ### DEPENDENCIES ### //
 
 libraryDependencies ++= Seq(
-  "com.dslplatform" % "dsl-compiler-client-cmdline" % "0.8.13"
-, "hr.element.etb" %% "etb-util" % "0.2.20"
-, "ch.qos.logback" % "logback-classic" % "1.0.13" % "compile->default"
-, "hr.ngs" %% "ngs-core" % "0.3.19"
-, "junit" % "junit" % "4.11" % "test"
-, "org.scalatest" %% "scalatest" % "2.0" % "test"
+  "com.github.scala-incubator.io" %% "scala-io-file" % "0.4.2"
 )
 
 // ### RESOLVERS ### //
@@ -39,7 +31,10 @@ publishTo := Some(
   if (version.value endsWith "SNAPSHOT") NGSPrivateSnapshots else NGSPrivateReleases
 )
 
-credentials += Credentials(Path.userHome / ".config" / "DSL-OCD" / "nexus.config")
+credentials in ThisBuild ++= {
+  val creds = Path.userHome / ".config" / "DSL-OCD" / "nexus.config"
+  if (creds.exists) Some(Credentials(creds)) else None
+}.toSeq
 
 publishArtifact in (Compile, packageDoc) := false
 
@@ -87,7 +82,5 @@ net.virtualvoid.sbt.graph.Plugin.graphSettings
 // ### ECLIPSE ### //
 
 EclipseKeys.executionEnvironment := Some(EclipseExecutionEnvironment.JavaSE16)
-
-EclipseKeys.createSrc := EclipseCreateSrc.Default + EclipseCreateSrc.Resource
 
 EclipseKeys.eclipseOutput := Some(".target")
