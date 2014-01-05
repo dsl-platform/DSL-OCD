@@ -9,6 +9,7 @@ trait `type.Long`
   def typeAliases = Set(
     "BIGINT"
   , "BigInt"
+  , "Bigint"
   , "LONG"
   , "bigint"
   , "long"

@@ -68,6 +68,25 @@ case object `dsl.List<BigInt?>?` extends `DslLong` with `box.NullableListOfNulla
 case object `dsl.Set<BigInt>?` extends `DslLong` with `box.NullableSetOfOne`
 case object `dsl.Set<BigInt?>?` extends `DslLong` with `box.NullableSetOfNullable`
 
+case object `dsl.Bigint` extends `DslLong` with `box.One`
+case object `dsl.Array<Bigint>` extends `DslLong` with `box.OneArrayOfOne`
+case object `dsl.Bigint[]` extends `DslLong` with `box.OneBracketsOfOne`
+case object `dsl.Array<Bigint?>` extends `DslLong` with `box.OneArrayOfNullable`
+case object `dsl.Bigint?[]` extends `DslLong` with `box.OneBracketsOfNullable`
+case object `dsl.List<Bigint>` extends `DslLong` with `box.OneListOfOne`
+case object `dsl.List<Bigint?>` extends `DslLong` with `box.OneListOfNullable`
+case object `dsl.Set<Bigint>` extends `DslLong` with `box.OneSetOfOne`
+case object `dsl.Set<Bigint?>` extends `DslLong` with `box.OneSetOfNullable`
+case object `dsl.Bigint?` extends `DslLong` with `box.Nullable`
+case object `dsl.Array<Bigint>?` extends `DslLong` with `box.NullableArrayOfOne`
+case object `dsl.Bigint[]?` extends `DslLong` with `box.NullableBracketsOfOne`
+case object `dsl.Array<Bigint?>?` extends `DslLong` with `box.NullableArrayOfNullable`
+case object `dsl.Bigint?[]?` extends `DslLong` with `box.NullableBracketsOfNullable`
+case object `dsl.List<Bigint>?` extends `DslLong` with `box.NullableListOfOne`
+case object `dsl.List<Bigint?>?` extends `DslLong` with `box.NullableListOfNullable`
+case object `dsl.Set<Bigint>?` extends `DslLong` with `box.NullableSetOfOne`
+case object `dsl.Set<Bigint?>?` extends `DslLong` with `box.NullableSetOfNullable`
+
 case object `dsl.LONG` extends `DslLong` with `box.One`
 case object `dsl.ARRAY<LONG>` extends `DslLong` with `box.OneArrayOfOne`
 case object `dsl.LONG[]` extends `DslLong` with `box.OneBracketsOfOne`

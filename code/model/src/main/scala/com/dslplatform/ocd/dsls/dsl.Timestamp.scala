@@ -68,6 +68,25 @@ case object `dsl.List<DateTime?>?` extends `DslTimestamp` with `box.NullableList
 case object `dsl.Set<DateTime>?` extends `DslTimestamp` with `box.NullableSetOfOne`
 case object `dsl.Set<DateTime?>?` extends `DslTimestamp` with `box.NullableSetOfNullable`
 
+case object `dsl.Datetime` extends `DslTimestamp` with `box.One`
+case object `dsl.Array<Datetime>` extends `DslTimestamp` with `box.OneArrayOfOne`
+case object `dsl.Datetime[]` extends `DslTimestamp` with `box.OneBracketsOfOne`
+case object `dsl.Array<Datetime?>` extends `DslTimestamp` with `box.OneArrayOfNullable`
+case object `dsl.Datetime?[]` extends `DslTimestamp` with `box.OneBracketsOfNullable`
+case object `dsl.List<Datetime>` extends `DslTimestamp` with `box.OneListOfOne`
+case object `dsl.List<Datetime?>` extends `DslTimestamp` with `box.OneListOfNullable`
+case object `dsl.Set<Datetime>` extends `DslTimestamp` with `box.OneSetOfOne`
+case object `dsl.Set<Datetime?>` extends `DslTimestamp` with `box.OneSetOfNullable`
+case object `dsl.Datetime?` extends `DslTimestamp` with `box.Nullable`
+case object `dsl.Array<Datetime>?` extends `DslTimestamp` with `box.NullableArrayOfOne`
+case object `dsl.Datetime[]?` extends `DslTimestamp` with `box.NullableBracketsOfOne`
+case object `dsl.Array<Datetime?>?` extends `DslTimestamp` with `box.NullableArrayOfNullable`
+case object `dsl.Datetime?[]?` extends `DslTimestamp` with `box.NullableBracketsOfNullable`
+case object `dsl.List<Datetime>?` extends `DslTimestamp` with `box.NullableListOfOne`
+case object `dsl.List<Datetime?>?` extends `DslTimestamp` with `box.NullableListOfNullable`
+case object `dsl.Set<Datetime>?` extends `DslTimestamp` with `box.NullableSetOfOne`
+case object `dsl.Set<Datetime?>?` extends `DslTimestamp` with `box.NullableSetOfNullable`
+
 case object `dsl.TIMESTAMP` extends `DslTimestamp` with `box.One`
 case object `dsl.ARRAY<TIMESTAMP>` extends `DslTimestamp` with `box.OneArrayOfOne`
 case object `dsl.TIMESTAMP[]` extends `DslTimestamp` with `box.OneBracketsOfOne`

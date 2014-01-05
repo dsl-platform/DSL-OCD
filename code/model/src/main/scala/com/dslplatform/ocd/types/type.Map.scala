@@ -1,21 +1,18 @@
 package com.dslplatform.ocd
 package types
 
-trait `type.Key-Value`
+trait `type.Map`
     extends OcdType {
 
-  def typeName = "Key-Value"
+  def typeName = "Map"
 
   def typeAliases = Set(
     "DICTIONARY"
   , "Dictionary"
-  , "KEY-VALUE"
   , "MAP"
-  , "Map"
   , "dictionary"
-  , "key-value"
   , "map"
   )
 }
 
-case object `type.Key-Value` extends `type.Key-Value`
+case object `type.Map` extends `type.Map`

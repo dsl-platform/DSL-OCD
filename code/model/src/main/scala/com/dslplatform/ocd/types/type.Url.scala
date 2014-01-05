@@ -7,7 +7,10 @@ trait `type.Url`
   def typeName = "Url"
 
   def typeAliases = Set(
-    "URL"
+    "LINK"
+  , "Link"
+  , "URL"
+  , "link"
   , "url"
   )
 }
