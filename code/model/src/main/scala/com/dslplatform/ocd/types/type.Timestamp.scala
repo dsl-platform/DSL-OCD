@@ -9,6 +9,7 @@ trait `type.Timestamp`
   def typeAliases = Set(
     "DATETIME"
   , "DateTime"
+  , "Datetime"
   , "TIMESTAMP"
   , "datetime"
   , "timestamp"

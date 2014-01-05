@@ -61,6 +61,60 @@ object OcdDsl {
   , `dsl.list<binary?>?`
   , `dsl.set<binary>?`
   , `dsl.set<binary?>?`
+  , `dsl.Bits`
+  , `dsl.Array<Bits>`
+  , `dsl.Bits[]`
+  , `dsl.Array<Bits?>`
+  , `dsl.Bits?[]`
+  , `dsl.List<Bits>`
+  , `dsl.List<Bits?>`
+  , `dsl.Set<Bits>`
+  , `dsl.Set<Bits?>`
+  , `dsl.Bits?`
+  , `dsl.Array<Bits>?`
+  , `dsl.Bits[]?`
+  , `dsl.Array<Bits?>?`
+  , `dsl.Bits?[]?`
+  , `dsl.List<Bits>?`
+  , `dsl.List<Bits?>?`
+  , `dsl.Set<Bits>?`
+  , `dsl.Set<Bits?>?`
+  , `dsl.BITS`
+  , `dsl.ARRAY<BITS>`
+  , `dsl.BITS[]`
+  , `dsl.ARRAY<BITS?>`
+  , `dsl.BITS?[]`
+  , `dsl.LIST<BITS>`
+  , `dsl.LIST<BITS?>`
+  , `dsl.SET<BITS>`
+  , `dsl.SET<BITS?>`
+  , `dsl.BITS?`
+  , `dsl.ARRAY<BITS>?`
+  , `dsl.BITS[]?`
+  , `dsl.ARRAY<BITS?>?`
+  , `dsl.BITS?[]?`
+  , `dsl.LIST<BITS>?`
+  , `dsl.LIST<BITS?>?`
+  , `dsl.SET<BITS>?`
+  , `dsl.SET<BITS?>?`
+  , `dsl.bits`
+  , `dsl.array<bits>`
+  , `dsl.bits[]`
+  , `dsl.array<bits?>`
+  , `dsl.bits?[]`
+  , `dsl.list<bits>`
+  , `dsl.list<bits?>`
+  , `dsl.set<bits>`
+  , `dsl.set<bits?>`
+  , `dsl.bits?`
+  , `dsl.array<bits>?`
+  , `dsl.bits[]?`
+  , `dsl.array<bits?>?`
+  , `dsl.bits?[]?`
+  , `dsl.list<bits>?`
+  , `dsl.list<bits?>?`
+  , `dsl.set<bits>?`
+  , `dsl.set<bits?>?`
   , `dsl.Bool`
   , `dsl.Array<Bool>`
   , `dsl.Bool[]`
@@ -331,6 +385,60 @@ object OcdDsl {
   , `dsl.list<decimal?>?`
   , `dsl.set<decimal>?`
   , `dsl.set<decimal?>?`
+  , `dsl.Decimal(#)`
+  , `dsl.Array<Decimal(#)>`
+  , `dsl.Decimal(#)[]`
+  , `dsl.Array<Decimal(#)?>`
+  , `dsl.Decimal(#)?[]`
+  , `dsl.List<Decimal(#)>`
+  , `dsl.List<Decimal(#)?>`
+  , `dsl.Set<Decimal(#)>`
+  , `dsl.Set<Decimal(#)?>`
+  , `dsl.Decimal(#)?`
+  , `dsl.Array<Decimal(#)>?`
+  , `dsl.Decimal(#)[]?`
+  , `dsl.Array<Decimal(#)?>?`
+  , `dsl.Decimal(#)?[]?`
+  , `dsl.List<Decimal(#)>?`
+  , `dsl.List<Decimal(#)?>?`
+  , `dsl.Set<Decimal(#)>?`
+  , `dsl.Set<Decimal(#)?>?`
+  , `dsl.DECIMAL(#)`
+  , `dsl.ARRAY<DECIMAL(#)>`
+  , `dsl.DECIMAL(#)[]`
+  , `dsl.ARRAY<DECIMAL(#)?>`
+  , `dsl.DECIMAL(#)?[]`
+  , `dsl.LIST<DECIMAL(#)>`
+  , `dsl.LIST<DECIMAL(#)?>`
+  , `dsl.SET<DECIMAL(#)>`
+  , `dsl.SET<DECIMAL(#)?>`
+  , `dsl.DECIMAL(#)?`
+  , `dsl.ARRAY<DECIMAL(#)>?`
+  , `dsl.DECIMAL(#)[]?`
+  , `dsl.ARRAY<DECIMAL(#)?>?`
+  , `dsl.DECIMAL(#)?[]?`
+  , `dsl.LIST<DECIMAL(#)>?`
+  , `dsl.LIST<DECIMAL(#)?>?`
+  , `dsl.SET<DECIMAL(#)>?`
+  , `dsl.SET<DECIMAL(#)?>?`
+  , `dsl.decimal(#)`
+  , `dsl.array<decimal(#)>`
+  , `dsl.decimal(#)[]`
+  , `dsl.array<decimal(#)?>`
+  , `dsl.decimal(#)?[]`
+  , `dsl.list<decimal(#)>`
+  , `dsl.list<decimal(#)?>`
+  , `dsl.set<decimal(#)>`
+  , `dsl.set<decimal(#)?>`
+  , `dsl.decimal(#)?`
+  , `dsl.array<decimal(#)>?`
+  , `dsl.decimal(#)[]?`
+  , `dsl.array<decimal(#)?>?`
+  , `dsl.decimal(#)?[]?`
+  , `dsl.list<decimal(#)>?`
+  , `dsl.list<decimal(#)?>?`
+  , `dsl.set<decimal(#)>?`
+  , `dsl.set<decimal(#)?>?`
   , `dsl.Double`
   , `dsl.Array<Double>`
   , `dsl.Double[]`
@@ -385,6 +493,60 @@ object OcdDsl {
   , `dsl.list<double?>?`
   , `dsl.set<double>?`
   , `dsl.set<double?>?`
+  , `dsl.Email`
+  , `dsl.Array<Email>`
+  , `dsl.Email[]`
+  , `dsl.Array<Email?>`
+  , `dsl.Email?[]`
+  , `dsl.List<Email>`
+  , `dsl.List<Email?>`
+  , `dsl.Set<Email>`
+  , `dsl.Set<Email?>`
+  , `dsl.Email?`
+  , `dsl.Array<Email>?`
+  , `dsl.Email[]?`
+  , `dsl.Array<Email?>?`
+  , `dsl.Email?[]?`
+  , `dsl.List<Email>?`
+  , `dsl.List<Email?>?`
+  , `dsl.Set<Email>?`
+  , `dsl.Set<Email?>?`
+  , `dsl.EMAIL`
+  , `dsl.ARRAY<EMAIL>`
+  , `dsl.EMAIL[]`
+  , `dsl.ARRAY<EMAIL?>`
+  , `dsl.EMAIL?[]`
+  , `dsl.LIST<EMAIL>`
+  , `dsl.LIST<EMAIL?>`
+  , `dsl.SET<EMAIL>`
+  , `dsl.SET<EMAIL?>`
+  , `dsl.EMAIL?`
+  , `dsl.ARRAY<EMAIL>?`
+  , `dsl.EMAIL[]?`
+  , `dsl.ARRAY<EMAIL?>?`
+  , `dsl.EMAIL?[]?`
+  , `dsl.LIST<EMAIL>?`
+  , `dsl.LIST<EMAIL?>?`
+  , `dsl.SET<EMAIL>?`
+  , `dsl.SET<EMAIL?>?`
+  , `dsl.email`
+  , `dsl.array<email>`
+  , `dsl.email[]`
+  , `dsl.array<email?>`
+  , `dsl.email?[]`
+  , `dsl.list<email>`
+  , `dsl.list<email?>`
+  , `dsl.set<email>`
+  , `dsl.set<email?>`
+  , `dsl.email?`
+  , `dsl.array<email>?`
+  , `dsl.email[]?`
+  , `dsl.array<email?>?`
+  , `dsl.email?[]?`
+  , `dsl.list<email>?`
+  , `dsl.list<email?>?`
+  , `dsl.set<email>?`
+  , `dsl.set<email?>?`
   , `dsl.Float`
   , `dsl.Array<Float>`
   , `dsl.Float[]`
@@ -763,6 +925,24 @@ object OcdDsl {
   , `dsl.list<integer?>?`
   , `dsl.set<integer>?`
   , `dsl.set<integer?>?`
+  , `dsl.Ip`
+  , `dsl.Array<Ip>`
+  , `dsl.Ip[]`
+  , `dsl.Array<Ip?>`
+  , `dsl.Ip?[]`
+  , `dsl.List<Ip>`
+  , `dsl.List<Ip?>`
+  , `dsl.Set<Ip>`
+  , `dsl.Set<Ip?>`
+  , `dsl.Ip?`
+  , `dsl.Array<Ip>?`
+  , `dsl.Ip[]?`
+  , `dsl.Array<Ip?>?`
+  , `dsl.Ip?[]?`
+  , `dsl.List<Ip>?`
+  , `dsl.List<Ip?>?`
+  , `dsl.Set<Ip>?`
+  , `dsl.Set<Ip?>?`
   , `dsl.IP`
   , `dsl.ARRAY<IP>`
   , `dsl.IP[]`
@@ -853,168 +1033,6 @@ object OcdDsl {
   , `dsl.list<json?>?`
   , `dsl.set<json>?`
   , `dsl.set<json?>?`
-  , `dsl.Key-Value`
-  , `dsl.Array<Key-Value>`
-  , `dsl.Key-Value[]`
-  , `dsl.Array<Key-Value?>`
-  , `dsl.Key-Value?[]`
-  , `dsl.List<Key-Value>`
-  , `dsl.List<Key-Value?>`
-  , `dsl.Set<Key-Value>`
-  , `dsl.Set<Key-Value?>`
-  , `dsl.Key-Value?`
-  , `dsl.Array<Key-Value>?`
-  , `dsl.Key-Value[]?`
-  , `dsl.Array<Key-Value?>?`
-  , `dsl.Key-Value?[]?`
-  , `dsl.List<Key-Value>?`
-  , `dsl.List<Key-Value?>?`
-  , `dsl.Set<Key-Value>?`
-  , `dsl.Set<Key-Value?>?`
-  , `dsl.DICTIONARY`
-  , `dsl.ARRAY<DICTIONARY>`
-  , `dsl.DICTIONARY[]`
-  , `dsl.ARRAY<DICTIONARY?>`
-  , `dsl.DICTIONARY?[]`
-  , `dsl.LIST<DICTIONARY>`
-  , `dsl.LIST<DICTIONARY?>`
-  , `dsl.SET<DICTIONARY>`
-  , `dsl.SET<DICTIONARY?>`
-  , `dsl.DICTIONARY?`
-  , `dsl.ARRAY<DICTIONARY>?`
-  , `dsl.DICTIONARY[]?`
-  , `dsl.ARRAY<DICTIONARY?>?`
-  , `dsl.DICTIONARY?[]?`
-  , `dsl.LIST<DICTIONARY>?`
-  , `dsl.LIST<DICTIONARY?>?`
-  , `dsl.SET<DICTIONARY>?`
-  , `dsl.SET<DICTIONARY?>?`
-  , `dsl.Dictionary`
-  , `dsl.Array<Dictionary>`
-  , `dsl.Dictionary[]`
-  , `dsl.Array<Dictionary?>`
-  , `dsl.Dictionary?[]`
-  , `dsl.List<Dictionary>`
-  , `dsl.List<Dictionary?>`
-  , `dsl.Set<Dictionary>`
-  , `dsl.Set<Dictionary?>`
-  , `dsl.Dictionary?`
-  , `dsl.Array<Dictionary>?`
-  , `dsl.Dictionary[]?`
-  , `dsl.Array<Dictionary?>?`
-  , `dsl.Dictionary?[]?`
-  , `dsl.List<Dictionary>?`
-  , `dsl.List<Dictionary?>?`
-  , `dsl.Set<Dictionary>?`
-  , `dsl.Set<Dictionary?>?`
-  , `dsl.KEY-VALUE`
-  , `dsl.ARRAY<KEY-VALUE>`
-  , `dsl.KEY-VALUE[]`
-  , `dsl.ARRAY<KEY-VALUE?>`
-  , `dsl.KEY-VALUE?[]`
-  , `dsl.LIST<KEY-VALUE>`
-  , `dsl.LIST<KEY-VALUE?>`
-  , `dsl.SET<KEY-VALUE>`
-  , `dsl.SET<KEY-VALUE?>`
-  , `dsl.KEY-VALUE?`
-  , `dsl.ARRAY<KEY-VALUE>?`
-  , `dsl.KEY-VALUE[]?`
-  , `dsl.ARRAY<KEY-VALUE?>?`
-  , `dsl.KEY-VALUE?[]?`
-  , `dsl.LIST<KEY-VALUE>?`
-  , `dsl.LIST<KEY-VALUE?>?`
-  , `dsl.SET<KEY-VALUE>?`
-  , `dsl.SET<KEY-VALUE?>?`
-  , `dsl.MAP`
-  , `dsl.ARRAY<MAP>`
-  , `dsl.MAP[]`
-  , `dsl.ARRAY<MAP?>`
-  , `dsl.MAP?[]`
-  , `dsl.LIST<MAP>`
-  , `dsl.LIST<MAP?>`
-  , `dsl.SET<MAP>`
-  , `dsl.SET<MAP?>`
-  , `dsl.MAP?`
-  , `dsl.ARRAY<MAP>?`
-  , `dsl.MAP[]?`
-  , `dsl.ARRAY<MAP?>?`
-  , `dsl.MAP?[]?`
-  , `dsl.LIST<MAP>?`
-  , `dsl.LIST<MAP?>?`
-  , `dsl.SET<MAP>?`
-  , `dsl.SET<MAP?>?`
-  , `dsl.Map`
-  , `dsl.Array<Map>`
-  , `dsl.Map[]`
-  , `dsl.Array<Map?>`
-  , `dsl.Map?[]`
-  , `dsl.List<Map>`
-  , `dsl.List<Map?>`
-  , `dsl.Set<Map>`
-  , `dsl.Set<Map?>`
-  , `dsl.Map?`
-  , `dsl.Array<Map>?`
-  , `dsl.Map[]?`
-  , `dsl.Array<Map?>?`
-  , `dsl.Map?[]?`
-  , `dsl.List<Map>?`
-  , `dsl.List<Map?>?`
-  , `dsl.Set<Map>?`
-  , `dsl.Set<Map?>?`
-  , `dsl.dictionary`
-  , `dsl.array<dictionary>`
-  , `dsl.dictionary[]`
-  , `dsl.array<dictionary?>`
-  , `dsl.dictionary?[]`
-  , `dsl.list<dictionary>`
-  , `dsl.list<dictionary?>`
-  , `dsl.set<dictionary>`
-  , `dsl.set<dictionary?>`
-  , `dsl.dictionary?`
-  , `dsl.array<dictionary>?`
-  , `dsl.dictionary[]?`
-  , `dsl.array<dictionary?>?`
-  , `dsl.dictionary?[]?`
-  , `dsl.list<dictionary>?`
-  , `dsl.list<dictionary?>?`
-  , `dsl.set<dictionary>?`
-  , `dsl.set<dictionary?>?`
-  , `dsl.key-value`
-  , `dsl.array<key-value>`
-  , `dsl.key-value[]`
-  , `dsl.array<key-value?>`
-  , `dsl.key-value?[]`
-  , `dsl.list<key-value>`
-  , `dsl.list<key-value?>`
-  , `dsl.set<key-value>`
-  , `dsl.set<key-value?>`
-  , `dsl.key-value?`
-  , `dsl.array<key-value>?`
-  , `dsl.key-value[]?`
-  , `dsl.array<key-value?>?`
-  , `dsl.key-value?[]?`
-  , `dsl.list<key-value>?`
-  , `dsl.list<key-value?>?`
-  , `dsl.set<key-value>?`
-  , `dsl.set<key-value?>?`
-  , `dsl.map`
-  , `dsl.array<map>`
-  , `dsl.map[]`
-  , `dsl.array<map?>`
-  , `dsl.map?[]`
-  , `dsl.list<map>`
-  , `dsl.list<map?>`
-  , `dsl.set<map>`
-  , `dsl.set<map?>`
-  , `dsl.map?`
-  , `dsl.array<map>?`
-  , `dsl.map[]?`
-  , `dsl.array<map?>?`
-  , `dsl.map?[]?`
-  , `dsl.list<map>?`
-  , `dsl.list<map?>?`
-  , `dsl.set<map>?`
-  , `dsl.set<map?>?`
   , `dsl.Location`
   , `dsl.Array<Location>`
   , `dsl.Location[]`
@@ -1123,6 +1141,24 @@ object OcdDsl {
   , `dsl.List<BigInt?>?`
   , `dsl.Set<BigInt>?`
   , `dsl.Set<BigInt?>?`
+  , `dsl.Bigint`
+  , `dsl.Array<Bigint>`
+  , `dsl.Bigint[]`
+  , `dsl.Array<Bigint?>`
+  , `dsl.Bigint?[]`
+  , `dsl.List<Bigint>`
+  , `dsl.List<Bigint?>`
+  , `dsl.Set<Bigint>`
+  , `dsl.Set<Bigint?>`
+  , `dsl.Bigint?`
+  , `dsl.Array<Bigint>?`
+  , `dsl.Bigint[]?`
+  , `dsl.Array<Bigint?>?`
+  , `dsl.Bigint?[]?`
+  , `dsl.List<Bigint>?`
+  , `dsl.List<Bigint?>?`
+  , `dsl.Set<Bigint>?`
+  , `dsl.Set<Bigint?>?`
   , `dsl.LONG`
   , `dsl.ARRAY<LONG>`
   , `dsl.LONG[]`
@@ -1177,6 +1213,114 @@ object OcdDsl {
   , `dsl.list<long?>?`
   , `dsl.set<long>?`
   , `dsl.set<long?>?`
+  , `dsl.Map`
+  , `dsl.Array<Map>`
+  , `dsl.Map[]`
+  , `dsl.Array<Map?>`
+  , `dsl.Map?[]`
+  , `dsl.List<Map>`
+  , `dsl.List<Map?>`
+  , `dsl.Set<Map>`
+  , `dsl.Set<Map?>`
+  , `dsl.Map?`
+  , `dsl.Array<Map>?`
+  , `dsl.Map[]?`
+  , `dsl.Array<Map?>?`
+  , `dsl.Map?[]?`
+  , `dsl.List<Map>?`
+  , `dsl.List<Map?>?`
+  , `dsl.Set<Map>?`
+  , `dsl.Set<Map?>?`
+  , `dsl.DICTIONARY`
+  , `dsl.ARRAY<DICTIONARY>`
+  , `dsl.DICTIONARY[]`
+  , `dsl.ARRAY<DICTIONARY?>`
+  , `dsl.DICTIONARY?[]`
+  , `dsl.LIST<DICTIONARY>`
+  , `dsl.LIST<DICTIONARY?>`
+  , `dsl.SET<DICTIONARY>`
+  , `dsl.SET<DICTIONARY?>`
+  , `dsl.DICTIONARY?`
+  , `dsl.ARRAY<DICTIONARY>?`
+  , `dsl.DICTIONARY[]?`
+  , `dsl.ARRAY<DICTIONARY?>?`
+  , `dsl.DICTIONARY?[]?`
+  , `dsl.LIST<DICTIONARY>?`
+  , `dsl.LIST<DICTIONARY?>?`
+  , `dsl.SET<DICTIONARY>?`
+  , `dsl.SET<DICTIONARY?>?`
+  , `dsl.Dictionary`
+  , `dsl.Array<Dictionary>`
+  , `dsl.Dictionary[]`
+  , `dsl.Array<Dictionary?>`
+  , `dsl.Dictionary?[]`
+  , `dsl.List<Dictionary>`
+  , `dsl.List<Dictionary?>`
+  , `dsl.Set<Dictionary>`
+  , `dsl.Set<Dictionary?>`
+  , `dsl.Dictionary?`
+  , `dsl.Array<Dictionary>?`
+  , `dsl.Dictionary[]?`
+  , `dsl.Array<Dictionary?>?`
+  , `dsl.Dictionary?[]?`
+  , `dsl.List<Dictionary>?`
+  , `dsl.List<Dictionary?>?`
+  , `dsl.Set<Dictionary>?`
+  , `dsl.Set<Dictionary?>?`
+  , `dsl.MAP`
+  , `dsl.ARRAY<MAP>`
+  , `dsl.MAP[]`
+  , `dsl.ARRAY<MAP?>`
+  , `dsl.MAP?[]`
+  , `dsl.LIST<MAP>`
+  , `dsl.LIST<MAP?>`
+  , `dsl.SET<MAP>`
+  , `dsl.SET<MAP?>`
+  , `dsl.MAP?`
+  , `dsl.ARRAY<MAP>?`
+  , `dsl.MAP[]?`
+  , `dsl.ARRAY<MAP?>?`
+  , `dsl.MAP?[]?`
+  , `dsl.LIST<MAP>?`
+  , `dsl.LIST<MAP?>?`
+  , `dsl.SET<MAP>?`
+  , `dsl.SET<MAP?>?`
+  , `dsl.dictionary`
+  , `dsl.array<dictionary>`
+  , `dsl.dictionary[]`
+  , `dsl.array<dictionary?>`
+  , `dsl.dictionary?[]`
+  , `dsl.list<dictionary>`
+  , `dsl.list<dictionary?>`
+  , `dsl.set<dictionary>`
+  , `dsl.set<dictionary?>`
+  , `dsl.dictionary?`
+  , `dsl.array<dictionary>?`
+  , `dsl.dictionary[]?`
+  , `dsl.array<dictionary?>?`
+  , `dsl.dictionary?[]?`
+  , `dsl.list<dictionary>?`
+  , `dsl.list<dictionary?>?`
+  , `dsl.set<dictionary>?`
+  , `dsl.set<dictionary?>?`
+  , `dsl.map`
+  , `dsl.array<map>`
+  , `dsl.map[]`
+  , `dsl.array<map?>`
+  , `dsl.map?[]`
+  , `dsl.list<map>`
+  , `dsl.list<map?>`
+  , `dsl.set<map>`
+  , `dsl.set<map?>`
+  , `dsl.map?`
+  , `dsl.array<map>?`
+  , `dsl.map[]?`
+  , `dsl.array<map?>?`
+  , `dsl.map?[]?`
+  , `dsl.list<map>?`
+  , `dsl.list<map?>?`
+  , `dsl.set<map>?`
+  , `dsl.set<map?>?`
   , `dsl.Money`
   , `dsl.Array<Money>`
   , `dsl.Money[]`
@@ -1285,6 +1429,60 @@ object OcdDsl {
   , `dsl.list<native?>?`
   , `dsl.set<native>?`
   , `dsl.set<native?>?`
+  , `dsl.Phone`
+  , `dsl.Array<Phone>`
+  , `dsl.Phone[]`
+  , `dsl.Array<Phone?>`
+  , `dsl.Phone?[]`
+  , `dsl.List<Phone>`
+  , `dsl.List<Phone?>`
+  , `dsl.Set<Phone>`
+  , `dsl.Set<Phone?>`
+  , `dsl.Phone?`
+  , `dsl.Array<Phone>?`
+  , `dsl.Phone[]?`
+  , `dsl.Array<Phone?>?`
+  , `dsl.Phone?[]?`
+  , `dsl.List<Phone>?`
+  , `dsl.List<Phone?>?`
+  , `dsl.Set<Phone>?`
+  , `dsl.Set<Phone?>?`
+  , `dsl.PHONE`
+  , `dsl.ARRAY<PHONE>`
+  , `dsl.PHONE[]`
+  , `dsl.ARRAY<PHONE?>`
+  , `dsl.PHONE?[]`
+  , `dsl.LIST<PHONE>`
+  , `dsl.LIST<PHONE?>`
+  , `dsl.SET<PHONE>`
+  , `dsl.SET<PHONE?>`
+  , `dsl.PHONE?`
+  , `dsl.ARRAY<PHONE>?`
+  , `dsl.PHONE[]?`
+  , `dsl.ARRAY<PHONE?>?`
+  , `dsl.PHONE?[]?`
+  , `dsl.LIST<PHONE>?`
+  , `dsl.LIST<PHONE?>?`
+  , `dsl.SET<PHONE>?`
+  , `dsl.SET<PHONE?>?`
+  , `dsl.phone`
+  , `dsl.array<phone>`
+  , `dsl.phone[]`
+  , `dsl.array<phone?>`
+  , `dsl.phone?[]`
+  , `dsl.list<phone>`
+  , `dsl.list<phone?>`
+  , `dsl.set<phone>`
+  , `dsl.set<phone?>`
+  , `dsl.phone?`
+  , `dsl.array<phone>?`
+  , `dsl.phone[]?`
+  , `dsl.array<phone?>?`
+  , `dsl.phone?[]?`
+  , `dsl.list<phone>?`
+  , `dsl.list<phone?>?`
+  , `dsl.set<phone>?`
+  , `dsl.set<phone?>?`
   , `dsl.Point`
   , `dsl.Array<Point>`
   , `dsl.Point[]`
@@ -1537,6 +1735,60 @@ object OcdDsl {
   , `dsl.list<secret?>?`
   , `dsl.set<secret>?`
   , `dsl.set<secret?>?`
+  , `dsl.Stream`
+  , `dsl.Array<Stream>`
+  , `dsl.Stream[]`
+  , `dsl.Array<Stream?>`
+  , `dsl.Stream?[]`
+  , `dsl.List<Stream>`
+  , `dsl.List<Stream?>`
+  , `dsl.Set<Stream>`
+  , `dsl.Set<Stream?>`
+  , `dsl.Stream?`
+  , `dsl.Array<Stream>?`
+  , `dsl.Stream[]?`
+  , `dsl.Array<Stream?>?`
+  , `dsl.Stream?[]?`
+  , `dsl.List<Stream>?`
+  , `dsl.List<Stream?>?`
+  , `dsl.Set<Stream>?`
+  , `dsl.Set<Stream?>?`
+  , `dsl.STREAM`
+  , `dsl.ARRAY<STREAM>`
+  , `dsl.STREAM[]`
+  , `dsl.ARRAY<STREAM?>`
+  , `dsl.STREAM?[]`
+  , `dsl.LIST<STREAM>`
+  , `dsl.LIST<STREAM?>`
+  , `dsl.SET<STREAM>`
+  , `dsl.SET<STREAM?>`
+  , `dsl.STREAM?`
+  , `dsl.ARRAY<STREAM>?`
+  , `dsl.STREAM[]?`
+  , `dsl.ARRAY<STREAM?>?`
+  , `dsl.STREAM?[]?`
+  , `dsl.LIST<STREAM>?`
+  , `dsl.LIST<STREAM?>?`
+  , `dsl.SET<STREAM>?`
+  , `dsl.SET<STREAM?>?`
+  , `dsl.stream`
+  , `dsl.array<stream>`
+  , `dsl.stream[]`
+  , `dsl.array<stream?>`
+  , `dsl.stream?[]`
+  , `dsl.list<stream>`
+  , `dsl.list<stream?>`
+  , `dsl.set<stream>`
+  , `dsl.set<stream?>`
+  , `dsl.stream?`
+  , `dsl.array<stream>?`
+  , `dsl.stream[]?`
+  , `dsl.array<stream?>?`
+  , `dsl.stream?[]?`
+  , `dsl.list<stream>?`
+  , `dsl.list<stream?>?`
+  , `dsl.set<stream>?`
+  , `dsl.set<stream?>?`
   , `dsl.String`
   , `dsl.Array<String>`
   , `dsl.String[]`
@@ -1573,42 +1825,6 @@ object OcdDsl {
   , `dsl.LIST<STRING?>?`
   , `dsl.SET<STRING>?`
   , `dsl.SET<STRING?>?`
-  , `dsl.TEXT`
-  , `dsl.ARRAY<TEXT>`
-  , `dsl.TEXT[]`
-  , `dsl.ARRAY<TEXT?>`
-  , `dsl.TEXT?[]`
-  , `dsl.LIST<TEXT>`
-  , `dsl.LIST<TEXT?>`
-  , `dsl.SET<TEXT>`
-  , `dsl.SET<TEXT?>`
-  , `dsl.TEXT?`
-  , `dsl.ARRAY<TEXT>?`
-  , `dsl.TEXT[]?`
-  , `dsl.ARRAY<TEXT?>?`
-  , `dsl.TEXT?[]?`
-  , `dsl.LIST<TEXT>?`
-  , `dsl.LIST<TEXT?>?`
-  , `dsl.SET<TEXT>?`
-  , `dsl.SET<TEXT?>?`
-  , `dsl.Text`
-  , `dsl.Array<Text>`
-  , `dsl.Text[]`
-  , `dsl.Array<Text?>`
-  , `dsl.Text?[]`
-  , `dsl.List<Text>`
-  , `dsl.List<Text?>`
-  , `dsl.Set<Text>`
-  , `dsl.Set<Text?>`
-  , `dsl.Text?`
-  , `dsl.Array<Text>?`
-  , `dsl.Text[]?`
-  , `dsl.Array<Text?>?`
-  , `dsl.Text?[]?`
-  , `dsl.List<Text>?`
-  , `dsl.List<Text?>?`
-  , `dsl.Set<Text>?`
-  , `dsl.Set<Text?>?`
   , `dsl.string`
   , `dsl.array<string>`
   , `dsl.string[]`
@@ -1627,6 +1843,96 @@ object OcdDsl {
   , `dsl.list<string?>?`
   , `dsl.set<string>?`
   , `dsl.set<string?>?`
+  , `dsl.String(#)`
+  , `dsl.Array<String(#)>`
+  , `dsl.String(#)[]`
+  , `dsl.Array<String(#)?>`
+  , `dsl.String(#)?[]`
+  , `dsl.List<String(#)>`
+  , `dsl.List<String(#)?>`
+  , `dsl.Set<String(#)>`
+  , `dsl.Set<String(#)?>`
+  , `dsl.String(#)?`
+  , `dsl.Array<String(#)>?`
+  , `dsl.String(#)[]?`
+  , `dsl.Array<String(#)?>?`
+  , `dsl.String(#)?[]?`
+  , `dsl.List<String(#)>?`
+  , `dsl.List<String(#)?>?`
+  , `dsl.Set<String(#)>?`
+  , `dsl.Set<String(#)?>?`
+  , `dsl.STRING(#)`
+  , `dsl.ARRAY<STRING(#)>`
+  , `dsl.STRING(#)[]`
+  , `dsl.ARRAY<STRING(#)?>`
+  , `dsl.STRING(#)?[]`
+  , `dsl.LIST<STRING(#)>`
+  , `dsl.LIST<STRING(#)?>`
+  , `dsl.SET<STRING(#)>`
+  , `dsl.SET<STRING(#)?>`
+  , `dsl.STRING(#)?`
+  , `dsl.ARRAY<STRING(#)>?`
+  , `dsl.STRING(#)[]?`
+  , `dsl.ARRAY<STRING(#)?>?`
+  , `dsl.STRING(#)?[]?`
+  , `dsl.LIST<STRING(#)>?`
+  , `dsl.LIST<STRING(#)?>?`
+  , `dsl.SET<STRING(#)>?`
+  , `dsl.SET<STRING(#)?>?`
+  , `dsl.string(#)`
+  , `dsl.array<string(#)>`
+  , `dsl.string(#)[]`
+  , `dsl.array<string(#)?>`
+  , `dsl.string(#)?[]`
+  , `dsl.list<string(#)>`
+  , `dsl.list<string(#)?>`
+  , `dsl.set<string(#)>`
+  , `dsl.set<string(#)?>`
+  , `dsl.string(#)?`
+  , `dsl.array<string(#)>?`
+  , `dsl.string(#)[]?`
+  , `dsl.array<string(#)?>?`
+  , `dsl.string(#)?[]?`
+  , `dsl.list<string(#)>?`
+  , `dsl.list<string(#)?>?`
+  , `dsl.set<string(#)>?`
+  , `dsl.set<string(#)?>?`
+  , `dsl.Text`
+  , `dsl.Array<Text>`
+  , `dsl.Text[]`
+  , `dsl.Array<Text?>`
+  , `dsl.Text?[]`
+  , `dsl.List<Text>`
+  , `dsl.List<Text?>`
+  , `dsl.Set<Text>`
+  , `dsl.Set<Text?>`
+  , `dsl.Text?`
+  , `dsl.Array<Text>?`
+  , `dsl.Text[]?`
+  , `dsl.Array<Text?>?`
+  , `dsl.Text?[]?`
+  , `dsl.List<Text>?`
+  , `dsl.List<Text?>?`
+  , `dsl.Set<Text>?`
+  , `dsl.Set<Text?>?`
+  , `dsl.TEXT`
+  , `dsl.ARRAY<TEXT>`
+  , `dsl.TEXT[]`
+  , `dsl.ARRAY<TEXT?>`
+  , `dsl.TEXT?[]`
+  , `dsl.LIST<TEXT>`
+  , `dsl.LIST<TEXT?>`
+  , `dsl.SET<TEXT>`
+  , `dsl.SET<TEXT?>`
+  , `dsl.TEXT?`
+  , `dsl.ARRAY<TEXT>?`
+  , `dsl.TEXT[]?`
+  , `dsl.ARRAY<TEXT?>?`
+  , `dsl.TEXT?[]?`
+  , `dsl.LIST<TEXT>?`
+  , `dsl.LIST<TEXT?>?`
+  , `dsl.SET<TEXT>?`
+  , `dsl.SET<TEXT?>?`
   , `dsl.text`
   , `dsl.array<text>`
   , `dsl.text[]`
@@ -1645,6 +1951,60 @@ object OcdDsl {
   , `dsl.list<text?>?`
   , `dsl.set<text>?`
   , `dsl.set<text?>?`
+  , `dsl.Time`
+  , `dsl.Array<Time>`
+  , `dsl.Time[]`
+  , `dsl.Array<Time?>`
+  , `dsl.Time?[]`
+  , `dsl.List<Time>`
+  , `dsl.List<Time?>`
+  , `dsl.Set<Time>`
+  , `dsl.Set<Time?>`
+  , `dsl.Time?`
+  , `dsl.Array<Time>?`
+  , `dsl.Time[]?`
+  , `dsl.Array<Time?>?`
+  , `dsl.Time?[]?`
+  , `dsl.List<Time>?`
+  , `dsl.List<Time?>?`
+  , `dsl.Set<Time>?`
+  , `dsl.Set<Time?>?`
+  , `dsl.TIME`
+  , `dsl.ARRAY<TIME>`
+  , `dsl.TIME[]`
+  , `dsl.ARRAY<TIME?>`
+  , `dsl.TIME?[]`
+  , `dsl.LIST<TIME>`
+  , `dsl.LIST<TIME?>`
+  , `dsl.SET<TIME>`
+  , `dsl.SET<TIME?>`
+  , `dsl.TIME?`
+  , `dsl.ARRAY<TIME>?`
+  , `dsl.TIME[]?`
+  , `dsl.ARRAY<TIME?>?`
+  , `dsl.TIME?[]?`
+  , `dsl.LIST<TIME>?`
+  , `dsl.LIST<TIME?>?`
+  , `dsl.SET<TIME>?`
+  , `dsl.SET<TIME?>?`
+  , `dsl.time`
+  , `dsl.array<time>`
+  , `dsl.time[]`
+  , `dsl.array<time?>`
+  , `dsl.time?[]`
+  , `dsl.list<time>`
+  , `dsl.list<time?>`
+  , `dsl.set<time>`
+  , `dsl.set<time?>`
+  , `dsl.time?`
+  , `dsl.array<time>?`
+  , `dsl.time[]?`
+  , `dsl.array<time?>?`
+  , `dsl.time?[]?`
+  , `dsl.list<time>?`
+  , `dsl.list<time?>?`
+  , `dsl.set<time>?`
+  , `dsl.set<time?>?`
   , `dsl.Timestamp`
   , `dsl.Array<Timestamp>`
   , `dsl.Timestamp[]`
@@ -1699,6 +2059,24 @@ object OcdDsl {
   , `dsl.List<DateTime?>?`
   , `dsl.Set<DateTime>?`
   , `dsl.Set<DateTime?>?`
+  , `dsl.Datetime`
+  , `dsl.Array<Datetime>`
+  , `dsl.Datetime[]`
+  , `dsl.Array<Datetime?>`
+  , `dsl.Datetime?[]`
+  , `dsl.List<Datetime>`
+  , `dsl.List<Datetime?>`
+  , `dsl.Set<Datetime>`
+  , `dsl.Set<Datetime?>`
+  , `dsl.Datetime?`
+  , `dsl.Array<Datetime>?`
+  , `dsl.Datetime[]?`
+  , `dsl.Array<Datetime?>?`
+  , `dsl.Datetime?[]?`
+  , `dsl.List<Datetime>?`
+  , `dsl.List<Datetime?>?`
+  , `dsl.Set<Datetime>?`
+  , `dsl.Set<Datetime?>?`
   , `dsl.TIMESTAMP`
   , `dsl.ARRAY<TIMESTAMP>`
   , `dsl.TIMESTAMP[]`
@@ -1771,6 +2149,42 @@ object OcdDsl {
   , `dsl.List<Url?>?`
   , `dsl.Set<Url>?`
   , `dsl.Set<Url?>?`
+  , `dsl.LINK`
+  , `dsl.ARRAY<LINK>`
+  , `dsl.LINK[]`
+  , `dsl.ARRAY<LINK?>`
+  , `dsl.LINK?[]`
+  , `dsl.LIST<LINK>`
+  , `dsl.LIST<LINK?>`
+  , `dsl.SET<LINK>`
+  , `dsl.SET<LINK?>`
+  , `dsl.LINK?`
+  , `dsl.ARRAY<LINK>?`
+  , `dsl.LINK[]?`
+  , `dsl.ARRAY<LINK?>?`
+  , `dsl.LINK?[]?`
+  , `dsl.LIST<LINK>?`
+  , `dsl.LIST<LINK?>?`
+  , `dsl.SET<LINK>?`
+  , `dsl.SET<LINK?>?`
+  , `dsl.Link`
+  , `dsl.Array<Link>`
+  , `dsl.Link[]`
+  , `dsl.Array<Link?>`
+  , `dsl.Link?[]`
+  , `dsl.List<Link>`
+  , `dsl.List<Link?>`
+  , `dsl.Set<Link>`
+  , `dsl.Set<Link?>`
+  , `dsl.Link?`
+  , `dsl.Array<Link>?`
+  , `dsl.Link[]?`
+  , `dsl.Array<Link?>?`
+  , `dsl.Link?[]?`
+  , `dsl.List<Link>?`
+  , `dsl.List<Link?>?`
+  , `dsl.Set<Link>?`
+  , `dsl.Set<Link?>?`
   , `dsl.URL`
   , `dsl.ARRAY<URL>`
   , `dsl.URL[]`
@@ -1789,6 +2203,24 @@ object OcdDsl {
   , `dsl.LIST<URL?>?`
   , `dsl.SET<URL>?`
   , `dsl.SET<URL?>?`
+  , `dsl.link`
+  , `dsl.array<link>`
+  , `dsl.link[]`
+  , `dsl.array<link?>`
+  , `dsl.link?[]`
+  , `dsl.list<link>`
+  , `dsl.list<link?>`
+  , `dsl.set<link>`
+  , `dsl.set<link?>`
+  , `dsl.link?`
+  , `dsl.array<link>?`
+  , `dsl.link[]?`
+  , `dsl.array<link?>?`
+  , `dsl.link?[]?`
+  , `dsl.list<link>?`
+  , `dsl.list<link?>?`
+  , `dsl.set<link>?`
+  , `dsl.set<link?>?`
   , `dsl.url`
   , `dsl.array<url>`
   , `dsl.url[]`

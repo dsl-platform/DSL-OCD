@@ -8,10 +8,7 @@ trait `type.String`
 
   def typeAliases = Set(
     "STRING"
-  , "TEXT"
-  , "Text"
   , "string"
-  , "text"
   )
 }
 

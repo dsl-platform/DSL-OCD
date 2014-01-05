@@ -9,35 +9,47 @@ object Types
   case class Type(name: String, aliases: String*) {
     def derivedAliases =
       (name +: aliases) flatMap( n =>
-        Seq(n, n.toUpperCase, n.toLowerCase)
+        Set(
+          n
+        , n.toUpperCase
+        , n.toLowerCase
+        , n.head.toUpper + n.tail.toLowerCase)
       ) sortBy(identity) filterNot(name==)
   }
 
   val types = Seq(
     Type("Binary")
+  , Type("Bits")
   , Type("Bool", "Boolean")
   , Type("Color")
   , Type("Date")
   , Type("Decimal")
+  , Type("Decimal(#)")
   , Type("Double")
+  , Type("Email")
   , Type("Float")
   , Type("Guid", "Uuid")
   , Type("Image", "Picture")
   , Type("Integer", "Int")
-  , Type("IP")
+  , Type("Ip")
   , Type("Json")
-  , Type("Key-Value", "Map", "Dictionary")
   , Type("Location")
   , Type("Long", "BigInt")
+  , Type("Map", "Dictionary")
   , Type("Money")
   , Type("Native")
+  , Type("Phone")
   , Type("Point")
   , Type("Rectangle", "Box")
   , Type("S3")
   , Type("Secret")
-  , Type("String", "Text")
+  , Type("Stream")
+  , Type("String")
+  , Type("String(#)")
+  , Type("Text")
+  , Type("Time")
   , Type("Timestamp", "DateTime")
-  , Type("Url")
+  , Type("Url", "Link")
   , Type("Xml")
   )
 
