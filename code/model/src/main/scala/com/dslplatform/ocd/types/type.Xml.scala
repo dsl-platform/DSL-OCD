@@ -4,9 +4,13 @@ package types
 trait `type.Xml`
     extends OcdType {
 
-  def typeName = "Xml"
+  type typeType = `type.Xml`
 
-  def typeAliases = Set(
+  val typeClass = classOf[`type.Xml`]
+
+  val typeName = "Xml"
+
+  override val typeAliases = Set(
     "XML"
   , "xml"
   )

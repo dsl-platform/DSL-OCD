@@ -4,9 +4,13 @@ package types
 trait `type.Map`
     extends OcdType {
 
-  def typeName = "Map"
+  type typeType = `type.Map`
 
-  def typeAliases = Set(
+  val typeClass = classOf[`type.Map`]
+
+  val typeName = "Map"
+
+  override val typeAliases = Set(
     "DICTIONARY"
   , "Dictionary"
   , "MAP"

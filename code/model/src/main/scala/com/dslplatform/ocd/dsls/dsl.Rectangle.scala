@@ -6,10 +6,7 @@ import boxes._
 
 sealed trait `DslRectangle`
     extends OcdDsl
-    with `type.Rectangle` {
-
-  def dslName = toString.substring(4)
-}
+    with `type.Rectangle`
 
 case object `dsl.Rectangle` extends `DslRectangle` with `box.One`
 case object `dsl.Array<Rectangle>` extends `DslRectangle` with `box.OneArrayOfOne`

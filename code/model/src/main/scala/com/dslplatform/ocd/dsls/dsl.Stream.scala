@@ -6,10 +6,7 @@ import boxes._
 
 sealed trait `DslStream`
     extends OcdDsl
-    with `type.Stream` {
-
-  def dslName = toString.substring(4)
-}
+    with `type.Stream`
 
 case object `dsl.Stream` extends `DslStream` with `box.One`
 case object `dsl.Array<Stream>` extends `DslStream` with `box.OneArrayOfOne`

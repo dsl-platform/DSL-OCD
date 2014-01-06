@@ -6,10 +6,7 @@ import boxes._
 
 sealed trait `DslDecimal(#)`
     extends OcdDsl
-    with `type.Decimal(#)` {
-
-  def dslName = toString.substring(4)
-}
+    with `type.Decimal(#)`
 
 case object `dsl.Decimal(#)` extends `DslDecimal(#)` with `box.One`
 case object `dsl.Array<Decimal(#)>` extends `DslDecimal(#)` with `box.OneArrayOfOne`

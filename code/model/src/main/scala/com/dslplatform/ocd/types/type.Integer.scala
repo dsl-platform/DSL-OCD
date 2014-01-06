@@ -4,9 +4,13 @@ package types
 trait `type.Integer`
     extends OcdType {
 
-  def typeName = "Integer"
+  type typeType = `type.Integer`
 
-  def typeAliases = Set(
+  val typeClass = classOf[`type.Integer`]
+
+  val typeName = "Integer"
+
+  override val typeAliases = Set(
     "INT"
   , "INTEGER"
   , "Int"

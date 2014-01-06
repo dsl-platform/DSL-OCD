@@ -4,9 +4,13 @@ package boxes
 trait `box.OneArrayOfNullable`
     extends OcdBox {
 
-  def boxName = "OneArrayOfNullable"
+  type boxType = `box.OneArrayOfNullable`
 
-  def boxAliases = Set(
+  val boxClass = classOf[`box.OneArrayOfNullable`]
+
+  val boxName = "OneArrayOfNullable"
+
+  override val boxAliases = Set(
     "OneBracketsOfNullable"
   )
 }

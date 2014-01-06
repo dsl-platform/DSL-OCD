@@ -4,9 +4,13 @@ package types
 trait `type.Decimal`
     extends OcdType {
 
-  def typeName = "Decimal"
+  type typeType = `type.Decimal`
 
-  def typeAliases = Set(
+  val typeClass = classOf[`type.Decimal`]
+
+  val typeName = "Decimal"
+
+  override val typeAliases = Set(
     "DECIMAL"
   , "decimal"
   )

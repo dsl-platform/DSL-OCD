@@ -4,9 +4,13 @@ package types
 trait `type.S3`
     extends OcdType {
 
-  def typeName = "S3"
+  type typeType = `type.S3`
 
-  def typeAliases = Set(
+  val typeClass = classOf[`type.S3`]
+
+  val typeName = "S3"
+
+  override val typeAliases = Set(
     "s3"
   )
 }

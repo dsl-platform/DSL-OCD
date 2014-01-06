@@ -8,13 +8,12 @@ object Types
 
   case class Type(name: String, aliases: String*) {
     def derivedAliases =
-      (name +: aliases) flatMap( n =>
-        Set(
-          n
-        , n.toUpperCase
-        , n.toLowerCase
-        , n.head.toUpper + n.tail.toLowerCase)
-      ) sortBy(identity) filterNot(name==)
+      (name +: aliases) flatMap( n => Set(
+        n
+      , n.toUpperCase
+      , n.toLowerCase
+      , n.head.toUpper + n.tail.toLowerCase
+      )) sortBy(identity) filterNot(name==)
   }
 
   val types = Seq(
@@ -64,12 +63,16 @@ package types
 trait `type.${t.name}`
     extends OcdType {
 
-  def typeName = "${t.name}"
+  type typeType = `type.${t.name}`
 
-  def typeAliases = Set(
+  val typeClass = classOf[`type.${t.name}`]
+
+  val typeName = "${t.name}"
+${if (t.derivedAliases.isEmpty) {""} else {s"""
+  override val typeAliases = Set(
     ${t.derivedAliases.mkString("\"", "\"\n  , \"", "\"")}
   )
-}
+"""}}}
 
 case object `type.${t.name}` extends `type.${t.name}`
 """)
@@ -80,9 +83,13 @@ s"""package com.dslplatform.ocd
 
 package types {
   trait OcdType {
-    def typeName: String
+    type typeType <: OcdType
 
-    def typeAliases: Set[String]
+    val typeClass: Class[typeType]
+
+    val typeName: String
+
+    val typeAliases = Set.empty[String]
   }
 
   object OcdType {

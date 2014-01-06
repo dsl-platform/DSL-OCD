@@ -4,9 +4,13 @@ package types
 trait `type.Guid`
     extends OcdType {
 
-  def typeName = "Guid"
+  type typeType = `type.Guid`
 
-  def typeAliases = Set(
+  val typeClass = classOf[`type.Guid`]
+
+  val typeName = "Guid"
+
+  override val typeAliases = Set(
     "GUID"
   , "UUID"
   , "Uuid"

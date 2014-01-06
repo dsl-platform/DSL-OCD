@@ -4,9 +4,13 @@ package types
 trait `type.Bits`
     extends OcdType {
 
-  def typeName = "Bits"
+  type typeType = `type.Bits`
 
-  def typeAliases = Set(
+  val typeClass = classOf[`type.Bits`]
+
+  val typeName = "Bits"
+
+  override val typeAliases = Set(
     "BITS"
   , "bits"
   )

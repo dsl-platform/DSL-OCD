@@ -4,9 +4,13 @@ package types
 trait `type.Bool`
     extends OcdType {
 
-  def typeName = "Bool"
+  type typeType = `type.Bool`
 
-  def typeAliases = Set(
+  val typeClass = classOf[`type.Bool`]
+
+  val typeName = "Bool"
+
+  override val typeAliases = Set(
     "BOOL"
   , "BOOLEAN"
   , "Boolean"

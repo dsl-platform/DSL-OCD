@@ -4,9 +4,13 @@ package types
 trait `type.Secret`
     extends OcdType {
 
-  def typeName = "Secret"
+  type typeType = `type.Secret`
 
-  def typeAliases = Set(
+  val typeClass = classOf[`type.Secret`]
+
+  val typeName = "Secret"
+
+  override val typeAliases = Set(
     "SECRET"
   , "secret"
   )

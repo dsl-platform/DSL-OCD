@@ -4,9 +4,13 @@ package types
 trait `type.Point`
     extends OcdType {
 
-  def typeName = "Point"
+  type typeType = `type.Point`
 
-  def typeAliases = Set(
+  val typeClass = classOf[`type.Point`]
+
+  val typeName = "Point"
+
+  override val typeAliases = Set(
     "POINT"
   , "point"
   )

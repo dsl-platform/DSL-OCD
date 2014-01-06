@@ -41,10 +41,7 @@ import boxes._
 
 sealed trait `Dsl${t.name}`
     extends OcdDsl
-    with `type.${t.name}` {
-
-  def dslName = toString.substring(4)
-}
+    with `type.${t.name}`
 
 ${
   (for (typeName <- t.name +: t.derivedAliases) yield {
@@ -74,8 +71,11 @@ s"""case object $value extends `Dsl${t.name}` with `box.${boxName}`
 s"""package com.dslplatform.ocd
 package dsls
 
-trait OcdDsl {
-  def dslName: String
+trait OcdDsl
+    extends types.OcdType
+    with boxes.OcdBox {
+
+  val dslName = toString.substring(4) // "dsl."
 }
 
 object OcdDsl {

@@ -4,9 +4,13 @@ package types
 trait `type.Text`
     extends OcdType {
 
-  def typeName = "Text"
+  type typeType = `type.Text`
 
-  def typeAliases = Set(
+  val typeClass = classOf[`type.Text`]
+
+  val typeName = "Text"
+
+  override val typeAliases = Set(
     "TEXT"
   , "text"
   )

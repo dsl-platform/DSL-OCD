@@ -4,9 +4,13 @@ package types
 trait `type.Double`
     extends OcdType {
 
-  def typeName = "Double"
+  type typeType = `type.Double`
 
-  def typeAliases = Set(
+  val typeClass = classOf[`type.Double`]
+
+  val typeName = "Double"
+
+  override val typeAliases = Set(
     "DOUBLE"
   , "double"
   )

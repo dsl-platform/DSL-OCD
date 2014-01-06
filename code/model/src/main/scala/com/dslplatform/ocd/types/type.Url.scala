@@ -4,9 +4,13 @@ package types
 trait `type.Url`
     extends OcdType {
 
-  def typeName = "Url"
+  type typeType = `type.Url`
 
-  def typeAliases = Set(
+  val typeClass = classOf[`type.Url`]
+
+  val typeName = "Url"
+
+  override val typeAliases = Set(
     "LINK"
   , "Link"
   , "URL"

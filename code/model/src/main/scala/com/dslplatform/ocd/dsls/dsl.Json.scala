@@ -6,10 +6,7 @@ import boxes._
 
 sealed trait `DslJson`
     extends OcdDsl
-    with `type.Json` {
-
-  def dslName = toString.substring(4)
-}
+    with `type.Json`
 
 case object `dsl.Json` extends `DslJson` with `box.One`
 case object `dsl.Array<Json>` extends `DslJson` with `box.OneArrayOfOne`

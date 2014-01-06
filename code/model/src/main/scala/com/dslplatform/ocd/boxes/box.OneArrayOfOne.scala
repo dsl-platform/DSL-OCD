@@ -4,9 +4,13 @@ package boxes
 trait `box.OneArrayOfOne`
     extends OcdBox {
 
-  def boxName = "OneArrayOfOne"
+  type boxType = `box.OneArrayOfOne`
 
-  def boxAliases = Set(
+  val boxClass = classOf[`box.OneArrayOfOne`]
+
+  val boxName = "OneArrayOfOne"
+
+  override val boxAliases = Set(
     "OneBracketsOfOne"
   )
 }
