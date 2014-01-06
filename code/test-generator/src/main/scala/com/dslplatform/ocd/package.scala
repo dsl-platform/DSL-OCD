@@ -17,4 +17,9 @@ package object ocd
 
   val XKCD = hr.element.etb.XKCD
   val Workspace = hr.element.etb.Workspace
+
+  implicit class RichString(val value: String) extends AnyVal {
+    def fciu = value.head.toUpper + value.tail
+    def fcil = value.head.toLower + value.tail
+  }
 }
