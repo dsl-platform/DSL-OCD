@@ -6,10 +6,7 @@ import boxes._
 
 sealed trait `DslColor`
     extends OcdDsl
-    with `type.Color` {
-
-  def dslName = toString.substring(4)
-}
+    with `type.Color`
 
 case object `dsl.Color` extends `DslColor` with `box.One`
 case object `dsl.Array<Color>` extends `DslColor` with `box.OneArrayOfOne`

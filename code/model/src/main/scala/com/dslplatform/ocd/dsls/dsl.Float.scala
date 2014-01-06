@@ -6,10 +6,7 @@ import boxes._
 
 sealed trait `DslFloat`
     extends OcdDsl
-    with `type.Float` {
-
-  def dslName = toString.substring(4)
-}
+    with `type.Float`
 
 case object `dsl.Float` extends `DslFloat` with `box.One`
 case object `dsl.Array<Float>` extends `DslFloat` with `box.OneArrayOfOne`

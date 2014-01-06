@@ -4,9 +4,11 @@ package boxes
 trait `box.One`
     extends OcdBox {
 
-  def boxName = "One"
+  type boxType = `box.One`
 
-  def boxAliases = Set.empty
+  val boxClass = classOf[`box.One`]
+
+  val boxName = "One"
 }
 
 case object `box.One` extends `box.One`

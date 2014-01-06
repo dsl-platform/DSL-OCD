@@ -4,9 +4,11 @@ package boxes
 trait `box.Nullable`
     extends OcdBox {
 
-  def boxName = "Nullable"
+  type boxType = `box.Nullable`
 
-  def boxAliases = Set.empty
+  val boxClass = classOf[`box.Nullable`]
+
+  val boxName = "Nullable"
 }
 
 case object `box.Nullable` extends `box.Nullable`

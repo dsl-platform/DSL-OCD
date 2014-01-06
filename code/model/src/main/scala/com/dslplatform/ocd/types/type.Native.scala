@@ -4,9 +4,13 @@ package types
 trait `type.Native`
     extends OcdType {
 
-  def typeName = "Native"
+  type typeType = `type.Native`
 
-  def typeAliases = Set(
+  val typeClass = classOf[`type.Native`]
+
+  val typeName = "Native"
+
+  override val typeAliases = Set(
     "NATIVE"
   , "native"
   )

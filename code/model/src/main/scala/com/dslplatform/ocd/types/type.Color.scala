@@ -4,9 +4,13 @@ package types
 trait `type.Color`
     extends OcdType {
 
-  def typeName = "Color"
+  type typeType = `type.Color`
 
-  def typeAliases = Set(
+  val typeClass = classOf[`type.Color`]
+
+  val typeName = "Color"
+
+  override val typeAliases = Set(
     "COLOR"
   , "color"
   )

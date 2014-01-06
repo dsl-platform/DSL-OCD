@@ -6,10 +6,7 @@ import boxes._
 
 sealed trait `DslString(#)`
     extends OcdDsl
-    with `type.String(#)` {
-
-  def dslName = toString.substring(4)
-}
+    with `type.String(#)`
 
 case object `dsl.String(#)` extends `DslString(#)` with `box.One`
 case object `dsl.Array<String(#)>` extends `DslString(#)` with `box.OneArrayOfOne`

@@ -4,9 +4,13 @@ package types
 trait `type.Image`
     extends OcdType {
 
-  def typeName = "Image"
+  type typeType = `type.Image`
 
-  def typeAliases = Set(
+  val typeClass = classOf[`type.Image`]
+
+  val typeName = "Image"
+
+  override val typeAliases = Set(
     "IMAGE"
   , "PICTURE"
   , "Picture"

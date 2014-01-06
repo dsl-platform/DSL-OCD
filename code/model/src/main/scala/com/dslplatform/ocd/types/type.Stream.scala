@@ -4,9 +4,13 @@ package types
 trait `type.Stream`
     extends OcdType {
 
-  def typeName = "Stream"
+  type typeType = `type.Stream`
 
-  def typeAliases = Set(
+  val typeClass = classOf[`type.Stream`]
+
+  val typeName = "Stream"
+
+  override val typeAliases = Set(
     "STREAM"
   , "stream"
   )

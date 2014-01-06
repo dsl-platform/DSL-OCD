@@ -4,9 +4,13 @@ package types
 trait `type.Time`
     extends OcdType {
 
-  def typeName = "Time"
+  type typeType = `type.Time`
 
-  def typeAliases = Set(
+  val typeClass = classOf[`type.Time`]
+
+  val typeName = "Time"
+
+  override val typeAliases = Set(
     "TIME"
   , "time"
   )

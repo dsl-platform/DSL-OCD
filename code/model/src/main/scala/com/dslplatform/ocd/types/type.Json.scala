@@ -4,9 +4,13 @@ package types
 trait `type.Json`
     extends OcdType {
 
-  def typeName = "Json"
+  type typeType = `type.Json`
 
-  def typeAliases = Set(
+  val typeClass = classOf[`type.Json`]
+
+  val typeName = "Json"
+
+  override val typeAliases = Set(
     "JSON"
   , "json"
   )

@@ -4,9 +4,13 @@ package types
 trait `type.Money`
     extends OcdType {
 
-  def typeName = "Money"
+  type typeType = `type.Money`
 
-  def typeAliases = Set(
+  val typeClass = classOf[`type.Money`]
+
+  val typeName = "Money"
+
+  override val typeAliases = Set(
     "MONEY"
   , "money"
   )

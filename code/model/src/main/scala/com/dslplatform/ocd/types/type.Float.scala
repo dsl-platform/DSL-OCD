@@ -4,9 +4,13 @@ package types
 trait `type.Float`
     extends OcdType {
 
-  def typeName = "Float"
+  type typeType = `type.Float`
 
-  def typeAliases = Set(
+  val typeClass = classOf[`type.Float`]
+
+  val typeName = "Float"
+
+  override val typeAliases = Set(
     "FLOAT"
   , "float"
   )

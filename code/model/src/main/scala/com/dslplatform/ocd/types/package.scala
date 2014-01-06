@@ -2,9 +2,13 @@ package com.dslplatform.ocd
 
 package types {
   trait OcdType {
-    def typeName: String
+    type typeType <: OcdType
 
-    def typeAliases: Set[String]
+    val typeClass: Class[typeType]
+
+    val typeName: String
+
+    val typeAliases = Set.empty[String]
   }
 
   object OcdType {

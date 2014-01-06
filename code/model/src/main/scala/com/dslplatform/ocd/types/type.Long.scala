@@ -4,9 +4,13 @@ package types
 trait `type.Long`
     extends OcdType {
 
-  def typeName = "Long"
+  type typeType = `type.Long`
 
-  def typeAliases = Set(
+  val typeClass = classOf[`type.Long`]
+
+  val typeName = "Long"
+
+  override val typeAliases = Set(
     "BIGINT"
   , "BigInt"
   , "Bigint"

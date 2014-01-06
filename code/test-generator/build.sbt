@@ -11,7 +11,7 @@ name := "DSL-OCD-Test-Generator"
 version := "0.0.0-SNAPSHOT"
 
 unmanagedSourceDirectories in Compile :=
-  Seq("types", "interfaces", "services").map {
+  Seq("model", "interfaces", "services").map {
     baseDirectory.value / "src" / _ / "scala"
   } :+ (scalaSource in Compile).value
 

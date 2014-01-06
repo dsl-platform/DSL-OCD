@@ -4,9 +4,13 @@ package types
 trait `type.Email`
     extends OcdType {
 
-  def typeName = "Email"
+  type typeType = `type.Email`
 
-  def typeAliases = Set(
+  val typeClass = classOf[`type.Email`]
+
+  val typeName = "Email"
+
+  override val typeAliases = Set(
     "EMAIL"
   , "email"
   )

@@ -6,10 +6,7 @@ import boxes._
 
 sealed trait `DslDate`
     extends OcdDsl
-    with `type.Date` {
-
-  def dslName = toString.substring(4)
-}
+    with `type.Date`
 
 case object `dsl.Date` extends `DslDate` with `box.One`
 case object `dsl.Array<Date>` extends `DslDate` with `box.OneArrayOfOne`

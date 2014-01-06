@@ -6,10 +6,7 @@ import boxes._
 
 sealed trait `DslImage`
     extends OcdDsl
-    with `type.Image` {
-
-  def dslName = toString.substring(4)
-}
+    with `type.Image`
 
 case object `dsl.Image` extends `DslImage` with `box.One`
 case object `dsl.Array<Image>` extends `DslImage` with `box.OneArrayOfOne`

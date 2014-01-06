@@ -66,14 +66,13 @@ package boxes
 trait `box.${b.name}`
     extends OcdBox {
 
-  def boxName = "${b.name}"
-${if (b.aliases.isEmpty) {
-  """
-  def boxAliases = Set.empty
-"""
-}
-else {s"""
-  def boxAliases = Set(
+  type boxType = `box.${b.name}`
+
+  val boxClass = classOf[`box.${b.name}`]
+
+  val boxName = "${b.name}"
+${if (b.aliases.isEmpty) {""} else {s"""
+  override val boxAliases = Set(
     ${b.aliases.mkString("\"", "\"\n  , \"", "\"")}
   )
 """
@@ -88,9 +87,13 @@ s"""package com.dslplatform.ocd
 
 package boxes {
   trait OcdBox {
-    def boxName: String
+    type boxType <: OcdBox
 
-    def boxAliases: Set[String]
+    val boxClass: Class[boxType]
+
+    val boxName: String
+
+    val boxAliases = Set.empty[String]
   }
 
   object OcdBox {

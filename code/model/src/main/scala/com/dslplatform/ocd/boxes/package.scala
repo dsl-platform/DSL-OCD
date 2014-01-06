@@ -2,9 +2,13 @@ package com.dslplatform.ocd
 
 package boxes {
   trait OcdBox {
-    def boxName: String
+    type boxType <: OcdBox
 
-    def boxAliases: Set[String]
+    val boxClass: Class[boxType]
+
+    val boxName: String
+
+    val boxAliases = Set.empty[String]
   }
 
   object OcdBox {

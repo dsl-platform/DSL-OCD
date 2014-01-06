@@ -4,9 +4,13 @@ package types
 trait `type.Rectangle`
     extends OcdType {
 
-  def typeName = "Rectangle"
+  type typeType = `type.Rectangle`
 
-  def typeAliases = Set(
+  val typeClass = classOf[`type.Rectangle`]
+
+  val typeName = "Rectangle"
+
+  override val typeAliases = Set(
     "BOX"
   , "Box"
   , "RECTANGLE"
