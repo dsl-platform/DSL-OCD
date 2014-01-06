@@ -11,12 +11,11 @@ name := "DSL-OCD-Test-Generator"
 version := "0.0.0-SNAPSHOT"
 
 unmanagedSourceDirectories in Compile :=
-  Seq("model", "interfaces", "services").map {
+  Seq("interfaces", "services").map {
     baseDirectory.value / "src" / _ / "scala"
   } :+ (scalaSource in Compile).value
 
 unmanagedSourceDirectories in Test := (scalaSource in Test).value :: Nil
-
 
 // ### DEPENDENCIES ### //
 
@@ -43,7 +42,6 @@ publishTo := Some(
 credentials += Credentials(Path.userHome / ".config" / "DSL-OCD" / "nexus.config")
 
 publishArtifact in (Compile, packageDoc) := false
-
 
 // ### COMPILE SETTINGS ### //
 

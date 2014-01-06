@@ -14,7 +14,6 @@ unmanagedSourceDirectories in Compile := (scalaSource in Compile).value :: Nil
 
 unmanagedSourceDirectories in Test := Nil
 
-
 // ### DEPENDENCIES ### //
 
 libraryDependencies ++= Seq(
@@ -37,7 +36,6 @@ credentials in ThisBuild ++= {
 }.toSeq
 
 publishArtifact in (Compile, packageDoc) := false
-
 
 // ### COMPILE SETTINGS ### //
 
