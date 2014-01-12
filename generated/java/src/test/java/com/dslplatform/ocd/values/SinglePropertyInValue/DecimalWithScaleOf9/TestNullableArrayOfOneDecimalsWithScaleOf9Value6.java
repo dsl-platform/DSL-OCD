@@ -1,6 +1,7 @@
 package com.dslplatform.ocd.values.SinglePropertyInValue.DecimalWithScaleOf9;
 
 import com.dslplatform.ocd.values.SinglePropertyInValue.NullableArrayOfOneDecimalsWithScaleOf9Value6;
+import org.scalatest._;
 
 public class TestNullableArrayOfOneDecimalsWithScaleOf9Value6 {
 

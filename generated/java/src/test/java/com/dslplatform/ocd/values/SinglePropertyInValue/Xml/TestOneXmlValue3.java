@@ -1,6 +1,7 @@
 package com.dslplatform.ocd.values.SinglePropertyInValue.Xml;
 
 import com.dslplatform.ocd.values.SinglePropertyInValue.OneXmlValue3;
+import org.scalatest._;
 
 public class TestOneXmlValue3 {
 

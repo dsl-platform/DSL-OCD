@@ -3,7 +3,7 @@ package test
 
 object PathResolver {
   private val JavaPath =
-    """(?s)package ([^;]+?);.+?public class (\w+?) \{.*"""r
+    """(?s)package ([^;]+?);.+?public class (\S+?)\s.*"""r
 
   def withJavaPath(body: String) = {
     val JavaPath(packageName, className) = body
@@ -16,7 +16,7 @@ object PathResolver {
   }
 
   private val ScalaPath =
-    """(?s)package ([^;]+?).+?class (\w+?) \{.*"""r
+    """(?s)package (\S+?)\s.+?class (\S+?)\s.*"""r
 
   def withScalaPath(body: String) = {
     val ScalaPath(packageName, className) = body

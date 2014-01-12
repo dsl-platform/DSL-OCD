@@ -1,6 +1,7 @@
 package com.dslplatform.ocd.values.SinglePropertyInValue.Long;
 
 import com.dslplatform.ocd.values.SinglePropertyInValue.OneArrayOfNullableLongsValue1;
+import org.scalatest._;
 
 public class TestOneArrayOfNullableLongsValue1 {
 

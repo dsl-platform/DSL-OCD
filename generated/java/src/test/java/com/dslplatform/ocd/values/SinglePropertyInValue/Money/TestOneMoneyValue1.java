@@ -1,6 +1,7 @@
 package com.dslplatform.ocd.values.SinglePropertyInValue.Money;
 
 import com.dslplatform.ocd.values.SinglePropertyInValue.OneMoneyValue1;
+import org.scalatest._;
 
 public class TestOneMoneyValue1 {
 

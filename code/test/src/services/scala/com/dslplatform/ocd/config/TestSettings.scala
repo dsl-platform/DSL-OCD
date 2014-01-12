@@ -6,6 +6,7 @@ import com.dslplatform.compiler.client.api.params.ProjectID
 import com.dslplatform.compiler.client.cmdline.logger.LoggerSystem
 import com.dslplatform.compiler.client.api.ApiCall
 import com.dslplatform.compiler.client.api.Actions
+import com.dslplatform.compiler.client.api.ApiProperties
 
 private [config] class TestSettingsLoader(logger: Logger) {
   def load(relativePath: String) = {
@@ -38,6 +39,11 @@ private [config] class TestSettingsLoader(logger: Logger) {
         logger.debug("Test password: " + "*" * password.length)
         password getBytes "UTF-8"
       }
+
+      def apiProperties = new ApiProperties(
+        new com.dslplatform.compiler.client.cmdline.logger.LoggerSLF4J(logger)
+      , properties
+      )
 
       val workspace = {
         val workspace = properties getProperty "generated"

@@ -1,6 +1,7 @@
 package com.dslplatform.ocd.values.SinglePropertyInValue.Xml;
 
 import com.dslplatform.ocd.values.SinglePropertyInValue.OneSetOfNullableXmlsValue1;
+import org.scalatest._;
 
 public class TestOneSetOfNullableXmlsValue1 {
 

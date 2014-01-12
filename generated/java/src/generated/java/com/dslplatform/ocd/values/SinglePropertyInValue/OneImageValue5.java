@@ -9,7 +9,7 @@ public final class OneImageValue5 implements java.io.Serializable {
     }
 
     public OneImageValue5() {
-        this.oneImage = new java.awt.image.BufferedImage(0, 0,
+        this.oneImage = new java.awt.image.BufferedImage(1, 1,
                 java.awt.image.BufferedImage.TYPE_4BYTE_ABGR);
     }
 

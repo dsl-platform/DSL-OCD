@@ -1,6 +1,7 @@
 package com.dslplatform.ocd.values.SinglePropertyInValue.StringWithMaxLengthOf9;
 
 import com.dslplatform.ocd.values.SinglePropertyInValue.NullableStringWithMaxLengthOf9Value3;
+import org.scalatest._;
 
 public class TestNullableStringWithMaxLengthOf9Value3 {
 

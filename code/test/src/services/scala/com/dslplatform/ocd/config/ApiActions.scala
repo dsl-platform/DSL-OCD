@@ -17,6 +17,9 @@ import java.io.FileOutputStream
 import java.io.ObjectInputStream
 import java.io.FileInputStream
 import java.io.File
+import java.util.zip.DeflaterInputStream
+import java.util.zip.DeflaterOutputStream
+import java.util.zip.InflaterInputStream
 
 private object ApiActions {
   val Extensions = Map(
@@ -36,16 +39,7 @@ private [config] class ApiActions(
     val apiLogger = new LoggerSLF4J(logger)
     apiLogger.debug("Initialized DSL-CLC ApiLogger")
 
-    val apiProperties = new ApiProperties(apiLogger, {
-      val properties = new java.util.Properties
-      properties.put("api-url", "http://localhost:9993/")
-      properties.put("version", "0.8.13")
-      properties.put("timeout", "300000")
-      properties.put("poll-interval", "5000")
-      properties
-    })
-
-    val apiCall = new ApiCall(apiLogger, apiProperties)
+    val apiCall = new ApiCall(apiLogger, testSettings.apiProperties)
     new Actions(apiLogger, apiCall)
   }
 
@@ -78,6 +72,28 @@ package-name=${packageName}
     , Language.JAVA
     )
 
+  private def dumpObject(file: File, content: AnyRef): Unit = {
+    val oos = new ObjectOutputStream(new DeflaterOutputStream(new FileOutputStream(file)))
+    try {
+      oos.writeObject(content)
+    }
+    finally {
+      oos.close()
+    }
+  }
+
+  private def restoreObject[T](file: File): T = {
+    val ois = new ObjectInputStream(new InflaterInputStream(new FileInputStream(file)))
+    try {
+      ois.readObject().asInstanceOf[T]
+    }
+    finally {
+      ois.close()
+    }
+  }
+
+  private type CacheType = java.util.SortedMap[String,Array[Byte]]
+
   def deployDsl(
       projectID: UUID
     , packageName: String
@@ -86,18 +102,13 @@ package-name=${packageName}
 
     val langs = languages.toSeq
 
-    val cacheFile = new File(
-      "R:/cache-%08X.bin" format(
-        packageName + languages + dslFiles hashCode
-      )
-    )
+    val hash =  packageName + languages + dslFiles ##
+    val cacheName = "%08X.cache" format hash
+    val cacheFile = testSettings.workspace / "cache" / cacheName file
 
     val files =
       if (cacheFile.exists()) {
-        val ois = new ObjectInputStream(new FileInputStream(cacheFile))
-        val files = ois.readObject().asInstanceOf[scala.collection.mutable.Map[String,Array[Byte]]]
-        ois.close()
-        files
+        restoreObject[CacheType](cacheFile)
       } else {
         val update =
           actions.updateUnsafe(
@@ -108,18 +119,16 @@ package-name=${packageName}
           , langs: _*
           )
 
-        val files = update.getFileBodies.asScala
+        val files = update.getFileBodies
+        require(files.size > 0, "Could not compile sources!")
 
-        val oos = new ObjectOutputStream(new FileOutputStream(cacheFile))
-        oos.writeObject(files)
-        oos.close()
-
+        dumpObject(cacheFile, files)
         files
       }
 
     (langs map { language =>
       val ext = ApiActions.Extensions(language)
-      val langFiles = files
+      val langFiles = files.asScala
         .filter(_._1 endsWith ext)
         .mapValues(p => patch(new String(p, "UTF-8"))).toMap
 
@@ -130,13 +139,17 @@ package-name=${packageName}
   }
 
   private def patch(body: String) = {
-    body/*.replace(
+    if (body.contains("ArrayOf")) {
+      body.replace("Collection", "Array")
+    }
+    else {
+      body
+    }
+
+    /*.replace(
       """if (!(this.oneXML.equals(other.oneXML))) return false;"""
     , """if (!(this.oneXML == other.oneXML || this.oneXML != null
                 && this.oneXML.equals(other.oneXML))) return false;"""
-    ).replaceAll(
-      """this\( (.+?) = if \((.+?) == null\) (0|false|0\.0f) else (.+?)\)"""
-    , """this($1)"""
     )*/
   }
 

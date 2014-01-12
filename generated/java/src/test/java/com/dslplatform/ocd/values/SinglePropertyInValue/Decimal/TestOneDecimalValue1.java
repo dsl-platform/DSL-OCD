@@ -1,6 +1,7 @@
 package com.dslplatform.ocd.values.SinglePropertyInValue.Decimal;
 
 import com.dslplatform.ocd.values.SinglePropertyInValue.OneDecimalValue1;
+import org.scalatest._;
 
 public class TestOneDecimalValue1 {
 

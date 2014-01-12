@@ -1,6 +1,7 @@
 package com.dslplatform.ocd.values.SinglePropertyInValue.Integer;
 
 import com.dslplatform.ocd.values.SinglePropertyInValue.OneSetOfOneIntegersValue5;
+import org.scalatest._;
 
 public class TestOneSetOfOneIntegersValue5 {
 

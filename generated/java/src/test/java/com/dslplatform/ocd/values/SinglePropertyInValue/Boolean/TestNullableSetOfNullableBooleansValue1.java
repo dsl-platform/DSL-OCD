@@ -1,6 +1,7 @@
 package com.dslplatform.ocd.values.SinglePropertyInValue.Boolean;
 
 import com.dslplatform.ocd.values.SinglePropertyInValue.NullableSetOfNullableBooleansValue1;
+import org.scalatest._;
 
 public class TestNullableSetOfNullableBooleansValue1 {
 

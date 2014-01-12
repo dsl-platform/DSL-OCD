@@ -1,6 +1,7 @@
 package com.dslplatform.ocd.values.SinglePropertyInValue.Guid;
 
 import com.dslplatform.ocd.values.SinglePropertyInValue.OneArrayOfOneGuidsValue2;
+import org.scalatest._;
 
 public class TestOneArrayOfOneGuidsValue2 {
 

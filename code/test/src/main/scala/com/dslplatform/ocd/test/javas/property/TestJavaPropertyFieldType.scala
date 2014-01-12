@@ -5,7 +5,7 @@ package property
 import javas._
 
 trait TestJavaPropertyFieldType
-    extends TestJavaComponent {
+    extends test.TestComponent {
 
   def conceptName: String
   def propertyName: String

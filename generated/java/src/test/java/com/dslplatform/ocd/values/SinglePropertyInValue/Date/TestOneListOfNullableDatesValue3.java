@@ -1,6 +1,7 @@
 package com.dslplatform.ocd.values.SinglePropertyInValue.Date;
 
 import com.dslplatform.ocd.values.SinglePropertyInValue.OneListOfNullableDatesValue3;
+import org.scalatest._;
 
 public class TestOneListOfNullableDatesValue3 {
 

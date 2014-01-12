@@ -1,6 +1,7 @@
 package com.dslplatform.ocd.values.SinglePropertyInValue.Binary;
 
 import com.dslplatform.ocd.values.SinglePropertyInValue.OneListOfOneBinariesValue2;
+import org.scalatest._;
 
 public class TestOneListOfOneBinariesValue2 {
 

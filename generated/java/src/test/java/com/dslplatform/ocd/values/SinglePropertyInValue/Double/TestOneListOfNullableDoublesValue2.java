@@ -1,6 +1,7 @@
 package com.dslplatform.ocd.values.SinglePropertyInValue.Double;
 
 import com.dslplatform.ocd.values.SinglePropertyInValue.OneListOfNullableDoublesValue2;
+import org.scalatest._;
 
 public class TestOneListOfNullableDoublesValue2 {
 

@@ -1,6 +1,7 @@
 package com.dslplatform.ocd.values.SinglePropertyInValue.Text;
 
 import com.dslplatform.ocd.values.SinglePropertyInValue.OneArrayOfNullableTextsValue5;
+import org.scalatest._;
 
 public class TestOneArrayOfNullableTextsValue5 {
 

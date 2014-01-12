@@ -1,6 +1,7 @@
 package com.dslplatform.ocd.values.SinglePropertyInValue.Timestamp;
 
 import com.dslplatform.ocd.values.SinglePropertyInValue.OneSetOfOneTimestampsValue4;
+import org.scalatest._;
 
 public class TestOneSetOfOneTimestampsValue4 {
 

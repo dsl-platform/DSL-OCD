@@ -1,6 +1,7 @@
 package com.dslplatform.ocd.values.SinglePropertyInValue.Url;
 
 import com.dslplatform.ocd.values.SinglePropertyInValue.NullableArrayOfNullableUrlsValue8;
+import org.scalatest._;
 
 public class TestNullableArrayOfNullableUrlsValue8 {
 

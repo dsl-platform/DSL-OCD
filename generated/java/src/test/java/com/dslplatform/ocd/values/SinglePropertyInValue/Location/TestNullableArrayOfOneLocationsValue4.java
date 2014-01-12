@@ -1,6 +1,7 @@
 package com.dslplatform.ocd.values.SinglePropertyInValue.Location;
 
 import com.dslplatform.ocd.values.SinglePropertyInValue.NullableArrayOfOneLocationsValue4;
+import org.scalatest._;
 
 public class TestNullableArrayOfOneLocationsValue4 {
 

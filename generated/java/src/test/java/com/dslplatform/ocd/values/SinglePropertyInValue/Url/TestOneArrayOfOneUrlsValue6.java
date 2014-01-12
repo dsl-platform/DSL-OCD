@@ -1,6 +1,7 @@
 package com.dslplatform.ocd.values.SinglePropertyInValue.Url;
 
 import com.dslplatform.ocd.values.SinglePropertyInValue.OneArrayOfOneUrlsValue6;
+import org.scalatest._;
 
 public class TestOneArrayOfOneUrlsValue6 {
 

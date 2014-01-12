@@ -1,6 +1,7 @@
 package com.dslplatform.ocd.values.SinglePropertyInValue.Map;
 
 import com.dslplatform.ocd.values.SinglePropertyInValue.NullableSetOfNullableMapsValue3;
+import org.scalatest._;
 
 public class TestNullableSetOfNullableMapsValue3 {
 

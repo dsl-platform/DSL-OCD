@@ -1,6 +1,7 @@
 package com.dslplatform.ocd.values.SinglePropertyInValue.Ip;
 
 import com.dslplatform.ocd.values.SinglePropertyInValue.OneIpValue3;
+import org.scalatest._;
 
 public class TestOneIpValue3 {
 

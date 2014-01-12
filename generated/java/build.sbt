@@ -12,7 +12,8 @@ unmanagedSourceDirectories in Compile :=
   baseDirectory.value / "src" / "generated" / "java" ::
   Nil
 
-unmanagedSourceDirectories in Test := (javaSource in Test).value :: Nil
+unmanagedSourceDirectories in Test :=
+  (javaSource in Test).value :: Nil
 
 // ### DEPENDENCIES ### //
 

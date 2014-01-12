@@ -8,9 +8,7 @@ public final class OneIpValue3 implements java.io.Serializable {
         setOneIp(oneIp);
     }
 
-    public OneIpValue3() {
-        this.oneIp = java.net.InetAddress.getLoopbackAddress();
-    }
+    public OneIpValue3() {}
 
     @Override
     public int hashCode() {
