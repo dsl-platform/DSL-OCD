@@ -6,16 +6,19 @@ val NGSPrivateSnapshots = "NGS Private Snapshots" at "http://ngs.hr/nexus/conten
 
 organization := "com.dslplatform"
 
-name := "DSL-OCD-Model"
+name := "DSL-OCD-Model-Generator"
 
 version := "0.0.0-SNAPSHOT"
 
-unmanagedSourceDirectories in Compile :=
-  (scalaSource in Compile).value ::
-	baseDirectory.value / "src" / "generated" / "scala" ::
-	Nil
+unmanagedSourceDirectories in Compile := (scalaSource in Compile).value :: Nil
 
 unmanagedSourceDirectories in Test := Nil
+
+// ### DEPENDENCIES ### //
+
+libraryDependencies ++= Seq(
+  "com.github.scala-incubator.io" %% "scala-io-file" % "0.4.2"
+)
 
 // ### RESOLVERS ### //
 
@@ -33,7 +36,6 @@ credentials in ThisBuild ++= {
 }.toSeq
 
 publishArtifact in (Compile, packageDoc) := false
-
 
 // ### COMPILE SETTINGS ### //
 
