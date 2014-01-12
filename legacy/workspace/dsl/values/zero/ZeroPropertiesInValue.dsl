@@ -1,4 +1,0 @@
-module ZeroPropertiesInValue
-{
-  value ZeroPropertiesValue;
-}
