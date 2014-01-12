@@ -7,9 +7,14 @@ import types._
 import boxes._
 import dsls._
 import com.dslplatform.compiler.client.api.params.Language
+
+import com.dslplatform.ocd.javas.OcdJava
 import com.dslplatform.ocd.`test.javas`.property.TestJavaPropertyFieldType
 import com.dslplatform.ocd.`test.javas`.TestJavaTemplate
-import com.dslplatform.ocd.javas.OcdJava
+
+import com.dslplatform.ocd.scalas.OcdScala
+import com.dslplatform.ocd.`test.scalas`.property.TestScalaPropertyFieldType
+import com.dslplatform.ocd.`test.scalas`.TestScalaTemplate
 
 class SetupSinglePropertyInValueDsl(
     val propertyType: OcdDsl) {
@@ -77,7 +82,7 @@ private object ValueSinglePropertyTests {
   , `type.Money`
   , `type.Point`
 //   `type.Rectangle` // TODO: FIXME
-  , `type.S3`
+//  , `type.S3`       // TODO: Missing implementation
   , `type.String`
   , `type.String(9)`
   , `type.Text`
@@ -104,7 +109,7 @@ trait ValueSinglePropertyTests {
 
       def dslFiles = setup.dslFiles
 
-      def testTemplate =
+      def javaTests =
         new TestJavaTemplate {
           def packageName =
             test.packageName + '.' + setup.ModuleName + '.' +
@@ -115,6 +120,7 @@ trait ValueSinglePropertyTests {
           override def imports = Seq(
             test.packageName + '.' + setup.ModuleName + '.' +
               setup.ValueName
+          , "org.scalatest._"
           )
 
           val javaType = OcdJava.resolve(setup.propertyType)
@@ -128,124 +134,34 @@ trait ValueSinglePropertyTests {
           )
         }
 
+      def scalaTests =
+        new TestScalaTemplate {
+          def packageName =
+            test.packageName + '.' + setup.ModuleName + '.' +
+              setup.propertyType.typeSingleName
+
+          def testName = "Test" + setup.ValueName
+
+          override def imports = Seq(
+            test.packageName + '.' + setup.ModuleName + '.' +
+              setup.ValueName
+          )
+
+          val scalaType = OcdScala.resolve(setup.propertyType)
+
+          def tests = Seq(
+            new TestScalaPropertyFieldType {
+              def conceptName = setup.ValueName
+              def propertyName = setup.propertyName
+              def propertyType = scalaType
+            }
+          )
+        }
+
       def testFiles = Map(
-        Language.JAVA -> Map(PathResolver.withJavaPath(testTemplate.testBody))
-//      , Language.SCALA -> Map(PathResolver.withScalaPath(testTemplate.testBody))
+        Language.JAVA -> Map(PathResolver.withJavaPath(javaTests.testBody))
+      , Language.SCALA -> Map(PathResolver.withScalaPath(scalaTests.testBody))
       )
     }
   }
 }
-
-//      val javaTemplate = new TestJavaTemplate {
-//        val packageName = test.packageName
-//
-//        val testName = "Test" + setup.ValueName
-//        val testDesc = testName
-//
-//        val imports = Seq(
-//          packageName + "." + setup.ModuleName + "." + setup.ValueName
-//        )
-//
-//        val staticFields = ""
-//        val beforeClass = ""
-//        val afterClass = ""
-//        val beforeTest = ""
-//        val afterTest = ""
-//        val helperMethods = ""
-//
-//        val javaType = impl.JavaTypes.resolve(setup.propertyType)
-//
-//        val testComponents = Seq(
-//          new TestJavaPropertyFieldType {
-//            def javaClass = setup.ValueName
-//            def fieldClass = javaType.javaClass
-//            def fieldName = setup.property.name
-//          }
-//        , new TestJavaPropertyGetterType {
-//            def javaClass = setup.ValueName
-//            def fieldClass = javaType.javaClass
-//            def fieldName = setup.property.name
-//          }
-//        , new TestJavaPropertySetterType {
-//            def javaClass = setup.ValueName
-//            def fieldClass = javaType.javaClass
-//            def fieldName = setup.property.name
-//          }
-//        , new TestJavaPropertyDefaultValue {
-//            def javaClass = setup.ValueName
-//            def fieldClass = javaType.javaClass
-//            def fieldName = setup.property.name
-//            def defaultPropertyValue = javaType.defaultValue
-//          }
-//        ) ++ (javaType match {
-//          case _: tipe.TipeScalarType =>
-//            None
-//          case _ =>
-//            Some(
-//              new TestJavaPropertySetterNullGuard {
-//                def javaClass = setup.ValueName
-//                def fieldClass = javaType.javaClass
-//                def fieldName = setup.property.name
-//                def isNullable = javaType.isInstanceOf[box.BoxNullableType]
-//              }
-//            )
-//        }) ++ (javaType match {
-//          case _: tipe.TipeUnstableType =>
-//            None
-//          case _ =>
-//            Some(
-//              new TestJavaValueEquality {
-//                def javaClass = setup.ValueName
-//              }
-//            )
-//        })
-//      }
-//
-//      val scalaTemplate = new TestScalaTemplate {
-//        val packageName = test.packageName
-//
-//        val testName = "Test" + setup.ValueName
-//        val testDesc = testName
-//
-//        val imports = Seq(
-//          setup.ModuleName + "." + setup.ValueName
-//        )
-//
-//        val scalaType = impl.ScalaTypes.resolve(setup.propertyType)
-//
-//        val testComponents = Seq(
-//          new TestScalaPropertyFieldType {
-//            def scalaClass = setup.ValueName
-//            def fieldClass = scalaType.scalaClass
-//            def fieldName = setup.property.name
-//          }
-//        , new TestScalaPropertyDefaultValue {
-//            def scalaClass = setup.ValueName
-//            def fieldClass = scalaType.scalaClass
-//            def fieldName = setup.property.name
-//            def defaultPropertyValue = scalaType.defaultValue
-//          }
-//        )
-//      }
-//
-//      val javaFilePath =
-//        "java/" +
-//        javaTemplate.packageName.replace('.', '/') + "/" +
-//        javaTemplate.testName + ".java"
-//
-//      val scalaFilePath =
-//        "scala/" +
-//        scalaTemplate.packageName.replace('.', '/') + "/" +
-//        scalaTemplate.testName + ".scala"
-//
-//      def testFiles = Map(
-//        Language.JAVA -> Map(
-//          javaFilePath -> javaTemplate.testBody
-//        , "java/org/junit/AssertExtensions.java" -> TestJavaAssertExtensions.body
-//        )
-//      , Language.SCALA -> Map(
-//          scalaFilePath -> scalaTemplate.testBody
-//        , "scala/org/scalatest/SpecExtensions.scala" -> TestScalaSpecExtensions.body
-//        )
-//      )
-//    }

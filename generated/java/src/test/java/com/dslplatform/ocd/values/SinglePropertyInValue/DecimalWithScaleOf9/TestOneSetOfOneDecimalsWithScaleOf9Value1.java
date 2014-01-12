@@ -1,6 +1,7 @@
 package com.dslplatform.ocd.values.SinglePropertyInValue.DecimalWithScaleOf9;
 
 import com.dslplatform.ocd.values.SinglePropertyInValue.OneSetOfOneDecimalsWithScaleOf9Value1;
+import org.scalatest._;
 
 public class TestOneSetOfOneDecimalsWithScaleOf9Value1 {
 

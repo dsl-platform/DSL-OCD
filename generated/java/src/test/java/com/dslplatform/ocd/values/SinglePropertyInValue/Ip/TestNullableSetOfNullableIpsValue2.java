@@ -1,6 +1,7 @@
 package com.dslplatform.ocd.values.SinglePropertyInValue.Ip;
 
 import com.dslplatform.ocd.values.SinglePropertyInValue.NullableSetOfNullableIpsValue2;
+import org.scalatest._;
 
 public class TestNullableSetOfNullableIpsValue2 {
 

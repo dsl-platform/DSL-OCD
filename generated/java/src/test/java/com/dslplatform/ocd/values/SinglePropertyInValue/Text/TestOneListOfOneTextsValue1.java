@@ -1,6 +1,7 @@
 package com.dslplatform.ocd.values.SinglePropertyInValue.Text;
 
 import com.dslplatform.ocd.values.SinglePropertyInValue.OneListOfOneTextsValue1;
+import org.scalatest._;
 
 public class TestOneListOfOneTextsValue1 {
 

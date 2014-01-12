@@ -13,7 +13,7 @@ trait TestJavaTemplate {
   def afterTest: Seq[String] = Nil
   def helperMethods: Seq[String] = Nil
 
-  def tests: Seq[TestJavaComponent]
+  def tests: Seq[test.TestComponent]
 
   def testBody = {
     val sb = new StringBuilder

@@ -1,6 +1,7 @@
 package com.dslplatform.ocd.values.SinglePropertyInValue.Map;
 
 import com.dslplatform.ocd.values.SinglePropertyInValue.OneMapValue5;
+import org.scalatest._;
 
 public class TestOneMapValue5 {
 

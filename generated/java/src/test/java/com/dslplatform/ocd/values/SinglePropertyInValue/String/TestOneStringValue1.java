@@ -1,6 +1,7 @@
 package com.dslplatform.ocd.values.SinglePropertyInValue.String;
 
 import com.dslplatform.ocd.values.SinglePropertyInValue.OneStringValue1;
+import org.scalatest._;
 
 public class TestOneStringValue1 {
 

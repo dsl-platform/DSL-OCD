@@ -1,6 +1,7 @@
 package com.dslplatform.ocd.values.SinglePropertyInValue.Image;
 
 import com.dslplatform.ocd.values.SinglePropertyInValue.OneSetOfOneImagesValue4;
+import org.scalatest._;
 
 public class TestOneSetOfOneImagesValue4 {
 

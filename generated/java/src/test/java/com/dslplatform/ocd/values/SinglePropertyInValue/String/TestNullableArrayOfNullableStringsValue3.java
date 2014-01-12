@@ -1,6 +1,7 @@
 package com.dslplatform.ocd.values.SinglePropertyInValue.String;
 
 import com.dslplatform.ocd.values.SinglePropertyInValue.NullableArrayOfNullableStringsValue3;
+import org.scalatest._;
 
 public class TestNullableArrayOfNullableStringsValue3 {
 

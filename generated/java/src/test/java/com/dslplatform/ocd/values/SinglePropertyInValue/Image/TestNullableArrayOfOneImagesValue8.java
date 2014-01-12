@@ -1,6 +1,7 @@
 package com.dslplatform.ocd.values.SinglePropertyInValue.Image;
 
 import com.dslplatform.ocd.values.SinglePropertyInValue.NullableArrayOfOneImagesValue8;
+import org.scalatest._;
 
 public class TestNullableArrayOfOneImagesValue8 {
 

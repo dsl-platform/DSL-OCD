@@ -1,6 +1,7 @@
 package com.dslplatform.ocd.values.SinglePropertyInValue.Double;
 
 import com.dslplatform.ocd.values.SinglePropertyInValue.OneListOfOneDoublesValue3;
+import org.scalatest._;
 
 public class TestOneListOfOneDoublesValue3 {
 

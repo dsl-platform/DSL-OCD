@@ -1,6 +1,7 @@
 package com.dslplatform.ocd.values.SinglePropertyInValue.Timestamp;
 
 import com.dslplatform.ocd.values.SinglePropertyInValue.NullableListOfNullableTimestampsValue3;
+import org.scalatest._;
 
 public class TestNullableListOfNullableTimestampsValue3 {
 

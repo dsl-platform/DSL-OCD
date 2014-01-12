@@ -1,6 +1,7 @@
 package com.dslplatform.ocd.values.SinglePropertyInValue.Binary;
 
 import com.dslplatform.ocd.values.SinglePropertyInValue.NullableListOfNullableBinariesValue3;
+import org.scalatest._;
 
 public class TestNullableListOfNullableBinariesValue3 {
 

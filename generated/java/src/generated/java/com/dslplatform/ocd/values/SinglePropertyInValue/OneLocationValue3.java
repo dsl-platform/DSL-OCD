@@ -9,7 +9,7 @@ public final class OneLocationValue3 implements java.io.Serializable {
     }
 
     public OneLocationValue3() {
-        this.oneLocation = new java.awt.Point.Float();
+        this.oneLocation = new java.awt.geom.Point2D.Float();
     }
 
     @Override

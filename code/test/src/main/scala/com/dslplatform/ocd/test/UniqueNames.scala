@@ -1,7 +1,6 @@
 package com.dslplatform.ocd
 package test
 
-import java.util.concurrent.atomic.AtomicInteger
 import scala.collection.mutable.HashMap
 
 object UniqueNames {

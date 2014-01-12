@@ -1,6 +1,7 @@
 package com.dslplatform.ocd.values.SinglePropertyInValue.Decimal;
 
 import com.dslplatform.ocd.values.SinglePropertyInValue.OneArrayOfNullableDecimalsValue5;
+import org.scalatest._;
 
 public class TestOneArrayOfNullableDecimalsValue5 {
 

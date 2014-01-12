@@ -1,6 +1,7 @@
 package com.dslplatform.ocd.values.SinglePropertyInValue.Float;
 
 import com.dslplatform.ocd.values.SinglePropertyInValue.NullableSetOfNullableFloatsValue1;
+import org.scalatest._;
 
 public class TestNullableSetOfNullableFloatsValue1 {
 

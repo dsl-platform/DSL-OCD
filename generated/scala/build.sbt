@@ -12,12 +12,13 @@ unmanagedSourceDirectories in Compile :=
   baseDirectory.value / "src" / "generated" / "scala" ::
   Nil
 
-unmanagedSourceDirectories in Test := (scalaSource in Test).value :: Nil
+unmanagedSourceDirectories in Test :=
+  (scalaSource in Test).value :: Nil
 
 // ### DEPENDENCIES ### //
 
 libraryDependencies ++= Seq(
-  "com.dslplatform" %% "dsl-client-scala-http" % "0.0.0-SNAPSHOT"
+  "com.dslplatform" %% "dsl-client-scala-http" % "0.0.3-SNAPSHOT"
 , "ch.qos.logback" % "logback-classic" % "1.0.13" % "compile->default"
 , "org.scalatest" %% "scalatest" % "2.0" % "test"
 , "junit" % "junit" % "4.11" % "test"
@@ -31,7 +32,7 @@ externalResolvers := Resolver.withDefaultResolvers(resolvers.value, mavenCentral
 
 // ### COMPILE SETTINGS ### //
 
-crossScalaVersions := Seq("2.10.3")
+crossScalaVersions := Seq("2.10.4-RC1")
 
 scalaVersion := crossScalaVersions.value.head
 
