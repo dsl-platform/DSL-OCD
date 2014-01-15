@@ -35,17 +35,17 @@ case object `scala.Boolean?[]`
 case object `scala.List<Boolean>`
     extends ScalaBoolean with `box.OneListOfOne` {
 
-  val scalaClass = "List[Boolean]"
+  val scalaClass = "IndexedSeq[Boolean]"
 
-  val defaultValue = "List[Boolean].empty"
+  val defaultValue = "IndexedSeq[Boolean].empty"
 }
 
 case object `scala.List<Boolean?>`
     extends ScalaBoolean with `box.OneListOfNullable` {
 
-  val scalaClass = "List[Option[Boolean]]"
+  val scalaClass = "IndexedSeq[Option[Boolean]]"
 
-  val defaultValue = "List[Option[Boolean]].empty"
+  val defaultValue = "IndexedSeq[Option[Boolean]].empty"
 }
 
 case object `scala.Set<Boolean>`
@@ -91,7 +91,7 @@ case object `scala.Boolean?[]?`
 case object `scala.List<Boolean>?`
     extends ScalaBoolean with `box.NullableListOfOne` {
 
-  val scalaClass = "Option[List[Boolean]]"
+  val scalaClass = "Option[IndexedSeq[Boolean]]"
 
   val defaultValue = "None"
 }
@@ -99,7 +99,7 @@ case object `scala.List<Boolean>?`
 case object `scala.List<Boolean?>?`
     extends ScalaBoolean with `box.NullableListOfNullable` {
 
-  val scalaClass = "Option[List[Option[Boolean]]]"
+  val scalaClass = "Option[IndexedSeq[Option[Boolean]]]"
 
   val defaultValue = "None"
 }

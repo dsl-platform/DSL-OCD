@@ -39,7 +39,7 @@ publishArtifact in (Compile, packageDoc) := false
 
 // ### COMPILE SETTINGS ### //
 
-crossScalaVersions := Seq("2.10.3")
+crossScalaVersions := Seq("2.10.4-RC1")
 
 scalaVersion := crossScalaVersions.value.head
 

@@ -35,17 +35,17 @@ case object `scala.Decimal?[]`
 case object `scala.List<Decimal>`
     extends ScalaDecimal with `box.OneListOfOne` {
 
-  val scalaClass = "List[BigDecimal]"
+  val scalaClass = "IndexedSeq[BigDecimal]"
 
-  val defaultValue = "List[BigDecimal].empty"
+  val defaultValue = "IndexedSeq[BigDecimal].empty"
 }
 
 case object `scala.List<Decimal?>`
     extends ScalaDecimal with `box.OneListOfNullable` {
 
-  val scalaClass = "List[Option[BigDecimal]]"
+  val scalaClass = "IndexedSeq[Option[BigDecimal]]"
 
-  val defaultValue = "List[Option[BigDecimal]].empty"
+  val defaultValue = "IndexedSeq[Option[BigDecimal]].empty"
 }
 
 case object `scala.Set<Decimal>`
@@ -91,7 +91,7 @@ case object `scala.Decimal?[]?`
 case object `scala.List<Decimal>?`
     extends ScalaDecimal with `box.NullableListOfOne` {
 
-  val scalaClass = "Option[List[BigDecimal]]"
+  val scalaClass = "Option[IndexedSeq[BigDecimal]]"
 
   val defaultValue = "None"
 }
@@ -99,7 +99,7 @@ case object `scala.List<Decimal>?`
 case object `scala.List<Decimal?>?`
     extends ScalaDecimal with `box.NullableListOfNullable` {
 
-  val scalaClass = "Option[List[Option[BigDecimal]]]"
+  val scalaClass = "Option[IndexedSeq[Option[BigDecimal]]]"
 
   val defaultValue = "None"
 }

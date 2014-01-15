@@ -13,7 +13,7 @@ case object `scala.Rectangle`
 
   val scalaClass = "java.awt.geom.Rectangle2D"
 
-  val defaultValue = "new java.awt.Rectangle.Float"
+  val defaultValue = "new java.awt.geom.Rectangle2D.Float"
 }
 
 case object `scala.Rectangle[]`
@@ -35,17 +35,17 @@ case object `scala.Rectangle?[]`
 case object `scala.List<Rectangle>`
     extends ScalaRectangle with `box.OneListOfOne` {
 
-  val scalaClass = "List[java.awt.geom.Rectangle2D]"
+  val scalaClass = "IndexedSeq[java.awt.geom.Rectangle2D]"
 
-  val defaultValue = "List[java.awt.geom.Rectangle2D].empty"
+  val defaultValue = "IndexedSeq[java.awt.geom.Rectangle2D].empty"
 }
 
 case object `scala.List<Rectangle?>`
     extends ScalaRectangle with `box.OneListOfNullable` {
 
-  val scalaClass = "List[Option[java.awt.geom.Rectangle2D]]"
+  val scalaClass = "IndexedSeq[Option[java.awt.geom.Rectangle2D]]"
 
-  val defaultValue = "List[Option[java.awt.geom.Rectangle2D]].empty"
+  val defaultValue = "IndexedSeq[Option[java.awt.geom.Rectangle2D]].empty"
 }
 
 case object `scala.Set<Rectangle>`
@@ -91,7 +91,7 @@ case object `scala.Rectangle?[]?`
 case object `scala.List<Rectangle>?`
     extends ScalaRectangle with `box.NullableListOfOne` {
 
-  val scalaClass = "Option[List[java.awt.geom.Rectangle2D]]"
+  val scalaClass = "Option[IndexedSeq[java.awt.geom.Rectangle2D]]"
 
   val defaultValue = "None"
 }
@@ -99,7 +99,7 @@ case object `scala.List<Rectangle>?`
 case object `scala.List<Rectangle?>?`
     extends ScalaRectangle with `box.NullableListOfNullable` {
 
-  val scalaClass = "Option[List[Option[java.awt.geom.Rectangle2D]]]"
+  val scalaClass = "Option[IndexedSeq[Option[java.awt.geom.Rectangle2D]]]"
 
   val defaultValue = "None"
 }

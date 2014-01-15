@@ -35,17 +35,17 @@ case object `scala.Ip?[]`
 case object `scala.List<Ip>`
     extends ScalaIp with `box.OneListOfOne` {
 
-  val scalaClass = "List[java.net.InetAddress]"
+  val scalaClass = "IndexedSeq[java.net.InetAddress]"
 
-  val defaultValue = "List[java.net.InetAddress].empty"
+  val defaultValue = "IndexedSeq[java.net.InetAddress].empty"
 }
 
 case object `scala.List<Ip?>`
     extends ScalaIp with `box.OneListOfNullable` {
 
-  val scalaClass = "List[Option[java.net.InetAddress]]"
+  val scalaClass = "IndexedSeq[Option[java.net.InetAddress]]"
 
-  val defaultValue = "List[Option[java.net.InetAddress]].empty"
+  val defaultValue = "IndexedSeq[Option[java.net.InetAddress]].empty"
 }
 
 case object `scala.Set<Ip>`
@@ -91,7 +91,7 @@ case object `scala.Ip?[]?`
 case object `scala.List<Ip>?`
     extends ScalaIp with `box.NullableListOfOne` {
 
-  val scalaClass = "Option[List[java.net.InetAddress]]"
+  val scalaClass = "Option[IndexedSeq[java.net.InetAddress]]"
 
   val defaultValue = "None"
 }
@@ -99,7 +99,7 @@ case object `scala.List<Ip>?`
 case object `scala.List<Ip?>?`
     extends ScalaIp with `box.NullableListOfNullable` {
 
-  val scalaClass = "Option[List[Option[java.net.InetAddress]]]"
+  val scalaClass = "Option[IndexedSeq[Option[java.net.InetAddress]]]"
 
   val defaultValue = "None"
 }

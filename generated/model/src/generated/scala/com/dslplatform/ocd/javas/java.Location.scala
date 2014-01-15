@@ -13,7 +13,7 @@ case object `java.Location`
 
   val javaClass = "java.awt.geom.Point2D"
 
-  val defaultValue = "new java.awt.Point.Float()"
+  val defaultValue = "new java.awt.geom.Point2D.Float"
 
   val isPrimitive = false
   val hasGenerics = false

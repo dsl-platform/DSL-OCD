@@ -35,17 +35,17 @@ case object `scala.Long?[]`
 case object `scala.List<Long>`
     extends ScalaLong with `box.OneListOfOne` {
 
-  val scalaClass = "List[Long]"
+  val scalaClass = "IndexedSeq[Long]"
 
-  val defaultValue = "List[Long].empty"
+  val defaultValue = "IndexedSeq[Long].empty"
 }
 
 case object `scala.List<Long?>`
     extends ScalaLong with `box.OneListOfNullable` {
 
-  val scalaClass = "List[Option[Long]]"
+  val scalaClass = "IndexedSeq[Option[Long]]"
 
-  val defaultValue = "List[Option[Long]].empty"
+  val defaultValue = "IndexedSeq[Option[Long]].empty"
 }
 
 case object `scala.Set<Long>`
@@ -91,7 +91,7 @@ case object `scala.Long?[]?`
 case object `scala.List<Long>?`
     extends ScalaLong with `box.NullableListOfOne` {
 
-  val scalaClass = "Option[List[Long]]"
+  val scalaClass = "Option[IndexedSeq[Long]]"
 
   val defaultValue = "None"
 }
@@ -99,7 +99,7 @@ case object `scala.List<Long>?`
 case object `scala.List<Long?>?`
     extends ScalaLong with `box.NullableListOfNullable` {
 
-  val scalaClass = "Option[List[Option[Long]]]"
+  val scalaClass = "Option[IndexedSeq[Option[Long]]]"
 
   val defaultValue = "None"
 }

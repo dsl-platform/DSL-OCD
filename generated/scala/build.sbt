@@ -9,6 +9,7 @@ name := "DSL-OCD-Test-Scala"
 version := "0.0.0-SNAPSHOT"
 
 unmanagedSourceDirectories in Compile :=
+  (scalaSource in Compile).value ::
   baseDirectory.value / "src" / "generated" / "scala" ::
   Nil
 
@@ -20,8 +21,8 @@ unmanagedSourceDirectories in Test :=
 libraryDependencies ++= Seq(
   "com.dslplatform" %% "dsl-client-scala-http" % "0.0.3-SNAPSHOT"
 , "ch.qos.logback" % "logback-classic" % "1.0.13" % "compile->default"
-, "org.scalatest" %% "scalatest" % "2.0" % "test"
-, "junit" % "junit" % "4.11" % "test"
+, "org.scalatest" %% "scalatest" % "2.0"
+, "junit" % "junit" % "4.11"
 )
 
 // ### RESOLVERS ### //

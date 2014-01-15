@@ -18,9 +18,11 @@ trait Generator {
     val root = gene / name
 
     if (root.isDirectory) {
+      println(s"Cleaning directory: $root ...")
       root.*** foreach(_.delete(true))
     }
     else {
+      println(s"Creating directory: $root ...")
       root.createDirectory(true, true)
     }
 

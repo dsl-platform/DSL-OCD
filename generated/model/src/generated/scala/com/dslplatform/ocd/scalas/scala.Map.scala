@@ -35,17 +35,17 @@ case object `scala.Map?[]`
 case object `scala.List<Map>`
     extends ScalaMap with `box.OneListOfOne` {
 
-  val scalaClass = "List[Map[String, String]]"
+  val scalaClass = "IndexedSeq[Map[String, String]]"
 
-  val defaultValue = "List[Map[String, String]].empty"
+  val defaultValue = "IndexedSeq[Map[String, String]].empty"
 }
 
 case object `scala.List<Map?>`
     extends ScalaMap with `box.OneListOfNullable` {
 
-  val scalaClass = "List[Option[Map[String, String]]]"
+  val scalaClass = "IndexedSeq[Option[Map[String, String]]]"
 
-  val defaultValue = "List[Option[Map[String, String]]].empty"
+  val defaultValue = "IndexedSeq[Option[Map[String, String]]].empty"
 }
 
 case object `scala.Set<Map>`
@@ -91,7 +91,7 @@ case object `scala.Map?[]?`
 case object `scala.List<Map>?`
     extends ScalaMap with `box.NullableListOfOne` {
 
-  val scalaClass = "Option[List[Map[String, String]]]"
+  val scalaClass = "Option[IndexedSeq[Map[String, String]]]"
 
   val defaultValue = "None"
 }
@@ -99,7 +99,7 @@ case object `scala.List<Map>?`
 case object `scala.List<Map?>?`
     extends ScalaMap with `box.NullableListOfNullable` {
 
-  val scalaClass = "Option[List[Option[Map[String, String]]]]"
+  val scalaClass = "Option[IndexedSeq[Option[Map[String, String]]]]"
 
   val defaultValue = "None"
 }

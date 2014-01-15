@@ -35,17 +35,17 @@ case object `scala.Double?[]`
 case object `scala.List<Double>`
     extends ScalaDouble with `box.OneListOfOne` {
 
-  val scalaClass = "List[Double]"
+  val scalaClass = "IndexedSeq[Double]"
 
-  val defaultValue = "List[Double].empty"
+  val defaultValue = "IndexedSeq[Double].empty"
 }
 
 case object `scala.List<Double?>`
     extends ScalaDouble with `box.OneListOfNullable` {
 
-  val scalaClass = "List[Option[Double]]"
+  val scalaClass = "IndexedSeq[Option[Double]]"
 
-  val defaultValue = "List[Option[Double]].empty"
+  val defaultValue = "IndexedSeq[Option[Double]].empty"
 }
 
 case object `scala.Set<Double>`
@@ -91,7 +91,7 @@ case object `scala.Double?[]?`
 case object `scala.List<Double>?`
     extends ScalaDouble with `box.NullableListOfOne` {
 
-  val scalaClass = "Option[List[Double]]"
+  val scalaClass = "Option[IndexedSeq[Double]]"
 
   val defaultValue = "None"
 }
@@ -99,7 +99,7 @@ case object `scala.List<Double>?`
 case object `scala.List<Double?>?`
     extends ScalaDouble with `box.NullableListOfNullable` {
 
-  val scalaClass = "Option[List[Option[Double]]]"
+  val scalaClass = "Option[IndexedSeq[Option[Double]]]"
 
   val defaultValue = "None"
 }

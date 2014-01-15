@@ -35,17 +35,17 @@ case object `scala.Date?[]`
 case object `scala.List<Date>`
     extends ScalaDate with `box.OneListOfOne` {
 
-  val scalaClass = "List[org.joda.time.LocalDate]"
+  val scalaClass = "IndexedSeq[org.joda.time.LocalDate]"
 
-  val defaultValue = "List[org.joda.time.LocalDate].empty"
+  val defaultValue = "IndexedSeq[org.joda.time.LocalDate].empty"
 }
 
 case object `scala.List<Date?>`
     extends ScalaDate with `box.OneListOfNullable` {
 
-  val scalaClass = "List[Option[org.joda.time.LocalDate]]"
+  val scalaClass = "IndexedSeq[Option[org.joda.time.LocalDate]]"
 
-  val defaultValue = "List[Option[org.joda.time.LocalDate]].empty"
+  val defaultValue = "IndexedSeq[Option[org.joda.time.LocalDate]].empty"
 }
 
 case object `scala.Set<Date>`
@@ -91,7 +91,7 @@ case object `scala.Date?[]?`
 case object `scala.List<Date>?`
     extends ScalaDate with `box.NullableListOfOne` {
 
-  val scalaClass = "Option[List[org.joda.time.LocalDate]]"
+  val scalaClass = "Option[IndexedSeq[org.joda.time.LocalDate]]"
 
   val defaultValue = "None"
 }
@@ -99,7 +99,7 @@ case object `scala.List<Date>?`
 case object `scala.List<Date?>?`
     extends ScalaDate with `box.NullableListOfNullable` {
 
-  val scalaClass = "Option[List[Option[org.joda.time.LocalDate]]]"
+  val scalaClass = "Option[IndexedSeq[Option[org.joda.time.LocalDate]]]"
 
   val defaultValue = "None"
 }

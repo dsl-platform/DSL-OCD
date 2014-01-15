@@ -80,7 +80,7 @@ private [config] class TestDeployer(
 
       files.par foreach { case (filename, body) =>
         logger.trace("Deploying tests: " + filename)
-        (languageRoot / (filename, '/')).write(body)
+        (languageRoot / (filename, '/')).write(Patches.fixTests(body))
       }
     }
   }

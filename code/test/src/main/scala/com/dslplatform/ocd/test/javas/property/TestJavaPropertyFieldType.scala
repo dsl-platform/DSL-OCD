@@ -26,7 +26,7 @@ trait TestJavaPropertyFieldType
       propertyType.javaClass
 
   private def nonPublicTest = s"""
-    /* Testing the property field private accesss via reflection (no instantiation) */
+    /* Testing the property field private access via reflection (no instantiation) */
     @org.junit.Test
     public void testPropertyFieldAccess() throws NoSuchFieldException {
         org.junit.Assert.assertEquals(

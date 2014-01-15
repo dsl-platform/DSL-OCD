@@ -13,7 +13,7 @@ case object `scala.Location`
 
   val scalaClass = "java.awt.geom.Point2D"
 
-  val defaultValue = "new java.awt.Point.Float"
+  val defaultValue = "new java.awt.geom.Point2D.Float"
 }
 
 case object `scala.Location[]`
@@ -35,17 +35,17 @@ case object `scala.Location?[]`
 case object `scala.List<Location>`
     extends ScalaLocation with `box.OneListOfOne` {
 
-  val scalaClass = "List[java.awt.geom.Point2D]"
+  val scalaClass = "IndexedSeq[java.awt.geom.Point2D]"
 
-  val defaultValue = "List[java.awt.geom.Point2D].empty"
+  val defaultValue = "IndexedSeq[java.awt.geom.Point2D].empty"
 }
 
 case object `scala.List<Location?>`
     extends ScalaLocation with `box.OneListOfNullable` {
 
-  val scalaClass = "List[Option[java.awt.geom.Point2D]]"
+  val scalaClass = "IndexedSeq[Option[java.awt.geom.Point2D]]"
 
-  val defaultValue = "List[Option[java.awt.geom.Point2D]].empty"
+  val defaultValue = "IndexedSeq[Option[java.awt.geom.Point2D]].empty"
 }
 
 case object `scala.Set<Location>`
@@ -91,7 +91,7 @@ case object `scala.Location?[]?`
 case object `scala.List<Location>?`
     extends ScalaLocation with `box.NullableListOfOne` {
 
-  val scalaClass = "Option[List[java.awt.geom.Point2D]]"
+  val scalaClass = "Option[IndexedSeq[java.awt.geom.Point2D]]"
 
   val defaultValue = "None"
 }
@@ -99,7 +99,7 @@ case object `scala.List<Location>?`
 case object `scala.List<Location?>?`
     extends ScalaLocation with `box.NullableListOfNullable` {
 
-  val scalaClass = "Option[List[Option[java.awt.geom.Point2D]]]"
+  val scalaClass = "Option[IndexedSeq[Option[java.awt.geom.Point2D]]]"
 
   val defaultValue = "None"
 }

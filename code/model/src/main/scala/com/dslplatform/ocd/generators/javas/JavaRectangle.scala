@@ -9,5 +9,5 @@ object JavaRectangle
 
   val classReference = "java.awt.geom.Rectangle2D"
 
-  val defaultSingle = "new java.awt.Rectangle.Float()"
+  val defaultSingle = "new java.awt.geom.Rectangle2D.Float"
 }
