@@ -18,7 +18,15 @@ trait TestScalaTemplate {
   def testBody = {
     val sb = new StringBuilder
 
-    sb ++= s"package $packageName\n\n"
+    sb ++= s"""package $packageName
+
+import org.scalatest._
+import com.dslplatform.ocd.test._
+
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+
+"""
 
     if (imports.nonEmpty) {
       imports foreach { imp =>
@@ -28,8 +36,9 @@ trait TestScalaTemplate {
       sb += '\n'
     }
 
-    sb ++= s"""class ${testName}
-    extends SpecExtensions {
+    sb ++= s"""@RunWith(classOf[JUnitRunner])
+class ${testName}
+    extends OcdSpec {
 """
 
     tests foreach { test =>

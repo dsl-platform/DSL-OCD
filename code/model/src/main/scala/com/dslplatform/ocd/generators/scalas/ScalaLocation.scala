@@ -9,5 +9,5 @@ object ScalaLocation
 
   val clazz = "java.awt.geom.Point2D"
 
-  val defaultSingle = "new java.awt.Point.Float"
+  val defaultSingle = "new java.awt.geom.Point2D.Float"
 }

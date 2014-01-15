@@ -13,7 +13,7 @@ case object `java.Rectangle`
 
   val javaClass = "java.awt.geom.Rectangle2D"
 
-  val defaultValue = "new java.awt.Rectangle.Float()"
+  val defaultValue = "new java.awt.geom.Rectangle2D.Float"
 
   val isPrimitive = false
   val hasGenerics = false

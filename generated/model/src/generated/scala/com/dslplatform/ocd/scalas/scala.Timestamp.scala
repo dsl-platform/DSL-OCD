@@ -35,17 +35,17 @@ case object `scala.Timestamp?[]`
 case object `scala.List<Timestamp>`
     extends ScalaTimestamp with `box.OneListOfOne` {
 
-  val scalaClass = "List[org.joda.time.DateTime]"
+  val scalaClass = "IndexedSeq[org.joda.time.DateTime]"
 
-  val defaultValue = "List[org.joda.time.DateTime].empty"
+  val defaultValue = "IndexedSeq[org.joda.time.DateTime].empty"
 }
 
 case object `scala.List<Timestamp?>`
     extends ScalaTimestamp with `box.OneListOfNullable` {
 
-  val scalaClass = "List[Option[org.joda.time.DateTime]]"
+  val scalaClass = "IndexedSeq[Option[org.joda.time.DateTime]]"
 
-  val defaultValue = "List[Option[org.joda.time.DateTime]].empty"
+  val defaultValue = "IndexedSeq[Option[org.joda.time.DateTime]].empty"
 }
 
 case object `scala.Set<Timestamp>`
@@ -91,7 +91,7 @@ case object `scala.Timestamp?[]?`
 case object `scala.List<Timestamp>?`
     extends ScalaTimestamp with `box.NullableListOfOne` {
 
-  val scalaClass = "Option[List[org.joda.time.DateTime]]"
+  val scalaClass = "Option[IndexedSeq[org.joda.time.DateTime]]"
 
   val defaultValue = "None"
 }
@@ -99,7 +99,7 @@ case object `scala.List<Timestamp>?`
 case object `scala.List<Timestamp?>?`
     extends ScalaTimestamp with `box.NullableListOfNullable` {
 
-  val scalaClass = "Option[List[Option[org.joda.time.DateTime]]]"
+  val scalaClass = "Option[IndexedSeq[Option[org.joda.time.DateTime]]]"
 
   val defaultValue = "None"
 }

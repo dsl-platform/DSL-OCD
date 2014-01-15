@@ -35,17 +35,17 @@ case object `scala.Integer?[]`
 case object `scala.List<Integer>`
     extends ScalaInteger with `box.OneListOfOne` {
 
-  val scalaClass = "List[Int]"
+  val scalaClass = "IndexedSeq[Int]"
 
-  val defaultValue = "List[Int].empty"
+  val defaultValue = "IndexedSeq[Int].empty"
 }
 
 case object `scala.List<Integer?>`
     extends ScalaInteger with `box.OneListOfNullable` {
 
-  val scalaClass = "List[Option[Int]]"
+  val scalaClass = "IndexedSeq[Option[Int]]"
 
-  val defaultValue = "List[Option[Int]].empty"
+  val defaultValue = "IndexedSeq[Option[Int]].empty"
 }
 
 case object `scala.Set<Integer>`
@@ -91,7 +91,7 @@ case object `scala.Integer?[]?`
 case object `scala.List<Integer>?`
     extends ScalaInteger with `box.NullableListOfOne` {
 
-  val scalaClass = "Option[List[Int]]"
+  val scalaClass = "Option[IndexedSeq[Int]]"
 
   val defaultValue = "None"
 }
@@ -99,7 +99,7 @@ case object `scala.List<Integer>?`
 case object `scala.List<Integer?>?`
     extends ScalaInteger with `box.NullableListOfNullable` {
 
-  val scalaClass = "Option[List[Option[Int]]]"
+  val scalaClass = "Option[IndexedSeq[Option[Int]]]"
 
   val defaultValue = "None"
 }

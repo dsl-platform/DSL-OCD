@@ -16,19 +16,23 @@ trait TestScalaPropertyFieldType
     typeTest
 
   private def nonPublicTest = s"""
-    /* Testing the property field public accesss via reflection (no instantiation) */
+    /* Testing the property field public access via reflection (no instantiation) */
     def `Test property field access`() =
-      assert(
-        typeOf[${conceptName}].member("${propertyName}": TermName).asMethod.isPublic
-      )
+      lock(
+        typeOf[${conceptName}]
+          .member("${propertyName}": TermName)
+          .asMethod.isPublic
+      ) === true
 """
 
   private def typeTest = s"""
     /* Testing the property field type via reflection (no instantiation) */
     def `Test property field type`() =
       checkType(
-        typeOf[${propertyType}]
-      , typeOf[${conceptName}].member("${propertyName}": TermName).asMethod.returnType
+        typeOf[${propertyType.scalaClass}]
+      , typeOf[${conceptName}]
+          .member("${propertyName}": TermName)
+          .asMethod.returnType
       )
 """
 }

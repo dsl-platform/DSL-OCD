@@ -47,23 +47,6 @@ s"""module ${ModuleName}
 }
 
 private object ValueSinglePropertyTests {
-  val boxes: IndexedSeq[OcdBox] = IndexedSeq(
-    `box.One`
-  , `box.OneArrayOfOne`
-  , `box.OneArrayOfNullable`
-  , `box.OneListOfOne`
-  , `box.OneListOfNullable`
-  , `box.OneSetOfOne`
-  , `box.OneSetOfNullable`
-  , `box.Nullable`
-  , `box.NullableArrayOfOne`
-  , `box.NullableArrayOfNullable`
-  , `box.NullableListOfOne`
-  , `box.NullableListOfNullable`
-  , `box.NullableSetOfOne`
-  , `box.NullableSetOfNullable`
-  )
-
   val types: IndexedSeq[OcdType] = IndexedSeq(
     `type.Binary`
   , `type.Bool`
@@ -81,7 +64,7 @@ private object ValueSinglePropertyTests {
   , `type.Map`
   , `type.Money`
   , `type.Point`
-//   `type.Rectangle` // TODO: FIXME
+  , `type.Rectangle`
 //  , `type.S3`       // TODO: Missing implementation
   , `type.String`
   , `type.String(9)`
@@ -91,9 +74,26 @@ private object ValueSinglePropertyTests {
   , `type.Xml`
   )
 
+  val boxes: IndexedSeq[OcdBox] = IndexedSeq(
+    `box.One`
+  , `box.OneArrayOfOne`
+  , `box.OneArrayOfNullable`
+  , `box.OneListOfOne`
+  , `box.OneListOfNullable`
+  , `box.OneSetOfOne`
+  , `box.OneSetOfNullable`
+  , `box.Nullable`
+  , `box.NullableArrayOfOne`
+  , `box.NullableArrayOfNullable`
+  , `box.NullableListOfOne`
+  , `box.NullableListOfNullable`
+  , `box.NullableSetOfOne`
+  , `box.NullableSetOfNullable`
+  )
+
   val setups = for {
-    b <- boxes
     t <- types
+    b <- boxes
     d <- OcdDsl.resolveAll(t, b)
   } yield {
     new SetupSinglePropertyInValueDsl(d)
@@ -109,18 +109,17 @@ trait ValueSinglePropertyTests {
 
       def dslFiles = setup.dslFiles
 
+      private val modulePrefix =
+        test.packageName + '.' + setup.ModuleName + '.'
+
       def javaTests =
         new TestJavaTemplate {
-          def packageName =
-            test.packageName + '.' + setup.ModuleName + '.' +
-              setup.propertyType.typeSingleName
+          def packageName = modulePrefix + setup.propertyType.typeSingleName + "Tests"
 
           def testName = "Test" + setup.ValueName
 
           override def imports = Seq(
-            test.packageName + '.' + setup.ModuleName + '.' +
-              setup.ValueName
-          , "org.scalatest._"
+            modulePrefix + setup.ValueName
           )
 
           val javaType = OcdJava.resolve(setup.propertyType)
@@ -137,14 +136,13 @@ trait ValueSinglePropertyTests {
       def scalaTests =
         new TestScalaTemplate {
           def packageName =
-            test.packageName + '.' + setup.ModuleName + '.' +
-              setup.propertyType.typeSingleName
+            modulePrefix + setup.propertyType.typeSingleName + "Tests"
 
           def testName = "Test" + setup.ValueName
 
           override def imports = Seq(
-            test.packageName + '.' + setup.ModuleName + '.' +
-              setup.ValueName
+            modulePrefix + setup.ValueName
+          , "scala.reflect.runtime.universe._"
           )
 
           val scalaType = OcdScala.resolve(setup.propertyType)

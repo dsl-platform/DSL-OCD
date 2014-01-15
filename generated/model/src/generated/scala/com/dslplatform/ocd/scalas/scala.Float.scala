@@ -35,17 +35,17 @@ case object `scala.Float?[]`
 case object `scala.List<Float>`
     extends ScalaFloat with `box.OneListOfOne` {
 
-  val scalaClass = "List[Float]"
+  val scalaClass = "IndexedSeq[Float]"
 
-  val defaultValue = "List[Float].empty"
+  val defaultValue = "IndexedSeq[Float].empty"
 }
 
 case object `scala.List<Float?>`
     extends ScalaFloat with `box.OneListOfNullable` {
 
-  val scalaClass = "List[Option[Float]]"
+  val scalaClass = "IndexedSeq[Option[Float]]"
 
-  val defaultValue = "List[Option[Float]].empty"
+  val defaultValue = "IndexedSeq[Option[Float]].empty"
 }
 
 case object `scala.Set<Float>`
@@ -91,7 +91,7 @@ case object `scala.Float?[]?`
 case object `scala.List<Float>?`
     extends ScalaFloat with `box.NullableListOfOne` {
 
-  val scalaClass = "Option[List[Float]]"
+  val scalaClass = "Option[IndexedSeq[Float]]"
 
   val defaultValue = "None"
 }
@@ -99,7 +99,7 @@ case object `scala.List<Float>?`
 case object `scala.List<Float?>?`
     extends ScalaFloat with `box.NullableListOfNullable` {
 
-  val scalaClass = "Option[List[Option[Float]]]"
+  val scalaClass = "Option[IndexedSeq[Option[Float]]]"
 
   val defaultValue = "None"
 }

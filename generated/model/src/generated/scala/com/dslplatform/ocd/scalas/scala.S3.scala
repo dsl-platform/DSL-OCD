@@ -35,17 +35,17 @@ case object `scala.S3?[]`
 case object `scala.List<S3>`
     extends ScalaS3 with `box.OneListOfOne` {
 
-  val scalaClass = "List[com.dslplatform.storage.S3]"
+  val scalaClass = "IndexedSeq[com.dslplatform.storage.S3]"
 
-  val defaultValue = "List[com.dslplatform.storage.S3].empty"
+  val defaultValue = "IndexedSeq[com.dslplatform.storage.S3].empty"
 }
 
 case object `scala.List<S3?>`
     extends ScalaS3 with `box.OneListOfNullable` {
 
-  val scalaClass = "List[Option[com.dslplatform.storage.S3]]"
+  val scalaClass = "IndexedSeq[Option[com.dslplatform.storage.S3]]"
 
-  val defaultValue = "List[Option[com.dslplatform.storage.S3]].empty"
+  val defaultValue = "IndexedSeq[Option[com.dslplatform.storage.S3]].empty"
 }
 
 case object `scala.Set<S3>`
@@ -91,7 +91,7 @@ case object `scala.S3?[]?`
 case object `scala.List<S3>?`
     extends ScalaS3 with `box.NullableListOfOne` {
 
-  val scalaClass = "Option[List[com.dslplatform.storage.S3]]"
+  val scalaClass = "Option[IndexedSeq[com.dslplatform.storage.S3]]"
 
   val defaultValue = "None"
 }
@@ -99,7 +99,7 @@ case object `scala.List<S3>?`
 case object `scala.List<S3?>?`
     extends ScalaS3 with `box.NullableListOfNullable` {
 
-  val scalaClass = "Option[List[Option[com.dslplatform.storage.S3]]]"
+  val scalaClass = "Option[IndexedSeq[Option[com.dslplatform.storage.S3]]]"
 
   val defaultValue = "None"
 }

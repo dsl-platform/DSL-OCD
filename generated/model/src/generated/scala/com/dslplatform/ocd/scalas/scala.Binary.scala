@@ -35,17 +35,17 @@ case object `scala.Binary?[]`
 case object `scala.List<Binary>`
     extends ScalaBinary with `box.OneListOfOne` {
 
-  val scalaClass = "List[Array[Byte]]"
+  val scalaClass = "IndexedSeq[Array[Byte]]"
 
-  val defaultValue = "List[Array[Byte]].empty"
+  val defaultValue = "IndexedSeq[Array[Byte]].empty"
 }
 
 case object `scala.List<Binary?>`
     extends ScalaBinary with `box.OneListOfNullable` {
 
-  val scalaClass = "List[Option[Array[Byte]]]"
+  val scalaClass = "IndexedSeq[Option[Array[Byte]]]"
 
-  val defaultValue = "List[Option[Array[Byte]]].empty"
+  val defaultValue = "IndexedSeq[Option[Array[Byte]]].empty"
 }
 
 case object `scala.Set<Binary>`
@@ -91,7 +91,7 @@ case object `scala.Binary?[]?`
 case object `scala.List<Binary>?`
     extends ScalaBinary with `box.NullableListOfOne` {
 
-  val scalaClass = "Option[List[Array[Byte]]]"
+  val scalaClass = "Option[IndexedSeq[Array[Byte]]]"
 
   val defaultValue = "None"
 }
@@ -99,7 +99,7 @@ case object `scala.List<Binary>?`
 case object `scala.List<Binary?>?`
     extends ScalaBinary with `box.NullableListOfNullable` {
 
-  val scalaClass = "Option[List[Option[Array[Byte]]]]"
+  val scalaClass = "Option[IndexedSeq[Option[Array[Byte]]]]"
 
   val defaultValue = "None"
 }

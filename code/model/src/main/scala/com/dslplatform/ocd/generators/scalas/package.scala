@@ -7,6 +7,11 @@ import Boxes._
 trait ScalaStub {
   val clazz: String
 
+  def boxToScalaBox = (_: CollectionType) match {
+    case CollectionType.List => "IndexedSeq"
+    case ct => ct.toString
+  }
+
   def classValue = (_: Box) match {
     case Box(SingleType.One, None, _*) =>
       clazz
@@ -15,16 +20,16 @@ trait ScalaStub {
       s"Option[${clazz}]"
 
     case Box(SingleType.One, Some((ct, SingleType.One)), _*) =>
-      s"${ct}[${clazz}]"
+      s"${boxToScalaBox(ct)}[${clazz}]"
 
     case Box(SingleType.One, Some((ct, SingleType.Nullable)), _*) =>
-      s"${ct}[Option[${clazz}]]"
+      s"${boxToScalaBox(ct)}[Option[${clazz}]]"
 
     case Box(SingleType.Nullable, Some((ct, SingleType.One)), _*) =>
-      s"Option[${ct}[${clazz}]]"
+      s"Option[${boxToScalaBox(ct)}[${clazz}]]"
 
     case Box(SingleType.Nullable, Some((ct, SingleType.Nullable)), _*) =>
-      s"Option[${ct}[Option[${clazz}]]]"
+      s"Option[${boxToScalaBox(ct)}[Option[${clazz}]]]"
   }
 
 
@@ -38,9 +43,9 @@ trait ScalaStub {
       s"None"
 
     case Box(SingleType.One, Some((ct, SingleType.One)), _*) =>
-      s"${ct}[${clazz}].empty"
+      s"${boxToScalaBox(ct)}[${clazz}].empty"
 
     case Box(SingleType.One, Some((ct, SingleType.Nullable)), _*) =>
-      s"${ct}[Option[${clazz}]].empty"
+      s"${boxToScalaBox(ct)}[Option[${clazz}]].empty"
   }
 }

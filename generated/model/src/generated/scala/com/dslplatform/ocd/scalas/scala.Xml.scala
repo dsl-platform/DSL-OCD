@@ -35,17 +35,17 @@ case object `scala.Xml?[]`
 case object `scala.List<Xml>`
     extends ScalaXml with `box.OneListOfOne` {
 
-  val scalaClass = "List[scala.xml.Elem]"
+  val scalaClass = "IndexedSeq[scala.xml.Elem]"
 
-  val defaultValue = "List[scala.xml.Elem].empty"
+  val defaultValue = "IndexedSeq[scala.xml.Elem].empty"
 }
 
 case object `scala.List<Xml?>`
     extends ScalaXml with `box.OneListOfNullable` {
 
-  val scalaClass = "List[Option[scala.xml.Elem]]"
+  val scalaClass = "IndexedSeq[Option[scala.xml.Elem]]"
 
-  val defaultValue = "List[Option[scala.xml.Elem]].empty"
+  val defaultValue = "IndexedSeq[Option[scala.xml.Elem]].empty"
 }
 
 case object `scala.Set<Xml>`
@@ -91,7 +91,7 @@ case object `scala.Xml?[]?`
 case object `scala.List<Xml>?`
     extends ScalaXml with `box.NullableListOfOne` {
 
-  val scalaClass = "Option[List[scala.xml.Elem]]"
+  val scalaClass = "Option[IndexedSeq[scala.xml.Elem]]"
 
   val defaultValue = "None"
 }
@@ -99,7 +99,7 @@ case object `scala.List<Xml>?`
 case object `scala.List<Xml?>?`
     extends ScalaXml with `box.NullableListOfNullable` {
 
-  val scalaClass = "Option[List[Option[scala.xml.Elem]]]"
+  val scalaClass = "Option[IndexedSeq[Option[scala.xml.Elem]]]"
 
   val defaultValue = "None"
 }

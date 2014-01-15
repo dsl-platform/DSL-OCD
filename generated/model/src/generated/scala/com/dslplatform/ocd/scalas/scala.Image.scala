@@ -35,17 +35,17 @@ case object `scala.Image?[]`
 case object `scala.List<Image>`
     extends ScalaImage with `box.OneListOfOne` {
 
-  val scalaClass = "List[java.awt.image.BufferedImage]"
+  val scalaClass = "IndexedSeq[java.awt.image.BufferedImage]"
 
-  val defaultValue = "List[java.awt.image.BufferedImage].empty"
+  val defaultValue = "IndexedSeq[java.awt.image.BufferedImage].empty"
 }
 
 case object `scala.List<Image?>`
     extends ScalaImage with `box.OneListOfNullable` {
 
-  val scalaClass = "List[Option[java.awt.image.BufferedImage]]"
+  val scalaClass = "IndexedSeq[Option[java.awt.image.BufferedImage]]"
 
-  val defaultValue = "List[Option[java.awt.image.BufferedImage]].empty"
+  val defaultValue = "IndexedSeq[Option[java.awt.image.BufferedImage]].empty"
 }
 
 case object `scala.Set<Image>`
@@ -91,7 +91,7 @@ case object `scala.Image?[]?`
 case object `scala.List<Image>?`
     extends ScalaImage with `box.NullableListOfOne` {
 
-  val scalaClass = "Option[List[java.awt.image.BufferedImage]]"
+  val scalaClass = "Option[IndexedSeq[java.awt.image.BufferedImage]]"
 
   val defaultValue = "None"
 }
@@ -99,7 +99,7 @@ case object `scala.List<Image>?`
 case object `scala.List<Image?>?`
     extends ScalaImage with `box.NullableListOfNullable` {
 
-  val scalaClass = "Option[List[Option[java.awt.image.BufferedImage]]]"
+  val scalaClass = "Option[IndexedSeq[Option[java.awt.image.BufferedImage]]]"
 
   val defaultValue = "None"
 }

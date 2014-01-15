@@ -139,12 +139,7 @@ package-name=${packageName}
   }
 
   private def patch(body: String) = {
-    if (body.contains("ArrayOf")) {
-      body.replace("Collection", "Array")
-    }
-    else {
-      body
-    }
+    body
 
     /*.replace(
       """if (!(this.oneXML.equals(other.oneXML))) return false;"""

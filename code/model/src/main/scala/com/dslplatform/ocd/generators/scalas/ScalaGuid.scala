@@ -7,7 +7,7 @@ import Boxes._
 object ScalaGuid
     extends ScalaStub {
 
-  val clazz = "scala.util.UUID"
+  val clazz = "java.util.UUID"
 
-  val defaultSingle = "scala.util.UUID.randomUUID"
+  val defaultSingle = "java.util.UUID.randomUUID"
 }

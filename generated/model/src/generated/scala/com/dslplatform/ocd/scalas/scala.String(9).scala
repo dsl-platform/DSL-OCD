@@ -35,17 +35,17 @@ case object `scala.String(9)?[]`
 case object `scala.List<String(9)>`
     extends ScalaStringWithMaxLengthOf9 with `box.OneListOfOne` {
 
-  val scalaClass = "List[String]"
+  val scalaClass = "IndexedSeq[String]"
 
-  val defaultValue = "List[String].empty"
+  val defaultValue = "IndexedSeq[String].empty"
 }
 
 case object `scala.List<String(9)?>`
     extends ScalaStringWithMaxLengthOf9 with `box.OneListOfNullable` {
 
-  val scalaClass = "List[Option[String]]"
+  val scalaClass = "IndexedSeq[Option[String]]"
 
-  val defaultValue = "List[Option[String]].empty"
+  val defaultValue = "IndexedSeq[Option[String]].empty"
 }
 
 case object `scala.Set<String(9)>`
@@ -91,7 +91,7 @@ case object `scala.String(9)?[]?`
 case object `scala.List<String(9)>?`
     extends ScalaStringWithMaxLengthOf9 with `box.NullableListOfOne` {
 
-  val scalaClass = "Option[List[String]]"
+  val scalaClass = "Option[IndexedSeq[String]]"
 
   val defaultValue = "None"
 }
@@ -99,7 +99,7 @@ case object `scala.List<String(9)>?`
 case object `scala.List<String(9)?>?`
     extends ScalaStringWithMaxLengthOf9 with `box.NullableListOfNullable` {
 
-  val scalaClass = "Option[List[Option[String]]]"
+  val scalaClass = "Option[IndexedSeq[Option[String]]]"
 
   val defaultValue = "None"
 }

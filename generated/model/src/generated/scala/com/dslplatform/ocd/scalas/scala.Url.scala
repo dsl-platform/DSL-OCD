@@ -35,17 +35,17 @@ case object `scala.Url?[]`
 case object `scala.List<Url>`
     extends ScalaUrl with `box.OneListOfOne` {
 
-  val scalaClass = "List[java.net.URL]"
+  val scalaClass = "IndexedSeq[java.net.URL]"
 
-  val defaultValue = "List[java.net.URL].empty"
+  val defaultValue = "IndexedSeq[java.net.URL].empty"
 }
 
 case object `scala.List<Url?>`
     extends ScalaUrl with `box.OneListOfNullable` {
 
-  val scalaClass = "List[Option[java.net.URL]]"
+  val scalaClass = "IndexedSeq[Option[java.net.URL]]"
 
-  val defaultValue = "List[Option[java.net.URL]].empty"
+  val defaultValue = "IndexedSeq[Option[java.net.URL]].empty"
 }
 
 case object `scala.Set<Url>`
@@ -91,7 +91,7 @@ case object `scala.Url?[]?`
 case object `scala.List<Url>?`
     extends ScalaUrl with `box.NullableListOfOne` {
 
-  val scalaClass = "Option[List[java.net.URL]]"
+  val scalaClass = "Option[IndexedSeq[java.net.URL]]"
 
   val defaultValue = "None"
 }
@@ -99,7 +99,7 @@ case object `scala.List<Url>?`
 case object `scala.List<Url?>?`
     extends ScalaUrl with `box.NullableListOfNullable` {
 
-  val scalaClass = "Option[List[Option[java.net.URL]]]"
+  val scalaClass = "Option[IndexedSeq[Option[java.net.URL]]]"
 
   val defaultValue = "None"
 }

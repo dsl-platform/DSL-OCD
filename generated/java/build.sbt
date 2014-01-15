@@ -9,6 +9,7 @@ name := "DSL-OCD-Test-Java"
 version := "0.0.0-SNAPSHOT"
 
 unmanagedSourceDirectories in Compile :=
+  (javaSource in Compile).value ::
   baseDirectory.value / "src" / "generated" / "java" ::
   Nil
 
@@ -20,8 +21,8 @@ unmanagedSourceDirectories in Test :=
 libraryDependencies ++= Seq(
   "com.dslplatform" % "dsl-client-http" % "0.4.13"
 , "org.slf4j" % "slf4j-simple" % "1.7.5"
-, "junit" % "junit" % "4.11" % "test"
-, "com.novocode" % "junit-interface" % "0.10" % "test"
+, "junit" % "junit" % "4.11"
+, "com.novocode" % "junit-interface" % "0.10"
 )
 
 // ### RESOLVERS ### //
@@ -32,7 +33,7 @@ externalResolvers := Resolver.withDefaultResolvers(resolvers.value, mavenCentral
 
 // ### COMPILE SETTINGS ### //
 
-crossScalaVersions := Seq("2.10.3")
+crossScalaVersions := Seq("2.10.4-RC1")
 
 scalaVersion := crossScalaVersions.value.head
 
