@@ -11,7 +11,7 @@ class OneListOfNullableDecimalsWithScaleOf9_2 @com.fasterxml.jackson.annotation.
     private var _oneListOfNullableDecimalsWithScaleOf9: IndexedSeq[Option[BigDecimal]]
   ) extends Serializable with AggregateRoot {
 
-  @com.fasterxml.jackson.annotation.JsonGetter("URI")
+  @com.fasterxml.jackson.annotation.JsonProperty("URI")
   def URI = {
 
     _URI
@@ -60,7 +60,7 @@ class OneListOfNullableDecimalsWithScaleOf9_2 @com.fasterxml.jackson.annotation.
     Await.result(__locator.get.resolve(classOf[CrudProxy]).delete[com.dslplatform.ocd.aggregates.PrimaryKeyPropertyInAggregateSetup.OneListOfNullableDecimalsWithScaleOf9_2](URI), duration)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("oneListOfNullableDecimalsWithScaleOf9")
+  @com.fasterxml.jackson.annotation.JsonProperty("oneListOfNullableDecimalsWithScaleOf9")
   @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_EMPTY)
   def oneListOfNullableDecimalsWithScaleOf9 = {
     _oneListOfNullableDecimalsWithScaleOf9

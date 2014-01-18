@@ -12,7 +12,7 @@ class NullableListOfOneDates_2 @com.fasterxml.jackson.annotation.JsonIgnore() pr
     private var _nullableListOfOneDates: Option[IndexedSeq[org.joda.time.LocalDate]]
   ) extends Serializable with AggregateRoot {
 
-  @com.fasterxml.jackson.annotation.JsonGetter("URI")
+  @com.fasterxml.jackson.annotation.JsonProperty("URI")
   def URI = {
 
     _URI
@@ -34,7 +34,7 @@ class NullableListOfOneDates_2 @com.fasterxml.jackson.annotation.JsonIgnore() pr
     new NullableListOfOneDates_2(_URI = this.URI, __locator = this.__locator, _ID = _ID, _nullableListOfOneDates = nullableListOfOneDates)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("ID")
+  @com.fasterxml.jackson.annotation.JsonProperty("ID")
   def ID = {
     _ID
   }
@@ -72,7 +72,7 @@ class NullableListOfOneDates_2 @com.fasterxml.jackson.annotation.JsonIgnore() pr
     Await.result(__locator.get.resolve(classOf[CrudProxy]).delete[com.dslplatform.ocd.aggregates.SurrogatePrimaryKeyWithOnePropertyInAggregate.NullableListOfOneDates_2](URI), duration)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("nullableListOfOneDates")
+  @com.fasterxml.jackson.annotation.JsonProperty("nullableListOfOneDates")
   def nullableListOfOneDates = {
     _nullableListOfOneDates
   }

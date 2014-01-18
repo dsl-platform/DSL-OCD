@@ -11,7 +11,7 @@ class OneSetOfOneLongs_2 @com.fasterxml.jackson.annotation.JsonIgnore() private(
     private var _oneSetOfOneLongs: Set[Long]
   ) extends Serializable with AggregateRoot {
 
-  @com.fasterxml.jackson.annotation.JsonGetter("URI")
+  @com.fasterxml.jackson.annotation.JsonProperty("URI")
   def URI = {
 
     _URI
@@ -58,7 +58,7 @@ class OneSetOfOneLongs_2 @com.fasterxml.jackson.annotation.JsonIgnore() private(
     Await.result(__locator.get.resolve(classOf[CrudProxy]).delete[com.dslplatform.ocd.aggregates.PrimaryKeyPropertyInAggregateSetup.OneSetOfOneLongs_2](URI), duration)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("oneSetOfOneLongs")
+  @com.fasterxml.jackson.annotation.JsonProperty("oneSetOfOneLongs")
   @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_EMPTY)
   def oneSetOfOneLongs = {
     _oneSetOfOneLongs

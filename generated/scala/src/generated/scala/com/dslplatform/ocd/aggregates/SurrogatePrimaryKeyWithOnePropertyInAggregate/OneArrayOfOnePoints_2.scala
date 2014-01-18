@@ -12,7 +12,7 @@ class OneArrayOfOnePoints_2 @com.fasterxml.jackson.annotation.JsonIgnore() priva
     private var _oneArrayOfOnePoints: Array[java.awt.geom.Point2D]
   ) extends Serializable with AggregateRoot {
 
-  @com.fasterxml.jackson.annotation.JsonGetter("URI")
+  @com.fasterxml.jackson.annotation.JsonProperty("URI")
   def URI = {
 
     _URI
@@ -33,7 +33,7 @@ class OneArrayOfOnePoints_2 @com.fasterxml.jackson.annotation.JsonIgnore() priva
     new OneArrayOfOnePoints_2(_URI = this.URI, __locator = this.__locator, _ID = _ID, _oneArrayOfOnePoints = oneArrayOfOnePoints)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("ID")
+  @com.fasterxml.jackson.annotation.JsonProperty("ID")
   def ID = {
     _ID
   }
@@ -71,7 +71,7 @@ class OneArrayOfOnePoints_2 @com.fasterxml.jackson.annotation.JsonIgnore() priva
     Await.result(__locator.get.resolve(classOf[CrudProxy]).delete[com.dslplatform.ocd.aggregates.SurrogatePrimaryKeyWithOnePropertyInAggregate.OneArrayOfOnePoints_2](URI), duration)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("oneArrayOfOnePoints")
+  @com.fasterxml.jackson.annotation.JsonProperty("oneArrayOfOnePoints")
   @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_EMPTY)
   def oneArrayOfOnePoints = {
     _oneArrayOfOnePoints

@@ -20,7 +20,8 @@ unmanagedSourceDirectories in Test := (scalaSource in Test).value :: Nil
 // ### DEPENDENCIES ### //
 
 libraryDependencies ++= Seq(
-  "com.dslplatform" %% "dsl-ocd-model" % "0.0.0-SNAPSHOT"
+  "com.dslplatform.ocd" %% "dsl-ocd-projects" % "0.0.0-SNAPSHOT"
+, "com.dslplatform" %% "dsl-ocd-model" % "0.0.0-SNAPSHOT"
 , "com.dslplatform" % "dsl-compiler-client-cmdline" % "0.8.13"
 , "hr.element.etb" %% "etb-util" % "0.2.20"
 , "ch.qos.logback" % "logback-classic" % "1.0.13" % "compile->default"

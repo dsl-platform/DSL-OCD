@@ -11,7 +11,7 @@ class OneListOfOneBinaries_2 @com.fasterxml.jackson.annotation.JsonIgnore() priv
     private var _oneListOfOneBinaries: IndexedSeq[Array[Byte]]
   ) extends Serializable with AggregateRoot {
 
-  @com.fasterxml.jackson.annotation.JsonGetter("URI")
+  @com.fasterxml.jackson.annotation.JsonProperty("URI")
   def URI = {
 
     _URI
@@ -59,7 +59,7 @@ class OneListOfOneBinaries_2 @com.fasterxml.jackson.annotation.JsonIgnore() priv
     Await.result(__locator.get.resolve(classOf[CrudProxy]).delete[com.dslplatform.ocd.aggregates.PrimaryKeyPropertyInAggregateSetup.OneListOfOneBinaries_2](URI), duration)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("oneListOfOneBinaries")
+  @com.fasterxml.jackson.annotation.JsonProperty("oneListOfOneBinaries")
   @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_EMPTY)
   def oneListOfOneBinaries = {
     _oneListOfOneBinaries

@@ -11,7 +11,7 @@ class OneListOfOneTimestamps_2 @com.fasterxml.jackson.annotation.JsonIgnore() pr
     private var _oneListOfOneTimestamps: IndexedSeq[org.joda.time.DateTime]
   ) extends Serializable with AggregateRoot {
 
-  @com.fasterxml.jackson.annotation.JsonGetter("URI")
+  @com.fasterxml.jackson.annotation.JsonProperty("URI")
   def URI = {
 
     _URI
@@ -59,7 +59,7 @@ class OneListOfOneTimestamps_2 @com.fasterxml.jackson.annotation.JsonIgnore() pr
     Await.result(__locator.get.resolve(classOf[CrudProxy]).delete[com.dslplatform.ocd.aggregates.PrimaryKeyPropertyInAggregateSetup.OneListOfOneTimestamps_2](URI), duration)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("oneListOfOneTimestamps")
+  @com.fasterxml.jackson.annotation.JsonProperty("oneListOfOneTimestamps")
   @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_EMPTY)
   def oneListOfOneTimestamps = {
     _oneListOfOneTimestamps

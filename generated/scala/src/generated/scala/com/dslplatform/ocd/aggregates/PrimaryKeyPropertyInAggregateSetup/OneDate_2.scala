@@ -11,7 +11,7 @@ class OneDate_2 @com.fasterxml.jackson.annotation.JsonIgnore() private(
     private var _oneDate: org.joda.time.LocalDate
   ) extends Serializable with AggregateRoot {
 
-  @com.fasterxml.jackson.annotation.JsonGetter("URI")
+  @com.fasterxml.jackson.annotation.JsonProperty("URI")
   def URI = {
 
     _URI
@@ -58,7 +58,7 @@ class OneDate_2 @com.fasterxml.jackson.annotation.JsonIgnore() private(
     Await.result(__locator.get.resolve(classOf[CrudProxy]).delete[com.dslplatform.ocd.aggregates.PrimaryKeyPropertyInAggregateSetup.OneDate_2](URI), duration)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("oneDate")
+  @com.fasterxml.jackson.annotation.JsonProperty("oneDate")
   def oneDate = {
     _oneDate
   }

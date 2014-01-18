@@ -11,7 +11,7 @@ class OneArrayOfOneUrls_2 @com.fasterxml.jackson.annotation.JsonIgnore() private
     private var _oneArrayOfOneUrls: Array[java.net.URI]
   ) extends Serializable with AggregateRoot {
 
-  @com.fasterxml.jackson.annotation.JsonGetter("URI")
+  @com.fasterxml.jackson.annotation.JsonProperty("URI")
   def URI = {
 
     _URI
@@ -59,7 +59,7 @@ class OneArrayOfOneUrls_2 @com.fasterxml.jackson.annotation.JsonIgnore() private
     Await.result(__locator.get.resolve(classOf[CrudProxy]).delete[com.dslplatform.ocd.aggregates.PrimaryKeyPropertyInAggregateSetup.OneArrayOfOneUrls_2](URI), duration)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("oneArrayOfOneUrls")
+  @com.fasterxml.jackson.annotation.JsonProperty("oneArrayOfOneUrls")
   @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_EMPTY)
   def oneArrayOfOneUrls = {
     _oneArrayOfOneUrls

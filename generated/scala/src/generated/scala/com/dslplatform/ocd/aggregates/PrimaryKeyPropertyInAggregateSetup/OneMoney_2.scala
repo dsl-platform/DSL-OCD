@@ -11,7 +11,7 @@ class OneMoney_2 @com.fasterxml.jackson.annotation.JsonIgnore() private(
     private var _oneMoney: BigDecimal
   ) extends Serializable with AggregateRoot {
 
-  @com.fasterxml.jackson.annotation.JsonGetter("URI")
+  @com.fasterxml.jackson.annotation.JsonProperty("URI")
   def URI = {
 
     _URI
@@ -58,7 +58,7 @@ class OneMoney_2 @com.fasterxml.jackson.annotation.JsonIgnore() private(
     Await.result(__locator.get.resolve(classOf[CrudProxy]).delete[com.dslplatform.ocd.aggregates.PrimaryKeyPropertyInAggregateSetup.OneMoney_2](URI), duration)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("oneMoney")
+  @com.fasterxml.jackson.annotation.JsonProperty("oneMoney")
   def oneMoney = {
     _oneMoney
   }

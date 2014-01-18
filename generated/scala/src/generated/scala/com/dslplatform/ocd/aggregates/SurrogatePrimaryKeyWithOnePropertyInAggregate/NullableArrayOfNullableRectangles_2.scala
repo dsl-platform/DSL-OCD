@@ -12,7 +12,7 @@ class NullableArrayOfNullableRectangles_2 @com.fasterxml.jackson.annotation.Json
     private var _nullableArrayOfNullableRectangles: Option[Array[Option[java.awt.geom.Rectangle2D]]]
   ) extends Serializable with AggregateRoot {
 
-  @com.fasterxml.jackson.annotation.JsonGetter("URI")
+  @com.fasterxml.jackson.annotation.JsonProperty("URI")
   def URI = {
 
     _URI
@@ -34,7 +34,7 @@ class NullableArrayOfNullableRectangles_2 @com.fasterxml.jackson.annotation.Json
     new NullableArrayOfNullableRectangles_2(_URI = this.URI, __locator = this.__locator, _ID = _ID, _nullableArrayOfNullableRectangles = nullableArrayOfNullableRectangles)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("ID")
+  @com.fasterxml.jackson.annotation.JsonProperty("ID")
   def ID = {
     _ID
   }
@@ -72,7 +72,7 @@ class NullableArrayOfNullableRectangles_2 @com.fasterxml.jackson.annotation.Json
     Await.result(__locator.get.resolve(classOf[CrudProxy]).delete[com.dslplatform.ocd.aggregates.SurrogatePrimaryKeyWithOnePropertyInAggregate.NullableArrayOfNullableRectangles_2](URI), duration)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("nullableArrayOfNullableRectangles")
+  @com.fasterxml.jackson.annotation.JsonProperty("nullableArrayOfNullableRectangles")
   def nullableArrayOfNullableRectangles = {
     _nullableArrayOfNullableRectangles
   }

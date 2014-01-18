@@ -12,7 +12,7 @@ class OneBinary_3 @com.fasterxml.jackson.annotation.JsonIgnore() private(
     private var _oneBinary: Array[Byte]
   ) extends Serializable with AggregateRoot {
 
-  @com.fasterxml.jackson.annotation.JsonGetter("URI")
+  @com.fasterxml.jackson.annotation.JsonProperty("URI")
   def URI = {
 
     _URI
@@ -32,7 +32,7 @@ class OneBinary_3 @com.fasterxml.jackson.annotation.JsonIgnore() private(
     new OneBinary_3(_URI = this.URI, __locator = this.__locator, _ID = _ID, _oneBinary = oneBinary)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("ID")
+  @com.fasterxml.jackson.annotation.JsonProperty("ID")
   def ID = {
     _ID
   }
@@ -70,7 +70,7 @@ class OneBinary_3 @com.fasterxml.jackson.annotation.JsonIgnore() private(
     Await.result(__locator.get.resolve(classOf[CrudProxy]).delete[com.dslplatform.ocd.aggregates.SurrogatePrimaryKeyWithOnePropertyInAggregate.OneBinary_3](URI), duration)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("oneBinary")
+  @com.fasterxml.jackson.annotation.JsonProperty("oneBinary")
   def oneBinary = {
     _oneBinary
   }

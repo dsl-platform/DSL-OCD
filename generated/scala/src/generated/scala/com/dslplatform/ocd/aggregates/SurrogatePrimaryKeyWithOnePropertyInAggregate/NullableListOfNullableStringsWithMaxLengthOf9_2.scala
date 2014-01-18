@@ -12,7 +12,7 @@ class NullableListOfNullableStringsWithMaxLengthOf9_2 @com.fasterxml.jackson.ann
     private var _nullableListOfNullableStringsWithMaxLengthOf9: Option[IndexedSeq[Option[String]]]
   ) extends Serializable with AggregateRoot {
 
-  @com.fasterxml.jackson.annotation.JsonGetter("URI")
+  @com.fasterxml.jackson.annotation.JsonProperty("URI")
   def URI = {
 
     _URI
@@ -35,7 +35,7 @@ class NullableListOfNullableStringsWithMaxLengthOf9_2 @com.fasterxml.jackson.ann
     new NullableListOfNullableStringsWithMaxLengthOf9_2(_URI = this.URI, __locator = this.__locator, _ID = _ID, _nullableListOfNullableStringsWithMaxLengthOf9 = nullableListOfNullableStringsWithMaxLengthOf9)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("ID")
+  @com.fasterxml.jackson.annotation.JsonProperty("ID")
   def ID = {
     _ID
   }
@@ -73,7 +73,7 @@ class NullableListOfNullableStringsWithMaxLengthOf9_2 @com.fasterxml.jackson.ann
     Await.result(__locator.get.resolve(classOf[CrudProxy]).delete[com.dslplatform.ocd.aggregates.SurrogatePrimaryKeyWithOnePropertyInAggregate.NullableListOfNullableStringsWithMaxLengthOf9_2](URI), duration)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("nullableListOfNullableStringsWithMaxLengthOf9")
+  @com.fasterxml.jackson.annotation.JsonProperty("nullableListOfNullableStringsWithMaxLengthOf9")
   def nullableListOfNullableStringsWithMaxLengthOf9 = {
     _nullableListOfNullableStringsWithMaxLengthOf9
   }

@@ -11,7 +11,7 @@ class OneListOfNullableBooleans_2 @com.fasterxml.jackson.annotation.JsonIgnore()
     private var _oneListOfNullableBooleans: IndexedSeq[Option[Boolean]]
   ) extends Serializable with AggregateRoot {
 
-  @com.fasterxml.jackson.annotation.JsonGetter("URI")
+  @com.fasterxml.jackson.annotation.JsonProperty("URI")
   def URI = {
 
     _URI
@@ -59,7 +59,7 @@ class OneListOfNullableBooleans_2 @com.fasterxml.jackson.annotation.JsonIgnore()
     Await.result(__locator.get.resolve(classOf[CrudProxy]).delete[com.dslplatform.ocd.aggregates.PrimaryKeyPropertyInAggregateSetup.OneListOfNullableBooleans_2](URI), duration)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("oneListOfNullableBooleans")
+  @com.fasterxml.jackson.annotation.JsonProperty("oneListOfNullableBooleans")
   @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_EMPTY)
   def oneListOfNullableBooleans = {
     _oneListOfNullableBooleans

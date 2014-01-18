@@ -12,7 +12,7 @@ class OneArrayOfNullableXmls_2 @com.fasterxml.jackson.annotation.JsonIgnore() pr
     private var _oneArrayOfNullableXmls: Array[Option[scala.xml.Elem]]
   ) extends Serializable with AggregateRoot {
 
-  @com.fasterxml.jackson.annotation.JsonGetter("URI")
+  @com.fasterxml.jackson.annotation.JsonProperty("URI")
   def URI = {
 
     _URI
@@ -33,7 +33,7 @@ class OneArrayOfNullableXmls_2 @com.fasterxml.jackson.annotation.JsonIgnore() pr
     new OneArrayOfNullableXmls_2(_URI = this.URI, __locator = this.__locator, _ID = _ID, _oneArrayOfNullableXmls = oneArrayOfNullableXmls)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("ID")
+  @com.fasterxml.jackson.annotation.JsonProperty("ID")
   def ID = {
     _ID
   }
@@ -71,7 +71,7 @@ class OneArrayOfNullableXmls_2 @com.fasterxml.jackson.annotation.JsonIgnore() pr
     Await.result(__locator.get.resolve(classOf[CrudProxy]).delete[com.dslplatform.ocd.aggregates.SurrogatePrimaryKeyWithOnePropertyInAggregate.OneArrayOfNullableXmls_2](URI), duration)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("oneArrayOfNullableXmls")
+  @com.fasterxml.jackson.annotation.JsonProperty("oneArrayOfNullableXmls")
   @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_EMPTY)
   def oneArrayOfNullableXmls = {
     _oneArrayOfNullableXmls

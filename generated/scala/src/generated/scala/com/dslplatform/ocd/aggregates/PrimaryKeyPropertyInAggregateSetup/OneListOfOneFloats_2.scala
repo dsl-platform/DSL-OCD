@@ -11,7 +11,7 @@ class OneListOfOneFloats_2 @com.fasterxml.jackson.annotation.JsonIgnore() privat
     private var _oneListOfOneFloats: IndexedSeq[Float]
   ) extends Serializable with AggregateRoot {
 
-  @com.fasterxml.jackson.annotation.JsonGetter("URI")
+  @com.fasterxml.jackson.annotation.JsonProperty("URI")
   def URI = {
 
     _URI
@@ -58,7 +58,7 @@ class OneListOfOneFloats_2 @com.fasterxml.jackson.annotation.JsonIgnore() privat
     Await.result(__locator.get.resolve(classOf[CrudProxy]).delete[com.dslplatform.ocd.aggregates.PrimaryKeyPropertyInAggregateSetup.OneListOfOneFloats_2](URI), duration)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("oneListOfOneFloats")
+  @com.fasterxml.jackson.annotation.JsonProperty("oneListOfOneFloats")
   @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_EMPTY)
   def oneListOfOneFloats = {
     _oneListOfOneFloats

@@ -12,7 +12,7 @@ class OneSetOfNullableMaps_3 @com.fasterxml.jackson.annotation.JsonIgnore() priv
     private var _oneSetOfNullableMaps: Set[Option[Map[String, String]]]
   ) extends Serializable with AggregateRoot {
 
-  @com.fasterxml.jackson.annotation.JsonGetter("URI")
+  @com.fasterxml.jackson.annotation.JsonProperty("URI")
   def URI = {
 
     _URI
@@ -33,7 +33,7 @@ class OneSetOfNullableMaps_3 @com.fasterxml.jackson.annotation.JsonIgnore() priv
     new OneSetOfNullableMaps_3(_URI = this.URI, __locator = this.__locator, _ID = _ID, _oneSetOfNullableMaps = oneSetOfNullableMaps)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("ID")
+  @com.fasterxml.jackson.annotation.JsonProperty("ID")
   def ID = {
     _ID
   }
@@ -71,7 +71,7 @@ class OneSetOfNullableMaps_3 @com.fasterxml.jackson.annotation.JsonIgnore() priv
     Await.result(__locator.get.resolve(classOf[CrudProxy]).delete[com.dslplatform.ocd.aggregates.SurrogatePrimaryKeyWithOnePropertyInAggregate.OneSetOfNullableMaps_3](URI), duration)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("oneSetOfNullableMaps")
+  @com.fasterxml.jackson.annotation.JsonProperty("oneSetOfNullableMaps")
   @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_EMPTY)
   def oneSetOfNullableMaps = {
     _oneSetOfNullableMaps

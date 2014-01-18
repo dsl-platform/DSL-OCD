@@ -12,7 +12,7 @@ class OneDecimalWithScaleOf9_3 @com.fasterxml.jackson.annotation.JsonIgnore() pr
     private var _oneDecimalWithScaleOf9: BigDecimal
   ) extends Serializable with AggregateRoot {
 
-  @com.fasterxml.jackson.annotation.JsonGetter("URI")
+  @com.fasterxml.jackson.annotation.JsonProperty("URI")
   def URI = {
 
     _URI
@@ -33,7 +33,7 @@ class OneDecimalWithScaleOf9_3 @com.fasterxml.jackson.annotation.JsonIgnore() pr
     new OneDecimalWithScaleOf9_3(_URI = this.URI, __locator = this.__locator, _ID = _ID, _oneDecimalWithScaleOf9 = oneDecimalWithScaleOf9)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("ID")
+  @com.fasterxml.jackson.annotation.JsonProperty("ID")
   def ID = {
     _ID
   }
@@ -71,7 +71,7 @@ class OneDecimalWithScaleOf9_3 @com.fasterxml.jackson.annotation.JsonIgnore() pr
     Await.result(__locator.get.resolve(classOf[CrudProxy]).delete[com.dslplatform.ocd.aggregates.SurrogatePrimaryKeyWithOnePropertyInAggregate.OneDecimalWithScaleOf9_3](URI), duration)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("oneDecimalWithScaleOf9")
+  @com.fasterxml.jackson.annotation.JsonProperty("oneDecimalWithScaleOf9")
   def oneDecimalWithScaleOf9 = {
     _oneDecimalWithScaleOf9
   }
