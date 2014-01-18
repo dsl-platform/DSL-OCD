@@ -12,8 +12,8 @@ version := "0.0.0-SNAPSHOT"
 
 unmanagedSourceDirectories in Compile :=
   (scalaSource in Compile).value ::
-	baseDirectory.value / "src" / "generated" / "scala" ::
-	Nil
+  baseDirectory.value / "src" / "generated" / "scala" ::
+  Nil
 
 unmanagedSourceDirectories in Test := Nil
 

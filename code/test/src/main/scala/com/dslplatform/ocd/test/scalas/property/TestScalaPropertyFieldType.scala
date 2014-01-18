@@ -12,12 +12,12 @@ trait TestScalaPropertyFieldType
   def propertyType: OcdScala
 
   def testComponentBody =
-    nonPublicTest +
+    isPublicTest +
     typeTest
 
-  private def nonPublicTest = s"""
-    /* Testing the property field public access via reflection (no instantiation) */
-    def `Test property field access`() =
+  private def isPublicTest = s"""
+    /* Testing the property field public visibility via reflection (no instantiation) */
+    def `Test property field visibility`() =
       lock(
         typeOf[${conceptName}]
           .member("${propertyName}": TermName)

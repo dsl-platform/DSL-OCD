@@ -16,13 +16,13 @@ object PathResolver {
   }
 
   private val ScalaPath =
-    """(?s)package (\S+?)\s.+?class (\S+?)\s.*"""r
+    """(?s)package (\S+?)\spackage (\S+?)\s.*?class (\S+?)\s.*"""r
 
   def withScalaPath(body: String) = {
-    val ScalaPath(packageName, className) = body
+    val ScalaPath(basePackageName, testPackageName, className) = body
 
     val path = "scala/" +
-      packageName.replace('.', '/') + '/' +
+      (basePackageName + '.' + testPackageName).replace('.', '/') + '/' +
       className + ".scala"
 
     path -> body
