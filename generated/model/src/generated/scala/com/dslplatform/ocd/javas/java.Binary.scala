@@ -24,7 +24,7 @@ case object `java.Binary[]`
 
   val javaClass = "byte[][]"
 
-  val defaultValue = "new byte[][0]"
+  val defaultValue = "new byte[0][]"
 
   val isPrimitive = false
   val hasGenerics = false
@@ -35,7 +35,7 @@ case object `java.Binary?[]`
 
   val javaClass = "byte[][]"
 
-  val defaultValue = "new byte[][0]"
+  val defaultValue = "new byte[0][]"
 
   val isPrimitive = false
   val hasGenerics = false
@@ -101,7 +101,7 @@ case object `java.Binary[]?`
 
   val javaClass = "byte[][]"
 
-  val defaultValue = "new byte[][0]"
+  val defaultValue = "new byte[0][]"
 
   val isPrimitive = false
   val hasGenerics = false
@@ -112,7 +112,7 @@ case object `java.Binary?[]?`
 
   val javaClass = "byte[][]"
 
-  val defaultValue = "new byte[][0]"
+  val defaultValue = "new byte[0][]"
 
   val isPrimitive = false
   val hasGenerics = false

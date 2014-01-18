@@ -7,7 +7,7 @@ import Boxes._
 object JavaUrl
     extends JavaStub {
 
-  val classReference = "java.net.URL"
+  val classReference = "java.net.URI"
 
   val defaultSingle = "null"
 }

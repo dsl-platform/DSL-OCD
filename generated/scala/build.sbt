@@ -19,7 +19,7 @@ unmanagedSourceDirectories in Test :=
 // ### DEPENDENCIES ### //
 
 libraryDependencies ++= Seq(
-  "com.dslplatform" %% "dsl-client-scala-http" % "0.0.3-SNAPSHOT"
+  "com.dslplatform" %% "dsl-client-scala-http" % "0.1.1-SNAPSHOT"
 , "ch.qos.logback" % "logback-classic" % "1.0.13" % "compile->default"
 , "org.scalatest" %% "scalatest" % "2.0"
 , "junit" % "junit" % "4.11"

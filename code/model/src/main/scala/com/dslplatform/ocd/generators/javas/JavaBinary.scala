@@ -13,9 +13,12 @@ object JavaBinary
 
   override def defaultValue = (_: Box) match {
     case Box(_, Some((CollectionType.Array, _)), _*) =>
-      "new byte[][0]"
+      "new byte[0][]"
 
     case b =>
       super.defaultValue(b)
   }
+
+  val useCases = Seq(
+  )
 }

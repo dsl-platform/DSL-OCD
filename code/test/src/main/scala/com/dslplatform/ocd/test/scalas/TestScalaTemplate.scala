@@ -2,7 +2,8 @@ package com.dslplatform.ocd
 package `test.scalas`
 
 trait TestScalaTemplate {
-  def packageName: String
+  def basePackageName: String
+  def testPackageName: String
   def testName: String
 
   def imports: Seq[String] = Nil
@@ -18,7 +19,8 @@ trait TestScalaTemplate {
   def testBody = {
     val sb = new StringBuilder
 
-    sb ++= s"""package $packageName
+    sb ++= s"""package ${basePackageName}
+package ${testPackageName}
 
 import org.scalatest._
 import com.dslplatform.ocd.test._

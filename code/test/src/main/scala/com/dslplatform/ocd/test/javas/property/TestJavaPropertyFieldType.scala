@@ -12,12 +12,12 @@ trait TestJavaPropertyFieldType
   def propertyType: OcdJava
 
   def testComponentBody =
-    nonPublicTest +
+    isPrivateTest +
     classTest +
     (propertyType.hasGenerics match {
       case true => genericsTypeTest
       case _ => ""
-   })
+    })
 
   private def propertyClass =
     if (propertyType.hasGenerics)
@@ -25,10 +25,10 @@ trait TestJavaPropertyFieldType
     else
       propertyType.javaClass
 
-  private def nonPublicTest = s"""
-    /* Testing the property field private access via reflection (no instantiation) */
+  private def isPrivateTest = s"""
+    /* Testing the property field private visibility via reflection (no instantiation) */
     @org.junit.Test
-    public void testPropertyFieldAccess() throws NoSuchFieldException {
+    public void testPropertyFieldVisibility() throws NoSuchFieldException {
         org.junit.Assert.assertEquals(
                 java.lang.reflect.Modifier.PRIVATE,
                 ${conceptName}.class.getDeclaredField(

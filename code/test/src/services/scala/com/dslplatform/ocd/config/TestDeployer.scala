@@ -66,14 +66,15 @@ private [config] class TestDeployer(
   }
 
   def deployTest(
-      projectIni: ProjectIni
+      testName: String
+    , projectIni: ProjectIni
     , testFiles: Map[Language, Files]) {
 
     testFiles foreach { case (language, files) =>
       val languageRoot = testPath(language)
 
       val projectIniPath = languageRoot / "resources" /
-        (projectIni.packageName, '.') / "dsl-project.ini"
+        (projectIni.packageName, '.') / (testName + ".ini")
 
       logger.trace("Writing project file: " + projectIniPath)
       projectIniPath.write(projectIni.toByteArray)
@@ -93,18 +94,18 @@ private [config] class TestDeployer(
     tests foreach { curTest =>
       deployDsl(curTest.aggregatedDslFiles)
       deployCode(curTest.codeFiles)
-      deployTest(curTest.projectIni, curTest.aggregatedTestFiles)
+      deployTest(curTest.testName, curTest.projectIni, curTest.aggregatedTestFiles)
     }
 
-    if (tests.size > 1) {
-      val projectID = tests.head.projectIni.projectID
-      val aggregatedDslFiles = tests.flatMap(_.aggregatedDslFiles).toMap
-
-      logger.info("About to consolidate all DSLs into the database ...")
-      apiActions.upgradeDatabase(
-        projectID = projectID
-      , dslFiles = aggregatedDslFiles
-      )
-    }
+//    if (tests.size > 1) {
+//      val projectID = tests.head.projectIni.projectID
+//      val aggregatedDslFiles = tests.flatMap(_.aggregatedDslFiles).toMap
+//
+//      logger.info("About to consolidate all DSLs into the database ...")
+//      apiActions.upgradeDatabase(
+//        projectID = projectID
+//      , dslFiles = aggregatedDslFiles
+//      )
+//    }
   }
 }

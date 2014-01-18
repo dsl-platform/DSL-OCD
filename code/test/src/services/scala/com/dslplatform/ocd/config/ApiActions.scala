@@ -49,16 +49,12 @@ private [config] class ApiActions(
   )
 
   def create(projectName: String, packageName: String) = {
-    ProjectIni.fromByteArray(
-s"""username=ocd@dsl-platform.com
-project-id=e7cc4459-82fd-47d7-a92c-964f4398309a
-api-url=https://compiler-actionbunny.dsl-platform.com:8443/beta_07fb37a8704594af5578b4/
-package-name=${packageName}
-""" getBytes "UTF-8")
+    val create = actions.create(auth, new ProjectName(projectName))
+    logger.info("Project successfully created: " + create.getProjectID)
 
-//    val create = actions.create(auth, new ProjectName(projectName))
-//    logger.info("Project successfully created: " + create.getProjectID)
-//    ProjectIni.fromByteArray(create.getProjectIni())
+    // mutate the packageName
+    ProjectIni.fromByteArray(create.getProjectIni())
+      .copy(packageName = packageName)
   }
 
   def upgradeDatabase(
@@ -120,7 +116,7 @@ package-name=${packageName}
           )
 
         val files = update.getFileBodies
-        require(files.size > 0, "Could not compile sources!")
+        require(files.size > 0, "Could not compile sources: " + packageName)
 
         dumpObject(cacheFile, files)
         files
@@ -140,12 +136,6 @@ package-name=${packageName}
 
   private def patch(body: String) = {
     body
-
-    /*.replace(
-      """if (!(this.oneXML.equals(other.oneXML))) return false;"""
-    , """if (!(this.oneXML == other.oneXML || this.oneXML != null
-                && this.oneXML.equals(other.oneXML))) return false;"""
-    )*/
   }
 
   def delete(projectID: UUID) =

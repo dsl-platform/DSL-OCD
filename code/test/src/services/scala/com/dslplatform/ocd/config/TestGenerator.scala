@@ -7,6 +7,7 @@ import com.dslplatform.compiler.client.api.params.Credentials
 import com.dslplatform.compiler.client.api.params.ProjectName
 import com.dslplatform.compiler.client.cmdline.logger.LoggerSLF4J
 import com.dslplatform.compiler.client.api.params.Language
+import com.dslplatform.ocd.test.UniqueNames
 
 private [config] class TestGenerator(
     logger: Logger
@@ -14,10 +15,18 @@ private [config] class TestGenerator(
   , actions: IApiActions
   ) extends ITestGenerator {
 
-  def generateTests(tests: Seq[ITest]) = {
-    val projectName = ("Test-" + testSettings.xkcd).replace('-', '_')
-    logger.info("Creating the generator project ...")
+  def generateTests(
+      _testName: String
+    , tests: Seq[ITest]) = {
+    val projectName = {
+      val timestamp = testSettings.xkcd.time
+      "Test_%s_%04d" format(
+        timestamp.replace('-', '_')
+      , UniqueNames.nextInt(timestamp)
+      )
+    }
 
+    logger.info("Creating the generator project ...")
     val _packageName = tests.head.packageName.ensuring(pn =>
       tests.tail.forall(_.packageName == pn)
     , "All package names within a test batch must be equal!"
@@ -40,13 +49,14 @@ private [config] class TestGenerator(
 
     val testSetup =
       new ITestSetup {
+        def testName = _testName
         def projectIni = _projectIni
         def tests = _tests
         def codeFiles = _codeFiles
       }
 
 //    logger.info("Deleting the generator project ...")
-//    actions.delete(projectIni.projectID)
+//    actions.delete(_projectIni.projectID)
 
     testSetup
   }

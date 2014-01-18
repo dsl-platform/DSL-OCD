@@ -5,6 +5,7 @@ import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.io.InputStream
 import java.io.OutputStream
+import java.io.OutputStreamWriter
 
 case class ProjectIni(
   username: String
@@ -13,7 +14,7 @@ case class ProjectIni(
 , packageName: String) {
 
   def toProperties = {
-    val props = new Properties
+    val props = new Properties()
     props.put("username", username)
     props.put("project-id", projectID.toString)
     props.put("api-url", apiUrl)

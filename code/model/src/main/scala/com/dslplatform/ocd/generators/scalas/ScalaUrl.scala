@@ -7,7 +7,7 @@ import Boxes._
 object ScalaUrl
     extends ScalaStub {
 
-  val clazz = "java.net.URL"
+  val clazz = "java.net.URI"
 
   val defaultSingle = "null"
 }
