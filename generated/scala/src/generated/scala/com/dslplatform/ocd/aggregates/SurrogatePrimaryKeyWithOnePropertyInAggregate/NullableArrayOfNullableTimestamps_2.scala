@@ -12,7 +12,7 @@ class NullableArrayOfNullableTimestamps_2 @com.fasterxml.jackson.annotation.Json
     private var _nullableArrayOfNullableTimestamps: Option[Array[Option[org.joda.time.DateTime]]]
   ) extends Serializable with AggregateRoot {
 
-  @com.fasterxml.jackson.annotation.JsonGetter("URI")
+  @com.fasterxml.jackson.annotation.JsonProperty("URI")
   def URI = {
 
     _URI
@@ -34,7 +34,7 @@ class NullableArrayOfNullableTimestamps_2 @com.fasterxml.jackson.annotation.Json
     new NullableArrayOfNullableTimestamps_2(_URI = this.URI, __locator = this.__locator, _ID = _ID, _nullableArrayOfNullableTimestamps = nullableArrayOfNullableTimestamps)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("ID")
+  @com.fasterxml.jackson.annotation.JsonProperty("ID")
   def ID = {
     _ID
   }
@@ -72,7 +72,7 @@ class NullableArrayOfNullableTimestamps_2 @com.fasterxml.jackson.annotation.Json
     Await.result(__locator.get.resolve(classOf[CrudProxy]).delete[com.dslplatform.ocd.aggregates.SurrogatePrimaryKeyWithOnePropertyInAggregate.NullableArrayOfNullableTimestamps_2](URI), duration)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("nullableArrayOfNullableTimestamps")
+  @com.fasterxml.jackson.annotation.JsonProperty("nullableArrayOfNullableTimestamps")
   def nullableArrayOfNullableTimestamps = {
     _nullableArrayOfNullableTimestamps
   }

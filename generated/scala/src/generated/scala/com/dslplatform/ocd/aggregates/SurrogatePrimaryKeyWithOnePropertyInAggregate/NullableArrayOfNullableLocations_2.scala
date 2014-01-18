@@ -12,7 +12,7 @@ class NullableArrayOfNullableLocations_2 @com.fasterxml.jackson.annotation.JsonI
     private var _nullableArrayOfNullableLocations: Option[Array[Option[java.awt.geom.Point2D]]]
   ) extends Serializable with AggregateRoot {
 
-  @com.fasterxml.jackson.annotation.JsonGetter("URI")
+  @com.fasterxml.jackson.annotation.JsonProperty("URI")
   def URI = {
 
     _URI
@@ -34,7 +34,7 @@ class NullableArrayOfNullableLocations_2 @com.fasterxml.jackson.annotation.JsonI
     new NullableArrayOfNullableLocations_2(_URI = this.URI, __locator = this.__locator, _ID = _ID, _nullableArrayOfNullableLocations = nullableArrayOfNullableLocations)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("ID")
+  @com.fasterxml.jackson.annotation.JsonProperty("ID")
   def ID = {
     _ID
   }
@@ -72,7 +72,7 @@ class NullableArrayOfNullableLocations_2 @com.fasterxml.jackson.annotation.JsonI
     Await.result(__locator.get.resolve(classOf[CrudProxy]).delete[com.dslplatform.ocd.aggregates.SurrogatePrimaryKeyWithOnePropertyInAggregate.NullableArrayOfNullableLocations_2](URI), duration)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("nullableArrayOfNullableLocations")
+  @com.fasterxml.jackson.annotation.JsonProperty("nullableArrayOfNullableLocations")
   def nullableArrayOfNullableLocations = {
     _nullableArrayOfNullableLocations
   }

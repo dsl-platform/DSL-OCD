@@ -11,7 +11,7 @@ class OneSetOfNullableLongs_2 @com.fasterxml.jackson.annotation.JsonIgnore() pri
     private var _oneSetOfNullableLongs: Set[Option[Long]]
   ) extends Serializable with AggregateRoot {
 
-  @com.fasterxml.jackson.annotation.JsonGetter("URI")
+  @com.fasterxml.jackson.annotation.JsonProperty("URI")
   def URI = {
 
     _URI
@@ -59,7 +59,7 @@ class OneSetOfNullableLongs_2 @com.fasterxml.jackson.annotation.JsonIgnore() pri
     Await.result(__locator.get.resolve(classOf[CrudProxy]).delete[com.dslplatform.ocd.aggregates.PrimaryKeyPropertyInAggregateSetup.OneSetOfNullableLongs_2](URI), duration)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("oneSetOfNullableLongs")
+  @com.fasterxml.jackson.annotation.JsonProperty("oneSetOfNullableLongs")
   @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_EMPTY)
   def oneSetOfNullableLongs = {
     _oneSetOfNullableLongs

@@ -12,7 +12,7 @@ class NullableArrayOfNullableFloats_2 @com.fasterxml.jackson.annotation.JsonIgno
     private var _nullableArrayOfNullableFloats: Option[Array[Option[Float]]]
   ) extends Serializable with AggregateRoot {
 
-  @com.fasterxml.jackson.annotation.JsonGetter("URI")
+  @com.fasterxml.jackson.annotation.JsonProperty("URI")
   def URI = {
 
     _URI
@@ -34,7 +34,7 @@ class NullableArrayOfNullableFloats_2 @com.fasterxml.jackson.annotation.JsonIgno
     new NullableArrayOfNullableFloats_2(_URI = this.URI, __locator = this.__locator, _ID = _ID, _nullableArrayOfNullableFloats = nullableArrayOfNullableFloats)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("ID")
+  @com.fasterxml.jackson.annotation.JsonProperty("ID")
   def ID = {
     _ID
   }
@@ -72,7 +72,7 @@ class NullableArrayOfNullableFloats_2 @com.fasterxml.jackson.annotation.JsonIgno
     Await.result(__locator.get.resolve(classOf[CrudProxy]).delete[com.dslplatform.ocd.aggregates.SurrogatePrimaryKeyWithOnePropertyInAggregate.NullableArrayOfNullableFloats_2](URI), duration)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("nullableArrayOfNullableFloats")
+  @com.fasterxml.jackson.annotation.JsonProperty("nullableArrayOfNullableFloats")
   def nullableArrayOfNullableFloats = {
     _nullableArrayOfNullableFloats
   }

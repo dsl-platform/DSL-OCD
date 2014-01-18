@@ -12,7 +12,7 @@ class NullableString_2 @com.fasterxml.jackson.annotation.JsonIgnore() private(
     private var _nullableString: Option[String]
   ) extends Serializable with AggregateRoot {
 
-  @com.fasterxml.jackson.annotation.JsonGetter("URI")
+  @com.fasterxml.jackson.annotation.JsonProperty("URI")
   def URI = {
 
     _URI
@@ -33,7 +33,7 @@ class NullableString_2 @com.fasterxml.jackson.annotation.JsonIgnore() private(
     new NullableString_2(_URI = this.URI, __locator = this.__locator, _ID = _ID, _nullableString = nullableString)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("ID")
+  @com.fasterxml.jackson.annotation.JsonProperty("ID")
   def ID = {
     _ID
   }
@@ -71,7 +71,7 @@ class NullableString_2 @com.fasterxml.jackson.annotation.JsonIgnore() private(
     Await.result(__locator.get.resolve(classOf[CrudProxy]).delete[com.dslplatform.ocd.aggregates.SurrogatePrimaryKeyWithOnePropertyInAggregate.NullableString_2](URI), duration)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("nullableString")
+  @com.fasterxml.jackson.annotation.JsonProperty("nullableString")
   def nullableString = {
     _nullableString
   }

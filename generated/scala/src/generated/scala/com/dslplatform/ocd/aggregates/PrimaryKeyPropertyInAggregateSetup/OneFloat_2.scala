@@ -11,7 +11,7 @@ class OneFloat_2 @com.fasterxml.jackson.annotation.JsonIgnore() private(
     private var _oneFloat: Float
   ) extends Serializable with AggregateRoot {
 
-  @com.fasterxml.jackson.annotation.JsonGetter("URI")
+  @com.fasterxml.jackson.annotation.JsonProperty("URI")
   def URI = {
 
     _URI
@@ -57,7 +57,7 @@ class OneFloat_2 @com.fasterxml.jackson.annotation.JsonIgnore() private(
     Await.result(__locator.get.resolve(classOf[CrudProxy]).delete[com.dslplatform.ocd.aggregates.PrimaryKeyPropertyInAggregateSetup.OneFloat_2](URI), duration)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("oneFloat")
+  @com.fasterxml.jackson.annotation.JsonProperty("oneFloat")
   def oneFloat = {
     _oneFloat
   }

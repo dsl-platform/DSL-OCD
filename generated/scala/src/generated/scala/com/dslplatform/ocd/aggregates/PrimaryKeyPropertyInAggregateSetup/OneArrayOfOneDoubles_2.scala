@@ -11,7 +11,7 @@ class OneArrayOfOneDoubles_2 @com.fasterxml.jackson.annotation.JsonIgnore() priv
     private var _oneArrayOfOneDoubles: Array[Double]
   ) extends Serializable with AggregateRoot {
 
-  @com.fasterxml.jackson.annotation.JsonGetter("URI")
+  @com.fasterxml.jackson.annotation.JsonProperty("URI")
   def URI = {
 
     _URI
@@ -58,7 +58,7 @@ class OneArrayOfOneDoubles_2 @com.fasterxml.jackson.annotation.JsonIgnore() priv
     Await.result(__locator.get.resolve(classOf[CrudProxy]).delete[com.dslplatform.ocd.aggregates.PrimaryKeyPropertyInAggregateSetup.OneArrayOfOneDoubles_2](URI), duration)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("oneArrayOfOneDoubles")
+  @com.fasterxml.jackson.annotation.JsonProperty("oneArrayOfOneDoubles")
   @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_EMPTY)
   def oneArrayOfOneDoubles = {
     _oneArrayOfOneDoubles

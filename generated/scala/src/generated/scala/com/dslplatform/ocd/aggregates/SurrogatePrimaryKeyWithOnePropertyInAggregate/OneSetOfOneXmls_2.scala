@@ -12,7 +12,7 @@ class OneSetOfOneXmls_2 @com.fasterxml.jackson.annotation.JsonIgnore() private(
     private var _oneSetOfOneXmls: Set[scala.xml.Elem]
   ) extends Serializable with AggregateRoot {
 
-  @com.fasterxml.jackson.annotation.JsonGetter("URI")
+  @com.fasterxml.jackson.annotation.JsonProperty("URI")
   def URI = {
 
     _URI
@@ -33,7 +33,7 @@ class OneSetOfOneXmls_2 @com.fasterxml.jackson.annotation.JsonIgnore() private(
     new OneSetOfOneXmls_2(_URI = this.URI, __locator = this.__locator, _ID = _ID, _oneSetOfOneXmls = oneSetOfOneXmls)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("ID")
+  @com.fasterxml.jackson.annotation.JsonProperty("ID")
   def ID = {
     _ID
   }
@@ -71,7 +71,7 @@ class OneSetOfOneXmls_2 @com.fasterxml.jackson.annotation.JsonIgnore() private(
     Await.result(__locator.get.resolve(classOf[CrudProxy]).delete[com.dslplatform.ocd.aggregates.SurrogatePrimaryKeyWithOnePropertyInAggregate.OneSetOfOneXmls_2](URI), duration)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("oneSetOfOneXmls")
+  @com.fasterxml.jackson.annotation.JsonProperty("oneSetOfOneXmls")
   @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_EMPTY)
   def oneSetOfOneXmls = {
     _oneSetOfOneXmls

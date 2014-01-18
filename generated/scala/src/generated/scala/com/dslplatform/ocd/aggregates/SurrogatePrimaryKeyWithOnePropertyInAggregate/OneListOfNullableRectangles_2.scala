@@ -12,7 +12,7 @@ class OneListOfNullableRectangles_2 @com.fasterxml.jackson.annotation.JsonIgnore
     private var _oneListOfNullableRectangles: IndexedSeq[Option[java.awt.geom.Rectangle2D]]
   ) extends Serializable with AggregateRoot {
 
-  @com.fasterxml.jackson.annotation.JsonGetter("URI")
+  @com.fasterxml.jackson.annotation.JsonProperty("URI")
   def URI = {
 
     _URI
@@ -33,7 +33,7 @@ class OneListOfNullableRectangles_2 @com.fasterxml.jackson.annotation.JsonIgnore
     new OneListOfNullableRectangles_2(_URI = this.URI, __locator = this.__locator, _ID = _ID, _oneListOfNullableRectangles = oneListOfNullableRectangles)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("ID")
+  @com.fasterxml.jackson.annotation.JsonProperty("ID")
   def ID = {
     _ID
   }
@@ -71,7 +71,7 @@ class OneListOfNullableRectangles_2 @com.fasterxml.jackson.annotation.JsonIgnore
     Await.result(__locator.get.resolve(classOf[CrudProxy]).delete[com.dslplatform.ocd.aggregates.SurrogatePrimaryKeyWithOnePropertyInAggregate.OneListOfNullableRectangles_2](URI), duration)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("oneListOfNullableRectangles")
+  @com.fasterxml.jackson.annotation.JsonProperty("oneListOfNullableRectangles")
   @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_EMPTY)
   def oneListOfNullableRectangles = {
     _oneListOfNullableRectangles

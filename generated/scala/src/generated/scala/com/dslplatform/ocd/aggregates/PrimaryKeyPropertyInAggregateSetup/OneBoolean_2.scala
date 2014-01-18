@@ -11,7 +11,7 @@ class OneBoolean_2 @com.fasterxml.jackson.annotation.JsonIgnore() private(
     private var _oneBoolean: Boolean
   ) extends Serializable with AggregateRoot {
 
-  @com.fasterxml.jackson.annotation.JsonGetter("URI")
+  @com.fasterxml.jackson.annotation.JsonProperty("URI")
   def URI = {
 
     _URI
@@ -57,7 +57,7 @@ class OneBoolean_2 @com.fasterxml.jackson.annotation.JsonIgnore() private(
     Await.result(__locator.get.resolve(classOf[CrudProxy]).delete[com.dslplatform.ocd.aggregates.PrimaryKeyPropertyInAggregateSetup.OneBoolean_2](URI), duration)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("oneBoolean")
+  @com.fasterxml.jackson.annotation.JsonProperty("oneBoolean")
   def oneBoolean = {
     _oneBoolean
   }

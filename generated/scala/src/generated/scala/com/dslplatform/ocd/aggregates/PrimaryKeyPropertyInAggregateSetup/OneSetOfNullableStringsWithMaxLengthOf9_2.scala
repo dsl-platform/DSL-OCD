@@ -11,7 +11,7 @@ class OneSetOfNullableStringsWithMaxLengthOf9_2 @com.fasterxml.jackson.annotatio
     private var _oneSetOfNullableStringsWithMaxLengthOf9: Set[Option[String]]
   ) extends Serializable with AggregateRoot {
 
-  @com.fasterxml.jackson.annotation.JsonGetter("URI")
+  @com.fasterxml.jackson.annotation.JsonProperty("URI")
   def URI = {
 
     _URI
@@ -60,7 +60,7 @@ class OneSetOfNullableStringsWithMaxLengthOf9_2 @com.fasterxml.jackson.annotatio
     Await.result(__locator.get.resolve(classOf[CrudProxy]).delete[com.dslplatform.ocd.aggregates.PrimaryKeyPropertyInAggregateSetup.OneSetOfNullableStringsWithMaxLengthOf9_2](URI), duration)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("oneSetOfNullableStringsWithMaxLengthOf9")
+  @com.fasterxml.jackson.annotation.JsonProperty("oneSetOfNullableStringsWithMaxLengthOf9")
   @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_EMPTY)
   def oneSetOfNullableStringsWithMaxLengthOf9 = {
     _oneSetOfNullableStringsWithMaxLengthOf9

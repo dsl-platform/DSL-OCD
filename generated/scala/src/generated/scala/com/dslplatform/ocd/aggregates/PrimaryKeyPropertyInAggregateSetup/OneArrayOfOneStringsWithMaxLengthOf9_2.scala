@@ -11,7 +11,7 @@ class OneArrayOfOneStringsWithMaxLengthOf9_2 @com.fasterxml.jackson.annotation.J
     private var _oneArrayOfOneStringsWithMaxLengthOf9: Array[String]
   ) extends Serializable with AggregateRoot {
 
-  @com.fasterxml.jackson.annotation.JsonGetter("URI")
+  @com.fasterxml.jackson.annotation.JsonProperty("URI")
   def URI = {
 
     _URI
@@ -60,7 +60,7 @@ class OneArrayOfOneStringsWithMaxLengthOf9_2 @com.fasterxml.jackson.annotation.J
     Await.result(__locator.get.resolve(classOf[CrudProxy]).delete[com.dslplatform.ocd.aggregates.PrimaryKeyPropertyInAggregateSetup.OneArrayOfOneStringsWithMaxLengthOf9_2](URI), duration)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("oneArrayOfOneStringsWithMaxLengthOf9")
+  @com.fasterxml.jackson.annotation.JsonProperty("oneArrayOfOneStringsWithMaxLengthOf9")
   @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_EMPTY)
   def oneArrayOfOneStringsWithMaxLengthOf9 = {
     _oneArrayOfOneStringsWithMaxLengthOf9

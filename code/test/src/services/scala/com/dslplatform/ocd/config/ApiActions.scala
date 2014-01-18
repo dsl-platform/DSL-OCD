@@ -2,6 +2,7 @@ package com.dslplatform.ocd
 package config
 
 import scala.collection.JavaConverters._
+import projects.ProjectIni
 import com.dslplatform.compiler.client.api.Actions
 import com.dslplatform.compiler.client.api.ApiCall
 import com.dslplatform.compiler.client.api.params.Credentials
@@ -30,9 +31,10 @@ private object ApiActions {
   )
 }
 
-private [config] class ApiActions(
+private[config] class ApiActions(
     logger: Logger
   , testSettings: ITestSettings
+  , projectCache: IProjectCache
   ) extends IApiActions {
 
   private val actions = {
@@ -48,13 +50,18 @@ private [config] class ApiActions(
   , new String(testSettings.password, "UTF-8")
   )
 
-  def create(projectName: String, packageName: String) = {
-    val create = actions.create(auth, new ProjectName(projectName))
-    logger.info("Project successfully created: " + create.getProjectID)
+  private def getCachedProjectIni(packageName: String) =
+    projectCache.getFresh().map(_.toProjectIni(packageName))
 
-    // mutate the packageName
-    ProjectIni.fromByteArray(create.getProjectIni())
-      .copy(packageName = packageName)
+  def create(projectName: String, packageName: String) = {
+    getCachedProjectIni(packageName) getOrElse {
+      val create = actions.create(auth, new ProjectName(projectName))
+      logger.info("Project successfully created: " + create.getProjectID)
+
+      // mutate the packageName
+      ProjectIni.fromByteArray(create.getProjectIni())
+        .copy(packageName = packageName)
+    }
   }
 
   def upgradeDatabase(
@@ -103,7 +110,7 @@ private [config] class ApiActions(
     val cacheFile = testSettings.workspace / "cache" / cacheName file
 
     val files =
-      if (cacheFile.exists()) {
+      if (CacheSettings.CacheCode && cacheFile.exists()) {
         restoreObject[CacheType](cacheFile)
       } else {
         val update =

@@ -12,7 +12,7 @@ class OneSetOfOneMonies_3 @com.fasterxml.jackson.annotation.JsonIgnore() private
     private var _oneSetOfOneMonies: Set[BigDecimal]
   ) extends Serializable with AggregateRoot {
 
-  @com.fasterxml.jackson.annotation.JsonGetter("URI")
+  @com.fasterxml.jackson.annotation.JsonProperty("URI")
   def URI = {
 
     _URI
@@ -33,7 +33,7 @@ class OneSetOfOneMonies_3 @com.fasterxml.jackson.annotation.JsonIgnore() private
     new OneSetOfOneMonies_3(_URI = this.URI, __locator = this.__locator, _ID = _ID, _oneSetOfOneMonies = oneSetOfOneMonies)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("ID")
+  @com.fasterxml.jackson.annotation.JsonProperty("ID")
   def ID = {
     _ID
   }
@@ -71,7 +71,7 @@ class OneSetOfOneMonies_3 @com.fasterxml.jackson.annotation.JsonIgnore() private
     Await.result(__locator.get.resolve(classOf[CrudProxy]).delete[com.dslplatform.ocd.aggregates.SurrogatePrimaryKeyWithOnePropertyInAggregate.OneSetOfOneMonies_3](URI), duration)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("oneSetOfOneMonies")
+  @com.fasterxml.jackson.annotation.JsonProperty("oneSetOfOneMonies")
   @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_EMPTY)
   def oneSetOfOneMonies = {
     _oneSetOfOneMonies

@@ -12,7 +12,7 @@ class NullableSetOfOneIps_2 @com.fasterxml.jackson.annotation.JsonIgnore() priva
     private var _nullableSetOfOneIps: Option[Set[java.net.InetAddress]]
   ) extends Serializable with AggregateRoot {
 
-  @com.fasterxml.jackson.annotation.JsonGetter("URI")
+  @com.fasterxml.jackson.annotation.JsonProperty("URI")
   def URI = {
 
     _URI
@@ -34,7 +34,7 @@ class NullableSetOfOneIps_2 @com.fasterxml.jackson.annotation.JsonIgnore() priva
     new NullableSetOfOneIps_2(_URI = this.URI, __locator = this.__locator, _ID = _ID, _nullableSetOfOneIps = nullableSetOfOneIps)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("ID")
+  @com.fasterxml.jackson.annotation.JsonProperty("ID")
   def ID = {
     _ID
   }
@@ -72,7 +72,7 @@ class NullableSetOfOneIps_2 @com.fasterxml.jackson.annotation.JsonIgnore() priva
     Await.result(__locator.get.resolve(classOf[CrudProxy]).delete[com.dslplatform.ocd.aggregates.SurrogatePrimaryKeyWithOnePropertyInAggregate.NullableSetOfOneIps_2](URI), duration)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("nullableSetOfOneIps")
+  @com.fasterxml.jackson.annotation.JsonProperty("nullableSetOfOneIps")
   def nullableSetOfOneIps = {
     _nullableSetOfOneIps
   }

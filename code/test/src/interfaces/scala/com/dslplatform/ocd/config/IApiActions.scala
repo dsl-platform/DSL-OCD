@@ -1,6 +1,7 @@
 package com.dslplatform.ocd
 package config
 
+import projects.ProjectIni
 import com.dslplatform.compiler.client.api.params.Language
 
 trait IApiActions {

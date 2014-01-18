@@ -12,7 +12,7 @@ class NullableArrayOfNullableImages_2 @com.fasterxml.jackson.annotation.JsonIgno
     private var _nullableArrayOfNullableImages: Option[Array[Option[java.awt.image.BufferedImage]]]
   ) extends Serializable with AggregateRoot {
 
-  @com.fasterxml.jackson.annotation.JsonGetter("URI")
+  @com.fasterxml.jackson.annotation.JsonProperty("URI")
   def URI = {
 
     _URI
@@ -34,7 +34,7 @@ class NullableArrayOfNullableImages_2 @com.fasterxml.jackson.annotation.JsonIgno
     new NullableArrayOfNullableImages_2(_URI = this.URI, __locator = this.__locator, _ID = _ID, _nullableArrayOfNullableImages = nullableArrayOfNullableImages)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("ID")
+  @com.fasterxml.jackson.annotation.JsonProperty("ID")
   def ID = {
     _ID
   }
@@ -72,7 +72,7 @@ class NullableArrayOfNullableImages_2 @com.fasterxml.jackson.annotation.JsonIgno
     Await.result(__locator.get.resolve(classOf[CrudProxy]).delete[com.dslplatform.ocd.aggregates.SurrogatePrimaryKeyWithOnePropertyInAggregate.NullableArrayOfNullableImages_2](URI), duration)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("nullableArrayOfNullableImages")
+  @com.fasterxml.jackson.annotation.JsonProperty("nullableArrayOfNullableImages")
   def nullableArrayOfNullableImages = {
     _nullableArrayOfNullableImages
   }

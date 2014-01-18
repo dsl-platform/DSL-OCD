@@ -12,7 +12,7 @@ class NullableArrayOfNullableGuids_2 @com.fasterxml.jackson.annotation.JsonIgnor
     private var _nullableArrayOfNullableGuids: Option[Array[Option[java.util.UUID]]]
   ) extends Serializable with AggregateRoot {
 
-  @com.fasterxml.jackson.annotation.JsonGetter("URI")
+  @com.fasterxml.jackson.annotation.JsonProperty("URI")
   def URI = {
 
     _URI
@@ -34,7 +34,7 @@ class NullableArrayOfNullableGuids_2 @com.fasterxml.jackson.annotation.JsonIgnor
     new NullableArrayOfNullableGuids_2(_URI = this.URI, __locator = this.__locator, _ID = _ID, _nullableArrayOfNullableGuids = nullableArrayOfNullableGuids)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("ID")
+  @com.fasterxml.jackson.annotation.JsonProperty("ID")
   def ID = {
     _ID
   }
@@ -72,7 +72,7 @@ class NullableArrayOfNullableGuids_2 @com.fasterxml.jackson.annotation.JsonIgnor
     Await.result(__locator.get.resolve(classOf[CrudProxy]).delete[com.dslplatform.ocd.aggregates.SurrogatePrimaryKeyWithOnePropertyInAggregate.NullableArrayOfNullableGuids_2](URI), duration)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("nullableArrayOfNullableGuids")
+  @com.fasterxml.jackson.annotation.JsonProperty("nullableArrayOfNullableGuids")
   def nullableArrayOfNullableGuids = {
     _nullableArrayOfNullableGuids
   }

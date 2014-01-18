@@ -12,7 +12,7 @@ class OneTimestamp_3 @com.fasterxml.jackson.annotation.JsonIgnore() private(
     private var _oneTimestamp: org.joda.time.DateTime
   ) extends Serializable with AggregateRoot {
 
-  @com.fasterxml.jackson.annotation.JsonGetter("URI")
+  @com.fasterxml.jackson.annotation.JsonProperty("URI")
   def URI = {
 
     _URI
@@ -32,7 +32,7 @@ class OneTimestamp_3 @com.fasterxml.jackson.annotation.JsonIgnore() private(
     new OneTimestamp_3(_URI = this.URI, __locator = this.__locator, _ID = _ID, _oneTimestamp = oneTimestamp)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("ID")
+  @com.fasterxml.jackson.annotation.JsonProperty("ID")
   def ID = {
     _ID
   }
@@ -70,7 +70,7 @@ class OneTimestamp_3 @com.fasterxml.jackson.annotation.JsonIgnore() private(
     Await.result(__locator.get.resolve(classOf[CrudProxy]).delete[com.dslplatform.ocd.aggregates.SurrogatePrimaryKeyWithOnePropertyInAggregate.OneTimestamp_3](URI), duration)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("oneTimestamp")
+  @com.fasterxml.jackson.annotation.JsonProperty("oneTimestamp")
   def oneTimestamp = {
     _oneTimestamp
   }

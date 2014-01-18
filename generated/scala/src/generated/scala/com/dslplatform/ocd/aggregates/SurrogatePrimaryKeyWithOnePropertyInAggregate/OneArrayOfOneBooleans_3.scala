@@ -12,7 +12,7 @@ class OneArrayOfOneBooleans_3 @com.fasterxml.jackson.annotation.JsonIgnore() pri
     private var _oneArrayOfOneBooleans: Array[Boolean]
   ) extends Serializable with AggregateRoot {
 
-  @com.fasterxml.jackson.annotation.JsonGetter("URI")
+  @com.fasterxml.jackson.annotation.JsonProperty("URI")
   def URI = {
 
     _URI
@@ -32,7 +32,7 @@ class OneArrayOfOneBooleans_3 @com.fasterxml.jackson.annotation.JsonIgnore() pri
     new OneArrayOfOneBooleans_3(_URI = this.URI, __locator = this.__locator, _ID = _ID, _oneArrayOfOneBooleans = oneArrayOfOneBooleans)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("ID")
+  @com.fasterxml.jackson.annotation.JsonProperty("ID")
   def ID = {
     _ID
   }
@@ -70,7 +70,7 @@ class OneArrayOfOneBooleans_3 @com.fasterxml.jackson.annotation.JsonIgnore() pri
     Await.result(__locator.get.resolve(classOf[CrudProxy]).delete[com.dslplatform.ocd.aggregates.SurrogatePrimaryKeyWithOnePropertyInAggregate.OneArrayOfOneBooleans_3](URI), duration)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("oneArrayOfOneBooleans")
+  @com.fasterxml.jackson.annotation.JsonProperty("oneArrayOfOneBooleans")
   @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_EMPTY)
   def oneArrayOfOneBooleans = {
     _oneArrayOfOneBooleans

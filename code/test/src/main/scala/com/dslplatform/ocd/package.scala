@@ -22,4 +22,8 @@ package object ocd
     def fciu = value.head.toUpper + value.tail
     def fcil = value.head.toLower + value.tail
   }
+
+  implicit val ec = scala.concurrent.ExecutionContext.fromExecutor(
+    java.util.concurrent.Executors.newCachedThreadPool
+  )
 }

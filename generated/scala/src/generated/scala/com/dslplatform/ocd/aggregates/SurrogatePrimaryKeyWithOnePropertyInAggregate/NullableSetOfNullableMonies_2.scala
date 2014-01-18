@@ -12,7 +12,7 @@ class NullableSetOfNullableMonies_2 @com.fasterxml.jackson.annotation.JsonIgnore
     private var _nullableSetOfNullableMonies: Option[Set[Option[BigDecimal]]]
   ) extends Serializable with AggregateRoot {
 
-  @com.fasterxml.jackson.annotation.JsonGetter("URI")
+  @com.fasterxml.jackson.annotation.JsonProperty("URI")
   def URI = {
 
     _URI
@@ -34,7 +34,7 @@ class NullableSetOfNullableMonies_2 @com.fasterxml.jackson.annotation.JsonIgnore
     new NullableSetOfNullableMonies_2(_URI = this.URI, __locator = this.__locator, _ID = _ID, _nullableSetOfNullableMonies = nullableSetOfNullableMonies)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("ID")
+  @com.fasterxml.jackson.annotation.JsonProperty("ID")
   def ID = {
     _ID
   }
@@ -72,7 +72,7 @@ class NullableSetOfNullableMonies_2 @com.fasterxml.jackson.annotation.JsonIgnore
     Await.result(__locator.get.resolve(classOf[CrudProxy]).delete[com.dslplatform.ocd.aggregates.SurrogatePrimaryKeyWithOnePropertyInAggregate.NullableSetOfNullableMonies_2](URI), duration)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("nullableSetOfNullableMonies")
+  @com.fasterxml.jackson.annotation.JsonProperty("nullableSetOfNullableMonies")
   def nullableSetOfNullableMonies = {
     _nullableSetOfNullableMonies
   }

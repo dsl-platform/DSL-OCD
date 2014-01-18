@@ -12,7 +12,7 @@ class OneSetOfOneGuids_3 @com.fasterxml.jackson.annotation.JsonIgnore() private(
     private var _oneSetOfOneGuids: Set[java.util.UUID]
   ) extends Serializable with AggregateRoot {
 
-  @com.fasterxml.jackson.annotation.JsonGetter("URI")
+  @com.fasterxml.jackson.annotation.JsonProperty("URI")
   def URI = {
 
     _URI
@@ -33,7 +33,7 @@ class OneSetOfOneGuids_3 @com.fasterxml.jackson.annotation.JsonIgnore() private(
     new OneSetOfOneGuids_3(_URI = this.URI, __locator = this.__locator, _ID = _ID, _oneSetOfOneGuids = oneSetOfOneGuids)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("ID")
+  @com.fasterxml.jackson.annotation.JsonProperty("ID")
   def ID = {
     _ID
   }
@@ -71,7 +71,7 @@ class OneSetOfOneGuids_3 @com.fasterxml.jackson.annotation.JsonIgnore() private(
     Await.result(__locator.get.resolve(classOf[CrudProxy]).delete[com.dslplatform.ocd.aggregates.SurrogatePrimaryKeyWithOnePropertyInAggregate.OneSetOfOneGuids_3](URI), duration)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("oneSetOfOneGuids")
+  @com.fasterxml.jackson.annotation.JsonProperty("oneSetOfOneGuids")
   @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_EMPTY)
   def oneSetOfOneGuids = {
     _oneSetOfOneGuids

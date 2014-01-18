@@ -12,7 +12,7 @@ class OneListOfNullableDoubles_3 @com.fasterxml.jackson.annotation.JsonIgnore() 
     private var _oneListOfNullableDoubles: IndexedSeq[Option[Double]]
   ) extends Serializable with AggregateRoot {
 
-  @com.fasterxml.jackson.annotation.JsonGetter("URI")
+  @com.fasterxml.jackson.annotation.JsonProperty("URI")
   def URI = {
 
     _URI
@@ -33,7 +33,7 @@ class OneListOfNullableDoubles_3 @com.fasterxml.jackson.annotation.JsonIgnore() 
     new OneListOfNullableDoubles_3(_URI = this.URI, __locator = this.__locator, _ID = _ID, _oneListOfNullableDoubles = oneListOfNullableDoubles)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("ID")
+  @com.fasterxml.jackson.annotation.JsonProperty("ID")
   def ID = {
     _ID
   }
@@ -71,7 +71,7 @@ class OneListOfNullableDoubles_3 @com.fasterxml.jackson.annotation.JsonIgnore() 
     Await.result(__locator.get.resolve(classOf[CrudProxy]).delete[com.dslplatform.ocd.aggregates.SurrogatePrimaryKeyWithOnePropertyInAggregate.OneListOfNullableDoubles_3](URI), duration)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("oneListOfNullableDoubles")
+  @com.fasterxml.jackson.annotation.JsonProperty("oneListOfNullableDoubles")
   @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_EMPTY)
   def oneListOfNullableDoubles = {
     _oneListOfNullableDoubles

@@ -12,7 +12,7 @@ class OneMap_3 @com.fasterxml.jackson.annotation.JsonIgnore() private(
     private var _oneMap: Map[String, String]
   ) extends Serializable with AggregateRoot {
 
-  @com.fasterxml.jackson.annotation.JsonGetter("URI")
+  @com.fasterxml.jackson.annotation.JsonProperty("URI")
   def URI = {
 
     _URI
@@ -32,7 +32,7 @@ class OneMap_3 @com.fasterxml.jackson.annotation.JsonIgnore() private(
     new OneMap_3(_URI = this.URI, __locator = this.__locator, _ID = _ID, _oneMap = oneMap)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("ID")
+  @com.fasterxml.jackson.annotation.JsonProperty("ID")
   def ID = {
     _ID
   }
@@ -70,7 +70,7 @@ class OneMap_3 @com.fasterxml.jackson.annotation.JsonIgnore() private(
     Await.result(__locator.get.resolve(classOf[CrudProxy]).delete[com.dslplatform.ocd.aggregates.SurrogatePrimaryKeyWithOnePropertyInAggregate.OneMap_3](URI), duration)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("oneMap")
+  @com.fasterxml.jackson.annotation.JsonProperty("oneMap")
   def oneMap = {
     _oneMap
   }

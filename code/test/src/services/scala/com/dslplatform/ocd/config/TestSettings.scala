@@ -8,7 +8,7 @@ import com.dslplatform.compiler.client.api.ApiCall
 import com.dslplatform.compiler.client.api.Actions
 import com.dslplatform.compiler.client.api.ApiProperties
 
-private [config] class TestSettingsLoader(logger: Logger) {
+private[config] class TestSettingsLoader(logger: Logger) {
   def load(relativePath: String) = {
     val testIni = Path(
       sys.props("user.home")

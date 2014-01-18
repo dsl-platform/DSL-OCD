@@ -12,7 +12,7 @@ class OneArrayOfOneDecimalsWithScaleOf9_3 @com.fasterxml.jackson.annotation.Json
     private var _oneArrayOfOneDecimalsWithScaleOf9: Array[BigDecimal]
   ) extends Serializable with AggregateRoot {
 
-  @com.fasterxml.jackson.annotation.JsonGetter("URI")
+  @com.fasterxml.jackson.annotation.JsonProperty("URI")
   def URI = {
 
     _URI
@@ -34,7 +34,7 @@ class OneArrayOfOneDecimalsWithScaleOf9_3 @com.fasterxml.jackson.annotation.Json
     new OneArrayOfOneDecimalsWithScaleOf9_3(_URI = this.URI, __locator = this.__locator, _ID = _ID, _oneArrayOfOneDecimalsWithScaleOf9 = oneArrayOfOneDecimalsWithScaleOf9)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("ID")
+  @com.fasterxml.jackson.annotation.JsonProperty("ID")
   def ID = {
     _ID
   }
@@ -72,7 +72,7 @@ class OneArrayOfOneDecimalsWithScaleOf9_3 @com.fasterxml.jackson.annotation.Json
     Await.result(__locator.get.resolve(classOf[CrudProxy]).delete[com.dslplatform.ocd.aggregates.SurrogatePrimaryKeyWithOnePropertyInAggregate.OneArrayOfOneDecimalsWithScaleOf9_3](URI), duration)
   }
 
-  @com.fasterxml.jackson.annotation.JsonGetter("oneArrayOfOneDecimalsWithScaleOf9")
+  @com.fasterxml.jackson.annotation.JsonProperty("oneArrayOfOneDecimalsWithScaleOf9")
   @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_EMPTY)
   def oneArrayOfOneDecimalsWithScaleOf9 = {
     _oneArrayOfOneDecimalsWithScaleOf9
