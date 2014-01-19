@@ -86,14 +86,14 @@ class OneUrl_3 @com.fasterxml.jackson.annotation.JsonIgnore() private(
   , @com.fasterxml.jackson.annotation.JsonProperty("ID") ID: Int
   , @com.fasterxml.jackson.annotation.JsonProperty("oneUrl") oneUrl: java.net.URI
   ) =
-    this(__locator = Some(__locator), _URI = URI, _ID = ID, _oneUrl = if (oneUrl == null) ??? else oneUrl)
+    this(__locator = Some(__locator), _URI = URI, _ID = ID, _oneUrl = if (oneUrl == null) null else oneUrl)
 
 }
 
 object OneUrl_3 extends AggregateRootCompanion[OneUrl_3]{
 
   def apply(
-    oneUrl: java.net.URI = ???
+    oneUrl: java.net.URI = null
   ) = {
     require(oneUrl ne null, "Null value was provided for property \"oneUrl\"")
     new OneUrl_3(

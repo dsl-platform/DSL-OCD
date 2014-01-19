@@ -6,15 +6,20 @@ import com.fasterxml.jackson.annotation.*;
 
 public class OneArrayOfNullableMaps_4 implements java.io.Serializable,
         AggregateRoot {
-    @SuppressWarnings("unchecked")
     public OneArrayOfNullableMaps_4() {
         _serviceLocator = Bootstrap.getLocator();
         _domainProxy = _serviceLocator.resolve(DomainProxy.class);
         _crudProxy = _serviceLocator.resolve(CrudProxy.class);
         this.ID = 0;
-        this.oneArrayOfNullableMaps = new java.util.Map[] {};
-        this.calculatedOneArrayOfNullableMaps = new java.util.Map[] {};
-        this.persistedOneArrayOfNullableMaps = new java.util.Map[] {};
+        this.oneArrayOfNullableMaps = (java.util.Map<String, String>[]) java.lang.reflect.Array
+                .newInstance(
+                        (new java.util.HashMap<String, String>()).getClass(), 0);
+        this.calculatedOneArrayOfNullableMaps = (java.util.Map<String, String>[]) java.lang.reflect.Array
+                .newInstance(
+                        (new java.util.HashMap<String, String>()).getClass(), 0);
+        this.persistedOneArrayOfNullableMaps = (java.util.Map<String, String>[]) java.lang.reflect.Array
+                .newInstance(
+                        (new java.util.HashMap<String, String>()).getClass(), 0);
     }
 
     private transient final ServiceLocator _serviceLocator;
@@ -75,8 +80,9 @@ public class OneArrayOfNullableMaps_4 implements java.io.Serializable,
         this.URI = URI;
         this.ID = ID;
         this.oneArrayOfNullableMaps = oneArrayOfNullableMaps == null
-                ? new java.util.Map[] {}
-                : oneArrayOfNullableMaps;
+                ? (java.util.Map<String, String>[]) java.lang.reflect.Array
+                        .newInstance((new java.util.HashMap<String, String>())
+                                .getClass(), 0) : oneArrayOfNullableMaps;
         this.calculatedOneArrayOfNullableMaps = calculatedOneArrayOfNullableMaps;
         this.persistedOneArrayOfNullableMaps = persistedOneArrayOfNullableMaps;
     }

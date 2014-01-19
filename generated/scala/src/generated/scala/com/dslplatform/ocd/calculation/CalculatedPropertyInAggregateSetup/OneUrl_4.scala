@@ -112,14 +112,14 @@ class OneUrl_4 @com.fasterxml.jackson.annotation.JsonIgnore() private(
   , @com.fasterxml.jackson.annotation.JsonProperty("calculatedOneUrl") calculatedOneUrl: java.net.URI
   , @com.fasterxml.jackson.annotation.JsonProperty("persistedOneUrl") persistedOneUrl: java.net.URI
   ) =
-    this(__locator = Some(__locator), _URI = URI, _ID = ID, _oneUrl = if (oneUrl == null) ??? else oneUrl, _calculatedOneUrl = if (calculatedOneUrl == null) ??? else calculatedOneUrl, _persistedOneUrl = if (persistedOneUrl == null) ??? else persistedOneUrl)
+    this(__locator = Some(__locator), _URI = URI, _ID = ID, _oneUrl = if (oneUrl == null) null else oneUrl, _calculatedOneUrl = if (calculatedOneUrl == null) null else calculatedOneUrl, _persistedOneUrl = if (persistedOneUrl == null) null else persistedOneUrl)
 
 }
 
 object OneUrl_4 extends AggregateRootCompanion[OneUrl_4]{
 
   def apply(
-    oneUrl: java.net.URI = ???
+    oneUrl: java.net.URI = null
   ) = {
     require(oneUrl ne null, "Null value was provided for property \"oneUrl\"")
     new OneUrl_4(
@@ -127,8 +127,8 @@ object OneUrl_4 extends AggregateRootCompanion[OneUrl_4]{
     , _URI = java.util.UUID.randomUUID.toString
     , _ID = 0
     , _oneUrl = oneUrl
-    , _calculatedOneUrl = ???
-    , _persistedOneUrl = ???)
+    , _calculatedOneUrl = null
+    , _persistedOneUrl = null)
   }
 
 }

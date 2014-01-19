@@ -1,0 +1,10 @@
+module CalculatedPropertyInValueSetup
+{
+  value OneSetOfOneDates_5 {
+    Set<Date> oneSetOfOneDates;
+
+    calculated Set<Date> calculatedOneSetOfOneDates from 'it => it.oneSetOfOneDates';
+
+    calculated Set<Date> persistedOneSetOfOneDates from 'it => it.oneSetOfOneDates' { persisted; }
+  }
+}

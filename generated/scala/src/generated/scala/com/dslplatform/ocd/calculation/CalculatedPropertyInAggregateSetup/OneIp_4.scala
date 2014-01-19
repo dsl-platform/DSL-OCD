@@ -126,7 +126,9 @@ object OneIp_4 extends AggregateRootCompanion[OneIp_4]{
       __locator = None
     , _URI = java.util.UUID.randomUUID.toString
     , _ID = 0
-    , _oneIp = oneIp)
+    , _oneIp = oneIp
+    , _calculatedOneIp = null
+    , _persistedOneIp = null)
   }
 
 }

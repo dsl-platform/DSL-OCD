@@ -112,14 +112,14 @@ class OneXml_3 @com.fasterxml.jackson.annotation.JsonIgnore() private(
   , @com.fasterxml.jackson.annotation.JsonProperty("calculatedOneXml") calculatedOneXml: scala.xml.Elem
   , @com.fasterxml.jackson.annotation.JsonProperty("persistedOneXml") persistedOneXml: scala.xml.Elem
   ) =
-    this(__locator = Some(__locator), _URI = URI, _ID = ID, _oneXml = if (oneXml == null) ??? else oneXml, _calculatedOneXml = if (calculatedOneXml == null) ??? else calculatedOneXml, _persistedOneXml = if (persistedOneXml == null) ??? else persistedOneXml)
+    this(__locator = Some(__locator), _URI = URI, _ID = ID, _oneXml = if (oneXml == null) null else oneXml, _calculatedOneXml = if (calculatedOneXml == null) null else calculatedOneXml, _persistedOneXml = if (persistedOneXml == null) null else persistedOneXml)
 
 }
 
 object OneXml_3 extends AggregateRootCompanion[OneXml_3]{
 
   def apply(
-    oneXml: scala.xml.Elem = ???
+    oneXml: scala.xml.Elem = null
   ) = {
     require(oneXml ne null, "Null value was provided for property \"oneXml\"")
     new OneXml_3(
@@ -127,8 +127,8 @@ object OneXml_3 extends AggregateRootCompanion[OneXml_3]{
     , _URI = java.util.UUID.randomUUID.toString
     , _ID = 0
     , _oneXml = oneXml
-    , _calculatedOneXml = ???
-    , _persistedOneXml = ???)
+    , _calculatedOneXml = null
+    , _persistedOneXml = null)
   }
 
 }

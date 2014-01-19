@@ -5,7 +5,6 @@ import hr.ngs.patterns.IServiceLocator
 import hr.ngs.patterns.DependencyContainer
 import org.slf4j.LoggerFactory
 import projects.Projects
-import com.dslplatform.ocd.config.CacheSettings
 
 object ServiceLocator {
   val locator: IServiceLocator = {

@@ -5,12 +5,13 @@ import com.dslplatform.client.*;
 import com.fasterxml.jackson.annotation.*;
 
 public class OneArrayOfOneMaps_2 implements java.io.Serializable, AggregateRoot {
-    @SuppressWarnings("unchecked")
     public OneArrayOfOneMaps_2() {
         _serviceLocator = Bootstrap.getLocator();
         _domainProxy = _serviceLocator.resolve(DomainProxy.class);
         _crudProxy = _serviceLocator.resolve(CrudProxy.class);
-        this.oneArrayOfOneMaps = new java.util.Map[] {};
+        this.oneArrayOfOneMaps = (java.util.Map<String, String>[]) java.lang.reflect.Array
+                .newInstance(
+                        (new java.util.HashMap<String, String>()).getClass(), 0);
     }
 
     private transient final ServiceLocator _serviceLocator;
@@ -67,8 +68,9 @@ public class OneArrayOfOneMaps_2 implements java.io.Serializable, AggregateRoot 
         this._crudProxy = _serviceLocator.resolve(CrudProxy.class);
         this.URI = URI;
         this.oneArrayOfOneMaps = oneArrayOfOneMaps == null
-                ? new java.util.Map[] {}
-                : oneArrayOfOneMaps;
+                ? (java.util.Map<String, String>[]) java.lang.reflect.Array
+                        .newInstance((new java.util.HashMap<String, String>())
+                                .getClass(), 0) : oneArrayOfOneMaps;
     }
 
     public static OneArrayOfOneMaps_2 find(final String uri)
