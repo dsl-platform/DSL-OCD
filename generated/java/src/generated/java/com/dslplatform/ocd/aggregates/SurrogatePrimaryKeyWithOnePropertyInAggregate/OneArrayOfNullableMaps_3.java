@@ -6,13 +6,14 @@ import com.fasterxml.jackson.annotation.*;
 
 public class OneArrayOfNullableMaps_3 implements java.io.Serializable,
         AggregateRoot {
-    @SuppressWarnings("unchecked")
     public OneArrayOfNullableMaps_3() {
         _serviceLocator = Bootstrap.getLocator();
         _domainProxy = _serviceLocator.resolve(DomainProxy.class);
         _crudProxy = _serviceLocator.resolve(CrudProxy.class);
         this.ID = 0;
-        this.oneArrayOfNullableMaps = new java.util.Map[] {};
+        this.oneArrayOfNullableMaps = (java.util.Map<String, String>[]) java.lang.reflect.Array
+                .newInstance(
+                        (new java.util.HashMap<String, String>()).getClass(), 0);
     }
 
     private transient final ServiceLocator _serviceLocator;
@@ -71,8 +72,9 @@ public class OneArrayOfNullableMaps_3 implements java.io.Serializable,
         this.URI = URI;
         this.ID = ID;
         this.oneArrayOfNullableMaps = oneArrayOfNullableMaps == null
-                ? new java.util.Map[] {}
-                : oneArrayOfNullableMaps;
+                ? (java.util.Map<String, String>[]) java.lang.reflect.Array
+                        .newInstance((new java.util.HashMap<String, String>())
+                                .getClass(), 0) : oneArrayOfNullableMaps;
     }
 
     private int ID;

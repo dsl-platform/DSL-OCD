@@ -8,13 +8,13 @@ import boxes._
 import dsls._
 import com.dslplatform.compiler.client.api.params.Language
 
-import com.dslplatform.ocd.javas.OcdJava
-import com.dslplatform.ocd.`test.javas`.property.TestJavaPropertyFieldType
-import com.dslplatform.ocd.`test.javas`.TestJavaTemplate
+import javas.OcdJava
+import `test.javas`.property.TestJavaPropertyFieldType
+import `test.javas`.TestJavaTemplate
 
-import com.dslplatform.ocd.scalas.OcdScala
-import com.dslplatform.ocd.`test.scalas`.property.TestScalaPropertyFieldType
-import com.dslplatform.ocd.`test.scalas`.TestScalaTemplate
+import scalas.OcdScala
+import `test.scalas`.property.TestScalaPropertyFieldType
+import `test.scalas`.TestScalaTemplate
 
 class SurrogatePrimaryKeyWithOnePropertyInAggregateSetup(
     val propertyType: OcdDsl) {

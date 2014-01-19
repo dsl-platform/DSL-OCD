@@ -8,9 +8,10 @@ public final class OneArrayOfOneMaps_1 implements java.io.Serializable {
         setOneArrayOfOneMaps(oneArrayOfOneMaps);
     }
 
-    @SuppressWarnings("unchecked")
     public OneArrayOfOneMaps_1() {
-        this.oneArrayOfOneMaps = new java.util.Map[] {};
+        this.oneArrayOfOneMaps = (java.util.Map<String, String>[]) java.lang.reflect.Array
+                .newInstance(
+                        (new java.util.HashMap<String, String>()).getClass(), 0);
     }
 
     @Override

@@ -86,14 +86,14 @@ class OneXml_2 @com.fasterxml.jackson.annotation.JsonIgnore() private(
   , @com.fasterxml.jackson.annotation.JsonProperty("ID") ID: Int
   , @com.fasterxml.jackson.annotation.JsonProperty("oneXml") oneXml: scala.xml.Elem
   ) =
-    this(__locator = Some(__locator), _URI = URI, _ID = ID, _oneXml = if (oneXml == null) ??? else oneXml)
+    this(__locator = Some(__locator), _URI = URI, _ID = ID, _oneXml = if (oneXml == null) null else oneXml)
 
 }
 
 object OneXml_2 extends AggregateRootCompanion[OneXml_2]{
 
   def apply(
-    oneXml: scala.xml.Elem = ???
+    oneXml: scala.xml.Elem = null
   ) = {
     require(oneXml ne null, "Null value was provided for property \"oneXml\"")
     new OneXml_2(

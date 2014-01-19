@@ -72,10 +72,14 @@ public class NullableArrayOfOneMaps_3 implements java.io.Serializable,
         this.ID = ID;
         this.nullableArrayOfOneMaps = nullableArrayOfOneMaps;
         this.calculatedNullableArrayOfOneMaps = calculatedNullableArrayOfOneMaps == null
-                ? new java.util.Map[] {}
+                ? (java.util.Map<String, String>[]) java.lang.reflect.Array
+                        .newInstance((new java.util.HashMap<String, String>())
+                                .getClass(), 0)
                 : calculatedNullableArrayOfOneMaps;
         this.persistedNullableArrayOfOneMaps = persistedNullableArrayOfOneMaps == null
-                ? new java.util.Map[] {}
+                ? (java.util.Map<String, String>[]) java.lang.reflect.Array
+                        .newInstance((new java.util.HashMap<String, String>())
+                                .getClass(), 0)
                 : persistedNullableArrayOfOneMaps;
     }
 

@@ -1,0 +1,19 @@
+package com.dslplatform.ocd.snowflake.SnowflakePropertyFromAggregateSetup
+
+import com.dslplatform.api.patterns._
+
+case class OneListOfOnePoints_5Grid @com.fasterxml.jackson.annotation.JsonIgnore() (
+    URI: String,
+     oneListOfOnePoints: IndexedSeq[java.awt.geom.Point2D]
+  ) extends Identifiable {
+
+  @com.fasterxml.jackson.annotation.JsonCreator private def this(
+    @com.fasterxml.jackson.annotation.JacksonInject("__locator") __locator: com.dslplatform.api.patterns.ServiceLocator
+  , @com.fasterxml.jackson.annotation.JsonProperty("URI") URI: String
+  , @com.fasterxml.jackson.annotation.JsonProperty("oneListOfOnePoints") oneListOfOnePoints: IndexedSeq[java.awt.geom.Point2D]
+  ) =
+    this(URI = URI, oneListOfOnePoints = if (oneListOfOnePoints == null) IndexedSeq.empty else oneListOfOnePoints)
+
+}
+
+object OneListOfOnePoints_5Grid
