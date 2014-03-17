@@ -2,7 +2,6 @@ package com.dslplatform.ocd
 package config
 
 import scalax.file._
-import projects.ProjectIni
 import com.dslplatform.compiler.client.api.params.Language
 import scala.collection.mutable.LinkedHashMap
 

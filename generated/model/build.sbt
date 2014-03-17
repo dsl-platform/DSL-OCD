@@ -4,16 +4,16 @@ val NGSPrivateSnapshots = "NGS Private Snapshots" at "http://ngs.hr/nexus/conten
 
 // ### BASIC SETTINGS ### //
 
-organization := "com.dslplatform"
+organization := "com.dslplatform.ocd"
 
 name := "DSL-OCD-Model"
 
 version := "0.0.0-SNAPSHOT"
 
-unmanagedSourceDirectories in Compile :=
-  (scalaSource in Compile).value ::
-  baseDirectory.value / "src" / "generated" / "scala" ::
-  Nil
+unmanagedSourceDirectories in Compile := Seq(
+  (scalaSource in Compile).value
+, baseDirectory.value / "src" / "generated" / "scala"
+)
 
 unmanagedSourceDirectories in Test := Nil
 
@@ -37,7 +37,7 @@ publishArtifact in (Compile, packageDoc) := false
 
 // ### COMPILE SETTINGS ### //
 
-crossScalaVersions := Seq("2.10.3")
+crossScalaVersions := Seq("2.10.4-RC3")
 
 scalaVersion := crossScalaVersions.value.head
 
