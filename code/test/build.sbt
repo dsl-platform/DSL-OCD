@@ -4,7 +4,7 @@ val NGSPrivateSnapshots = "NGS Private Snapshots" at "http://ngs.hr/nexus/conten
 
 // ### BASIC SETTINGS ### //
 
-organization := "com.dslplatform"
+organization := "com.dslplatform.ocd"
 
 name := "DSL-OCD-Test-Generator"
 
@@ -15,17 +15,23 @@ unmanagedSourceDirectories in Compile :=
     baseDirectory.value / "src" / _ / "scala"
   } :+ (scalaSource in Compile).value
 
-unmanagedSourceDirectories in Test := (scalaSource in Test).value :: Nil
+unmanagedSourceDirectories in Test := Seq(
+  (scalaSource in Test).value
+)
 
 // ### DEPENDENCIES ### //
 
 libraryDependencies ++= Seq(
-  "com.dslplatform.ocd" %% "dsl-ocd-projects" % "0.0.0-SNAPSHOT"
-, "com.dslplatform" %% "dsl-ocd-model" % "0.0.0-SNAPSHOT"
+  "com.dslplatform.ocd" %% "dsl-ocd-model" % "0.0.0-SNAPSHOT"
 , "com.dslplatform" % "dsl-compiler-client-cmdline" % "0.8.13"
 , "hr.element.etb" %% "etb-util" % "0.2.20"
 , "ch.qos.logback" % "logback-classic" % "1.0.13" % "compile->default"
-, "hr.ngs" %% "ngs-core" % "0.3.19"
+, "hr.ngs" %% "ngs-core" % "0.3.19" excludeAll(
+    ExclusionRule("org.pgscala")
+  , ExclusionRule("com.fasterxml.jackson.module")
+  , ExclusionRule("com.fasterxml.jackson.core")
+  , ExclusionRule("com.thoughtworks.paranamer")
+  )
 , "junit" % "junit" % "4.11" % "test"
 , "org.scalatest" %% "scalatest" % "2.0" % "test"
 )
@@ -46,7 +52,7 @@ publishArtifact in (Compile, packageDoc) := false
 
 // ### COMPILE SETTINGS ### //
 
-crossScalaVersions := Seq("2.10.4-RC1")
+crossScalaVersions := Seq("2.10.4-RC3")
 
 scalaVersion := crossScalaVersions.value.head
 

@@ -17,13 +17,11 @@ object EntryPoint extends App {
 
 class EntryPoint(
     logger: Logger
-  , projectCache: IProjectCache
   , testCases: TestCases) {
 
   def run(): Unit = {
     Future.sequence(Seq(
-      projectCache.cleanOld()
-    , testCases.generateTests()
+      testCases.generateTests()
     )) onComplete {
       case Success(_) =>
         logger.info("All actions completed successfully!")

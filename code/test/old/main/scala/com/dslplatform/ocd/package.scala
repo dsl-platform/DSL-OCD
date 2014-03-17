@@ -5,7 +5,7 @@ package object ocd
     with io.jvm.uuid.Imports
     with hr.element.etb.Pimps {
 
-  // lazy val Locator = config.ServiceLocator.locator
+  lazy val Locator = config.ServiceLocator.locator
 
   type Files = Map[String, String]
 
