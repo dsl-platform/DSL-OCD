@@ -9,5 +9,5 @@ object JavaIp
 
   val classReference = "java.net.InetAddress"
 
-  val defaultSingle = "java.net.InetAddress.getLoopbackAddress()"
+  val defaultSingle = "null"
 }

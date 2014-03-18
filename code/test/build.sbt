@@ -11,13 +11,11 @@ name := "DSL-OCD-Test-Generator"
 version := "0.0.0-SNAPSHOT"
 
 unmanagedSourceDirectories in Compile :=
-  Seq("interfaces", "services").map {
+  Seq("interfaces", "services", "turtles").map {
     baseDirectory.value / "src" / _ / "scala"
   } :+ (scalaSource in Compile).value
 
-unmanagedSourceDirectories in Test := Seq(
-  (scalaSource in Test).value
-)
+unmanagedSourceDirectories in Test := Nil
 
 // ### DEPENDENCIES ### //
 
@@ -25,15 +23,13 @@ libraryDependencies ++= Seq(
   "com.dslplatform.ocd" %% "dsl-ocd-model" % "0.0.0-SNAPSHOT"
 , "com.dslplatform" % "dsl-compiler-client-cmdline" % "0.8.13"
 , "hr.element.etb" %% "etb-util" % "0.2.20"
-, "ch.qos.logback" % "logback-classic" % "1.0.13" % "compile->default"
+, "ch.qos.logback" % "logback-classic" % "1.1.1" % "compile->default"
 , "hr.ngs" %% "ngs-core" % "0.3.19" excludeAll(
     ExclusionRule("org.pgscala")
   , ExclusionRule("com.fasterxml.jackson.module")
   , ExclusionRule("com.fasterxml.jackson.core")
   , ExclusionRule("com.thoughtworks.paranamer")
   )
-, "junit" % "junit" % "4.11" % "test"
-, "org.scalatest" %% "scalatest" % "2.0" % "test"
 )
 
 // ### RESOLVERS ### //
@@ -57,19 +53,25 @@ crossScalaVersions := Seq("2.10.4-RC3")
 scalaVersion := crossScalaVersions.value.head
 
 scalacOptions := Seq(
-  "-unchecked"
+  "-encoding", "UTF-8"
 , "-deprecation"
 , "-optimise"
-, "-encoding", "UTF-8"
+, "-unchecked"
 , "-Xcheckinit"
+, "-Xlint"
+, "-Xmax-classfile-name", "72"
+, "-Xverify"
 , "-Yclosure-elim"
 , "-Ydead-code"
 , "-Yinline"
-, "-Xmax-classfile-name", "72"
 , "-Yrepl-sync"
-, "-Xlint"
-, "-Xverify"
-, "-Ywarn-all"
+, "-Ywarn-adapted-args"
+, "-Ywarn-dead-code"
+, "-Ywarn-inaccessible"
+, "-Ywarn-nullary-override"
+, "-Ywarn-nullary-unit"
+, "-Ywarn-numeric-widen"
+, "-Ywarn-value-discard"
 , "-feature"
 , "-language:postfixOps"
 , "-language:reflectiveCalls"
@@ -78,15 +80,19 @@ scalacOptions := Seq(
 , "-language:dynamics"
 )
 
-javaHome := sys.env.get("JDK16_HOME").map(file(_))
+javacOptions in doc := Seq(
+  "-encoding", "UTF-8"
+, "-source", "1.6"
+) ++ (sys.env.get("JDK16_HOME") match {
+  case Some(jdk16Home) => Seq("-bootclasspath", jdk16Home + "/jre/lib/rt.jar")
+  case _ => Nil
+})
 
 javacOptions := Seq(
   "-deprecation"
-, "-encoding", "UTF-8"
-, "-Xlint:unchecked"
-, "-source", "1.6"
+, "-Xlint"
 , "-target", "1.6"
-)
+) ++ (javacOptions in doc).value
 
 net.virtualvoid.sbt.graph.Plugin.graphSettings
 

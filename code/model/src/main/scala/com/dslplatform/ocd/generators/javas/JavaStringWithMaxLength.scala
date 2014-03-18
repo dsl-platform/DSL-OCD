@@ -9,5 +9,5 @@ object JavaStringWithMaxLength
 
   val classReference = "String"
 
-  val defaultSingle = ""
+  val defaultSingle = "\\\"\\\""
 }
