@@ -44,19 +44,25 @@ crossScalaVersions := Seq("2.10.4-RC3")
 scalaVersion := crossScalaVersions.value.head
 
 scalacOptions := Seq(
-  "-unchecked"
+  "-encoding", "UTF-8"
 , "-deprecation"
 , "-optimise"
-, "-encoding", "UTF-8"
+, "-unchecked"
 , "-Xcheckinit"
+, "-Xlint"
+, "-Xmax-classfile-name", "72"
+, "-Xverify"
 , "-Yclosure-elim"
 , "-Ydead-code"
 , "-Yinline"
-, "-Xmax-classfile-name", "72"
 , "-Yrepl-sync"
-, "-Xlint"
-, "-Xverify"
-, "-Ywarn-all"
+, "-Ywarn-adapted-args"
+, "-Ywarn-dead-code"
+, "-Ywarn-inaccessible"
+, "-Ywarn-nullary-override"
+, "-Ywarn-nullary-unit"
+, "-Ywarn-numeric-widen"
+, "-Ywarn-value-discard"
 , "-feature"
 , "-language:postfixOps"
 , "-language:reflectiveCalls"
@@ -65,15 +71,19 @@ scalacOptions := Seq(
 , "-language:dynamics"
 )
 
-javaHome := sys.env.get("JDK16_HOME").map(file(_))
+javacOptions in doc := Seq(
+  "-encoding", "UTF-8"
+, "-source", "1.6"
+) ++ (sys.env.get("JDK16_HOME") match {
+  case Some(jdk16Home) => Seq("-bootclasspath", jdk16Home + "/jre/lib/rt.jar")
+  case _ => Nil
+})
 
 javacOptions := Seq(
   "-deprecation"
-, "-encoding", "UTF-8"
-, "-Xlint:unchecked"
-, "-source", "1.6"
+, "-Xlint"
 , "-target", "1.6"
-)
+) ++ (javacOptions in doc).value
 
 net.virtualvoid.sbt.graph.Plugin.graphSettings
 

@@ -9,5 +9,5 @@ object JavaString
 
   val classReference = "String"
 
-  val defaultSingle = ""
+  val defaultSingle = "\\\"\\\""
 }

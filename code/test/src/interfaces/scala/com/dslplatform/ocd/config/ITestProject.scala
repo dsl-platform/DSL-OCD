@@ -3,14 +3,16 @@ package config
 
 import com.dslplatform.compiler.client.api.params.Language
 
-/** Everything that is necessarry to deploy a test project:
+/** Everything that is necessary to deploy a test project:
  *
  *  packageName that the DSL compiler should target
  *  dslFiles for the compilation
  *  testFiles which need to be distributed into appropriate projects
  */
-trait ITest {
-  def packageName: String
+trait ITestProject {
+  def projectPath: String
+  def projectName: String
+
   def dslFiles: Files
   def testFiles: Map[Language, Files]
 }

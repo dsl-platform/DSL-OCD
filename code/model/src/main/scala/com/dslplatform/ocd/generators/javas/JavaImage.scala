@@ -9,5 +9,5 @@ object JavaImage
 
   val classReference = "java.awt.image.BufferedImage"
 
-  val defaultSingle = "new java.awt.image.BufferedImage(0, 0, java.awt.image.BufferedImage.TYPE_4BYTE_ABGR)"
+  val defaultSingle = "new java.awt.image.BufferedImage(1, 1, java.awt.image.BufferedImage.TYPE_4BYTE_ABGR)"
 }
