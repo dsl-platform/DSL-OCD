@@ -10,4 +10,10 @@ object JavaDecimal
   val classReference = "java.math.BigDecimal"
 
   val defaultSingle = "java.math.BigDecimal.ZERO"
+
+  override val borderSingleValues = Seq(
+          defaultSingle
+        , "java.math.BigDecimal.ONE"
+        , "java.math.BigDecimal.TEN"
+      )
 }
