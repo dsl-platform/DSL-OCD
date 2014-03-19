@@ -10,4 +10,11 @@ object JavaIp
   val classReference = "java.net.InetAddress"
 
   val defaultSingle = "null"
+
+  //TODO:
+  override val borderSingleValues = Seq(
+       "dinamo"
+     , "hajduk"
+    )
 }
+

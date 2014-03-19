@@ -10,4 +10,10 @@ object JavaS3
   val classReference = "com.dslplatform.storage.S3"
 
   val defaultSingle = "null"
+
+    //TODO:
+  override val borderSingleValues = Seq(
+        "dinamo"
+      , "hajduk"
+      )
 }
