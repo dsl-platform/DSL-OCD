@@ -19,6 +19,12 @@ object JavaBinary
       super.defaultValue(b)
   }
 
-  val useCases = Seq(
+  val useCases = Seq()
+
+  // TODO:
+  override val borderSingleValues = Seq(
+        defaultSingle
+      , "new byte[]{127}"
+      , "new byte[]{-128,127}"
   )
 }

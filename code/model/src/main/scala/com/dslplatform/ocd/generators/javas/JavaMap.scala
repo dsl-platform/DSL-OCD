@@ -18,4 +18,10 @@ object JavaMap
     case b =>
       super.defaultValue(b)
   }
+
+  //TODO:
+  override val borderSingleValues = Seq(
+        "dinamo"
+      , "hajduk"
+      )
 }

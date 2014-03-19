@@ -10,4 +10,10 @@ object JavaXml
   val classReference = "org.w3c.dom.Element"
 
   val defaultSingle = "null"
+
+  //TODO:
+  override val borderSingleValues = Seq(
+        "dinamo"
+      , "hajduk"
+      )
 }

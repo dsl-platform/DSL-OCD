@@ -9,5 +9,20 @@ object JavaString
 
   val classReference = "String"
 
-  val defaultSingle = "\\\"\\\""
+  //val defaultSingle = "\\\"\\\""
+  val defaultSingle = "new java.lang.String()"
+
+  //TODO:
+  override val borderSingleValues = Seq(
+        defaultSingle
+      , "abc"
+      , "\\\t"
+      , "\\\b"
+      , "\\\n"
+      , "\\\r"
+      , "\\\f"
+      , "\\\'"
+      , "\\\""
+      , "\\\\"
+      )
 }
