@@ -5,27 +5,15 @@ import Types._
 import Boxes._
 
 object JavaText
-    extends JavaStub {
+  extends JavaStub {
 
   val classReference = "String"
 
-  val defaultSingle = "new String()"
-
-  /* A string of length Types.StringLengthConstraints */
-  val maxLenString = ("x" * Types.StringLengthConstraint).mkString("\\\"","","\\\"")
-
-  /* A string containing unicode characters 0-255 */
-  val unicode255 = (for(i <- 0 to 255) yield i.toHexString).map(
-      hex =>
-        "\\u" + "0"*(4 - hex.length()) + hex
-    )
-    .mkString("\\\"","","\\\"")
-
-  val singleCharacterString = "\\\"{\\\""
+  val defaultSingle = E"${""}"
 
   val nonDefaultValues = Seq(
-        defaultSingle
-      , maxLenString
-      , unicode255
-      , singleCharacterString
-      )}
+    E"${'"'}"
+  , E"${"""Quote: ", Solidus /, Backslash: \, Aphos: ', Brackets: [] () {}"""}"
+  , E"${(0 to 256).map(_.toChar).mkString}"
+  )
+}

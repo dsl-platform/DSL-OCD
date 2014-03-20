@@ -13,7 +13,8 @@ object JavaTimestamp
 
   // FIXME
   val nonDefaultValues = Seq(
-    "dinamo"
-  , "hajduk"
+    "new org.joda.time.DateTime(0)"                         // Epoch 1970
+  , "new org.joda.time.DateTime(1,1,1,1,1)"                 // 01-01-01 01:01
+  , "new org.joda.time.DateTime(Integer.MAX_VALUE * 1001L)" // beyond UNIX epoch (>2038)
   )
 }

@@ -85,30 +85,28 @@ trait JavaStub {
   def nonDefaultValues(box: Box): Seq[String] = box match {
     /* box.One */
     case Box(SingleType.One, None, _*) =>
-      borderSingleValues
+      nonDefaultValues
 
     /* box.Nullable */
     case Box(SingleType.Nullable, None, aliases @ _*) =>
-      "null" +: nonDefaultValues(Box(SingleType.One, None, aliases: _*))
+       defaultSingle +: nonDefaultValues(Box(SingleType.One, None, aliases: _*))
 
     /* box.OneArrayOfOne,  box.OneListOfOne, box.OneSetOfOne*/
     case Box(SingleType.One, Some((_, SingleType.One)), _*) =>
       Seq(
-        defaultValue(box)
-      , defaultConcreteType(box, defaultSingle)
+        defaultConcreteType(box, defaultSingle)
       , defaultConcreteType(box, borderSingleValues.last)
       , defaultConcreteType(box, borderSingleValues: _*)
       )
 
     /* box.NulableArrayOfOne, box.NulableSetOfOne, box.NulableListOfOne */
     case Box(SingleType.Nullable, s @ Some((base, SingleType.One)), aliases @ _*) =>
-      "null" +:  nonDefaultValues(Box(SingleType.One, s, aliases: _*))
+       nonDefaultValues(Box(SingleType.One, s, aliases: _*))
 
     /* box.OneArrayOfNullable,  box.OneListOfNullable, box.OneSetOfNullable */
     case Box(SingleType.One, Some((_, SingleType.Nullable)), _*) =>
       Seq(
-        defaultValue(box)
-      , defaultConcreteType(box, "null")
+        defaultConcreteType(box, "null")
       , defaultConcreteType(box, defaultSingle)
       , defaultConcreteType(box, borderSingleValues.last)
       , defaultConcreteType(box, borderSingleValues: _*)
@@ -117,6 +115,6 @@ trait JavaStub {
 
     /* box.NulableArrayOfNullable, box.NulableSetOfNullable, box.NulableListOfNullable */
     case Box(SingleType.Nullable, s @ Some((base, SingleType.Nullable)), aliases @ _*) =>
-      "null" +: nonDefaultValues(Box(SingleType.One, s, aliases: _*))
+       nonDefaultValues(Box(SingleType.One, s, aliases: _*))
   }
 }

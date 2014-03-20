@@ -9,7 +9,7 @@ object JavaString
 
   val classReference = "String"
 
-  val defaultSingle = "new String()"
+  val defaultSingle = E"${""}"
 
   val nonDefaultValues = Seq(
     E"${'"'}"
