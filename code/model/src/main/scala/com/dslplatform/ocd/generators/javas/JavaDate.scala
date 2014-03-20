@@ -10,4 +10,15 @@ object JavaDate
   val classReference = "org.joda.time.LocalDate"
 
   val defaultSingle = "org.joda.time.LocalDate.now()"
+
+  override val borderSingleValues = Seq(
+        "dinamo"
+      , "hajduk"
+      )
+
+//          defaultSingle
+//        , "org.joda.time.LocalDate.now().minusDays(1)"
+//        , "org.joda.time.LocalDate.now().plusDays(1)"
+//      )
+
 }

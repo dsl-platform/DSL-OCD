@@ -10,4 +10,10 @@ object JavaPoint
   val classReference = "java.awt.geom.Point2D"
 
   val defaultSingle = "new java.awt.Point()"
+
+  //TODO:
+  override val borderSingleValues = Seq(
+        "dinamo"
+      , "hajduk"
+      )
 }

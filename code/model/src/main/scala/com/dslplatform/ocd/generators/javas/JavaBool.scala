@@ -11,4 +11,10 @@ object JavaBool
   val classReference = "Boolean"
 
   val defaultSingle = "false"
+
+  override val borderSingleValues = Seq(
+          defaultSingle
+        , "Boolean.FALSE"
+        , "Boolean.TRUE"
+      )
 }
