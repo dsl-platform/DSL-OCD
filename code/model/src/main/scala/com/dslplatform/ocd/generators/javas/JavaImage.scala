@@ -11,9 +11,9 @@ object JavaImage
 
   val defaultSingle = "new java.awt.image.BufferedImage(1, 1, java.awt.image.BufferedImage.TYPE_4BYTE_ABGR)"
 
-  //TODO:
-  override val borderSingleValues = Seq(
-        "dinamo"
-      , "hajduk"
-      )
+  // FIXME
+  val nonDefaultValues = Seq(
+    "dinamo"
+  , "hajduk"
+  )
 }

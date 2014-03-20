@@ -12,12 +12,12 @@ object JavaDouble
 
   val defaultSingle = "0.0"
 
-  override val borderSingleValues = Seq(
-          defaultSingle
-        , "java.lang.Double.MIN_VALUE"
-        , "java.lang.Double.MAX_VALUE"
-        , "java.lang.Double.NEGATIVE_INFINITY"
-        , "java.lang.Double.POSITIVE_INFINITY"
-        , "java.lang.Double.NAN"
-      )
+  val nonDefaultValues = Seq(
+    "Double.MIN_VALUE"
+  , "Double.MIN_NORMAL"
+  , "Double.MAX_VALUE"
+  , "Double.NEGATIVE_INFINITY"
+  , "Double.POSITIVE_INFINITY"
+  , "Double.NAN"
+  )
 }

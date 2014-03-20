@@ -11,10 +11,9 @@ object JavaRectangle
 
   val defaultSingle = "new java.awt.geom.Rectangle2D.Float()"
 
-
-  //TODO:
-  override val borderSingleValues = Seq(
-        "dinamo"
-      , "hajduk"
-      )
+  // FIXME
+  val nonDefaultValues = Seq(
+    "dinamo"
+  , "hajduk"
+  )
 }

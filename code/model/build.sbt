@@ -17,8 +17,8 @@ unmanagedSourceDirectories in Test := Nil
 // ### DEPENDENCIES ### //
 
 libraryDependencies ++= Seq(
-   "com.github.scala-incubator.io" %% "scala-io-file" % "0.4.2"
-  ,"org.apache.commons" % "commons-lang3" % "3.3.1"
+  "com.github.scala-incubator.io" %% "scala-io-file" % "0.4.2"
+, "org.apache.commons" % "commons-lang3" % "3.3.1"
 )
 
 // ### RESOLVERS ### //

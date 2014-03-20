@@ -11,17 +11,17 @@ object JavaMap
 
   val defaultSingle = "new java.util.HashMap<String, String>(0)"
 
-  override def defaultValue = (_: Box) match {
+  override def defaultValue(box: Box) = box match {
     case Box(SingleType.One, Some((CollectionType.Array, _)), _*) =>
       "new java.util.HashMap[0]"
 
-    case b =>
-      super.defaultValue(b)
+    case _ =>
+      super.defaultValue(box)
   }
 
-  //TODO:
-  override val borderSingleValues = Seq(
-        "dinamo"
-      , "hajduk"
-      )
+  // FIXME
+  val nonDefaultValues = Seq(
+    "dinamo"
+  , "hajduk"
+  )
 }

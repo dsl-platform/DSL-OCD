@@ -12,13 +12,12 @@ object JavaFloat
 
   val defaultSingle = "0.0f"
 
-  override val borderSingleValues = Seq(
-          defaultSingle
-        , "java.lang.Float.MIN_VALUE"
-        , "java.lang.Float.MAX_VALUE"
-        , "java.lang.Float.MIN_NORMAL"
-        , "java.lang.Float.NAN"
-        , "java.lang.Float.NEGATIVE_INFINITY"
-        , "java.lang.Float.POSITIVE_INFINITY"
-      )
+  val nonDefaultValues = Seq(
+    "Float.MIN_VALUE"
+  , "Float.MIN_NORMAL"
+  , "Float.MAX_VALUE"
+  , "Float.NEGATIVE_INFINITY"
+  , "Float.POSITIVE_INFINITY"
+  , "Float.NAN"
+  )
 }

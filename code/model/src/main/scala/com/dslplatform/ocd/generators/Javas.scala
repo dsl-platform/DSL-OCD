@@ -99,7 +99,12 @@ s"""case object $value
 
   val javaClass = "${stub.classValue(b)}"
 
-  val defaultValue = "${stub.defaultValue(b)}"
+  val defaultValue = ${E"${stub.defaultValue(b)}"}
+  val nonDefaultValues = ${stub.nonDefaultValues(b).map(v => E"${v}").mkString(
+    "IndexedSeq(\n    "
+  , "\n  , "
+  , "\n  )\n"
+  )}
 
   val isPrimitive = ${stub.isPrimitive}
   val hasGenerics = ${stub.hasGenerics(b)}
@@ -119,7 +124,10 @@ trait OcdJava
     with boxes.OcdBox {
 
   val javaClass: String
+
   val defaultValue: String
+  val nonDefaultValues: Seq[String]
+  def borderValues = defaultValue +: nonDefaultValues
 
   val isPrimitive: Boolean
   val hasGenerics: Boolean

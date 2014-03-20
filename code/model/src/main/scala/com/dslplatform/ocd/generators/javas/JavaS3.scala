@@ -11,9 +11,9 @@ object JavaS3
 
   val defaultSingle = "null"
 
-    //TODO:
-  override val borderSingleValues = Seq(
-        "dinamo"
-      , "hajduk"
-      )
+  // FIXME
+  val nonDefaultValues = Seq(
+    "dinamo"
+  , "hajduk"
+  )
 }

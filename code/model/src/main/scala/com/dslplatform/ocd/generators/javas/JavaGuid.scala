@@ -11,9 +11,8 @@ object JavaGuid
 
   val defaultSingle = "java.util.UUID.randomUUID()"
 
-  //TODO:
-  override val borderSingleValues = Seq (
-        "dinamo"
-      , "hajduk"
-      )
+  val nonDefaultValues = Seq(
+    E"java.util.UUID.fromString(${"1-2-3-4-5"})"
+  , "java.util.UUID.fromString(0, 0)"
+  )
 }

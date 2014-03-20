@@ -11,20 +11,17 @@ object JavaBinary
 
   val defaultSingle = "new byte[0]"
 
-  override def defaultValue = (_: Box) match {
+  override def defaultValue(box: Box) = box match {
     case Box(_, Some((CollectionType.Array, _)), _*) =>
       "new byte[0][]"
 
-    case b =>
-      super.defaultValue(b)
+    case _ =>
+      super.defaultValue(box)
   }
 
-  val useCases = Seq()
-
-  // TODO:
-  override val borderSingleValues = Seq(
-        defaultSingle
-      , "new byte[]{127}"
-      , "new byte[]{-128,127}"
+  val nonDefaultValues = Seq(
+    "new byte[] { Byte.MIN_VALUE }"
+  , "new byte[] { Byte.MIN_VALUE, 0 }"
+  , "new byte[] { Byte.MIN_VALUE, 0, Byte.MAX_VALUE }"
   )
 }

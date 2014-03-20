@@ -12,9 +12,7 @@ object JavaBool
 
   val defaultSingle = "false"
 
-  override val borderSingleValues = Seq(
-          defaultSingle
-        , "Boolean.FALSE"
-        , "Boolean.TRUE"
-      )
+  val nonDefaultValues = Seq(
+    "true"
+  )
 }

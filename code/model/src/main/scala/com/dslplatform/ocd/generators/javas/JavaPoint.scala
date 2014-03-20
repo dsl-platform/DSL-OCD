@@ -11,9 +11,9 @@ object JavaPoint
 
   val defaultSingle = "new java.awt.Point()"
 
-  //TODO:
-  override val borderSingleValues = Seq(
-        "dinamo"
-      , "hajduk"
-      )
+  // FIXME
+  val nonDefaultValues = Seq(
+    "dinamo"
+  , "hajduk"
+  )
 }

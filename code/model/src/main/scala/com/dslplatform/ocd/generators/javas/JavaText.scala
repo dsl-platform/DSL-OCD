@@ -9,7 +9,7 @@ object JavaText
 
   val classReference = "String"
 
-  val defaultSingle = "new java.lang.String()"
+  val defaultSingle = "new String()"
 
   /* A string of length Types.StringLengthConstraints */
   val maxLenString = ("x" * Types.StringLengthConstraint).mkString("\\\"","","\\\"")
@@ -23,7 +23,7 @@ object JavaText
 
   val singleCharacterString = "\\\"{\\\""
 
-  override val borderSingleValues = Seq(
+  val nonDefaultValues = Seq(
         defaultSingle
       , maxLenString
       , unicode255

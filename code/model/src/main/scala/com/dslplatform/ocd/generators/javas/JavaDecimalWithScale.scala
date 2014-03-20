@@ -11,13 +11,10 @@ object JavaDecimalWithScale
 
   val defaultSingle = "java.math.BigDecimal.ZERO.setScale(9)"
 
-  override val borderSingleValues = Seq(
-      "dinamo"
-    , "hajduk"
-    )
-//TODO:
-//          defaultSingle
-//        , "java.math.BigDecimal.ONE.setScale(9)"
-//        , "java.math.BigDecimal.TEN.setScale(9)"
-//    )
+  val nonDefaultValues = Seq(
+    "new java.math.BigDecimal.ONE"
+  , E"new java.math.BigDecimal($Pi).setScale(9)"
+  , E"new java.math.BigDecimal(${"-1E-9"})"
+  , E"new java.math.BigDecimal(${"1E100"})"
+  )
 }

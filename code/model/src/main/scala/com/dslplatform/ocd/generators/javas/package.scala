@@ -29,12 +29,12 @@ trait JavaStub {
   }
 
   val defaultSingle: String
-  val borderSingleValues: Seq[String] = Seq(
-      "dinamo"
-    , "hajduk"
-      )
+  val nonDefaultValues: Seq[String]
 
-  def defaultValue = (_: Box) match {
+  def borderSingleValues =
+    defaultSingle +: nonDefaultValues
+
+  def defaultValue(box: Box) = box match {
     case Box(SingleType.Nullable, _, _*) =>
       "null"
 
@@ -82,43 +82,41 @@ trait JavaStub {
   def hasGenerics =
     classValue(_: Box).contains('<').toString
 
-    def borderValues(box: Box): Seq[String] =
-    box match {
-      /* box.One */
-      case Box(SingleType.One, None, _*) =>
-        borderSingleValues
-      /* box.Nullable */
-      case Box(SingleType.Nullable, None, aliases@_*) =>
-        "null" +: borderValues(Box(SingleType.One, None, aliases:_*))
+  def nonDefaultValues(box: Box): Seq[String] = box match {
+    /* box.One */
+    case Box(SingleType.One, None, _*) =>
+      borderSingleValues
 
-      /* box.OneArrayOfOne,  box.OneListOfOne, box.OneSetOfOne*/
-      case Box(SingleType.One, Some((_, SingleType.One)), _*) =>
-        Seq(
-          defaultValue(box)
-        , defaultConcreteType(box, defaultSingle)
-        , defaultConcreteType(box, borderSingleValues.last)
-        , defaultConcreteType(box, borderSingleValues: _*)
-        )
-      /* box.NulableArrayOfOne, box.NulableSetOfOne, box.NulableListOfOne */
-      case Box(SingleType.Nullable, Some((base, SingleType.One)), aliases@_*) =>
-        "null" +:  borderValues(Box(SingleType.One, Some((base, SingleType.One)), aliases:_*))
+    /* box.Nullable */
+    case Box(SingleType.Nullable, None, aliases @ _*) =>
+      "null" +: nonDefaultValues(Box(SingleType.One, None, aliases: _*))
 
-      /* box.OneArrayOfNullable,  box.OneListOfNullable, box.OneSetOfNullable */
-      case Box(SingleType.One, Some((_, SingleType.Nullable)), _*) =>
-        Seq(
-          defaultValue(box)
-        , defaultConcreteType(box, "null")
-        , defaultConcreteType(box, defaultSingle)
-        , defaultConcreteType(box, borderSingleValues.last)
-        , defaultConcreteType(box, borderSingleValues: _*)
-        , defaultConcreteType(box, "null" +: borderSingleValues: _*)
-        )
-      /* box.NulableArrayOfNullable, box.NulableSetOfNullable, box.NulableListOfNullable */
-      case Box(SingleType.Nullable, Some((base, SingleType.Nullable)), aliases@_*) =>
-        "null" +: borderValues(Box(SingleType.One, Some((base, SingleType.Nullable)), aliases:_*))
+    /* box.OneArrayOfOne,  box.OneListOfOne, box.OneSetOfOne*/
+    case Box(SingleType.One, Some((_, SingleType.One)), _*) =>
+      Seq(
+        defaultValue(box)
+      , defaultConcreteType(box, defaultSingle)
+      , defaultConcreteType(box, borderSingleValues.last)
+      , defaultConcreteType(box, borderSingleValues: _*)
+      )
 
-      case _ =>
-        Seq("dinamo", "hajduk") // TODO:
-    }
+    /* box.NulableArrayOfOne, box.NulableSetOfOne, box.NulableListOfOne */
+    case Box(SingleType.Nullable, s @ Some((base, SingleType.One)), aliases @ _*) =>
+      "null" +:  nonDefaultValues(Box(SingleType.One, s, aliases: _*))
 
+    /* box.OneArrayOfNullable,  box.OneListOfNullable, box.OneSetOfNullable */
+    case Box(SingleType.One, Some((_, SingleType.Nullable)), _*) =>
+      Seq(
+        defaultValue(box)
+      , defaultConcreteType(box, "null")
+      , defaultConcreteType(box, defaultSingle)
+      , defaultConcreteType(box, borderSingleValues.last)
+      , defaultConcreteType(box, borderSingleValues: _*)
+      , defaultConcreteType(box, "null" +: borderSingleValues: _*)
+      )
+
+    /* box.NulableArrayOfNullable, box.NulableSetOfNullable, box.NulableListOfNullable */
+    case Box(SingleType.Nullable, s @ Some((base, SingleType.Nullable)), aliases @ _*) =>
+      "null" +: nonDefaultValues(Box(SingleType.One, s, aliases: _*))
+  }
 }

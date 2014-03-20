@@ -11,10 +11,10 @@ object JavaLong
   val classReference = "Long"
 
   val defaultSingle = "0L"
-  override val borderSingleValues =
-    Seq(
-      defaultSingle
-    , "Long.MIN_VALUE"
-    , "Long.MAX_VALUE"
-    )
+
+  val nonDefaultValues = Seq(
+    "Long.MIN_VALUE"
+  , "Long.MAX_VALUE"
+  , "1000000000000000000L"
+  )
 }
