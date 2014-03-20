@@ -10,4 +10,11 @@ object JavaRectangle
   val classReference = "java.awt.geom.Rectangle2D"
 
   val defaultSingle = "new java.awt.geom.Rectangle2D.Float()"
+
+
+  //TODO:
+  override val borderSingleValues = Seq(
+        "dinamo"
+      , "hajduk"
+      )
 }

@@ -10,4 +10,10 @@ object JavaUrl
   val classReference = "java.net.URI"
 
   val defaultSingle = "null"
+
+    //TODO:
+  override val borderSingleValues = Seq(
+        "dinamo"
+      , "hajduk"
+      )
 }

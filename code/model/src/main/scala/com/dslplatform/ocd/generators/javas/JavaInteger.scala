@@ -11,4 +11,11 @@ object JavaInteger
   val classReference = "Integer"
 
   val defaultSingle = "0"
+
+  override val borderSingleValues = Seq(
+        defaultSingle
+      , "java.lang.Integer.MIN_VALUE"
+      , "java.lang.Integer.MAX_VALUE"
+      )
+
 }

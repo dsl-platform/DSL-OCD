@@ -10,4 +10,10 @@ object JavaTimestamp
   val classReference = "org.joda.time.DateTime"
 
   val defaultSingle = "org.joda.time.DateTime.now()"
+
+  //TODO:
+  override val borderSingleValues = Seq(
+        "dinamo"
+      , "hajduk"
+      )
 }

@@ -10,4 +10,10 @@ object JavaGuid
   val classReference = "java.util.UUID"
 
   val defaultSingle = "java.util.UUID.randomUUID()"
+
+  //TODO:
+  override val borderSingleValues = Seq (
+        "dinamo"
+      , "hajduk"
+      )
 }
