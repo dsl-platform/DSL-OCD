@@ -7,10 +7,13 @@ package object ocd
 
   lazy val Locator = config.ServiceLocator.locator
 
-  type Files = Map[String, String]
-
   type Logger = org.slf4j.Logger
   type Properties = java.util.Properties
+
+  type MMap[K, V] = scala.collection.mutable.LinkedHashMap[K, V]
+
+  type Files = Map[String, String]
+  type MFiles = MMap[String, String]
 
   type Path = scalax.file.Path
   val Path = scalax.file.Path

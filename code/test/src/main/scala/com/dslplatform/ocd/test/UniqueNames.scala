@@ -7,7 +7,10 @@ object UniqueNames {
   private val indices = HashMap.empty[String, Int]
 
   def apply(name: String*) =
-    name.last + "_" + nextInt(name: _*)
+    nextInt(name: _*) match {
+      case 1 => name.last
+      case x => name.last + "_" + x
+    }
 
   def nextInt(name: String*) =
     indices synchronized {

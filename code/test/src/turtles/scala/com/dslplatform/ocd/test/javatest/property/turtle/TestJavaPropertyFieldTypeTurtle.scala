@@ -4,16 +4,14 @@ package javatest
 package property
 package turtle
 
-import com.dslplatform.ocd.javas.OcdJava
+import javas.OcdJava
 
 import config._
-import test.TestComponent
-import test.PathResolver
-import test.javatest.TestJavaTemplate
-import test.javatest.property.Visibility
-import test.javatest.property.TestJavaPropertyFieldType
+import test._
+import javatest._
+import property._
+
 import com.dslplatform.compiler.client.api.params.Language
-import com.dslplatform.ocd.test.javatest.property.Modifier
 
 class TestJavaPropertyFieldTypeTurtle
     extends ITestProject {
@@ -50,7 +48,7 @@ class TestJavaPropertyFieldTypeTurtle
       def packageName = "com.dslplatform.ocd.test.javatest.property.turtles." + oj.typeSingleName
       def testName = _testName
 
-      override def leadingTests = fieldTests map { test =>
+      override def leadingBlocks = fieldTests map { test =>
         val visibility =
           (if (test.visibility == Visibility.Private) """@SuppressWarnings("unused") """ else "") +
           test.visibility.javaFieldPrefix

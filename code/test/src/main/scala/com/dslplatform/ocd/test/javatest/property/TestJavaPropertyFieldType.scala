@@ -33,7 +33,7 @@ trait TestJavaPropertyFieldType
   private def PropertyName = propertyName.fciu
 
   private def visibilityTest = s"""
-    /* Testing the "${PropertyName}" property field ${visibility.name} visibility via reflection (no instantiation) */
+    /* Testing the "${propertyName}" property field ${visibility.name} visibility via reflection (no instantiation) */
     @org.junit.Test
     public void test${PropertyName}PropertyField${visibility}Visibility() throws NoSuchFieldException {
         org.junit.Assert.assertEquals(
@@ -44,7 +44,7 @@ trait TestJavaPropertyFieldType
 """
 
   private def modifiersTest = s"""
-    /* Testing the "${PropertyName}" property field modifiers ${if (modifiers.isEmpty) "" else modifiers.map(_.name).mkString("(", ", ", ") ")}via reflection (no instantiation) */
+    /* Testing the "${propertyName}" property field modifiers ${if (modifiers.isEmpty) "" else modifiers.map(_.name).mkString("(", ", ", ") ")}via reflection (no instantiation) */
     @org.junit.Test
     public void test${PropertyName}PropertyFieldModifiers() throws NoSuchFieldException {
         org.junit.Assert.assertEquals(
@@ -55,7 +55,7 @@ trait TestJavaPropertyFieldType
 """
 
   private def classTest = s"""
-    /* Testing the "${PropertyName}" property field class via reflection (no instantiation) */
+    /* Testing the "${propertyName}" property field class via reflection (no instantiation) */
     @org.junit.Test
     public void test${PropertyName}PropertyFieldClass() throws NoSuchFieldException {
         org.junit.Assert.assertEquals(
@@ -66,7 +66,7 @@ trait TestJavaPropertyFieldType
 """
 
   private def genericsTypeTest = s"""
-    /* Testing the "${PropertyName}" property field generic type via reflection (no instantiation) */
+    /* Testing the "${propertyName}" property field generic type via reflection (no instantiation) */
     @org.junit.Test
     public void test${PropertyName}PropertyFieldGenericType() throws NoSuchFieldException {
         org.junit.Assert.assertEquals(

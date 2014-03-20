@@ -8,29 +8,29 @@ trait TestJavaTemplate {
 
   def imports: Seq[String] = Nil
   def classDecorations: Seq[String] = Nil
-  def leadingTests: Seq[String] = Nil
 
+  def leadingBlocks: Seq[String] = Nil
   def tests: Seq[test.TestComponent]
 
   def testBody = {
     val sb = new StringBuilder
 
-    sb ++= s"package $packageName;\n\n"
+    sb ++= "package " ++= packageName ++= ";\n\n"
 
     if (imports.nonEmpty) {
       imports foreach { imp =>
-        sb ++= "import " + imp + ";\n"
+        sb ++= "import " ++= imp ++= ";\n"
       }
 
       sb += '\n'
     }
 
     classDecorations foreach { cd =>
-      sb ++= cd + '\n'
+      sb += '@' ++= cd += '\n'
     }
-    sb ++= s"public class ${testName} {\n"
+    sb ++= "public class " ++= testName ++=" {\n"
 
-    leadingTests foreach { test =>
+    leadingBlocks foreach { test =>
       sb ++= test
     }
 
@@ -38,7 +38,6 @@ trait TestJavaTemplate {
       sb ++= test.testComponentBody
     }
 
-    sb ++= "}\n"
-    sb.toString
+    sb ++= "}\n" toString
   }
 }

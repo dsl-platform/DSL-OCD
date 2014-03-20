@@ -28,7 +28,7 @@ private[config] class TestSettingsLoader(logger: Logger) {
 
     val settings = new ITestSettings {
       val workspace = {
-        val workspace = properties getProperty "generated"
+        val workspace = properties getProperty "tests"
         logger.debug("Reading test workspace: " + workspace)
         require(workspace ne null, "Workspace could not be read!")
         Workspace(workspace)

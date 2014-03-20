@@ -2,14 +2,12 @@ package com.dslplatform.ocd
 
 import config._
 import javas.OcdJava
-import test.TestComponent
-import test.PathResolver
-import test.javatest.TestJavaTemplate
-import test.javatest.property.Visibility
-import test.javatest.property.TestJavaPropertyFieldType
+import test._
+import javatest._
+import property._
+import turtle.TestJavaPropertyFieldTypeTurtle
 import com.dslplatform.compiler.client.api.params.Language
-import com.dslplatform.ocd.test.javatest.property.Modifier
-import com.dslplatform.ocd.test.javatest.property.turtle.TestJavaPropertyFieldTypeTurtle
+import com.dslplatform.ocd.test.value.PropertyInValueTests
 
 object EntryPoint extends App {
   Locator[EntryPoint].run()
@@ -17,9 +15,17 @@ object EntryPoint extends App {
 
 class EntryPoint(
     logger: Logger
-  , testDeployer: ITestDeployer) {
+  , testDeployer: ITestDeployer
+  ) extends PropertyInValueTests {
 
   def run(): Unit = {
-    testDeployer.deployTests(Seq(new TestJavaPropertyFieldTypeTurtle()))
+
+    import com.dslplatform.ocd.test.value.PropertyInValueTests
+
+    testDeployer.deployTests(Seq(
+//        Seq(propertyInValueTestsAggregated)
+      new TestJavaPropertyFieldTypeTurtle()
+//    , new PropertyInValueTest()
+    ))
   }
 }
