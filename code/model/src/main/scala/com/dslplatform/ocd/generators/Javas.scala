@@ -50,7 +50,7 @@ object Javas
     , "Double" -> JavaDouble
     , "Float" -> JavaFloat
     , "Guid" -> JavaGuid
-    , "Image" -> JavaImage
+//    , "Image" -> JavaImage
     , "Integer" -> JavaInteger
     , "Ip" -> JavaIp
     , "Location" -> JavaLocation

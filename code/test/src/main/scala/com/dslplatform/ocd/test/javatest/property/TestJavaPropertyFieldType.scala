@@ -72,7 +72,9 @@ trait TestJavaPropertyFieldType
         org.junit.Assert.assertEquals(
                 new Object() {
                     @SuppressWarnings("unused")
-                    ${visibility.javaFieldPrefix}final ${propertyType.javaClass} ${propertyName} = ${propertyType.defaultValue};
+                    ${visibility.javaFieldPrefix}${
+                      modifiers.filterNot(Modifier.Static ==).map(_.javaFieldPrefix).mkString
+                    }${propertyType.javaClass} ${propertyName} = ${propertyType.defaultValue};
                 }.getClass().getDeclaredField("${propertyName}").getGenericType(),
                 ${conceptName}.class.getDeclaredField("${propertyName}").getGenericType());
     }
