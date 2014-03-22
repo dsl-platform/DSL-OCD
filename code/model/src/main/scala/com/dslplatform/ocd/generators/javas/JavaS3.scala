@@ -9,11 +9,9 @@ object JavaS3
 
   val classReference = "com.dslplatform.storage.S3"
 
+  // FIXME
   val defaultSingle = "null"
 
   // FIXME
-  val nonDefaultValues = Seq(
-    "dinamo"
-  , "hajduk"
-  )
+  val nonDefaultValues = Nil
 }

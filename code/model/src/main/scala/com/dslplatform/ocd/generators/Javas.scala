@@ -59,7 +59,7 @@ object Javas
     , "Money" -> JavaMoney
     , "Point" -> JavaPoint
     , "Rectangle" -> JavaRectangle
-    , "S3" -> JavaS3
+//    , "S3" -> JavaS3
     , "String" -> JavaString
     , "String(9)" -> JavaStringWithMaxLength
     , "Text" -> JavaText

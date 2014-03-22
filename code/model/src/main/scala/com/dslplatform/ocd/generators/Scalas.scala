@@ -59,7 +59,7 @@ object Scalas
     , "Money" -> ScalaMoney
     , "Point" -> ScalaPoint
     , "Rectangle" -> ScalaRectangle
-    , "S3" -> ScalaS3
+//    , "S3" -> ScalaS3
     , "String" -> ScalaString
     , "String(9)" -> ScalaStringWithMaxLength
     , "Text" -> ScalaText
