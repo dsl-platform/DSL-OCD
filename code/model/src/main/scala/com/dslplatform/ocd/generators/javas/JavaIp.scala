@@ -1,25 +1,22 @@
 package com.dslplatform.ocd.generators
 package javas
 
+import   java.net.InetAddress
+
+
 import Types._
 import Boxes._
 
 object JavaIp
     extends JavaStub {
-
   val classReference = "java.net.InetAddress"
 
-  val defaultSingle = "java.net.InetAddress.getByAddress(new byte[]{(byte)127, (byte)0, (byte)0, (byte)1})"
+  val defaultSingle = E"com.dslplatform.TypeFactory.buildIP(${"127.0.0.1"})"
 
   val nonDefaultValues = Seq(
-      /* 0.0.0.0 */
-    "java.net.InetAddress.getByAddress(new byte[]{(byte)0, (byte)0, (byte)0, (byte)0})"
-      /* 0.0.0.1 */
-  , "java.net.InetAddress.getByAddress(new byte[]{(byte)0, (byte)0, (byte)0, (byte)1})"
-      /* 192.168.0.1 */
-  , "java.net.InetAddress.getByAddress(new byte[]{(byte)192, (byte)168, (byte)0, (byte)1})"
-      /*255.255.255.255 */
-  , "java.net.InetAddress.getByAddress(new byte[]{(byte)255, (byte)255, (byte)255, (byte)255})"
+    E"com.dslplatform.TypeFactory.buildIP(${"0"})"
+  , E"com.dslplatform.TypeFactory.buildIP(${"255.255.255.255"})"
+  , E"com.dslplatform.TypeFactory.buildIP(${"::1"})"
+  , E"com.dslplatform.TypeFactory.buildIP(${"ffff::ffff"})"
   )
 }
-
