@@ -1,12 +1,12 @@
 package com.dslplatform.ocd
 
-import config._
-import javas.OcdJava
-import test._
-import javatest._
-import property._
-import turtle.TestJavaPropertyFieldTypeTurtle
-import com.dslplatform.compiler.client.api.params.Language
+import scala.reflect.runtime.universe
+
+import config.ITestDeployer
+
+import javas.turtle.OcdJavaTurtle
+import test.javatest.property.turtle.TestJavaPropertyFieldTypeTurtle
+
 import com.dslplatform.ocd.test.value.PropertyInValueTests
 
 object EntryPoint extends App {
@@ -20,12 +20,9 @@ class EntryPoint(
 
   def run(): Unit = {
 
-    import com.dslplatform.ocd.test.value.PropertyInValueTests
-
     testDeployer.deployTests(Seq(
-//        Seq(propertyInValueTestsAggregated)
-      new TestJavaPropertyFieldTypeTurtle()
-//    , new PropertyInValueTest()
+      new OcdJavaTurtle()
+    , new TestJavaPropertyFieldTypeTurtle()
     ))
   }
 }

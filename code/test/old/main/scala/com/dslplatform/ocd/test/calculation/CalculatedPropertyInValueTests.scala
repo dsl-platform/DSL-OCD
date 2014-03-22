@@ -6,7 +6,6 @@ import config._
 import types._
 import boxes._
 import dsls._
-import com.dslplatform.compiler.client.api.params.Language
 
 import javas.OcdJava
 import `test.javas`.property.TestJavaPropertyFieldType

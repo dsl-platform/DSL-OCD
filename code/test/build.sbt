@@ -12,9 +12,13 @@ version := "0.0.0-SNAPSHOT"
 
 unmanagedSourceDirectories in Compile :=
   Seq("interfaces", "services", "turtles").map {
-    baseDirectory.value / "src" / _ / "scala"
+    sourceDirectory.value / _ / "scala"
   } :+ (scalaSource in Compile).value
 
+unmanagedResourceDirectories in Compile := Seq(
+  sourceDirectory.value / "main" / "resources"
+)
+  
 unmanagedSourceDirectories in Test := Nil
 
 // ### DEPENDENCIES ### //

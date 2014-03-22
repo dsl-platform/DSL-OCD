@@ -2,8 +2,11 @@ package com.dslplatform.ocd
 package config
 
 import scalax.file._
-import com.dslplatform.compiler.client.api.params.Language
 import scala.collection.mutable.LinkedHashMap
+import com.dslplatform.compiler.client.api.commons.io.IOUtils
+
+import test.javatest.TestSuiteCreator
+import test.javatest.JavaInfo
 
 private[config] class TestDeployer(
     logger: Logger
@@ -63,7 +66,18 @@ private[config] class TestDeployer(
       testProject.testFiles foreach { case (language, files) =>
         val languageRoot = testPath(language)
 
-        files.par foreach { case (filename, body) =>
+        val classes = files.values.map(JavaInfo(_).classPath).toIndexedSeq.sorted
+        val suite = JavaInfo(
+          new TestSuiteCreator {
+            def packageName = "com.dslplatform.ocd.test"
+            def testName = "TestEntryPoint"
+            def testClasses = classes
+          } testBody
+        )
+
+        val suiteWithTests = files + suite.toEntry
+
+        suiteWithTests.par foreach { case (filename, body) =>
           val path = languageRoot / (filename, '/')
           logger.trace("Deploying test: " + path.path)
           path.write(Patches.fixTests(body))
@@ -74,6 +88,24 @@ private[config] class TestDeployer(
         resourcePath.createDirectory(true, false)
       }
 
+    private def deployCompilerScript(): Unit =
+      testProject.testFiles.keys foreach { case language =>
+        val languageRoot = languagePath(language)
+
+        language match {
+          case JAVA =>
+            val path = languageRoot / "compiler.bat"
+            logger.trace("Creating the compiler script: " + path.path)
+
+            val body = IOUtils.toByteArray(
+              classOf[TestDeployer].getResourceAsStream("/compiler.bat"))
+
+            path.write(body)
+
+          case _ =>
+        }
+      }
+
     def deploy(): Unit = {
       logger.debug("Deploying {} ...", testProject.projectName)
 
@@ -82,6 +114,8 @@ private[config] class TestDeployer(
 
       deployDsl()
       deployTests()
+
+      deployCompilerScript()
     }
   }
 

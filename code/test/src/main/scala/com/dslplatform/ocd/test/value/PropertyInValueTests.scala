@@ -6,11 +6,13 @@ import config._
 import types._
 import boxes._
 import dsls._
-import com.dslplatform.compiler.client.api.params.Language
+
 import javas.OcdJava
-import test.javatest.property.TestJavaPropertyFieldType
-import test.javatest.TestJavaTemplate
-import com.dslplatform.ocd.test.javatest.property.Visibility
+
+import javatest.JavaInfo
+import javatest.TestJavaTemplate
+import javatest.property.TestJavaPropertyFieldType
+import javatest.property.Visibility
 
 //import scalas.OcdScala
 //import test.scalatestproperty.TestScalaPropertyFieldType
@@ -104,7 +106,7 @@ class PropertyInValueTest(
 //  }
 
   def testFiles = Map(
-    Language.JAVA -> Map(PathResolver.withJavaPath(javaTests.testBody))
+    JAVA -> Map(JavaInfo(javaTests.testBody).toEntry)
 //  , Language.SCALA -> Map(PathResolver.withScalaPath(scalaTests.testBody))
   )
 }

@@ -1,8 +1,6 @@
 package com.dslplatform.ocd
 package config
 
-import com.dslplatform.compiler.client.api.params.Language
-
 /** Everything that is necessary to deploy a test project:
  *
  *  packageName that the DSL compiler should target

@@ -12,6 +12,9 @@ package object ocd
 
   type MMap[K, V] = scala.collection.mutable.LinkedHashMap[K, V]
 
+  type Language = com.dslplatform.compiler.client.api.params.Language
+  val JAVA = com.dslplatform.compiler.client.api.params.Language.JAVA
+
   type Files = Map[String, String]
   type MFiles = MMap[String, String]
 

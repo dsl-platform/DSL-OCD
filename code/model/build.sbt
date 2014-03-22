@@ -10,7 +10,9 @@ name := "DSL-OCD-Model-Generator"
 
 version := "0.0.0-SNAPSHOT"
 
-unmanagedSourceDirectories in Compile := (scalaSource in Compile).value :: Nil
+unmanagedSourceDirectories in Compile := Seq(
+  (scalaSource in Compile).value
+)
 
 unmanagedSourceDirectories in Test := Nil
 

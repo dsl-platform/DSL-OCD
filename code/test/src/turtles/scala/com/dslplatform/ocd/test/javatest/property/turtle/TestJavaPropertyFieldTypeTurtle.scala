@@ -11,18 +11,16 @@ import test._
 import javatest._
 import property._
 
-import com.dslplatform.compiler.client.api.params.Language
-
 class TestJavaPropertyFieldTypeTurtle
     extends ITestProject {
 
-  def projectPath = "turtles"
-  def projectName = "DSL-OCD-Test-Turtle-Java"
+  def projectPath = "turtles/fields"
+  def projectName = "OCD Java Property Field Tests"
 
   def dslFiles = Map.empty
   def testFiles = Map(
-    Language.JAVA -> (for (oj <- OcdJava.values) yield {
-      PathResolver.withJavaPath(makeTemplate(oj).testBody)
+    JAVA -> (for (oj <- OcdJava.values) yield {
+      JavaInfo(makeTemplate(oj).testBody).toEntry
     }).toMap
   )
 

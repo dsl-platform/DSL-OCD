@@ -19,6 +19,13 @@ trait TestSuiteCreator
     "RunWith(AllTests.class)"
   )
 
+  override def leadingBlocks = Seq("""
+    private static final Class<?>[] TEST_CLASSES = """ +
+    testClasses.map(testClass =>
+      testClass + ".class"
+    ).mkString("{\n        ", ",\n        ", "\n    };\n")
+  )
+
   def tests = Seq(new TestComponent{
     def testComponentBody = """
     public static TestSuite suite() {
@@ -30,11 +37,4 @@ trait TestSuiteCreator
      }
 """
   })
-
-  override def leadingBlocks = Seq("""
-    private static final Class<?>[] TEST_CLASSES = """ +
-    testClasses.map(testClass =>
-      testClass + ".class"
-    ).mkString("{\n", ",\n    ", "};\n")
-  )
 }

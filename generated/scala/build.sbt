@@ -8,10 +8,22 @@ name := "DSL-OCD-Test-Scala"
 
 version := "0.0.0-SNAPSHOT"
 
-unmanagedSourceDirectories in Compile :=
-  (scalaSource in Compile).value ::
-  baseDirectory.value / "src" / "generated" / "scala" ::
-  Nil
+      unmanagedSourceDirectories in Compile := Seq(
+        sourceDirectory.value / "generated" / "scala"
+      ),
+      unmanagedResourceDirectories in Compile := Seq(
+        sourceDirectory.value / "generated" / "resources",
+        sourceDirectory.value / "main" / "resources"
+      ),
+      unmanagedSourceDirectories in Test := Seq(
+        (scalaSource in Test).value
+      ),
+      EclipseKeys.createSrc := EclipseCreateSrc.Default + EclipseCreateSrc.Resource 
+
+unmanagedSourceDirectories in Compile := Seq(
+  (scalaSource in Compile).value
+, sourceDirectory.value / "generated" / "scala"
+)
 
 unmanagedSourceDirectories in Test :=
   (scalaSource in Test).value :: Nil

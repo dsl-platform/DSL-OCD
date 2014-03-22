@@ -6,7 +6,6 @@
 //import com.dslplatform.compiler.client.api.params.Credentials
 //import com.dslplatform.compiler.client.api.params.ProjectName
 //import com.dslplatform.compiler.client.cmdline.logger.LoggerSLF4J
-//import com.dslplatform.compiler.client.api.params.Language
 //import com.dslplatform.ocd.test.UniqueNames
 //
 //private[config] class TestGenerator(
