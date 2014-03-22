@@ -12,15 +12,10 @@ object JavaXml
   val defaultSingle = "null"
 
   val nonDefaultValues = Seq(
-    /* Element */
-        E"""javax.xml.parsers.DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument().createElement("OneElement")"""
-/*
-    /* Attribute */
-      , E"""javax.xml.parsers.DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument().createAttribute("OneElementWithAnAttribute")"""
-    /* Text */
-      , E"""javax.xml.parsers.DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument().createTextNode("OneElementHoldingATextNode")"""
-    /* CData */
-      , E"""javax.xml.parsers.DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument().createCDATASection("OneElementWithACDataSection")"""
-*/
+    E"com.dslplatform.client.TypeFactory.buildElement(${"<EmptyElement/>"})"
+  , E"com.dslplatform.client.TypeFactory.buildElement(${"<TextElement>some text &amp; &lt;stuff&gt;</TextElement>"})"
+  , E"com.dslplatform.client.TypeFactory.buildElement(${"<ElementWithCData><![CDATA[<?xml?><xml><!xml!>]]></ElementWithCData>"})"
+  , E"com.dslplatform.client.TypeFactory.buildElement(${"""<AtributedElement foo="bar" qwe="poi"/>"""})"
+  , E"com.dslplatform.client.TypeFactory.buildElement(${"<ns3000:NamespacedElement/>"})"
   )
 }

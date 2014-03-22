@@ -28,14 +28,35 @@ class OcdJavaTurtle
       def testName = _testName
 
       val clazz = oj.javaClass
-      def tests = Nil
 
       override def classDecorations = Seq("""SuppressWarnings({ "serial", "rawtypes", "unchecked" })""")
 
       override def leadingBlocks = s"""
-      final ${oj.javaClass} defaultValue = ${oj.defaultValue};
+    public static final ${oj.javaClass} defaultValue = ${oj.defaultValue};
 """ +: (oj.nonDefaultValues.zipWithIndex.map { case (ndv, index) => s"""
-      final ${oj.javaClass} nonDefaultValue${index} = ${ndv};
+    public static final ${oj.javaClass} nonDefaultValue${index + 1} = ${ndv};
+"""
+      })
+
+      def tests = Seq(new TestComponent{
+        def testComponentBody = s"""
+    /* Accesses all the static values to ensure that initialization was performed successfully */
+    @org.junit.Test
+    public void testValues() {""" +
+        (if (oj.defaultValue == "null") { """
+        org.junit.Assert.assertNull(defaultValue);"""
+        }
+        else { s"""
+        org.junit.Assert.assertNotNull(defaultValue);"""
+        }) + (oj.nonDefaultValues.zipWithIndex map { case (ndv, index) =>
+          if (ndv == "null") { s"""
+        org.junit.Assert.assertNull(nonDefaultValue${index + 1});"""
+          }
+          else { s"""
+        org.junit.Assert.assertNotNull(nonDefaultValue${index + 1});"""
+          }
+        } mkString) + """
+    }
 """
       })
     }

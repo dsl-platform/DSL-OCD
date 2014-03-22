@@ -13,7 +13,7 @@ object JavaMoney
 
   val nonDefaultValues = Seq(
     "java.math.BigDecimal.ONE"
-  , E"new java.math.BigDecimal($Pi).setScale(2)"
+  , E"new java.math.BigDecimal($Pi).setScale(2, java.math.BigDecimal.ROUND_HALF_UP)"
   , E"new java.math.BigDecimal(${"-1E-2"})"
   , E"new java.math.BigDecimal(${"1E100"})"
   )

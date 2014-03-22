@@ -18,7 +18,7 @@ unmanagedSourceDirectories in Compile :=
 unmanagedResourceDirectories in Compile := Seq(
   sourceDirectory.value / "main" / "resources"
 )
-  
+
 unmanagedSourceDirectories in Test := Nil
 
 // ### DEPENDENCIES ### //

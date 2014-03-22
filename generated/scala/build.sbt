@@ -18,7 +18,7 @@ version := "0.0.0-SNAPSHOT"
       unmanagedSourceDirectories in Test := Seq(
         (scalaSource in Test).value
       ),
-      EclipseKeys.createSrc := EclipseCreateSrc.Default + EclipseCreateSrc.Resource 
+      EclipseKeys.createSrc := EclipseCreateSrc.Default + EclipseCreateSrc.Resource
 
 unmanagedSourceDirectories in Compile := Seq(
   (scalaSource in Compile).value

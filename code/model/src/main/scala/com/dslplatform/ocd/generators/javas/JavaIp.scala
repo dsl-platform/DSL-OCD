@@ -11,12 +11,12 @@ object JavaIp
     extends JavaStub {
   val classReference = "java.net.InetAddress"
 
-  val defaultSingle = E"com.dslplatform.TypeFactory.buildIP(${"127.0.0.1"})"
+  val defaultSingle = E"com.dslplatform.client.TypeFactory.buildIP(${"127.0.0.1"})"
 
   val nonDefaultValues = Seq(
-    E"com.dslplatform.TypeFactory.buildIP(${"0"})"
-  , E"com.dslplatform.TypeFactory.buildIP(${"255.255.255.255"})"
-  , E"com.dslplatform.TypeFactory.buildIP(${"::1"})"
-  , E"com.dslplatform.TypeFactory.buildIP(${"ffff::ffff"})"
+    E"com.dslplatform.client.TypeFactory.buildIP(${"0"})"
+  , E"com.dslplatform.client.TypeFactory.buildIP(${"255.255.255.255"})"
+  , E"com.dslplatform.client.TypeFactory.buildIP(${"::1"})"
+  , E"com.dslplatform.client.TypeFactory.buildIP(${"ffff::ffff"})"
   )
 }
