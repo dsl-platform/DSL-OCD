@@ -12,9 +12,9 @@ object JavaStringWithMaxLength
   val defaultSingle = E"${""}"
 
   val nonDefaultValues = Seq(
-        E"${'"'}"
-      , E"${"""Quote: ", Solidus /, Backslash: \, Aphos: ', Brackets: [] () {}"""}"
-      , E"${(0 to 256).map(_.toChar).mkString}"
-      , E"${"x"*Types.StringLengthConstraint}"
-      )
+    E"${'"'}"
+  , E"${"""Quote: ", Solidus /, Backslash: \, Aphos: ', Brackets: [] () {}"""}"
+  , E"${(0 to 256).map(_.toChar).mkString}"
+  , E"${"x" * StringLengthConstraint}"
+  )
 }

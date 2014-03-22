@@ -13,6 +13,6 @@ object JavaGuid
 
   val nonDefaultValues = Seq(
     E"java.util.UUID.fromString(${"1-2-3-4-5"})"
-  , "java.util.UUID.fromString(0, 0)"
+  , "new java.util.UUID(0L, 0L)"
   )
 }

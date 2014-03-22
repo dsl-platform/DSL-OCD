@@ -12,7 +12,7 @@ object JavaDecimal
   val defaultSingle = "java.math.BigDecimal.ZERO"
 
   val nonDefaultValues = Seq(
-    "new java.math.BigDecimal.ONE"
+    "java.math.BigDecimal.ONE"
   , E"new java.math.BigDecimal($Pi)"
   , E"new java.math.BigDecimal(${"-1E-100"})"
   , E"new java.math.BigDecimal(${"1E100"})"

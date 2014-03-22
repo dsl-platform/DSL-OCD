@@ -18,6 +18,8 @@ object JavaDouble
   , "Double.MAX_VALUE"
   , "Double.NEGATIVE_INFINITY"
   , "Double.POSITIVE_INFINITY"
-  , "Double.NAN"
+  , "Double.NaN"
+  , "-1.000000000000001"
+  , "1.000000000000001"
   )
 }

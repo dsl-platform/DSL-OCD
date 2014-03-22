@@ -15,6 +15,7 @@ object JavaInteger
   val nonDefaultValues = Seq(
     "Integer.MIN_VALUE"
   , "Integer.MAX_VALUE"
+  , "-1000000000"
   , "1000000000"
   )
 }

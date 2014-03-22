@@ -13,19 +13,13 @@ object JavaRectangle
 
   val nonDefaultValues = Seq(
       /* Integer */
-      "new java.awt.geom.Rectangle2D(Integer.MIN_VALUE, Integer.MAX_VALUE)"
-    , "new java.awt.geom.Rectangle2D(1000000000, Integer.MAX_VALUE)"
-    , "new java.awt.geom.Rectangle2D(Integer.MIN_VALUE, 1000000000)"
-    , "new java.awt.geom.Rectangle2D(1,1,1000000000, Integer.MAX_VALUE)"
-      /* Double */
-    , "new java.awt.geom.Rectangle2D.Double(Double.MIN_VALUE, Double.MAX_VALUE)"
-    , "new java.awt.geom.Rectangle2D.Double(0.0, 0.1, Double.MIN_VALUE, Double.MAX_VALUE)"
-    , "new java.awt.geom.Rectangle2D.Double(0.0, 1000.10)"
-    , "new java.awt.geom.Rectangle2D.Double(0.01, 0.02)"
+      "new java.awt.Rectangle(Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE)"
+    , "new java.awt.Rectangle(-1000000000, -1000000000, 1000000000, 1000000000)"
       /* Float */
-    , "new java.awt.geom.Rectangle2D.Float(Float.MIN_VALUE, Float.MAX_VALUE)"
-    , "new java.awt.geom.Rectangle2D.Float(0.0, 0.1, Float.MIN_VALUE, Float.MAX_VALUE)"
-    , "new java.awt.geom.Rectangle2D.Float(0.0f, 1000.10f)"
-    , "new java.awt.geom.Rectangle2D.Float(0.1f, 0.2f)"
+    , "new java.awt.geom.Rectangle2D.Float(Float.MIN_VALUE, Float.MIN_VALUE, Float.MAX_VALUE, Float.MAX_VALUE)"
+    , "new java.awt.geom.Rectangle2D.Float(-1.0000001f, -1.0000001f, 1.0000001f, 1.0000001f)"
+      /* Double */
+    , "new java.awt.geom.Rectangle2D.Double(Double.MIN_VALUE, Double.MIN_VALUE, Double.MAX_VALUE, Double.MAX_VALUE)"
+    , "new java.awt.geom.Rectangle2D.Double(-1.000000000000001, -1.000000000000001, 1.000000000000001, 1.000000000000001)"
   )
 }

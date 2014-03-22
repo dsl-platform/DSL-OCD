@@ -12,7 +12,7 @@ object JavaDecimalWithScale
   val defaultSingle = "java.math.BigDecimal.ZERO.setScale(9)"
 
   val nonDefaultValues = Seq(
-    "new java.math.BigDecimal.ONE"
+    "java.math.BigDecimal.ONE"
   , E"new java.math.BigDecimal($Pi).setScale(9)"
   , E"new java.math.BigDecimal(${"-1E-9"})"
   , E"new java.math.BigDecimal(${"1E100"})"

@@ -9,18 +9,18 @@ object JavaXml
 
   val classReference = "org.w3c.dom.Element"
 
-  val defaultSingle = "javax.xml.parsers.DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument().getDocumentElement()"
+  val defaultSingle = "null"
 
-  // FIXME
   val nonDefaultValues = Seq(
-
     /* Element */
-        E"""javax.xml.parsers.DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument().createElement("anElement")"""
+        E"""javax.xml.parsers.DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument().createElement("OneElement")"""
+/*
     /* Attribute */
-      , E"""javax.xml.parsers.DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument().createAttribute("anAttribute")"""
+      , E"""javax.xml.parsers.DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument().createAttribute("OneElementWithAnAttribute")"""
     /* Text */
-      , E"""javax.xml.parsers.DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument().createTextNode("aTextNode")"""
+      , E"""javax.xml.parsers.DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument().createTextNode("OneElementHoldingATextNode")"""
     /* CData */
-      , E"""javax.xml.parsers.DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument().createCDATASection("aCDataSection")"""
+      , E"""javax.xml.parsers.DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument().createCDATASection("OneElementWithACDataSection")"""
+*/
   )
 }

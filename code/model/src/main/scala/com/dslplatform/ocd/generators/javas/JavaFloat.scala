@@ -18,6 +18,8 @@ object JavaFloat
   , "Float.MAX_VALUE"
   , "Float.NEGATIVE_INFINITY"
   , "Float.POSITIVE_INFINITY"
-  , "Float.NAN"
+  , "Float.NaN"
+  , "-1.0000001f"
+  , "1.0000001f"
   )
 }

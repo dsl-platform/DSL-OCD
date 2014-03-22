@@ -54,26 +54,20 @@ trait JavaStub {
       "new java.util.ArrayList<" + classReference + ">(0)"
   }
 
-  private implicit class ArrayConstants(arrayElements: Seq[String]) {
-    val asBrackets = arrayElements.mkString("[] { ", ", ", " }")
-    val asList = arrayElements.mkString("java.util.Arrays.asList(", ", ", ")")
+  protected implicit class ArrayConstants(arrayElements: Seq[String]) {
+    val asBrackets = arrayElements.mkString(" { ", ", ", " }")
+    val asInnerClass = arrayElements.mkString(" {{ add(", "); add(", "); }}")
   }
 
-  def defaultConcreteType(box: Box, arrayElements: String*) = box match {
-    case Box(_, Some((CollectionType.Array, SingleType.One)), _*) =>
-      "new " + (classPrimitive getOrElse classReference) + arrayElements.asBrackets
+  def defaultConcreteType(box: Box, arrayElements: String*) = box.collectionType.get._1 match {
+    case CollectionType.Array =>
+      "new " + classValue(box) + arrayElements.asBrackets
 
-    case Box(_, Some((CollectionType.Array, _)), _*) =>
-      "new " + classReference + arrayElements.asBrackets
+    case CollectionType.Set =>
+      "new java.util.HashSet<" + classReference + ">()" + arrayElements.asInnerClass
 
-    case Box(_, Some((CollectionType.Set, _)), _*) =>
-      "new java.util.HashSet<" + classReference + ">(" + arrayElements.asList + ")"
-
-    case Box(_, Some((CollectionType.List, _)), _*) =>
-      "new java.util.ArrayList<" + classReference + ">(" + arrayElements.asList + ")"
-
-    case _ =>
-      "null"
+    case CollectionType.List =>
+      "new java.util.ArrayList<" + classReference + ">()" + arrayElements.asInnerClass
   }
 
   def isPrimitive =

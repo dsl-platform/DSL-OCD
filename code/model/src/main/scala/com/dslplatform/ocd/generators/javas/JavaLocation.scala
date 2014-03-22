@@ -13,20 +13,13 @@ object JavaLocation
 
   val nonDefaultValues = Seq(
       /* Integer */
-      "new java.awt.Point(Integer.MIN_VALUE, 1000000000)"
-    , "new java.awt.Point(Integer.MAX_VALUE, 1000000000)"
-    , "new java.awt.Point(1000000000, Integer.MIN_VALUE)"
-    , "new java.awt.Point(0, Integer.MAX_VALUE)"
-    , "new java.awt.Point(Integer.MIN_VALUE, Integer.MAX_VALUE)"
-    , "new java.awt.Point(0, Integer.MAX_VALUE)"
-    , "new java.awt.Point(Integer.MAX_VALUE, 0)"
+      "new java.awt.Point(Integer.MIN_VALUE, Integer.MAX_VALUE)"
+    , "new java.awt.Point(-1000000000, 1000000000)"
       /* Float */
-    , "new java.awt.Point.Float(Float.MIN_VALUE, Float.MAX_VALUE)"
-    , "new java.awt.Point.Float(0.0f, 1000.10f)"
-    , "new java.awt.Point.Float(0.1f, 0.2f)"
+    , "new java.awt.geom.Point2D.Float(Float.MIN_VALUE, Float.MAX_VALUE)"
+    , "new java.awt.geom.Point2D.Float(-1.0000001f, 1.0000001f)"
       /* Double */
-    , "new java.awt.Point.Double(Double.MIN_VALUE, Double.MAX_VALUE)"
-    , "new java.awt.Point.Double(0.0, 1000.1)"
-    , "new java.awt.Point.Double(0.01, 0.02)"
+    , "new java.awt.geom.Point2D.Double(Double.MIN_VALUE, Double.MAX_VALUE)"
+    , "new java.awt.geom.Point2D.Double(-1.000000000000001, 1.000000000000001)"
   )
 }
