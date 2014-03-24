@@ -3,6 +3,11 @@ setlocal enabledelayedexpansion
 
 rem ---------------------------------------------------------------------------
 
+rem Default options are to compile and package everything, then run tests
+if "%*"=="" "%~f0" clean "compile:generated" "package:generated" "compile:test" "package:test" "run:test"
+
+rem ---------------------------------------------------------------------------
+
 rem Switch current directory to here
 set BASE=%~dp0
 

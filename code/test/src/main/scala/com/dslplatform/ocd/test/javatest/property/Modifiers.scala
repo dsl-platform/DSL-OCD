@@ -26,8 +26,12 @@ object Modifier {
   , Transient
   )
 
-  val combinations = values.toSet.subsets.filter { mods =>
+  val fieldCombinations = values.toSet.subsets.filter { mods =>
     !(mods.contains(Final) && mods.contains(Volatile))
+  }.map(_.toSet).toIndexedSeq
+
+  val methodCombinations = values.toSet.subsets.filter { mods =>
+    !mods.contains(Transient) && !mods.contains(Volatile)
   }.map(_.toSet).toIndexedSeq
 }
 

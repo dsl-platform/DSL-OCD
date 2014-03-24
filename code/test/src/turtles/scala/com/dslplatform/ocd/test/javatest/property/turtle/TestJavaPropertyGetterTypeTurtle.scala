@@ -11,11 +11,11 @@ import test._
 import javatest._
 import property._
 
-class TestJavaPropertyFieldTypeTurtle
+class TestJavaPropertyGetterTypeTurtle
     extends ITestProject {
 
-  def projectPath = "turtles/fields"
-  def projectName = "OCD Java Property Field Tests"
+  def projectPath = "turtles/getters"
+  def projectName = "OCD Java Property Getter Tests"
 
   def dslFiles = Map.empty
   def testFiles = Map(
@@ -26,14 +26,14 @@ class TestJavaPropertyFieldTypeTurtle
 
   private def makeTemplate(oj: OcdJava) = {
     val name = oj.boxName + (if (oj.areElementsNullable.isEmpty) oj.typeSingleName else oj.typePluralName)
-    val _testName = s"${name}FieldTurtle"
+    val _testName = s"${name}GetterTurtle"
 
-    val fieldTests =
+    val getterTests =
       for {
         vis <- Visibility.values
-        mods <- Modifier.fieldCombinations
+        mods <- Modifier.methodCombinations
       } yield {
-        new TestJavaPropertyFieldType {
+        new TestJavaPropertyGetterType {
           def conceptName = _testName
           def propertyName = name.fcil + vis + mods.mkString
           def propertyType = oj
@@ -50,20 +50,21 @@ class TestJavaPropertyFieldTypeTurtle
         """SuppressWarnings({ "rawtypes", "unchecked" })"""
       )
 
-      override def leadingBlocks = fieldTests map { test =>
+      override def leadingBlocks = getterTests map { test =>
         val visibility =
-          (if (test.visibility == Visibility.Private) """@SuppressWarnings("unused") """ else "") +
           test.visibility.javaFieldPrefix
 
         val modifiers = test.modifiers.map(_.javaFieldPrefix).mkString
         val clazz = test.propertyType.javaClass
 
         s"""
-    ${visibility}${modifiers}${clazz} ${test.propertyName} = ${test.propertyType.defaultValue};
+    ${visibility}${modifiers}${clazz} get${test.propertyName.fciu}() {
+        return ${test.propertyType.defaultValue};
+    }
 """
       }
 
-      def tests: Seq[TestComponent] = fieldTests
+      def tests: Seq[TestComponent] = getterTests
     }
   }
 }
