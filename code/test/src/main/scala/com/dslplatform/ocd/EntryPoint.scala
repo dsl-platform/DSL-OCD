@@ -7,6 +7,7 @@ import config.ITestDeployer
 import javas.turtle.OcdJavaTurtle
 import test.javatest.property.turtle.TestJavaPropertyFieldTypeTurtle
 import test.javatest.property.turtle.TestJavaPropertyGetterTypeTurtle
+import test.javatest.property.turtle.TestJavaPropertySetterTypeTurtle
 
 import com.dslplatform.ocd.test.value.PropertyInValueTests
 
@@ -22,9 +23,10 @@ class EntryPoint(
   def run(): Unit = {
 
     testDeployer.deployTests(Seq(
-      new OcdJavaTurtle()
-    , new TestJavaPropertyFieldTypeTurtle()
-    , new TestJavaPropertyGetterTypeTurtle()
+        new TestJavaPropertySetterTypeTurtle()
+//      new OcdJavaTurtle()
+//    , new TestJavaPropertyFieldTypeTurtle()
+//    , new TestJavaPropertyGetterTypeTurtle()
     ))
   }
 }

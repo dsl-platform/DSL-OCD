@@ -2,11 +2,12 @@ package com.dslplatform.ocd
 package config
 
 import scalax.file._
-import scala.collection.mutable.LinkedHashMap
-import com.dslplatform.compiler.client.api.commons.io.IOUtils
+import scalax.io.Codec.UTF8
 
+import scala.collection.mutable.LinkedHashMap
 import test.javatest.TestSuiteCreator
 import test.javatest.JavaInfo
+import org.apache.commons.io.IOUtils
 
 private[config] class TestDeployer(
     logger: Logger
@@ -98,9 +99,37 @@ private[config] class TestDeployer(
             logger.trace("Creating the compiler script: " + path.path)
 
             val body = IOUtils.toByteArray(
-              classOf[TestDeployer].getResourceAsStream("/compiler.bat"))
+              classOf[TestDeployer].getResourceAsStream("/template.compiler.bat"))
 
             path.write(body)
+
+          case _ =>
+        }
+      }
+
+    private def deployEclipseProject(): Unit =
+      testProject.testFiles.keys foreach { case language =>
+        val languageRoot = languagePath(language)
+
+        language match {
+          case JAVA =>
+            val projectPath = languageRoot / ".project"
+            val classpathPath = languageRoot / ".classpath"
+
+            logger.trace("Creating Eclipse .project file: " + projectPath.path)
+            logger.trace("Creating Eclipse .classpath file: " + classpathPath.path)
+
+            val projectBody = IOUtils.toString(
+              classOf[TestDeployer].getResourceAsStream("/template.project"), "UTF-8")
+              .replace("${projectName}", testProject.projectName)
+
+            val libPath = testSettings.workspace.path / ".." / "tools" / "java" / "lib"
+            val classpathBody = IOUtils.toString(
+              classOf[TestDeployer].getResourceAsStream("/template.classpath"), "UTF-8")
+              .replace("${libPath}", libPath.path)
+
+            projectPath.write(projectBody)(UTF8)
+            classpathPath.write(classpathBody)(UTF8)
 
           case _ =>
         }
@@ -116,6 +145,7 @@ private[config] class TestDeployer(
       deployTests()
 
       deployCompilerScript()
+      deployEclipseProject()
     }
   }
 

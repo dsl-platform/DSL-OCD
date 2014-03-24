@@ -11,11 +11,11 @@ import test._
 import javatest._
 import property._
 
-class TestJavaPropertyGetterTypeTurtle
+class TestJavaPropertySetterTypeTurtle
     extends ITestProject {
 
-  def projectPath = "turtles/getters"
-  def projectName = "OCD Java Property Getter Tests"
+  def projectPath = "turtles/setters"
+  def projectName = "OCD Java Property Setter Tests"
 
   def dslFiles = Map.empty
   def testFiles = Map(
@@ -26,14 +26,14 @@ class TestJavaPropertyGetterTypeTurtle
 
   private def makeTemplate(oj: OcdJava) = {
     val name = oj.boxName + (if (oj.areElementsNullable.isEmpty) oj.typeSingleName else oj.typePluralName)
-    val _testName = s"${name}GetterTurtle"
+    val _testName = s"${name}SetterTurtle"
 
-    val getterTests =
+    val setterTests =
       for {
         vis <- Visibility.values
         mods <- Modifier.methodCombinations
       } yield {
-        new TestJavaPropertyGetterType {
+        new TestJavaPropertySetterType {
           def conceptName = _testName
           def propertyName = name.fcil + vis + mods.mkString
           def propertyType = oj
@@ -50,7 +50,7 @@ class TestJavaPropertyGetterTypeTurtle
         """SuppressWarnings({ "rawtypes", "unchecked", "unused" })"""
       )
 
-      override def leadingBlocks = getterTests map { test =>
+      override def leadingBlocks = setterTests map { test =>
         val visibility =
           test.visibility.javaFieldPrefix
 
@@ -58,13 +58,13 @@ class TestJavaPropertyGetterTypeTurtle
         val clazz = test.propertyType.javaClass
 
         s"""
-    ${visibility}${modifiers}${clazz} get${test.propertyName.fciu}() {
-        return ${test.propertyType.defaultValue};
+    ${visibility}${modifiers}${testName} set${test.propertyName.fciu}(final ${clazz} ${test.propertyName}) {
+        return null;
     }
 """
       }
 
-      def tests: Seq[TestComponent] = getterTests
+      def tests: Seq[TestComponent] = setterTests
     }
   }
 }
