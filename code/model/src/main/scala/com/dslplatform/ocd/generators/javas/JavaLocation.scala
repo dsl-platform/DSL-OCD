@@ -9,9 +9,9 @@ object JavaLocation
 
   val classReference = "java.awt.geom.Point2D"
 
-  val defaultSingle = "new java.awt.geom.Point2D.Float()"
+  val defaultSingle: TestValue = "new java.awt.geom.Point2D.Float()"
 
-  val nonDefaultValues = Seq(
+  val nonDefaultValues: Seq[TestValue] = Seq(
       /* Integer */
       "new java.awt.Point(Integer.MIN_VALUE, Integer.MAX_VALUE)"
     , "new java.awt.Point(-1000000000, 1000000000)"

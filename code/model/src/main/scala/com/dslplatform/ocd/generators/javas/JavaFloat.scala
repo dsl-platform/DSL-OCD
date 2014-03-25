@@ -10,9 +10,9 @@ object JavaFloat
   override val classPrimitive = Some("float")
   val classReference = "Float"
 
-  val defaultSingle = "0.0f"
+  val defaultSingle: TestValue = "0.0f"
 
-  val nonDefaultValues = Seq(
+  val nonDefaultValues: Seq[TestValue] = Seq(
     "Float.MIN_VALUE"
   , "Float.MIN_NORMAL"
   , "Float.MAX_VALUE"

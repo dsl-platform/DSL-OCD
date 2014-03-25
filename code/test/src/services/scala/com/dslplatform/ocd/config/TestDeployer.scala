@@ -25,6 +25,12 @@ private[config] class TestDeployer(
     private def languagePath(language: Language) =
       projectRoot / language.language.toLowerCase
 
+    private def generatedPath(language: Language) =
+      languagePath(language) / "src" / "generated"
+
+    private def generatedResourcePath(language: Language) =
+      generatedPath(language) / "resources"
+
     private def testPath(language: Language) =
       languagePath(language) / "src" / "test"
 
@@ -46,6 +52,17 @@ private[config] class TestDeployer(
         val path = dslPath / (filename, '/')
         logger.trace("Deploying DSL: " + path.path)
         path.write(body)
+      }
+
+    private def deployGenerated(): Unit =
+      testProject.testFiles foreach { case (language, files) =>
+        val languageRoot = generatedPath(language) / language.language.toLowerCase
+        logger.trace("Creating the generated path: " + languageRoot.path)
+        languageRoot.createDirectory(true, false)
+
+        val resourcePath = generatedResourcePath(language)
+        logger.trace("Creating the generated resource path: " + resourcePath.path)
+        resourcePath.createDirectory(true, false)
       }
 
     private def cleanTests(): Unit = {
@@ -142,6 +159,7 @@ private[config] class TestDeployer(
       cleanTests()
 
       deployDsl()
+      deployGenerated()
       deployTests()
 
       deployCompilerScript()

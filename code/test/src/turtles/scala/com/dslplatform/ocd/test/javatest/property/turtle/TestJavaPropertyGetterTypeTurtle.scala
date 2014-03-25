@@ -46,10 +46,6 @@ class TestJavaPropertyGetterTypeTurtle
       def packageName = "com.dslplatform.ocd.test.javatest.property.turtles." + oj.typeSingleName
       def testName = _testName
 
-      override def classDecorations = Seq(
-        """SuppressWarnings({ "rawtypes", "unchecked", "unused" })"""
-      )
-
       override def leadingBlocks = getterTests map { test =>
         val visibility =
           test.visibility.javaFieldPrefix

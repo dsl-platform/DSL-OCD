@@ -9,7 +9,7 @@ object JavaBinary
 
   val classReference = "byte[]"
 
-  val defaultSingle = "new byte[0]"
+  val defaultSingle: TestValue = "new byte[0]"
 
   override def defaultValue(box: Box) = box match {
     case Box(_, Some((CollectionType.Array, _)), _*) =>
@@ -19,9 +19,9 @@ object JavaBinary
       super.defaultValue(box)
   }
 
-  val nonDefaultValues = Seq(
-    "new byte[] { Byte.MIN_VALUE }"
-  , "new byte[] { Byte.MIN_VALUE, 0 }"
-  , "new byte[] { Byte.MIN_VALUE, 0, Byte.MAX_VALUE }"
+  val nonDefaultValues: Seq[TestValue] = Seq(
+    ArrayOfJavaValues("byte", Seq("Byte.MIN_VALUE"))
+  , ArrayOfJavaValues("byte", Seq("Byte.MIN_VALUE", "0"))
+  , ArrayOfJavaValues("byte", Seq("Byte.MIN_VALUE", "0", "Byte.MAX_VALUE"))
   )
 }

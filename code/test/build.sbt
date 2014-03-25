@@ -24,7 +24,9 @@ unmanagedSourceDirectories in Test := Nil
 // ### DEPENDENCIES ### //
 
 libraryDependencies ++= Seq(
-  "com.dslplatform.ocd" %% "dsl-ocd-model" % "0.0.0-SNAPSHOT"
+  "com.dslplatform.ocd" %% "dsl-ocd-model-dsls" % "0.0.0-SNAPSHOT"
+, "com.dslplatform.ocd" %% "dsl-ocd-model-javas" % "0.0.0-SNAPSHOT"
+, "com.dslplatform.ocd" %% "dsl-ocd-model-scalas" % "0.0.0-SNAPSHOT"
 , "com.dslplatform" % "dsl-compiler-client-cmdline" % "0.8.13"
 , "hr.element.etb" %% "etb-util" % "0.2.20"
 , "ch.qos.logback" % "logback-classic" % "1.1.1" % "compile->default"

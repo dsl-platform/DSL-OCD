@@ -9,7 +9,7 @@ object JavaMap
 
   val classReference = "java.util.Map<String, String>"
 
-  val defaultSingle = "new java.util.HashMap<String, String>(0)"
+  val defaultSingle: TestValue = "new java.util.HashMap<String, String>(0)"
 
   override def defaultValue(box: Box) = box match {
     case Box(SingleType.One, Some((CollectionType.Array, _)), _*) =>
@@ -19,18 +19,17 @@ object JavaMap
       super.defaultValue(box)
   }
 
-  override def defaultConcreteType(box: Box, arrayElements: String*) = box.collectionType.get._1 match {
-    case CollectionType.Array =>
-      "new java.util.Map[]" + arrayElements.asBrackets
+  override def defaultConcreteType(box: Box, values: TestValue*) = box.collectionType.get match {
+    case (CollectionType.Array, _) =>
+      JavaValueContainer(CollectionType.Array, "java.util.Map", values: _*)
 
     case _ =>
-      super.defaultConcreteType(box, arrayElements: _*)
+      super.defaultConcreteType(box, values: _*)
   }
 
-  val nonDefaultValues = Seq(
-    // TODO: via factory methods:
-    E"""new java.util.HashMap<String, String>() {{ put("a", "b"); }}"""
-  , E"""new java.util.HashMap<String, String>() {{ put(${"""Quote: ", Solidus /"""}, ${"""Backslash: \, Aphos: ', Brackets: [] () {}"""}); }}"""
-  , E"""new java.util.HashMap<String, String>() {{ put("a", "b"); put("b", "c"); put("c", "d"); }}"""
+  val nonDefaultValues: Seq[TestValue] = Seq(
+    MapOfJavaValues(E"${"a"}" -> E"${"b"}")
+  , MapOfJavaValues(E"${"""Quote: ", Solidus /"""}" -> E"${"""Backslash: \, Aphos: ', Brackets: [] () {}"""}")
+  , MapOfJavaValues(E"${""}" -> E"${"empty"}", E"${"a"}" -> E"${"1"}", E"${"b"}" -> E"${"2"}", E"${"c"}" -> E"${"3"}")
   )
 }

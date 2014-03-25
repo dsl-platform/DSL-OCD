@@ -99,11 +99,12 @@ s"""case object $value
 
   val javaClass = "${stub.classValue(b)}"
 
-  val defaultValue = ${E"${stub.defaultValue(b)}"}
-  val nonDefaultValues = ${stub.nonDefaultValues(b).map(v => E"${v}").mkString(
+  def defaultValue = ${stub.defaultValue(b)}
+
+  def nonDefaultValues = ${stub.nonDefaultValues(b).mkString(
     "IndexedSeq(\n    "
   , "\n  , "
-  , "\n  )\n"
+  , "\n  )"
   )}
 
   val isPrimitive = ${stub.isPrimitive}
@@ -125,12 +126,15 @@ trait OcdJava
 
   val javaClass: String
 
-  val defaultValue: String
-  val nonDefaultValues: Seq[String]
+  def defaultValue: JavaValue
+  def nonDefaultValues: IndexedSeq[JavaValue]
   def borderValues = defaultValue +: nonDefaultValues
 
   val isPrimitive: Boolean
   val hasGenerics: Boolean
+
+  protected val Stable = JavaStability.Stable
+  protected val Unstable = JavaStability.Unstable
 }
 
 object OcdJava extends {
@@ -138,6 +142,86 @@ object OcdJava extends {
     ${values.mkString("\n  , ")}
   )
 } with OcdJavaResolver
+
+sealed trait JavaStability {
+  def isStable = this == JavaStability.Stable
+}
+
+object JavaStability {
+  case object Stable extends JavaStability
+  case object Unstable extends JavaStability
+
+  val values = IndexedSeq(Stable, Unstable)
+
+  def getStable(stable: Boolean) =
+    if (stable) Stable else Unstable
+}
+
+trait JavaValue {
+  def stability: JavaStability
+}
+
+object SingleJavaValue {
+  def apply(text: String): SingleJavaValue =
+    SingleJavaValue(text, JavaStability.Stable)
+}
+
+trait JavaValueContainer extends JavaValue {
+  def values: Seq[JavaValue]
+
+  def stability = JavaStability.getStable(
+      values.forall(_.stability.isStable))
+}
+
+trait JavaEntryContainer extends JavaValue {
+  def values: Seq[(JavaValue, JavaValue)]
+
+  def stability = JavaStability.getStable(
+      values.forall{ case (k, v) => k.stability.isStable && v.stability.isStable})
+}
+
+case class SingleJavaValue(
+    text: String
+  , val stability: JavaStability
+  ) extends JavaValue {
+
+  override val toString = text
+}
+
+case class ArrayOfJavaValues(
+    elementClass: String
+  , values: JavaValue*
+  ) extends JavaValueContainer {
+
+  override val toString = "new " + elementClass + "[] " + values.mkString("{ ", ", ", " }")
+}
+
+case class ListOfJavaValues(
+    elementClass: String
+  , values: JavaValue*
+  ) extends JavaValueContainer {
+
+  override val toString = "new java.util.ArrayList<" + elementClass + ">() " + values.mkString("{{ add(", "); add(", "); }}")
+}
+
+case class SetOfJavaValues(
+    elementClass: String
+  , values: JavaValue*
+  ) extends JavaValueContainer {
+
+  override val toString = "new java.util.HashSet<" + elementClass + ">() " + values.mkString("{{ add(", "); add(", "); }}")
+}
+
+case class MapOfJavaValues(
+    keyClass: String
+  , valueClass: String
+  , values: Pair[JavaValue, JavaValue]*
+  ) extends JavaEntryContainer {
+
+  override val toString = "new java.util.HashMap<" + keyClass + ", " + valueClass + ">() " + (values.map{ case (k, v) =>
+    "put(" + k + ", " + v + ");"
+  }).mkString("{{ ", " ", " }}")
+}
 """)
   }
 }

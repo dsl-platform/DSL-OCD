@@ -10,9 +10,9 @@ object JavaDouble
   override val classPrimitive = Some("double")
   val classReference = "Double"
 
-  val defaultSingle = "0.0"
+  val defaultSingle: TestValue = "0.0"
 
-  val nonDefaultValues = Seq(
+  val nonDefaultValues: Seq[TestValue] = Seq(
     "Double.MIN_VALUE"
   , "Double.MIN_NORMAL"
   , "Double.MAX_VALUE"

@@ -10,12 +10,12 @@ trait Generator {
   private val generated =
     "generated=(.*)".r.findFirstMatchIn(config).get.group(1).trim
 
-  private val gene = Path(generated, '/') /
-    "model" /
-    "src"/ "generated" / "scala" / "com" / "dslplatform" / "ocd"
+  private def gene(name: String) = Path(generated, '/') /
+    "model" / name /
+    "src" / "generated" / "scala" / "com" / "dslplatform" / "ocd"
 
   def spawnDirectory(name: String) = {
-    val root = gene / name
+    val root = gene(name) / name
 
     if (root.isDirectory) {
       println(s"Cleaning directory: ${root.path} ...")

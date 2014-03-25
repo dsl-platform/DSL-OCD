@@ -9,9 +9,9 @@ object JavaUrl
 
   val classReference = "java.net.URI"
 
-  val defaultSingle = E"""com.dslplatform.client.TypeFactory.buildURI("http://127.0.0.1")"""
+  val defaultSingle: TestValue = E"""com.dslplatform.client.TypeFactory.buildURI("http://127.0.0.1")"""
 
-  val nonDefaultValues = Seq(
+  val nonDefaultValues: Seq[TestValue] = Seq(
     E"""com.dslplatform.client.TypeFactory.buildURI("http://www.xyz.com")"""
   , E"""com.dslplatform.client.TypeFactory.buildURI("https://www.abc.com")"""
   , E"""com.dslplatform.client.TypeFactory.buildURI("ftp://www.pqr.com")"""

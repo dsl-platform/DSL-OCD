@@ -9,9 +9,9 @@ object JavaDate
 
   val classReference = "org.joda.time.LocalDate"
 
-  val defaultSingle = "org.joda.time.LocalDate.now()"
+  val defaultSingle: TestValue = "org.joda.time.LocalDate.now()" ~ Unstable
 
-  val nonDefaultValues = Seq(
+  val nonDefaultValues: Seq[TestValue] = Seq(
     "new org.joda.time.LocalDate(-1, 1, 1)"                  // -01-01-01
   , "new org.joda.time.LocalDate(0)"                         // 1970
   , "new org.joda.time.LocalDate(Integer.MAX_VALUE * 1001L)" // beyond UNIX epoch (>2038)

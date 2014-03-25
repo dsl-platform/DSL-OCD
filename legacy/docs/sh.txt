@@ -1,2 +1,27 @@
-# mkdir -p ~/code && cd ~/code && git clone /var/www/DSL-OCD
-cd ~/code/DSL-OCD && git reset --hard HEAD~10 && git clean -d -f && git fetch origin && git merge origin/master && cd code/model && ./prepare-workspace.sh && ./run.sh && cd ../../generated/model && ./prepare-workspace.sh && ./cross-publish.sh
+# mkdir -p ~/code
+# cd ~/code
+# git clone /var/www/DSL-OCD
+
+cd ~/code/DSL-OCD 
+git reset --hard HEAD~10 
+git clean -d -f
+git fetch origin
+git merge origin/master
+cd ~/code/DSL-OCD/code/model
+./prepare-workspace.sh
+./run.sh
+cd ~/code/DSL-OCD/generated/model/types
+./prepare-workspace.sh
+./cross-publish.sh
+cd ~/code/DSL-OCD/generated/model/boxes
+./prepare-workspace.sh
+./cross-publish.sh
+cd ~/code/DSL-OCD/generated/model/dsls
+./prepare-workspace.sh
+./cross-publish.sh
+cd ~/code/DSL-OCD/generated/model/javas
+./prepare-workspace.sh
+./cross-publish.sh
+cd ~/code/DSL-OCD/generated/model/scalas
+./prepare-workspace.sh
+./cross-publish.sh

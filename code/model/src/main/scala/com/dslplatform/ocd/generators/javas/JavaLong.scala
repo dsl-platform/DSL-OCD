@@ -10,9 +10,9 @@ object JavaLong
   override val classPrimitive = Some("long")
   val classReference = "Long"
 
-  val defaultSingle = "0L"
+  val defaultSingle: TestValue = "0L"
 
-  val nonDefaultValues = Seq(
+  val nonDefaultValues: Seq[TestValue] = Seq(
     "Long.MIN_VALUE"
   , "Long.MAX_VALUE"
   , "1000000000000000000L"

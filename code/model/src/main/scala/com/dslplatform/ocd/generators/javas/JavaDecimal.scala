@@ -9,9 +9,9 @@ object JavaDecimal
 
   val classReference = "java.math.BigDecimal"
 
-  val defaultSingle = "java.math.BigDecimal.ZERO"
+  val defaultSingle: TestValue = "java.math.BigDecimal.ZERO"
 
-  val nonDefaultValues = Seq(
+  val nonDefaultValues: Seq[TestValue] = Seq(
     "java.math.BigDecimal.ONE"
   , E"new java.math.BigDecimal($Pi)"
   , E"new java.math.BigDecimal(${"-1E-100"})"

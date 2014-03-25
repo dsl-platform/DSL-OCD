@@ -9,10 +9,10 @@ object JavaImage
 
   val classReference = "java.awt.image.BufferedImage"
 
-  val defaultSingle = "new java.awt.image.BufferedImage(1, 1, java.awt.image.BufferedImage.TYPE_4BYTE_ABGR)"
+  val defaultSingle: TestValue = "new java.awt.image.BufferedImage(1, 1, java.awt.image.BufferedImage.TYPE_4BYTE_ABGR)"
 
   // FIXME
-  val nonDefaultValues = Seq(
+  val nonDefaultValues: Seq[TestValue] = Seq(
     "new java.awt.image.BufferedImage(1, 1, java.awt.image.BufferedImage.TYPE_3BYTE_BGR)"
   , "new java.awt.image.BufferedImage(1, 1, java.awt.image.BufferedImage.TYPE_4BYTE_ABGR_PRE)"
   , "new java.awt.image.BufferedImage(1, 1, java.awt.image.BufferedImage.TYPE_BYTE_BINARY)"

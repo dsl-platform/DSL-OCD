@@ -46,10 +46,6 @@ class TestJavaPropertyFieldTypeTurtle
       def packageName = "com.dslplatform.ocd.test.javatest.property.turtles." + oj.typeSingleName
       def testName = _testName
 
-      override def classDecorations = Seq(
-        """SuppressWarnings({ "rawtypes", "unchecked" })"""
-      )
-
       override def leadingBlocks = fieldTests map { test =>
         val visibility =
           (if (test.visibility == Visibility.Private) """@SuppressWarnings("unused") """ else "") +

@@ -9,9 +9,9 @@ object JavaXml
 
   val classReference = "org.w3c.dom.Element"
 
-  val defaultSingle = "null"
+  val defaultSingle: TestValue = "null"
 
-  val nonDefaultValues = Seq(
+  val nonDefaultValues: Seq[TestValue] = Seq(
     E"com.dslplatform.client.TypeFactory.buildElement(${"<EmptyElement/>"})"
   , E"com.dslplatform.client.TypeFactory.buildElement(${"<TextElement>some text &amp; &lt;stuff&gt;</TextElement>"})"
   , E"com.dslplatform.client.TypeFactory.buildElement(${"<ElementWithCData><![CDATA[<?xml?><xml><!xml!>]]></ElementWithCData>"})"

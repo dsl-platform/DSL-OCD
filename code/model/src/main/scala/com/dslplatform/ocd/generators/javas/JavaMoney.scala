@@ -9,9 +9,9 @@ object JavaMoney
 
   val classReference = "java.math.BigDecimal"
 
-  val defaultSingle = "java.math.BigDecimal.ZERO.setScale(2)"
+  val defaultSingle: TestValue = "java.math.BigDecimal.ZERO.setScale(2)"
 
-  val nonDefaultValues = Seq(
+  val nonDefaultValues: Seq[TestValue] = Seq(
     "java.math.BigDecimal.ONE"
   , E"new java.math.BigDecimal($Pi).setScale(2, java.math.BigDecimal.ROUND_HALF_UP)"
   , E"new java.math.BigDecimal(${"-1E-2"})"

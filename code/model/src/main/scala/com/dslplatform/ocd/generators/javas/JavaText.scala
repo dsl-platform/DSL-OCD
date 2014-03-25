@@ -9,9 +9,9 @@ object JavaText
 
   val classReference = "String"
 
-  val defaultSingle = E"${""}"
+  val defaultSingle: TestValue = E"${""}"
 
-  val nonDefaultValues = Seq(
+  val nonDefaultValues: Seq[TestValue] = Seq(
     E"${'"'}"
   , E"${"""Quote: ", Solidus /, Backslash: \, Aphos: ', Brackets: [] () {}"""}"
   , E"${(0 to 256).map(_.toChar).mkString}"

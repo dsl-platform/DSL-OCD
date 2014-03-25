@@ -9,9 +9,9 @@ object JavaRectangle
 
   val classReference = "java.awt.geom.Rectangle2D"
 
-  val defaultSingle = "new java.awt.geom.Rectangle2D.Float()"
+  val defaultSingle: TestValue = "new java.awt.geom.Rectangle2D.Float()"
 
-  val nonDefaultValues = Seq(
+  val nonDefaultValues: Seq[TestValue] = Seq(
       /* Integer */
       "new java.awt.Rectangle(Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE)"
     , "new java.awt.Rectangle(-1000000000, -1000000000, 1000000000, 1000000000)"

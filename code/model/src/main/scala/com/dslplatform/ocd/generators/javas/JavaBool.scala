@@ -10,9 +10,9 @@ object JavaBool
   override val classPrimitive = Some("boolean")
   val classReference = "Boolean"
 
-  val defaultSingle = "false"
+  val defaultSingle: TestValue = "false"
 
-  val nonDefaultValues = Seq(
+  val nonDefaultValues: Seq[TestValue] = Seq(
     "true"
   )
 }

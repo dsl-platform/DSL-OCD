@@ -10,9 +10,9 @@ object JavaInteger
   override val classPrimitive = Some("int")
   val classReference = "Integer"
 
-  val defaultSingle = "0"
+  val defaultSingle: TestValue = "0"
 
-  val nonDefaultValues = Seq(
+  val nonDefaultValues: Seq[TestValue] = Seq(
     "Integer.MIN_VALUE"
   , "Integer.MAX_VALUE"
   , "-1000000000"
