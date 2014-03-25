@@ -12,10 +12,10 @@ object JavaXml
   val defaultSingle: TestValue = "null"
 
   val nonDefaultValues: Seq[TestValue] = Seq(
-    E"com.dslplatform.client.TypeFactory.buildElement(${"<EmptyElement/>"})"
-  , E"com.dslplatform.client.TypeFactory.buildElement(${"<TextElement>some text &amp; &lt;stuff&gt;</TextElement>"})"
-  , E"com.dslplatform.client.TypeFactory.buildElement(${"<ElementWithCData><![CDATA[<?xml?><xml><!xml!>]]></ElementWithCData>"})"
-  , E"com.dslplatform.client.TypeFactory.buildElement(${"""<AtributedElement foo="bar" qwe="poi"/>"""})"
-  , E"com.dslplatform.client.TypeFactory.buildElement(${"<ns3000:NamespacedElement/>"})"
+    E"com.dslplatform.ocd.test.Utils.stringToElement(${"<EmptyElement/>"})"
+  , E"com.dslplatform.ocd.test.Utils.stringToElement(${"<TextElement>some text &amp; &lt;stuff&gt;</TextElement>"})"
+  , E"com.dslplatform.ocd.test.Utils.stringToElement(${"<ElementWithCData><![CDATA[<?xml?><xml><!xml!>]]></ElementWithCData>"})"
+  , E"com.dslplatform.ocd.test.Utils.stringToElement(${"""<AtributedElement foo="bar" qwe="poi"/>"""})"
+  , E"com.dslplatform.ocd.test.Utils.stringToElement(${"<ns3000:NamespacedElement/>"})"
   )
 }

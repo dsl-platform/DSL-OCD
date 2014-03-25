@@ -17,11 +17,13 @@ class EntryPoint(
 
   def run(): Unit = {
     testDeployer.deployTests(Seq(
-      new OcdJavaDefaultsModifiersTurtle {}
-    , new OcdJavaDefaultsEqualityTurtle {}
-    , new TestJavaPropertyFieldTypeTurtle {}
-    , new TestJavaPropertyGetterTypeTurtle {}
-    , new TestJavaPropertySetterTypeTurtle {}
+      new OcdJavaDefaultsEqualityTurtle {}
+
+//      new OcdJavaDefaultsModifiersTurtle {}
+//    , new OcdJavaDefaultsEqualityTurtle {}
+//    , new TestJavaPropertyFieldTypeTurtle {}
+//    , new TestJavaPropertyGetterTypeTurtle {}
+//    , new TestJavaPropertySetterTypeTurtle {}
     ))
   }
 }
