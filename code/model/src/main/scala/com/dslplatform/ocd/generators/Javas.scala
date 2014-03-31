@@ -94,10 +94,13 @@ ${
       val value = s"`java.${boxToJavaName(b)(name)}`"
       values += value
 
+      val cv = stub.classValue(b)
+
 s"""case object $value
     extends Java${t.name.singleName} with `box.${b.name}` {
 
-  val javaClass = "${stub.classValue(b)}"
+  val javaClass = "${cv}"
+  val javaType = ${stub.javaType(b)}
 
   def defaultValue = ${stub.defaultValue(b)}
 
@@ -125,6 +128,7 @@ trait OcdJava
     with boxes.OcdBox {
 
   val javaClass: String
+  val javaType: JavaType
 
   def defaultValue: JavaValue
   def nonDefaultValues: IndexedSeq[JavaValue]
@@ -142,6 +146,12 @@ object OcdJava extends {
     ${values.mkString("\n  , ")}
   )
 } with OcdJavaResolver
+
+sealed trait JavaType { def baseClass: String }
+case class JavaClass(baseClass: String) extends JavaType
+case class SimpleType(baseClass: String) extends JavaType
+case class CollectionType(baseClass: String, elementType: JavaType) extends JavaType
+case class GenericType(baseClass: String, elementTypes: JavaType*) extends JavaType
 
 sealed trait JavaStability {
   def isStable = this == JavaStability.Stable

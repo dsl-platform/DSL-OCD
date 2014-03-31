@@ -230,9 +230,6 @@ public class JsonSerializationDinamo {
 
         final LinkedHashMap<String, LinkedList<Node>> childrenByName = new LinkedHashMap<String, LinkedList<Node>>();
 
-//        System.out.println("Doctype:");
-//        System.out.println(el.getOwnerDocument().getDoctype());
-
         /* Sort the nodes in the hash map by children names */
         for (int i = 0; i < childLen; i++) {
             final Node n = cn.item(i);

@@ -69,21 +69,24 @@ class OcdJavaDefaultsEqualityTurtle
   import boxes._
   import javas._
 
+  private def buildType(javaType: JavaType): String = javaType match {
+    case JavaClass(baseClass) =>
+      s"""${baseClass}.class"""
+
+    case SimpleType(baseClass) =>
+      s"""JsonSerializationDinamo.buildType(${baseClass}.class)"""
+
+    case CollectionType(baseClass, elementType) =>
+      s"""JsonSerializationDinamo.buildCollectionType(${baseClass}.class, ${buildType(elementType)})"""
+
+    case GenericType(baseClass, elementTypes @ _*) =>
+      s"""JsonSerializationDinamo.buildGenericType(${baseClass}.class, ${elementTypes.map(buildType).mkString(", ")})"""
+  }
+
   private def testBorderValue(oj: OcdJava, name: String, value: JavaValue) = s"""
         final ${oj.javaClass} ${name} = ${value};
         final String ${name}JsonSerialized = jsonSerialization.serialize($name);
-        final JavaType ${name}JavaType = ${oj match {
-          case _ if oj.hasGenerics =>
-            s"""JsonSerializationDinamo.buildCollectionType(
-                  ${oj.javaClass.replaceFirst("<.*>", "")}.class,
-                  ${OcdJava.resolve(oj, `box.Nullable`).javaClass}.class);"""
-
-          case _ if oj.hasGenerics =>
-            s"""JsonSerializationDinamo.buildCollectionType(${oj.javaClass.replaceFirst("<.*>", "")}.class, ${OcdJava.resolve(oj, `box.Nullable`).javaClass}.class);"""
-
-          case _ =>
-            s"""JsonSerializationDinamo.buildType(${oj.javaClass}.class);"""
-        }}
+        final JavaType ${name}JavaType = ${buildType(oj.javaType)};
         final ${oj.javaClass} ${name}JsonDeserialized = jsonSerialization.deserialize(${name}JavaType, ${name}JsonSerialized);
         com.dslplatform.ocd.javaasserts.${oj.typeSingleName}Asserts.assert${oj.boxName}Equals(${name}, ${name}JsonDeserialized);
 """

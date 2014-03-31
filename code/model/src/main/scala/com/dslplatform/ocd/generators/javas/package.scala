@@ -160,6 +160,14 @@ trait JavaStub {
   def hasGenerics =
     classValue(_: Box).contains('<').toString
 
+  def javaType(box: Box) = classValue(box) match {
+    case cv if cv.contains('<') =>
+      s"""CollectionType("${cv.replaceFirst("<.*>", "")}", JavaClass("${classReference}"))"""
+
+    case cv =>
+      s"""SimpleType("${cv}")"""
+  }
+
   def nonDefaultValues(box: Box): Seq[TestValue] = box match {
     /* box.One */
     case Box(SingleType.One, None, _*) =>
