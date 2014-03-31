@@ -42,6 +42,9 @@ object Boxes
       collectionType.map(c => c._1 + "Of" + c._2).getOrElse("")
   }
 
+  def boxOrder(box: Box) =
+    box.collectionType.map(_._1.toString.head) -> box.collectionType.map(-_._2.toString.head)
+
   val boxes =
     SingleType.values.flatMap( s =>
       Box(s, None) +:
@@ -52,10 +55,10 @@ object Boxes
           ): _*)
         )
       )
-    )
+    ).sortBy(boxOrder)
 
   def generate() {
-    val root = spawnDirectory("boxes")
+    val root = spawnDirectory("boxes", "scala")
 
     for (b <- boxes) {
       (root / s"box.${b.name}.scala").write(

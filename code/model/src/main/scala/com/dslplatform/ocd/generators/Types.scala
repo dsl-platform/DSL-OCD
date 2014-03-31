@@ -33,8 +33,9 @@ object Types
       )) sortBy(identity) filterNot(name.grammarName ==)
   }
 
-  val StringLengthConstraint = 9
   val DecimalScaleConstraint = 9
+  val MoneyScaleConstraint = 2
+  val StringLengthConstraint = 9
 
   val types = Seq(
     Type(TypeName("Binary", "Binaries"))
@@ -73,7 +74,7 @@ object Types
   )
 
   def generate {
-    val root = spawnDirectory("types")
+    val root = spawnDirectory("types", "scala")
 
     for (t <- types) {
       val name = t.name.grammarName

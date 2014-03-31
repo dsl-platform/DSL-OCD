@@ -31,6 +31,12 @@ private[config] class TestDeployer(
     private def generatedResourcePath(language: Language) =
       generatedPath(language) / "resources"
 
+    private def mainPath(language: Language) =
+      languagePath(language) / "src" / "main"
+
+    private def mainResourcePath(language: Language) =
+      mainPath(language) / "resources"
+
     private def testPath(language: Language) =
       languagePath(language) / "src" / "test"
 
@@ -56,13 +62,32 @@ private[config] class TestDeployer(
 
     private def deployGenerated(): Unit =
       testProject.testFiles foreach { case (language, files) =>
-        val languageRoot = generatedPath(language) / language.language.toLowerCase
-        logger.trace("Creating the generated path: " + languageRoot.path)
-        languageRoot.createDirectory(true, false)
+        val generatedRoot = generatedPath(language) / language.language.toLowerCase
+        if (!generatedRoot.exists) {
+          logger.trace("Creating the generated path: " + generatedRoot.path)
+          generatedRoot.createDirectory(true, false)
+        }
 
         val resourcePath = generatedResourcePath(language)
-        logger.trace("Creating the generated resource path: " + resourcePath.path)
-        resourcePath.createDirectory(true, false)
+        if (!resourcePath.exists) {
+          logger.trace("Creating the generated resource path: " + resourcePath.path)
+          resourcePath.createDirectory(true, false)
+        }
+      }
+
+    private def deployMain(): Unit =
+      testProject.testFiles foreach { case (language, files) =>
+        val mainRoot = mainPath(language) / language.language.toLowerCase
+        if (!mainRoot.exists) {
+          logger.trace("Creating the main path: " + mainRoot.path)
+          mainRoot.createDirectory(true, false)
+        }
+
+        val resourcePath = mainResourcePath(language)
+        if (!resourcePath.exists) {
+          logger.trace("Creating the main resource path: " + resourcePath.path)
+          resourcePath.createDirectory(true, false)
+        }
       }
 
     private def cleanTests(): Unit = {
@@ -160,6 +185,7 @@ private[config] class TestDeployer(
 
       deployDsl()
       deployGenerated()
+      deployMain()
       deployTests()
 
       deployCompilerScript()
@@ -168,6 +194,6 @@ private[config] class TestDeployer(
   }
 
   def deployTests(tests: Seq[ITestProject]): Unit = {
-    tests foreach(new TestSetup(_).deploy())
+    tests.par foreach(new TestSetup(_).deploy())
   }
 }

@@ -45,10 +45,12 @@ class OcdJavaDefaultsEqualityTurtle
   }
 
   private def setupBorderValue(oj: OcdJava, name: String, value: JavaValue) = s"""
-        final ${oj.javaClass} ${name} = ${value};
-"""
+        final ${oj.javaClass} ${name} = ${value};"""
+
+  import types._
+  import boxes._
 
   private def testBorderValue(oj: OcdJava, name: String, value: JavaValue) = s"""
-//        org.junit.Assert.assertEquals(${value}, ${name});
+        com.dslplatform.ocd.javaasserts.${oj.typeSingleName}Asserts.assert${oj.boxName}Equals(${value}, ${name});
 """
 }

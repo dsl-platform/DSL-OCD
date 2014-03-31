@@ -28,7 +28,7 @@ object Dsls
     }
 
   def generate() {
-    val root = spawnDirectory("dsls")
+    val root = spawnDirectory("dsls", "scala")
 
     val values = new LinkedHashSet[String]
 

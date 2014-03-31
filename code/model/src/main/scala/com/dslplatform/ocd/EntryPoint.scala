@@ -7,7 +7,11 @@ object EntryPoint
 
   Types.generate()
   Boxes.generate()
+
   Dsls.generate()
+
   Javas.generate()
+  JavaAsserts.generate()
+
   Scalas.generate()
 }

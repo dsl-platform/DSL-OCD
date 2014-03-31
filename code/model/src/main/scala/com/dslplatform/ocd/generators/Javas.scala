@@ -41,35 +41,35 @@ object Javas
         (t: String) => singleTypeToJavaName(base)(ct + "<" + singleTypeToJavaName(et)(t) + ">")
     }
 
-    val stubs = Map(
-      "Binary" -> JavaBinary
-    , "Boolean" -> JavaBool
-    , "Date" -> JavaDate
-    , "Decimal" -> JavaDecimal
-    , "Decimal(9)" -> JavaDecimalWithScale
-    , "Double" -> JavaDouble
-    , "Float" -> JavaFloat
-    , "Guid" -> JavaGuid
-//    , "Image" -> JavaImage
-    , "Integer" -> JavaInteger
-    , "Ip" -> JavaIp
-    , "Location" -> JavaLocation
-    , "Long" -> JavaLong
-    , "Map" -> JavaMap
-    , "Money" -> JavaMoney
-    , "Point" -> JavaPoint
-    , "Rectangle" -> JavaRectangle
-//    , "S3" -> JavaS3
-    , "String" -> JavaString
-    , "String(9)" -> JavaStringWithMaxLength
-    , "Text" -> JavaText
-    , "Timestamp" -> JavaTimestamp
-    , "Url" -> JavaUrl
-    , "Xml" -> JavaXml
-    )
+  val stubs = Map(
+    "Binary" -> JavaBinary
+  , "Boolean" -> JavaBool
+  , "Date" -> JavaDate
+  , "Decimal" -> JavaDecimal
+  , "Decimal(9)" -> JavaDecimalWithScale
+  , "Double" -> JavaDouble
+  , "Float" -> JavaFloat
+  , "Guid" -> JavaGuid
+//  , "Image" -> JavaImage
+  , "Integer" -> JavaInteger
+  , "Ip" -> JavaIp
+  , "Location" -> JavaLocation
+  , "Long" -> JavaLong
+  , "Map" -> JavaMap
+  , "Money" -> JavaMoney
+  , "Point" -> JavaPoint
+  , "Rectangle" -> JavaRectangle
+//  , "S3" -> JavaS3
+  , "String" -> JavaString
+  , "String(9)" -> JavaStringWithMaxLength
+  , "Text" -> JavaText
+  , "Timestamp" -> JavaTimestamp
+  , "Url" -> JavaUrl
+  , "Xml" -> JavaXml
+  )
 
   def generate() {
-    val root = spawnDirectory("javas")
+    val root = spawnDirectory("javas", "scala")
 
     val values = new LinkedHashSet[String]
 
@@ -159,6 +159,7 @@ object JavaStability {
 
 trait JavaValue {
   def stability: JavaStability
+  def isNull = toString == "null"
 }
 
 object SingleJavaValue {

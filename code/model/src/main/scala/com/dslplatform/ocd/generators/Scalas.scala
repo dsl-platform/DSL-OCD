@@ -41,35 +41,35 @@ object Scalas
         (t: String) => singleTypeToScalaName(base)(ct + "<" + singleTypeToScalaName(et)(t) + ">")
     }
 
-    val stubs = Map(
-      "Binary" -> ScalaBinary
-    , "Boolean" -> ScalaBool
-    , "Date" -> ScalaDate
-    , "Decimal" -> ScalaDecimal
-    , "Decimal(9)" -> ScalaDecimalWithScale
-    , "Double" -> ScalaDouble
-    , "Float" -> ScalaFloat
-    , "Guid" -> ScalaGuid
-    , "Image" -> ScalaImage
-    , "Integer" -> ScalaInteger
-    , "Ip" -> ScalaIp
-    , "Location" -> ScalaLocation
-    , "Long" -> ScalaLong
-    , "Map" -> ScalaMap
-    , "Money" -> ScalaMoney
-    , "Point" -> ScalaPoint
-    , "Rectangle" -> ScalaRectangle
-//    , "S3" -> ScalaS3
-    , "String" -> ScalaString
-    , "String(9)" -> ScalaStringWithMaxLength
-    , "Text" -> ScalaText
-    , "Timestamp" -> ScalaTimestamp
-    , "Url" -> ScalaUrl
-    , "Xml" -> ScalaXml
-    )
+  val stubs = Map(
+    "Binary" -> ScalaBinary
+  , "Boolean" -> ScalaBool
+  , "Date" -> ScalaDate
+  , "Decimal" -> ScalaDecimal
+  , "Decimal(9)" -> ScalaDecimalWithScale
+  , "Double" -> ScalaDouble
+  , "Float" -> ScalaFloat
+  , "Guid" -> ScalaGuid
+  , "Image" -> ScalaImage
+  , "Integer" -> ScalaInteger
+  , "Ip" -> ScalaIp
+  , "Location" -> ScalaLocation
+  , "Long" -> ScalaLong
+  , "Map" -> ScalaMap
+  , "Money" -> ScalaMoney
+  , "Point" -> ScalaPoint
+  , "Rectangle" -> ScalaRectangle
+//  , "S3" -> ScalaS3
+  , "String" -> ScalaString
+  , "String(9)" -> ScalaStringWithMaxLength
+  , "Text" -> ScalaText
+  , "Timestamp" -> ScalaTimestamp
+  , "Url" -> ScalaUrl
+  , "Xml" -> ScalaXml
+  )
 
   def generate() {
-    val root = spawnDirectory("scalas")
+    val root = spawnDirectory("scalas", "scala")
 
     val values = new LinkedHashSet[String]
 
