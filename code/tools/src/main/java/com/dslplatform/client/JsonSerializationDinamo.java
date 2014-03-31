@@ -202,20 +202,11 @@ public class JsonSerializationDinamo {
             }
 
             final NodeList children = value.getChildNodes();
-            /* If the node has no children, only write the node name:value */
-            if (children.getLength() == 0) {
-                gen.writeStringField(value.getNodeName(),
-                        value.getTextContent());
-            }
-            /*
-             * Otherwise write recursively build the JSON hashmap, and write it to the
-             * generator
-             */
-            else {
-                final HashMap<String, Object> hm = new HashMap<String, Object>();
-                hm.put(value.getNodeName(), buildFromXml(value));
-                gen.writeObject(hm);
-            }
+            final HashMap<String, Object> hm = new HashMap<String, Object>();
+
+            hm.put(value.getNodeName(), buildFromXml(value));
+
+            gen.writeObject(hm);
         }
     };
 
