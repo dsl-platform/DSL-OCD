@@ -26,6 +26,12 @@ javacOptions := Seq(
 , "-target", "1.6"
 ) ++ (javacOptions in doc).value
 
+libraryDependencies := Seq(
+  "joda-time" % "joda-time" % "2.3"
+, "com.fasterxml.jackson.core" % "jackson-databind" % "2.3.1"
+, "com.dslplatform" % "dsl-client-core" % "0.4.14"
+)
+
 crossPaths := false
 
 autoScalaLibrary := false

@@ -28,7 +28,7 @@ class OcdJavaDefaultsEqualityTurtle
       def testName = _testName
 
       override def imports = Seq(
-        "com.dslplatform.client.JsonSerializationTweaks"
+        "com.dslplatform.client.JsonSerializationDinamo"
       , "com.dslplatform.client.Bootstrap"
       , "com.dslplatform.patterns.ServiceLocator"
       , "com.fasterxml.jackson.databind.JavaType"
@@ -36,7 +36,7 @@ class OcdJavaDefaultsEqualityTurtle
       )
 
       override def leadingBlocks = Seq("""
-    private static JsonSerializationTweaks jsonSerialization;
+    private static JsonSerializationDinamo jsonSerialization;
 
     @org.junit.BeforeClass
     public static void initializeJsonSerialization() throws IOException {
@@ -45,7 +45,7 @@ class OcdJavaDefaultsEqualityTurtle
                 "username=x\nproject-id=x\napi-url=x\npackage-name=x".getBytes("UTF-8")));
         jsonSerialization = locator.resolve(JsonSerialization.class);
 */
-        jsonSerialization = new JsonSerializationTweaks(null);
+        jsonSerialization = new JsonSerializationDinamo(null);
     }
 """)
 
@@ -74,15 +74,15 @@ class OcdJavaDefaultsEqualityTurtle
         final String ${name}JsonSerialized = jsonSerialization.serialize($name);
         final JavaType ${name}JavaType = ${oj match {
           case _ if oj.hasGenerics =>
-            s"""JsonSerializationTweaks.buildCollectionType(
+            s"""JsonSerializationDinamo.buildCollectionType(
                   ${oj.javaClass.replaceFirst("<.*>", "")}.class,
                   ${OcdJava.resolve(oj, `box.Nullable`).javaClass}.class);"""
 
           case _ if oj.hasGenerics =>
-            s"""JsonSerializationTweaks.buildCollectionType(${oj.javaClass.replaceFirst("<.*>", "")}.class, ${OcdJava.resolve(oj, `box.Nullable`).javaClass}.class);"""
+            s"""JsonSerializationDinamo.buildCollectionType(${oj.javaClass.replaceFirst("<.*>", "")}.class, ${OcdJava.resolve(oj, `box.Nullable`).javaClass}.class);"""
 
           case _ =>
-            s"""JsonSerializationTweaks.buildType(${oj.javaClass}.class);"""
+            s"""JsonSerializationDinamo.buildType(${oj.javaClass}.class);"""
         }}
         final ${oj.javaClass} ${name}JsonDeserialized = jsonSerialization.deserialize(${name}JavaType, ${name}JsonSerialized);
         com.dslplatform.ocd.javaasserts.${oj.typeSingleName}Asserts.assert${oj.boxName}Equals(${name}, ${name}JsonDeserialized);
