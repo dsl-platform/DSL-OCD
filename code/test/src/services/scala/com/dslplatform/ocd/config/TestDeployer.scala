@@ -189,7 +189,7 @@ private[config] class TestDeployer(
       deployTests()
 
       deployCompilerScript()
-      deployEclipseProject()
+//      deployEclipseProject()
     }
   }
 

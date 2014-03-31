@@ -10,7 +10,7 @@ name := "DSL-Client-Tools"
 
 version := "0.0.0-SNAPSHOT"
 
-scalaVersion := "2.10.4-RC3"
+scalaVersion := "2.10.4"
 
 javacOptions in doc := Seq(
   "-encoding", "UTF-8"

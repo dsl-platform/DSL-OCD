@@ -13,8 +13,8 @@ object JavaStringWithMaxLength
 
   val nonDefaultValues: Seq[TestValue] = Seq(
     E"${'"'}"
-  , E"${"""Quote: ", Solidus /, Backslash: \, Aphos: ', Brackets: [] () {}"""}"
-  , E"${(0 to 256).map(_.toChar).mkString}"
+  , E"${"""'/\[](){}"""}"
+  , E"${(1 to 9).map(_.toChar).mkString}"
   , E"${"x" * StringLengthConstraint}"
   )
 }

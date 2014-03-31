@@ -104,6 +104,7 @@ trait OneAsserts { self: JavaAsserts =>
 
     case JavaTimestamp => s"""
         if (delta == org.joda.time.Duration.ZERO) {
+            if (expected.equals(actual)) return;
             Assert.fail(message + "expected was \\"" + expected + "\\", but actual was \\"" + actual + "\\" - WARNING: You are comparing exact instants - not using a delta duration!");
         }
 

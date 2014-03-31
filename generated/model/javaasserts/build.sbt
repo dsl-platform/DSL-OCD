@@ -17,7 +17,8 @@ unmanagedSourceDirectories in Compile := Seq(
 unmanagedSourceDirectories in Test := Nil
 
 libraryDependencies ++= Seq(
-  "joda-time" % "joda-time" % "2.3"
+  "com.dslplatform" % "dsl-client-tools" % "0.0.0-SNAPSHOT"
+, "joda-time" % "joda-time" % "2.3"
 , "junit" % "junit" % "4.11"
 )
 
@@ -40,7 +41,7 @@ publishArtifact in (Compile, packageDoc) := false
 
 // ### COMPILE SETTINGS ### //
 
-scalaVersion := "2.10.4-RC3"
+scalaVersion := "2.10.4"
 
 javacOptions in doc := Seq(
   "-encoding", "UTF-8"
