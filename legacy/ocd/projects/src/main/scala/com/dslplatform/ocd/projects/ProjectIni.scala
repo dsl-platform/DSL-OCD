@@ -8,14 +8,14 @@ import java.util.Properties
 
 case class ProjectIni(
   username: String
-, projectID: java.util.UUID
+, projectID: String
 , apiUrl: String
 , packageName: String) {
 
   def toProperties = {
     val props = new Properties()
     props.put("username", username)
-    props.put("project-id", projectID.toString)
+    props.put("project-id", projectID)
     props.put("api-url", apiUrl)
     props.put("package-name", packageName)
     props
@@ -50,7 +50,7 @@ object ProjectIni {
   def fromProperties(props: Properties) =
     ProjectIni(
       username = props.getProperty("username")
-    , projectID = java.util.UUID.fromString(props.getProperty("project-id"))
+    , projectID = props.getProperty("project-id")
     , apiUrl = props.getProperty("api-url")
     , packageName = props.getProperty("package-name")
     )

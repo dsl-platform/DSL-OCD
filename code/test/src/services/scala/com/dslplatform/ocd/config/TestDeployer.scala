@@ -73,6 +73,13 @@ private[config] class TestDeployer(
           logger.trace("Creating the generated resource path: " + resourcePath.path)
           resourcePath.createDirectory(true, false)
         }
+
+        val projectIniBody = IOUtils.toString(
+              classOf[TestDeployer].getResourceAsStream("/template.dsl-project.ini"), "UTF-8")
+
+        val projectIniPath = resourcePath / "dsl-project.ini"
+        logger.trace("Creating the DSL project file: " + projectIniPath.path)
+        projectIniPath.write(projectIniBody)
       }
 
     private def deployMain(): Unit =

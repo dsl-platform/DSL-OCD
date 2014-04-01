@@ -2,12 +2,12 @@ module Client
 {
   guid root Project {
     String    UserID;
-
-    String    ApplicationServer;
-    String    ApplicationName;
-
     string?   Nick;
     timestamp CreatedAt;
+	
+	specification FindByUser 'it => it.UserID == User' {
+      string User;
+	}
   }
 
   event DeleteProject {

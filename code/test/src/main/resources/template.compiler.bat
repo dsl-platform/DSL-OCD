@@ -4,7 +4,7 @@ setlocal enabledelayedexpansion
 rem ---------------------------------------------------------------------------
 
 rem Default options are to compile and package everything, then run tests
-if "%*"=="" "%~f0" clean "compile:generated" "package:generated" "compile:test" "package:test" "run:test"
+if "%*"=="" "%~f0" clean dsl "compile:generated" "package:generated" "compile:test" "package:test" "run:test"
 
 rem ---------------------------------------------------------------------------
 
@@ -13,6 +13,9 @@ set BASE=%~dp0
 
 rem Read project name from the parent folder
 for %%? in ("%BASE%..") do set NAME=%%~n?
+
+rem Set DSL folder
+set DSL=%BASE%..\dsl\
 
 rem Set source folders for reading DSL generated files & tests
 set SRC=%BASE%src\
@@ -37,16 +40,19 @@ set JAR_GEN=%JAR%%NAME%-generated.jar
 set JAR_TEST=%JAR%%NAME%-test.jar
 
 rem Set tools folder which holds JDK/JRE
-for %%? in ("%BASE%..\..\..\..\tools\java") do set TOOLS=%%~f?\
-set TOOLS_JRE=%TOOLS%jre\jre-6u45\
+for %%? in ("%BASE%..\..\..\..\tools") do set TOOLS=%%~f?\
+set TOOLS_JRE=%TOOLS%java\jre\jre-6u45\
 set TOOLS_JRE_JAVA=%TOOLS_JRE%bin\java.exe
 set TOOLS_JRE_RT=%TOOLS_JRE%lib\rt.jar
-set TOOLS_JDK=%TOOLS%jdk\jdk-8u0\
+set TOOLS_JDK=%TOOLS%java\jdk\jdk-8u0\
 set TOOLS_JDK_JAVAC=%TOOLS_JDK%bin\javac.exe
 set TOOLS_JDK_JAR=%TOOLS_JDK%bin\jar.exe
 
+rem Set path to DSL Platform compiler client
+set TOOLS_DPCC=%TOOLS%dsl\dpcc.jar
+
 rem Set lib folder which hosts compile & test dependencies
-set LIB=%TOOLS%lib\
+set LIB=%TOOLS%java\lib\
 set LIB_COMPILE=%LIB%compile\
 set LIB_TEST=%LIB%test\
 
@@ -193,39 +199,37 @@ set /a CUR_STEP+=1
 rem ---------------------------------------------------------------------------
 
 if not %DO_DSL%==true goto :dsl_skip
+if not exist "%DSL%" goto :dsl_skip
 
-rem if not exist "%DSL%" goto :compile_dsl_ok
-rem if exist "%SRC_GEN_JAVA%" goto :compile_dsl_ok
-rem
-rem echo.
-rem echo ### [1/6] ### GENERATING SOURCES FROM THE DSL
-rem echo.
-rem
-rem set DSL_COMPILE_RUN=%LOG%dsl-compile.bat
-rem set DSL_COMPILE_LOG=%LOG%dsl-compile.log
-rem
-rem echo + Creating DSL compile script ...
-rem > "%DSL_COMPILE_RUN%" (
-rem   echo @"%LIB_JAVA%" ^^
-rem   echo   -jar ^^
-rem   echo   "%~dp0dsl-clc.jar" latest ^^
-rem   echo   --logging-level=trace ^^
-rem   echo   --project-ini-path="%SRC_GEN_RSRC%dsl-project.ini" ^^
-rem   echo   --dsl-path="%~dp0..\dsl" ^^
-rem   echo   --language=java ^^
-rem   echo   --with-active-record ^^
-rem   echo   --output-path="%SRC_GEN%
-rem )
-rem
-rem echo + Running DSL compilation ...
-rem call "%DSL_COMPILE_RUN%" > "%DSL_COMPILE_LOG%" 2>&1
-rem if not errorlevel 1 goto :compile_dsl_ok
-rem echo ^^! DSL compilation failed, see log in:
-rem echo "%DSL_COMPILE_LOG%"
-rem echo.
-rem goto :EOF
-rem :compile_dsl_ok
+echo.
+echo ### [%CUR_STEP%/%MAX_STEP%] ### GENERATING SOURCES FROM THE DSL
+echo.
 
+set DSL_COMPILE_RUN=%LOG%dsl-compile.bat
+set DSL_COMPILE_LOG=%LOG%dsl-compile.log
+
+echo + Creating DSL compile script ...
+> "%DSL_COMPILE_RUN%" (
+  echo @"%TOOLS_JRE_JAVA%" ^^
+  echo   -jar ^^
+  echo   "%TOOLS_DPCC%" latest ^^
+  echo   --logging-level=trace ^^
+  echo   --project-ini-path="%SRC_GEN_RSRC%dsl-project.ini" ^^
+  echo   --dsl-path="%DSL%." ^^
+  echo   --skip-diff ^^
+  echo   --confirm-unsafe ^^
+  echo   --output-path="%SRC_GEN%."
+)
+
+echo + Running DSL compilation ...
+call "%DSL_COMPILE_RUN%" > "%DSL_COMPILE_LOG%" 2>&1
+if not errorlevel 1 goto :compile_dsl_ok
+echo ^^! DSL compilation failed, see log in:
+echo "%DSL_COMPILE_LOG%"
+echo.
+goto :exit
+
+:compile_dsl_ok
 set /a CUR_STEP+=1
 :dsl_skip
 
@@ -275,7 +279,7 @@ set CLASSPATH=%CLASSPATH:~1%
 rem Writing the generated sources to be parameters file
 for /f "usebackq delims=*" %%? in (`dir /S /B "%SRC_GEN_JAVA%*.java" 2^>NUL`) do (
   set GEN_SRC_TARGET=%%~f?
-  >>"%GEN_SRC_JAVAC_ARG%" echo "%GEN_SRC_TARGET:\=/%"
+  >>"%GEN_SRC_JAVAC_ARG%" echo "!GEN_SRC_TARGET:\=/!"
 )
 
 rem The first @ turns off the echo, the second one is a javac syntax for loading the parameters file

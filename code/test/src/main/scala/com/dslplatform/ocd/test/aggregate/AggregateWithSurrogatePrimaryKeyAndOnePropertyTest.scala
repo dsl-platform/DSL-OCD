@@ -7,56 +7,52 @@ import boxes._
 import dsls.OcdDsl
 import javas.OcdJava
 import config.ITestProject
-import com.dslplatform.ocd.test.javatest.TestJavaTemplate
-import com.dslplatform.ocd.test.javatest.JavaInfo
-import com.dslplatform.ocd.test.javatest.property.Visibility
-import com.dslplatform.ocd.test.javatest.property.TestJavaPropertySetterType
-import com.dslplatform.ocd.test.javatest.property.TestJavaPropertyFieldType
-import com.dslplatform.ocd.test.javatest.property.TestJavaPropertyGetterType
-import com.dslplatform.ocd.test.javatest.property.TestJavaPropertyCrudPersist
+import javatest.TestJavaTemplate
+import javatest.JavaInfo
+import javatest.property._
 
 object AggregateWithSurrogatePrimaryKeyAndOnePropertySetup {
   val types: IndexedSeq[OcdType] = IndexedSeq(
-//    `type.Binary`
-//  , `type.Bool`
-//  , `type.Date`
-//  , `type.Decimal`
-//  , `type.Decimal(9)`
-//  , `type.Double`
-//  , `type.Float`
-//  , `type.Guid`
+    `type.Binary`
+  , `type.Bool`
+  , `type.Date`
+  , `type.Decimal`
+  , `type.Decimal(9)`
+  , `type.Double`
+  , `type.Float`
+  , `type.Guid`
 //  , `type.Image`
-//  , `type.Integer`
-//  , `type.Ip`
-//  , `type.Location`
-   `type.Long`
-//  , `type.Map`
-//  , `type.Money`
+  , `type.Integer`
+  , `type.Ip`
+  , `type.Location`
+  , `type.Long`
+  , `type.Map`
+  , `type.Money`
   , `type.Point`
-//  , `type.Rectangle`
-//  , `type.String`
-//  , `type.String(9)`
-//  , `type.Text`
-//  , `type.Timestamp`
-//  , `type.Url`
-//  , `type.Xml`
+  , `type.Rectangle`
+  , `type.String`
+  , `type.String(9)`
+  , `type.Text`
+  , `type.Timestamp`
+  , `type.Url`
+  , `type.Xml`
   )
 
   val boxes: IndexedSeq[OcdBox] = IndexedSeq(
     `box.One`
-//  , `box.OneArrayOfOne`
-//  , `box.OneArrayOfNullable`
-//  , `box.OneListOfOne`
-//  , `box.OneListOfNullable`
-//  , `box.OneSetOfOne`
-//  , `box.OneSetOfNullable`
-//  , `box.Nullable`
-//  , `box.NullableArrayOfOne`
+  , `box.OneArrayOfOne`
+  , `box.OneArrayOfNullable`
+  , `box.OneListOfOne`
+  , `box.OneListOfNullable`
+  , `box.OneSetOfOne`
+  , `box.OneSetOfNullable`
+  , `box.Nullable`
+  , `box.NullableArrayOfOne`
   , `box.NullableArrayOfNullable`
-//  , `box.NullableListOfOne`
-//  , `box.NullableListOfNullable`
-//  , `box.NullableSetOfOne`
-//  , `box.NullableSetOfNullable`
+  , `box.NullableListOfOne`
+  , `box.NullableListOfNullable`
+  , `box.NullableSetOfOne`
+  , `box.NullableSetOfNullable`
   )
 
   val setups = for {
@@ -117,7 +113,7 @@ class AggregateWithSurrogatePrimaryKeyAndOnePropertyTestProject(
   )
 
   private def makeTemplate(oj: OcdJava) = new TestJavaTemplate {
-    def packageName = "com.dsplatform.ocd.aggregates"
+    def packageName = "com.dslplatform.ocd.aggregates"
     def testName = "AggregateWithSurrogatePrimaryKeyAndOne" + setup.PropertyName + "PropertyTest"
 
     override def imports = Seq("java.io.IOException")
@@ -125,59 +121,57 @@ class AggregateWithSurrogatePrimaryKeyAndOnePropertyTestProject(
     override def classDecorations: Seq[String] = Nil
 
     override def leadingBlocks = Seq(s"""
+    private static com.dslplatform.patterns.ServiceLocator locator;
+
     @org.junit.BeforeClass
     public static void initialize() throws IOException {
-        com.dslplatform.client.Bootstrap.init(${testName}.class.getResourceAsStream("/dsl-project.ini"));
+        locator = com.dslplatform.client.Bootstrap.init(${testName}.class.getResourceAsStream("/dsl-project.ini"));
     }
 """)
 
     override def tests = Seq(
-      new TestJavaPropertyCrudPersist {
+      new TestJavaPropertyInAggregateAfterActiveRecordPersist {
         def conceptName = "model." + setup.ModuleName + "." + setup.AggregateName
         def propertyName = setup.propertyName
         def propertyType = oj
+        def isDefault = true
+        def testID = "Default"
+        def testValue = oj.defaultValue
       }
-//    , new TestJavaPropertyFieldType {
-//        def conceptName = "model." + setup.ModuleName + "." + setup.AggregateName
-//        def propertyName = setup.propertyName
-//        def propertyType = oj
-//        def visibility = Visibility.Private
-//        def modifiers = Set.empty
-//      }
-//    , new TestJavaPropertyGetterType {
-//        def conceptName = "model." + setup.ModuleName + "." + setup.AggregateName
-//        def propertyName = setup.propertyName
-//        def propertyType = oj
-//        def visibility = Visibility.Public
-//        def modifiers = Set.empty
-//      }
-//    , new TestJavaPropertySetterType {
-//        def conceptName = "model." + setup.ModuleName + "." + setup.AggregateName
-//        def propertyName = setup.propertyName
-//        def propertyType = oj
-//        def visibility = Visibility.Public
-//        def modifiers = Set.empty
-//      }
+    ) ++ oj.nonDefaultValues.zipWithIndex.map { case (ndv, index) =>
+      new TestJavaPropertyInAggregateAfterActiveRecordPersist {
+        def conceptName = "model." + setup.ModuleName + "." + setup.AggregateName
+        def propertyName = setup.propertyName
+        def propertyType = oj
+        def isDefault = false
+        def testID = "NonDefault" + (index + 1)
+        def testValue = ndv
+      }
+    } ++ Seq(
+      new TestJavaPropertyFieldType {
+        def conceptName = "model." + setup.ModuleName + "." + setup.AggregateName
+        def propertyName = setup.propertyName
+        def propertyType = oj
+        def visibility = Visibility.Private
+        def modifiers = Set.empty
+      }
+    , new TestJavaPropertyGetterType {
+        def conceptName = "model." + setup.ModuleName + "." + setup.AggregateName
+        def propertyName = setup.propertyName
+        def propertyType = oj
+        def visibility = Visibility.Public
+        def modifiers = Set.empty
+      }
+    , new TestJavaPropertySetterType {
+        def conceptName = "model." + setup.ModuleName + "." + setup.AggregateName
+        def propertyName = setup.propertyName
+        def propertyType = oj
+        def visibility = Visibility.Public
+        def modifiers = Set.empty
+      }
     )
   }
 
-//    val name = oj.boxName + (if (oj.areElementsNullable.isEmpty) oj.typeSingleName else oj.typePluralName)
-//    val _testName = s"${name}FieldTurtle"
-//
-//    val fieldTests =
-//      for {
-//        vis <- Visibility.values
-//        mods <- Modifier.fieldCombinations
-//      } yield {
-//        new TestJavaPropertyFieldType {
-//          def conceptName = _testName
-//          def propertyName = name.fcil + vis + mods.mkString
-//          def propertyType = oj
-//          def visibility = vis
-//          def modifiers = mods
-//        }
-//      }
-//
 //    new TestJavaTemplate {
 //      def packageName = "com.dslplatform.ocd.test.javatest.property.turtles." + oj.typeSingleName
 //      def testName = _testName

@@ -5,7 +5,7 @@ implicit class RichProject(project: Client.Project) {
   def toProjectIni(packageName: String = "model") =
     ProjectIni(
       username = project.UserID
-    , projectID = project.ID
+    , projectID = project.ID.toString
     , apiUrl = s"https://${project.ApplicationServer}/${project.ApplicationName}"
     , packageName = packageName
     )
