@@ -114,7 +114,7 @@ class AggregateWithSurrogatePrimaryKeyAndOnePropertyTestProject(
 
   private def makeTemplate(oj: OcdJava) = new TestJavaTemplate {
     def packageName = "com.dslplatform.ocd.aggregates"
-    def testName = "AggregateWithSurrogatePrimaryKeyAndOne" + setup.PropertyName + "PropertyTest"
+    def testName = "AggregateWithSurrogatePrimaryKeyAnd" + setup.PropertyName + "PropertyTest"
 
     override def imports = Seq("java.io.IOException")
 
@@ -130,24 +130,6 @@ class AggregateWithSurrogatePrimaryKeyAndOnePropertyTestProject(
 """)
 
     override def tests = Seq(
-      new TestJavaPropertyInAggregateAfterActiveRecordPersist {
-        def conceptName = "model." + setup.ModuleName + "." + setup.AggregateName
-        def propertyName = setup.propertyName
-        def propertyType = oj
-        def isDefault = true
-        def testID = "Default"
-        def testValue = oj.defaultValue
-      }
-    ) ++ oj.nonDefaultValues.zipWithIndex.map { case (ndv, index) =>
-      new TestJavaPropertyInAggregateAfterActiveRecordPersist {
-        def conceptName = "model." + setup.ModuleName + "." + setup.AggregateName
-        def propertyName = setup.propertyName
-        def propertyType = oj
-        def isDefault = false
-        def testID = "NonDefault" + (index + 1)
-        def testValue = ndv
-      }
-    } ++ Seq(
       new TestJavaPropertyFieldType {
         def conceptName = "model." + setup.ModuleName + "." + setup.AggregateName
         def propertyName = setup.propertyName
@@ -169,7 +151,29 @@ class AggregateWithSurrogatePrimaryKeyAndOnePropertyTestProject(
         def visibility = Visibility.Public
         def modifiers = Set.empty
       }
-    )
+    , new TestJavaPropertyDefaultValue {
+        def conceptName = "model." + setup.ModuleName + "." + setup.AggregateName
+        def propertyName = setup.propertyName
+        def propertyType = oj
+      }
+    , new TestJavaPropertyInAggregateAfterActiveRecordPersist {
+        def conceptName = "model." + setup.ModuleName + "." + setup.AggregateName
+        def propertyName = setup.propertyName
+        def propertyType = oj
+        def isDefault = true
+        def testID = "Default"
+        def testValue = oj.defaultValue
+      }
+    ) ++ oj.nonDefaultValues.zipWithIndex.map { case (ndv, index) =>
+      new TestJavaPropertyInAggregateAfterActiveRecordPersist {
+        def conceptName = "model." + setup.ModuleName + "." + setup.AggregateName
+        def propertyName = setup.propertyName
+        def propertyType = oj
+        def isDefault = false
+        def testID = "NonDefault" + (index + 1)
+        def testValue = ndv
+      }
+    }
   }
 
 //    new TestJavaTemplate {

@@ -208,13 +208,15 @@ echo.
 set DSL_COMPILE_RUN=%LOG%dsl-compile.bat
 set DSL_COMPILE_LOG=%LOG%dsl-compile.log
 
+copy "%SRC_GEN_RSRC%dsl-project.ini" "%SRC_GEN_RSRC%dsl-project.ini.clone" >NUL
+
 echo + Creating DSL compile script ...
 > "%DSL_COMPILE_RUN%" (
   echo @"%TOOLS_JRE_JAVA%" ^^
   echo   -jar ^^
   echo   "%TOOLS_DPCC%" latest ^^
   echo   --logging-level=trace ^^
-  echo   --project-ini-path="%SRC_GEN_RSRC%dsl-project.ini" ^^
+  echo   --project-ini-path="%SRC_GEN_RSRC%dsl-project.ini.clone" ^^
   echo   --dsl-path="%DSL%." ^^
   echo   --skip-diff ^^
   echo   --confirm-unsafe ^^

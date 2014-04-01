@@ -74,12 +74,21 @@ private[config] class TestDeployer(
           resourcePath.createDirectory(true, false)
         }
 
-        val projectIniBody = IOUtils.toString(
-              classOf[TestDeployer].getResourceAsStream("/template.dsl-project.ini"), "UTF-8")
-
         val projectIniPath = resourcePath / "dsl-project.ini"
-        logger.trace("Creating the DSL project file: " + projectIniPath.path)
-        projectIniPath.write(projectIniBody)
+        val projectIniSource = "/config/" + projectIniPath.relativize(root).path.replace('\\', '/')
+
+        try {
+          val projectIniBody = IOUtils.toByteArray(
+                classOf[TestDeployer].getResourceAsStream(
+                    projectIniSource))
+
+          logger.trace("Creating the DSL project file: " + projectIniPath.path)
+          projectIniPath.write(projectIniBody)
+        }
+        catch {
+          case _: Exception =>
+            logger.warn("Could not copy dsl-project.ini from: " + projectIniSource)
+        }
       }
 
     private def deployMain(): Unit =
@@ -136,6 +145,12 @@ private[config] class TestDeployer(
         val resourcePath = testResourcePath(language)
         logger.trace("Creating the test resource path: " + resourcePath.path)
         resourcePath.createDirectory(true, false)
+
+        val resourceLogback = resourcePath / "logback-test.xml"
+        logger.trace("Writing logback-test.xml: " + resourceLogback.path)
+        val logbackBody = IOUtils.toByteArray(
+              classOf[TestDeployer].getResourceAsStream("/template.logback-test.xml"))
+        resourceLogback.write(logbackBody)
       }
 
     private def deployCompilerScript(): Unit =

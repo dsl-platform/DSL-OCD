@@ -3,8 +3,8 @@ package test
 package javatest
 package property
 
-import com.dslplatform.ocd.javas.OcdJava
-import com.dslplatform.ocd.javas.JavaValue
+import types._
+import javas._
 
 trait TestJavaPropertyInAggregateAfterActiveRecordPersist
     extends test.TestComponent {
@@ -23,19 +23,21 @@ trait TestJavaPropertyInAggregateAfterActiveRecordPersist
     /* Testing the "${propertyName}" ${testID} property value after active record persist */
     @org.junit.Test
     public void test${PropertyName}${testID}PropertyValueInAggregateAfterActiveRecordPersist() throws java.io.IOException {
-         final ${propertyType.javaClass} testValue = ${testValue};
          ${isDefault match {
            case true => s"""
          final ${conceptName} aggregate =
-                 new ${conceptName}()
-                 .persist();"""
+                 new ${conceptName}();
+         final ${propertyType.javaClass} testValue = aggregate.get${PropertyName}();"""
 
            case _ => s"""
+         final ${propertyType.javaClass} testValue = ${testValue};
          final ${conceptName} aggregate =
                  new ${conceptName}()
-                 .set${PropertyName}(testValue)
-                 .persist();"""
+                 .set${PropertyName}(testValue);"""
          }}
+
+         // persist via active record pattern
+         aggregate.persist();
 
          com.dslplatform.ocd.javaasserts.${propertyType.typeSingleName}Asserts.assert${propertyType.boxName}Equals(
                  testValue,
@@ -44,7 +46,7 @@ trait TestJavaPropertyInAggregateAfterActiveRecordPersist
          final ${conceptName} foundAggregate =
                  ${conceptName}.find(aggregate.getURI());
 
-         // Aggregates are compared via URI equality
+         // aggregates are compared via URI equality
          org.junit.Assert.assertEquals(aggregate, foundAggregate);
 
          com.dslplatform.ocd.javaasserts.${propertyType.typeSingleName}Asserts.assert${propertyType.boxName}Equals(
