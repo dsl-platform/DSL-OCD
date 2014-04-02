@@ -87,7 +87,14 @@ import boxes._
 
 sealed trait Java${t.name.singleName}
     extends OcdJava
-    with `type.${name}`
+    with `type.${name}` {
+
+  val isPrecise = ${stub match {
+    case JavaFloat | JavaDouble | JavaLocation | JavaRectangle => true
+    case _ => false
+  }}
+  val isPrimitive = ${stub.isPrimitive}
+}
 
 ${
     Boxes.boxes.map{b =>
@@ -110,7 +117,6 @@ s"""case object $value
   , "\n  )"
   )}
 
-  val isPrimitive = ${stub.isPrimitive}
   val hasGenerics = ${stub.hasGenerics(b)}
 }
 """
@@ -134,6 +140,7 @@ trait OcdJava
   def nonDefaultValues: IndexedSeq[JavaValue]
   def borderValues = defaultValue +: nonDefaultValues
 
+  val isPrecise: Boolean
   val isPrimitive: Boolean
   val hasGenerics: Boolean
 

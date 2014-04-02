@@ -32,10 +32,9 @@ trait OneAsserts { self: JavaAsserts =>
         }"""
 
     case JavaFloat | JavaDouble => s"""
-        if (expected == actual) return;
+        if (${factors.rawConverter}(expected) == ${factors.rawConverter}(actual)) return;
 
         if (ulps == 0) {
-            if (${factors.rawConverter}(expected) == ${factors.rawConverter}(actual)) return;
             Assert.fail(message + "expected was \\"" + expected + "\\", but actual was \\"" + actual + "\\" - WARNING: You are comparing the bits of ${clazz} values - not using an epsilon value!");
         }
 
@@ -43,16 +42,26 @@ trait OneAsserts { self: JavaAsserts =>
         if (expected >= actual - epsilon && expected <= actual + epsilon) return;
         Assert.fail(message + "expected was \\"" + expected + "\\", but actual was \\"" + actual + "\\" (using epsilon value of \\"" + epsilon + "\\")");"""
 
+    case JavaDecimal => s"""
+        if (expected == actual || expected.compareTo(actual) == 0) return;
+        Assert.fail(message + "expected was \\"" + expected + "\\", but actual was \\"" + actual + "\\"");"""
+
     case JavaDecimalWithScale => s"""
-        if (expected.scale() > ${DecimalScaleConstraint}) {
-            Assert.fail(message + "expected was a ${name}, but its scale was " + expected.scale() + " - WARNING: This is a preconditions failure in expected, this assertion will never succeed!");
+        try {
+            expected.setScale(${DecimalScaleConstraint});
+        }
+        catch (final ArithmeticException e) {
+            Assert.fail(message + "expected was a DecimalWithScaleOf9, but its scale was " + expected.scale() + " - WARNING: This is a preconditions failure in expected, this assertion will never succeed!");
         }
 
-        if (actual.scale() > ${DecimalScaleConstraint}) {
-            Assert.fail(message + "actual was a ${name}, but its scale was " + actual.scale());
+        try {
+            expected.setScale(${DecimalScaleConstraint});
+        }
+        catch (final ArithmeticException e) {
+            Assert.fail(message + "actual was a DecimalWithScaleOf9, but its scale was " + actual.scale());
         }
 
-        if (expected == actual || expected.equals(actual)) return;
+        if (expected == actual || expected.compareTo(actual) == 0) return;
         Assert.fail(message + "expected was \\"" + expected + "\\", but actual was \\"" + actual + "\\"");"""
 
     case JavaLocation => s"""
@@ -78,15 +87,21 @@ trait OneAsserts { self: JavaAsserts =>
         Assert.fail(message + "expected was \\"" + expected + "\\", but actual was \\"" + actual + "\\"");"""
 
     case JavaMoney => s"""
-        if (expected.scale() > ${MoneyScaleConstraint}) {
-            Assert.fail(message + "expected was a ${name} with scale of ${MoneyScaleConstraint}, but its scale was " + expected.scale() + " - WARNING: This is a preconditions failure in expected, this assertion will never succeed!");
+        try {
+            expected.setScale(${MoneyScaleConstraint});
+        }
+        catch (final ArithmeticException e) {
+            Assert.fail(message + "expected was a DecimalWithScaleOf9, but its scale was " + expected.scale() + " - WARNING: This is a preconditions failure in expected, this assertion will never succeed!");
         }
 
-        if (actual.scale() > ${MoneyScaleConstraint}) {
-            Assert.fail(message + "actual was a ${name} with scale of ${MoneyScaleConstraint}, but its scale was " + actual.scale());
+        try {
+            expected.setScale(${MoneyScaleConstraint});
+        }
+        catch (final ArithmeticException e) {
+            Assert.fail(message + "actual was a DecimalWithScaleOf9, but its scale was " + actual.scale());
         }
 
-        if (expected == actual || expected.equals(actual)) return;
+        if (expected == actual || expected.compareTo(actual) == 0) return;
         Assert.fail(message + "expected was \\"" + expected + "\\", but actual was \\"" + actual + "\\"");"""
 
     case JavaStringWithMaxLength => s"""

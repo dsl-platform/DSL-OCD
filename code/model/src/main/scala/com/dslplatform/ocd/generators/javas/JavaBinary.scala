@@ -12,7 +12,7 @@ object JavaBinary
   val defaultSingle: TestValue = "new byte[0]"
 
   override def defaultValue(box: Box) = box match {
-    case Box(_, Some((CollectionType.Array, _)), _*) =>
+    case Box(SingleType.One, Some((CollectionType.Array, _)), _*) =>
       "new byte[0][]"
 
     case _ =>

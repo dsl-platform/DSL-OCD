@@ -26,7 +26,7 @@ trait OneSetOfNullableAsserts { self: JavaAsserts =>
             Assert.fail(message + "expecteds was a set of size " + expectedsSize + ", but actuals was a set of size " + actualsSize);
         }
 """ + (stub match {
-    case JavaBinary | JavaDouble | JavaFloat | JavaLocation | JavaRectangle | JavaTimestamp | JavaXml => s"""
+    case JavaBinary | JavaDouble | JavaFloat | JavaDecimal | JavaDecimalWithScale | JavaMoney | JavaLocation | JavaRectangle | JavaTimestamp | JavaXml => s"""
         expectedsLoop: for (final ${reference} expected : expecteds) {
             if (actuals.contains(expected)) continue;
             for (final ${reference} actual : actuals) {
