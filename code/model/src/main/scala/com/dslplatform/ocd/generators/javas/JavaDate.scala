@@ -27,11 +27,11 @@ object JavaDate
 
   val nonDefaultValues: Seq[TestValue] = Seq(
     "new org.joda.time.LocalDate(1, 2, 3)"                   // 0001-02-03
-//  , "new org.joda.time.LocalDate(-1, 1, 1)"                  // -0001-01-01 FIXME
-//  , "new org.joda.time.LocalDate(0, 1, 2)"                   // 0001-01-02 FIXME
-//  , "new org.joda.time.LocalDate(1, 1, 1)"                   // 0001-01-01 FIXME
+//  , "new org.joda.time.LocalDate(-1, 1, 1)"                  // -0001-01-01
+//  , "new org.joda.time.LocalDate(0, 1, 2)"                   // 0001-01-02
+//  , "new org.joda.time.LocalDate(1, 1, 1)"                   // 0001-01-01 FIXME - synchronize defaults on server and client
   , "new org.joda.time.LocalDate(0)"                         // 1970
-//  , "new org.joda.time.LocalDate(20000, 1, 1)"               // 20000-01-01 FIXME
+//  , "new org.joda.time.LocalDate(20000, 1, 1)"               // 20000-01-01
   , "new org.joda.time.LocalDate(Integer.MAX_VALUE * 1001L)" // beyond UNIX epoch (>2038)
   , "new org.joda.time.LocalDate(9999, 12, 31)"                // 9999-12-31
   )

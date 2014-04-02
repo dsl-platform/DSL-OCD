@@ -4,7 +4,7 @@ setlocal enabledelayedexpansion
 rem ---------------------------------------------------------------------------
 
 rem Default options are to compile and package everything, then run tests
-if "%*"=="" "%~f0" clean dsl "compile:generated" "package:generated" "compile:test" "package:test" "run:test"
+if "%*"=="" "%~f0" clean dsl deploy "compile:generated" "package:generated" "compile:test" "package:test" "run:test"
 
 rem ---------------------------------------------------------------------------
 
@@ -50,11 +50,14 @@ set TOOLS_JDK_JAR=%TOOLS_JDK%bin\jar.exe
 
 rem Set path to DSL Platform compiler client
 set TOOLS_DPCC=%TOOLS%dsl\dpcc.jar
+set TOOLS_DPCC_AP=%TOOLS%dsl\api.properties
 
 rem Set lib folder which hosts compile & test dependencies
 set LIB=%TOOLS%java\lib\
 set LIB_COMPILE=%LIB%compile\
 set LIB_TEST=%LIB%test\
+
+set IIS=C:\inetpub\wwwroot\
 
 rem ---------------------------------------------------------------------------
 
@@ -65,6 +68,7 @@ set MAX_STEP=1
 set DO_CLEAN=false
 set DO_SETUP=true
 set DO_DSL=false
+set DO_DEPLOY_MODEL=false
 set DO_COMPILE_GENERATED=false
 set DO_PACKAGE_GENERATED=false
 set DO_COMPILE_TEST=false
@@ -81,6 +85,11 @@ if "%~1"=="clean" (
 
 if "%~1"=="dsl" (
   set DO_DSL=true
+  goto :parser_loop
+)
+
+if "%~1"=="deploy" (
+  set DO_DEPLOY_MODEL=true
   goto :parser_loop
 )
 
@@ -213,14 +222,16 @@ copy "%SRC_GEN_RSRC%dsl-project.ini" "%SRC_GEN_RSRC%dsl-project.ini.clone" >NUL
 echo + Creating DSL compile script ...
 > "%DSL_COMPILE_RUN%" (
   echo @"%TOOLS_JRE_JAVA%" ^^
-  echo   -jar ^^
-  echo   "%TOOLS_DPCC%" latest ^^
+  echo   -Ddsl-clc-api-properties="%TOOLS_DPCC_AP%" ^^
+  echo   -jar "%TOOLS_DPCC%" ^^
   echo   --logging-level=trace ^^
   echo   --project-ini-path="%SRC_GEN_RSRC%dsl-project.ini.clone" ^^
   echo   --dsl-path="%DSL%." ^^
   echo   --skip-diff ^^
   echo   --confirm-unsafe ^^
-  echo   --output-path="%SRC_GEN%."
+  echo   --with-active-record ^^
+  echo   --output-path="%SRC_GEN%." ^^
+  echo   update
 )
 
 echo + Running DSL compilation ...
@@ -234,6 +245,42 @@ goto :exit
 :compile_dsl_ok
 set /a CUR_STEP+=1
 :dsl_skip
+
+rem ---------------------------------------------------------------------------
+
+if not %DO_DEPLOY_MODEL%==true goto :deploy_model_skip
+
+echo.
+echo ### [%CUR_STEP%/%MAX_STEP%] ### DEPLOYING GENERATED MODEL
+echo.
+
+set DEPLOY_COMPILE_RUN=%LOG%deploy-model.bat
+set DEPLOY_COMPILE_LOG=%LOG%deploy-model.log
+
+copy "%SRC_GEN_RSRC%dsl-project.ini" "%SRC_GEN_RSRC%dsl-project.ini.clone" >NUL
+
+echo + Creating download script ...
+> "%DEPLOY_COMPILE_RUN%" (
+  echo @"%TOOLS_JRE_JAVA%" ^^
+  echo   -Ddsl-clc-api-properties="%TOOLS_DPCC_AP%" ^^
+  echo   -jar "%TOOLS_DPCC%" ^^
+  echo   --logging-level=trace ^^
+  echo   --project-ini-path="%SRC_GEN_RSRC%dsl-project.ini.clone" ^^
+  echo   --server-model-path="%IIS%%NAME%\bin\GeneratedModel.dll" ^^
+  echo   download-server-model
+)
+
+echo + Downloading ^& deploying model ...
+call "%DEPLOY_COMPILE_RUN%" > "%DEPLOY_COMPILE_LOG%" 2>&1
+if not errorlevel 1 goto :deploy_model_ok
+echo ^^! Model deployment failed, see log in:
+echo "%DEPLOY_COMPILE_LOG%"
+echo.
+goto :exit
+
+:deploy_model_ok
+set /a CUR_STEP+=1
+:deploy_model_skip
 
 rem ---------------------------------------------------------------------------
 
