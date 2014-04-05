@@ -22,8 +22,7 @@ trait TestJavaPropertyInAggregateAfterActiveRecordPersist
   def testComponentBody = s"""
     /* Testing the "${propertyName}" ${testID} property value after active record persist */
     @org.junit.Test
-    public void test${PropertyName}${testID}PropertyValueInAggregateAfterActiveRecordPersist() throws java.io.IOException {
-         ${isDefault match {
+    public void test${PropertyName}${testID}PropertyValueInAggregateAfterActiveRecordPersist() throws java.io.IOException {${isDefault match {
            case true => s"""
          final ${conceptName} aggregate =
                  new ${conceptName}();

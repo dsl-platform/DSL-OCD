@@ -15,21 +15,18 @@ object JavaFloat
 /*
  * 1E32f
  * Unexpected return code: 500, response: Input string was not in a correct format.
- *
- * -1E-5f
- * OneFloat mismatch: expected was "-1.0E-5", but actual was "-10.0"
  */
 
   val nonDefaultValues: Seq[TestValue] = Seq(
     "-1.2345E-10f"
   , "1.2345E20f"
-//  , "-1E-5f"                    // Should be supported, FIXME
+  , "-1E-5f"
 //  , "-1E-32f"                   // Problem with server deserialization
 //  , "1E32f"                     // Problem with server deserialization
 //  , "Float.MIN_NORMAL"          // Smaller than database double limit
 //    "Float.MIN_VALUE"           // Smaller than database double limit
 //  , "Float.MAX_VALUE"           // Larger than database double limit
-//  , "Float.NaN"                 // JSON serialization doesn't function when reading from the database (0.0)
+  , "Float.NaN"                 // JSON serialization doesn't function when reading from the database (0.0)
   , "Float.NEGATIVE_INFINITY"
   , "Float.POSITIVE_INFINITY"
   )

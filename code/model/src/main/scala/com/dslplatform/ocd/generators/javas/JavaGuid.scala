@@ -18,6 +18,6 @@ object JavaGuid
 
   val nonDefaultValues: Seq[TestValue] = Seq(
     E"java.util.UUID.fromString(${"1-2-3-4-5"})"
-//  , "new java.util.UUID(0L, 0L)"                // FIXME
+  , "new java.util.UUID(0L, 0L)"                // FIXME
   )
 }

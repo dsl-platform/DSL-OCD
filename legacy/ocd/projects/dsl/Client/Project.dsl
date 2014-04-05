@@ -4,10 +4,10 @@ module Client
     String    UserID;
     string?   Nick;
     timestamp CreatedAt;
-	
-	specification FindByUser 'it => it.UserID == User' {
+
+    specification FindByUser 'it => it.UserID == User' {
       string User;
-	}
+    }
   }
 
   event DeleteProject {

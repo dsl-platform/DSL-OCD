@@ -26,6 +26,7 @@ class EntryPoint(
     )
 
     val projects =
+      AggregateWithOnePropertyTestProject.projects ++
       AggregateWithSurrogatePrimaryKeyAndOnePropertyTestProject.projects
 
     testDeployer.deployTests(projects)

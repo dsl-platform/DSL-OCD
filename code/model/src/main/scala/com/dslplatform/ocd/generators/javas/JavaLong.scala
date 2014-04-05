@@ -14,10 +14,9 @@ object JavaLong
 
   val nonDefaultValues: Seq[TestValue] = Seq(
     "1L"
-  , "1000000000L"
-  , "-1000000000L"
-//  , "Long.MIN_VALUE"
-//  , "Long.MAX_VALUE"
-//  , "1000000000000000000L"
+  , "1000000000000000000L"
+  , "-1000000000000000000L"
+  , "Long.MIN_VALUE"
+  , "Long.MAX_VALUE"
   )
 }

@@ -179,11 +179,6 @@ trait JavaValue {
   def isNull = toString == "null"
 }
 
-object SingleJavaValue {
-  def apply(text: String): SingleJavaValue =
-    SingleJavaValue(text, JavaStability.Stable)
-}
-
 trait JavaValueContainer extends JavaValue {
   def values: Seq[JavaValue]
 
@@ -204,6 +199,14 @@ case class SingleJavaValue(
   ) extends JavaValue {
 
   override val toString = text
+}
+
+object DisallowedNullValue
+    extends SingleJavaValue("null", JavaStability.Stable)
+
+object SingleJavaValue {
+  def apply(text: String): SingleJavaValue =
+    SingleJavaValue(text, JavaStability.Stable)
 }
 
 case class ArrayOfJavaValues(

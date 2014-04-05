@@ -22,6 +22,6 @@ object JavaDouble
 //  , "Double.MIN_NORMAL"          // Smaller than database double limit
 //    "Double.MIN_VALUE"           // Smaller than database double limit
 //  , "Double.MAX_VALUE"           // Larger than database double limit
-//  , "Double.NaN"                 // JSON serialization doesn't function when reading from the database (0.0)
+  , "Double.NaN"                 // JSON serialization doesn't function when reading from the database (0.0)
   )
 }

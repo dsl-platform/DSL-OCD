@@ -175,30 +175,6 @@ class AggregateWithSurrogatePrimaryKeyAndOnePropertyTestProject(
       }
     }
   }
-
-//    new TestJavaTemplate {
-//      def packageName = "com.dslplatform.ocd.test.javatest.property.turtles." + oj.typeSingleName
-//      def testName = _testName
-//
-//      override def classDecorations = Seq(
-//        """SuppressWarnings({ "rawtypes", "unchecked" })"""
-//      )
-//
-//      override def leadingBlocks = fieldTests map { test =>
-//        val visibility =
-//          (if (test.visibility == Visibility.Private) """@SuppressWarnings("unused") """ else "") +
-//          test.visibility.javaFieldPrefix
-//
-//        val modifiers = test.modifiers.map(_.javaFieldPrefix).mkString
-//        val clazz = test.propertyType.javaClass
-//
-//        s"""
-//    ${visibility}${modifiers}${clazz} ${test.propertyName} = ${test.propertyType.defaultValue};
-//"""
-//      }
-//
-//      def tests: Seq[TestComponent] = fieldTests
-//    }
 }
 
 object AggregateWithSurrogatePrimaryKeyAndOnePropertyTestProject {
@@ -207,7 +183,7 @@ object AggregateWithSurrogatePrimaryKeyAndOnePropertyTestProject {
   val projects =
     (setups.groupBy(_.propertyType.typeName) map { case (tipe, typeSetups) =>
     new ITestProject {
-      def projectPath = "aggregate/surrogate-single-" + tipe
+      def projectPath = "aggregate/surrogate-single-" + tipe.replaceAll("[^-\\w]+", "")
       def projectName = "OCD Single Property in Aggregate With Surrogate Key Tests (" + tipe + ")"
 
       val dslFiles =
