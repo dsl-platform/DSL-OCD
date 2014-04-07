@@ -63,7 +63,7 @@ class OcdJavaDefaultsEqualityTurtle
   }
 
   import types._
-  import boxes._
+  import boxes.{ CollectionType => _, _ }
   import javas._
 
   private def buildType(javaType: JavaType): String = javaType match {

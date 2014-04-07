@@ -69,21 +69,23 @@ trait `box.${b.name}`
     extends OcdBox {
 
   type boxType = `box.${b.name}`
-
   val boxClass = classOf[`box.${b.name}`]
-
   val boxName = "${b.name}"
-
-  val isNullable = ${b.base eq SingleType.Nullable}
-  val areElementsNullable = ${
-    b.collectionType.map(_._2 eq SingleType.Nullable)
-  }
 ${if (b.aliases.isEmpty) {""} else {s"""
   override val boxAliases = Set(
     ${b.aliases.mkString("\"", "\"\n  , \"", "\"")}
   )
-"""
-}}}
+"""}}
+  val isNullable = ${b.base eq SingleType.Nullable}
+  val isCollection = ${b.collectionType.isDefined}
+
+  val collectionType = ${
+    b.collectionType.map("CollectionType." + _._1)
+  }
+  val areElementsNullable = ${
+    b.collectionType.map(_._2 eq SingleType.Nullable)
+  }
+}
 
 case object `box.${b.name}` extends `box.${b.name}`
 """)
@@ -93,17 +95,36 @@ case object `box.${b.name}` extends `box.${b.name}`
 s"""package com.dslplatform.ocd
 
 package boxes {
+  sealed trait CollectionType {
+    def aliases = Seq.empty[String]
+  }
+
+  object CollectionType {
+    case object Array extends CollectionType {
+      override def aliases = Seq("Brackets")
+    }
+    case object List extends CollectionType
+    case object Set extends CollectionType
+
+    val values: IndexedSeq[CollectionType] = IndexedSeq(
+      Array
+    , List
+    , Set
+    )
+  }
+
   trait OcdBox {
     type boxType <: OcdBox
-
     val boxClass: Class[boxType]
-
     val boxName: String
 
-    val isNullable: Boolean
-    val areElementsNullable: Option[Boolean]
-
     val boxAliases = Set.empty[String]
+
+    val isNullable: Boolean
+    val isCollection: Boolean
+
+    val collectionType: Option[CollectionType]
+    val areElementsNullable: Option[Boolean]
   }
 
   object OcdBox {
