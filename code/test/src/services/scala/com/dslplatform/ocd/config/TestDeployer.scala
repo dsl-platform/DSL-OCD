@@ -53,12 +53,22 @@ private[config] class TestDeployer(
       }
     }
 
-    private def deployDsl(): Unit =
-      testProject.dslFiles.par foreach { case (filename, body) =>
+    private def deployDsl(): Unit = {
+      val dsls = testProject.dslFiles
+
+//      if (dsls.nonEmpty) {
+//        val emptyPath = dslPath / "empty.dsl"
+//        logger.trace("Deploying empty DSL: " + emptyPath.path)
+//        emptyPath.write(IOUtils.toByteArray(
+//                classOf[TestDeployer].getResourceAsStream("/empty.dsl")))
+//      }
+
+      dsls.par foreach { case (filename, body) =>
         val path = dslPath / (filename, '/')
         logger.trace("Deploying DSL: " + path.path)
         path.write(body)
       }
+    }
 
     private def deployGenerated(): Unit =
       testProject.testFiles foreach { case (language, files) =>

@@ -1,4 +1,4 @@
-package com.dslplatform.client;
+package com.dslplatform.ocd.test;
 
 import java.net.InetAddress;
 import java.net.URI;

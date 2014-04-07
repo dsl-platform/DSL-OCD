@@ -14,9 +14,6 @@ set BASE=%~dp0
 rem Read project name from the parent folder
 for %%? in ("%BASE%..") do set NAME=%%~n?
 
-rem Set DSL folder
-set DSL=%BASE%..\dsl\
-
 rem Set source folders for reading DSL generated files & tests
 set SRC=%BASE%src\
 set SRC_GEN=%SRC%generated\
@@ -52,6 +49,10 @@ rem Set path to DSL Platform compiler client
 set TOOLS_DPCC=%TOOLS%dsl\dpcc.jar
 set TOOLS_DPCC_AP=%TOOLS%dsl\api.properties
 
+rem Set DSL folder
+set DSL=%BASE%..\dsl\
+set DSL_EMPTY=%TOOLS%dsl\empty.dsl
+
 rem Set lib folder which hosts compile & test dependencies
 set LIB=%TOOLS%java\lib\
 set LIB_COMPILE=%LIB%compile\
@@ -67,6 +68,7 @@ set MAX_STEP=1
 
 set DO_CLEAN=false
 set DO_SETUP=true
+set DO_DB_CLEAN=false
 set DO_DSL=false
 set DO_DEPLOY_MODEL=false
 set DO_COMPILE_GENERATED=false
@@ -80,6 +82,11 @@ if "%~1"=="" goto :parser_end
 
 if "%~1"=="clean" (
   set DO_CLEAN=true
+  goto :parser_loop
+)
+
+if "%~1"=="dsl:clean" (
+  set DO_DB_CLEAN=true
   goto :parser_loop
 )
 
@@ -207,6 +214,46 @@ set /a CUR_STEP+=1
 
 rem ---------------------------------------------------------------------------
 
+if not %DO_DB_CLEAN%==true goto :db_clean_skip
+if not exist "%SRC_GEN_RSRC%dsl-project.ini" goto :db_clean_skip
+
+echo.
+echo ### [%CUR_STEP%/%MAX_STEP%] ### CLEANSING THE DATABASE
+echo.
+
+copy "%SRC_GEN_RSRC%dsl-project.ini" "%SRC_GEN_RSRC%dsl-project.ini.clone" >NUL
+
+set DB_CLEAN_RUN=%LOG%db-clean.bat
+set DB_CLEAN_LOG=%LOG%db-clean.log
+
+echo + Creating the database cleansing script ...
+> "%DB_CLEAN_RUN%" (
+  echo @"%TOOLS_JRE_JAVA%" ^^
+  echo   -Ddsl-clc-api-properties="%TOOLS_DPCC_AP%" ^^
+  echo   -jar "%TOOLS_DPCC%" ^^
+  echo   --logging-level=trace ^^
+  echo   --project-ini-path="%SRC_GEN_RSRC%dsl-project.ini.clone" ^^
+  echo   --dsl-path="%DSL_EMPTY%" ^^
+  echo   --skip-diff ^^
+  echo   --confirm-unsafe ^^
+  echo   --output-path="%SRC_GEN%." ^^
+  echo   update
+)
+
+echo + Cleansing the database ...
+call "%DB_CLEAN_RUN%" > "%DB_CLEAN_LOG%" 2>&1
+if not errorlevel 1 goto :db_clean_ok
+echo ^^! DSL compilation failed, see log in:
+echo "%DB_CLEAN_LOG%"
+echo.
+goto :exit
+
+:db_clean_ok
+set /a CUR_STEP+=1
+:db_clean_skip
+
+rem ---------------------------------------------------------------------------
+
 if not %DO_DSL%==true goto :dsl_skip
 if not exist "%DSL%" goto :dsl_skip
 
@@ -214,10 +261,10 @@ echo.
 echo ### [%CUR_STEP%/%MAX_STEP%] ### GENERATING SOURCES FROM THE DSL
 echo.
 
+copy "%SRC_GEN_RSRC%dsl-project.ini" "%SRC_GEN_RSRC%dsl-project.ini.clone" >NUL
+
 set DSL_COMPILE_RUN=%LOG%dsl-compile.bat
 set DSL_COMPILE_LOG=%LOG%dsl-compile.log
-
-copy "%SRC_GEN_RSRC%dsl-project.ini" "%SRC_GEN_RSRC%dsl-project.ini.clone" >NUL
 
 echo + Creating DSL compile script ...
 > "%DSL_COMPILE_RUN%" (
@@ -249,6 +296,7 @@ set /a CUR_STEP+=1
 rem ---------------------------------------------------------------------------
 
 if not %DO_DEPLOY_MODEL%==true goto :deploy_model_skip
+if not exist "%SRC_GEN_RSRC%dsl-project.ini" goto :deploy_model_skip
 
 echo.
 echo ### [%CUR_STEP%/%MAX_STEP%] ### DEPLOYING GENERATED MODEL

@@ -9,9 +9,9 @@
   <classpathentry kind="lib" path="${libPath}/compile/commons-codec-1.9.jar"/>
   <classpathentry kind="lib" path="${libPath}/compile/commons-io-2.4.jar"/>
   <classpathentry kind="lib" path="${libPath}/compile/commons-logging-1.1.3.jar"/>
-  <classpathentry kind="lib" path="${libPath}/compile/dsl-client-core-0.4.14.jar"/>
-  <classpathentry kind="lib" path="${libPath}/compile/dsl-client-http-0.4.14.jar"/>
-  <classpathentry kind="lib" path="${libPath}/compile/dsl-client-http-apache-0.4.14.jar"/>
+  <classpathentry kind="lib" path="${libPath}/compile/dsl-client-core-0.4.15-SNAPSHOT.jar"/>
+  <classpathentry kind="lib" path="${libPath}/compile/dsl-client-http-0.4.15-SNAPSHOT.jar"/>
+  <classpathentry kind="lib" path="${libPath}/compile/dsl-client-http-apache-0.4.15-SNAPSHOT.jar"/>
   <classpathentry kind="lib" path="${libPath}/compile/httpclient-4.3.2.jar"/>
   <classpathentry kind="lib" path="${libPath}/compile/httpcore-4.3.1.jar"/>
   <classpathentry kind="lib" path="${libPath}/compile/jackson-annotations-2.3.0.jar"/>

@@ -28,7 +28,7 @@ javacOptions := Seq(
 
 libraryDependencies := Seq(
   "joda-time" % "joda-time" % "2.3"
-, "com.fasterxml.jackson.core" % "jackson-databind" % "2.3.1"
+, "com.fasterxml.jackson.core" % "jackson-databind" % "2.3.2"
 , "com.dslplatform" % "dsl-client-core" % "0.4.14"
 )
 

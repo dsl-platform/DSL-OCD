@@ -29,6 +29,6 @@ class EntryPoint(
       AggregateWithOnePropertyTestProject.projects ++
       AggregateWithSurrogatePrimaryKeyAndOnePropertyTestProject.projects
 
-    testDeployer.deployTests(projects)
+    testDeployer.deployTests(turtles ++ projects)
   }
 }

@@ -28,7 +28,7 @@ class OcdJavaDefaultsEqualityTurtle
       def testName = _testName
 
       override def imports = Seq(
-        "com.dslplatform.client.JsonSerializationDinamo"
+        "com.dslplatform.client.JsonSerialization"
       , "com.dslplatform.client.Bootstrap"
       , "com.dslplatform.patterns.ServiceLocator"
       , "com.fasterxml.jackson.databind.JavaType"
@@ -36,16 +36,13 @@ class OcdJavaDefaultsEqualityTurtle
       )
 
       override def leadingBlocks = Seq("""
-    private static JsonSerializationDinamo jsonSerialization;
+    private static JsonSerialization jsonSerialization;
 
     @org.junit.BeforeClass
     public static void initializeJsonSerialization() throws IOException {
-/*
-          final ServiceLocator locator = Bootstrap.init(new java.io.ByteArrayInputStream(
-                "username=x\nproject-id=x\napi-url=x\npackage-name=x".getBytes("UTF-8")));
+        final ServiceLocator locator = Bootstrap.init(new java.io.ByteArrayInputStream(
+                "username=unused\nproject-id=unused\napi-url=unused\npackage-name=unused".getBytes("UTF-8")));
         jsonSerialization = locator.resolve(JsonSerialization.class);
-*/
-        jsonSerialization = new JsonSerializationDinamo(null);
     }
 """)
 
@@ -74,18 +71,18 @@ class OcdJavaDefaultsEqualityTurtle
       s"""${baseClass}.class"""
 
     case SimpleType(baseClass) =>
-      s"""JsonSerializationDinamo.buildType(${baseClass}.class)"""
+      s"""JsonSerialization.buildType(${baseClass}.class)"""
 
     case CollectionType(baseClass, elementType) =>
-      s"""JsonSerializationDinamo.buildCollectionType(${baseClass}.class, ${buildType(elementType)})"""
+      s"""JsonSerialization.buildCollectionType(${baseClass}.class, ${buildType(elementType)})"""
 
     case GenericType(baseClass, elementTypes @ _*) =>
-      s"""JsonSerializationDinamo.buildGenericType(${baseClass}.class, ${elementTypes.map(buildType).mkString(", ")})"""
+      s"""JsonSerialization.buildGenericType(${baseClass}.class, ${elementTypes.map(buildType).mkString(", ")})"""
   }
 
   private def testBorderValue(oj: OcdJava, name: String, value: JavaValue) = s"""
         final ${oj.javaClass} ${name} = ${value};
-        final String ${name}JsonSerialized = jsonSerialization.serialize($name);
+        final String ${name}JsonSerialized = JsonSerialization.serialize($name);
         final JavaType ${name}JavaType = ${buildType(oj.javaType)};
         final ${oj.javaClass} ${name}JsonDeserialized = jsonSerialization.deserialize(${name}JavaType, ${name}JsonSerialized);
         com.dslplatform.ocd.javaasserts.${oj.typeSingleName}Asserts.assert${oj.boxName}Equals(${name}, ${name}JsonDeserialized);
