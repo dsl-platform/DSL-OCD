@@ -59,7 +59,6 @@ object Scalas
   , "Money" -> ScalaMoney
   , "Point" -> ScalaPoint
   , "Rectangle" -> ScalaRectangle
-//  , "S3" -> ScalaS3
   , "String" -> ScalaString
   , "String(9)" -> ScalaStringWithMaxLength
   , "Text" -> ScalaText
@@ -78,7 +77,7 @@ object Scalas
       val name = t.name.grammarName
       val stub = stubs(name)
 
-      (root / s"scala.${name}.scala").write(
+      (root / s"scala.${t.name.typeNameSafe}.scala").write(
 s"""package com.dslplatform.ocd
 package scalas
 
@@ -111,19 +110,11 @@ s"""case object $value
 s"""package com.dslplatform.ocd
 package scalas
 
-trait OcdScala
-    extends types.OcdType
-    with boxes.OcdBox {
-
-  val scalaClass: String
-  val defaultValue: String
-}
-
-object OcdScala extends {
+trait OcdScalaValues {
   val values: IndexedSeq[OcdScala] = IndexedSeq(
     ${values.mkString("\n  , ")}
   )
-} with OcdScalaResolver
+}
 """)
   }
 }

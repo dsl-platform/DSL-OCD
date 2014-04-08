@@ -95,39 +95,7 @@ case object `box.${b.name}` extends `box.${b.name}`
 s"""package com.dslplatform.ocd
 
 package boxes {
-  sealed trait CollectionType {
-    def aliases = Seq.empty[String]
-  }
-
-  object CollectionType {
-    case object Array extends CollectionType {
-      override def aliases = Seq("Brackets")
-    }
-    case object List extends CollectionType
-    case object Set extends CollectionType
-
-    val values: IndexedSeq[CollectionType] = IndexedSeq(
-      Array
-    , List
-    , Set
-    )
-  }
-
-  trait OcdBox {
-    type boxType <: OcdBox
-    val boxClass: Class[boxType]
-    val boxName: String
-
-    val boxAliases = Set.empty[String]
-
-    val isNullable: Boolean
-    val isCollection: Boolean
-
-    val collectionType: Option[CollectionType]
-    val areElementsNullable: Option[Boolean]
-  }
-
-  object OcdBox {
+  trait OcdBoxValues {
     val values: IndexedSeq[OcdBox] = IndexedSeq(
       ${boxes.map(t => s"`box.${t.name}`").mkString("\n    , ")}
     )

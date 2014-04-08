@@ -80,18 +80,11 @@ ${dslSegments.mkString("\n\n")}
 s"""package com.dslplatform.ocd
 package dsls
 
-trait OcdDsl
-    extends types.OcdType
-    with boxes.OcdBox {
-
-  val dslName = toString.substring(4) // "dsl."
-}
-
-object OcdDsl extends {
+trait OcdDslValues {
   val values: IndexedSeq[OcdDsl] = IndexedSeq(
     ${values.mkString("\n  , ")}
   )
-} with OcdDslResolver
+}
 """
     )
   }

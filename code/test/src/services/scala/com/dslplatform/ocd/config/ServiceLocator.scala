@@ -17,6 +17,6 @@ object ServiceLocator {
       .register[Logger](logger)
       .register[ITestSettings](ts)
       .register[TestDeployer, ITestDeployer]
-      .register[EntryPoint]
+//      .register[EntryPoint]
   }
 }

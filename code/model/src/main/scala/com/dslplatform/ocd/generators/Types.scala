@@ -16,7 +16,9 @@ object Types
   case class TypeName(
       grammarName: String,
       singleName: String,
-      pluralName: String)
+      pluralName: String) {
+    def typeNameSafe = grammarName.replaceAll("[^-\\w]+", "")
+  }
 
   object Type {
     def apply(name: String, aliases: String*): Type =
@@ -91,6 +93,7 @@ trait `type.${name}`
   val typeClass = classOf[`type.${name}`]
 
   val typeName = "${name}"
+  val typeNameSafe = "${t.name.typeNameSafe}"
   val typeSingleName = "${t.name.singleName}"
   val typePluralName = "${t.name.pluralName}"
 ${if (t.derivedAliases.isEmpty) {""} else {s"""
@@ -107,19 +110,7 @@ case object `type.${name}` extends `type.${name}`
 s"""package com.dslplatform.ocd
 
 package types {
-  trait OcdType {
-    type typeType <: OcdType
-
-    val typeClass: Class[typeType]
-
-    val typeName: String
-    val typeSingleName: String
-    val typePluralName: String
-
-    val typeAliases = Set.empty[String]
-  }
-
-  object OcdType {
+  trait OcdTypeValues {
     val values: IndexedSeq[OcdType] = IndexedSeq(
       ${types.map(t => s"`type.${t.name.grammarName}`").mkString("\n    , ")}
     )

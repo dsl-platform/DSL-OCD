@@ -6,7 +6,7 @@ import boxes.OcdBox
 
 import scala.reflect.ClassTag
 
-trait OcdJavaResolver { this: OcdJava.type =>
+trait OcdJavaResolver { this: OcdJavaValues =>
   private val cache =
     (OcdType.values map { t =>
       t.typeClass.asInstanceOf[Class[OcdType]] ->

@@ -29,16 +29,16 @@ object JavaMap
 
   override def javaType(box: Box) = box match {
     case Box(_, None, _*) =>
-      s"""GenericType("java.util.Map", JavaClass("String"), JavaClass("String"))"""
+      s"""JavaGenericType("java.util.Map", JavaClass("String"), JavaClass("String"))"""
 
     case Box(_, Some((CollectionType.Array, _)), _*) =>
-      s"""SimpleType("java.util.Map[]")"""
+      s"""JavaSimpleType("java.util.Map[]")"""
 
     case Box(_, Some((CollectionType.List, _)), _*) =>
-      s"""CollectionType("java.util.List", GenericType("java.util.Map", JavaClass("String"), JavaClass("String")))"""
+      s"""JavaCollectionType("java.util.List", JavaGenericType("java.util.Map", JavaClass("String"), JavaClass("String")))"""
 
     case Box(_, Some((CollectionType.Set, _)), _*) =>
-      s"""CollectionType("java.util.Set", GenericType("java.util.Map", JavaClass("String"), JavaClass("String")))"""
+      s"""JavaCollectionType("java.util.Set", JavaGenericType("java.util.Map", JavaClass("String"), JavaClass("String")))"""
   }
 
   val nonDefaultValues: Seq[TestValue] = Seq(

@@ -162,10 +162,10 @@ trait JavaStub {
 
   def javaType(box: Box) = classValue(box) match {
     case cv if cv.contains('<') =>
-      s"""CollectionType("${cv.replaceFirst("<.*>", "")}", JavaClass("${classReference}"))"""
+      s"""JavaCollectionType("${cv.replaceFirst("<.*>", "")}", JavaClass("${classReference}"))"""
 
     case cv =>
-      s"""SimpleType("${cv}")"""
+      s"""JavaSimpleType("${cv}")"""
   }
 
   def nonDefaultValues(box: Box): Seq[TestValue] = box match {

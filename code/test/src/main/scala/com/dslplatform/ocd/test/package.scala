@@ -21,10 +21,6 @@ package object test {
     }
   }
 
-  implicit class OcdTypeExtender(val ocdType: types.OcdType) extends AnyVal {
-    def safeTypeName = ocdType.typeName.replaceAll("[^-\\w]+", "")
-  }
-
   implicit class OcdTypeSingletonExtender(val ocdType: types.OcdType.type) extends AnyVal {
     import types._
 

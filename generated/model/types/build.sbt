@@ -11,7 +11,8 @@ name := "DSL-OCD-Model-Types"
 version := "0.0.0-SNAPSHOT"
 
 unmanagedSourceDirectories in Compile := Seq(
-  sourceDirectory.value / "generated" / "scala"
+  (scalaSource in Compile).value
+, sourceDirectory.value / "generated" / "scala" 
 )
 
 unmanagedSourceDirectories in Test := Nil
