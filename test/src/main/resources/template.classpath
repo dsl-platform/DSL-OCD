@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+  <classpathentry kind="src" path="src/generated/java"/>
+  <classpathentry kind="src" path="src/generated/resources"/>
+  <classpathentry kind="src" path="src/main/java"/>
+  <classpathentry kind="src" path="src/main/resources"/>
+  <classpathentry kind="src" path="src/test/java"/>
+  <classpathentry kind="src" path="src/test/resources"/>
+  <classpathentry kind="lib" path="${libPath}/compile/commons-codec-1.9.jar"/>
+  <classpathentry kind="lib" path="${libPath}/compile/commons-io-2.4.jar"/>
+  <classpathentry kind="lib" path="${libPath}/compile/commons-logging-1.1.3.jar"/>
+  <classpathentry kind="lib" path="${libPath}/compile/dsl-client-core-0.4.15-SNAPSHOT.jar"/>
+  <classpathentry kind="lib" path="${libPath}/compile/dsl-client-http-0.4.15-SNAPSHOT.jar"/>
+  <classpathentry kind="lib" path="${libPath}/compile/dsl-client-http-apache-0.4.15-SNAPSHOT.jar"/>
+  <classpathentry kind="lib" path="${libPath}/compile/httpclient-4.3.2.jar"/>
+  <classpathentry kind="lib" path="${libPath}/compile/httpcore-4.3.2.jar"/>
+  <classpathentry kind="lib" path="${libPath}/compile/jackson-annotations-2.3.0.jar"/>
+  <classpathentry kind="lib" path="${libPath}/compile/jackson-core-2.3.2.jar"/>
+  <classpathentry kind="lib" path="${libPath}/compile/jackson-databind-2.3.1.jar"/>
+  <classpathentry kind="lib" path="${libPath}/compile/joda-time-2.3.jar"/>
+  <classpathentry kind="lib" path="${libPath}/compile/slf4j-api-1.7.7.jar"/>
+  <classpathentry kind="lib" path="${libPath}/test/dsl-ocd-util-testing-0.0.0-SNAPSHOT.jar"/>
+  <classpathentry kind="lib" path="${libPath}/test/dsl-ocd-model-java-asserts-0.0.0-SNAPSHOT.jar"/>
+  <classpathentry kind="lib" path="${libPath}/test/hamcrest-all-1.3.jar"/>
+  <classpathentry kind="lib" path="${libPath}/test/junit-4.11.jar"/>
+  <classpathentry kind="lib" path="${libPath}/test/logback-core-1.1.1.jar"/>
+  <classpathentry kind="lib" path="${libPath}/test/logback-classic-1.1.1.jar"/>
+  <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+  <classpathentry kind="output" path="bin"/>
+</classpath>
