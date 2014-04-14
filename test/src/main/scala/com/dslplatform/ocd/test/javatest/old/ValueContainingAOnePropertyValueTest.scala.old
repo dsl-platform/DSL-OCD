@@ -1,0 +1,198 @@
+/*
+package com.dslplatform.ocd
+package test
+package values
+
+import config.ITestProject
+import types._
+import boxes._
+import dsls._
+import javas._
+import javatest._
+import javatest.property._
+import com.dslplatform.ocd.javas.JavaCollectionType
+
+object ValueContainingAOnePropertyValueSetup {
+  val setups = for {
+    cb <- OcdBox.values
+    t <- OcdType.useCaseValues.take(1)
+    b <- OcdBox.values.take(1)
+    d = OcdDslBoxType.resolve(t, b)
+  } yield {
+    new ValueContainingAOnePropertyValueSetup(cb, d)
+  }
+}
+
+class ValueContainingAOnePropertyValueSetup(
+    val containerBox: OcdBox
+  , val propertyType: OcdDslBoxType
+  ) extends TestSetup {
+
+  val valueWord = containerBox.isSingle.ifTrue("Value", "Values")
+  def valueComment = s"ValueContaining${containerBox.boxName}${valueWord}With${propertyType.dslDesc}"
+
+  def ModuleName = "ValueInValue" + propertyType.typeNameSafe
+  def shortName = containerBox.boxNameShort + "_V" + propertyType.dslDescShort
+  def OutterValueName = "OV" + shortName
+  def outterPropertyName = "underlying"
+  def InnerValueType = OcdDslBoxType.toDsl(InnerValueName, containerBox)
+  def InnerValueName = "IV" + shortName
+  def innerPropertyName = "p" + shortName
+  def InnerPropertyName = innerPropertyName.fciu
+
+
+  private val dslPath = s"values/${ModuleName}/${OutterValueName}.dsl"
+
+  private val dslBody =
+s"""module ${ModuleName}
+{
+  // ${valueComment}
+  value ${OutterValueName} {
+    ${InnerValueType} ${outterPropertyName};
+  }
+
+  value ${InnerValueName} {
+    ${propertyType.dslName} ${innerPropertyName};
+  }
+}
+"""
+
+  val dslFiles = Map(dslPath -> dslBody)
+}
+
+class ValueContainingAOnePropertyValueTestProject(
+    setup: ValueContainingAOnePropertyValueSetup
+  ) extends ITestProject {
+
+  def projectPath = "values/value-nested-" + setup.InnerValueName
+  def projectName = s"OCD Value with ${setup.containerBox.boxName} ${setup.valueWord} With One Property Tests (${setup.InnerValueName})"
+
+  def dslFiles = setup.dslFiles
+
+  def testFiles = Map(
+    JAVA -> Map{
+      val javaType = OcdJavaBoxType.resolve(setup.propertyType)
+      val template = makeJavaTemplate(javaType)
+      val body = template.testBody
+      JavaInfo(body).toEntry
+    }
+  )
+
+  private def constructJavaType(javaType: JavaType) = javaType match {
+    case JavaClass(baseClass) if baseClass.endsWith("[]") =>
+      s"new ${baseClass.dropRight(2)}[0]"
+
+    case JavaSimpleType(baseClass) if baseClass.endsWith("[]") =>
+      s"new ${baseClass.dropRight(2)}[0]"
+
+    case JavaClass(baseClass) =>
+      s"new ${baseClass}()"
+
+    case JavaSimpleType(baseClass) =>
+      s"new ${baseClass}()"
+
+    case JavaCollectionType(baseClass, elementType) if baseClass == "java.util.List" =>
+      s"new java.util.ArrayList<${elementType}>(0)"
+
+    case JavaCollectionType(baseClass, elementType) if baseClass == "java.util.Set" =>
+      s"new java.util.HashSet<${elementType}>(0)"
+  }
+
+
+  private def makeJavaTemplate(ojbt: OcdJavaBoxType) = new TestJavaTemplate {
+    def packageName = "com.dslplatform.ocd.values"
+    def testName = setup.valueComment
+
+    override def imports = Seq("java.io.IOException")
+    override def classDecorations: Seq[String] = Nil
+
+    override def leadingBlocks = Seq(s"""
+    private static com.dslplatform.client.JsonSerialization jsonSerialization;
+
+    @org.junit.BeforeClass
+    public static void initialize() throws IOException {
+        final com.dslplatform.patterns.ServiceLocator locator = com.dslplatform.client.Bootstrap.init(${testName}.class.getResourceAsStream("/dsl-project.ini"));
+        jsonSerialization = locator.resolve(com.dslplatform.client.JsonSerialization.class);
+    }
+""")
+
+    val outterValueConcept = "ocd." + setup.ModuleName + "." + setup.OutterValueName
+    val innerValueConcept = "ocd." + setup.ModuleName + "." + setup.InnerValueName
+
+    private def boxToJavaType(concept: String, box: OcdBox) = box match {
+      case b if b.isSingle =>
+        JavaClass(concept)
+
+      case b if b.collectionFamily == Some(CollectionFamily.Array) =>
+        JavaClass(concept + "[]")
+
+      case b =>
+        JavaCollectionType("java.util." + b.collectionFamily.get, JavaClass(concept))
+    }
+
+    val outterValueProperty = OcdJavaDomProperty(
+      "underlying"
+    , setup.containerBox
+    , boxToJavaType(innerValueConcept, setup.containerBox)
+    , null
+    )
+
+    val innerValueProperty = OcdJavaBoxTypeProperty(setup.InnerPropertyName, ojbt)
+
+    override def tests = Seq(
+      new TestJavaPropertyFieldType {
+        def conceptName = outterValueConcept
+        def property = outterValueProperty
+        def visibility = Visibility.Private
+        def modifiers = Set.empty
+      }
+//    , new TestJavaPropertyGetterType {
+//        def conceptName = valueConcept
+//        def property = OcdJavaBoxTypeProperty(setup.propertyName, ojbt)
+//        def visibility = Visibility.Public
+//        def modifiers = Set.empty
+//      }
+//    , new TestJavaPropertySetterType {
+//        def conceptName = valueConcept
+//        def property = OcdJavaBoxTypeProperty(setup.propertyName, ojbt)
+//        def visibility = Visibility.Public
+//        def modifiers = Set.empty
+//      }
+    , new TestJavaValuePropertyInValue {
+        def outterConceptName = outterValueConcept
+        def outterProperty = outterValueProperty
+        def innerConceptName = innerValueConcept
+        def innerProperty = innerValueProperty
+        def isDefault = true
+        def testID = "Default"
+        def testValue = ojbt.defaultValue
+      }
+    )
+//    ) ++ ojbt.nonDefaultValues.zipWithIndex.map { case (ndv, index) =>
+//      new TestJavaPropertyInValue {
+//        def conceptName = valueConcept
+//        def property = OcdJavaBoxTypeProperty(setup.propertyName, ojbt)
+//        def visibility = Visibility.Public
+//        def modifiers = Set.empty
+//        def isDefault = false
+//        def testID = "NonDefault" + (index + 1)
+//        def testValue = ndv
+//      }
+//    }
+  }
+}
+
+object ValueContainingAOnePropertyValueTestProject {
+  val setups = ValueContainingAOnePropertyValueSetup.setups
+
+  val projects =
+    (setups.groupBy(_.propertyType.typeNameSafe) map { case (typeNameSafe, typeSetups) =>
+    new ITestProject {
+      def projectPath = "values/value-nested-" + typeNameSafe
+      def projectName = s"OCD Value with Nested Value With a Single Property Tests (${typeNameSafe})"
+      val dslFiles = typeSetups.dslFiles
+      val testFiles = typeSetups.map(new ValueContainingAOnePropertyValueTestProject(_)).testFiles
+    }
+  }) toSeq
+}
+*/

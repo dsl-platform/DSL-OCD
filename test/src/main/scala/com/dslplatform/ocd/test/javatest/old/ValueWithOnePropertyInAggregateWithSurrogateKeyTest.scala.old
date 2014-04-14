@@ -1,0 +1,140 @@
+/*
+package com.dslplatform.ocd
+package test
+package values
+
+import types._
+import boxes._
+import dsls.OcdDsl
+import javas.OcdJava
+
+import config.ITestProject
+
+import javatest._
+import javatest.property._
+
+object ValueWithOnePropertyInAggregateWithSurrogateKeySetup {
+  val setups = for {
+    cb <- OcdBox.values
+    t <- OcdType.useCaseValues
+    b <- OcdBox.values
+    d = OcdDsl.resolve(t, b)
+  } yield {
+    new ValueWithOnePropertyInAggregateWithSurrogateKeySetup(cb, d)
+  }
+}
+
+class ValueWithOnePropertyInAggregateWithSurrogateKeySetup(
+    val containerBox: OcdBox
+  , val propertyType: OcdDsl) extends TestSetup {
+
+  val PropertyName = propertyType.typeDescription
+  val propertyName = PropertyName.fcil
+
+  val ValueWord = if (containerBox.isCollection) "Values" else "Value"
+  val ModuleName = containerBox.boxName + ValueWord + "InStandardRoot"
+  val AggregateName = "Standard" + propertyType.typeDescription + "Root"
+  val ValueName = UniqueNames(ModuleName, AggregateName, PropertyName)
+  val UnderlyingType = OcdDsl.resolve(`type.Guid`, containerBox).dslName.replace("Guid", ValueName)
+
+  private val dslPath =
+    s"values/${ModuleName}/${propertyType.typeNameSafe}/${AggregateName}.dsl"
+
+  private val dslBody =
+s"""module ${ModuleName}
+{
+  aggregate ${AggregateName} {
+    ${UnderlyingType} underlying;
+  }
+
+  value ${ValueName} {
+    ${propertyType.dslName} ${propertyName};
+  }
+}
+"""
+
+  val dslFiles = Map(dslPath -> dslBody)
+}
+
+class ValueWithOnePropertyInAggregateWithSurrogateKeyTestProject(
+    setup: ValueWithOnePropertyInAggregateWithSurrogateKeySetup
+  ) extends ITestProject {
+
+  def projectPath = "values/surrogate-single-" + setup.AggregateName
+  def projectName = "OCD Value in Aggregate with Surrogate Key Tests (" + setup.AggregateName + ")"
+
+  def dslFiles = setup.dslFiles
+
+  def testFiles = Map(
+    JAVA -> Map{
+      val javaType = OcdJava.resolve(setup.propertyType)
+      val template = makeJavaTemplate(javaType)
+      val body = template.testBody
+      JavaInfo(body).toEntry
+    }
+  )
+
+  private def makeJavaTemplate(oj: OcdJava) = new TestJavaTemplate {
+    def packageName = "com.dslplatform.ocd.aggregates"
+    def testName = setup.containerBox.boxName + setup.ValueWord + "With" + setup.ValueName + "InAggregateWithSurrogateKeyTest"
+
+    override def imports = Seq("java.io.IOException")
+    override def classDecorations: Seq[String] = Nil
+
+    override def leadingBlocks = Seq(s"""
+    private static com.dslplatform.patterns.ServiceLocator locator;
+
+    @org.junit.BeforeClass
+    public static void initialize() throws IOException {
+        locator = com.dslplatform.client.Bootstrap.init(${testName}.class.getResourceAsStream("/dsl-project.ini"));
+    }
+""")
+
+    val rootConcept = "model." + setup.ModuleName + "." + setup.AggregateName
+    val valueConcept = "model." + setup.ModuleName + "." + setup.ValueName
+
+    override def tests = Seq(
+      new TestJavaPropertyFieldType {
+        def conceptName = valueConcept
+        def propertyName = setup.propertyName
+        def propertyType = oj
+        def visibility = Visibility.Private
+        def modifiers = Set.empty
+      }
+    , new TestJavaPropertyGetterType {
+        def conceptName = valueConcept
+        def propertyName = setup.propertyName
+        def propertyType = oj
+        def visibility = Visibility.Public
+        def modifiers = Set.empty
+      }
+    , new TestJavaPropertySetterType {
+        def conceptName = valueConcept
+        def propertyName = setup.propertyName
+        def propertyType = oj
+        def visibility = Visibility.Public
+        def modifiers = Set.empty
+      }
+    , new TestJavaPropertyDefaultValue {
+        def conceptName = valueConcept
+        def propertyName = setup.propertyName
+        def propertyType = oj
+      }
+    )
+  }
+}
+
+object ValueWithOnePropertyInAggregateWithSurrogateKeyTestProject {
+  val setups = ValueWithOnePropertyInAggregateWithSurrogateKeySetup.setups
+
+  val projects =
+    (setups.groupBy(_.propertyType.typeNameSafe) map { case (tipe, typeSetups) =>
+    new ITestProject {
+      def projectPath = "values/surrogate-single-" + tipe
+      def projectName = "OCD Value with Single Property in Aggregate with Surrogate Key Tests (" + tipe + ")"
+      val dslFiles = typeSetups.dslFiles
+      val testFiles = typeSetups.map(new ValueWithOnePropertyInAggregateWithSurrogateKeyTestProject(_)).testFiles
+    }
+  }) toSeq
+}
+*/

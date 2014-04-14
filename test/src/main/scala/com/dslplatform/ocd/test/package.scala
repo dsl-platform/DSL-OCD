@@ -60,4 +60,9 @@ package object test {
     , `type.Xml`
     )
   }
+
+  implicit class ClassyDSLTyper(val ocdDsl: dsls.OcdDslBoxType.type) extends AnyVal {
+    def toDsl(concept: String, box: boxes.OcdBox) =
+      ocdDsl.resolve(types.`type.Guid`, box).dslName.replace("Guid", concept)
+  }
 }

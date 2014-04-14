@@ -33,7 +33,7 @@ object TestJavaPropertyFieldTypeTurtle
           def conceptName = _testName
           def property = OcdJavaBoxTypeProperty(name.fcil + vis + mods.mkString, ojbt)
           def visibility = vis
-          def modifiers = mods
+          override def modifiers = mods
         }
       }
 

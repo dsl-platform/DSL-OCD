@@ -6,41 +6,23 @@ package property
 import javas._
 
 trait TestJavaPropertyGetterType
-    extends TestComponent {
+    extends TestComponentWithProperty {
 
-  def conceptName: String
-  def property: OcdJavaProperty
   def visibility: Visibility
-  def modifiers: Set[Modifier]
+  def modifiers = Set.empty[Modifier]
 
-  private def propertyName = property.name
-  private def PropertyName = property.name.fciu
   private def getterName = "get" + PropertyName
 
-  def testComponentBody = (property match {
-    case property: OcdJavaBoxTypeProperty =>
-      new TestJavaBoxTypePropertyGetterType(property)
+  def testComponentBody = (
+    visibilityTest
+  + modifiersTest
+  + classTest
+  + propertyType.hasGenerics.ifTrue(genericsTypeTest)
+  )
 
-    case x =>
-      ???
-  }).testComponentBody
+  private def baseClass = s"${propertyType.javaType.baseClass}.class"
 
-  class TestJavaBoxTypePropertyGetterType(
-      property: OcdJavaBoxTypeProperty
-    ) extends TestComponent {
-
-    private val propertyType = property.boxType
-
-    def testComponentBody = (
-      visibilityTest
-    + modifiersTest
-    + classTest
-    + propertyType.hasGenerics.ifTrue(genericsTypeTest)
-    )
-
-    private def baseClass = s"${propertyType.javaType.baseClass}.class"
-
-    private def visibilityTest = s"""
+  private def visibilityTest = s"""
     /* Testing the "${propertyName}" property getter ${visibility.name} visibility via reflection (no instantiation) */
     @org.junit.Test
     public void test${PropertyName}PropertyGetter${visibility}Visibility() throws NoSuchMethodException {
@@ -51,7 +33,7 @@ trait TestJavaPropertyGetterType
     }
 """
 
-    private def modifiersTest = s"""
+  private def modifiersTest = s"""
     /* Testing the "${propertyName}" property getter modifiers ${if (modifiers.isEmpty) "" else modifiers.map(_.name).mkString("(", ", ", ") ")}via reflection (no instantiation) */
     @org.junit.Test
     public void test${PropertyName}PropertyGetterModifiers() throws NoSuchMethodException {
@@ -62,7 +44,7 @@ trait TestJavaPropertyGetterType
     }
 """
 
-    private def classTest = s"""
+  private def classTest = s"""
     /* Testing the "${propertyName}" property getter class via reflection (no instantiation) */
     @org.junit.Test
     public void test${PropertyName}PropertyGetterClass() throws NoSuchMethodException {
@@ -73,7 +55,7 @@ trait TestJavaPropertyGetterType
     }
 """
 
-    private def genericsTypeTest = s"""
+  private def genericsTypeTest = s"""
     /* Testing the "${propertyName}" property getter generic type via reflection (no instantiation) */
     @org.junit.Test
     public void test${PropertyName}PropertyGetterGenericType() throws NoSuchMethodException {
@@ -89,5 +71,4 @@ trait TestJavaPropertyGetterType
                 ${conceptName}.class.getDeclaredMethod("${getterName}").getGenericReturnType());
     }
 """
-  }
 }

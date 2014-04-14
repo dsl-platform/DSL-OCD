@@ -7,36 +7,15 @@ import types._
 import javas._
 
 trait TestJavaPropertyInValue
-    extends test.TestComponent {
-
-  def conceptName: String
-  def property: OcdJavaProperty
+    extends TestComponentWithProperty {
 
   def testID: String
   def isDefault: Boolean
   def testValue: JavaValue
   def setupBlock: String = ""
 
-  private def propertyName = property.name
-  private def PropertyName = property.name.fciu
-
-  private def defaultValue = property match {
-    case p: OcdJavaBoxTypeProperty => p.boxType.defaultValue
-    case _ => s"new ${property.javaType}()"
-  }
-
-  private def javaClass = property match {
-    case p: OcdJavaBoxTypeProperty => p.boxType.javaClass
-    case _ => property.javaType.toString
-  }
-
-  private def hasGenerics = property match {
-    case p: OcdJavaBoxTypeProperty => p.boxType.hasGenerics
-    case _ => javaClass.contains('<')
-  }
-
   private def assertEquals(target: String) = property match {
-    case p: OcdJavaBoxTypeProperty if isDefault && (p.boxType.defaultValue eq DisallowedNullValue) =>
+    case _ if isDisallowed(isDefault) =>
       s"""// special null check for dissalowed null value in a non-nullable property
         org.junit.Assert.assertNull(${target}.get${PropertyName}());"""
 
@@ -45,13 +24,13 @@ trait TestJavaPropertyInValue
                 testValue,
                 ${target}.get${PropertyName}());"""
 
-    case _ => ""
+    case _ => ???
   }
 
   def testComponentBody = s"""
-    /* Testing the "${propertyName}" ${testID} property value serialization */
+    /* Testing the "${propertyName}" ${testID} value property JSON serialization */
     @org.junit.Test
-    public void test${PropertyName}${testID}PropertyValueSerialization() throws java.io.IOException {${setupBlock}${isDefault match {
+    public void test${PropertyName}${testID}PropertyValueJsonSerialization() throws java.io.IOException {${setupBlock}${isDefault match {
            case true => s"""
         final ${conceptName} domainValue =
                 new ${conceptName}();

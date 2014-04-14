@@ -6,30 +6,10 @@ package property
 import javas._
 
 trait TestJavaPropertyFieldType
-    extends TestComponent {
+    extends TestComponentWithProperty {
 
-  def conceptName: String
-  def property: OcdJavaProperty
   def visibility: Visibility
-  def modifiers: Set[Modifier]
-
-  private def propertyName = property.name
-  private def PropertyName = property.name.fciu
-
-  private def defaultValue = property match {
-    case p: OcdJavaBoxTypeProperty => p.boxType.defaultValue
-    case _ => s"new ${property.javaType}()"
-  }
-
-  private def javaClass = property match {
-    case p: OcdJavaBoxTypeProperty => p.boxType.javaClass
-    case _ => property.javaType.toString
-  }
-
-  private def hasGenerics = property match {
-    case p: OcdJavaBoxTypeProperty => p.boxType.hasGenerics
-    case _ => javaClass.contains('<')
-  }
+  def modifiers = Set.empty[Modifier]
 
   def testComponentBody = (
     visibilityTest

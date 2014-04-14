@@ -1,0 +1,82 @@
+/*
+package com.dslplatform.ocd
+package test
+package javatest
+package property
+
+import types._
+import javas._
+
+trait TestJavaValuePropertyInValue
+    extends test.TestComponent {
+
+  def outterConceptName: String
+  def outterProperty: OcdJavaDomProperty
+
+  def innerConceptName: String
+  def innerProperty: OcdJavaBoxTypeProperty
+
+  def testID: String
+  def isDefault: Boolean
+  def testValue: JavaValue
+  def setupBlock: String = ""
+
+  private def innerPropertyName = innerProperty.name
+  private def InnerPropertyName = innerPropertyName.fciu
+  private def outterPropertyName = outterProperty.name
+  private def OutterPropertyName = outterPropertyName.fciu
+
+  private def defaultValue = innerProperty.boxType.defaultValue
+  private def javaClass = innerProperty.boxType.javaClass
+
+//  private def assertEquals(target: String) = property match {
+//    case p: OcdJavaBoxTypeProperty if isDefault && (p.boxType.defaultValue eq DisallowedNullValue) =>
+//      s"""// special null check for dissalowed null value in a non-nullable property
+//        org.junit.Assert.assertNull(${target}.get${PropertyName}());"""
+//
+//    case p: OcdJavaBoxTypeProperty =>
+//      s"""com.dslplatform.ocd.javaasserts.${p.boxType.typeSingleName}Asserts.assert${p.box.boxName}Equals(
+//                testValue,
+//                ${target}.get${PropertyName}());"""
+//
+//    case _ => ""
+//  }
+
+  def testComponentBody = s"""
+    /* Testing the "${outterConceptName}" ${testID} property value serialization */
+    @org.junit.Test
+    public void test${outterPropertyName}${testID}PropertyValueSerialization() throws java.io.IOException {${setupBlock}${isDefault match {
+           case true => s"""
+        final ${outterConceptName} domainValue =
+                new ${outterConceptName}();
+        final ${InnerPropertyName} testValue = domainValue.get${OutterPropertyName}();"""
+
+           case _ => s"""
+        final ${javaClass} testValue = ${testValue};
+        final ${outterConceptName} domainValue =
+                new ${outterConceptName}()
+                    .set${OutterPropertyName}(
+                            new ${innerConceptName}()
+                                .set${InnerPropertyName}(testValue));"""}}
+""" +
+//        // check that the property was properly assigned
+//        ${assertEquals("domainValue")}
+//
+//        final String serialized = com.dslplatform.client.JsonSerialization.serialize(domainValue);
+//        final ${conceptName} domainValueDeserialized = jsonSerialization.deserialize(
+//                com.dslplatform.client.JsonSerialization.buildType(${conceptName}.class),
+//                serialized);
+//
+//        // check that the property was properly deserialized
+//        ${assertEquals("domainValueDeserialized")}
+//
+//        // values are checked internally by comparing hashcodes of all properties
+//        org.junit.Assert.assertEquals(domainValue.hashCode(), domainValueDeserialized.hashCode());
+//
+//        // values are checked internally by comparing all properties for equality
+//        org.junit.Assert.assertEquals(domainValue, domainValueDeserialized);
+"""
+    }
+"""
+}
+*/

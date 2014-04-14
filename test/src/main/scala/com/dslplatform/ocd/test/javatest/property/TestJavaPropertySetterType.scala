@@ -6,41 +6,35 @@ package property
 import javas._
 
 trait TestJavaPropertySetterType
-    extends TestComponent {
+    extends TestComponentWithProperty {
 
-  def conceptName: String
-  def property: OcdJavaProperty
   def visibility: Visibility
-  def modifiers: Set[Modifier]
+  def modifiers = Set.empty[Modifier]
+  def testNonExistence = false
 
-  private def propertyName = property.name
-  private def PropertyName = property.name.fciu
   private def setterName = "set" + PropertyName
 
-  def testComponentBody = (property match {
-    case property: OcdJavaBoxTypeProperty =>
-      new TestJavaBoxTypePropertySetterType(property)
+  def testComponentBody = testNonExistence.ifTrue(nonExistenceTest,
+    visibilityTest
+  + modifiersTest
+  + classTest
+  + propertyType.hasGenerics.ifTrue(genericsTypeTest)
+  )
 
-    case x =>
-      ???
-  }).testComponentBody
+  private def baseClass = s"${propertyType.javaType.baseClass}.class"
 
-  class TestJavaBoxTypePropertySetterType(
-      property: OcdJavaBoxTypeProperty
-    ) extends TestComponent {
+  private def nonExistenceTest = s"""
+    /* Testing the non-existence of the "${propertyName}" property setter (no instantiation) */
+    @org.junit.Test(expected=java.lang.NoSuchMethodException.class)
+    public void testNonExistenceOf${PropertyName}PropertySetter() throws NoSuchMethodException {
+        org.junit.Assert.assertEquals(
+                ${visibility.javaModifier},
+                ${conceptName}.class.getDeclaredMethod(
+                    "${setterName}", ${baseClass}));
+    }
+"""
 
-    private val propertyType = property.boxType
-
-    def testComponentBody = (
-      visibilityTest
-    + modifiersTest
-    + classTest
-    + propertyType.hasGenerics.ifTrue(genericsTypeTest)
-    )
-
-    private def baseClass = s"${propertyType.javaType.baseClass}.class"
-
-    private def visibilityTest = s"""
+  private def visibilityTest = s"""
     /* Testing the "${propertyName}" property setter ${visibility.name} visibility via reflection (no instantiation) */
     @org.junit.Test
     public void test${PropertyName}PropertySetter${visibility}Visibility() throws NoSuchMethodException {
@@ -51,7 +45,7 @@ trait TestJavaPropertySetterType
     }
 """
 
-    private def modifiersTest = s"""
+  private def modifiersTest = s"""
     /* Testing the "${propertyName}" property setter modifiers ${if (modifiers.isEmpty) "" else modifiers.map(_.name).mkString("(", ", ", ") ")}via reflection (no instantiation) */
     @org.junit.Test
     public void test${PropertyName}PropertySetterModifiers() throws NoSuchMethodException {
@@ -62,7 +56,7 @@ trait TestJavaPropertySetterType
     }
 """
 
-    private def classTest = s"""
+  private def classTest = s"""
     /* Testing the "${propertyName}" property setter class via reflection (no instantiation) */
     @org.junit.Test
     public void test${PropertyName}PropertySetterClass() throws NoSuchMethodException {
@@ -73,7 +67,7 @@ trait TestJavaPropertySetterType
     }
 """
 
-    private def genericsTypeTest = s"""
+  private def genericsTypeTest = s"""
     /* Testing the "${propertyName}" property setter generic type via reflection (no instantiation) */
     @org.junit.Test
     public void test${PropertyName}PropertySetterGenericType() throws NoSuchMethodException, NoSuchFieldException {
@@ -87,5 +81,4 @@ trait TestJavaPropertySetterType
                         .getGenericParameterTypes()[0]);
     }
 """
-  }
 }
