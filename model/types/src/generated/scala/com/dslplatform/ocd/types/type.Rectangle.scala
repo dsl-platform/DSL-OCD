@@ -8,6 +8,7 @@ trait `type.Rectangle`
   val typeClass = classOf[`type.Rectangle`]
 
   val typeName = "Rectangle"
+  val typeNameShort = "Re"
   val typeNameSafe = "Rectangle"
 
   val typeSingleName = "Rectangle"

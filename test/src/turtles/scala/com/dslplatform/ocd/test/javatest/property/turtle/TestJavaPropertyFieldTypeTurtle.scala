@@ -31,7 +31,7 @@ object TestJavaPropertyFieldTypeTurtle
       } yield {
         ojbt -> new TestJavaPropertyFieldType {
           def conceptName = _testName
-          def property = OcdJavaProperty(name.fcil + vis + mods.mkString, ojbt)
+          def property = OcdJavaBoxTypeProperty(name.fcil + vis + mods.mkString, ojbt)
           def visibility = vis
           def modifiers = mods
         }
@@ -45,7 +45,7 @@ object TestJavaPropertyFieldTypeTurtle
         val visibility = test.visibility.javaFieldPrefix
         val modifiers = test.modifiers.map(_.javaFieldPrefix).mkString
         val clazz = ojbt.javaClass
-        val name = test.property.propertyName
+        val name = test.property.name
         val value = ojbt.defaultValue
 
         s"""

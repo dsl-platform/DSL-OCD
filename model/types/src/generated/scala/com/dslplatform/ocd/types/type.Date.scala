@@ -8,6 +8,7 @@ trait `type.Date`
   val typeClass = classOf[`type.Date`]
 
   val typeName = "Date"
+  val typeNameShort = "Da"
   val typeNameSafe = "Date"
 
   val typeSingleName = "Date"

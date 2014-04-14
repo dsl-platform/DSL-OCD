@@ -8,6 +8,7 @@ trait `type.Text`
   val typeClass = classOf[`type.Text`]
 
   val typeName = "Text"
+  val typeNameShort = "Te"
   val typeNameSafe = "Text"
 
   val typeSingleName = "Text"

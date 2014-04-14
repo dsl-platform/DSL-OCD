@@ -6,6 +6,7 @@ trait OcdBox {
   val boxClass: Class[boxType]
 
   val boxName: String
+  val boxNameShort: String
   val boxAliases: Set[String]
 
   val isOne: Boolean

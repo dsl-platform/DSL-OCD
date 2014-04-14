@@ -8,6 +8,7 @@ trait `type.String(9)`
   val typeClass = classOf[`type.String(9)`]
 
   val typeName = "String(9)"
+  val typeNameShort = "S9"
   val typeNameSafe = "String9"
 
   val typeSingleName = "StringWithMaxLengthOf9"

@@ -8,6 +8,7 @@ trait `type.Image`
   val typeClass = classOf[`type.Image`]
 
   val typeName = "Image"
+  val typeNameShort = "Im"
   val typeNameSafe = "Image"
 
   val typeSingleName = "Image"

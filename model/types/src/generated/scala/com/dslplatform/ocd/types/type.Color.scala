@@ -8,6 +8,7 @@ trait `type.Color`
   val typeClass = classOf[`type.Color`]
 
   val typeName = "Color"
+  val typeNameShort = "Co"
   val typeNameSafe = "Color"
 
   val typeSingleName = "Color"

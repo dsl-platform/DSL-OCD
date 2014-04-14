@@ -8,6 +8,7 @@ trait `type.Integer`
   val typeClass = classOf[`type.Integer`]
 
   val typeName = "Integer"
+  val typeNameShort = "In"
   val typeNameSafe = "Integer"
 
   val typeSingleName = "Integer"

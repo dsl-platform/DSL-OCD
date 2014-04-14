@@ -8,6 +8,7 @@ trait `box.One`
   val boxClass = classOf[`box.One`]
 
   val boxName = "One"
+  val boxNameShort = "1"
   val boxAliases = Set.empty[String]
 
   val isOne = true

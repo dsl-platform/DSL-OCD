@@ -8,6 +8,7 @@ trait `type.Bits`
   val typeClass = classOf[`type.Bits`]
 
   val typeName = "Bits"
+  val typeNameShort = "Bt"
   val typeNameSafe = "Bits"
 
   val typeSingleName = "Bits"

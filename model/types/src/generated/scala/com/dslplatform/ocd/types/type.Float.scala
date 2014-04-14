@@ -8,6 +8,7 @@ trait `type.Float`
   val typeClass = classOf[`type.Float`]
 
   val typeName = "Float"
+  val typeNameShort = "Fl"
   val typeNameSafe = "Float"
 
   val typeSingleName = "Float"

@@ -8,6 +8,7 @@ trait `type.Double`
   val typeClass = classOf[`type.Double`]
 
   val typeName = "Double"
+  val typeNameShort = "Do"
   val typeNameSafe = "Double"
 
   val typeSingleName = "Double"

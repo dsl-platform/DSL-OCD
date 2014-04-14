@@ -8,6 +8,7 @@ trait `box.NullableSetOfOne`
   val boxClass = classOf[`box.NullableSetOfOne`]
 
   val boxName = "NullableSetOfOne"
+  val boxNameShort = "0S1"
   val boxAliases = Set.empty[String]
 
   val isOne = false

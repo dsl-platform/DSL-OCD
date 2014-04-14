@@ -10,6 +10,7 @@ trait OcdType
   def typeClass: Class[typeType]
 
   def typeName: String
+  def typeNameShort: String
   def typeNameSafe: String
 
   def typeSingleName: String

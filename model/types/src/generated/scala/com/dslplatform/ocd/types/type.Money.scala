@@ -8,6 +8,7 @@ trait `type.Money`
   val typeClass = classOf[`type.Money`]
 
   val typeName = "Money"
+  val typeNameShort = "Mo"
   val typeNameSafe = "Money"
 
   val typeSingleName = "Money"

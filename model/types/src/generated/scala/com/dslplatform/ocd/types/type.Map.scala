@@ -8,6 +8,7 @@ trait `type.Map`
   val typeClass = classOf[`type.Map`]
 
   val typeName = "Map"
+  val typeNameShort = "Ma"
   val typeNameSafe = "Map"
 
   val typeSingleName = "Map"

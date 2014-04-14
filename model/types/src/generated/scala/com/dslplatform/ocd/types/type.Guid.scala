@@ -8,6 +8,7 @@ trait `type.Guid`
   val typeClass = classOf[`type.Guid`]
 
   val typeName = "Guid"
+  val typeNameShort = "Gu"
   val typeNameSafe = "Guid"
 
   val typeSingleName = "Guid"

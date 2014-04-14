@@ -8,6 +8,7 @@ trait `type.Secret`
   val typeClass = classOf[`type.Secret`]
 
   val typeName = "Secret"
+  val typeNameShort = "Se"
   val typeNameSafe = "Secret"
 
   val typeSingleName = "Secret"

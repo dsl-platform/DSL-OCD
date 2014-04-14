@@ -12,20 +12,22 @@ trait TestJavaPropertyDefaultValue
   def conceptName: String
   def property: OcdJavaProperty
 
-  private def propertyName = property.propertyName
-  private def PropertyName = property.propertyName.fciu
+  private def propertyName = property.name
+  private def PropertyName = property.name.fciu
 
-  def testComponentBody = (property.propertyBoxKind match {
-    case propertyType: OcdJavaBoxType =>
-      new TestJavaBoxTypePropertyDefaultValue(propertyType)
+  def testComponentBody = (property match {
+    case ojbtp: OcdJavaBoxTypeProperty =>
+      new TestJavaBoxTypePropertyDefaultValue(ojbtp)
 
     case x =>
       ???
   }).testComponentBody
 
   class TestJavaBoxTypePropertyDefaultValue(
-      propertyType: OcdJavaBoxType
+      property: OcdJavaBoxTypeProperty
     ) extends TestComponent {
+
+    private val propertyType = property.boxType
 
     def testComponentBody = s"""
     /* Testing the "${propertyName}" property field default value */

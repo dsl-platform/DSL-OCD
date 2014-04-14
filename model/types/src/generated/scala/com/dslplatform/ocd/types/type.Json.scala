@@ -8,6 +8,7 @@ trait `type.Json`
   val typeClass = classOf[`type.Json`]
 
   val typeName = "Json"
+  val typeNameShort = "Js"
   val typeNameSafe = "Json"
 
   val typeSingleName = "Json"

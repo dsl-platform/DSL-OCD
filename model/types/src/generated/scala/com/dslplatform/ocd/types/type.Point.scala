@@ -8,6 +8,7 @@ trait `type.Point`
   val typeClass = classOf[`type.Point`]
 
   val typeName = "Point"
+  val typeNameShort = "Po"
   val typeNameSafe = "Point"
 
   val typeSingleName = "Point"

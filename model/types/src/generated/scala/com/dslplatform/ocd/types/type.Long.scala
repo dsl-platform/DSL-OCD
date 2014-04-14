@@ -8,6 +8,7 @@ trait `type.Long`
   val typeClass = classOf[`type.Long`]
 
   val typeName = "Long"
+  val typeNameShort = "Lo"
   val typeNameSafe = "Long"
 
   val typeSingleName = "Long"

@@ -8,6 +8,7 @@ trait `type.Native`
   val typeClass = classOf[`type.Native`]
 
   val typeName = "Native"
+  val typeNameShort = "Na"
   val typeNameSafe = "Native"
 
   val typeSingleName = "Native"

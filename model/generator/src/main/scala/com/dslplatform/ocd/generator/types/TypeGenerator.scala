@@ -25,6 +25,7 @@ trait `type.${name}`
   val typeClass = classOf[`type.${name}`]
 
   val typeName = "${name}"
+  val typeNameShort = "${t.shortName}"
   val typeNameSafe = "${t.name.typeNameSafe}"
 
   val typeSingleName = "${t.name.singleName}"

@@ -8,6 +8,7 @@ trait `type.Stream`
   val typeClass = classOf[`type.Stream`]
 
   val typeName = "Stream"
+  val typeNameShort = "Sm"
   val typeNameSafe = "Stream"
 
   val typeSingleName = "Stream"

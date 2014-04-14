@@ -3,9 +3,9 @@ package generator
 package types
 
 case class TypeName(
-    dslName: String,
-    singleName: String,
-    pluralName: String) {
+    dslName: String
+  , singleName: String
+  , pluralName: String) {
   def typeNameSafe = dslName.replaceAll("[^-\\w]+", "")
 }
 
@@ -18,11 +18,11 @@ object TypeName {
 }
 
 object Type {
-   def apply(name: String, aliases: String*): Type =
-    Type(TypeName(name), aliases.map(TypeName(_)))
+   def apply(shortName: String, name: String, aliases: String*): Type =
+    Type(shortName, TypeName(name), aliases.map(TypeName(_)))
 }
 
-case class Type(name: TypeName, aliases: Seq[TypeName] = Nil) {
+case class Type(shortName: String, name: TypeName, aliases: Seq[TypeName] = Nil) {
   def derivedAliases =
     (name +: aliases) map(_.dslName) flatMap( n => Set(
       n

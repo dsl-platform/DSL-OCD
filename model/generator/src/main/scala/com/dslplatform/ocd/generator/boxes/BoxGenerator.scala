@@ -23,6 +23,7 @@ trait `box.${b.name}`
   val boxClass = classOf[`box.${b.name}`]
 
   val boxName = "${b.name}"
+  val boxNameShort = "${b.base.shortName}${b.collectionFamily.map(c => c._1.shortName + c._2.shortName).getOrElse("")}"
   val boxAliases = Set${if (b.aliases.isEmpty) ".empty[String]" else b.aliases.mkString("(\"", "\", \"", "\")") }
 
   val isOne = ${b.base eq SingleFamily.One}

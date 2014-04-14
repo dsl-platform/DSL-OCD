@@ -7,27 +7,10 @@ git reset --hard HEAD~10
 git clean -d -f
 git fetch origin
 git merge origin/master
-cd ~/code/DSL-OCD/code/tools
-./prepare-workspace.sh
-./publish.sh
-cd ~/code/DSL-OCD/code/model
-./prepare-workspace.sh
-./run.sh
-cd ~/code/DSL-OCD/generated/model/types
-./prepare-workspace.sh
-./cross-publish.sh
-cd ~/code/DSL-OCD/generated/model/boxes
-./prepare-workspace.sh
-./cross-publish.sh
-cd ~/code/DSL-OCD/generated/model/dsls
-./prepare-workspace.sh
-./cross-publish.sh
-cd ~/code/DSL-OCD/generated/model/javas
-./prepare-workspace.sh
-./cross-publish.sh
-cd ~/code/DSL-OCD/generated/model/javaasserts
-./prepare-workspace.sh
-./publish.sh
-cd ~/code/DSL-OCD/generated/model/scalas
-./prepare-workspace.sh
-./cross-publish.sh
+cd ~/code/DSL-OCD/model/generator && ./prepare-workspace.sh && ./run.sh
+cd ~/code/DSL-OCD/model/types && ./prepare-workspace.sh && ./cross-publish.sh
+cd ~/code/DSL-OCD/model/boxes && ./prepare-workspace.sh && ./cross-publish.sh
+cd ~/code/DSL-OCD/model/javas && ./prepare-workspace.sh && ./cross-publish.sh
+cd ~/code/DSL-OCD/model/javaasserts && ./prepare-workspace.sh && ./publish.sh
+cd ~/code/DSL-OCD/model/scalas && ./prepare-workspace.sh && ./cross-publish.sh
+cd ~/code/DSL-OCD/model/dsls && ./prepare-workspace.sh && ./cross-publish.sh

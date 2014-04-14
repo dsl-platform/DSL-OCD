@@ -8,6 +8,7 @@ trait `type.Binary`
   val typeClass = classOf[`type.Binary`]
 
   val typeName = "Binary"
+  val typeNameShort = "Bi"
   val typeNameSafe = "Binary"
 
   val typeSingleName = "Binary"

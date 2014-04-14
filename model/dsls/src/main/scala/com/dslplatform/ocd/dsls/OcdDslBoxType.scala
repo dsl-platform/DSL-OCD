@@ -5,7 +5,9 @@ trait OcdDslBoxType
     extends types.OcdType
     with boxes.OcdBox{
 
-  val dslName = toString.substring(4) // "dsl."
+  def dslName = toString substring 4 // "dsl."
+  def dslDesc = boxName + (if (isCollection) typePluralName else typeSingleName)
+  def dslDescShort = boxNameShort + typeNameShort
 }
 
 object OcdDslBoxType

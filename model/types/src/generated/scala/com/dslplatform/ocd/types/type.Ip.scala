@@ -8,6 +8,7 @@ trait `type.Ip`
   val typeClass = classOf[`type.Ip`]
 
   val typeName = "Ip"
+  val typeNameShort = "Ip"
   val typeNameSafe = "Ip"
 
   val typeSingleName = "Ip"

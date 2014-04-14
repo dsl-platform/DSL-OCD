@@ -8,6 +8,7 @@ trait `type.Decimal(9)`
   val typeClass = classOf[`type.Decimal(9)`]
 
   val typeName = "Decimal(9)"
+  val typeNameShort = "D9"
   val typeNameSafe = "Decimal9"
 
   val typeSingleName = "DecimalWithScaleOf9"

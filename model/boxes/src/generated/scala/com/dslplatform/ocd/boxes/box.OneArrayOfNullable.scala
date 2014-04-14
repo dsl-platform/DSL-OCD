@@ -8,6 +8,7 @@ trait `box.OneArrayOfNullable`
   val boxClass = classOf[`box.OneArrayOfNullable`]
 
   val boxName = "OneArrayOfNullable"
+  val boxNameShort = "1A0"
   val boxAliases = Set("OneBracketsOfNullable")
 
   val isOne = true

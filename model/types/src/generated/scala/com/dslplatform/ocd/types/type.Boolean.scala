@@ -8,6 +8,7 @@ trait `type.Boolean`
   val typeClass = classOf[`type.Boolean`]
 
   val typeName = "Boolean"
+  val typeNameShort = "Bo"
   val typeNameSafe = "Boolean"
 
   val typeSingleName = "Boolean"

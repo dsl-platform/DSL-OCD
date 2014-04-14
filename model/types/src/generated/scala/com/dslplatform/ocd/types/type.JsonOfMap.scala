@@ -8,6 +8,7 @@ trait `type.JsonOf<Map>`
   val typeClass = classOf[`type.JsonOf<Map>`]
 
   val typeName = "JsonOf<Map>"
+  val typeNameShort = "JM"
   val typeNameSafe = "JsonOfMap"
 
   val typeSingleName = "JsonOfMapKind"

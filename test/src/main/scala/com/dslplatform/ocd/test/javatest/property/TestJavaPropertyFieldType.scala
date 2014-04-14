@@ -13,29 +13,32 @@ trait TestJavaPropertyFieldType
   def visibility: Visibility
   def modifiers: Set[Modifier]
 
-  private def propertyName = property.propertyName
-  private def PropertyName = property.propertyName.fciu
+  private def propertyName = property.name
+  private def PropertyName = property.name.fciu
 
-  def testComponentBody = (property.propertyBoxKind match {
-    case propertyType: OcdJavaBoxType =>
-      new TestJavaBoxTypePropertyFieldType(propertyType)
+  private def defaultValue = property match {
+    case p: OcdJavaBoxTypeProperty => p.boxType.defaultValue
+    case _ => s"new ${property.javaType}()"
+  }
 
-    case x =>
-      ???
-  }).testComponentBody
+  private def javaClass = property match {
+    case p: OcdJavaBoxTypeProperty => p.boxType.javaClass
+    case _ => property.javaType.toString
+  }
 
-  class TestJavaBoxTypePropertyFieldType(
-      propertyType: OcdJavaBoxType
-    ) extends TestComponent {
+  private def hasGenerics = property match {
+    case p: OcdJavaBoxTypeProperty => p.boxType.hasGenerics
+    case _ => javaClass.contains('<')
+  }
 
-    def testComponentBody = (
-      visibilityTest
-    + modifiersTest
-    + classTest
-    + propertyType.hasGenerics.ifTrue(genericsTypeTest)
-    )
+  def testComponentBody = (
+    visibilityTest
+  + modifiersTest
+  + classTest
+  + hasGenerics.ifTrue(genericsTypeTest)
+  )
 
-    private def visibilityTest = s"""
+  private def visibilityTest = s"""
     /* Testing the "${propertyName}" property field ${visibility.name} visibility via reflection (no instantiation) */
     @org.junit.Test
     public void test${PropertyName}PropertyField${visibility}Visibility() throws NoSuchFieldException {
@@ -46,7 +49,7 @@ trait TestJavaPropertyFieldType
     }
 """
 
-    private def modifiersTest = s"""
+  private def modifiersTest = s"""
     /* Testing the "${propertyName}" property field modifiers ${modifiers.nonEmpty.ifTrue(modifiers.map(_.name).mkString("(", ", ", ") "))}via reflection (no instantiation) */
     @org.junit.Test
     public void test${PropertyName}PropertyFieldModifiers() throws NoSuchFieldException {
@@ -57,18 +60,18 @@ trait TestJavaPropertyFieldType
     }
 """
 
-    private def classTest = s"""
+  private def classTest = s"""
     /* Testing the "${propertyName}" property field class via reflection (no instantiation) */
     @org.junit.Test
     public void test${PropertyName}PropertyFieldClass() throws NoSuchFieldException {
         org.junit.Assert.assertEquals(
-                ${propertyType.javaType.baseClass}.class,
+                ${property.javaType.baseClass}.class,
                 ${conceptName}.class.getDeclaredField(
                         "${propertyName}").getType());
     }
 """
 
-    private def genericsTypeTest = s"""
+  private def genericsTypeTest = s"""
     /* Testing the "${propertyName}" property field generic type via reflection (no instantiation) */
     @org.junit.Test
     public void test${PropertyName}PropertyFieldGenericType() throws NoSuchFieldException {
@@ -77,10 +80,9 @@ trait TestJavaPropertyFieldType
                     @SuppressWarnings("unused")
                     ${visibility.javaFieldPrefix}${
                       modifiers.filterNot(Modifier.Static ==).map(_.javaFieldPrefix).mkString
-                    }${propertyType.javaClass} ${propertyName} = ${propertyType.defaultValue};
+                    }${javaClass} ${propertyName} = ${defaultValue};
                 }.getClass().getDeclaredField("${propertyName}").getGenericType(),
                 ${conceptName}.class.getDeclaredField("${propertyName}").getGenericType());
     }
 """
-  }
 }

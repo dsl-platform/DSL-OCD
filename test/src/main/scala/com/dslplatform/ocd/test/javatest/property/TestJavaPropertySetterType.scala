@@ -13,21 +13,23 @@ trait TestJavaPropertySetterType
   def visibility: Visibility
   def modifiers: Set[Modifier]
 
-  private def propertyName = property.propertyName
-  private def PropertyName = property.propertyName.fciu
+  private def propertyName = property.name
+  private def PropertyName = property.name.fciu
   private def setterName = "set" + PropertyName
 
-  def testComponentBody = (property.propertyBoxKind match {
-    case propertyType: OcdJavaBoxType =>
-      new TestJavaBoxTypePropertySetterType(propertyType)
+  def testComponentBody = (property match {
+    case property: OcdJavaBoxTypeProperty =>
+      new TestJavaBoxTypePropertySetterType(property)
 
     case x =>
       ???
   }).testComponentBody
 
   class TestJavaBoxTypePropertySetterType(
-      propertyType: OcdJavaBoxType
+      property: OcdJavaBoxTypeProperty
     ) extends TestComponent {
+
+    private val propertyType = property.boxType
 
     def testComponentBody = (
       visibilityTest

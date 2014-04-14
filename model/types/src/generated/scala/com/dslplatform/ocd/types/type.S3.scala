@@ -8,6 +8,7 @@ trait `type.S3`
   val typeClass = classOf[`type.S3`]
 
   val typeName = "S3"
+  val typeNameShort = "S3"
   val typeNameSafe = "S3"
 
   val typeSingleName = "S3"

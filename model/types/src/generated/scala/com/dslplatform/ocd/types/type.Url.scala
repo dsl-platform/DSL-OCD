@@ -8,6 +8,7 @@ trait `type.Url`
   val typeClass = classOf[`type.Url`]
 
   val typeName = "Url"
+  val typeNameShort = "Ur"
   val typeNameSafe = "Url"
 
   val typeSingleName = "Url"

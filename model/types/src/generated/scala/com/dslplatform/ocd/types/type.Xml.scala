@@ -8,6 +8,7 @@ trait `type.Xml`
   val typeClass = classOf[`type.Xml`]
 
   val typeName = "Xml"
+  val typeNameShort = "Xm"
   val typeNameSafe = "Xml"
 
   val typeSingleName = "Xml"

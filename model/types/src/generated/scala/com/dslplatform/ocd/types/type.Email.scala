@@ -8,6 +8,7 @@ trait `type.Email`
   val typeClass = classOf[`type.Email`]
 
   val typeName = "Email"
+  val typeNameShort = "Em"
   val typeNameSafe = "Email"
 
   val typeSingleName = "Email"
