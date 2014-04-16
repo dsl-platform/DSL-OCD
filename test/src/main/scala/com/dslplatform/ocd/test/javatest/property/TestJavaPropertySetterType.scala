@@ -26,7 +26,7 @@ trait TestJavaPropertySetterType
   private def nonExistenceTest = s"""
     /* Testing the non-existence of the "${propertyName}" property setter (no instantiation) */
     @org.junit.Test(expected=java.lang.NoSuchMethodException.class)
-    public void testNonExistenceOf${PropertyName}PropertySetter() throws NoSuchMethodException {
+    public void testNonExistenceOf${PropertyName}PropertySetter${testSuffix}() throws NoSuchMethodException {
         org.junit.Assert.assertEquals(
                 ${visibility.javaModifier},
                 ${conceptName}.class.getDeclaredMethod(
@@ -37,7 +37,7 @@ trait TestJavaPropertySetterType
   private def visibilityTest = s"""
     /* Testing the "${propertyName}" property setter ${visibility.name} visibility via reflection (no instantiation) */
     @org.junit.Test
-    public void test${PropertyName}PropertySetter${visibility}Visibility() throws NoSuchMethodException {
+    public void test${PropertyName}PropertySetter${visibility}Visibility${testSuffix}() throws NoSuchMethodException {
         org.junit.Assert.assertEquals(
                 ${visibility.javaModifier},
                 ${conceptName}.class.getDeclaredMethod(
@@ -48,7 +48,7 @@ trait TestJavaPropertySetterType
   private def modifiersTest = s"""
     /* Testing the "${propertyName}" property setter modifiers ${if (modifiers.isEmpty) "" else modifiers.map(_.name).mkString("(", ", ", ") ")}via reflection (no instantiation) */
     @org.junit.Test
-    public void test${PropertyName}PropertySetterModifiers() throws NoSuchMethodException {
+    public void test${PropertyName}PropertySetterModifiers${testSuffix}() throws NoSuchMethodException {
         org.junit.Assert.assertEquals(
                 ${modifiers.map(_.javaModifier).mkString(" | ") match { case x if x.nonEmpty => x; case _ => "0"}},
                 ${conceptName}.class.getDeclaredMethod(
@@ -59,7 +59,7 @@ trait TestJavaPropertySetterType
   private def classTest = s"""
     /* Testing the "${propertyName}" property setter class via reflection (no instantiation) */
     @org.junit.Test
-    public void test${PropertyName}PropertySetterClass() throws NoSuchMethodException {
+    public void test${PropertyName}PropertySetterClass${testSuffix}() throws NoSuchMethodException {
         org.junit.Assert.assertEquals(
                 ${conceptName}.class,
                 ${conceptName}.class.getDeclaredMethod(
@@ -70,7 +70,7 @@ trait TestJavaPropertySetterType
   private def genericsTypeTest = s"""
     /* Testing the "${propertyName}" property setter generic type via reflection (no instantiation) */
     @org.junit.Test
-    public void test${PropertyName}PropertySetterGenericType() throws NoSuchMethodException, NoSuchFieldException {
+    public void test${PropertyName}PropertySetterGenericType${testSuffix}() throws NoSuchMethodException, NoSuchFieldException {
         org.junit.Assert.assertEquals(
                 new Object() {
                     ${visibility.javaFieldPrefix}${

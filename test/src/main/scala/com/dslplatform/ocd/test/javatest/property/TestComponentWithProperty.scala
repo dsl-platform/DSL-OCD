@@ -12,6 +12,8 @@ trait TestComponentWithProperty
   def conceptName: String
   def property: OcdJavaProperty
 
+  protected def testSuffix = ""
+
   protected def propertyName = property.name
   protected def PropertyName = property.name.fciu
 

@@ -79,12 +79,15 @@ trait TestJavaPropertyInAggregate
         aggregate.persist();
 
         // check that the property retrieved from revenj (persist will mutate the aggregate)
-        ${assertEquals("aggregate")}
+        ${assertEquals(s"aggregate.get${PropertyName}()")}
 
         final ${conceptName} aggregateFound =
                 ${conceptName}.find(aggregate.getURI());
 
-        // check that the property retrieved from the database
+        final ${conceptName} aggregateFound =
+                ${conceptName}.find(aggregate.getURI());
+
+        // check the property retrieved from the database
         ${assertEquals("aggregateFound")}
 
         // aggregates are compared via URI equality - both URIs have be initialized at this point

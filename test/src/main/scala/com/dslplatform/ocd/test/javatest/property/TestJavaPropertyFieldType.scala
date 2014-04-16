@@ -21,7 +21,7 @@ trait TestJavaPropertyFieldType
   private def visibilityTest = s"""
     /* Testing the "${propertyName}" property field ${visibility.name} visibility via reflection (no instantiation) */
     @org.junit.Test
-    public void test${PropertyName}PropertyField${visibility}Visibility() throws NoSuchFieldException {
+    public void test${PropertyName}PropertyField${visibility}Visibility${testSuffix}() throws NoSuchFieldException {
         org.junit.Assert.assertEquals(
                 ${visibility.javaModifier},
                 ${conceptName}.class.getDeclaredField(
@@ -32,7 +32,7 @@ trait TestJavaPropertyFieldType
   private def modifiersTest = s"""
     /* Testing the "${propertyName}" property field modifiers ${modifiers.nonEmpty.ifTrue(modifiers.map(_.name).mkString("(", ", ", ") "))}via reflection (no instantiation) */
     @org.junit.Test
-    public void test${PropertyName}PropertyFieldModifiers() throws NoSuchFieldException {
+    public void test${PropertyName}PropertyFieldModifiers${testSuffix}() throws NoSuchFieldException {
         org.junit.Assert.assertEquals(
                 ${modifiers.map(_.javaModifier).mkString(" | ") match { case x if x.nonEmpty => x; case _ => "0"}},
                 ${conceptName}.class.getDeclaredField(
@@ -43,7 +43,7 @@ trait TestJavaPropertyFieldType
   private def classTest = s"""
     /* Testing the "${propertyName}" property field class via reflection (no instantiation) */
     @org.junit.Test
-    public void test${PropertyName}PropertyFieldClass() throws NoSuchFieldException {
+    public void test${PropertyName}PropertyFieldClass${testSuffix}() throws NoSuchFieldException {
         org.junit.Assert.assertEquals(
                 ${property.javaType.baseClass}.class,
                 ${conceptName}.class.getDeclaredField(
@@ -54,7 +54,7 @@ trait TestJavaPropertyFieldType
   private def genericsTypeTest = s"""
     /* Testing the "${propertyName}" property field generic type via reflection (no instantiation) */
     @org.junit.Test
-    public void test${PropertyName}PropertyFieldGenericType() throws NoSuchFieldException {
+    public void test${PropertyName}PropertyFieldGenericType${testSuffix}() throws NoSuchFieldException {
         org.junit.Assert.assertEquals(
                 new Object() {
                     @SuppressWarnings("unused")

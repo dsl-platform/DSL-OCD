@@ -14,17 +14,18 @@ class EntryPoint(
 
   def run(): Unit = {
     val turtles = Seq(
-      TestJavaAssertsBorderValuesTurtle
-    , TestJavaPropertyFieldTypeTurtle
-    , TestJavaPropertyGetterTypeTurtle
-    , TestJavaPropertySetterTypeTurtle
+//      TestJavaAssertsBorderValuesTurtle
+//    , TestJavaPropertyFieldTypeTurtle
+//    , TestJavaPropertyGetterTypeTurtle
+//    , TestJavaPropertySetterTypeTurtle
     )
 
     import test.javatest.property._
     val projects =
-      ValueWithOnePropertyTestProject.projects ++
-      AggregateWithOnePropertyTestProject.projects ++
-      AggregateWithSurrogateKeyAndOnePropertyTestProject.projects ++
+//      ValueWithOnePropertyTestProject.projects ++
+//      AggregateWithOnePropertyTestProject.projects ++
+//      AggregateWithSurrogateKeyAndOnePropertyTestProject.projects ++
+      CalculatedPropertyInSnowflakeTestProject.projects
       Nil
 
     testDeployer.deployTests(turtles ++ projects)

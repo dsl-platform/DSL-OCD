@@ -11,7 +11,7 @@ object TestJavaPropertySetterTypeTurtle
     extends ITestProject {
 
   def projectPath = "turtles/setters"
-  def projectName = "OCD Java Property Setter Type Tests"
+  def projectName = "OCD Java Property Setter Type Turtle"
 
   def dslFiles = Map.empty
   def testFiles = Map(

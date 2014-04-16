@@ -19,7 +19,7 @@ object AggregateRootSugar {
   val values: IndexedSeq[AggregateRootSugar] = IndexedSeq(StandardAggregate, BigAggregate, GuidAggregate)
 }
 
-object AggregateWithSurrogateKeyAndOnePropertySetup {
+private[domain] object AggregateWithSurrogateKeyAndOnePropertySetup {
   val setups = for {
     st <- AggregateRootSugar.values
     t <- OcdType.useCaseValues
@@ -30,7 +30,7 @@ object AggregateWithSurrogateKeyAndOnePropertySetup {
   }
 }
 
-class AggregateWithSurrogateKeyAndOnePropertySetup(
+private[domain] class AggregateWithSurrogateKeyAndOnePropertySetup(
     val sugarType: AggregateRootSugar
   , val propertyType: OcdDslBoxType
   ) extends TestSetup {

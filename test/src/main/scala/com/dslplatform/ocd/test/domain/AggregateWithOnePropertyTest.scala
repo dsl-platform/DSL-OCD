@@ -11,7 +11,7 @@ import javas._
 import javatest._
 import javatest.property._
 
-object AggregateWithOnePropertySetup {
+private[domain] object AggregateWithOnePropertySetup {
   val setups = for {
     t <- OcdType.useCaseValues
     b <- OcdBox.values
@@ -23,7 +23,7 @@ object AggregateWithOnePropertySetup {
   }
 }
 
-class AggregateWithOnePropertySetup(
+private[domain] class AggregateWithOnePropertySetup(
     val propertyType: OcdDslBoxType
   ) extends TestSetup {
 
@@ -55,7 +55,7 @@ class AggregateWithOnePropertyTestProject(
   ) extends ITestProject {
 
   def projectPath = "aggregates/primary-single-" + setup.AggregateName
-  def projectName = "OCD Single Primary Key Property in Aggregate Tests (" + setup.AggregateName + ")"
+  def projectName = s"OCD Single Primary Key Property in Aggregate Tests (${setup.AggregateName})"
 
   def dslFiles = setup.dslFiles
 

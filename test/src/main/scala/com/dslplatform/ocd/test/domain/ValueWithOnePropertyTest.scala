@@ -11,7 +11,7 @@ import javas._
 import javatest._
 import javatest.property._
 
-object ValueWithOnePropertySetup {
+private[domain] object ValueWithOnePropertySetup {
   val setups = for {
     t <- OcdType.useCaseValues
     b <- OcdBox.values
@@ -21,7 +21,7 @@ object ValueWithOnePropertySetup {
   }
 }
 
-class ValueWithOnePropertySetup(
+private[domain] class ValueWithOnePropertySetup(
     val propertyType: OcdDslBoxType
   ) extends TestSetup {
 

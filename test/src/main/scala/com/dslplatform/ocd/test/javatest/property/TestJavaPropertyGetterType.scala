@@ -25,7 +25,7 @@ trait TestJavaPropertyGetterType
   private def visibilityTest = s"""
     /* Testing the "${propertyName}" property getter ${visibility.name} visibility via reflection (no instantiation) */
     @org.junit.Test
-    public void test${PropertyName}PropertyGetter${visibility}Visibility() throws NoSuchMethodException {
+    public void test${PropertyName}PropertyGetter${visibility}Visibility${testSuffix}() throws NoSuchMethodException {
         org.junit.Assert.assertEquals(
                 ${visibility.javaModifier},
                 ${conceptName}.class.getDeclaredMethod(
@@ -36,7 +36,7 @@ trait TestJavaPropertyGetterType
   private def modifiersTest = s"""
     /* Testing the "${propertyName}" property getter modifiers ${if (modifiers.isEmpty) "" else modifiers.map(_.name).mkString("(", ", ", ") ")}via reflection (no instantiation) */
     @org.junit.Test
-    public void test${PropertyName}PropertyGetterModifiers() throws NoSuchMethodException {
+    public void test${PropertyName}PropertyGetterModifiers${testSuffix}() throws NoSuchMethodException {
         org.junit.Assert.assertEquals(
                 ${modifiers.map(_.javaModifier).mkString(" | ") match { case x if x.nonEmpty => x; case _ => "0"}},
                 ${conceptName}.class.getDeclaredMethod(
@@ -47,7 +47,7 @@ trait TestJavaPropertyGetterType
   private def classTest = s"""
     /* Testing the "${propertyName}" property getter class via reflection (no instantiation) */
     @org.junit.Test
-    public void test${PropertyName}PropertyGetterClass() throws NoSuchMethodException {
+    public void test${PropertyName}PropertyGetterClass${testSuffix}() throws NoSuchMethodException {
         org.junit.Assert.assertEquals(
                 ${baseClass},
                 ${conceptName}.class.getDeclaredMethod(
@@ -58,7 +58,7 @@ trait TestJavaPropertyGetterType
   private def genericsTypeTest = s"""
     /* Testing the "${propertyName}" property getter generic type via reflection (no instantiation) */
     @org.junit.Test
-    public void test${PropertyName}PropertyGetterGenericType() throws NoSuchMethodException {
+    public void test${PropertyName}PropertyGetterGenericType${testSuffix}() throws NoSuchMethodException {
         org.junit.Assert.assertEquals(
                 new Object() {
                     @SuppressWarnings("unused")
