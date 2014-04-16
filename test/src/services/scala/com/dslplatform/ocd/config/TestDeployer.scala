@@ -169,6 +169,7 @@ private[config] class TestDeployer(
 
         language match {
           case JAVA =>
+            {
             val path = languageRoot / "compiler.bat"
             logger.trace("Creating the compiler script: " + path.path)
 
@@ -176,6 +177,17 @@ private[config] class TestDeployer(
               classOf[TestDeployer].getResourceAsStream("/template.compiler.bat"))
 
             path.write(body)
+            }
+            {
+            val path = languageRoot / "compiler.sh"
+            logger.trace("Creating the compiler script: " + path.path)
+
+            val body = IOUtils.toByteArray(
+              classOf[TestDeployer].getResourceAsStream("/template.compiler.sh"))
+
+            path.write(body)
+            }
+
 
           case _ =>
         }
