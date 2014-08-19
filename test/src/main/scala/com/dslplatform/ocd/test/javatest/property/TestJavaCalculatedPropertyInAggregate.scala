@@ -50,7 +50,7 @@ trait TestJavaCalculatedPropertyInAggregate
                 .set${PropertyName}(testValue);"""}}
 
         // persist via active record pattern
-        aggregate.persist();
+        aggregate.create();
 
         // check that the property retrieved from revenj (persist will mutate the aggregate)
         ${assertEquals(s"aggregate.get${PropertyName}()")}

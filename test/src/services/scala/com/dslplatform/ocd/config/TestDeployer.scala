@@ -1,13 +1,50 @@
 package com.dslplatform.ocd
 package config
 
-import scalax.file._
 import scalax.io.Codec.UTF8
-
 import scala.collection.mutable.LinkedHashMap
 import test.javatest.TestSuiteCreator
 import test.javatest.JavaInfo
 import org.apache.commons.io.IOUtils
+import org.apache.commons.io.FileUtils
+
+private class ProjectNamesToPorts(logger: Logger, testSettings: ITestSettings){
+
+  val propertiesSourceFile = testSettings.workspace.path / "projectNamesToPorts.properties"
+  var portSequence: Int = 2000;
+
+  private val props = new java.util.Properties()
+  if(propertiesSourceFile.exists){
+   props.load(new java.io.FileInputStream(propertiesSourceFile.path))
+   val propsIt = props.stringPropertyNames().iterator();
+   while(propsIt.hasNext()){
+    val propName = propsIt.next()
+    val propVal = props.getProperty(propName).toInt
+    if (propVal > portSequence){
+      portSequence = propVal
+    }
+  }
+  }
+
+  def generateProjectRevenjPort(projectDatabaseName: String) = {
+    if(this.props.containsKey(projectDatabaseName)){
+      this.apply(projectDatabaseName)
+    }else{
+      this.portSequence += 1;
+      this.update(projectDatabaseName, portSequence)
+      this.portSequence
+    }
+  }
+
+  def update(projectDatabase:String, port:Int) = {
+    props.setProperty(projectDatabase, port.toString())
+    props.store(new java.io.FileOutputStream(propertiesSourceFile.path), null)
+  }
+
+  def apply(key: String) = {
+    props.getProperty(key).toInt
+  }
+}
 
 private[config] class TestDeployer(
     logger: Logger
@@ -16,14 +53,36 @@ private[config] class TestDeployer(
 
   private val root = testSettings.workspace.path
 
-  class TestSetup(testProject: ITestProject) {
+  class TestSetup(testProject: ITestProject, projectNamesToPorts : ProjectNamesToPorts) {
+
     private val projectRoot = root / (testProject.projectPath, '/')
 
+    // TODO: Add this as another property to ITestProject, this is just a tmp workaround since
+    // such a change would require a lot of modifications on many places
+    private val projectDatabaseName = testProject.projectPath.replaceAll(".*/","")
+
+    private val projectRevenjPort = projectNamesToPorts.generateProjectRevenjPort(projectDatabaseName);
+
+    private val commonsPath =
+      projectRoot / "commons"
+
+    private val configPath =
+      commonsPath / "config"
+
+    private val clientRoot =
+      projectRoot / "client"
+
+    private val serverRoot =
+      projectRoot / "server"
+
+    private val revenjTargetPath =
+      projectRoot / "revenj"
+
     private val dslPath =
-      projectRoot / "dsl"
+      clientRoot / "dsl"
 
     private def languagePath(language: Language) =
-      projectRoot / language.language.toLowerCase
+      clientRoot / language.language.toLowerCase
 
     private def generatedPath(language: Language) =
       languagePath(language) / "src" / "generated"
@@ -68,6 +127,59 @@ private[config] class TestDeployer(
         logger.trace("Deploying DSL: " + path.path)
         path.write(body)
       }
+    }
+
+    private def deployCommons(): Unit = {
+      if (!commonsPath.exists) {
+        logger.trace("Creating the common files path: " + commonsPath.path)
+        commonsPath.createDirectory(true, false)
+      }
+
+      {
+        if (!configPath.exists) {
+          logger.trace("Creating the configuration files path: " + configPath.path)
+          configPath.createDirectory(true, false)
+        }
+
+        val path = configPath / "dsl.props"
+        logger.trace("Deploying the dsl.props file: " + path.path)
+
+        val body = IOUtils.toString(
+          classOf[TestDeployer].getResourceAsStream("/template.dsl.props"))
+          .replace("${projectDatabaseName}", projectDatabaseName)
+          .replace("${projectPort}", projectRevenjPort.toString());
+
+        // TODO: replace configuration params to match this specific project settings
+
+        path.write(body)
+      }
+    }
+
+    private def deployServer(): Unit = {
+      // Copy the server resources
+
+      val revenjTemplateDir = new java.io.File(classOf[TestDeployer].getResource("/template.revenj").toURI());
+      val revenjTargetDir = new java.io.File(revenjTargetPath.toURI);
+
+      if (!revenjTargetPath.exists) {
+          logger.trace("Creating the revenj target path: " + revenjTargetPath.path)
+          revenjTargetPath.createDirectory(true, false)
+        }
+
+      FileUtils.copyDirectory(revenjTemplateDir, revenjTargetDir);
+
+      // TODO: replace configuration params to match this specific project settings
+      val revenjConfig = IOUtils.toString(
+                classOf[TestDeployer].getResourceAsStream(
+                    "/template.revenj/Revenj.Http.exe.config"))
+                .replace("${projectDatabaseName}", projectDatabaseName)
+                .replace("${projectPort}", projectRevenjPort.toString());
+
+      val revenjConfigTargetPath = revenjTargetPath / "Revenj.Http.exe.config"
+      logger.trace("Writing the revenj configuration at: " + revenjConfigTargetPath.path);
+      revenjConfigTargetPath.write(revenjConfig)(UTF8)
+
+      ()
     }
 
     private def deployGenerated(): Unit =
@@ -156,42 +268,58 @@ private[config] class TestDeployer(
         logger.trace("Creating the test resource path: " + resourcePath.path)
         resourcePath.createDirectory(true, false)
 
-        val resourceLogback = resourcePath / "logback-test.xml"
-        logger.trace("Writing logback-test.xml: " + resourceLogback.path)
-        val logbackBody = IOUtils.toByteArray(
-              classOf[TestDeployer].getResourceAsStream("/template.logback-test.xml"))
-        resourceLogback.write(logbackBody)
+        {
+          val resourceLogback = resourcePath / "logback-test.xml"
+          logger.trace("Writing logback-test.xml: " + resourceLogback.path)
+          val logbackBody = IOUtils.toByteArray(
+                classOf[TestDeployer].getResourceAsStream("/template.logback-test.xml"))
+          resourceLogback.write(logbackBody)
+        }
+        {
+          val resourceDslProjectIni = resourcePath / "dsl-project.ini"
+          logger.trace("Writing dsl-project.ini: " + resourceDslProjectIni.path)
+          val dslProjectIniBody = IOUtils.toString(
+                classOf[TestDeployer].getResourceAsStream("/template.dsl-project.ini"))
+                .replace("${projectPort}", projectRevenjPort.toString());
+          resourceDslProjectIni.write(dslProjectIniBody)
+        }
       }
 
     private def deployCompilerScript(): Unit =
+
+      /* TODO: copy these not to root but to project category root (aggregates, snowflakes, values)
+       * atm these are hard-coded in individual test generators */
+//      copyTemplate("compile_all.sh", root)
+//      copyTemplate("deploy_all.sh",  root)
+
       testProject.testFiles.keys foreach { case language =>
         val languageRoot = languagePath(language)
-
         language match {
           case JAVA =>
             {
-            val path = languageRoot / "compiler.bat"
-            logger.trace("Creating the compiler script: " + path.path)
-
-            val body = IOUtils.toByteArray(
-              classOf[TestDeployer].getResourceAsStream("/template.compiler.bat"))
-
-            path.write(body)
+                copyTemplate("compiler.bat", projectRoot);
+                copyTemplate("compiler.sh", projectRoot);
+                copyTemplate("runRevenj.sh", projectRoot);
+                copyTemplate("create_database.sh", projectRoot);
+                copyTemplate("compile_dsls.sh", projectRoot);
             }
-            {
-            val path = languageRoot / "compiler.sh"
-            logger.trace("Creating the compiler script: " + path.path)
-
-            val body = IOUtils.toByteArray(
-              classOf[TestDeployer].getResourceAsStream("/template.compiler.sh"))
-
-            path.write(body)
-            }
-
-
           case _ =>
         }
       }
+
+    private def copyTemplate(scriptName: String, target: Path) = {
+        {
+            val path = target / scriptName
+            logger.trace("Creating the "+ scriptName +" script: " + path.path)
+
+            val body = IOUtils.toString(
+              classOf[TestDeployer].getResourceAsStream("/template."+scriptName))
+                .replace("${projectDatabaseName}", projectDatabaseName)
+                .replace("${projectPort}", projectRevenjPort.toString);
+
+            path.write(body)
+        }
+    }
 
     private def deployEclipseProject(): Unit =
       testProject.testFiles.keys foreach { case language =>
@@ -229,6 +357,8 @@ private[config] class TestDeployer(
 
       deployDsl()
       deployGenerated()
+      deployCommons()
+      deployServer()
       deployMain()
       deployTests()
 
@@ -238,6 +368,7 @@ private[config] class TestDeployer(
   }
 
   def deployTests(tests: Seq[ITestProject]): Unit = {
-    tests.par foreach(new TestSetup(_).deploy())
+    val projectNamesToPorts = new ProjectNamesToPorts(logger, testSettings)
+    tests.par foreach(new TestSetup(_, projectNamesToPorts).deploy())
   }
 }

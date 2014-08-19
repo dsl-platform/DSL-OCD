@@ -1,3 +1,8 @@
+rem TODO: this is deprecated, rewrite this
+
+echo ### legacy compiler, do not use ###
+exit /B
+
 @echo off
 setlocal enabledelayedexpansion
 

@@ -53,7 +53,7 @@ trait TestJavaCalculatedPropertyInSnowflake
                 .set${PropertyName}(testValue);"""}}
 
         // persist via active record pattern
-        aggregate.persist();
+        aggregate.create();
 
         final ${snowflakeName} snowflake =
                 ${snowflakeName}.find(aggregate.getURI());

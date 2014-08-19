@@ -76,16 +76,16 @@ trait TestJavaPropertyInAggregate
                 .set${PropertyName}(testValue);"""}}
 
         // persist via active record pattern
-        aggregate.persist();
+        aggregate.create();
 
         // check that the property retrieved from revenj (persist will mutate the aggregate)
-        ${assertEquals(s"aggregate.get${PropertyName}()")}
+        ${assertEquals(s"aggregate")}
 
         final ${conceptName} aggregateFound =
                 ${conceptName}.find(aggregate.getURI());
 
-        final ${conceptName} aggregateFound =
-                ${conceptName}.find(aggregate.getURI());
+        //final ${conceptName} aggregateFound =
+        //        ${conceptName}.find(aggregate.getURI());
 
         // check the property retrieved from the database
         ${assertEquals("aggregateFound")}

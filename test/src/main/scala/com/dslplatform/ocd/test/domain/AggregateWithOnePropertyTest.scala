@@ -32,6 +32,7 @@ private[domain] class AggregateWithOnePropertySetup(
 
   def shortName = propertyType.dslDescShort
   def AggregateName = "A" + shortName
+  def aggregateName = AggregateName.fcil
   def propertyName = "p" + shortName
   def PropertyName = propertyName.fciu
 

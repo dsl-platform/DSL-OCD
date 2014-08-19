@@ -22,10 +22,10 @@ class EntryPoint(
 
     import test.javatest.property._
     val projects =
-//      ValueWithOnePropertyTestProject.projects ++
-//      AggregateWithOnePropertyTestProject.projects ++
-//      AggregateWithSurrogateKeyAndOnePropertyTestProject.projects ++
-//      CalculatedPropertyInSnowflakeTestProject.projects ++
+      ValueWithOnePropertyTestProject.projects ++
+      AggregateWithOnePropertyTestProject.projects ++
+      AggregateWithSurrogateKeyAndOnePropertyTestProject.projects ++
+      CalculatedPropertyInSnowflakeTestProject.projects ++
       AggregateWithSurrogateKeyAndOneValueTestProject.projects ++
       Nil
 
