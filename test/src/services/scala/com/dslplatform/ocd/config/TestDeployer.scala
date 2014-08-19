@@ -53,6 +53,11 @@ private[config] class TestDeployer(
 
   private val root = testSettings.workspace.path
 
+  if (!root.exists) {
+          logger.trace("Creating the root target path: " + root.path)
+          root.createDirectory(true, false)
+  }
+
   class TestSetup(testProject: ITestProject, projectNamesToPorts : ProjectNamesToPorts) {
 
     private val projectRoot = root / (testProject.projectPath, '/')
@@ -168,7 +173,6 @@ private[config] class TestDeployer(
 
       FileUtils.copyDirectory(revenjTemplateDir, revenjTargetDir);
 
-      // TODO: replace configuration params to match this specific project settings
       val revenjConfig = IOUtils.toString(
                 classOf[TestDeployer].getResourceAsStream(
                     "/template.revenj/Revenj.Http.exe.config"))
@@ -367,8 +371,23 @@ private[config] class TestDeployer(
     }
   }
 
+  private def copyTools(): Unit = {
+      // Copy the tools resources
+      val toolsTargetPath = root / ".." / "tools"
+      val toolsTemplateDir = new java.io.File(classOf[TestDeployer].getResource("/template.tools").toURI());
+      val toolsTargetDir = new java.io.File((toolsTargetPath).toURI);
+
+      if (!toolsTargetPath.exists) {
+          logger.trace("Creating the tools target path: " + toolsTargetPath.path)
+          toolsTargetPath.createDirectory(true, false)
+        }
+
+      FileUtils.copyDirectory(toolsTemplateDir, toolsTargetDir);
+    }
+
   def deployTests(tests: Seq[ITestProject]): Unit = {
     val projectNamesToPorts = new ProjectNamesToPorts(logger, testSettings)
+    copyTools()
     tests.par foreach(new TestSetup(_, projectNamesToPorts).deploy())
   }
 }
