@@ -8,11 +8,6 @@ The settings are loaded from
 
     /home/${user}/.config/DSL-OCD/ocd.config
 
-For running and compiling the tests you need to checkout https://github.com/hperadin/DSL-OCD-Example,
-and set the ${test-projects} path to:
-
-    DSL-OCD-Example/projects/
-
 ## An example
 
 Checkout https://github.com/hperadin/DSL-OCD-Example, and set your
@@ -22,18 +17,26 @@ Checkout https://github.com/hperadin/DSL-OCD-Example, and set your
 to something like this:
 
     model=/home/username/code/ocd/DSL-OCD/model
-    test-projects=/home/username/code/ocd/DSL-OCD-Example/projects
+    test-projects=/home/username/code/ocd/DSL-OCD-Target
 
 After running the test generator in:
 
 	/src/main/scala/com/dslplatform/ocd/EntryPoint.scala
 
-You will have the tests in the ${test-projects} directory.
+The tests will be generated per category in
 
-After generating the tests enter e.g. the directory aggregates, you should have the directory structure something like:
+    ${test-projects}
 
-    compile_all.sh
-    deploy_all.sh
+and the tooling required will be in:
+
+    ${test-projects}/tools
+
+After generating the tests enter a directory, e.g.:
+
+    cd aggregates
+
+you should have the directory structure something like:
+
     primary-single-Binary/
     primary-single-Boolean/
 	...
@@ -42,12 +45,8 @@ For running the compilation script you need to have a postgres server
 running at localhost:5432 (the username is 'ocduser', and the password
 'ocdpassword').
 
-The compile_all.sh script enters every single test project, tries to
-create the database, and to compile and download the DSLs, libs, etc.
-
-The deploy_all.sh script deploys the revenj instances.
-
-You can compile and deploy individual test projects using the scripts inside the project directories, for instance:
+Now You can compile and deploy individual test projects using the
+scripts inside the project directories, for instance:
 
     cd primary-single-Boolean/
 	bash create_database.sh
