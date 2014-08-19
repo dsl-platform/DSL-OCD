@@ -52,6 +52,7 @@ private[config] class TestDeployer(
   ) extends ITestDeployer {
 
   private val root = testSettings.workspace.path
+  private val toolsTargetPath = root / "tools"
 
   if (!root.exists) {
           logger.trace("Creating the root target path: " + root.path)
@@ -319,7 +320,8 @@ private[config] class TestDeployer(
             val body = IOUtils.toString(
               classOf[TestDeployer].getResourceAsStream("/template."+scriptName))
                 .replace("${projectDatabaseName}", projectDatabaseName)
-                .replace("${projectPort}", projectRevenjPort.toString);
+                .replace("${projectPort}", projectRevenjPort.toString)
+                .replace("${toolsPath}", toolsTargetPath.path);
 
             path.write(body)
         }
@@ -373,7 +375,6 @@ private[config] class TestDeployer(
 
   private def copyTools(): Unit = {
       // Copy the tools resources
-      val toolsTargetPath = root / ".." / "tools"
       val toolsTemplateDir = new java.io.File(classOf[TestDeployer].getResource("/template.tools").toURI());
       val toolsTargetDir = new java.io.File((toolsTargetPath).toURI);
 

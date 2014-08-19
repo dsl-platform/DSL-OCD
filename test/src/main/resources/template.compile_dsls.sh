@@ -7,7 +7,7 @@ CLIENT_PATH="$CURRENT_DIR/client/"
 CLIENT_LIB_PATH="$CURRENT_DIR/client/java/lib/"
 SERVER_PATH="$CURRENT_DIR/server/"
 COMMONS_PATH="$CURRENT_DIR/commons/"
-TOOLS_PATH="$CURRENT_DIR/../../../tools/"
+TOOLS_PATH="${toolsPath}"
 GENERATED_PATH="$CURRENT_DIR/src/generated"
 
 DSL_COMMAND_LINE_CLIENT="$TOOLS_PATH/dcc-java-user/dsl-clc.jar"
