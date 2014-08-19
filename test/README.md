@@ -14,8 +14,8 @@ Example ocd.config:
 
 Checkout https://github.com/hperadin/DSL-OCD-Example, and set your /home/${user}/.config/DSL-OCD/ocd.config to something like this:
 
-  model=/home/username/code/ocd/DSL-OCD/model
-  test-projects=/home/username/code/ocd/DSL-OCD-Example/projects
+    model=/home/username/code/ocd/DSL-OCD/model
+    test-projects=/home/username/code/ocd/DSL-OCD-Example/projects
 
 After running the test generator in:
 
