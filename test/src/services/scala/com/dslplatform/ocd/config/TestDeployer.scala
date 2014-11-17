@@ -8,6 +8,12 @@ import test.javatest.JavaInfo
 import org.apache.commons.io.IOUtils
 import org.apache.commons.io.FileUtils
 
+/**
+ * A utility class that contains and stores a mapping of generated
+ * project names to server ports.
+ *
+ * On the first run the mappings are persisted in an on-disk .properties file.
+ */
 private class ProjectNamesToPorts(logger: Logger, testSettings: ITestSettings){
 
   val propertiesSourceFile = testSettings.workspace.path / "projectNamesToPorts.properties"
@@ -23,7 +29,7 @@ private class ProjectNamesToPorts(logger: Logger, testSettings: ITestSettings){
     if (propVal > portSequence){
       portSequence = propVal
     }
-  }
+   }
   }
 
   def generateProjectRevenjPort(projectDatabaseName: String) = {
@@ -38,7 +44,7 @@ private class ProjectNamesToPorts(logger: Logger, testSettings: ITestSettings){
 
   def update(projectDatabase:String, port:Int) = {
     props.setProperty(projectDatabase, port.toString())
-    props.store(new java.io.FileOutputStream(propertiesSourceFile.path), null)
+    props.store(new java.io.FileOutputStream(propertiesSourceFile.path), "Generated mappings for project names to their server ports.")
   }
 
   def apply(key: String) = {
@@ -87,6 +93,8 @@ private[config] class TestDeployer(
     private val dslPath =
       clientRoot / "dsl"
 
+    private val DSL_PROJECT_INI = "dsl-project.ini"
+
     private def languagePath(language: Language) =
       clientRoot / language.language.toLowerCase
 
@@ -95,6 +103,9 @@ private[config] class TestDeployer(
 
     private def generatedResourcePath(language: Language) =
       generatedPath(language) / "resources"
+
+    private def generatedIniPath(language: Language) =
+      generatedResourcePath(language) / DSL_PROJECT_INI
 
     private def mainPath(language: Language) =
       languagePath(language) / "src" / "main"
@@ -107,6 +118,9 @@ private[config] class TestDeployer(
 
     private def testResourcePath(language: Language) =
       testPath(language) / "resources"
+
+    private def testIniPath(language: Language) =
+      testResourcePath(language) / DSL_PROJECT_INI
 
     private def cleanDsl(): Unit = {
       logger.debug("Cleaning generated DSL ...")
@@ -201,7 +215,9 @@ private[config] class TestDeployer(
           resourcePath.createDirectory(true, false)
         }
 
-        val projectIniPath = resourcePath / "dsl-project.ini"
+        /* TODO: See for .ini if it's at all neccessary, or for the tests .ini from testIniPath is used (the one called 'template.dsl-project.ini').
+         * If so, this probably needs to be deleted, and replace with the other .ini file. */
+        val projectIniPath = generatedIniPath(language)
         val projectIniSource = "/config/" + projectIniPath.relativize(root).path.replace('\\', '/')
 
         try {
@@ -214,7 +230,7 @@ private[config] class TestDeployer(
         }
         catch {
           case _: Exception =>
-            logger.warn("Could not copy dsl-project.ini from: " + projectIniSource)
+            logger.warn(s"Could not copy $DSL_PROJECT_INI from: " + projectIniSource)
         }
       }
 
@@ -281,10 +297,10 @@ private[config] class TestDeployer(
           resourceLogback.write(logbackBody)
         }
         {
-          val resourceDslProjectIni = resourcePath / "dsl-project.ini"
-          logger.trace("Writing dsl-project.ini: " + resourceDslProjectIni.path)
+          val resourceDslProjectIni = testIniPath(language)
+          logger.trace(s"Writing $DSL_PROJECT_INI: " + resourceDslProjectIni.path)
           val dslProjectIniBody = IOUtils.toString(
-                classOf[TestDeployer].getResourceAsStream("/template.dsl-project.ini"))
+                classOf[TestDeployer].getResourceAsStream(s"/template.$DSL_PROJECT_INI"))
                 .replace("${projectPort}", projectRevenjPort.toString());
           resourceDslProjectIni.write(dslProjectIniBody)
         }
@@ -373,6 +389,9 @@ private[config] class TestDeployer(
     }
   }
 
+  /**
+   * Copy the static tools resources from the resource directory to the target path
+   */
   private def copyTools(): Unit = {
       // Copy the tools resources
       val toolsTemplateDir = new java.io.File(classOf[TestDeployer].getResource("/template.tools").toURI());
