@@ -95,7 +95,7 @@ class AggregateWithOnePropertyTestProject(
 
     public static void cleanup() throws IOException {
         try {
-            final java.util.List<${aggregateConcept}> values = ${repoName}.findAll(Integer.MAX_VALUE, 0).get();
+            final java.util.List<${aggregateConcept}> values = ${repoName}.search(Integer.MAX_VALUE, 0).get();
             ${repoName}.delete(values).get();
         } catch (final InterruptedException e) {
             throw new IOException(e);

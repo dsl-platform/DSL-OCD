@@ -31,6 +31,7 @@ libraryDependencies ++= Seq(
 , "hr.element.etb" %% "etb-util" % "0.2.20"
 , "ch.qos.logback" % "logback-classic" % "1.1.1" % "compile->default"
 , "commons-io" % "commons-io" % "2.4"
+, "commons-lang" % "commons-lang" % "2.4"
 , "hr.ngs" %% "ngs-core" % "0.3.19" excludeAll(
     ExclusionRule("org.pgscala")
   , ExclusionRule("com.fasterxml.jackson.module")

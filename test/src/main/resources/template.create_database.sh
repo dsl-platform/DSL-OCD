@@ -1,8 +1,8 @@
 #!/bin/sh
 
-DATABASE_NAME=${projectDatabaseName}
-DATABASE_USER=ocduser
-DATABASE_PASSWORD=ocdpassword
+DATABASE_NAME=${dbName}
+DATABASE_USER=${dbUser}
+DATABASE_PASSWORD=${dbPassword}
 
 echo
 echo "Creating the database..."

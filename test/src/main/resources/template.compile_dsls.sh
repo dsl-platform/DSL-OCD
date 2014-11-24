@@ -12,6 +12,7 @@ GENERATED_PATH="$CURRENT_DIR/src/generated"
 
 DSL_COMMAND_LINE_CLIENT="$TOOLS_PATH/dcc-java-user/dsl-clc.jar"
 REVENJ_PATH="./revenj"
+MODEL_PATH="./model"
 DSL_PROPS="$COMMONS_PATH/config/dsl.props"
 DSL_INI_PATH="$GENERATED_PATH/resources/dsl-project.ini"
 
@@ -22,9 +23,10 @@ java -jar "$DSL_COMMAND_LINE_CLIENT" \
   -dsl="$CLIENT_PATH/dsl" \
   -download \
   -java=/usr/bin \
-  -active-record \
+  -settings=active-record \
+  -include-sources \
   -namespace=ocd \
-  -db="localhost:5432/${projectDatabaseName}?user=ocduser&password=ocdpassword" \
+  -db="${dbHost}:${dbPort}/${dbName}?user=${dbUser}&password=${dbPassword}" \
   -parse \
   -target=java_client,revenj \
   -migration \
@@ -32,7 +34,9 @@ java -jar "$DSL_COMMAND_LINE_CLIENT" \
   -log
 
 echo "Moving the generated models to target dirs"
-mkdir -p "$REVENJ_PATH"
-mv GeneratedModel.dll "$REVENJ_PATH"
+mkdir -p "$MODEL_PATH" && mv GeneratedModel.dll "$MODEL_PATH"
 mkdir -p "$CLIENT_LIB_PATH"
 mv generated-model-java.jar "$CLIENT_LIB_PATH"
+if [ -e "$REVENJ_PATH/Revenj.Http.exe.config.template" ]; then
+    mv "$REVENJ_PATH/Revenj.Http.exe.config.template" "$REVENJ_PATH/Revenj.Http.exe.config"
+fi

@@ -4,4 +4,4 @@ p=qwe321
 namespace=ocd
 #output-path=client/java/src/generated/java
 sql=commons/migration/migration.sql
-db="User ID=ocduser; Password=ocdpassword; Host=localhost; Port=5434; Database=${projectDatabaseName}"
+db="User ID=${dbUser}; Password=${dbPassword}; Host=${dbHost}; Port=${dbPort}; Database=${dbName}"
