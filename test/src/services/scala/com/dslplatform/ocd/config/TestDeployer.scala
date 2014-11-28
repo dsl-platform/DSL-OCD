@@ -58,11 +58,11 @@ private[config] class TestDeployer(
 
     private val projectDbName = testProject.projectPath.replaceAll(".*/","")
 
-    private val revenjTargetPath = projectRoot / "revenj"
+    private val revenjConfigTemplateTargetPath = projectRoot / "config"
     private val dslSource = projectRoot / "dsl"
 
     private val DSL_PROJECT_INI = "dsl-project.ini"
-    private val REVENJ_DIR = "revenj"
+    private val REVENJ_CONFIG_TEMPLATE_DIRNAME = "revenj"
     private val REVENJ_CONFIG_TEMPLATE_FILENAME = "Revenj.Http.exe.config.template"
 
     private def languageProjectRoot(language: Language) =
@@ -120,17 +120,17 @@ private[config] class TestDeployer(
      */
     private def copyServerConfigurationTemplate(): Unit = {
 
-      val revenjTemplateDir = new java.io.File(classOf[TestDeployer].getResource(s"/template.$REVENJ_DIR").toURI());
-      val revenjTargetDir = new java.io.File(revenjTargetPath.toURI);
+      val revenjTemplateDir = new java.io.File(classOf[TestDeployer].getResource(s"/template.$REVENJ_CONFIG_TEMPLATE_DIRNAME").toURI());
+      val revenjTargetDir = new java.io.File(revenjConfigTemplateTargetPath.toURI);
 
-      if (!revenjTargetPath.exists) {
-          logger.trace("Creating the revenj target path: " + revenjTargetPath.path)
-          revenjTargetPath.createDirectory(true, false)
+      if (!revenjConfigTemplateTargetPath.exists) {
+          logger.trace("Creating the revenj target path: " + revenjConfigTemplateTargetPath.path)
+          revenjConfigTemplateTargetPath.createDirectory(true, false)
         }
 
       copyDir(revenjTemplateDir.toPath, revenjTargetDir.toPath);
 
-      val revenjTemplateConfigPath = s"/template.$REVENJ_DIR/$REVENJ_CONFIG_TEMPLATE_FILENAME"
+      val revenjTemplateConfigPath = s"/template.$REVENJ_CONFIG_TEMPLATE_DIRNAME/$REVENJ_CONFIG_TEMPLATE_FILENAME"
 
       logger.trace("revenjTemplateConfigPath: " + revenjTemplateConfigPath)
 
@@ -138,7 +138,7 @@ private[config] class TestDeployer(
                 classOf[TestDeployer].getResourceAsStream(
                     revenjTemplateConfigPath)))
 
-      val revenjConfigTargetPath = revenjTargetPath / REVENJ_CONFIG_TEMPLATE_FILENAME
+      val revenjConfigTargetPath = revenjConfigTemplateTargetPath / REVENJ_CONFIG_TEMPLATE_FILENAME
 
       logger.trace("Writing the revenj configuration at: " + revenjConfigTargetPath.path);
       revenjConfigTargetPath.write(revenjConfig)(UTF8)
@@ -346,7 +346,7 @@ private[config] class TestDeployer(
         , "toolsPath" -> toolsTargetPath.path
         , "javaParent" -> javaParentBasedOnCurrentOs
         , "dslSource" -> dslSource.path
-        , "revenjPath" -> revenjTargetPath.path
+        , "revenjPath" -> revenjConfigTemplateTargetPath.path
         )
 
     private def applyTemplates(stringWithTemplateProperties:String):String = {

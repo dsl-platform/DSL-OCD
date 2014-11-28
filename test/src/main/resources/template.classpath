@@ -8,36 +8,36 @@
   <classpathentry kind="src" path="src/test/resources"/>
   <classpathentry kind="lib" path="lib/generated-model-java.jar"/>
 
-  <classpathentry kind="lib" path="${projectRoot}/java_client/akka-actor_2.11-2.3.6.jar" />
-  <classpathentry kind="lib" path="${projectRoot}/java_client/android-4.1.1.4.jar" />
-  <classpathentry kind="lib" path="${projectRoot}/java_client/aws-java-sdk-1.8.11.jar" />
-  <classpathentry kind="lib" path="${projectRoot}/java_client/aws-java-sdk-core-1.8.11.jar" />
-  <classpathentry kind="lib" path="${projectRoot}/java_client/commons-codec-1.3.jar" />
-  <classpathentry kind="lib" path="${projectRoot}/java_client/commons-logging-1.1.1.jar" />
-  <classpathentry kind="lib" path="${projectRoot}/java_client/config-1.2.1.jar" />
-  <classpathentry kind="lib" path="${projectRoot}/java_client/dsl-client-java-1.0.3.jar" />
-  <classpathentry kind="lib" path="${projectRoot}/java_client/hamcrest-core-1.3.jar" />
-  <classpathentry kind="lib" path="${projectRoot}/java_client/httpclient-4.0.1.jar" />
-  <classpathentry kind="lib" path="${projectRoot}/java_client/httpcore-4.0.1.jar" />
-  <classpathentry kind="lib" path="${projectRoot}/java_client/jackson-annotations-2.4.0.jar" />
-  <classpathentry kind="lib" path="${projectRoot}/java_client/jackson-core-2.4.3.jar" />
-  <classpathentry kind="lib" path="${projectRoot}/java_client/jackson-databind-2.4.3.jar" />
-  <classpathentry kind="lib" path="${projectRoot}/java_client/joda-time-2.5.jar" />
-  <classpathentry kind="lib" path="${projectRoot}/java_client/json-20080701.jar" />
-  <classpathentry kind="lib" path="${projectRoot}/java_client/jsonassert-1.2.3.jar" />
-  <classpathentry kind="lib" path="${projectRoot}/java_client/junit-4.11.jar" />
-  <classpathentry kind="lib" path="${projectRoot}/java_client/logback-classic-1.1.2.jar" />
-  <classpathentry kind="lib" path="${projectRoot}/java_client/logback-core-1.1.2.jar" />
-  <classpathentry kind="lib" path="${projectRoot}/java_client/opengl-api-gl1.1-android-2.1_r1.jar" />
-  <classpathentry kind="lib" path="${projectRoot}/java_client/scala-library-2.11.2.jar" />
-  <classpathentry kind="lib" path="${projectRoot}/java_client/slf4j-api-1.7.7.jar" />
-  <classpathentry kind="lib" path="${projectRoot}/java_client/xmlParserAPIs-2.6.2.jar" />
-  <classpathentry kind="lib" path="${projectRoot}/java_client/xmlunit-1.5.jar" />
-  <classpathentry kind="lib" path="${projectRoot}/java_client/xpp3-1.1.4c.jar" />
+  <classpathentry kind="lib" path="lib/akka-actor_2.11-2.3.6.jar" />
+  <classpathentry kind="lib" path="lib/android-4.1.1.4.jar" />
+  <classpathentry kind="lib" path="lib/aws-java-sdk-1.8.11.jar" />
+  <classpathentry kind="lib" path="lib/aws-java-sdk-core-1.8.11.jar" />
+  <classpathentry kind="lib" path="lib/commons-codec-1.3.jar" />
+  <classpathentry kind="lib" path="lib/commons-logging-1.1.1.jar" />
+  <classpathentry kind="lib" path="lib/config-1.2.1.jar" />
+  <classpathentry kind="lib" path="lib/dsl-client-java-1.1.0.jar" />
+  <classpathentry kind="lib" path="lib/hamcrest-core-1.3.jar" />
+  <classpathentry kind="lib" path="lib/httpclient-4.0.1.jar" />
+  <classpathentry kind="lib" path="lib/httpcore-4.0.1.jar" />
+  <classpathentry kind="lib" path="lib/jackson-annotations-2.4.0.jar" />
+  <classpathentry kind="lib" path="lib/jackson-core-2.4.3.jar" />
+  <classpathentry kind="lib" path="lib/jackson-databind-2.4.3.jar" />
+  <classpathentry kind="lib" path="lib/joda-time-2.5.jar" />
+  <classpathentry kind="lib" path="lib/json-20080701.jar" />
+  <classpathentry kind="lib" path="lib/jsonassert-1.2.3.jar" />
+  <classpathentry kind="lib" path="lib/junit-4.11.jar" />
+  <classpathentry kind="lib" path="lib/logback-classic-1.1.2.jar" />
+  <classpathentry kind="lib" path="lib/logback-core-1.1.2.jar" />
+  <classpathentry kind="lib" path="lib/opengl-api-gl1.1-android-2.1_r1.jar" />
+  <classpathentry kind="lib" path="lib/scala-library-2.11.2.jar" />
+  <classpathentry kind="lib" path="lib/slf4j-api-1.7.7.jar" />
+  <classpathentry kind="lib" path="lib/xmlParserAPIs-2.6.2.jar" />
+  <classpathentry kind="lib" path="lib/xmlunit-1.5.jar" />
+  <classpathentry kind="lib" path="lib/xpp3-1.1.4c.jar" />
 
-  <classpathentry kind="lib" path="${libPath}/test/dsl-ocd-util-testing-0.0.0-SNAPSHOT.jar"/>
-  <classpathentry kind="lib" path="${libPath}/test/dsl-ocd-model-java-asserts-0.0.0-SNAPSHOT.jar"/>
+  <classpathentry kind="lib" path="${toolsPath}/${javaParent}/lib/test/dsl-ocd-util-testing-0.0.0-SNAPSHOT.jar"/>
+  <classpathentry kind="lib" path="${toolsPath}/${javaParent}/lib/test/dsl-ocd-model-java-asserts-0.0.0-SNAPSHOT.jar"/>
 
   <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-  <classpathentry kind="output" path="bin"/>
+  <classpathentry kind="output" path="target"/>
 </classpath>
