@@ -38,7 +38,7 @@ package object test {
     , `type.Guid`
 //    , `type.Image`
     , `type.Integer`
-    , `type.Ip`
+//    , `type.Ip`
 //    , `type.Json`
     , `type.Location`
     , `type.Long`
@@ -46,8 +46,8 @@ package object test {
     , `type.Money`
 //    , `type.Native`
 //    , `type.Phone`
-    , `type.Point`
-    , `type.Rectangle`
+//    , `type.Point`
+//    , `type.Rectangle`
 //    , `type.S3`
 //    , `type.Secret`
 //    , `type.Stream`
@@ -57,7 +57,7 @@ package object test {
 //    , `type.Time`
     , `type.Timestamp`
     , `type.Url`
-    , `type.Xml`
+//    , `type.Xml`
     )
   }
 

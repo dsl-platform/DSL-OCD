@@ -13,6 +13,18 @@ SRC_TEST="$SRC/test"
 SRC_TEST_JAVA="$SRC_TEST/java"
 SRC_TEST_RES="$SRC_TEST/resources"
 
+# Script basenames
+DB_DROP=db-drop
+DSL_COMPILE=dsl-compile
+DEPLOY_MODEL=deploy-model
+COMPILE_GENERATED=compile-generated
+COMPILE_TEST=compile-test
+PACKAGE_GENERATED=package-generated
+PACKAGE_TESTS=package-test
+RUN_TESTS=run-tests
+START_REVENJ=start-revenj
+KILL_REVENJ=kill-revenj
+
 # Logging dir
 LOG="$BASE/log"
 
@@ -45,7 +57,8 @@ TOOLS_DPCC_AP="api.properties"
 
 # DSL source which we are to compile
 DSL_PATH="${dslSource}"
-TEMPORARY_DIRECTORY="$BASE/tmp"
+TEMPORARY_DIRECTORY_CLIENT="$BASE/client.tmp"
+TEMPORARY_DIRECTORY_SERVER="$BASE/server.tmp"
 DSL_EMPTY="$TOOLS/dsl/empty.dsl"
 
 # Compile and test dependencies
@@ -55,6 +68,7 @@ COMMON_TEST_LIB="$TOOLS/${javaParent}/lib/test"
 PROJECT_LIB="$BASE/lib"
 
 REVENJ_PATH="$BASE/revenj"
+REVENJ_EXE="$BASE/revenj/Revenj.Http.exe"
 REVENJ_CONFIG_TEMPLATE=${revenjPath}
 REVENJ_PID_FILE=.revenj.pid
 GENERATED_MODEL=./model
@@ -102,20 +116,18 @@ function checkErrorNoExit() {
 
 function tryRun() {
     local script=$1
-    local log=$2
-    local msg=$3
+    local msg=$2
     echo "Running the script: $script"
-    bash "$script" 2>&1 | tee -a "$log"
-    checkError "Error running the script $script check the log at $log !" "$msg"
+    bash "$script" 2>&1 | tee -a "$script.log"
+    checkError "Error running the script $script check the log at $script.log !" "$msg"
 }
 
 function tryRunNoFail() {
     local script=$1
-    local log=$2
-    local msg=$3
+    local msg=$2
     echo "Running the script: $script"
-    bash "$script" 2>&1 | tee -a "$log"
-    checkErrorNoExit "Error running the script $script, check the log at $log !" "$msg"
+    bash "$script" 2>&1 | tee -a "$script.log"
+    checkErrorNoExit "Error running the script $script, check the log at $script.log !" "$msg"
 }
 
 function clean() {
@@ -134,7 +146,8 @@ function clean() {
     echo "Cleaning generated and test jars ..."
     delIfExists "$PROJECT_LIB/"
     echo "Removing the DSL platform temporary folder"
-    delIfExists "$TEMPORARY_DIRECTORY"
+    delIfExists "$TEMPORARY_DIRECTORY_CLIENT"
+    delIfExists "$TEMPORARY_DIRECTORY_SERVER"
     echo "Cleaning scripts, params, and logs"
     delIfExists "$LOG"
     delIfExists "$SCRIPT"
@@ -172,7 +185,8 @@ function setup() {
     mkdir -p "$SCRIPT"
 
     echo "Creating temporary DSL files path..."
-    mkdir -p "$TEMPORARY_DIRECTORY"
+    mkdir -p "$TEMPORARY_DIRECTORY_CLIENT"
+    mkdir -p "$TEMPORARY_DIRECTORY_SERVER"
 
 
     local script="$SCRIPT/db-create.sh"
@@ -183,72 +197,94 @@ function setup() {
     echo "echo \"Creating the database: ${dbName} at ${dbHost}:${dbPort}\"" >> "$script"
     echo "createdb -U postgres ${dbName} -O ${dbUser}" >> "$script"
     
-    tryRunNoFail $script $log "The database probably already exists"
+    tryRunNoFail $script "The database probably already exists"
+}
+
+generateDbDropScript() {
+    echo "Creating the database drop script: $SCRIPT/$DB_DROP"
+
+    echo "# Generated database drop script for ${projectName}" > "$SCRIPT/$DB_DROP"
+    echo "echo \"Dropping the database: ${dbName} at ${dbHost}:${dbPort}\"" >> "$SCRIPT/$DB_DROP"
+    echo "export PGPASSFILE=$BASE/.pgpass" >> "$SCRIPT/$DB_DROP"
+    echo "dropdb -U ${dbOwner} ${dbName}" >> "$SCRIPT/$DB_DROP"
 }
 
 function dbClean() {
-    local script="$SCRIPT/db-drop.sh"
-    local log="$LOG/db-drop.log"
-    title "Creating the database drop script: $script"
+    generateDbDropScript
 
-    echo "# Generated database drop script for ${projectName}" > "$script"
-    echo "echo \"Dropping the database: ${dbName} at ${dbHost}:${dbPort}\"" >> "$script"
-    echo "export PGPASSFILE=$BASE/.pgpass" >> "$script"
-    echo "dropdb -U ${dbOwner} ${dbName}" >> "$script"
+    tryRunNoFail "$SCRIPT/$DB_DROP" "The database is probably already dropped"
+}
 
-    tryRunNoFail $script $log "The database is probably already dropped"
+function generateDslCompileScript() {
+    echo "Creating DSL compilation script: $script"
+
+    echo "# Generated DSL compilation script for ${projectName}" > "$SCRIPT/$DSL_COMPILE"    
+    echo "# Revenj compilation" > "$SCRIPT/$DSL_COMPILE"    
+    echo "$JAVA -jar \\" >> "$SCRIPT/$DSL_COMPILE"
+    echo "   -jar $TOOLS_DPCC  \\" >> "$SCRIPT/$DSL_COMPILE"
+    echo "   -u=hperadin@gmail.com  \\" >> "$SCRIPT/$DSL_COMPILE"
+    echo "   -p=ocdpassword  \\" >> "$SCRIPT/$DSL_COMPILE"
+    echo "   -temp=$TEMPORARY_DIRECTORY_SERVER  \\" >> "$SCRIPT/$DSL_COMPILE"
+    echo "   -dsl=$DSL_PATH \\" >> "$SCRIPT/$DSL_COMPILE"
+    echo "   -download \\" >> "$SCRIPT/$DSL_COMPILE"
+    echo "   -java=$JDK_BIN \\" >> "$SCRIPT/$DSL_COMPILE"
+    echo "   -settings=active-record,manual-json \\" >> "$SCRIPT/$DSL_COMPILE"
+    echo "   -namespace=ocd \\" >> "$SCRIPT/$DSL_COMPILE"
+    echo "   -db=\"${dbHost}:${dbPort}/${dbName}?user=${dbUser}&password=${dbPassword}\" \\" >> "$SCRIPT/$DSL_COMPILE"
+    echo "   -target=revenj \\" >> "$SCRIPT/$DSL_COMPILE"
+    echo "   -parse \\" >> "$SCRIPT/$DSL_COMPILE"
+    echo "   -migration \\" >> "$SCRIPT/$DSL_COMPILE"
+    echo "   -apply \\" >> "$SCRIPT/$DSL_COMPILE"
+    echo "   -log  \\" >> "$SCRIPT/$DSL_COMPILE"
+    echo "   -no-prompt  \\" >> "$SCRIPT/$DSL_COMPILE"
+    echo "" >> "$SCRIPT/$DSL_COMPILE"
+    echo "# Java client compilation" >> "$SCRIPT/$DSL_COMPILE"    
+    echo "$JAVA -jar \\" >> "$SCRIPT/$DSL_COMPILE"
+    echo "   -jar $TOOLS_DPCC  \\" >> "$SCRIPT/$DSL_COMPILE"
+    echo "   -u=hperadin@gmail.com  \\" >> "$SCRIPT/$DSL_COMPILE"
+    echo "   -p=ocdpassword  \\" >> "$SCRIPT/$DSL_COMPILE"
+    echo "   -temp=$TEMPORARY_DIRECTORY_CLIENT  \\" >> "$SCRIPT/$DSL_COMPILE"
+    echo "   -dsl=$DSL_PATH \\" >> "$SCRIPT/$DSL_COMPILE"
+    echo "   -download \\" >> "$SCRIPT/$DSL_COMPILE"
+    echo "   -java=$JDK_BIN \\" >> "$SCRIPT/$DSL_COMPILE"
+    echo "   -settings=active-record \\" >> "$SCRIPT/$DSL_COMPILE"
+    echo "   -namespace=ocd \\" >> "$SCRIPT/$DSL_COMPILE"
+    echo "   -db=\"${dbHost}:${dbPort}/${dbName}?user=${dbUser}&password=${dbPassword}\" \\" >> "$SCRIPT/$DSL_COMPILE"
+    echo "   -target=java_client \\" >> "$SCRIPT/$DSL_COMPILE"
+    echo "   -parse \\" >> "$SCRIPT/$DSL_COMPILE"
+    echo "   -migration \\" >> "$SCRIPT/$DSL_COMPILE"
+    echo "   -apply \\" >> "$SCRIPT/$DSL_COMPILE"
+    echo "   -log  \\" >> "$SCRIPT/$DSL_COMPILE"
+    echo "   -no-prompt  \\" >> "$SCRIPT/$DSL_COMPILE"
 }
 
 function dsl() {
     title "Generating sources from DSL"
 
-    local script="$SCRIPT/dsl-compile.sh"
-    local log="$LOG/dsl-compile.log"
+    generateDslCompileScript
 
-    echo "Creating DSL compilation script: $script"
+    tryRun "$SCRIPT/$DSL_COMPILE"
+}
 
-    echo "# Generated DSL compilation script for ${projectName}" > "$script"    
-    echo "$JAVA -jar \\" >> "$script"
-#TODO: see whats with this    echo "   -Ddsl-clc-api-properties  \\" >> "$script"
-    echo "   -jar $TOOLS_DPCC  \\" >> "$script"
-    echo "   -u=hperadin@gmail.com  \\" >> "$script"
-    echo "   -p=ocdpassword  \\" >> "$script"
-    echo "   -temp=$TEMPORARY_DIRECTORY  \\" >> "$script"
-    echo "   -dsl=$DSL_PATH \\" >> "$script"
-    echo "   -download \\" >> "$script"
-    echo "   -java=$JDK_BIN \\" >> "$script"
-    echo "   -settings=active-record \\" >> "$script"
-    echo "   -namespace=ocd \\" >> "$script"
-    echo "   -db=\"${dbHost}:${dbPort}/${dbName}?user=${dbUser}&password=${dbPassword}\" \\" >> "$script"
-    echo "   -target=java_client,revenj \\" >> "$script"
-#    echo "   -include-sources \\" >> "$script"
-    echo "   -parse \\" >> "$script"
-    echo "   -migration \\" >> "$script"
-    echo "   -apply \\" >> "$script"
-    echo "   -log  \\" >> "$script"
-    echo "   -no-prompt  \\" >> "$script"
+generateDeployModelScript() {
+    echo "Creating the deploy model script $script"
 
-    tryRun $script $log
+    echo "# Generated script for deploying the generated model for project ${projectName}" > "$SCRIPT/$DEPLOY_MODEL"
+    echo "echo \"Deploying the generated model revenj dll\"" >> "$SCRIPT/$DEPLOY_MODEL"
+    echo "mkdir -p \"$GENERATED_MODEL\" && mv GeneratedModel.dll \"$GENERATED_MODEL\"" >> "$SCRIPT/$DEPLOY_MODEL"
+    echo "echo \"Deploying the generated sources:\" " >> "$SCRIPT/$DEPLOY_MODEL"
+    echo "cp -R \"$TEMPORARY_DIRECTORY_CLIENT/Java/ocd\" \"$SRC_GEN_JAVA\"" >> "$SCRIPT/$DEPLOY_MODEL"
+    echo "cp -R java_client/*.jar \"$PROJECT_LIB\"" >> "$SCRIPT/$DEPLOY_MODEL"
+    echo "echo \"Copying the template revenj configuration:\" " >> "$SCRIPT/$DEPLOY_MODEL"
+    echo "cp $REVENJ_CONFIG_TEMPLATE/Revenj.Http.exe.config.template $REVENJ_PATH/Revenj.Http.exe.config" >> "$SCRIPT/$DEPLOY_MODEL"
 }
 
 function deploy() {
     title "Deploying the generated model"
+    
+    generateDeployModelScript
 
-    local script="$SCRIPT/deploy-model.sh"
-    local log="$LOG/deploy-model.log"       
-
-    echo "Creating the deploy model script $script"
-
-    echo "# Generated script for deploying the generated model for project ${projectName}" > "$script"
-    echo "echo \"Deploying the generated model revenj dll\"" >> "$script"
-    echo "mkdir -p \"$GENERATED_MODEL\" && mv GeneratedModel.dll \"$GENERATED_MODEL\"" >> "$script"
-    echo "echo \"Deploying the generated sources:\" " >> "$script"
-    echo "cp -R \"$TEMPORARY_DIRECTORY/Java/ocd\" \"$SRC_GEN_JAVA\"" >> "$script"
-    echo "cp -R java_client/*.jar \"$PROJECT_LIB\"" >> "$script"
-    echo "echo \"Copying the template revenj configuration:\" " >> "$script"
-    echo "cp $REVENJ_CONFIG_TEMPLATE/Revenj.Http.exe.config.template $REVENJ_PATH/Revenj.Http.exe.config" >> "$script"
-
-    tryRun $script $log
+    tryRun "$SCRIPT/$DEPLOY_MODEL"
     
     echo "Cleaning the compiler default lib dir"
     delIfExists "java_client"
@@ -258,120 +294,132 @@ function deploy() {
     mv generated-model-java.jar lib/
 }
 
+function generateCompileGeneratedScript() {
+    echo "Generating the java sources list file:"
+    find "$SRC_GEN_JAVA" -iname "*.java" > "$TEMPORARY_DIRECTORY_CLIENT/compiler_list_generated.tmp"
+
+    echo "# Generated script for compiling the generated sources " > "$SCRIPT/$COMPILE_GENERATED"
+    echo "$JAVAC \\" >> "$SCRIPT/$COMPILE_GENERATED"
+    echo "    -verbose \\" >> "$SCRIPT/$COMPILE_GENERATED"
+    echo "    -deprecation \\" >> "$SCRIPT/$COMPILE_GENERATED"
+    echo "    -deprecation \\" >> "$SCRIPT/$COMPILE_GENERATED"
+    echo "    -encoding UTF-8 \\" >> "$SCRIPT/$COMPILE_GENERATED"
+    echo "    -Xlint \\" >> "$SCRIPT/$COMPILE_GENERATED"
+    echo "    -source 1.6 \\" >> "$SCRIPT/$COMPILE_GENERATED"
+    echo "    -target 1.6 \\" >> "$SCRIPT/$COMPILE_GENERATED"
+    echo "    -classpath $JDK_LIB/*:$PROJECT_LIB/*:$COMMON_TEST_LIB/* \\" >> "$SCRIPT/$COMPILE_GENERATED"
+    echo "    -d $TARGET_MAIN \\" >> "$SCRIPT/$COMPILE_GENERATED"
+    echo "    @$TEMPORARY_DIRECTORY_CLIENT/compiler_list_generated.tmp \\" >> "$SCRIPT/$COMPILE_GENERATED"
+    echo "" >> "$SCRIPT/$COMPILE_GENERATED"
+    echo "echo \"Copying resources...\" " >> "$SCRIPT/$COMPILE_GENERATED"
+    echo "find $SRC_GEN_RES -exec cp \"{}\" $TARGET_MAIN \;" >> "$SCRIPT/$COMPILE_GENERATED"
+}
+
+
 function compileGenerated() {
-    title "Compiling generated sources"
-    local script="$SCRIPT/compile-generated.sh"
-    local log="$LOG/compile-generated.log"
+    generateCompileGeneratedScript
 
-#    echo "Generating the java sources list file:"
-    find "$SRC_GEN_JAVA" -iname "*.java" > "$TEMPORARY_DIRECTORY/compiler_list_generated.tmp"
+    tryRun "$SCRIPT/$COMPILE_GENERATED"
+}
 
-    echo "# Generated script for compiling the generated sources " > "$script"
-    echo "$JAVAC \\" >> "$script"
-    echo "    -verbose \\" >> "$script"
-    echo "    -deprecation \\" >> "$script"
-    echo "    -deprecation \\" >> "$script"
-    echo "    -encoding UTF-8 \\" >> "$script"
-    echo "    -Xlint \\" >> "$script"
-    echo "    -source 1.6 \\" >> "$script"
-    echo "    -target 1.6 \\" >> "$script"
-#    echo "    -bootclasspath $RT_JAR \\" >> "$script"
-    echo "    -classpath $JDK_LIB/*:$PROJECT_LIB/*:$COMMON_TEST_LIB/* \\" >> "$script"
-    echo "    -d $TARGET_MAIN \\" >> "$script"
-    echo "    @$TEMPORARY_DIRECTORY/compiler_list_generated.tmp \\" >> "$script"
-    echo "" >> "$script"
-    echo "echo \"Copying resources...\" " >> "$script"
-    echo "find $SRC_GEN_RES -exec cp \"{}\" $TARGET_MAIN \;" >> "$script"
+function generateCompileTestScript() {
 
-    tryRun $script $log
+    echo "Generating the compiler sources lists..."
+    find "$SRC_GEN_JAVA" -iname "*.java" > "$TEMPORARY_DIRECTORY_CLIENT/compiler_list_test.tmp"
+    find "$SRC_TEST_JAVA" -iname "*.java" >> "$TEMPORARY_DIRECTORY_CLIENT/compiler_list_test.tmp"
+
+    echo "Generating the script for compiling tests..."
+    echo "# Generated script for compiling the test classes" > "$SCRIPT/$COMPILE_TEST"
+    echo "$JAVAC \\" >> "$SCRIPT/$COMPILE_TEST"
+    echo "    -verbose \\" >> "$SCRIPT/$COMPILE_TEST"
+    echo "    -deprecation \\" >> "$SCRIPT/$COMPILE_TEST"
+    echo "    -deprecation \\" >> "$SCRIPT/$COMPILE_TEST"
+    echo "    -encoding UTF-8 \\" >> "$SCRIPT/$COMPILE_TEST"
+    echo "    -Xlint \\" >> "$SCRIPT/$COMPILE_TEST"
+    echo "    -source 1.6 \\" >> "$SCRIPT/$COMPILE_TEST"
+    echo "    -target 1.6 \\" >> "$SCRIPT/$COMPILE_TEST"
+#    echo "    -bootclasspath $RT_JAR \\" >> "$SCRIPT/$COMPILE_TEST"
+    echo "    -classpath $JDK_LIB/*:$PROJECT_LIB/*:$COMMON_TEST_LIB/* \\" >> "$SCRIPT/$COMPILE_TEST"
+    echo "    -d $TARGET_TEST \\" >> "$SCRIPT/$COMPILE_TEST"
+    echo "    @$TEMPORARY_DIRECTORY_CLIENT/compiler_list_test.tmp \\" >> "$SCRIPT/$COMPILE_TEST"
+    echo "" >> "$SCRIPT/$COMPILE_TEST"
+    echo "echo \"Copying test resources...\" " >> "$SCRIPT/$COMPILE_TEST"
+    echo "find $SRC_TEST_RES -exec cp \"{}\" $TARGET_TEST \;" >> "$SCRIPT/$COMPILE_TEST"
 }
 
 function compileTest() {
-    title "Compiling tests"
-    local script="$SCRIPT/compile-test.sh"
-    local log="$LOG/compile-test.log"
+     generateCompileTestScript
 
-    find "$SRC_GEN_JAVA" -iname "*.java" > "$TEMPORARY_DIRECTORY/compiler_list_test.tmp"
-    find "$SRC_TEST_JAVA" -iname "*.java" >> "$TEMPORARY_DIRECTORY/compiler_list_test.tmp"
+    tryRun "$SCRIPT/$COMPILE_TEST"
+}
 
-    echo "# Generated script for compiling the test classes" > "$script"
-
-    echo "$JAVAC \\" >> "$script"
-    echo "    -verbose \\" >> "$script"
-    echo "    -deprecation \\" >> "$script"
-    echo "    -deprecation \\" >> "$script"
-    echo "    -encoding UTF-8 \\" >> "$script"
-    echo "    -Xlint \\" >> "$script"
-    echo "    -source 1.6 \\" >> "$script"
-    echo "    -target 1.6 \\" >> "$script"
-#    echo "    -bootclasspath $RT_JAR \\" >> "$script"
-    echo "    -classpath $JDK_LIB/*:$PROJECT_LIB/*:$COMMON_TEST_LIB/* \\" >> "$script"
-    echo "    -d $TARGET_TEST \\" >> "$script"
-    echo "    @$TEMPORARY_DIRECTORY/compiler_list_test.tmp \\" >> "$script"
-    echo "" >> "$script"
-    echo "echo \"Copying test resources...\" " >> "$script"
-    echo "find $SRC_TEST_RES -exec cp \"{}\" $TARGET_TEST \;" >> "$script"
-
-    tryRun $script $log
+function generatePackageGeneratedScript(){
+    echo "Generating the script for packaging generated files"
+    echo "# Generated script for packaging the generated classes" > "$SCRIPT/$PACKAGE_GENERATED"
+    echo "$JDK_JAR \\" >> "$SCRIPT/$PACKAGE_GENERATED"
+    echo "    -cfv \\" >> "$SCRIPT/$PACKAGE_GENERATED"
+    echo "     $TARGET/$NAME.jar \\" >> "$SCRIPT/$PACKAGE_GENERATED"
+    echo "     -C $TARGET_MAIN/ ." >> "$SCRIPT/$PACKAGE_GENERATED"
 }
 
 function packageGenerated() {
     title "Packaging generated classes"
-    local script="$SCRIPT/package-generated.sh"
-    local log="$LOG/package-generated.log"
 
-    echo "# Generated script for packaging the generated classes" > "$script"
-    echo "$JDK_JAR \\" >> "$script"
-    echo "    -cfv \\" >> "$script"
-    echo "     $TARGET/$NAME.jar \\" >> "$script"
-    echo "     -C $TARGET_MAIN/ ." >> "$script"
+    generatePackageGeneratedScript
 
-    tryRun $script $log
+    tryRun "$SCRIPT/$PACKAGE_GENERATED"
+}
+
+function generatePackageTestScript(){
+    echo "Generating the script for packaging tests"
+    echo "# Generated script for packaging the test classes" > "$SCRIPT/$PACKAGE_TESTS"
+    echo "$JDK_JAR \\" >> "$SCRIPT/$PACKAGE_TESTS"
+    echo "    -cfv \\" >> "$SCRIPT/$PACKAGE_TESTS"
+    echo "     $TARGET/$NAME-test.jar \\" >> "$SCRIPT/$PACKAGE_TESTS"
+    echo "     -C $TARGET_TEST/ ." >> "$SCRIPT/$PACKAGE_TESTS"
 }
 
 function packageTest() {
-    title "Packaging test classes"    
-    local script="$SCRIPT/package-tests.sh"
-    local log="$LOG/package-tests.log"
+    generatePackageTestScript
 
-    echo "# Generated script for packaging the generated classes" > "$script"
-    echo "$JDK_JAR \\" >> "$script"
-    echo "    -cfv \\" >> "$script"
-    echo "     $TARGET/$NAME-test.jar \\" >> "$script"
-    echo "     -C $TARGET_TEST/ ." >> "$script"
+    tryRun "$SCRIPT/$PACKAGE_TESTS"
+}
 
-    tryRun $script $log
+function generateStartRevenjScript(){
+    echo "Generating the script for starting the Revenj instance for this project"
+    echo "# Generated script for starting our Revenj instance" > "$SCRIPT/$START_REVENJ"    
+    echo "echo \"Starting our instance of Revenj, on ${revenjHost}:${revenjPort}\"" >> "$SCRIPT/$START_REVENJ"
+    echo "mono $REVENJ_EXE" >> "$SCRIPT/$START_REVENJ"
+}
+
+function generateRunTestsScript(){
+    echo "Generating the script for running tests..."
+    echo "# Generated script for running the OCD tests" > "$SCRIPT/$RUN_TESTS"
+    echo "" >> "$SCRIPT/$RUN_TESTS"
+    echo "$JAVA \\" >> "$SCRIPT/$RUN_TESTS"
+    echo "    -classpath $JDK_LIB/*:$PROJECT_LIB/*:$COMMON_TEST_LIB/*:$TARGET/$NAME-test.jar:$TARGET/$NAME.jar \\" >> "$SCRIPT/$RUN_TESTS"
+    echo "    org.junit.runner.JUnitCore \\" >> "$SCRIPT/$RUN_TESTS"
+    echo "    com.dslplatform.ocd.test.TestEntryPoint" >> "$SCRIPT/$RUN_TESTS"    
+    echo "" >> "$SCRIPT/$RUN_TESTS"
+}
+
+function generateKillRevenjScript() {
+    echo "Generating the script for killing our Revenj instance"
+    echo "# Generated script for killing our Revenj instance" > "$SCRIPT/$KILL_REVENJ"
+    echo "ps aux | grep \"$REVENJ_EXE\" | grep -v grep | awk '{print \$2;}' | xargs kill -9" >> "$SCRIPT/$KILL_REVENJ"
 }
 
 function runTest() {   
     title "Running the tests ..."
 
-    local testScript="$SCRIPT/run-test.sh"
-    local startRevenj="$SCRIPT/start-revenj.sh"
-    local killRevenj="$SCRIPT/kill-revenj.sh"
-    local log="$LOG/run-test.log"
+    generateStartRevenjScript
+    generateRunTestsScript
+    generateKillRevenjScript
 
-    echo "# Generated script for starting our Revenj instance" > "$startRevenj"    
-    echo "echo \"Starting our instance of Revenj, on ${revenjHost}:${revenjPort}\"" >> "$startRevenj"
-    echo "mono $REVENJ_PATH/Revenj.Http.exe &" >> "$startRevenj"
-    echo 'monoPid=$!' >> "$startRevenj"
-    echo "echo \$monoPid >> $REVENJ_PID_FILE" >> "$startRevenj"
-    echo "sleep 2" >> "$startRevenj"
-
-    echo "# Generated script for killing our Revenj instance" > "$killRevenj"    
-    echo "[[ -e \"$REVENJ_PID_FILE\" ]] && echo \"Killing the Revenj instance: \" && cat $REVENJ_PID_FILE | xargs kill -9 && rm $REVENJ_PID_FILE" >> "$killRevenj"
-
-    echo "# Generated script for running the OCD tests" > "$testScript"
-    echo "" >> "$testScript"
-    echo "$JAVA \\" >> "$testScript"
-    echo "    -classpath $JDK_LIB/*:$PROJECT_LIB/*:$COMMON_TEST_LIB/*:$TARGET/$NAME-test.jar:$TARGET/$NAME.jar \\" >> "$testScript"
-    echo "    org.junit.runner.JUnitCore \\" >> "$testScript"
-    echo "    com.dslplatform.ocd.test.TestEntryPoint" >> "$testScript"    
-    echo "" >> "$testScript"
-
-    tryRun $startRevenj $log
-    tryRun $testScript $log
-    tryRunNoFail $killRevenj $log
+    tryRun "$SCRIPT/$START_REVENJ" &
+    sleep 5
+    tryRun "$SCRIPT/$RUN_TESTS"
+    tryRunNoFail "$SCRIPT/$KILL_REVENJ"
 }
 
 if [ "$#" -eq 0 ]; then
@@ -446,4 +494,5 @@ else
     if [ -n "$doCompileTest" ]; then compileTest; fi
     if [ -n "$doPackageTest" ]; then packageTest; fi
     if [ -n "$doRunTest" ]; then runTest; fi
+    exit
 fi

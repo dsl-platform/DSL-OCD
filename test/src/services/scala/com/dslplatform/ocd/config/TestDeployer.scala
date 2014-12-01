@@ -314,6 +314,25 @@ private[config] class TestDeployer(
         }
       }
 
+    def addEntryToBulkCompileFile():Unit={
+            /* Note: this is a quickfix, needs to be cleaned up and done better.
+             * Adds an entry for this compiler.sh script to the main root compiler.sh,
+             * which is used to run tests in bulk */
+      // TODO: Cleanup of the generated file per test generator run, otherwise there'll be double entries
+            val bulkCompilerScript = testSettings.workspace.path / "compiler.sh" // TODO: do per language once more languages are implemented
+            testProject.testFiles.keys foreach {
+              case language =>
+                        val languageRoot = languageProjectRoot(language)
+                        language match {
+                          case JAVA =>
+                            val terribleBashOneLiner = "cd " + languageRoot.path + " ; bash compiler.sh \"$@\"; cd -\n"
+                            bulkCompilerScript.append(terribleBashOneLiner)
+                          case _ =>
+                        }
+            }
+
+    }
+
     def deploy(): Unit = {
       logger.debug("Deploying {} ...", testProject.projectName)
 
@@ -328,6 +347,8 @@ private[config] class TestDeployer(
 
       deployCompilerScript()
       deployEclipseProject()
+
+      addEntryToBulkCompileFile()
     }
 
     private val projectParamTemplates = Map(
