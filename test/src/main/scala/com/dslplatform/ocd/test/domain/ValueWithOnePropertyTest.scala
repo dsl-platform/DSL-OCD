@@ -53,6 +53,7 @@ class ValueWithOnePropertyTestProject(
   ) extends ITestProject {
 
   def projectPath = "values/value-single-" + setup.ValueName
+  def ProjectNameCamel="ValueSingle" + setup.ValueName
   def projectName = s"OCD Value with Single Property Tests (${setup.ValueName})"
 
   def dslFiles = setup.dslFiles
@@ -128,6 +129,7 @@ object ValueWithOnePropertyTestProject {
     (setups.groupBy(_.propertyType.typeNameSafe) map { case (typeNameSafe, typeSetups) =>
     new ITestProject {
       def projectPath = "values/value-single-" + typeNameSafe
+      def ProjectNameCamel="ValueSingle"+typeNameSafe
       def projectName = s"OCD Value with Single Property Tests (${typeNameSafe})"
       val dslFiles = typeSetups.dslFiles
       val testFiles = typeSetups.map(new ValueWithOnePropertyTestProject(_)).testFiles

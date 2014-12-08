@@ -1,15 +1,67 @@
 <?xml version="1.0"?>
-<project name="#{projectName}">
+<project name="Master test report builder">
 
-  <target name="report">
-    <junitreport todir="master-report">
+  <property name="report.dir" location="report" />
+
+  <target name="report" depends="setup">
+    <junitreport todir="${report.dir}">
       <fileset dir=".">
         <include name="**/TEST-*.xml" />
       </fileset>
-      <report todir="master-report/html" />
+      <report todir="${report.dir}/html" format="frames" styledir="xsl"/>
     </junitreport>
   </target>
 
-
+  <!-- Subproject goals -->
+  <target name="create-db">
+    <fileset dir="." includes="*/build.xml" />
+  </target>
+  <target name="drop-db">
+    <fileset dir="." includes="*/build.xml" />
+  </target>
+  <target name="clean">
+    <delete dir="${report.dir}" />
+    <fileset dir="." includes="*/build.xml" />
+  </target>
+  <target name="setup">
+    <mkdir dir="${report.dir}" />
+    <fileset dir="." includes="*/build.xml" />
+  </target>
+  <target name="compile-revenj">
+    <fileset dir="." includes="*/build.xml" />
+  </target>
+  <target name="compile-java-client">
+    <fileset dir="." includes="*/build.xml" />
+  </target>
+  <target name="dsl-deploy">
+    <fileset dir="." includes="*/build.xml" />
+  </target>
+  <target name="compile-generated">
+    <fileset dir="." includes="*/build.xml" />
+  </target>
+  <target name="package-generated">
+    <fileset dir="." includes="*/build.xml" />
+  </target>
+  <target name="compile-tests">
+    <fileset dir="." includes="*/build.xml" />
+  </target>
+  <target name="package-tests">
+    <fileset dir="." includes="*/build.xml" />
+  </target>
+  <target name="run-revenj">
+    <fileset dir="." includes="*/build.xml" />
+  </target>
+  <target name="kill-revenj">
+    <fileset dir="." includes="*/build.xml" />
+  </target>
+  <target name="run-junit-suite">
+    <fileset dir="." includes="*/build.xml" />
+  </target>
+  <target name="run-tests">
+    <fileset dir="." includes="*/build.xml" />
+  </target>
+  <target name="run-full">
+    <fileset dir="." includes="*/build.xml" />
+  </target>
 </project>
 

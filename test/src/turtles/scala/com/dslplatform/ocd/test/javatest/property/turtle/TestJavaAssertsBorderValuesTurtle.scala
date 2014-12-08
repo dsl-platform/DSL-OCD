@@ -11,6 +11,7 @@ object TestJavaAssertsBorderValuesTurtle
     extends ITestProject {
 
   def projectPath = "turtles/asserts"
+  def ProjectNameCamel = "AssertsBorderValuesTurtle"
   def projectName = "OCD Java Asserts Border Values Turtle"
 
   def dslFiles = Map.empty

@@ -225,7 +225,7 @@ private[config] class TestDeployer(
         val suite = JavaInfo(
           new TestSuiteCreator {
             def packageName = "com.dslplatform.ocd.test"
-            def testName = "TestEntryPoint"
+            def testName = testProject.ProjectNameCamel
             def testClasses = classes
           } testBody
         )
@@ -335,6 +335,7 @@ private[config] class TestDeployer(
         "libPath" -> libPath.path
         , "projectRoot" -> projectRoot.path
         , "projectName" -> testProject.projectName
+        , "ProjectNameCamel" -> testProject.ProjectNameCamel
         , "projectShortName" -> projectShortName
         , "javaRoot" -> languageProjectRoot(JAVA).path
         , "dbName" -> projectShortName
@@ -379,14 +380,16 @@ private[config] class TestDeployer(
 
       copyPath(toolsTemplateDir.toPath, toolsTargetDir.toPath)
 
-      // Copy the master compiler
-      val masterCompilerTemplate = new java.io.File(classOf[TestDeployer].getResource("/template.generate-master-compiler.sh").toURI())
-      val masterCompilerTarget = new java.io.File((root / "generate-master-compiler.sh").toURI)
-      copyPath(masterCompilerTemplate.toPath(), masterCompilerTarget.toPath())
+      /* Copy the xsl sheets for JUnit report transformation: */
+      val xslTemplateDir = new java.io.File(classOf[TestDeployer].getResource("/template.xsl").toURI)
+      val xslTargetDir = new java.io.File((root / "xsl").toURI)
 
-      // Copy the master report builder
+      copyPath(xslTemplateDir.toPath(), xslTargetDir.toPath())
+
+      // Copy the master build.xml
       val masterReportBuilder = new java.io.File(classOf[TestDeployer].getResource("/template.master-build.xml").toURI())
       val masterReportBuilderTarget = new java.io.File((root / "build.xml").toURI)
+
       copyPath(masterReportBuilder.toPath(), masterReportBuilderTarget.toPath())
     }
 

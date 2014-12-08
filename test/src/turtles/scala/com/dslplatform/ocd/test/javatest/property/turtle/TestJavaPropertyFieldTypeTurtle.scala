@@ -11,6 +11,7 @@ object TestJavaPropertyFieldTypeTurtle
     extends ITestProject {
 
   def projectPath = "turtles/fields"
+  def ProjectNameCamel = "PropertyFieldTypeTurtle"
   def projectName = "OCD Java Property Field Type Turtle"
 
   def dslFiles = Map.empty

@@ -10,6 +10,7 @@ package config
 trait ITestProject {
   def projectPath: String
   def projectName: String
+  def ProjectNameCamel: String
 
   def dslFiles: Files
   def testFiles: Map[Language, Files]

@@ -2,6 +2,7 @@
 <project name="#{projectName}">
 
   <property name="projectShortName" location="#{projectShortName}" />
+  <property name="ProjectNameCamel" location="#{ProjectNameCamel}" />
 
   <property name="dbOwner" location="#{dbOwner}" />
   <property name="dbOwnerPassword" location="#{dbOwnerPassword}" />
@@ -63,16 +64,14 @@
   <path id="postgres.classpath" location="${common.lib.compile}/postgresql-9.3-1102.jdbc41.jar" />
 
   <target name="create-db">
-    <sql driver="org.postgresql.Driver" url="jdbc:postgresql://${dbHost}:${dbPort}/"
-      userid="${dbOwner}" password="${dbOwnerPassword}" autocommit="true" onerror="continue">
+    <sql driver="org.postgresql.Driver" url="jdbc:postgresql://${dbHost}:${dbPort}/" userid="${dbOwner}" password="${dbOwnerPassword}" autocommit="true" onerror="continue">
       <classpath refid="postgres.classpath" />
       CREATE DATABASE "${dbName}";
     </sql>
   </target>
 
   <target name="drop-db">
-    <sql driver="org.postgresql.Driver" url="jdbc:postgresql://${dbHost}:${dbPort}/"
-      userid="${dbOwner}" password="${dbOwnerPassword}" autocommit="true" onerror="continue">
+    <sql driver="org.postgresql.Driver" url="jdbc:postgresql://${dbHost}:${dbPort}/" userid="${dbOwner}" password="${dbOwnerPassword}" autocommit="true" onerror="continue">
       <classpath refid="postgres.classpath" />
       DROP DATABASE "${dbName}";
     </sql>
@@ -159,19 +158,11 @@
         <include name="**/*.jar" />
       </fileset>
     </copy>
-    <copy file="${revenj.config.template}" tofile="${revenj.config}" overwrite="true"/>
+    <copy file="${revenj.config.template}" tofile="${revenj.config}" overwrite="true" />
   </target>
 
   <target name="compile-generated" depends="dsl-deploy">
-    <javac
-      srcdir="${src.gen.java}"
-      destdir="${target.main}"
-      fork="true"
-      verbose="true"
-      deprecation="true"
-      encoding="UTF-8"
-      source="1.6"
-      target="1.6">
+    <javac srcdir="${src.gen.java}" destdir="${target.main}" fork="true" verbose="true" deprecation="true" encoding="UTF-8" source="1.6" target="1.6">
       <classpath refid="compile.classpath" />
       <compilerarg value="-Xlint:unchecked" />
     </javac>
@@ -181,19 +172,11 @@
   </target>
 
   <target name="package-generated" depends="compile-generated">
-    <jar destfile="${target.main.packaged}" basedir="${target.main}"/>
+    <jar destfile="${target.main.packaged}" basedir="${target.main}" />
   </target>
 
   <target name="compile-tests" depends="package-generated">
-    <javac
-      srcdir="${src.test.java}"
-      destdir="${target.test}"
-      fork="true"
-      verbose="true"
-      deprecation="true"
-      encoding="UTF-8"
-      source="1.6"
-      target="1.6">
+    <javac srcdir="${src.test.java}" destdir="${target.test}" fork="true" verbose="true" deprecation="true" encoding="UTF-8" source="1.6" target="1.6">
       <classpath refid="compile.classpath" />
       <classpath refid="test.classpath" />
       <classpath location="${target.main}" />
@@ -205,18 +188,14 @@
   </target>
 
   <target name="package-tests" depends="compile-tests">
-    <jar destfile="${target.test.packaged}" basedir="${target.test}"/>
-  </target>
-
-  <target name="build" depends="package-tests">
-    <!-- Just to have the "build all" semantics, invokes the entire build chain -->
+    <jar destfile="${target.test.packaged}" basedir="${target.test}" />
   </target>
 
   <target name="run-revenj">
     <exec executable="mono" spawn="true">
       <arg value="${revenj.exe}" />
     </exec>
-    <sleep seconds="5"/>
+    <sleep seconds="5" />
   </target>
 
   <target name="kill-revenj">
@@ -226,33 +205,27 @@
     </exec>
   </target>
 
-  <target name="run-tests" depends="package-tests">
-    <antcall target="only-run-tests" />
-  </target>
-
-  <target name="only-run-tests">
-    <antcall target="run-revenj" />
+  <target name="run-junit-suite">
     <junit printsummary="on" fork="true" showoutput="true">
       <classpath refid="compile.classpath" />
       <classpath refid="test.classpath" />
       <classpath location="${target.main.packaged}" />
       <classpath location="${target.test.packaged}" />
-      <test name="com.dslplatform.ocd.test.TestEntryPoint">
+      <test name="com.dslplatform.ocd.test.${ProjectNameCamel}">
         <formatter type="xml" />
       </test>
     </junit>
+  </target>
+
+  <target name="run-tests">
+    <antcall target="run-revenj" />
+    <antcall target="run-junit-suite" />
     <antcall target="kill-revenj" />
   </target>
 
-  <target name="report">
-    <junitreport todir="${report}">
-      <fileset dir=".">
-        <include name="TEST-*.xml" />
-      </fileset>
-      <report todir="${report}/html" />
-    </junitreport>
+  <target name="run-full" depends="package-tests">
+    <antcall target="run-tests" />
   </target>
-
 
 </project>
 
