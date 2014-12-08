@@ -40,7 +40,7 @@ private[config] class TestDeployer(
           root.createDirectory(true, false)
   }
 
-  class TestSetup(testProject: ITestProject, projectNamesToPorts : ProjectNamesToPorts) {
+  class TestSetup(testProject: ITestProject, projectNamesAndPortsRepository : ProjectNamesAndPortsRepository) {
 
     private def javaParentBasedOnCurrentOs: String = {
       if(SystemUtils.IS_OS_WINDOWS){
@@ -56,7 +56,7 @@ private[config] class TestDeployer(
     private val projectRoot = root / (testProject.projectPath, '/')
     private val libPath = root / "tools" / "java" / "lib"
 
-    private val projectDbName = testProject.projectPath.replaceAll(".*/","")
+    private val projectShortName = testProject.projectPath.replaceAll(".*/","")
 
     private val revenjConfigTemplateTargetPath = projectRoot / "config"
     private val dslSource = projectRoot / "dsl"
@@ -128,7 +128,7 @@ private[config] class TestDeployer(
           revenjConfigTemplateTargetPath.createDirectory(true, false)
         }
 
-      copyDir(revenjTemplateDir.toPath, revenjTargetDir.toPath);
+      copyPath(revenjTemplateDir.toPath, revenjTargetDir.toPath);
 
       val revenjTemplateConfigPath = s"/template.$REVENJ_CONFIG_TEMPLATE_DIRNAME/$REVENJ_CONFIG_TEMPLATE_FILENAME"
 
@@ -265,7 +265,8 @@ private[config] class TestDeployer(
           case JAVA =>
             {
                 copyTemplate("compiler.bat", languageRoot);
-                copyTemplate("compiler.sh", languageRoot, PosixFilePermission.GROUP_EXECUTE, PosixFilePermission.OWNER_EXECUTE, PosixFilePermission.OTHERS_EXECUTE );
+                copyTemplate("build.xml", languageRoot);
+                copyTemplate("compiler-ocd.sh", languageRoot, PosixFilePermission.GROUP_EXECUTE, PosixFilePermission.OWNER_EXECUTE, PosixFilePermission.OTHERS_EXECUTE );
                 copyTemplate(".pgpass", languageRoot);
             }
           case _ =>
@@ -314,25 +315,6 @@ private[config] class TestDeployer(
         }
       }
 
-    def addEntryToBulkCompileFile():Unit={
-            /* Note: this is a quickfix, needs to be cleaned up and done better.
-             * Adds an entry for this compiler.sh script to the main root compiler.sh,
-             * which is used to run tests in bulk */
-      // TODO: Cleanup of the generated file per test generator run, otherwise there'll be double entries
-            val bulkCompilerScript = testSettings.workspace.path / "compiler.sh" // TODO: do per language once more languages are implemented
-            testProject.testFiles.keys foreach {
-              case language =>
-                        val languageRoot = languageProjectRoot(language)
-                        language match {
-                          case JAVA =>
-                            val terribleBashOneLiner = "cd " + languageRoot.path + " ; bash compiler.sh \"$@\"; cd -\n"
-                            bulkCompilerScript.append(terribleBashOneLiner)
-                          case _ =>
-                        }
-            }
-
-    }
-
     def deploy(): Unit = {
       logger.debug("Deploying {} ...", testProject.projectName)
 
@@ -347,15 +329,15 @@ private[config] class TestDeployer(
 
       deployCompilerScript()
       deployEclipseProject()
-
-      addEntryToBulkCompileFile()
     }
 
     private val projectParamTemplates = Map(
         "libPath" -> libPath.path
         , "projectRoot" -> projectRoot.path
         , "projectName" -> testProject.projectName
-        , "dbName" -> projectDbName
+        , "projectShortName" -> projectShortName
+        , "javaRoot" -> languageProjectRoot(JAVA).path
+        , "dbName" -> projectShortName
         , "dbHost" -> "localhost"
         , "dbPort" -> "5432"
         , "dbUser" -> "ocduser"
@@ -363,7 +345,7 @@ private[config] class TestDeployer(
         , "dbOwner" -> "postgres"
         , "dbOwnerPassword" -> "ocdpassword"
         , "revenjHost" -> "localhost"
-        , "revenjPort" -> projectNamesToPorts.generateProjectRevenjPort(projectDbName).toString()
+        , "revenjPort" -> projectNamesAndPortsRepository.generateProjectRevenjPort(projectShortName).toString()
         , "toolsPath" -> toolsTargetPath.path
         , "javaParent" -> javaParentBasedOnCurrentOs
         , "dslSource" -> dslSource.path
@@ -373,7 +355,9 @@ private[config] class TestDeployer(
     private def applyTemplates(stringWithTemplateProperties:String):String = {
         var retVal = stringWithTemplateProperties
         for((name,value)<-projectParamTemplates){
-            retVal = retVal.replace("${"+name+"}", value)
+            retVal = retVal
+                    .replace("${"+name+"}", value)
+                    .replace("#{"+name+"}", value)
         }
         retVal
     }
@@ -383,7 +367,7 @@ private[config] class TestDeployer(
   /**
    * Copy the static tools resources common to all generated projects to the target directory
    */
-  private def copyTools() {
+  private def copyStatic() {
       // Copy the tools resources
       val toolsTemplateDir = new java.io.File(classOf[TestDeployer].getResource("/template.tools").toURI());
       val toolsTargetDir = new java.io.File((toolsTargetPath).toURI);
@@ -393,18 +377,28 @@ private[config] class TestDeployer(
           toolsTargetPath.createDirectory(true, false)
         }
 
-      copyDir(toolsTemplateDir.toPath, toolsTargetDir.toPath)
+      copyPath(toolsTemplateDir.toPath, toolsTargetDir.toPath)
+
+      // Copy the master compiler
+      val masterCompilerTemplate = new java.io.File(classOf[TestDeployer].getResource("/template.generate-master-compiler.sh").toURI())
+      val masterCompilerTarget = new java.io.File((root / "generate-master-compiler.sh").toURI)
+      copyPath(masterCompilerTemplate.toPath(), masterCompilerTarget.toPath())
+
+      // Copy the master report builder
+      val masterReportBuilder = new java.io.File(classOf[TestDeployer].getResource("/template.master-build.xml").toURI())
+      val masterReportBuilderTarget = new java.io.File((root / "build.xml").toURI)
+      copyPath(masterReportBuilder.toPath(), masterReportBuilderTarget.toPath())
     }
 
-  private def copyDir(fromPath: java.nio.file.Path, toPath: java.nio.file.Path ){
+  private def copyPath(fromPath: java.nio.file.Path, toPath: java.nio.file.Path ){
       Files.walkFileTree(fromPath, new CopyDirVisitor(logger, fromPath, toPath))
       ()
   }
 
   def deployTests(tests: Seq[ITestProject]): Unit = {
-    val projectNamesToPorts = new ProjectNamesToPorts(logger, testSettings)
-    copyTools()
-    tests.par foreach(new TestSetup(_, projectNamesToPorts).deploy())
+    val projectNamesAndPortsRepository = new ProjectNamesAndPortsRepository(logger, testSettings)
+    copyStatic()
+    tests.par foreach(new TestSetup(_, projectNamesAndPortsRepository).deploy())
   }
 }
 
@@ -441,9 +435,9 @@ private class CopyDirVisitor(logger: Logger, sourcePath: java.nio.file.Path, tar
  *
  * On the first run the mappings are persisted in an on-disk .properties file.
  */
-private class ProjectNamesToPorts(logger: Logger, testSettings: ITestSettings){
+private class ProjectNamesAndPortsRepository(logger: Logger, testSettings: ITestSettings){
 
-  val propertiesSourceFile = testSettings.workspace.path / "projectNamesToPorts.properties"
+  val propertiesSourceFile = testSettings.workspace.path / "projectNamesAndPortsRepository.properties"
   var portSequence: Int = 2000;
 
   private val props = new java.util.Properties()

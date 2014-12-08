@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-  <name>${projectName}</name>
-  <comment>${projectName} - OCD generated testing project</comment>
+  <name>#{projectName}</name>
+  <comment>#{projectName} - OCD generated testing project</comment>
   <buildSpec>
     <buildCommand>
       <name>org.eclipse.jdt.core.javabuilder</name>

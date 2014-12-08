@@ -15,7 +15,7 @@
   <classpathentry kind="lib" path="lib/commons-codec-1.3.jar" />
   <classpathentry kind="lib" path="lib/commons-logging-1.1.1.jar" />
   <classpathentry kind="lib" path="lib/config-1.2.1.jar" />
-  <classpathentry kind="lib" path="lib/dsl-client-java-1.1.0.jar" />
+  <classpathentry kind="lib" path="lib/dsl-client-java-1.1.1.jar" />
   <classpathentry kind="lib" path="lib/hamcrest-core-1.3.jar" />
   <classpathentry kind="lib" path="lib/httpclient-4.0.1.jar" />
   <classpathentry kind="lib" path="lib/httpcore-4.0.1.jar" />
@@ -35,8 +35,8 @@
   <classpathentry kind="lib" path="lib/xmlunit-1.5.jar" />
   <classpathentry kind="lib" path="lib/xpp3-1.1.4c.jar" />
 
-  <classpathentry kind="lib" path="${toolsPath}/${javaParent}/lib/test/dsl-ocd-util-testing-0.0.0-SNAPSHOT.jar"/>
-  <classpathentry kind="lib" path="${toolsPath}/${javaParent}/lib/test/dsl-ocd-model-java-asserts-0.0.0-SNAPSHOT.jar"/>
+  <classpathentry kind="lib" path="#{toolsPath}/#{javaParent}/lib/test/dsl-ocd-util-testing-0.0.0-SNAPSHOT.jar"/>
+  <classpathentry kind="lib" path="#{toolsPath}/#{javaParent}/lib/test/dsl-ocd-model-java-asserts-0.0.0-SNAPSHOT.jar"/>
 
   <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
   <classpathentry kind="output" path="target"/>

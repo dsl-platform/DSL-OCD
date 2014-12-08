@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<project name="#{projectName}">
+
+  <target name="report">
+    <junitreport todir="master-report">
+      <fileset dir=".">
+        <include name="**/TEST-*.xml" />
+      </fileset>
+      <report todir="master-report/html" />
+    </junitreport>
+  </target>
+
+
+</project>
+

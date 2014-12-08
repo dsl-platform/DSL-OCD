@@ -40,9 +40,9 @@ package object test {
     , `type.Integer`
 //    , `type.Ip`
 //    , `type.Json`
-    , `type.Location`
+//    , `type.Location`
     , `type.Long`
-    , `type.Map`
+//    , `type.Map`
     , `type.Money`
 //    , `type.Native`
 //    , `type.Phone`
