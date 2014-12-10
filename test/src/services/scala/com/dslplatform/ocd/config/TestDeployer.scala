@@ -245,8 +245,8 @@ private[config] class TestDeployer(
         {
           val resourceLogback = resourcePath / "logback-test.xml"
           logger.trace("Writing logback-test.xml: " + resourceLogback.path)
-          val logbackBody = IOUtils.toByteArray(
-                classOf[TestDeployer].getResourceAsStream("/template.logback-test.xml"))
+          val logbackBody = applyTemplates(IOUtils.toString(
+                classOf[TestDeployer].getResourceAsStream("/template.logback-test.xml")))
           resourceLogback.write(logbackBody)
         }
         {
@@ -381,8 +381,8 @@ private[config] class TestDeployer(
       copyPath(toolsTemplateDir.toPath, toolsTargetDir.toPath)
 
       /* Copy the xsl sheets for JUnit report transformation: */
-      val xslTemplateDir = new java.io.File(classOf[TestDeployer].getResource("/template.xsl").toURI)
-      val xslTargetDir = new java.io.File((root / "xsl").toURI)
+      val xslTemplateDir = new java.io.File(classOf[TestDeployer].getResource("/template.report").toURI)
+      val xslTargetDir = new java.io.File((root / "report").toURI)
 
       copyPath(xslTemplateDir.toPath(), xslTargetDir.toPath())
 

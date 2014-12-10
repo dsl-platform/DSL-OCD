@@ -47,8 +47,6 @@
   <property name="revenj.config" location="${revenj}/Revenj.Http.exe.config" />
   <property name="revenj.config.template" location="#{revenjPath}/Revenj.Http.exe.config.template" />
 
-  <property name="report" location="report" />
-
   <path id="compile.classpath">
     <fileset dir="${project.lib}">
       <include name="**/*.jar" />
@@ -63,21 +61,21 @@
 
   <path id="postgres.classpath" location="${common.lib.compile}/postgresql-9.3-1102.jdbc41.jar" />
 
-  <target name="create-db">
+  <target name="create-db" description="Tries to create this project's database. Does not fail the build on failure, since the database might already exist.">
     <sql driver="org.postgresql.Driver" url="jdbc:postgresql://${dbHost}:${dbPort}/" userid="${dbOwner}" password="${dbOwnerPassword}" autocommit="true" onerror="continue">
       <classpath refid="postgres.classpath" />
       CREATE DATABASE "${dbName}";
     </sql>
   </target>
 
-  <target name="drop-db">
+  <target name="drop-db" description="Tries to drop this project's database. Does not fail the build on failure, since the database might already be dropped.">
     <sql driver="org.postgresql.Driver" url="jdbc:postgresql://${dbHost}:${dbPort}/" userid="${dbOwner}" password="${dbOwnerPassword}" autocommit="true" onerror="continue">
       <classpath refid="postgres.classpath" />
       DROP DATABASE "${dbName}";
     </sql>
   </target>
 
-  <target name="clean">
+  <target name="clean-all" description="Performs a hard clean, including all downloaded static dependencies (i.e. Revenj)">
     <delete dir="${src.gen.java}" />
     <delete dir="${src.gen.res}" />
     <delete dir="${target.main}" />
@@ -88,10 +86,21 @@
     <delete dir="${server.tmp}" />
     <delete dir="${generated.model}" />
     <delete dir="${revenj}" />
-    <delete dir="${report}" />
   </target>
 
-  <target name="setup">
+  <target name="clean" description="Performs a project clean, but tries to save time by not deleting the downloaded static dependencies (i.e. the instance of Revenj for this project)">
+    <delete dir="${src.gen.java}" />
+    <delete dir="${src.gen.res}" />
+    <delete dir="${target.main}" />
+    <delete dir="${target.test}" />
+    <delete dir="${target}" />
+    <delete dir="${project.lib}" />
+    <delete dir="${client.tmp}" />
+    <delete dir="${server.tmp}" />
+    <delete dir="${generated.model}" />
+  </target>
+
+  <target name="setup" description="Sets up the project directory structure">
     <mkdir dir="${src.gen.java}" />
     <mkdir dir="${src.gen.res}" />
     <mkdir dir="${target}" />
@@ -101,10 +110,9 @@
     <mkdir dir="${client.tmp}" />
     <mkdir dir="${server.tmp}" />
     <mkdir dir="${generated.model}" />
-    <mkdir dir="${report}" />
   </target>
 
-  <target name="compile-revenj" depends="setup, create-db">
+  <target name="compile-revenj" depends="setup, create-db" description="Calls the DSL command line client and tries to compile the Revenj server code">
     <delete dir="${server.tmp}" />
     <mkdir dir="${server.tmp}" />
     <java jar="${tools.dpcc}" fork="true">
@@ -126,7 +134,7 @@
     </java>
   </target>
 
-  <target name="compile-java-client" depends="setup, create-db">
+  <target name="compile-java-client" depends="setup, create-db" description="Calls the DSL command line client and tries to compile the Java client code to be used for testing">
     <delete dir="${client.tmp}" />
     <mkdir dir="${client.tmp}" />
     <java jar="${tools.dpcc}" fork="true">
@@ -148,7 +156,7 @@
     </java>
   </target>
 
-  <target name="dsl-deploy" depends="setup, create-db, compile-java-client, compile-revenj">
+  <target name="dsl-deploy" depends="setup, create-db, compile-java-client, compile-revenj" description="Moves the generated model DLL and Java files to their respective directories. Also applies the Revenj template configuration for this project.">
     <move file="GeneratedModel.dll" todir="${generated.model}" />
     <copy todir="${src.gen.java}/ocd">
       <fileset dir="${client.tmp}/Java/ocd" />
@@ -161,7 +169,7 @@
     <copy file="${revenj.config.template}" tofile="${revenj.config}" overwrite="true" />
   </target>
 
-  <target name="compile-generated" depends="dsl-deploy">
+  <target name="compile-generated" depends="dsl-deploy" description="Compiles the generated Java client sources.">
     <javac srcdir="${src.gen.java}" destdir="${target.main}" fork="true" verbose="true" deprecation="true" encoding="UTF-8" source="1.6" target="1.6">
       <classpath refid="compile.classpath" />
       <compilerarg value="-Xlint:unchecked" />
@@ -171,11 +179,11 @@
     </copy>
   </target>
 
-  <target name="package-generated" depends="compile-generated">
+  <target name="package-generated" depends="compile-generated" description="Packages the generated java client sources in one common JAR.">
     <jar destfile="${target.main.packaged}" basedir="${target.main}" />
   </target>
 
-  <target name="compile-tests" depends="package-generated">
+  <target name="compile-tests" depends="package-generated" description="Compiles the test sources">
     <javac srcdir="${src.test.java}" destdir="${target.test}" fork="true" verbose="true" deprecation="true" encoding="UTF-8" source="1.6" target="1.6">
       <classpath refid="compile.classpath" />
       <classpath refid="test.classpath" />
@@ -187,25 +195,26 @@
     </copy>
   </target>
 
-  <target name="package-tests" depends="compile-tests">
+  <target name="package-tests" depends="compile-tests" description="Packages the compiled test sources in one common JAR.">
     <jar destfile="${target.test.packaged}" basedir="${target.test}" />
   </target>
 
-  <target name="run-revenj">
+  <target name="run-revenj" description="Tries to invoke mono on our local Revenj instance, if it exists.">
     <exec executable="mono" spawn="true">
       <arg value="${revenj.exe}" />
     </exec>
     <sleep seconds="5" />
   </target>
 
-  <target name="kill-revenj">
-    <exec executable="bash">
+  <target name="kill-revenj" description="Tries to kill our instance of revenj (Linux only)">
+    <exec executable="bash" osfamily="unix">
       <arg value="-c" />
       <arg value="ps aux | grep '${revenj.exe}' | grep -v grep | awk '{print $2;}' | xargs kill -9 " />
     </exec>
+    <!-- TODO: Windows version -->
   </target>
 
-  <target name="run-junit-suite">
+  <target name="run-junit-suite" description="Runs the generated JUnit test suite">
     <junit printsummary="on" fork="true" showoutput="true">
       <classpath refid="compile.classpath" />
       <classpath refid="test.classpath" />
@@ -217,13 +226,13 @@
     </junit>
   </target>
 
-  <target name="run-tests">
+  <target name="run-tests" description="Starts the project's Revenj instance, runs the generated JUnit test suite, and then kills the Revenj instance">
     <antcall target="run-revenj" />
     <antcall target="run-junit-suite" />
     <antcall target="kill-revenj" />
   </target>
 
-  <target name="run-full" depends="package-tests">
+  <target name="all" depends="package-tests" description="Runs the full build and test suite">
     <antcall target="run-tests" />
   </target>
 
