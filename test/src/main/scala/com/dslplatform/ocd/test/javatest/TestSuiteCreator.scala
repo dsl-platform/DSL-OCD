@@ -13,10 +13,12 @@ trait TestSuiteCreator
   , "junit.framework.TestSuite"
   , "org.junit.runner.RunWith"
   , "org.junit.runners.AllTests"
+  , "org.junit.runners.BlockJUnit4ClassRunner"
   )
 
   override val classDecorations = Seq(
     "RunWith(AllTests.class)"
+//    "RunWith(OcdJunitTestRunner.class)"
   )
 
   override def leadingBlocks = Seq("""

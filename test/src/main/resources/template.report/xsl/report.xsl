@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0"
   xmlns:lxslt="http://xml.apache.org/xslt"
   xmlns:stringutils="xalan://org.apache.tools.ant.util.StringUtils"
-  xmlns:math="http://exslt.org/math">
+  >
 
   <xsl:output method="xhtml" indent="yes" encoding="US-ASCII" />
 
@@ -402,43 +402,6 @@
   <xsl:template name="display-percent">
     <xsl:param name="value" />
     <xsl:value-of select="format-number($value,'0.00%')" />
-  </xsl:template>
-
-  <xsl:template name="makeHash">
-    <xsl:param name="length">8</xsl:param>
-    <xsl:param name="count" select="$length" />
-    <xsl:param name="hash" />
-    <xsl:variable name="possibleFirst">xABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</xsl:variable>
-    <xsl:variable name="possible">xABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789</xsl:variable>
-    <xsl:variable name="possibleFirstLength" select="string-length($possibleFirst)" />
-    <xsl:variable name="possibleLength" select="string-length($possible)" />
-    <xsl:choose>
-      <xsl:when test="$count = $length">
-        <xsl:variable name="position" select="floor(math:random()* $possibleFirstLength)" />
-        <xsl:call-template name="makeHash">
-          <xsl:with-param name="length" select="$length" />
-          <xsl:with-param name="count" select="$count - 1" />
-          <xsl:with-param name="hash">
-            <xsl:value-of select="$hash" />
-            <xsl:value-of select="substring($possibleFirst, $position, 1)" />
-          </xsl:with-param>
-        </xsl:call-template>
-      </xsl:when>
-      <xsl:when test="$count &gt; 0">
-        <xsl:variable name="position" select="floor(math:random()* $possibleLength)" />
-        <xsl:call-template name="makeHash">
-          <xsl:with-param name="length" select="$length" />
-          <xsl:with-param name="count" select="$count - 1" />
-          <xsl:with-param name="hash">
-            <xsl:value-of select="$hash" />
-            <xsl:value-of select="substring($possible, $position, 1)" />
-          </xsl:with-param>
-        </xsl:call-template>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:value-of select="$hash" />
-      </xsl:otherwise>
-    </xsl:choose>
   </xsl:template>
 
 </xsl:stylesheet>
