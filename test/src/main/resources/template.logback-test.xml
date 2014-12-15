@@ -2,14 +2,14 @@
 <configuration scan="false" debug="false">
   <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
     <encoder>
-      <pattern>%date %level [%thread] %logger{10} [%file:%line] %msg%n
+      <pattern>%X{ocdTestMethodName} %date %level [%thread] %logger{10} [%file:%line] %msg%n
       </pattern>
     </encoder>
   </appender>
   <logger name="dsl-client-http" level="TRACE">
     <appender-ref ref="STDOUT" />
   </logger>
-  <logger name="ocd-junit-runner" level="TRACE">
+  <logger name="ocd-test-runner-logger" level="TRACE">
     <appender-ref ref="STDOUT" />
   </logger>
 </configuration>

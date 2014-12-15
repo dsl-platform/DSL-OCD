@@ -214,7 +214,17 @@
     <!-- TODO: Windows version -->
   </target>
 
-  <target name="run-junit-suite" description="Runs the generated JUnit test suite">
+  <target name="run-junit-cmd" description="Runs the generated JUnit test suite using the JUnit runner">
+    <java classname="org.junit.runner.JUnitCore" fork="true">
+      <classpath refid="compile.classpath" />
+      <classpath refid="test.classpath" />
+      <classpath location="${target.main.packaged}" />
+      <classpath location="${target.test.packaged}" />
+      <arg value="com.dslplatform.ocd.test.${ProjectNameCamel}"/>
+    </java>
+  </target>
+
+  <target name="run-junit-ant" description="Runs the generated JUnit test suite using Ant's 'junit' goal, generates the XML otput">
     <junit printsummary="on" fork="true" showoutput="true">
       <classpath refid="compile.classpath" />
       <classpath refid="test.classpath" />
@@ -224,6 +234,10 @@
         <formatter type="xml" />
       </test>
     </junit>
+  </target>
+
+  <target name="run-junit-suite" description="Runs the generated JUnit test suite">
+    <antcall target="run-junit-cmd" />
   </target>
 
   <target name="run-tests" description="Starts the project's Revenj instance, runs the generated JUnit test suite, and then kills the Revenj instance">
