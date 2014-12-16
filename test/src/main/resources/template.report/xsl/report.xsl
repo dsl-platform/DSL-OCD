@@ -170,16 +170,34 @@
 
   <xsl:template match="testsuite" mode="stack_trace">
     <xsl:variable name="package.dir">
-      <xsl:if test="not(@package = '')"><xsl:value-of select="translate(@package,'.','/')" /></xsl:if>
-      <xsl:if test="@package = ''">.</xsl:if>
+      <xsl:if test="not(@package = '')">
+        <xsl:value-of select="translate(@package,'.','/')" />
+      </xsl:if>
+      <xsl:if test="@package = ''">
+        .
+      </xsl:if>
     </xsl:variable>
     <xsl:result-document href="{$targetDirectory}/{$package.dir}/{@name}_stacktrace.html">
-      <xsl:call-template name="br-replace">
-        <xsl:with-param name="word" select="./system-out/text()"/>
-      </xsl:call-template>
-      <xsl:call-template name="br-replace">
-        <xsl:with-param name="word" select="./system-out/text()"/>
-      </xsl:call-template>
+      <html>
+        <head>
+        </head>
+        <body>
+          <xsl:call-template name="br-replace">
+            <xsl:with-param name="word">
+              <xsl:call-template name="ocd-anchors-format">
+                <xsl:with-param name="word" select="./system-out/text()" />
+              </xsl:call-template>
+            </xsl:with-param>
+          </xsl:call-template>
+          <xsl:call-template name="br-replace">
+            <xsl:with-param name="word">
+              <xsl:call-template name="ocd-anchors-format">
+                <xsl:with-param name="word" select="./system-err/text()" />
+              </xsl:call-template>
+            </xsl:with-param>
+          </xsl:call-template>
+        </body>
+      </html>
     </xsl:result-document>
   </xsl:template>
 
@@ -250,7 +268,7 @@
           <div id="testDetails" class="container">
             <h1><xsl:value-of select="@name" /></h1>
             <h2>
-              <a target="_blank" href="{$path.to.root}../{translate(../@package,'.', '/')}/{../@name}_stacktrace.html">
+              <a target="_blank" href="{$path.to.root}../{translate(../@package,'.', '/')}/{../@name}_stacktrace.html#{@name}">
               (view stacktrace)
               </a>
             </h2>
@@ -382,14 +400,29 @@
     <xsl:param name="word" />
     <xsl:choose>
       <xsl:when test="contains($word,'&#xA;')">
-        <xsl:value-of select="substring-before($word,'&#xA;')" />
-        <br />
+        <xsl:value-of select="substring-before($word,'&#xA;')" disable-output-escaping="yes"/>
+        <br/>
         <xsl:call-template name="br-replace">
           <xsl:with-param name="word" select="substring-after($word,'&#xA;')" />
         </xsl:call-template>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:value-of select="$word" />
+        <xsl:value-of select="$word" disable-output-escaping="yes"/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
+  <xsl:template name="ocd-anchors-format">
+    <xsl:param name="word" />
+    <xsl:choose>
+      <xsl:when test="contains($word,'OCD-OPEN-ANCHOR-END')">
+        <xsl:value-of select="replace(substring-before($word,'OCD-OPEN-ANCHOR-END'), 'OCD-OPEN-ANCHOR-BEGIN (.*) ', '&lt;a id=&quot;$1&quot;&gt;&lt;h2&gt;$1&lt;/h2&gt;&lt;/a&gt;')" disable-output-escaping="yes"/>
+        <xsl:call-template name="ocd-anchors-format">
+          <xsl:with-param name="word" select="substring-after($word,'OCD-OPEN-ANCHOR-END')" />
+        </xsl:call-template>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="$word" disable-output-escaping="yes"/>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>

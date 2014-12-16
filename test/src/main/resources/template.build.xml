@@ -237,7 +237,7 @@
   </target>
 
   <target name="run-junit-suite" description="Runs the generated JUnit test suite">
-    <antcall target="run-junit-cmd" />
+    <antcall target="run-junit-ant" />
   </target>
 
   <target name="run-tests" description="Starts the project's Revenj instance, runs the generated JUnit test suite, and then kills the Revenj instance">

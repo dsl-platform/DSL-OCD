@@ -34,8 +34,16 @@ trait TestJavaTemplate {
       sb ++= test
     }
 
+    /* Quick and filthy regex replace to inject some logging, for easier report creation */
     tests foreach { test =>
-      sb ++= test.testComponentBody
+      sb ++= test.testComponentBody.trim()
+          .replaceAll(
+              "public[ ]+void[ ]+test([^\\(]+)\\(\\)(.*)\\{"
+              ,"""public void test$1()$2{
+              org.slf4j.LoggerFactory.getLogger("ocd-anchor-logger").trace("OCD-OPEN-ANCHOR-BEGIN test$1 OCD-OPEN-ANCHOR-END"\);
+              org.slf4j.MDC.put("ocdTestMethodName","test$1:");
+              """)
+          ;
     }
 
     sb ++= "}\n" toString

@@ -12,18 +12,11 @@ trait TestSuiteCreator
     "junit.framework.JUnit4TestAdapter"
   , "junit.framework.TestSuite"
   , "org.junit.runner.RunWith"
-  , "org.junit.runners.Suite"
-  , "com.dslplatform.ocd.test.OCDSuite"
+  , "org.junit.runners.AllTests"
   )
 
   override val classDecorations = Seq(
-    //"RunWith(AllTests.class)"
-//      "RunWith(BlockJUnit4ClassRunner.class)"
-    "RunWith(OCDSuite.class)"
-    ,"OCDSuite.SuiteClasses"+
-      testClasses.map(testClass =>
-          testClass + ".class"
-              ).mkString("({\n        ", ",\n        ", "\n    })")
+    "RunWith(AllTests.class)"
   )
 
   override def leadingBlocks = Seq("""

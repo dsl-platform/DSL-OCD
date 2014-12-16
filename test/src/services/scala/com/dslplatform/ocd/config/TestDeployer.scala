@@ -393,7 +393,7 @@ private[config] class TestDeployer(
       copyPath(masterReportBuilder.toPath(), masterReportBuilderTarget.toPath())
     }
 
-  private def copyPath(fromPath: java.nio.file.Path, toPath: java.nio.file.Path ){
+  private def copyPath(fromPath: java.nio.file.Path, toPath: java.nio.file.Path):Unit = {
       Files.walkFileTree(fromPath, new CopyDirVisitor(logger, fromPath, toPath))
       ()
   }
