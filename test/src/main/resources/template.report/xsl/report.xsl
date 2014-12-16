@@ -133,9 +133,7 @@
           <div id="TestSuiteDetails" class="container">
             <h1>Test summary for: <xsl:value-of select="@name" /></h1>
             <h2>
-              <a target="_blank" href="{@name}_stacktrace.html">
-              (view stacktrace)
-              </a>
+              <a target="_blank" href="{@name}_stacktrace.html"></a>
             </h2>
             <table class="table table-striped">
               <xsl:call-template name="testsuite.header"/>
@@ -229,6 +227,8 @@
         <a href="{$testcaseHtmlPath}">
           <xsl:value-of select="@name" />
         </a>
+        <br/>
+        <a target="_blank" href="{../@name}_stacktrace.html#{@name}">(view stacktrace)</a>
       </td>
       <td><xsl:value-of select="$status" /></td>
       <td><xsl:value-of select="./error/@message" /></td>
