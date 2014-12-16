@@ -3,10 +3,21 @@ package com.dslplatform.ocd.javaasserts;
 import org.junit.Assert;
 
 public class TimestampAsserts {
+
+    static boolean dateTimesEqual(final org.joda.time.DateTime expected, final org.joda.time.DateTime actual){
+        // TODO: This still gives false when two instances should be equal
+        if(!(expected == actual
+             || expected != null && actual != null && expected.getMillis() == actual.getMillis() && (org.joda.time.field.FieldUtils.equals(expected.getChronology(), actual.getChronology())
+             || expected.getChronology() != null && actual.getChronology() != null && expected.getChronology().getZone().getOffset(0) == actual.getChronology().getZone().getOffset(0))))
+                 return false;
+        else
+            return true;
+    }
+
     static void assertSingleEquals(final String message, final org.joda.time.DateTime expected, final org.joda.time.DateTime actual, final org.joda.time.Duration delta) {
         if (delta == org.joda.time.Duration.ZERO) {
-            if (expected.equals(actual)) return;
-            Assert.fail(message + "expected was \"" + expected + "\", but actual was \"" + actual + "\" - WARNING: You are comparing exact instants - not using a delta duration!");
+            if(dateTimesEqual(expected, actual)) return;
+            Assert.fail(message + "expected was \"" + expected + "\", but actual was \"" + actual + "\" - WARNING: You are comparing two instants directly - not using a delta duration!");
         }
 
         if (expected.isBefore(actual) && expected.plus(delta).isAfter(actual)) return;

@@ -24,7 +24,8 @@
     <sequential>
       <java classname="net.sf.saxon.Transform"
          classpath="@{classpath}"
-        taskname="@{taskname}">
+        taskname="@{taskname}"
+        fork="true">
         <classpath path="${saxon.jar.path}"/>
         <arg value="-s:@{in}"/>
         <arg value="-xsl:@{style}"/>
