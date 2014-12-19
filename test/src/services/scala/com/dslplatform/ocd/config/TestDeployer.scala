@@ -383,14 +383,17 @@ private[config] class TestDeployer(
       /* Copy the xsl sheets for JUnit report transformation: */
       val xslTemplateDir = new java.io.File(classOf[TestDeployer].getResource("/template.report").toURI)
       val xslTargetDir = new java.io.File((root / "report").toURI)
-
       copyPath(xslTemplateDir.toPath(), xslTargetDir.toPath())
 
       // Copy the master build.xml
       val masterReportBuilder = new java.io.File(classOf[TestDeployer].getResource("/template.master-build.xml").toURI())
       val masterReportBuilderTarget = new java.io.File((root / "build.xml").toURI)
-
       copyPath(masterReportBuilder.toPath(), masterReportBuilderTarget.toPath())
+
+      // Copy the common build template file
+      val commonTemplate = new java.io.File(classOf[TestDeployer].getResource("/template.build-common-template.xml").toURI())
+      val commonTemplateTarget = new java.io.File((root / "build-common-template.xml").toURI)
+      copyPath(commonTemplate.toPath(), commonTemplateTarget.toPath())
     }
 
   private def copyPath(fromPath: java.nio.file.Path, toPath: java.nio.file.Path):Unit = {

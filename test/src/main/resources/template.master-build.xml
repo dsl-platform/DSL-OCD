@@ -1,6 +1,5 @@
 <?xml version="1.0"?>
-<project name="Master test report builder"
-  xmlns:ocd="com.dslplatform.ocd">
+<project name="Master test report builder" xmlns:ocd="com.dslplatform.ocd">
 
   <property name="report.dir" location="report" />
   <property name="report.src" location="report/OCD-Tests-Summary.xml" />
@@ -8,10 +7,8 @@
   <property name="stylesheet" location="report/xsl/report.xsl" />
   <property name="saxon.jar.path" location="report/lib/saxon9he.jar" />
 
-
-
   <tstamp>
-    <format property="test.timestamp" pattern="yyyy-MM-dd_hh:mm:ss"/>
+    <format property="test.timestamp" pattern="yyyy-MM-dd_hh:mm:ss" />
   </tstamp>
 
   <macrodef name="do-xsl-transform" uri="com.dslplatform.ocd">
@@ -22,130 +19,137 @@
     <attribute name="taskname" default="ocd:xslt" />
     <element name="params" optional="true" implicit="true" />
     <sequential>
-      <java classname="net.sf.saxon.Transform"
-         classpath="@{classpath}"
-        taskname="@{taskname}"
-        fork="true">
-        <classpath path="${saxon.jar.path}"/>
-        <arg value="-s:@{in}"/>
-        <arg value="-xsl:@{style}"/>
-        <arg value="-o:@{out}"/>
+      <java classname="net.sf.saxon.Transform" classpath="@{classpath}" taskname="@{taskname}" fork="true">
+        <classpath path="${saxon.jar.path}" />
+        <arg value="-s:@{in}" />
+        <arg value="-xsl:@{style}" />
+        <arg value="-o:@{out}" />
         <params />
       </java>
     </sequential>
   </macrodef>
 
-  <target name="report" description="Compiles the test results of all subprojects, and generates the HTML report.">
-    <delete dir="${report.target}" />
-    <mkdir dir="${report.dir}" />
-    <!--<junitreport todir="${report.dir}" tofile="OCD-Tests-Summary-${test.timestamp}.xml">-->
+  <target name="collect-reports" description="Collects the test results of all subprojects">
     <junitreport todir="${report.dir}" tofile="OCD-Tests-Summary.xml">
       <fileset dir=".">
         <include name="**/TEST-*.xml" />
       </fileset>
     </junitreport>
-    <ocd:do-xsl-transform
-          in="${report.dir}/OCD-Tests-Summary.xml"
-          out="${report.dir}/html/report.xml"
-          style="${stylesheet}" />
+  </target>
+
+  <target name="generate-html-report" description="Generates the HTML report, using the OCD-Tests-Summary.xml collected from the subprojects">
+    <ocd:do-xsl-transform in="${report.dir}/OCD-Tests-Summary.xml" out="${report.dir}/html/report.xml" style="${stylesheet}" />
+  </target>
+
+  <target name="report" description="Compiles the test results of all subprojects, and generates the HTML report.">
+    <delete dir="${report.target}" />
+    <mkdir dir="${report.dir}" />
+    <antcall target="collect-reports"/>
+    <antcall target="generate-html-report"/>
   </target>
 
   <!-- Subproject goals -->
   <target name="create-db" description="Tries to create this project's database. Does not fail the build on failure, since the database might already exist.">
     <subant>
-      <fileset dir="." includes="**/build.xml" />
+      <fileset dir="." includes="**/build.xml" excludes="build.xml" />
       <target name="create-db" />
     </subant>
   </target>
   <target name="drop-db" description="Tries to drop this project's database. Does not fail the build on failure, since the database might already be dropped.">
     <subant>
-      <fileset dir="." includes="**/build.xml" />
+      <fileset dir="." includes="**/build.xml" excludes="build.xml" />
       <target name="drop-db" />
     </subant>
   </target>
   <target name="clean-all" description="Performs a hard clean, including all downloaded static dependencies (i.e. Revenj)">
-    <delete dir="${report.dir}" />
+    <delete dir="${report.target}" />
     <subant>
-      <fileset dir="." includes="**/build.xml" />
+      <fileset dir="." includes="**/build.xml" excludes="build.xml" />
       <target name="clean-all" />
     </subant>
   </target>
   <target name="clean" description="Performs a project clean, but tries to save time by not deleting the downloaded static dependencies (i.e. the instance of Revenj for this project)">
     <delete dir="${report.dir}" />
     <subant>
-      <fileset dir="." includes="**/build.xml" />
+      <fileset dir="." includes="**/build.xml" excludes="build.xml" />
       <target name="clean" />
     </subant>
   </target>
   <target name="setup" description="Sets up the project directory structure">
     <subant>
-      <fileset dir="." includes="**/build.xml" />
+      <fileset dir="." includes="**/build.xml" excludes="build.xml" />
       <target name="setup" />
     </subant>
   </target>
   <target name="compile-revenj" description="Calls the DSL command line client and tries to compile the Revenj server code">
     <subant>
-      <fileset dir="." includes="**/build.xml" />
+      <fileset dir="." includes="**/build.xml" excludes="build.xml" />
       <target name="compile-revenj" />
+    </subant>
+  </target>
+  <target name="copy-revenj-config-template" description="Copy the template Revenj configuration file, and replace the template strings with actual configuration values.">
+    <subant>
+      <fileset dir="." includes="**/build.xml" excludes="build.xml" />
+      <target name="copy-revenj-config-template" />
     </subant>
   </target>
   <target name="compile-java-client" description="Calls the DSL command line client and tries to compile the Java client code to be used for testing">
     <subant>
-      <fileset dir="." includes="**/build.xml" />
+      <fileset dir="." includes="**/build.xml" excludes="build.xml" />
       <target name="compile-java-client" />
     </subant>
   </target>
   <target name="dsl-deploy" description="Moves the generated model DLL and Java files to their respective directories. Also applies the Revenj template configuration for this project.">
     <subant>
-      <fileset dir="." includes="**/build.xml" />
+      <fileset dir="." includes="**/build.xml" excludes="build.xml" />
       <target name="dsl-deploy" />
     </subant>
   </target>
   <target name="compile-generated" description="Compiles the generated Java client sources.">
     <subant>
-      <fileset dir="." includes="**/build.xml" />
+      <fileset dir="." includes="**/build.xml" excludes="build.xml" />
       <target name="compile-generated" />
     </subant>
   </target>
   <target name="package-generated" description="Packages the generated java client sources in one common JAR.">
     <subant>
-      <fileset dir="." includes="**/build.xml" />
+      <fileset dir="." includes="**/build.xml" excludes="build.xml" />
       <target name="package-generated" />
     </subant>
   </target>
   <target name="compile-tests" description="Compiles the test sources">
     <subant>
-      <fileset dir="." includes="**/build.xml" />
+      <fileset dir="." includes="**/build.xml" excludes="build.xml" />
       <target name="compile-tests" />
     </subant>
   </target>
   <target name="package-tests" description="Packages the compiled test sources in one common JAR.">
     <subant>
-      <fileset dir="." includes="**/build.xml" />
+      <fileset dir="." includes="**/build.xml" excludes="build.xml" />
       <target name="package-tests" />
     </subant>
   </target>
   <target name="run-revenj" description="Tries to invoke mono on our local Revenj instance, if it exists.">
     <subant>
-      <fileset dir="." includes="**/build.xml" />
+      <fileset dir="." includes="**/build.xml" excludes="build.xml" />
       <target name="run-revenj" />
     </subant>
   </target>
   <target name="kill-revenj" description="Tries to kill our instance of revenj (Linux only)">
     <subant>
-      <fileset dir="." includes="**/build.xml" />
+      <fileset dir="." includes="**/build.xml" excludes="build.xml" />
       <target name="kill-revenj" />
     </subant>
   </target>
   <target name="run-junit-suite" description="Runs the generated JUnit test suite">
     <subant>
-      <fileset dir="." includes="**/build.xml" />
+      <fileset dir="." includes="**/build.xml" excludes="build.xml" />
       <target name="run-junit-suite" />
     </subant>
   </target>
   <target name="run-tests" description="Starts the project's Revenj instance, runs the generated JUnit test suite, and then kills the Revenj instance">
     <subant>
-      <fileset dir="." includes="**/build.xml" />
+      <fileset dir="." includes="**/build.xml" excludes="build.xml" />
       <target name="run-tests" />
     </subant>
   </target>

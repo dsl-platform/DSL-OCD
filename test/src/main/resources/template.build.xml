@@ -1,16 +1,14 @@
 <?xml version="1.0"?>
-<project name="#{projectName}">
+<project name="#{projectName}" xmlns:if="ant:if" xmlns:unless="ant:unless">
 
-  <property name="projectShortName" location="#{projectShortName}" />
-  <property name="ProjectNameCamel" location="#{ProjectNameCamel}" />
+  <property name="projectShortName" value="#{projectShortName}" />
+  <property name="ProjectNameCamel" value="#{ProjectNameCamel}" />
 
-  <property name="dbOwner" location="#{dbOwner}" />
-  <property name="dbOwnerPassword" location="#{dbOwnerPassword}" />
-  <property name="dbUser" location="#{dbUser}" />
-  <property name="dbPassword" location="#{dbPassword}" />
-  <property name="dbHost" location="#{dbHost}" />
-  <property name="dbPort" location="#{dbPort}" />
-  <property name="dbName" location="#{dbName}" />
+  <property name="dbName" value="#{dbName}" />
+  <filter token="dbName" value="${dbName}" />
+
+  <!-- This is meant for when we'll be using static JDK and Ant tools, now we aren't -->
+  <property name="java.parent" value="#{javaParent}" />
 
   <property name="src" location="src" />
   <property name="src.gen" location="src/generated" />
@@ -20,15 +18,18 @@
   <property name="src.test.java" location="src/test/java" />
   <property name="src.test.res" location="src/test/resources" />
 
-  <property name="tools" location="/#{toolsPath}" />
-  <property name="tools.java" location="/#{toolsPath}/#{javaParent}" />
-  <property name="tools.dpcc" value="/${toolsPath}/dcc-java-user/dsl-clc.jar" />
+  <property name="tools" location="../../../tools" />
+  <property name="tools.java" location="${tools}/${java.parent}" />
+  <property name="tools.dpcc" value="/${tools}/dcc-java-user/dsl-clc.jar" />
+  <property name="tools.revenj" location="${tools}/revenj" />
+  <property name="tools.java_client" location="${tools}/java_client" />
 
-  <property name="dsl.src" location="#{dslSource}" />
+  <property name="dsl.src" location="../dsl" />
   <property name="generated.model" location="model" />
 
   <property name="client.tmp" location="client.tmp" />
   <property name="server.tmp" location="server.tmp" />
+  <property name="project.java_client" location="java_client" />
 
   <property name="jdk.lib" location="${tools.java}/jdk/lib" />
   <property name="common.lib" location="${tools.java}/lib/test" />
@@ -42,213 +43,14 @@
   <property name="target.main.packaged" location="${target}/${projectShortName}.jar" />
   <property name="target.test.packaged" location="${target}/${projectShortName}-test.jar" />
 
-  <property name="revenj" location="revenj" />
+  <property name="project.revenj" location="revenj" />
   <property name="revenj.exe" location="revenj/Revenj.Http.exe" />
-  <property name="revenj.config" location="${revenj}/Revenj.Http.exe.config" />
-  <property name="revenj.config.template" location="#{revenjPath}/Revenj.Http.exe.config.template" />
+  <property name="revenj.config" location="${project.revenj}/Revenj.Http.exe.config" />
+  <property name="revenj.config.template" location="../config/Revenj.Http.exe.config.template" />
 
-  <path id="compile.classpath">
-    <fileset dir="${project.lib}">
-      <include name="**/*.jar" />
-    </fileset>
-  </path>
+  <property name="testName" value="com.dslplatform.ocd.test.${ProjectNameCamel}" />
 
-  <path id="test.classpath">
-    <fileset dir="${common.lib.test}">
-      <include name="**/*.jar" />
-    </fileset>
-  </path>
-
-  <path id="postgres.classpath" location="${common.lib.compile}/postgresql-9.3-1102.jdbc41.jar" />
-
-  <target name="create-db" description="Tries to create this project's database. Does not fail the build on failure, since the database might already exist.">
-    <sql driver="org.postgresql.Driver" url="jdbc:postgresql://${dbHost}:${dbPort}/" userid="${dbOwner}" password="${dbOwnerPassword}" autocommit="true" onerror="continue">
-      <classpath refid="postgres.classpath" />
-      CREATE DATABASE "${dbName}";
-    </sql>
-  </target>
-
-  <target name="drop-db" description="Tries to drop this project's database. Does not fail the build on failure, since the database might already be dropped.">
-    <sql driver="org.postgresql.Driver" url="jdbc:postgresql://${dbHost}:${dbPort}/" userid="${dbOwner}" password="${dbOwnerPassword}" autocommit="true" onerror="continue">
-      <classpath refid="postgres.classpath" />
-      DROP DATABASE "${dbName}";
-    </sql>
-  </target>
-
-  <target name="clean-all" description="Performs a hard clean, including all downloaded static dependencies (i.e. Revenj)">
-    <delete dir="${src.gen.java}" />
-    <delete dir="${src.gen.res}" />
-    <delete dir="${target.main}" />
-    <delete dir="${target.test}" />
-    <delete dir="${target}" />
-    <delete dir="${project.lib}" />
-    <delete dir="${client.tmp}" />
-    <delete dir="${server.tmp}" />
-    <delete dir="${generated.model}" />
-    <delete dir="${revenj}" />
-  </target>
-
-  <target name="clean" description="Performs a project clean, but tries to save time by not deleting the downloaded static dependencies (i.e. the instance of Revenj for this project)">
-    <delete dir="${src.gen.java}" />
-    <delete dir="${src.gen.res}" />
-    <delete dir="${target.main}" />
-    <delete dir="${target.test}" />
-    <delete dir="${target}" />
-    <delete dir="${project.lib}" />
-    <delete dir="${client.tmp}" />
-    <delete dir="${server.tmp}" />
-    <delete dir="${generated.model}" />
-  </target>
-
-  <target name="setup" description="Sets up the project directory structure">
-    <mkdir dir="${src.gen.java}" />
-    <mkdir dir="${src.gen.res}" />
-    <mkdir dir="${target}" />
-    <mkdir dir="${target.main}" />
-    <mkdir dir="${target.test}" />
-    <mkdir dir="${project.lib}" />
-    <mkdir dir="${client.tmp}" />
-    <mkdir dir="${server.tmp}" />
-    <mkdir dir="${generated.model}" />
-  </target>
-
-  <target name="compile-revenj" depends="setup, create-db" description="Calls the DSL command line client and tries to compile the Revenj server code">
-    <delete dir="${server.tmp}" />
-    <mkdir dir="${server.tmp}" />
-    <java jar="${tools.dpcc}" fork="true">
-      <classpath refid="compile.classpath" />
-      <arg value="-u=hperadin@gmail.com" />
-      <arg value="-p=ocdpassword" />
-      <arg value="-temp=${server.tmp}" />
-      <arg value="-dsl=${dsl.src}" />
-      <arg value="-download" />
-      <arg value="-settings=active-record,manual-json" />
-      <arg value="-namespace=ocd" />
-      <arg value="-db=${dbHost}:${dbPort}/${dbName}?user=${dbUser}&amp;password=${dbPassword}" />
-      <arg value="-target=revenj" />
-      <arg value="-parse" />
-      <arg value="-migration" />
-      <arg value="-apply" />
-      <arg value="-log" />
-      <arg value="-no-prompt" />
-    </java>
-  </target>
-
-  <target name="compile-java-client" depends="setup, create-db" description="Calls the DSL command line client and tries to compile the Java client code to be used for testing">
-    <delete dir="${client.tmp}" />
-    <mkdir dir="${client.tmp}" />
-    <java jar="${tools.dpcc}" fork="true">
-      <classpath refid="compile.classpath" />
-      <arg value="-u=hperadin@gmail.com" />
-      <arg value="-p=ocdpassword" />
-      <arg value="-temp=${client.tmp}" />
-      <arg value="-dsl=${dsl.src}" />
-      <arg value="-download" />
-      <arg value="-settings=active-record" />
-      <arg value="-namespace=ocd" />
-      <arg value="-db=${dbHost}:${dbPort}/${dbName}?user=${dbUser}&amp;password=${dbPassword}" />
-      <arg value="-target=java_client" />
-      <arg value="-parse" />
-      <arg value="-migration" />
-      <arg value="-apply" />
-      <arg value="-log" />
-      <arg value="-no-prompt" />
-    </java>
-  </target>
-
-  <target name="dsl-deploy" depends="setup, create-db, compile-java-client, compile-revenj" description="Moves the generated model DLL and Java files to their respective directories. Also applies the Revenj template configuration for this project.">
-    <move file="GeneratedModel.dll" todir="${generated.model}" />
-    <copy todir="${src.gen.java}/ocd">
-      <fileset dir="${client.tmp}/Java/ocd" />
-    </copy>
-    <copy todir="${project.lib}">
-      <fileset dir="java_client/">
-        <include name="**/*.jar" />
-      </fileset>
-    </copy>
-    <copy file="${revenj.config.template}" tofile="${revenj.config}" overwrite="true" />
-  </target>
-
-  <target name="compile-generated" depends="dsl-deploy" description="Compiles the generated Java client sources.">
-    <javac srcdir="${src.gen.java}" destdir="${target.main}" fork="true" verbose="true" deprecation="true" encoding="UTF-8" source="1.6" target="1.6">
-      <classpath refid="compile.classpath" />
-      <compilerarg value="-Xlint:unchecked" />
-    </javac>
-    <copy todir="${target.main}">
-      <fileset dir="${src.gen.res}" />
-    </copy>
-  </target>
-
-  <target name="package-generated" depends="compile-generated" description="Packages the generated java client sources in one common JAR.">
-    <jar destfile="${target.main.packaged}" basedir="${target.main}" />
-  </target>
-
-  <target name="compile-tests" depends="package-generated" description="Compiles the test sources">
-    <javac srcdir="${src.test.java}" destdir="${target.test}" fork="true" verbose="true" deprecation="true" encoding="UTF-8" source="1.6" target="1.6">
-      <classpath refid="compile.classpath" />
-      <classpath refid="test.classpath" />
-      <classpath location="${target.main}" />
-      <compilerarg value="-Xlint:unchecked" />
-    </javac>
-    <copy todir="${target.test}">
-      <fileset dir="${src.test.res}" />
-    </copy>
-  </target>
-
-  <target name="package-tests" depends="compile-tests" description="Packages the compiled test sources in one common JAR.">
-    <jar destfile="${target.test.packaged}" basedir="${target.test}" />
-  </target>
-
-  <target name="run-revenj" description="Tries to invoke mono on our local Revenj instance, if it exists.">
-    <exec executable="mono" spawn="true">
-      <arg value="${revenj.exe}" />
-    </exec>
-    <sleep seconds="5" />
-  </target>
-
-  <target name="kill-revenj" description="Tries to kill our instance of revenj (Linux only)">
-    <exec executable="bash" osfamily="unix">
-      <arg value="-c" />
-      <arg value="ps aux | grep '${revenj.exe}' | grep -v grep | awk '{print $2;}' | xargs kill -9 " />
-    </exec>
-    <!-- TODO: Windows version -->
-  </target>
-
-  <target name="run-junit-cmd" description="Runs the generated JUnit test suite using the JUnit runner">
-    <java classname="org.junit.runner.JUnitCore" fork="true">
-      <classpath refid="compile.classpath" />
-      <classpath refid="test.classpath" />
-      <classpath location="${target.main.packaged}" />
-      <classpath location="${target.test.packaged}" />
-      <arg value="com.dslplatform.ocd.test.${ProjectNameCamel}"/>
-    </java>
-  </target>
-
-  <target name="run-junit-ant" description="Runs the generated JUnit test suite using Ant's 'junit' goal, generates the XML otput">
-    <junit printsummary="on" fork="true" showoutput="true">
-      <classpath refid="compile.classpath" />
-      <classpath refid="test.classpath" />
-      <classpath location="${target.main.packaged}" />
-      <classpath location="${target.test.packaged}" />
-      <test name="com.dslplatform.ocd.test.${ProjectNameCamel}">
-        <formatter type="xml" />
-      </test>
-    </junit>
-  </target>
-
-  <target name="run-junit-suite" description="Runs the generated JUnit test suite">
-    <antcall target="run-junit-ant" />
-  </target>
-
-  <target name="run-tests" description="Starts the project's Revenj instance, runs the generated JUnit test suite, and then kills the Revenj instance">
-    <antcall target="run-revenj" />
-    <antcall target="run-junit-suite" />
-    <antcall target="kill-revenj" />
-  </target>
-
-  <target name="all" depends="package-tests" description="Runs the full build and test suite">
-    <antcall target="run-tests" />
-  </target>
+  <import file="../../../build-common-template.xml" />
 
 </project>
 

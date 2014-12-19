@@ -231,7 +231,7 @@
         <a target="_blank" href="{../@name}_stacktrace.html#{@name}">(view stacktrace)</a>
       </td>
       <td><xsl:value-of select="$status" /></td>
-      <td><xsl:value-of select="./error/@message" /></td>
+      <td><code><xsl:value-of select="./error/@message" /></code></td>
       <td><xsl:value-of select="@time" /></td>
     </tr>
   </xsl:template>
@@ -272,7 +272,7 @@
               (view stacktrace)
               </a>
             </h2>
-            <table class="table table-striped">
+            <table class="table table-striped" style="width: 1500px">
             <tr>
             <td>Name:</td>
             <td>Status:</td>
@@ -284,40 +284,38 @@
                <td><xsl:value-of select="@time" /></td>
               </tr>
             </table>
-          </div>
           <xsl:if test="./error">
-            <div class="container">
               <h2>Errors:</h2>
               <xsl:apply-templates select="error"/>
-            </div>
           </xsl:if>
           <xsl:if test="./failure">
-            <div class="container">
               <h2>Failures:</h2>
               <xsl:apply-templates select="failure"/>
-            </div>
           </xsl:if>
+          </div>
         </body>
       </html>
     </xsl:result-document>
   </xsl:template>
 
   <xsl:template match="error|failure">
-  <table class="table">
+  <table class="table" style="width: 1500px">
     <tr>
       <td>Type:</td>
       <td><xsl:value-of select="@type" /></td>
     </tr>
     <tr>
       <td>Message:</td>
-      <td><xsl:value-of select="@message" /></td>
+      <td><code><xsl:value-of select="@message" /></code></td>
     </tr>
     <tr>
       <td>Text:</td>
       <td>
+        <code>
         <xsl:call-template name="br-replace">
           <xsl:with-param name="word" select="./text()"/>
         </xsl:call-template>
+        </code>
       </td>
     </tr>
   </table>
