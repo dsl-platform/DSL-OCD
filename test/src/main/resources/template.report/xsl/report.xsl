@@ -11,6 +11,7 @@
   <xsl:param name="output.dir" select="'.'" />
 
   <xsl:variable name="targetDirectory"><xsl:value-of select="$output.dir"/></xsl:variable>
+  <xsl:variable name="summariesDirectory"><xsl:value-of select="$output.dir"/>/summaries</xsl:variable>
 
   <!-- Error row CSS class -->
   <xsl:variable name="errorRowClass">danger</xsl:variable>
@@ -21,9 +22,9 @@
       <html>
         <head>
           <title>OCD summary</title>
-          <link rel="stylesheet" href="../css/bootstrap.min.css" />
-          <script src="../js/jquery.min.js"></script>
-          <script src="../js/bootstrap.min.js"></script>
+          <link rel="stylesheet" href="css/bootstrap.min.css" />
+          <script src="js/jquery.min.js"></script>
+          <script src="js/bootstrap.min.js"></script>
         </head>
         <body>
           <div class="container">
@@ -103,7 +104,7 @@
         <xsl:attribute name="class"><xsl:value-of select="$errorRowClass"/></xsl:attribute>
       </xsl:if>
       <td>
-        <a href="{$targetDirectory}/{$package.dir}/{@name}.html">
+        <a href="{$summariesDirectory}/{$package.dir}/{@name}.html">
           <xsl:value-of select="@name" />
         </a>
       </td>
@@ -121,7 +122,7 @@
       <xsl:if test="not(@package = '')"><xsl:value-of select="translate(@package,'.','/')" /></xsl:if>
       <xsl:if test="@package = ''">.</xsl:if>
     </xsl:variable>
-    <xsl:result-document href="{$targetDirectory}/{$package.dir}/{@name}.html">
+    <xsl:result-document href="{$summariesDirectory}/{$package.dir}/{@name}.html">
       <html>
         <head>
           <title>Testsuite summary</title>
@@ -175,7 +176,7 @@
         .
       </xsl:if>
     </xsl:variable>
-    <xsl:result-document href="{$targetDirectory}/{$package.dir}/{@name}_stacktrace.html">
+    <xsl:result-document href="{$summariesDirectory}/{$package.dir}/{@name}_stacktrace.html">
       <html>
         <head>
         </head>
@@ -219,7 +220,7 @@
       </xsl:choose>
     </xsl:variable>
     <xsl:variable name="testcaseHtmlPath">
-        <xsl:call-template name="path"><xsl:with-param name="path" select="../@package"/></xsl:call-template><xsl:value-of select="replace(@classname, '\.','/')"/>/<xsl:value-of select="@name"/>.html
+        ../../../<xsl:call-template name="path"><xsl:with-param name="path" select="../@package"/></xsl:call-template><xsl:value-of select="replace(@classname, '\.','/')"/>/<xsl:value-of select="@name"/>.html
     </xsl:variable>
     <tr>
       <xsl:attribute name="class"><xsl:value-of select="$rowClass" /></xsl:attribute>
@@ -251,11 +252,11 @@
       <xsl:if test="@classname = ''">.</xsl:if>
     </xsl:variable>
     <xsl:variable name="path.to.root">
-      <xsl:call-template name="path">
+      ../../../<xsl:call-template name="path">
         <xsl:with-param name="path"><xsl:value-of select="../@package"/></xsl:with-param>
       </xsl:call-template>
     </xsl:variable>
-    <xsl:result-document href="{$targetDirectory}/{replace(@classname, '\.','/')}/{@name}.html">
+    <xsl:result-document href="{$summariesDirectory}/{replace(@classname, '\.','/')}/{@name}.html">
       <html>
         <head>
           <title>Test case summary</title>
@@ -328,7 +329,6 @@
   <xsl:template name="path">
     <xsl:param name="path" />
     <xsl:if test="contains($path,'.')">
-      <xsl:text>../</xsl:text>
       <xsl:call-template name="path">
         <xsl:with-param name="path">
           <xsl:value-of select="substring-after($path,'.')" />
