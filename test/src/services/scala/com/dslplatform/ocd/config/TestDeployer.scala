@@ -347,7 +347,7 @@ private[config] class TestDeployer(
         , "dbOwnerPassword" -> "ocdpassword"
         , "revenjHost" -> "localhost"
         , "revenjPort" -> projectNamesAndPortsRepository.generateProjectRevenjPort(projectShortName).toString()
-        , "toolsPath" -> toolsTargetPath.path
+        , "toolsPath" -> "../../../" // TODO: deprecated, remove, this needs to be a common relative path
         , "javaParent" -> javaParentBasedOnCurrentOs
         , "dslSource" -> dslSource.path
         , "revenjPath" -> revenjConfigTemplateTargetPath.path
