@@ -53,11 +53,8 @@
 
   <target name="clean-all" description="Performs a hard clean, including all downloaded static dependencies">
     <antcall target="clean" />
-    <delete dir="${project.revenj}" />
     <delete dir="${tools.revenj}" />
     <delete dir="${tools.java_client}" />
-    <delete dir="${project.lib}" />
-    <delete dir="${project.java_client}" />
   </target>
 
   <target name="clean" description="Performs a project clean, but tries to save time by not deleting the downloaded static dependencies">
@@ -69,6 +66,9 @@
     <delete dir="${client.tmp}" />
     <delete dir="${server.tmp}" />
     <delete dir="${generated.model}" />
+    <delete dir="${project.lib}" />
+    <delete dir="${project.java_client}" />
+    <delete dir="${project.revenj}" />
     <delete file="TEST-${testName}.xml" />
   </target>
 
@@ -165,7 +165,7 @@
       <arg value="-p=ocdpassword" />
       <arg value="-temp=${client.tmp}" />
       <arg value="-dsl=${dsl.src}" />
-      <arg value="-settings=active-record" />
+      <arg value="-settings=active-record,manual-json,no-jackson" />
       <arg value="-namespace=ocd" />
       <arg value="-db=${dbHost}:${dbPort}/${dbName}?user=${dbUser}&amp;password=${dbPassword}" />
       <arg value="-target=java_client" />
@@ -175,6 +175,8 @@
       <arg value="-apply" />
       <arg value="-log" />
       <arg value="-no-prompt" />
+      <arg value="-download" />
+      <arg value="-compiler=dsl-compiler.exe" />
     </java>
     <delete file="generated-model-java.jar" />
     <antcall target="copy-downloaded-java-client-template" />
@@ -224,7 +226,7 @@
     <sleep seconds="1" />
   </target>
 
-  <target name="kill-revenj" description="Tries to kill our instance of revenj (Linux only)">
+  <target name="kill-revenj" description="Tries to kill our instance of revenj">
     <exec executable="bash" osfamily="unix">
       <arg value="-c" />
       <arg value="ps aux | grep '${revenj.exe}' | grep -v grep | awk '{print $2;}' | xargs kill -9 " />
