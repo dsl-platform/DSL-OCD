@@ -10,6 +10,14 @@
 
   <property name="revenj.exe.name" value="Revenj.http.exe" />
 
+  <property name="project" location="." />
+  <property name="project.dsl-compiler" location="${client.tmp}/dsl-compiler.exe" />
+  <property name="tools.java" location="${tools}/${java.parent}" />
+  <property name="tools.dpcc" value="/${tools}/dcc-java-user/dsl-clc.jar" />
+  <property name="tools.revenj" location="${tools}/revenj" />
+  <property name="tools.java_client" location="${tools}/java_client" />
+  <property name="tools.dsl-compiler" location="${tools}/dsl-compiler.exe" />
+
   <filter token="dbOwner" value="${dbOwner}" />
   <filter token="dbOwnerPassword" value="${dbOwnerPassword}" />
   <filter token="dbUser" value="${dbUser}" />
@@ -55,6 +63,7 @@
     <antcall target="clean" />
     <delete dir="${tools.revenj}" />
     <delete dir="${tools.java_client}" />
+    <delete file="${tools.dsl-compiler}" />
   </target>
 
   <target name="clean" description="Performs a project clean, but tries to save time by not deleting the downloaded static dependencies">
@@ -69,6 +78,7 @@
     <delete dir="${project.lib}" />
     <delete dir="${project.java_client}" />
     <delete dir="${project.revenj}" />
+    <delete file="${project.dsl-compiler}" />
     <delete file="TEST-${testName}.xml" />
   </target>
 
@@ -90,7 +100,6 @@
       <fileset dir="${tools.revenj}" />
     </copy>
   </target>
-
   <target name="copy-downloaded-revenj-template" unless="revenj.template.exists">
     <mkdir dir="${tools.revenj}" />
     <copy todir="${tools.revenj}">
@@ -103,7 +112,6 @@
       <fileset dir="${tools.java_client}" />
     </copy>
   </target>
-
   <target name="copy-downloaded-java-client-template" unless="java_client.template.exists">
     <mkdir dir="${tools.java_client}" />
     <copy todir="${tools.java_client}">
@@ -111,7 +119,16 @@
     </copy>
   </target>
 
+  <target name="copy-dsl-compiler-template" if="dsl-compiler.template.exists">
+    <copy file="${tools.dsl-compiler}" tofile="${project.dsl-compiler}" />
+  </target>
+  <target name="copy-downloaded-dsl-compiler-template" unless="dsl-compiler.template.exists">
+    <copy file="${project.dsl-compiler}" tofile="${tools.dsl-compiler}" />
+  </target>
+
   <target name="compile-revenj" depends="setup, create-db" description="Calls the DSL command line client and tries to compile the Revenj server code">
+    <delete dir="${server.tmp}" />
+    <mkdir dir="${server.tmp}" />
     <condition property="revenj.optional.download" value="" else="-download">
       <available file="${tools.revenj}" type="dir" />
     </condition>
@@ -119,12 +136,8 @@
       <available file="${tools.revenj}" type="dir" />
     </condition>
     <antcall target="copy-revenj-template" />
-    <delete dir="${server.tmp}" />
-    <mkdir dir="${server.tmp}" />
     <java jar="${tools.dpcc}" fork="true">
       <classpath refid="compile.classpath" />
-      <arg value="-u=hperadin@gmail.com" />
-      <arg value="-p=ocdpassword" />
       <arg value="-temp=${server.tmp}" />
       <arg value="-dsl=${dsl.src}" />
       <arg line="${revenj.optional.download}" />
@@ -137,6 +150,7 @@
       <arg value="-apply" />
       <arg value="-log" />
       <arg value="-no-prompt" />
+      <arg value="-compiler=${project.dsl-compiler}" />
     </java>
     <move file="GeneratedModel.dll" todir="${generated.model}" />
     <antcall target="copy-downloaded-revenj-template" />
@@ -148,21 +162,28 @@
   </target>
 
   <target name="compile-java-client" depends="setup, create-db" description="Calls the DSL command line client and tries to compile the Java client code to be used for testing">
+    <delete dir="${client.tmp}" />
+    <mkdir dir="${client.tmp}" />
     <condition property="java_client.optional.download" value="-download" else="">
-      <length length="0">
-        <fileset dir="${project.java_client}" />
-      </length>
+      <or>
+	<length length="0">
+	  <fileset dir="${project.java_client}" />
+	</length>
+	<not>
+	  <available file="${tools.dsl-compiler}" type="file" />
+	</not>	  
+      </or>
     </condition>
     <condition property="java_client.template.exists">
       <available file="${tools.java_client}" type="dir" />
     </condition>
+    <condition property="dsl-compiler.template.exists">
+      <available file="${tools.dsl-compiler}" type="file" />
+    </condition>
     <antcall target="copy-java-client-template" />
-    <delete dir="${client.tmp}" />
-    <mkdir dir="${client.tmp}" />
+    <antcall target="copy-dsl-compiler-template" />
     <java jar="${tools.dpcc}" fork="true">
       <classpath refid="compile.classpath" />
-      <arg value="-u=hperadin@gmail.com" />
-      <arg value="-p=ocdpassword" />
       <arg value="-temp=${client.tmp}" />
       <arg value="-dsl=${dsl.src}" />
       <arg value="-settings=active-record,manual-json,no-jackson" />
@@ -175,16 +196,16 @@
       <arg value="-apply" />
       <arg value="-log" />
       <arg value="-no-prompt" />
-      <arg value="-download" />
-      <arg value="-compiler=dsl-compiler.exe" />
+      <arg value="-compiler=${project.dsl-compiler}" />
     </java>
     <delete file="generated-model-java.jar" />
     <antcall target="copy-downloaded-java-client-template" />
+    <antcall target="copy-downloaded-dsl-compiler-template" />
   </target>
 
   <target name="dsl-deploy" depends="setup, create-db, compile-java-client, compile-revenj" description="Moves the generated model DLL and Java files to their respective directories. Also applies the Revenj template configuration for this project.">
     <copy todir="${src.gen.java}/ocd">
-      <fileset dir="${client.tmp}/Java/ocd" />
+      <fileset dir="${client.tmp}/java_client/ocd" />
     </copy>
   </target>
 

@@ -19,10 +19,6 @@
   <property name="src.test.res" location="src/test/resources" />
 
   <property name="tools" location="../../../tools" />
-  <property name="tools.java" location="${tools}/${java.parent}" />
-  <property name="tools.dpcc" value="/${tools}/dcc-java-user/dsl-clc.jar" />
-  <property name="tools.revenj" location="${tools}/revenj" />
-  <property name="tools.java_client" location="${tools}/java_client" />
 
   <property name="dsl.src" location="../dsl" />
   <property name="generated.model" location="model" />

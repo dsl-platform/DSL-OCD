@@ -21,6 +21,7 @@ unmanagedSourceDirectories in Test := Nil
 libraryDependencies ++= Seq(
   "com.dslplatform.ocd" %% "dsl-ocd-util-generator" % "0.0.0-SNAPSHOT"
 , "com.github.scala-incubator.io" %% "scala-io-file" % "0.4.2"
+, "org.scala-lang.modules" % "scala-xml_2.11" % "1.0.2"	
 )
 
 // ### RESOLVERS ### //

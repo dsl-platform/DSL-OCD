@@ -38,6 +38,8 @@ libraryDependencies ++= Seq(
   , ExclusionRule("com.fasterxml.jackson.core")
   , ExclusionRule("com.thoughtworks.paranamer")
   )
+, "org.scala-lang.modules" % "scala-xml_2.11" % "1.0.2"
+, "org.scala-lang.plugins" % "scala-continuations-library_2.11" % "1.0.2"	
 )
 
 // ### RESOLVERS ### //
