@@ -11,12 +11,17 @@
   <property name="revenj.exe.name" value="Revenj.http.exe" />
 
   <property name="project" location="." />
-  <property name="project.dsl-compiler" location="${client.tmp}/dsl-compiler.exe" />
+  <property name="project.dsl-compiler.client" location="${client.tmp}/dsl-compiler.exe" />
+  <property name="project.dsl-compiler.server" location="${server.tmp}/dsl-compiler.exe" />
+  <property name="project.dsl-compiler.dir" location="compiler" />
+  <property name="project.dsl-compiler" location="${project.dsl-compiler.dir}/dsl-compiler.exe" />
   <property name="tools.java" location="${tools}/${java.parent}" />
   <property name="tools.dpcc" value="/${tools}/dcc-java-user/dsl-clc.jar" />
   <property name="tools.revenj" location="${tools}/revenj" />
   <property name="tools.java_client" location="${tools}/java_client" />
   <property name="tools.dsl-compiler" location="${tools}/dsl-compiler.exe" />
+
+  <property name="revenj.config.template" location="${tools}/config/Revenj.Http.exe.config.template" />
 
   <filter token="dbOwner" value="${dbOwner}" />
   <filter token="dbOwnerPassword" value="${dbOwnerPassword}" />
@@ -78,7 +83,7 @@
     <delete dir="${project.lib}" />
     <delete dir="${project.java_client}" />
     <delete dir="${project.revenj}" />
-    <delete file="${project.dsl-compiler}" />
+    <delete dir="${project.dsl-compiler.dir}" />
     <delete file="TEST-${testName}.xml" />
   </target>
 
@@ -93,6 +98,7 @@
     <mkdir dir="${server.tmp}" />
     <mkdir dir="${generated.model}" />
     <mkdir dir="${project.java_client}" />
+    <mkdir dir="${project.dsl-compiler.dir}" />
   </target>
 
   <target name="copy-revenj-template" if="revenj.template.exists">
@@ -123,7 +129,8 @@
     <copy file="${tools.dsl-compiler}" tofile="${project.dsl-compiler}" />
   </target>
   <target name="copy-downloaded-dsl-compiler-template" unless="dsl-compiler.template.exists">
-    <copy file="${project.dsl-compiler}" tofile="${tools.dsl-compiler}" />
+    <copy file="${project.dsl-compiler.client}" tofile="${tools.dsl-compiler}" />
+    <copy file="${tools.dsl-compiler}" tofile="${project.dsl-compiler}" />
   </target>
 
   <target name="compile-revenj" depends="setup, create-db" description="Calls the DSL command line client and tries to compile the Revenj server code">
@@ -146,9 +153,7 @@
       <arg value="-db=${dbHost}:${dbPort}/${dbName}?user=${dbUser}&amp;password=${dbPassword}" />
       <arg value="-target=revenj" />
       <arg value="-parse" />
-      <arg value="-migration" />
-      <arg value="-apply" />
-      <arg value="-log" />
+      <!--arg value="-log" /-->
       <arg value="-no-prompt" />
       <arg value="-compiler=${project.dsl-compiler}" />
     </java>
@@ -166,12 +171,12 @@
     <mkdir dir="${client.tmp}" />
     <condition property="java_client.optional.download" value="-download" else="">
       <or>
-	<length length="0">
-	  <fileset dir="${project.java_client}" />
-	</length>
-	<not>
-	  <available file="${tools.dsl-compiler}" type="file" />
-	</not>	  
+  <length length="0">
+    <fileset dir="${project.java_client}" />
+  </length>
+  <not>
+    <available file="${tools.dsl-compiler}" type="file" />
+  </not>
       </or>
     </condition>
     <condition property="java_client.template.exists">
@@ -194,7 +199,7 @@
       <arg value="-parse" />
       <arg value="-migration" />
       <arg value="-apply" />
-      <arg value="-log" />
+      <!--arg value="-log" /-->
       <arg value="-no-prompt" />
       <arg value="-compiler=${project.dsl-compiler}" />
     </java>

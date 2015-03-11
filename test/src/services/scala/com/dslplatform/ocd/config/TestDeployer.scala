@@ -34,6 +34,7 @@ private[config] class TestDeployer(
 
   private val root = testSettings.workspace.path
   private val toolsTargetPath = root / "tools"
+  private val configTargetPath = toolsTargetPath / "config"
 
   if (!root.exists) {
           logger.trace("Creating the root target path: " + root.path)
@@ -58,7 +59,7 @@ private[config] class TestDeployer(
 
     private val projectShortName = testProject.projectPath.replaceAll(".*/","")
 
-    private val revenjConfigTemplateTargetPath = projectRoot / "config"
+    private val revenjConfigTemplateTargetPath = toolsTargetPath / "config"
     private val dslSource = projectRoot / "dsl"
 
     private val DSL_PROJECT_INI = "dsl-project.ini"
@@ -112,38 +113,6 @@ private[config] class TestDeployer(
         logger.trace("Deploying DSL: " + path.path)
         path.write(body)
       }
-    }
-
-    /**
-     * Copy the server configuration file;
-     * The command line client will download the actual server files.
-     */
-    private def copyServerConfigurationTemplate(): Unit = {
-
-      val revenjTemplateDir = new java.io.File(classOf[TestDeployer].getResource(s"/template.$REVENJ_CONFIG_TEMPLATE_DIRNAME").toURI());
-      val revenjTargetDir = new java.io.File(revenjConfigTemplateTargetPath.toURI);
-
-      if (!revenjConfigTemplateTargetPath.exists) {
-          logger.trace("Creating the revenj target path: " + revenjConfigTemplateTargetPath.path)
-          revenjConfigTemplateTargetPath.createDirectory(true, false)
-        }
-
-      copyPath(revenjTemplateDir.toPath, revenjTargetDir.toPath);
-
-      val revenjTemplateConfigPath = s"/template.$REVENJ_CONFIG_TEMPLATE_DIRNAME/$REVENJ_CONFIG_TEMPLATE_FILENAME"
-
-      logger.trace("revenjTemplateConfigPath: " + revenjTemplateConfigPath)
-
-      val revenjConfig = applyTemplates(IOUtils.toString(
-                classOf[TestDeployer].getResourceAsStream(
-                    revenjTemplateConfigPath)))
-
-      val revenjConfigTargetPath = revenjConfigTemplateTargetPath / REVENJ_CONFIG_TEMPLATE_FILENAME
-
-      logger.trace("Writing the revenj configuration at: " + revenjConfigTargetPath.path);
-      revenjConfigTargetPath.write(revenjConfig)(UTF8)
-
-      ()
     }
 
     private def deployGenerated(): Unit =
@@ -323,7 +292,6 @@ private[config] class TestDeployer(
 
       deployDsl()
       deployGenerated()
-      copyServerConfigurationTemplate()
       deployMain()
       deployTests()
 
@@ -357,7 +325,6 @@ private[config] class TestDeployer(
         var retVal = stringWithTemplateProperties
         for((name,value)<-projectParamTemplates){
             retVal = retVal
-                    .replace("${"+name+"}", value)
                     .replace("#{"+name+"}", value)
         }
         retVal
@@ -378,6 +345,11 @@ private[config] class TestDeployer(
           toolsTargetPath.createDirectory(true, false)
         }
 
+      if(!configTargetPath.exists) {
+          logger.trace("Creating the config target path: " + configTargetPath.path)
+          configTargetPath.createDirectory(true, false)
+      }
+
       copyPath(toolsTemplateDir.toPath, toolsTargetDir.toPath)
 
       /* Copy the xsl sheets for JUnit report transformation: */
@@ -394,6 +366,11 @@ private[config] class TestDeployer(
       val commonTemplate = new java.io.File(classOf[TestDeployer].getResource("/template.build-common-template.xml").toURI())
       val commonTemplateTarget = new java.io.File((root / "build-common-template.xml").toURI)
       copyPath(commonTemplate.toPath(), commonTemplateTarget.toPath())
+
+      // Copy the revenj config template file
+      val revenjConfigTemplate = new java.io.File(classOf[TestDeployer].getResource("/template.revenj/Revenj.Http.exe.config.template").toURI())
+      val revenjConfigTemplateTarget = new java.io.File((configTargetPath / "Revenj.Http.exe.config.template").toURI)
+      copyPath(revenjConfigTemplate.toPath(), revenjConfigTemplateTarget.toPath())
     }
 
   private def copyPath(fromPath: java.nio.file.Path, toPath: java.nio.file.Path):Unit = {
