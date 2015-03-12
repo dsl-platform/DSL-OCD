@@ -31,8 +31,14 @@
             <h1>Test suites summary</h1>
             <xsl:call-template name="testsuites.summary" />
             <table class="table table-striped">
+	      <caption>Failed tests</caption>
               <xsl:call-template name="testsuite.header" />
-              <xsl:apply-templates select="testsuite" mode="table_entry"/>
+              <xsl:apply-templates select="testsuite[@errors &gt; 0 or @failures &gt; 0]" mode="table_entry"/>
+            </table>
+            <table class="table table-striped">
+	      <caption>Succesful tests</caption>
+              <xsl:call-template name="testsuite.header" />
+              <xsl:apply-templates select="testsuite[@errors = 0 and @failures = 0]" mode="table_entry"/>
             </table>
           </div>
         </body>

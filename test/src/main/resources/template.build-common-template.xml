@@ -15,8 +15,9 @@
   <property name="project.dsl-compiler.server" location="${server.tmp}/dsl-compiler.exe" />
   <property name="project.dsl-compiler.dir" location="compiler" />
   <property name="project.dsl-compiler" location="${project.dsl-compiler.dir}/dsl-compiler.exe" />
+
   <property name="tools.java" location="${tools}/${java.parent}" />
-  <property name="tools.dpcc" value="/${tools}/dcc-java-user/dsl-clc.jar" />
+  <property name="tools.dpcc" location="/${tools}/dcc-java-user/dsl-clc.jar" />
   <property name="tools.revenj" location="${tools}/revenj" />
   <property name="tools.java_client" location="${tools}/java_client" />
   <property name="tools.dsl-compiler" location="${tools}/dsl-compiler.exe" />
@@ -64,11 +65,15 @@
     </sql>
   </target>
 
-  <target name="clean-all" description="Performs a hard clean, including all downloaded static dependencies">
-    <antcall target="clean" />
-    <delete dir="${tools.revenj}" />
-    <delete dir="${tools.java_client}" />
-    <delete file="${tools.dsl-compiler}" />
+  <target name="clean-revenj-project" description="Deletes the project Revenj copy">
+    <delete dir="${project.revenj}" />
+  </target>
+
+  <target name="clean-java-client-project" description="Deletes the project Java client copy">
+      <delete dir="${project.java_client}" />
+    </target>
+  <target name="clean-dsl-compiler-project" description="Deletes the project dsl-compiler copy">
+    <delete dir="${project.dsl-compiler.dir}" />
   </target>
 
   <target name="clean" description="Performs a project clean, but tries to save time by not deleting the downloaded static dependencies">
@@ -133,7 +138,7 @@
     <copy file="${tools.dsl-compiler}" tofile="${project.dsl-compiler}" />
   </target>
 
-  <target name="compile-revenj" depends="setup, create-db" description="Calls the DSL command line client and tries to compile the Revenj server code">
+  <target name="compile-revenj" description="Calls the DSL command line client and tries to compile the Revenj server code">
     <delete dir="${server.tmp}" />
     <mkdir dir="${server.tmp}" />
     <condition property="revenj.optional.download" value="" else="-download">
@@ -166,7 +171,7 @@
     <copy file="${revenj.config.template}" tofile="${revenj.config}" overwrite="true" filtering="true" />
   </target>
 
-  <target name="compile-java-client" depends="setup, create-db" description="Calls the DSL command line client and tries to compile the Java client code to be used for testing">
+  <target name="compile-java-client" description="Calls the DSL command line client and tries to compile the Java client code to be used for testing">
     <delete dir="${client.tmp}" />
     <mkdir dir="${client.tmp}" />
     <condition property="java_client.optional.download" value="-download" else="">
@@ -208,13 +213,13 @@
     <antcall target="copy-downloaded-dsl-compiler-template" />
   </target>
 
-  <target name="dsl-deploy" depends="setup, create-db, compile-java-client, compile-revenj" description="Moves the generated model DLL and Java files to their respective directories. Also applies the Revenj template configuration for this project.">
+  <target name="dsl-deploy" description="Moves the generated model DLL and Java files to their respective directories. Also applies the Revenj template configuration for this project.">
     <copy todir="${src.gen.java}/ocd">
       <fileset dir="${client.tmp}/java_client/ocd" />
     </copy>
   </target>
 
-  <target name="compile-generated" depends="dsl-deploy" description="Compiles the generated Java client sources.">
+  <target name="compile-generated" description="Compiles the generated Java client sources.">
     <javac srcdir="${src.gen.java}" destdir="${target.main}" fork="true" verbose="true" deprecation="true" encoding="UTF-8" source="1.6" target="1.6">
       <classpath refid="compile.classpath" />
       <compilerarg value="-Xlint:unchecked" />
@@ -224,11 +229,11 @@
     </copy>
   </target>
 
-  <target name="package-generated" depends="compile-generated" description="Packages the generated java client sources in one common JAR.">
+  <target name="package-generated" description="Packages the generated java client sources in one common JAR.">
     <jar destfile="${target.main.packaged}" basedir="${target.main}" />
   </target>
 
-  <target name="compile-tests" depends="package-generated" description="Compiles the test sources">
+  <target name="compile-tests" description="Compiles the test sources">
     <javac srcdir="${src.test.java}" destdir="${target.test}" fork="true" verbose="true" deprecation="true" encoding="UTF-8" source="1.6" target="1.6">
       <classpath refid="compile.classpath" />
       <classpath refid="test.classpath" />
@@ -240,7 +245,7 @@
     </copy>
   </target>
 
-  <target name="package-tests" depends="compile-tests" description="Packages the compiled test sources in one common JAR.">
+  <target name="package-tests" description="Packages the compiled test sources in one common JAR.">
     <jar destfile="${target.test.packaged}" basedir="${target.test}" />
   </target>
 
@@ -284,7 +289,21 @@
     <antcall target="kill-revenj" />
   </target>
 
-  <target name="all" depends="package-tests" description="Runs the full build and test suite">
+  <target name="all" description="Runs the full build and test suite">
+    <antcall target="setup" />
+
+    <antcall target="create-db" />
+
+    <antcall target="compile-java-client" />
+    <antcall target="compile-revenj" />
+
+    <antcall target="dsl-deploy" />
+
+    <antcall target="compile-generated" />
+    <antcall target="package-generated" />
+
+    <antcall target="compile-tests" />
+    <antcall target="package-tests" />
     <antcall target="run-tests" />
   </target>
 

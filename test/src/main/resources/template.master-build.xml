@@ -8,6 +8,11 @@
   <property name="report.stylesheet" location="report/xsl/report.xsl" />
   <property name="saxon.jar.path" location="report/lib/saxon9he.jar" />
 
+  <property name="tools" location="tools" />
+  <property name="tools.revenj" location="tools/revenj" />
+  <property name="tools.java_client" location="tools/java_client" />
+  <property name="tools.dsl-compiler" location="tools/dsl-compiler.exe" />
+
   <tstamp>
     <format property="test.timestamp" pattern="yyyy-MM-dd_hh:mm:ss" />
   </tstamp>
@@ -44,8 +49,18 @@
 
   <target name="report" description="Compiles the test results of all subprojects, and generates the HTML report.">
     <delete dir="${report.generated}" />
-    <antcall target="collect-reports"/>
-    <antcall target="generate-html-report"/>
+    <antcall target="collect-reports" />
+    <antcall target="generate-html-report" />
+  </target>
+
+  <target name="clean-revenj-template" description="Deletes the downloaded Revenj template">
+    <delete dir="${tools.revenj}" />
+  </target>
+  <target name="clean-java-client-template" description="Deletes the downloaded Java client static deps">
+    <delete dir="${tools.java_client}" />
+  </target>
+  <target name="clean-dsl-compiler-template" description="Deletes the downloaded dsl-compiler template">
+    <delete file="${tools.dsl-compiler}" />
   </target>
 
   <!-- Subproject goals -->
@@ -61,13 +76,34 @@
       <target name="drop-db" />
     </subant>
   </target>
+  <target name="clean-revenj-project" description="Deletes the project Revenj copies">
+    <subant failonerror="false">
+      <fileset dir="." includes="**/build.xml" excludes="build.xml" />
+      <target name="clean-revenj-project" />
+    </subant>
+  </target>
+  <target name="clean-java-client-project" description="Deletes the downloaded Java client static deps">
+    <subant failonerror="false">
+      <fileset dir="." includes="**/build.xml" excludes="build.xml" />
+      <target name="clean-java-client-project" />
+    </subant>
+  </target>
+  <target name="clean-dsl-compiler-project" description="Deletes the project dsl-compiler copy">
+    <subant failonerror="false">
+      <fileset dir="." includes="**/build.xml" excludes="build.xml" />
+      <target name="clean-dsl-compiler-project" />
+    </subant>
+  </target>
   <target name="clean-all" description="Performs a hard clean, including all downloaded static dependencies (i.e. Revenj)">
     <delete dir="${report.generated}" />
     <delete file="${report.target}/index.html" />
     <subant failonerror="false">
       <fileset dir="." includes="**/build.xml" excludes="build.xml" />
-      <target name="clean-all" />
+      <target name="clean" />
     </subant>
+    <antcall target="clean-revenj-template" />
+    <antcall target="clean-java-client-template" />
+    <antcall target="clean-dsl-compiler-template" />
   </target>
   <target name="clean" description="Performs a project clean, but tries to save time by not deleting the downloaded static dependencies (i.e. the instance of Revenj for this project)">
     <subant failonerror="false">
