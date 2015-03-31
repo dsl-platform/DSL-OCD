@@ -100,6 +100,7 @@
     <subant failonerror="false">
       <fileset dir="." includes="**/build.xml" excludes="build.xml" />
       <target name="clean" />
+      <target name="clean-test" />
     </subant>
     <antcall target="clean-revenj-template" />
     <antcall target="clean-java-client-template" />

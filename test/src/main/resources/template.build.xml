@@ -3,6 +3,7 @@
 
   <property name="projectShortName" value="#{projectShortName}" />
   <property name="ProjectNameCamel" value="#{ProjectNameCamel}" />
+  <property name="testName" value="com.dslplatform.ocd.test.#{ProjectNameCamel}" />
 
   <property name="dbName" value="#{dbName}" />
   <property name="revenjHost" value="#{revenjHost}" />
@@ -12,48 +13,7 @@
   <filter token="revenjHost" value="${revenjHost}" />
   <filter token="revenjPort" value="${revenjPort}" />
 
-  <!-- This is meant for when we'll be using static JDK and Ant tools, now we aren't -->
-  <property name="java.parent" value="#{javaParent}" />
-
-  <property name="src" location="src" />
-  <property name="src.gen" location="src/generated" />
-  <property name="src.gen.java" location="src/generated/java" />
-  <property name="src.gen.res" location="src/generated/resources" />
-  <property name="src.test" location="src/test" />
-  <property name="src.test.java" location="src/test/java" />
-  <property name="src.test.res" location="src/test/resources" />
-
   <property name="tools" location="../../../tools" />
-  <property name="tools.java" location="${tools}/${java.parent}" />
-  <property name="tools.dpcc" value="/${tools}/dcc-java-user/dsl-clc.jar" />
-  <property name="tools.revenj" location="${tools}/revenj" />
-  <property name="tools.java_client" location="${tools}/java_client" />
-
-  <property name="dsl.src" location="../dsl" />
-  <property name="generated.model" location="model" />
-
-  <property name="client.tmp" location="client.tmp" />
-  <property name="server.tmp" location="server.tmp" />
-  <property name="project.java_client" location="java_client" />
-
-  <property name="jdk.lib" location="${tools.java}/jdk/lib" />
-  <property name="common.lib" location="${tools.java}/lib/test" />
-  <property name="common.lib.test" location="${tools.java}/lib/test" />
-  <property name="common.lib.compile" location="${tools.java}/lib/compile" />
-  <property name="project.lib" location="lib" />
-
-  <property name="target" location="target" />
-  <property name="target.test" location="target/test-classes" />
-  <property name="target.main" location="target/classes" />
-  <property name="target.main.packaged" location="${target}/#{projectShortName}.jar" />
-  <property name="target.test.packaged" location="${target}/#{projectShortName}-test.jar" />
-
-  <property name="project.revenj" location="revenj" />
-  <property name="revenj.exe" location="revenj/Revenj.Http.exe" />
-  <property name="revenj.config" location="${project.revenj}/Revenj.Http.exe.config" />
-
-  <property name="testName" value="com.dslplatform.ocd.test.#{ProjectNameCamel}" />
-
   <import file="../../../build-common-template.xml" />
 
 </project>

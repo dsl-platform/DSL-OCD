@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
 <project name="common" xmlns:if="ant:if" xmlns:unless="ant:unless">
 
+  <!-- This is meant for when we'll be using static JDK and Ant tools, now we aren't -->
+
   <property name="dbOwner" value="postgres" />
   <property name="dbOwnerPassword" value="ocdpassword" />
   <property name="dbUser" value="ocduser" />
@@ -8,21 +10,39 @@
   <property name="dbHost" value="localhost" />
   <property name="dbPort" value="5432" />
 
+  <property name="java.generated.dir" location="src/generated/java" />
+  <property name="resources.generated.dir" location="src/generated/resources" />
+  <property name="java.test.dir" location="src/test/java" />
+  <property name="resources.test.dir" location="src/test/resources" />
+
   <property name="revenj.exe.name" value="Revenj.http.exe" />
 
-  <property name="project" location="." />
-  <property name="project.dsl-compiler.client" location="${client.tmp}/dsl-compiler.exe" />
-  <property name="project.dsl-compiler.server" location="${server.tmp}/dsl-compiler.exe" />
-  <property name="project.dsl-compiler.dir" location="compiler" />
-  <property name="project.dsl-compiler" location="${project.dsl-compiler.dir}/dsl-compiler.exe" />
+  <property name="dsl-compiler" value="dsl-compiler.exe" />
+  <property name="project.dsl-compiler.temporary.download" location="${client.tmp}/${dsl-compiler}" />
+  <property name="project.java_client" location="java_client" />
 
-  <property name="tools.java" location="${tools}/${java.parent}" />
+  <property name="client.tmp" location="client.tmp" />
+  <property name="server.tmp" location="server.tmp" />
+
+  <property name="tools.lib" location="${tools}/lib" /> <!-- TODO: change this when we start using th -->
   <property name="tools.dpcc" location="/${tools}/dcc-java-user/dsl-clc.jar" />
   <property name="tools.revenj" location="${tools}/revenj" />
   <property name="tools.java_client" location="${tools}/java_client" />
-  <property name="tools.dsl-compiler" location="${tools}/dsl-compiler.exe" />
+  <property name="tools.dsl-compiler" location="${tools}/${dsl-compiler}" />
 
+  <property name="dsl.src" value="../dsl" />
+  <property name="generated.model" value="model" />
+
+  <property name="target" location="target" />
+  <property name="target.test" location="target/test-classes" />
+  <property name="target.main" location="target/classes" />
+  <property name="target.main.packaged" location="${target}/${projectShortName}.jar" />
+  <property name="target.test.packaged" location="${target}/${projectShortName}-test.jar" />
+
+  <property name="project.revenj" location="revenj" />
+  <property name="revenj.exe" location="revenj/Revenj.Http.exe" />
   <property name="revenj.config.template" location="${tools}/config/Revenj.Http.exe.config.template" />
+  <property name="revenj.config" location="${project.revenj}/Revenj.Http.exe.config" />
 
   <filter token="dbOwner" value="${dbOwner}" />
   <filter token="dbOwnerPassword" value="${dbOwnerPassword}" />
@@ -32,16 +52,13 @@
   <filter token="dbPort" value="${dbPort}" />
 
   <path id="compile.classpath">
-    <fileset dir="${project.lib}">
-      <include name="**/*.jar" />
-    </fileset>
     <fileset dir="${project.java_client}">
       <include name="**/*.jar" />
     </fileset>
   </path>
 
   <path id="test.classpath">
-    <fileset dir="${common.lib.test}">
+    <fileset dir="${tools.lib}">
       <include name="**/*.jar" />
     </fileset>
     <fileset dir="${project.java_client}">
@@ -49,7 +66,7 @@
     </fileset>
   </path>
 
-  <path id="postgres.classpath" location="${common.lib.compile}/postgresql-9.3-1102.jdbc41.jar" />
+  <path id="postgres.classpath" location="${tools.lib}/postgresql-9.3-1102.jdbc41.jar" />
 
   <target name="create-db" description="Tries to create this project's database. Does not fail the build on failure, since the database might already exist.">
     <sql driver="org.postgresql.Driver" url="jdbc:postgresql://${dbHost}:${dbPort}/" userid="${dbOwner}" password="${dbOwnerPassword}" autocommit="true" onerror="continue">
@@ -70,40 +87,37 @@
   </target>
 
   <target name="clean-java-client-project" description="Deletes the project Java client copy">
-      <delete dir="${project.java_client}" />
-    </target>
-  <target name="clean-dsl-compiler-project" description="Deletes the project dsl-compiler copy">
-    <delete dir="${project.dsl-compiler.dir}" />
+    <delete dir="${project.java_client}" />
   </target>
 
-  <target name="clean" description="Performs a project clean, but tries to save time by not deleting the downloaded static dependencies">
-    <delete dir="${src.gen.java}" />
-    <delete dir="${src.gen.res}" />
+
+  <target name="clean-test" description="Deletes the test result for the project">
+    <delete file="TEST-${testName}.xml" />
+  </target>
+
+  <target name="clean" description="Performs a project clean, but tries to save time by not deleting the downloaded static dependencies. (Does not delete test results.)">
+    <delete dir="${java.generated.dir}" />
+    <delete dir="${resources.generated.dir}" />
     <delete dir="${target.main}" />
     <delete dir="${target.test}" />
     <delete dir="${target}" />
     <delete dir="${client.tmp}" />
     <delete dir="${server.tmp}" />
     <delete dir="${generated.model}" />
-    <delete dir="${project.lib}" />
     <delete dir="${project.java_client}" />
     <delete dir="${project.revenj}" />
-    <delete dir="${project.dsl-compiler.dir}" />
-    <delete file="TEST-${testName}.xml" />
   </target>
 
   <target name="setup" description="Sets up the project directory structure">
-    <mkdir dir="${src.gen.java}" />
-    <mkdir dir="${src.gen.res}" />
+    <mkdir dir="${java.generated.dir}" />
+    <mkdir dir="${resources.generated.dir}" />
     <mkdir dir="${target}" />
     <mkdir dir="${target.main}" />
     <mkdir dir="${target.test}" />
-    <mkdir dir="${project.lib}" />
     <mkdir dir="${client.tmp}" />
     <mkdir dir="${server.tmp}" />
     <mkdir dir="${generated.model}" />
     <mkdir dir="${project.java_client}" />
-    <mkdir dir="${project.dsl-compiler.dir}" />
   </target>
 
   <target name="copy-revenj-template" if="revenj.template.exists">
@@ -130,12 +144,8 @@
     </copy>
   </target>
 
-  <target name="copy-dsl-compiler-template" if="dsl-compiler.template.exists">
-    <copy file="${tools.dsl-compiler}" tofile="${project.dsl-compiler}" />
-  </target>
   <target name="copy-downloaded-dsl-compiler-template" unless="dsl-compiler.template.exists">
-    <copy file="${project.dsl-compiler.client}" tofile="${tools.dsl-compiler}" />
-    <copy file="${tools.dsl-compiler}" tofile="${project.dsl-compiler}" />
+    <copy file="${project.dsl-compiler.temporary.download}" tofile="${tools.dsl-compiler}" />
   </target>
 
   <target name="compile-revenj" description="Calls the DSL command line client and tries to compile the Revenj server code">
@@ -160,7 +170,7 @@
       <arg value="-parse" />
       <!--arg value="-log" /-->
       <arg value="-no-prompt" />
-      <arg value="-compiler=${project.dsl-compiler}" />
+      <arg value="-compiler=${tools.dsl-compiler}" />
     </java>
     <move file="GeneratedModel.dll" todir="${generated.model}" />
     <antcall target="copy-downloaded-revenj-template" />
@@ -176,12 +186,12 @@
     <mkdir dir="${client.tmp}" />
     <condition property="java_client.optional.download" value="-download" else="">
       <or>
-  <length length="0">
-    <fileset dir="${project.java_client}" />
-  </length>
-  <not>
-    <available file="${tools.dsl-compiler}" type="file" />
-  </not>
+        <length length="0">
+          <fileset dir="${project.java_client}" />
+        </length>
+        <not>
+          <available file="${tools.dsl-compiler}" type="file" />
+        </not>
       </or>
     </condition>
     <condition property="java_client.template.exists">
@@ -191,7 +201,6 @@
       <available file="${tools.dsl-compiler}" type="file" />
     </condition>
     <antcall target="copy-java-client-template" />
-    <antcall target="copy-dsl-compiler-template" />
     <java jar="${tools.dpcc}" fork="true">
       <classpath refid="compile.classpath" />
       <arg value="-temp=${client.tmp}" />
@@ -206,7 +215,7 @@
       <arg value="-apply" />
       <!--arg value="-log" /-->
       <arg value="-no-prompt" />
-      <arg value="-compiler=${project.dsl-compiler}" />
+      <arg value="-compiler=${tools.dsl-compiler}" />
     </java>
     <delete file="generated-model-java.jar" />
     <antcall target="copy-downloaded-java-client-template" />
@@ -214,18 +223,18 @@
   </target>
 
   <target name="dsl-deploy" description="Moves the generated model DLL and Java files to their respective directories. Also applies the Revenj template configuration for this project.">
-    <copy todir="${src.gen.java}/ocd">
+    <copy todir="${java.generated.dir}/ocd">
       <fileset dir="${client.tmp}/java_client/ocd" />
     </copy>
   </target>
 
   <target name="compile-generated" description="Compiles the generated Java client sources.">
-    <javac srcdir="${src.gen.java}" destdir="${target.main}" fork="true" verbose="true" deprecation="true" encoding="UTF-8" source="1.6" target="1.6">
+    <javac srcdir="${java.generated.dir}" destdir="${target.main}" fork="true" verbose="true" deprecation="true" encoding="UTF-8" source="1.6" target="1.6">
       <classpath refid="compile.classpath" />
       <compilerarg value="-Xlint:unchecked" />
     </javac>
     <copy todir="${target.main}">
-      <fileset dir="${src.gen.res}" />
+      <fileset dir="${resources.generated.dir}" />
     </copy>
   </target>
 
@@ -234,14 +243,14 @@
   </target>
 
   <target name="compile-tests" description="Compiles the test sources">
-    <javac srcdir="${src.test.java}" destdir="${target.test}" fork="true" verbose="true" deprecation="true" encoding="UTF-8" source="1.6" target="1.6">
+    <javac srcdir="${java.test.dir}" destdir="${target.test}" fork="true" verbose="true" deprecation="true" encoding="UTF-8" source="1.6" target="1.6">
       <classpath refid="compile.classpath" />
       <classpath refid="test.classpath" />
       <classpath location="${target.main}" />
       <compilerarg value="-Xlint:unchecked" />
     </javac>
     <copy todir="${target.test}">
-      <fileset dir="${src.test.res}" />
+      <fileset dir="${resources.test.dir}" />
     </copy>
   </target>
 
