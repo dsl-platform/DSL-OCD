@@ -23,7 +23,7 @@ case object `java.Timestamp`
 
   def nonDefaultValues = IndexedSeq(
     SingleJavaValue("new org.joda.time.DateTime(0)")
-  , SingleJavaValue("new org.joda.time.DateTime(1, 1, 1, 0, 0)")
+  , SingleJavaValue("new org.joda.time.DateTime(1, 1, 1, 0, 0, org.joda.time.DateTimeZone.UTC)")
   , SingleJavaValue("new org.joda.time.DateTime(Integer.MAX_VALUE * 1001L)")
   )
 
@@ -42,7 +42,7 @@ case object `java.Timestamp?`
   def nonDefaultValues = IndexedSeq(
     SingleJavaValue("org.joda.time.DateTime.now()", Unstable)
   , SingleJavaValue("new org.joda.time.DateTime(0)")
-  , SingleJavaValue("new org.joda.time.DateTime(1, 1, 1, 0, 0)")
+  , SingleJavaValue("new org.joda.time.DateTime(1, 1, 1, 0, 0, org.joda.time.DateTimeZone.UTC)")
   , SingleJavaValue("new org.joda.time.DateTime(Integer.MAX_VALUE * 1001L)")
   )
 
@@ -68,7 +68,7 @@ case object `java.Timestamp[]`
   , ArrayOfJavaValues("org.joda.time.DateTime",
       SingleJavaValue("org.joda.time.DateTime.now()", Unstable)
     , SingleJavaValue("new org.joda.time.DateTime(0)")
-    , SingleJavaValue("new org.joda.time.DateTime(1, 1, 1, 0, 0)")
+    , SingleJavaValue("new org.joda.time.DateTime(1, 1, 1, 0, 0, org.joda.time.DateTimeZone.UTC)")
     , SingleJavaValue("new org.joda.time.DateTime(Integer.MAX_VALUE * 1001L)")
     )
   )
@@ -95,7 +95,7 @@ case object `java.Timestamp[]?`
   , ArrayOfJavaValues("org.joda.time.DateTime",
       SingleJavaValue("org.joda.time.DateTime.now()", Unstable)
     , SingleJavaValue("new org.joda.time.DateTime(0)")
-    , SingleJavaValue("new org.joda.time.DateTime(1, 1, 1, 0, 0)")
+    , SingleJavaValue("new org.joda.time.DateTime(1, 1, 1, 0, 0, org.joda.time.DateTimeZone.UTC)")
     , SingleJavaValue("new org.joda.time.DateTime(Integer.MAX_VALUE * 1001L)")
     )
   )
@@ -125,14 +125,14 @@ case object `java.Timestamp?[]`
   , ArrayOfJavaValues("org.joda.time.DateTime",
       SingleJavaValue("org.joda.time.DateTime.now()", Unstable)
     , SingleJavaValue("new org.joda.time.DateTime(0)")
-    , SingleJavaValue("new org.joda.time.DateTime(1, 1, 1, 0, 0)")
+    , SingleJavaValue("new org.joda.time.DateTime(1, 1, 1, 0, 0, org.joda.time.DateTimeZone.UTC)")
     , SingleJavaValue("new org.joda.time.DateTime(Integer.MAX_VALUE * 1001L)")
     )
   , ArrayOfJavaValues("org.joda.time.DateTime",
       SingleJavaValue("null")
     , SingleJavaValue("org.joda.time.DateTime.now()", Unstable)
     , SingleJavaValue("new org.joda.time.DateTime(0)")
-    , SingleJavaValue("new org.joda.time.DateTime(1, 1, 1, 0, 0)")
+    , SingleJavaValue("new org.joda.time.DateTime(1, 1, 1, 0, 0, org.joda.time.DateTimeZone.UTC)")
     , SingleJavaValue("new org.joda.time.DateTime(Integer.MAX_VALUE * 1001L)")
     )
   )
@@ -162,14 +162,14 @@ case object `java.Timestamp?[]?`
   , ArrayOfJavaValues("org.joda.time.DateTime",
       SingleJavaValue("org.joda.time.DateTime.now()", Unstable)
     , SingleJavaValue("new org.joda.time.DateTime(0)")
-    , SingleJavaValue("new org.joda.time.DateTime(1, 1, 1, 0, 0)")
+    , SingleJavaValue("new org.joda.time.DateTime(1, 1, 1, 0, 0, org.joda.time.DateTimeZone.UTC)")
     , SingleJavaValue("new org.joda.time.DateTime(Integer.MAX_VALUE * 1001L)")
     )
   , ArrayOfJavaValues("org.joda.time.DateTime",
       SingleJavaValue("null")
     , SingleJavaValue("org.joda.time.DateTime.now()", Unstable)
     , SingleJavaValue("new org.joda.time.DateTime(0)")
-    , SingleJavaValue("new org.joda.time.DateTime(1, 1, 1, 0, 0)")
+    , SingleJavaValue("new org.joda.time.DateTime(1, 1, 1, 0, 0, org.joda.time.DateTimeZone.UTC)")
     , SingleJavaValue("new org.joda.time.DateTime(Integer.MAX_VALUE * 1001L)")
     )
   )
@@ -196,7 +196,7 @@ case object `java.List<Timestamp>`
   , ListOfJavaValues("org.joda.time.DateTime",
       SingleJavaValue("org.joda.time.DateTime.now()", Unstable)
     , SingleJavaValue("new org.joda.time.DateTime(0)")
-    , SingleJavaValue("new org.joda.time.DateTime(1, 1, 1, 0, 0)")
+    , SingleJavaValue("new org.joda.time.DateTime(1, 1, 1, 0, 0, org.joda.time.DateTimeZone.UTC)")
     , SingleJavaValue("new org.joda.time.DateTime(Integer.MAX_VALUE * 1001L)")
     )
   )
@@ -223,7 +223,7 @@ case object `java.List<Timestamp>?`
   , ListOfJavaValues("org.joda.time.DateTime",
       SingleJavaValue("org.joda.time.DateTime.now()", Unstable)
     , SingleJavaValue("new org.joda.time.DateTime(0)")
-    , SingleJavaValue("new org.joda.time.DateTime(1, 1, 1, 0, 0)")
+    , SingleJavaValue("new org.joda.time.DateTime(1, 1, 1, 0, 0, org.joda.time.DateTimeZone.UTC)")
     , SingleJavaValue("new org.joda.time.DateTime(Integer.MAX_VALUE * 1001L)")
     )
   )
@@ -253,14 +253,14 @@ case object `java.List<Timestamp?>`
   , ListOfJavaValues("org.joda.time.DateTime",
       SingleJavaValue("org.joda.time.DateTime.now()", Unstable)
     , SingleJavaValue("new org.joda.time.DateTime(0)")
-    , SingleJavaValue("new org.joda.time.DateTime(1, 1, 1, 0, 0)")
+    , SingleJavaValue("new org.joda.time.DateTime(1, 1, 1, 0, 0, org.joda.time.DateTimeZone.UTC)")
     , SingleJavaValue("new org.joda.time.DateTime(Integer.MAX_VALUE * 1001L)")
     )
   , ListOfJavaValues("org.joda.time.DateTime",
       SingleJavaValue("null")
     , SingleJavaValue("org.joda.time.DateTime.now()", Unstable)
     , SingleJavaValue("new org.joda.time.DateTime(0)")
-    , SingleJavaValue("new org.joda.time.DateTime(1, 1, 1, 0, 0)")
+    , SingleJavaValue("new org.joda.time.DateTime(1, 1, 1, 0, 0, org.joda.time.DateTimeZone.UTC)")
     , SingleJavaValue("new org.joda.time.DateTime(Integer.MAX_VALUE * 1001L)")
     )
   )
@@ -290,14 +290,14 @@ case object `java.List<Timestamp?>?`
   , ListOfJavaValues("org.joda.time.DateTime",
       SingleJavaValue("org.joda.time.DateTime.now()", Unstable)
     , SingleJavaValue("new org.joda.time.DateTime(0)")
-    , SingleJavaValue("new org.joda.time.DateTime(1, 1, 1, 0, 0)")
+    , SingleJavaValue("new org.joda.time.DateTime(1, 1, 1, 0, 0, org.joda.time.DateTimeZone.UTC)")
     , SingleJavaValue("new org.joda.time.DateTime(Integer.MAX_VALUE * 1001L)")
     )
   , ListOfJavaValues("org.joda.time.DateTime",
       SingleJavaValue("null")
     , SingleJavaValue("org.joda.time.DateTime.now()", Unstable)
     , SingleJavaValue("new org.joda.time.DateTime(0)")
-    , SingleJavaValue("new org.joda.time.DateTime(1, 1, 1, 0, 0)")
+    , SingleJavaValue("new org.joda.time.DateTime(1, 1, 1, 0, 0, org.joda.time.DateTimeZone.UTC)")
     , SingleJavaValue("new org.joda.time.DateTime(Integer.MAX_VALUE * 1001L)")
     )
   )
@@ -324,7 +324,7 @@ case object `java.Set<Timestamp>`
   , SetOfJavaValues("org.joda.time.DateTime",
       SingleJavaValue("org.joda.time.DateTime.now()", Unstable)
     , SingleJavaValue("new org.joda.time.DateTime(0)")
-    , SingleJavaValue("new org.joda.time.DateTime(1, 1, 1, 0, 0)")
+    , SingleJavaValue("new org.joda.time.DateTime(1, 1, 1, 0, 0, org.joda.time.DateTimeZone.UTC)")
     , SingleJavaValue("new org.joda.time.DateTime(Integer.MAX_VALUE * 1001L)")
     )
   )
@@ -351,7 +351,7 @@ case object `java.Set<Timestamp>?`
   , SetOfJavaValues("org.joda.time.DateTime",
       SingleJavaValue("org.joda.time.DateTime.now()", Unstable)
     , SingleJavaValue("new org.joda.time.DateTime(0)")
-    , SingleJavaValue("new org.joda.time.DateTime(1, 1, 1, 0, 0)")
+    , SingleJavaValue("new org.joda.time.DateTime(1, 1, 1, 0, 0, org.joda.time.DateTimeZone.UTC)")
     , SingleJavaValue("new org.joda.time.DateTime(Integer.MAX_VALUE * 1001L)")
     )
   )
@@ -381,14 +381,14 @@ case object `java.Set<Timestamp?>`
   , SetOfJavaValues("org.joda.time.DateTime",
       SingleJavaValue("org.joda.time.DateTime.now()", Unstable)
     , SingleJavaValue("new org.joda.time.DateTime(0)")
-    , SingleJavaValue("new org.joda.time.DateTime(1, 1, 1, 0, 0)")
+    , SingleJavaValue("new org.joda.time.DateTime(1, 1, 1, 0, 0, org.joda.time.DateTimeZone.UTC)")
     , SingleJavaValue("new org.joda.time.DateTime(Integer.MAX_VALUE * 1001L)")
     )
   , SetOfJavaValues("org.joda.time.DateTime",
       SingleJavaValue("null")
     , SingleJavaValue("org.joda.time.DateTime.now()", Unstable)
     , SingleJavaValue("new org.joda.time.DateTime(0)")
-    , SingleJavaValue("new org.joda.time.DateTime(1, 1, 1, 0, 0)")
+    , SingleJavaValue("new org.joda.time.DateTime(1, 1, 1, 0, 0, org.joda.time.DateTimeZone.UTC)")
     , SingleJavaValue("new org.joda.time.DateTime(Integer.MAX_VALUE * 1001L)")
     )
   )
@@ -418,14 +418,14 @@ case object `java.Set<Timestamp?>?`
   , SetOfJavaValues("org.joda.time.DateTime",
       SingleJavaValue("org.joda.time.DateTime.now()", Unstable)
     , SingleJavaValue("new org.joda.time.DateTime(0)")
-    , SingleJavaValue("new org.joda.time.DateTime(1, 1, 1, 0, 0)")
+    , SingleJavaValue("new org.joda.time.DateTime(1, 1, 1, 0, 0, org.joda.time.DateTimeZone.UTC)")
     , SingleJavaValue("new org.joda.time.DateTime(Integer.MAX_VALUE * 1001L)")
     )
   , SetOfJavaValues("org.joda.time.DateTime",
       SingleJavaValue("null")
     , SingleJavaValue("org.joda.time.DateTime.now()", Unstable)
     , SingleJavaValue("new org.joda.time.DateTime(0)")
-    , SingleJavaValue("new org.joda.time.DateTime(1, 1, 1, 0, 0)")
+    , SingleJavaValue("new org.joda.time.DateTime(1, 1, 1, 0, 0, org.joda.time.DateTimeZone.UTC)")
     , SingleJavaValue("new org.joda.time.DateTime(Integer.MAX_VALUE * 1001L)")
     )
   )

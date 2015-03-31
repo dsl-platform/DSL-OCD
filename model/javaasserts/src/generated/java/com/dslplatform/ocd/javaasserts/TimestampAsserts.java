@@ -11,8 +11,8 @@ public class TimestampAsserts {
             .append("expected was: ")
             .append("\"" + expected + "\"")
             .append(", but actual was: ")
-            .append("\"" + expected + "\"")
-            .append("[WARNING - comparing two instants directly - not using a delta duration]")
+            .append("\"" + actual + "\"")
+            .append("[WARNING - not using a delta duration, comparing two instants directly]")
             ;
 
         if(expected == actual) {

@@ -233,9 +233,7 @@ private[config] class TestDeployer(
         language match {
           case JAVA =>
             {
-                copyTemplate("compiler.bat", languageRoot);
                 copyTemplate("build.xml", languageRoot);
-                copyTemplate("compiler-ocd.sh", languageRoot, PosixFilePermission.GROUP_EXECUTE, PosixFilePermission.OWNER_EXECUTE, PosixFilePermission.OTHERS_EXECUTE );
                 copyTemplate(".pgpass", languageRoot);
             }
           case _ =>
