@@ -17,15 +17,15 @@
 
   <property name="revenj.exe.name" value="Revenj.http.exe" />
 
+  <property name="client.tmp" location="client.tmp" />
+  <property name="server.tmp" location="server.tmp" />
+
   <property name="dsl-compiler" value="dsl-compiler.exe" />
   <property name="project.dsl-compiler.temporary.download" location="${client.tmp}/${dsl-compiler}" />
   <property name="project.java_client" location="java_client" />
 
-  <property name="client.tmp" location="client.tmp" />
-  <property name="server.tmp" location="server.tmp" />
-
   <property name="tools.lib" location="${tools}/lib" /> <!-- TODO: change this when we start using th -->
-  <property name="tools.dpcc" location="/${tools}/dcc-java-user/dsl-clc.jar" />
+  <property name="dsl-compiler-client" location="/${tools.lib}/dsl-clc.jar" />
   <property name="tools.revenj" location="${tools}/revenj" />
   <property name="tools.java_client" location="${tools}/java_client" />
   <property name="tools.dsl-compiler" location="${tools}/${dsl-compiler}" />
@@ -158,7 +158,7 @@
       <available file="${tools.revenj}" type="dir" />
     </condition>
     <antcall target="copy-revenj-template" />
-    <java jar="${tools.dpcc}" fork="true">
+    <java jar="${dsl-compiler-client}" fork="true">
       <classpath refid="compile.classpath" />
       <arg value="-temp=${server.tmp}" />
       <arg value="-dsl=${dsl.src}" />
@@ -201,7 +201,7 @@
       <available file="${tools.dsl-compiler}" type="file" />
     </condition>
     <antcall target="copy-java-client-template" />
-    <java jar="${tools.dpcc}" fork="true">
+    <java jar="${dsl-compiler-client}" fork="true">
       <classpath refid="compile.classpath" />
       <arg value="-temp=${client.tmp}" />
       <arg value="-dsl=${dsl.src}" />

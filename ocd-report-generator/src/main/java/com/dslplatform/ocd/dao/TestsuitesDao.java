@@ -27,7 +27,7 @@ public class TestsuitesDao {
 
     }
 
-    public List<Testsuite> getSuccessfulTestsuites(){
+    public List<Testsuite> getSuccessfulTestsuites() {
         final List<Testsuite> testsuites = new ArrayList<Testsuite>();
         for(final Testsuite ts : this.testsuites.getTestsuite()){
             final int errors = Integer.parseInt(ts.getErrors());
@@ -38,7 +38,7 @@ public class TestsuitesDao {
         return testsuites;
     }
 
-    public List<Testsuite> getFailedTestsuites(){
+    public List<Testsuite> getFailedTestsuites() {
         final List<Testsuite> testsuites = new ArrayList<Testsuite>();
         for(final Testsuite ts : this.testsuites.getTestsuite()){
             final int errors = Integer.parseInt(ts.getErrors());
@@ -88,7 +88,6 @@ public class TestsuitesDao {
             final int errors = Integer.parseInt(testsuite.getErrors());
             sum += errors;
         }
-
         return sum;
     }
 

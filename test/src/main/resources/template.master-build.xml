@@ -6,7 +6,8 @@
   <property name="report.target" location="report/site/" />
   <property name="report.generated" location="report/site/summaries" />
   <property name="report.stylesheet" location="report/xsl/report.xsl" />
-  <property name="saxon.jar.path" location="report/lib/saxon9he.jar" />
+  <property name="saxon.jar" location="report/lib/saxon9he.jar" />
+  <property name="ocd-report-generator" location="tools/lib/ocd-report-generator.jar" />
 
   <property name="tools" location="tools" />
   <property name="tools.revenj" location="tools/revenj" />
@@ -21,12 +22,12 @@
     <attribute name="in" />
     <attribute name="out" />
     <attribute name="style" />
-    <attribute name="classpath" default="${saxon.jar.path}" />
+    <attribute name="classpath" default="${saxon.jar}" />
     <attribute name="taskname" default="ocd:xslt" />
     <element name="params" optional="true" implicit="true" />
     <sequential>
       <java classname="net.sf.saxon.Transform" classpath="@{classpath}" taskname="@{taskname}" fork="true">
-        <classpath path="${saxon.jar.path}" />
+        <classpath path="${saxon.jar}" />
         <arg value="-s:@{in}" />
         <arg value="-xsl:@{style}" />
         <arg value="-o:@{out}" />
@@ -44,7 +45,10 @@
   </target>
 
   <target name="generate-html-report" description="Generates the HTML report, using the OCD-Tests-Summary.xml collected from the subprojects">
-    <ocd:do-xsl-transform in="${report.root}/OCD-Tests-Summary.xml" out="${report.target}/report.xml" style="${report.stylesheet}" />
+    <java jar="${ocd-report-generator}" fork="true">
+      <arg value="${report.target}" />
+      <arg value="${report.root}/OCD-Tests-Summary.xml" />
+    </java>
   </target>
 
   <target name="report" description="Compiles the test results of all subprojects, and generates the HTML report.">
@@ -76,6 +80,12 @@
       <target name="drop-db" />
     </subant>
   </target>
+  <target name="clean-test" description="Deletes the projects test results">
+      <subant failonerror="false">
+        <fileset dir="." includes="**/build.xml" excludes="build.xml" />
+        <target name="clean-test" />
+      </subant>
+    </target>
   <target name="clean-revenj-project" description="Deletes the project Revenj copies">
     <subant failonerror="false">
       <fileset dir="." includes="**/build.xml" excludes="build.xml" />

@@ -2,48 +2,58 @@ package com.dslplatform.ocd;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.util.List;
+import java.io.StringWriter;
 
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-import javax.xml.xpath.XPath;
-import javax.xml.xpath.XPathExpressionException;
-import javax.xml.xpath.XPathFactory;
 
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
-import org.w3c.dom.Text;
 
 public class DomHelper {
 
-    private final XPath xpath = XPathFactory.newInstance().newXPath();
-
     public final Document document;
-
     public DomHelper(final Document doc) {
         this.document = doc;
     }
 
-    public void writeToFile(final String filename) {
-        FileOutputStream fos = null;
+    public String getDocumentAsString() {
         try {
-            final File f = new File(filename);
-            new File(f.getParent()).mkdirs();
-            fos = new FileOutputStream(f);
-            final DOMSource ds = new DOMSource(this.document);
+            final DOMSource domSource = new DOMSource(this.document);
             final Transformer t = TransformerFactory.newInstance().newTransformer();
-            final StreamResult sr = new StreamResult(fos);
-            t.transform(ds,sr);
-            fos.close();
+            final StringWriter writer = new StringWriter();
+            final StreamResult sr = new StreamResult(writer);
+            t.transform(domSource,sr);
+            return writer.toString();
+        } catch(final Exception e){
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void writeToFile(final String filename) {
+        FileOutputStream fileOutputStream = null;
+        try {
+            final File file = new File(filename);
+            new File(file.getParent()).mkdirs();
+            fileOutputStream = new FileOutputStream(file);
+
+            final byte[] bytesContent = this.getDocumentAsString()
+                    .replaceAll("&lt;", "<")
+                    .replaceAll("&gt;", ">")
+                    .getBytes("UTF-8");
+
+            fileOutputStream.write(bytesContent);
+            fileOutputStream.flush();
+            fileOutputStream.close();
         } catch (final Exception e) {
             throw new RuntimeException(e);
         } finally{
             try{
-                if(fos != null)fos.close();
+                if(fileOutputStream != null)fileOutputStream.close();
             } catch(final Exception e){
                 throw new RuntimeException(e);
             }
@@ -61,18 +71,8 @@ public class DomHelper {
         return a;
     }
 
-    public Element text(final Object data) {
-    	String dataString = data.toString();
-    	String[] textNodes = dataString.split("\n");
-    	Element span = this.span();
-    	for(int i=0; i!=textNodes.length; i++){
-    		span.appendChild(this.document.createTextNode(textNodes[i]));
-    		if(i != textNodes.length-1) {
-    			span.appendChild(this.br());
-    		}
-    	}
-    	
-    	return span;
+    public Node text(final Object data) {
+        return this.document.createTextNode(data.toString().replace("\n", "<br/>"));
     }
 
     public Element element(final String tagName) {
@@ -97,17 +97,18 @@ public class DomHelper {
             }
     }
 
-    public String xpathValue(final String expression) {
-        try {
-            return this.xpath.compile(expression).evaluate(this.document);
-        } catch (final XPathExpressionException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     public Element table(final Node ... children ) {
         return this.element("table", children);
     }
+
+    public Element thead(final Node ... children) {
+        return this.element("thead", children);
+    }
+
+    public Element tbody(final Node ... children) {
+        return this.element("tbody", children);
+    }
+
 
     public Element tr(final Node ... children ) {
         return this.element("tr", children);
@@ -129,6 +130,34 @@ public class DomHelper {
         return this.element("code", children);
     }
 
+    public Element html(final Node ... children) {
+        return this.element("html", children);
+    }
+
+    public Element title(final Node ... children) {
+        return this.element("title", children);
+    }
+
+    public Element link(final Node ... children) {
+        return this.element("link", children);
+    }
+
+    public Element script(final Node ... children) {
+        return this.element("script", children);
+    }
+
+    public Element head(final Node ... children) {
+        return this.element("head", children);
+    }
+
+    public Element body(final Node ... children) {
+        return this.element("body", children);
+    }
+
+    public Element caption(final Node ... children) {
+        return this.element("caption", children);
+    }
+
     public Element h1(final Node ... children) {
         return this.element("h1", children);
     }
@@ -140,7 +169,7 @@ public class DomHelper {
     public Element div(final Node ... children) {
         return this.element("div", children);
     }
-    
+
     public Element span(final Node ... children) {
         return this.element("span", children);
     }
@@ -151,6 +180,10 @@ public class DomHelper {
 
     public Attr href(final String value) {
         return this.attr("href", value);
+    }
+
+    public Attr rel(final String value) {
+        return this.attr("rel", value);
     }
 
     public Attr src(final String value) {

@@ -41,9 +41,9 @@ trait TestJavaTemplate {
       sb ++= test.testComponentBody.trim()
           .replaceAll(
               "public[ ]+void[ ]+test([^\\(]+)\\(\\)(.*)\\{"
-              ,"""public void test$1()$2{
-              org.slf4j.LoggerFactory.getLogger("ocd-anchor-logger").trace("<a id=\\"test$1\\"/><h2>test$1</h2>");
-              org.slf4j.MDC.put("ocdTestMethodName","test$1:");
+              ,s"""public void test$$1()$$2{
+              org.slf4j.LoggerFactory.getLogger("ocd-anchor-logger").trace("<a id='$packageName.$testName.test$$1'><h4>$packageName.$testName.test$$1</h4></a>");
+              org.slf4j.MDC.put("ocdTestMethodName","test$$1:");
               """)
           ;
     }

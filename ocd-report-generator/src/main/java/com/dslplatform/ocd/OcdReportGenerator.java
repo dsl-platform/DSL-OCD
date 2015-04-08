@@ -24,7 +24,7 @@ public class OcdReportGenerator {
 
     private final String outputDir;
 
-    public OcdReportGenerator(final String inputFilename, final String outputDirectory) throws Exception {
+    public OcdReportGenerator(final String outputDirectory, final String inputFilename) throws Exception {
         this.outputDir = outputDirectory.endsWith("/") ? outputDirectory : outputDirectory + "/";
         final Testsuites testsuites = (Testsuites) JAXBContext
                 .newInstance("com.dslplatform.ocd.generated")
@@ -55,17 +55,17 @@ public class OcdReportGenerator {
     private DomHelper indexPage() {
         final DomHelper dh = new DomHelper(this.documentBuilder.newDocument());
         dh.root(
-            dh.element("html"
-                ,dh.element("head"
-                    ,dh.element("title", dh.text("OCD summary"))
-                    ,dh.element("link"
-                        , dh.attr("rel", "stylesheet")
+            dh.html(
+                dh.head(
+                    dh.title(dh.text("OCD summary"))
+                    ,dh.link(
+                        dh.rel("stylesheet")
                         , dh.href("css/bootstrap.min.css"))
-                    ,dh.element("script", dh.attr("src", "js/jquery.min.js"))
-                    ,dh.element("script", dh.attr("src", "js/bootstrap.min.js")))
-                , dh.element("body"
-                    , dh.element("div", dh.attr("class", "container")
-                        , dh.element("h1", dh.text("Testsuites summary"))
+                    ,dh.script(dh.src("js/jquery.min.js"))
+                    ,dh.script(dh.src("js/bootstrap.min.js")))
+                , dh.body(
+                    dh.div(dh.attr("class", "container")
+                        , dh.h1(dh.text("Testsuites summary"))
                         , this.summaryTable(dh)
                         , this.failedTestuitesTable(dh)
                         , this.successfulTestsuitesTable(dh)))));
@@ -75,19 +75,18 @@ public class OcdReportGenerator {
     private DomHelper testsuitePage(final Testsuite ts){
         final DomHelper dh = new DomHelper(this.documentBuilder.newDocument());
         dh.root(
-            dh.element("html"
-                ,dh.element("head"
-                    ,dh.element("title", dh.text("Testsuite summary"))
-                    ,dh.element("link"
-                        , dh.attr("rel", "stylesheet")
+            dh.html(
+                dh.head(
+                    dh.title(dh.text("Testsuite summary"))
+                    ,dh.link(dh.rel("stylesheet")
                         , dh.href("../css/bootstrap.min.css"))
-                    ,dh.element("script", dh.attr("src", "../js/jquery.min.js"))
-                    ,dh.element("script", dh.attr("src", "../js/bootstrap.min.js")))
-                , dh.element("body"
-                    , dh.element("div", dh.attr("id", "TestSuiteDetails"), dh.attr("class", "container")
-                        , dh.element("h1", dh.text("Test summary for " + ts.getName()))
-                        , dh.a(dh.href("../../" + stacktraceLink(ts)), dh.text("(view stacktrace)"))
-                        , dh.element("table", dh.attr("class", "table table-striped")
+                    ,dh.script(dh.src("../js/jquery.min.js"))
+                    ,dh.script(dh.src("../js/bootstrap.min.js")))
+                , dh.body(
+                    dh.div(dh.id("TestSuiteDetails"), dh.attr("class", "container")
+                        , dh.h1(dh.text("Test summary for " + ts.getName()))
+                        , dh.a(dh.href("../" + stacktraceLink(ts)), dh.text("(view stacktrace)"))
+                        , dh.table(dh.attr("class", "table table-striped")
                             , this.testSuiteHeader(dh)
                             , dh.tr(
                                 dh.td(dh.text(ts.getName()))
@@ -106,16 +105,17 @@ public class OcdReportGenerator {
     private DomHelper stacktracePage(final Testsuite ts){
         final DomHelper dh = new DomHelper(this.documentBuilder.newDocument());
         dh.root(
-                dh.element("html"
-                    ,dh.element("head"
-                        ,dh.element("title", dh.text("Testcase summary"))
-                        ,dh.element("link"
-                            , dh.attr("rel", "stylesheet")
+                dh.html(
+                        /*
+                    dh.head(
+                        dh.title(dh.text("Testcase summary"))
+                        ,dh.link(
+                            dh.rel("stylesheet")
                             , dh.href("../css/bootstrap.min.css"))
-                        ,dh.element("script", dh.attr("src", "../js/jquery.min.js"))
-                        ,dh.element("script", dh.attr("src", "../js/bootstrap.min.js")))
-                    , dh.element("body"
-                        , dh.text(ts.getSystemOut())
+                        ,dh.script(dh.src("../js/jquery.min.js"))
+                        ,dh.script(dh.src("../js/bootstrap.min.js"))),*/
+                    dh.body(
+                        dh.text(ts.getSystemOut())
                         , dh.text(ts.getSystemErr()))));
         return dh;
     }
@@ -126,16 +126,16 @@ public class OcdReportGenerator {
         final String status = tc.getError().size() > 0 || tc.getFailure().size() > 0 ? "Failed" : "Success";
 
         dh.root(
-            dh.element("html"
-                ,dh.element("head"
-                    ,dh.element("title", dh.text("Testcase summary"))
-                    ,dh.element("link"
-                        , dh.attr("rel", "stylesheet")
+            dh.html(
+                dh.head(
+                    dh.title(dh.text("Testcase summary"))
+                    ,dh.link(
+                        dh.rel("stylesheet")
                         , dh.href("../../css/bootstrap.min.css"))
-                    ,dh.element("script", dh.attr("src", "../../js/jquery.min.js"))
-                    ,dh.element("script", dh.attr("src", "../../js/bootstrap.min.js")))
-                , dh.element("body"
-                    , dh.div(dh.id("testDetails"), dh.attr("class", "container")
+                    ,dh.script(dh.src("../../js/jquery.min.js"))
+                    ,dh.script(dh.src("../../js/bootstrap.min.js")))
+                , dh.body(
+                    dh.div(dh.id("testDetails"), dh.attr("class", "container")
                         , dh.h1(dh.text(tc.getName()))
                         , dh.h2(dh.a(dh.target("_blank"), dh.href("../../" + stacktraceLink(ts)), dh.text("(stack trace)")))
                         , dh.table(dh.attr("class", "table table-striped"), dh.style("width: 1500px")
@@ -148,8 +148,6 @@ public class OcdReportGenerator {
                                 , dh.td(dh.text(status))
                                 , dh.td(dh.text(tc.getTime()))))
                         , this.errorsDiv(dh, tc)))));
-
-
         return dh;
     }
 
@@ -192,17 +190,17 @@ public class OcdReportGenerator {
         final Double time = testsuitesDao.getTime();
         final Double successRate = testsuitesDao.getSuccessRate();
 
-        final Element table = dh.element("table", dh.attr("class", "table table-striped")
-                , dh.element("thead"
-                    , dh.tr(
+        final Element table = dh.table(dh.attr("class", "table table-striped")
+                , dh.thead(
+                    dh.tr(
                         dh.th(dh.text("Success rate"))
                         , dh.th(dh.text("Test suites"))
                         , dh.th(dh.text("Tests"))
                         , dh.th(dh.text("Failures"))
                         , dh.th(dh.text("Errors"))
                         , dh.th(dh.text("Time"))))
-                , dh.element("tbody"
-                    , dh.tr(
+                , dh.tbody(
+                    dh.tr(
                         dh.td(dh.text(String.format("%.2f", successRate)))
                         , dh.td(dh.text(testsuiteCount.toString()))
                         , dh.td(dh.text(tests.toString()))
@@ -239,7 +237,7 @@ public class OcdReportGenerator {
 
         return
         dh.tr(dh.attr("class", (errors > 0 || failures >0)? "danger" : "")
-            , dh.td(dh.element("a", dh.href(link(ts)), dh.text(ts.getName())))
+            , dh.td(dh.a(dh.href(link(ts)), dh.text(ts.getName())))
             , dh.td(dh.text(String.format("%.2f", successRate)))
             , dh.td(dh.text(tests.toString()))
             , dh.td(dh.text(failures.toString()))
@@ -260,7 +258,7 @@ public class OcdReportGenerator {
             dh.tr(dh.attr("class", tc.getError().size() > 0 || tc.getFailure().size() > 0 ? "danger" : "")
                 , dh.td(dh.a( dh.href("../" +this.link(ts, tc)), dh.text(tc.getName()))
                         , dh.br()
-                        , dh.a(dh.attr("target", "_blank"), dh.href("../" + this.stacktraceLink(ts, tc)), dh.text("(view stacktrace)")))
+                        , dh.a(dh.target("_blank"), dh.href("../" + this.stacktraceLink(ts, tc)), dh.text("(view stacktrace)")))
                 , dh.td(dh.text(status))
                 , dh.td(dh.code(dh.text(errorMessage)))
                 , dh.td(dh.text(tc.getTime()))
@@ -269,8 +267,8 @@ public class OcdReportGenerator {
     }
 
     private Element failedTestuitesTable(final DomHelper dh){
-        final Element table = dh.element("table", dh.attr("class", "table table-striped")
-            , dh.element("caption", dh.text("Failed tests"))
+        final Element table = dh.table(dh.attr("class", "table table-striped")
+            , dh.caption(dh.text("Failed tests"))
             , this.testSuiteHeader(dh));
         for(final Testsuite ts : this.testsuitesDao.getFailedTestsuites()){
             table.appendChild(this.testsuiteTableEntry(dh, ts));
@@ -279,8 +277,8 @@ public class OcdReportGenerator {
     }
 
     private Element successfulTestsuitesTable(final DomHelper dh){
-        final Element table = dh.element("table", dh.attr("class", "table table-striped")
-                , dh.element("caption", dh.text("Successful tests"))
+        final Element table = dh.table(dh.attr("class", "table table-striped")
+                , dh.caption(dh.text("Successful tests"))
                 , this.testSuiteHeader(dh));
         for(final Testsuite ts : this.testsuitesDao.getSuccessfulTestsuites()){
             table.appendChild(this.testsuiteTableEntry(dh, ts));
@@ -331,7 +329,7 @@ public class OcdReportGenerator {
         return "testsuites/"+ts.hashCode()+"/"+tc.hashCode()+".html";
     }
     private String stacktraceLink(final Testsuite ts, final Testcase tc){
-        return stacktraceLink(ts)+"#"+ts.getName();
+        return stacktraceLink(ts)+"#"+tc.getClassname() + "." + tc.getName();
     }
 
     private String testcasePath(final Testsuite ts, final Testcase tc){
