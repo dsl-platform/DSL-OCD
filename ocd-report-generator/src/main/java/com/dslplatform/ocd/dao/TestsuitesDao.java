@@ -9,7 +9,7 @@ import com.dslplatform.ocd.generated.Testsuites;
 
 public class TestsuitesDao {
 
-    public final Testsuites testsuites;
+    private final Testsuites testsuites;
     public TestsuitesDao(final Testsuites testsuites){
         this.testsuites = testsuites;
     }
