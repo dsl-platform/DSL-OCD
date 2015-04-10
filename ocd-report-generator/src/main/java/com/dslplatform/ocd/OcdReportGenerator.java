@@ -173,17 +173,17 @@ public class OcdReportGenerator {
 
     private Element errorTable(final DomHelper dh, final Error e){
         final Element table = dh.table_error(
-                dh.table_row(dh.th("Type:"), e.getType())
-                , dh.table_row(dh.th("Message:"), e.getMessage())
-                , dh.table_row(dh.th("Text:"), dh.code(e.getContent())));
+                dh.table_row("Type:", e.getType())
+                , dh.table_row("Message:", e.getMessage())
+                , dh.table_row("Text:", dh.code(e.getContent())));
         return table;
     }
 
-    private Element failureTable(final DomHelper dh, final Failure f){
+    private Element failureTable(final DomHelper dh, final Failure e){
         final Element table = dh.table_error(
-                dh.table_row(dh.th("Type:"), f.getType())
-                , dh.table_row(dh.th("Message:"), f.getMessage())
-                , dh.table_row(dh.th("Text:"), dh.code(f.getContent())));
+                dh.table_row("Type:", e.getType())
+                , dh.table_row("Message:", e.getMessage())
+                , dh.table_row("Text:", dh.code(e.getContent())));
         return table;
     }
 

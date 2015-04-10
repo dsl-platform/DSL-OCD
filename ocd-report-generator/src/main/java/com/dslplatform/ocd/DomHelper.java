@@ -119,7 +119,7 @@ public class DomHelper {
         for(final Object child: children){
             if(child instanceof Attr) {
                 tr.setAttribute(((Attr) child).getName(), ((Attr) child).getValue());
-            } else if(child instanceof Element && ((Element)child).getNodeName() == "td"){
+            } else if(child instanceof Element && (((Element)child).getNodeName() == "td" || ((Element)child).getNodeName() == "th")){
                 tr.appendChild((Node)child);
             }
             else {
@@ -134,7 +134,7 @@ public class DomHelper {
         for(final Object child: children){
             if(child instanceof Attr) {
                 tr.setAttribute(((Attr) child).getName(), ((Attr) child).getValue());
-            } else if(child instanceof Element && ((Element)child).getNodeName() == "th"){
+            } else if(child instanceof Element && (((Element)child).getNodeName() == "td" || ((Element)child).getNodeName() == "th")){
                 tr.appendChild((Node)child);
             }
             else {
