@@ -78,7 +78,7 @@ object TestJavaAssertsBorderValuesTurtle
     @org.junit.Test
     public void test${name.fciu}Equality() throws IOException {
         final ${ojbt.javaClass} ${name} = ${value};
-        final String ${name}JsonSerialized = JsonSerialization.serialize($name);
+        final String ${name}JsonSerialized = jsonSerialization.serialize($name).toUtf8();
         final JavaType ${name}JavaType = ${buildType(ojbt.javaType)};
         final ${ojbt.javaClass} ${name}JsonDeserialized = jsonSerialization.deserialize(${name}JavaType, ${name}JsonSerialized);
         com.dslplatform.ocd.javaasserts.${ojbt.typeSingleName}Asserts.assert${ojbt.boxName}Equals(${name}, ${name}JsonDeserialized);

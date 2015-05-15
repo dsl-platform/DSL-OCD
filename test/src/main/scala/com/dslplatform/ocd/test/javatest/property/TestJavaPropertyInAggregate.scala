@@ -15,8 +15,8 @@ trait TestJavaPropertyInAggregate
   def setupBlock: String = ""
 
   def testComponentBody = (
-    jsonSerializationTest
-  + (!isDisallowed(isDefault)).ifTrue(activeRecordPersistTest)
+  jsonSerializationTest +
+  (!isDisallowed(isDefault)).ifTrue(activeRecordPersistTest)
   )
 
   private def assertEquals(target: String) = property match {
@@ -50,10 +50,11 @@ trait TestJavaPropertyInAggregate
         // check that the property was properly assigned
         ${assertEquals("aggregate")}
 
-        final String serialized = com.dslplatform.client.JsonSerialization.serialize(aggregate);
+        final String serialized = jsonSerialization.serialize(aggregate).toUtf8();
         final ${conceptName} aggregateDeserialized = jsonSerialization.deserialize(
-                com.dslplatform.client.JsonSerialization.buildType(${conceptName}.class),
-                serialized);
+                ${conceptName}.class,
+                serialized.getBytes(java.nio.charset.Charset.forName("UTF-8")),
+                serialized.getBytes(java.nio.charset.Charset.forName("UTF-8")).length);
 
         // check that the property was properly deserialized
         ${assertEquals("aggregateDeserialized")}

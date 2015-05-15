@@ -42,6 +42,7 @@ public class OcdReportGenerator {
                     .unmarshal(new FileInputStream(inputFilename));
             this.generateWins = generateWins;
             this.testsuitesDao = new TestsuitesDao(testsuites);
+
         } catch(final Exception e){
             throw new RuntimeException(e);
         }
@@ -109,7 +110,7 @@ public class OcdReportGenerator {
                     ,dh.script(dh.src("../js/bootstrap.min.js")))
                 , dh.body(
                     dh.div_container(
-                        dh.h1("Test summary for " + ts.getName())
+                        dh.h1("Test summary for " + ts.getName() + "["+ts.getTimestamp()+"]")
                         , dh.a(dh.href("../" + stacktraceLink(ts)), "(view stacktrace)")
                         , dh.table_striped(
                             this.testSuiteHeader(dh)
@@ -255,13 +256,15 @@ public class OcdReportGenerator {
     private Element testcaseTableEntry(final DomHelper dh, final Testsuite ts, final Testcase tc){
         final boolean failed = tc.getError().size() > 0 || tc.getFailure().size() > 0;
         final String status = failed ? "Failed" : "Success";
-        final String errorMessage;
+        String errorMessage;
         if(!tc.getError().isEmpty())
             errorMessage = tc.getError().get(0).getMessage();
         else if(!tc.getFailure().isEmpty())
             errorMessage = tc.getFailure().get(0).getMessage();
         else
             errorMessage = "-";
+
+        if(errorMessage==null) errorMessage = "-";
 
         final Element row =
             dh.table_row(dh.attr("class", failed ? FAILED_CSS_CLASS : WIN_CSS_CLASS)

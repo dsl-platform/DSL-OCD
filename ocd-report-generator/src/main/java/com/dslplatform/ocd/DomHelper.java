@@ -87,7 +87,8 @@ public class DomHelper {
 
     private Element appendChildren(final Element e, final Object ... children) {
         if (children != null)
-            for (final Object child : children){
+            for (Object child : children){
+                if(child == null) child = '-';
                 if(child instanceof Attr){
                     e.setAttribute(((Attr) child).getName(), ((Attr) child).getValue());
                 } else if (child instanceof Node){
