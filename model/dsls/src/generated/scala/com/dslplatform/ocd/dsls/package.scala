@@ -21,6 +21,42 @@ trait OcdDslBoxTypeValues {
   , `dsl.Set<Binary>?`
   , `dsl.Set<Binary?>`
   , `dsl.Set<Binary?>?`
+  , `dsl.BINARY`
+  , `dsl.BINARY?`
+  , `dsl.ARRAY<BINARY>`
+  , `dsl.BINARY[]`
+  , `dsl.ARRAY<BINARY>?`
+  , `dsl.BINARY[]?`
+  , `dsl.ARRAY<BINARY?>`
+  , `dsl.BINARY?[]`
+  , `dsl.ARRAY<BINARY?>?`
+  , `dsl.BINARY?[]?`
+  , `dsl.LIST<BINARY>`
+  , `dsl.LIST<BINARY>?`
+  , `dsl.LIST<BINARY?>`
+  , `dsl.LIST<BINARY?>?`
+  , `dsl.SET<BINARY>`
+  , `dsl.SET<BINARY>?`
+  , `dsl.SET<BINARY?>`
+  , `dsl.SET<BINARY?>?`
+  , `dsl.binary`
+  , `dsl.binary?`
+  , `dsl.array<binary>`
+  , `dsl.binary[]`
+  , `dsl.array<binary>?`
+  , `dsl.binary[]?`
+  , `dsl.array<binary?>`
+  , `dsl.binary?[]`
+  , `dsl.array<binary?>?`
+  , `dsl.binary?[]?`
+  , `dsl.list<binary>`
+  , `dsl.list<binary>?`
+  , `dsl.list<binary?>`
+  , `dsl.list<binary?>?`
+  , `dsl.set<binary>`
+  , `dsl.set<binary>?`
+  , `dsl.set<binary?>`
+  , `dsl.set<binary?>?`
   , `dsl.Bits`
   , `dsl.Bits?`
   , `dsl.Array<Bits>`
@@ -39,6 +75,42 @@ trait OcdDslBoxTypeValues {
   , `dsl.Set<Bits>?`
   , `dsl.Set<Bits?>`
   , `dsl.Set<Bits?>?`
+  , `dsl.BITS`
+  , `dsl.BITS?`
+  , `dsl.ARRAY<BITS>`
+  , `dsl.BITS[]`
+  , `dsl.ARRAY<BITS>?`
+  , `dsl.BITS[]?`
+  , `dsl.ARRAY<BITS?>`
+  , `dsl.BITS?[]`
+  , `dsl.ARRAY<BITS?>?`
+  , `dsl.BITS?[]?`
+  , `dsl.LIST<BITS>`
+  , `dsl.LIST<BITS>?`
+  , `dsl.LIST<BITS?>`
+  , `dsl.LIST<BITS?>?`
+  , `dsl.SET<BITS>`
+  , `dsl.SET<BITS>?`
+  , `dsl.SET<BITS?>`
+  , `dsl.SET<BITS?>?`
+  , `dsl.bits`
+  , `dsl.bits?`
+  , `dsl.array<bits>`
+  , `dsl.bits[]`
+  , `dsl.array<bits>?`
+  , `dsl.bits[]?`
+  , `dsl.array<bits?>`
+  , `dsl.bits?[]`
+  , `dsl.array<bits?>?`
+  , `dsl.bits?[]?`
+  , `dsl.list<bits>`
+  , `dsl.list<bits>?`
+  , `dsl.list<bits?>`
+  , `dsl.list<bits?>?`
+  , `dsl.set<bits>`
+  , `dsl.set<bits>?`
+  , `dsl.set<bits?>`
+  , `dsl.set<bits?>?`
   , `dsl.Boolean`
   , `dsl.Boolean?`
   , `dsl.Array<Boolean>`
@@ -57,6 +129,96 @@ trait OcdDslBoxTypeValues {
   , `dsl.Set<Boolean>?`
   , `dsl.Set<Boolean?>`
   , `dsl.Set<Boolean?>?`
+  , `dsl.BOOL`
+  , `dsl.BOOL?`
+  , `dsl.ARRAY<BOOL>`
+  , `dsl.BOOL[]`
+  , `dsl.ARRAY<BOOL>?`
+  , `dsl.BOOL[]?`
+  , `dsl.ARRAY<BOOL?>`
+  , `dsl.BOOL?[]`
+  , `dsl.ARRAY<BOOL?>?`
+  , `dsl.BOOL?[]?`
+  , `dsl.LIST<BOOL>`
+  , `dsl.LIST<BOOL>?`
+  , `dsl.LIST<BOOL?>`
+  , `dsl.LIST<BOOL?>?`
+  , `dsl.SET<BOOL>`
+  , `dsl.SET<BOOL>?`
+  , `dsl.SET<BOOL?>`
+  , `dsl.SET<BOOL?>?`
+  , `dsl.BOOLEAN`
+  , `dsl.BOOLEAN?`
+  , `dsl.ARRAY<BOOLEAN>`
+  , `dsl.BOOLEAN[]`
+  , `dsl.ARRAY<BOOLEAN>?`
+  , `dsl.BOOLEAN[]?`
+  , `dsl.ARRAY<BOOLEAN?>`
+  , `dsl.BOOLEAN?[]`
+  , `dsl.ARRAY<BOOLEAN?>?`
+  , `dsl.BOOLEAN?[]?`
+  , `dsl.LIST<BOOLEAN>`
+  , `dsl.LIST<BOOLEAN>?`
+  , `dsl.LIST<BOOLEAN?>`
+  , `dsl.LIST<BOOLEAN?>?`
+  , `dsl.SET<BOOLEAN>`
+  , `dsl.SET<BOOLEAN>?`
+  , `dsl.SET<BOOLEAN?>`
+  , `dsl.SET<BOOLEAN?>?`
+  , `dsl.Bool`
+  , `dsl.Bool?`
+  , `dsl.Array<Bool>`
+  , `dsl.Bool[]`
+  , `dsl.Array<Bool>?`
+  , `dsl.Bool[]?`
+  , `dsl.Array<Bool?>`
+  , `dsl.Bool?[]`
+  , `dsl.Array<Bool?>?`
+  , `dsl.Bool?[]?`
+  , `dsl.List<Bool>`
+  , `dsl.List<Bool>?`
+  , `dsl.List<Bool?>`
+  , `dsl.List<Bool?>?`
+  , `dsl.Set<Bool>`
+  , `dsl.Set<Bool>?`
+  , `dsl.Set<Bool?>`
+  , `dsl.Set<Bool?>?`
+  , `dsl.bool`
+  , `dsl.bool?`
+  , `dsl.array<bool>`
+  , `dsl.bool[]`
+  , `dsl.array<bool>?`
+  , `dsl.bool[]?`
+  , `dsl.array<bool?>`
+  , `dsl.bool?[]`
+  , `dsl.array<bool?>?`
+  , `dsl.bool?[]?`
+  , `dsl.list<bool>`
+  , `dsl.list<bool>?`
+  , `dsl.list<bool?>`
+  , `dsl.list<bool?>?`
+  , `dsl.set<bool>`
+  , `dsl.set<bool>?`
+  , `dsl.set<bool?>`
+  , `dsl.set<bool?>?`
+  , `dsl.boolean`
+  , `dsl.boolean?`
+  , `dsl.array<boolean>`
+  , `dsl.boolean[]`
+  , `dsl.array<boolean>?`
+  , `dsl.boolean[]?`
+  , `dsl.array<boolean?>`
+  , `dsl.boolean?[]`
+  , `dsl.array<boolean?>?`
+  , `dsl.boolean?[]?`
+  , `dsl.list<boolean>`
+  , `dsl.list<boolean>?`
+  , `dsl.list<boolean?>`
+  , `dsl.list<boolean?>?`
+  , `dsl.set<boolean>`
+  , `dsl.set<boolean>?`
+  , `dsl.set<boolean?>`
+  , `dsl.set<boolean?>?`
   , `dsl.Color`
   , `dsl.Color?`
   , `dsl.Array<Color>`
@@ -75,6 +237,42 @@ trait OcdDslBoxTypeValues {
   , `dsl.Set<Color>?`
   , `dsl.Set<Color?>`
   , `dsl.Set<Color?>?`
+  , `dsl.COLOR`
+  , `dsl.COLOR?`
+  , `dsl.ARRAY<COLOR>`
+  , `dsl.COLOR[]`
+  , `dsl.ARRAY<COLOR>?`
+  , `dsl.COLOR[]?`
+  , `dsl.ARRAY<COLOR?>`
+  , `dsl.COLOR?[]`
+  , `dsl.ARRAY<COLOR?>?`
+  , `dsl.COLOR?[]?`
+  , `dsl.LIST<COLOR>`
+  , `dsl.LIST<COLOR>?`
+  , `dsl.LIST<COLOR?>`
+  , `dsl.LIST<COLOR?>?`
+  , `dsl.SET<COLOR>`
+  , `dsl.SET<COLOR>?`
+  , `dsl.SET<COLOR?>`
+  , `dsl.SET<COLOR?>?`
+  , `dsl.color`
+  , `dsl.color?`
+  , `dsl.array<color>`
+  , `dsl.color[]`
+  , `dsl.array<color>?`
+  , `dsl.color[]?`
+  , `dsl.array<color?>`
+  , `dsl.color?[]`
+  , `dsl.array<color?>?`
+  , `dsl.color?[]?`
+  , `dsl.list<color>`
+  , `dsl.list<color>?`
+  , `dsl.list<color?>`
+  , `dsl.list<color?>?`
+  , `dsl.set<color>`
+  , `dsl.set<color>?`
+  , `dsl.set<color?>`
+  , `dsl.set<color?>?`
   , `dsl.Date`
   , `dsl.Date?`
   , `dsl.Array<Date>`
@@ -93,6 +291,42 @@ trait OcdDslBoxTypeValues {
   , `dsl.Set<Date>?`
   , `dsl.Set<Date?>`
   , `dsl.Set<Date?>?`
+  , `dsl.DATE`
+  , `dsl.DATE?`
+  , `dsl.ARRAY<DATE>`
+  , `dsl.DATE[]`
+  , `dsl.ARRAY<DATE>?`
+  , `dsl.DATE[]?`
+  , `dsl.ARRAY<DATE?>`
+  , `dsl.DATE?[]`
+  , `dsl.ARRAY<DATE?>?`
+  , `dsl.DATE?[]?`
+  , `dsl.LIST<DATE>`
+  , `dsl.LIST<DATE>?`
+  , `dsl.LIST<DATE?>`
+  , `dsl.LIST<DATE?>?`
+  , `dsl.SET<DATE>`
+  , `dsl.SET<DATE>?`
+  , `dsl.SET<DATE?>`
+  , `dsl.SET<DATE?>?`
+  , `dsl.date`
+  , `dsl.date?`
+  , `dsl.array<date>`
+  , `dsl.date[]`
+  , `dsl.array<date>?`
+  , `dsl.date[]?`
+  , `dsl.array<date?>`
+  , `dsl.date?[]`
+  , `dsl.array<date?>?`
+  , `dsl.date?[]?`
+  , `dsl.list<date>`
+  , `dsl.list<date>?`
+  , `dsl.list<date?>`
+  , `dsl.list<date?>?`
+  , `dsl.set<date>`
+  , `dsl.set<date>?`
+  , `dsl.set<date?>`
+  , `dsl.set<date?>?`
   , `dsl.Decimal`
   , `dsl.Decimal?`
   , `dsl.Array<Decimal>`
@@ -111,6 +345,42 @@ trait OcdDslBoxTypeValues {
   , `dsl.Set<Decimal>?`
   , `dsl.Set<Decimal?>`
   , `dsl.Set<Decimal?>?`
+  , `dsl.DECIMAL`
+  , `dsl.DECIMAL?`
+  , `dsl.ARRAY<DECIMAL>`
+  , `dsl.DECIMAL[]`
+  , `dsl.ARRAY<DECIMAL>?`
+  , `dsl.DECIMAL[]?`
+  , `dsl.ARRAY<DECIMAL?>`
+  , `dsl.DECIMAL?[]`
+  , `dsl.ARRAY<DECIMAL?>?`
+  , `dsl.DECIMAL?[]?`
+  , `dsl.LIST<DECIMAL>`
+  , `dsl.LIST<DECIMAL>?`
+  , `dsl.LIST<DECIMAL?>`
+  , `dsl.LIST<DECIMAL?>?`
+  , `dsl.SET<DECIMAL>`
+  , `dsl.SET<DECIMAL>?`
+  , `dsl.SET<DECIMAL?>`
+  , `dsl.SET<DECIMAL?>?`
+  , `dsl.decimal`
+  , `dsl.decimal?`
+  , `dsl.array<decimal>`
+  , `dsl.decimal[]`
+  , `dsl.array<decimal>?`
+  , `dsl.decimal[]?`
+  , `dsl.array<decimal?>`
+  , `dsl.decimal?[]`
+  , `dsl.array<decimal?>?`
+  , `dsl.decimal?[]?`
+  , `dsl.list<decimal>`
+  , `dsl.list<decimal>?`
+  , `dsl.list<decimal?>`
+  , `dsl.list<decimal?>?`
+  , `dsl.set<decimal>`
+  , `dsl.set<decimal>?`
+  , `dsl.set<decimal?>`
+  , `dsl.set<decimal?>?`
   , `dsl.Decimal(9)`
   , `dsl.Decimal(9)?`
   , `dsl.Array<Decimal(9)>`
@@ -129,6 +399,42 @@ trait OcdDslBoxTypeValues {
   , `dsl.Set<Decimal(9)>?`
   , `dsl.Set<Decimal(9)?>`
   , `dsl.Set<Decimal(9)?>?`
+  , `dsl.DECIMAL(9)`
+  , `dsl.DECIMAL(9)?`
+  , `dsl.ARRAY<DECIMAL(9)>`
+  , `dsl.DECIMAL(9)[]`
+  , `dsl.ARRAY<DECIMAL(9)>?`
+  , `dsl.DECIMAL(9)[]?`
+  , `dsl.ARRAY<DECIMAL(9)?>`
+  , `dsl.DECIMAL(9)?[]`
+  , `dsl.ARRAY<DECIMAL(9)?>?`
+  , `dsl.DECIMAL(9)?[]?`
+  , `dsl.LIST<DECIMAL(9)>`
+  , `dsl.LIST<DECIMAL(9)>?`
+  , `dsl.LIST<DECIMAL(9)?>`
+  , `dsl.LIST<DECIMAL(9)?>?`
+  , `dsl.SET<DECIMAL(9)>`
+  , `dsl.SET<DECIMAL(9)>?`
+  , `dsl.SET<DECIMAL(9)?>`
+  , `dsl.SET<DECIMAL(9)?>?`
+  , `dsl.decimal(9)`
+  , `dsl.decimal(9)?`
+  , `dsl.array<decimal(9)>`
+  , `dsl.decimal(9)[]`
+  , `dsl.array<decimal(9)>?`
+  , `dsl.decimal(9)[]?`
+  , `dsl.array<decimal(9)?>`
+  , `dsl.decimal(9)?[]`
+  , `dsl.array<decimal(9)?>?`
+  , `dsl.decimal(9)?[]?`
+  , `dsl.list<decimal(9)>`
+  , `dsl.list<decimal(9)>?`
+  , `dsl.list<decimal(9)?>`
+  , `dsl.list<decimal(9)?>?`
+  , `dsl.set<decimal(9)>`
+  , `dsl.set<decimal(9)>?`
+  , `dsl.set<decimal(9)?>`
+  , `dsl.set<decimal(9)?>?`
   , `dsl.Double`
   , `dsl.Double?`
   , `dsl.Array<Double>`
@@ -147,6 +453,42 @@ trait OcdDslBoxTypeValues {
   , `dsl.Set<Double>?`
   , `dsl.Set<Double?>`
   , `dsl.Set<Double?>?`
+  , `dsl.DOUBLE`
+  , `dsl.DOUBLE?`
+  , `dsl.ARRAY<DOUBLE>`
+  , `dsl.DOUBLE[]`
+  , `dsl.ARRAY<DOUBLE>?`
+  , `dsl.DOUBLE[]?`
+  , `dsl.ARRAY<DOUBLE?>`
+  , `dsl.DOUBLE?[]`
+  , `dsl.ARRAY<DOUBLE?>?`
+  , `dsl.DOUBLE?[]?`
+  , `dsl.LIST<DOUBLE>`
+  , `dsl.LIST<DOUBLE>?`
+  , `dsl.LIST<DOUBLE?>`
+  , `dsl.LIST<DOUBLE?>?`
+  , `dsl.SET<DOUBLE>`
+  , `dsl.SET<DOUBLE>?`
+  , `dsl.SET<DOUBLE?>`
+  , `dsl.SET<DOUBLE?>?`
+  , `dsl.double`
+  , `dsl.double?`
+  , `dsl.array<double>`
+  , `dsl.double[]`
+  , `dsl.array<double>?`
+  , `dsl.double[]?`
+  , `dsl.array<double?>`
+  , `dsl.double?[]`
+  , `dsl.array<double?>?`
+  , `dsl.double?[]?`
+  , `dsl.list<double>`
+  , `dsl.list<double>?`
+  , `dsl.list<double?>`
+  , `dsl.list<double?>?`
+  , `dsl.set<double>`
+  , `dsl.set<double>?`
+  , `dsl.set<double?>`
+  , `dsl.set<double?>?`
   , `dsl.Email`
   , `dsl.Email?`
   , `dsl.Array<Email>`
@@ -165,6 +507,42 @@ trait OcdDslBoxTypeValues {
   , `dsl.Set<Email>?`
   , `dsl.Set<Email?>`
   , `dsl.Set<Email?>?`
+  , `dsl.EMAIL`
+  , `dsl.EMAIL?`
+  , `dsl.ARRAY<EMAIL>`
+  , `dsl.EMAIL[]`
+  , `dsl.ARRAY<EMAIL>?`
+  , `dsl.EMAIL[]?`
+  , `dsl.ARRAY<EMAIL?>`
+  , `dsl.EMAIL?[]`
+  , `dsl.ARRAY<EMAIL?>?`
+  , `dsl.EMAIL?[]?`
+  , `dsl.LIST<EMAIL>`
+  , `dsl.LIST<EMAIL>?`
+  , `dsl.LIST<EMAIL?>`
+  , `dsl.LIST<EMAIL?>?`
+  , `dsl.SET<EMAIL>`
+  , `dsl.SET<EMAIL>?`
+  , `dsl.SET<EMAIL?>`
+  , `dsl.SET<EMAIL?>?`
+  , `dsl.email`
+  , `dsl.email?`
+  , `dsl.array<email>`
+  , `dsl.email[]`
+  , `dsl.array<email>?`
+  , `dsl.email[]?`
+  , `dsl.array<email?>`
+  , `dsl.email?[]`
+  , `dsl.array<email?>?`
+  , `dsl.email?[]?`
+  , `dsl.list<email>`
+  , `dsl.list<email>?`
+  , `dsl.list<email?>`
+  , `dsl.list<email?>?`
+  , `dsl.set<email>`
+  , `dsl.set<email>?`
+  , `dsl.set<email?>`
+  , `dsl.set<email?>?`
   , `dsl.Float`
   , `dsl.Float?`
   , `dsl.Array<Float>`
@@ -183,6 +561,42 @@ trait OcdDslBoxTypeValues {
   , `dsl.Set<Float>?`
   , `dsl.Set<Float?>`
   , `dsl.Set<Float?>?`
+  , `dsl.FLOAT`
+  , `dsl.FLOAT?`
+  , `dsl.ARRAY<FLOAT>`
+  , `dsl.FLOAT[]`
+  , `dsl.ARRAY<FLOAT>?`
+  , `dsl.FLOAT[]?`
+  , `dsl.ARRAY<FLOAT?>`
+  , `dsl.FLOAT?[]`
+  , `dsl.ARRAY<FLOAT?>?`
+  , `dsl.FLOAT?[]?`
+  , `dsl.LIST<FLOAT>`
+  , `dsl.LIST<FLOAT>?`
+  , `dsl.LIST<FLOAT?>`
+  , `dsl.LIST<FLOAT?>?`
+  , `dsl.SET<FLOAT>`
+  , `dsl.SET<FLOAT>?`
+  , `dsl.SET<FLOAT?>`
+  , `dsl.SET<FLOAT?>?`
+  , `dsl.float`
+  , `dsl.float?`
+  , `dsl.array<float>`
+  , `dsl.float[]`
+  , `dsl.array<float>?`
+  , `dsl.float[]?`
+  , `dsl.array<float?>`
+  , `dsl.float?[]`
+  , `dsl.array<float?>?`
+  , `dsl.float?[]?`
+  , `dsl.list<float>`
+  , `dsl.list<float>?`
+  , `dsl.list<float?>`
+  , `dsl.list<float?>?`
+  , `dsl.set<float>`
+  , `dsl.set<float>?`
+  , `dsl.set<float?>`
+  , `dsl.set<float?>?`
   , `dsl.Guid`
   , `dsl.Guid?`
   , `dsl.Array<Guid>`
@@ -201,6 +615,96 @@ trait OcdDslBoxTypeValues {
   , `dsl.Set<Guid>?`
   , `dsl.Set<Guid?>`
   , `dsl.Set<Guid?>?`
+  , `dsl.GUID`
+  , `dsl.GUID?`
+  , `dsl.ARRAY<GUID>`
+  , `dsl.GUID[]`
+  , `dsl.ARRAY<GUID>?`
+  , `dsl.GUID[]?`
+  , `dsl.ARRAY<GUID?>`
+  , `dsl.GUID?[]`
+  , `dsl.ARRAY<GUID?>?`
+  , `dsl.GUID?[]?`
+  , `dsl.LIST<GUID>`
+  , `dsl.LIST<GUID>?`
+  , `dsl.LIST<GUID?>`
+  , `dsl.LIST<GUID?>?`
+  , `dsl.SET<GUID>`
+  , `dsl.SET<GUID>?`
+  , `dsl.SET<GUID?>`
+  , `dsl.SET<GUID?>?`
+  , `dsl.UUID`
+  , `dsl.UUID?`
+  , `dsl.ARRAY<UUID>`
+  , `dsl.UUID[]`
+  , `dsl.ARRAY<UUID>?`
+  , `dsl.UUID[]?`
+  , `dsl.ARRAY<UUID?>`
+  , `dsl.UUID?[]`
+  , `dsl.ARRAY<UUID?>?`
+  , `dsl.UUID?[]?`
+  , `dsl.LIST<UUID>`
+  , `dsl.LIST<UUID>?`
+  , `dsl.LIST<UUID?>`
+  , `dsl.LIST<UUID?>?`
+  , `dsl.SET<UUID>`
+  , `dsl.SET<UUID>?`
+  , `dsl.SET<UUID?>`
+  , `dsl.SET<UUID?>?`
+  , `dsl.Uuid`
+  , `dsl.Uuid?`
+  , `dsl.Array<Uuid>`
+  , `dsl.Uuid[]`
+  , `dsl.Array<Uuid>?`
+  , `dsl.Uuid[]?`
+  , `dsl.Array<Uuid?>`
+  , `dsl.Uuid?[]`
+  , `dsl.Array<Uuid?>?`
+  , `dsl.Uuid?[]?`
+  , `dsl.List<Uuid>`
+  , `dsl.List<Uuid>?`
+  , `dsl.List<Uuid?>`
+  , `dsl.List<Uuid?>?`
+  , `dsl.Set<Uuid>`
+  , `dsl.Set<Uuid>?`
+  , `dsl.Set<Uuid?>`
+  , `dsl.Set<Uuid?>?`
+  , `dsl.guid`
+  , `dsl.guid?`
+  , `dsl.array<guid>`
+  , `dsl.guid[]`
+  , `dsl.array<guid>?`
+  , `dsl.guid[]?`
+  , `dsl.array<guid?>`
+  , `dsl.guid?[]`
+  , `dsl.array<guid?>?`
+  , `dsl.guid?[]?`
+  , `dsl.list<guid>`
+  , `dsl.list<guid>?`
+  , `dsl.list<guid?>`
+  , `dsl.list<guid?>?`
+  , `dsl.set<guid>`
+  , `dsl.set<guid>?`
+  , `dsl.set<guid?>`
+  , `dsl.set<guid?>?`
+  , `dsl.uuid`
+  , `dsl.uuid?`
+  , `dsl.array<uuid>`
+  , `dsl.uuid[]`
+  , `dsl.array<uuid>?`
+  , `dsl.uuid[]?`
+  , `dsl.array<uuid?>`
+  , `dsl.uuid?[]`
+  , `dsl.array<uuid?>?`
+  , `dsl.uuid?[]?`
+  , `dsl.list<uuid>`
+  , `dsl.list<uuid>?`
+  , `dsl.list<uuid?>`
+  , `dsl.list<uuid?>?`
+  , `dsl.set<uuid>`
+  , `dsl.set<uuid>?`
+  , `dsl.set<uuid?>`
+  , `dsl.set<uuid?>?`
   , `dsl.Image`
   , `dsl.Image?`
   , `dsl.Array<Image>`
@@ -219,6 +723,96 @@ trait OcdDslBoxTypeValues {
   , `dsl.Set<Image>?`
   , `dsl.Set<Image?>`
   , `dsl.Set<Image?>?`
+  , `dsl.IMAGE`
+  , `dsl.IMAGE?`
+  , `dsl.ARRAY<IMAGE>`
+  , `dsl.IMAGE[]`
+  , `dsl.ARRAY<IMAGE>?`
+  , `dsl.IMAGE[]?`
+  , `dsl.ARRAY<IMAGE?>`
+  , `dsl.IMAGE?[]`
+  , `dsl.ARRAY<IMAGE?>?`
+  , `dsl.IMAGE?[]?`
+  , `dsl.LIST<IMAGE>`
+  , `dsl.LIST<IMAGE>?`
+  , `dsl.LIST<IMAGE?>`
+  , `dsl.LIST<IMAGE?>?`
+  , `dsl.SET<IMAGE>`
+  , `dsl.SET<IMAGE>?`
+  , `dsl.SET<IMAGE?>`
+  , `dsl.SET<IMAGE?>?`
+  , `dsl.PICTURE`
+  , `dsl.PICTURE?`
+  , `dsl.ARRAY<PICTURE>`
+  , `dsl.PICTURE[]`
+  , `dsl.ARRAY<PICTURE>?`
+  , `dsl.PICTURE[]?`
+  , `dsl.ARRAY<PICTURE?>`
+  , `dsl.PICTURE?[]`
+  , `dsl.ARRAY<PICTURE?>?`
+  , `dsl.PICTURE?[]?`
+  , `dsl.LIST<PICTURE>`
+  , `dsl.LIST<PICTURE>?`
+  , `dsl.LIST<PICTURE?>`
+  , `dsl.LIST<PICTURE?>?`
+  , `dsl.SET<PICTURE>`
+  , `dsl.SET<PICTURE>?`
+  , `dsl.SET<PICTURE?>`
+  , `dsl.SET<PICTURE?>?`
+  , `dsl.Picture`
+  , `dsl.Picture?`
+  , `dsl.Array<Picture>`
+  , `dsl.Picture[]`
+  , `dsl.Array<Picture>?`
+  , `dsl.Picture[]?`
+  , `dsl.Array<Picture?>`
+  , `dsl.Picture?[]`
+  , `dsl.Array<Picture?>?`
+  , `dsl.Picture?[]?`
+  , `dsl.List<Picture>`
+  , `dsl.List<Picture>?`
+  , `dsl.List<Picture?>`
+  , `dsl.List<Picture?>?`
+  , `dsl.Set<Picture>`
+  , `dsl.Set<Picture>?`
+  , `dsl.Set<Picture?>`
+  , `dsl.Set<Picture?>?`
+  , `dsl.image`
+  , `dsl.image?`
+  , `dsl.array<image>`
+  , `dsl.image[]`
+  , `dsl.array<image>?`
+  , `dsl.image[]?`
+  , `dsl.array<image?>`
+  , `dsl.image?[]`
+  , `dsl.array<image?>?`
+  , `dsl.image?[]?`
+  , `dsl.list<image>`
+  , `dsl.list<image>?`
+  , `dsl.list<image?>`
+  , `dsl.list<image?>?`
+  , `dsl.set<image>`
+  , `dsl.set<image>?`
+  , `dsl.set<image?>`
+  , `dsl.set<image?>?`
+  , `dsl.picture`
+  , `dsl.picture?`
+  , `dsl.array<picture>`
+  , `dsl.picture[]`
+  , `dsl.array<picture>?`
+  , `dsl.picture[]?`
+  , `dsl.array<picture?>`
+  , `dsl.picture?[]`
+  , `dsl.array<picture?>?`
+  , `dsl.picture?[]?`
+  , `dsl.list<picture>`
+  , `dsl.list<picture>?`
+  , `dsl.list<picture?>`
+  , `dsl.list<picture?>?`
+  , `dsl.set<picture>`
+  , `dsl.set<picture>?`
+  , `dsl.set<picture?>`
+  , `dsl.set<picture?>?`
   , `dsl.Integer`
   , `dsl.Integer?`
   , `dsl.Array<Integer>`
@@ -237,6 +831,96 @@ trait OcdDslBoxTypeValues {
   , `dsl.Set<Integer>?`
   , `dsl.Set<Integer?>`
   , `dsl.Set<Integer?>?`
+  , `dsl.INT`
+  , `dsl.INT?`
+  , `dsl.ARRAY<INT>`
+  , `dsl.INT[]`
+  , `dsl.ARRAY<INT>?`
+  , `dsl.INT[]?`
+  , `dsl.ARRAY<INT?>`
+  , `dsl.INT?[]`
+  , `dsl.ARRAY<INT?>?`
+  , `dsl.INT?[]?`
+  , `dsl.LIST<INT>`
+  , `dsl.LIST<INT>?`
+  , `dsl.LIST<INT?>`
+  , `dsl.LIST<INT?>?`
+  , `dsl.SET<INT>`
+  , `dsl.SET<INT>?`
+  , `dsl.SET<INT?>`
+  , `dsl.SET<INT?>?`
+  , `dsl.INTEGER`
+  , `dsl.INTEGER?`
+  , `dsl.ARRAY<INTEGER>`
+  , `dsl.INTEGER[]`
+  , `dsl.ARRAY<INTEGER>?`
+  , `dsl.INTEGER[]?`
+  , `dsl.ARRAY<INTEGER?>`
+  , `dsl.INTEGER?[]`
+  , `dsl.ARRAY<INTEGER?>?`
+  , `dsl.INTEGER?[]?`
+  , `dsl.LIST<INTEGER>`
+  , `dsl.LIST<INTEGER>?`
+  , `dsl.LIST<INTEGER?>`
+  , `dsl.LIST<INTEGER?>?`
+  , `dsl.SET<INTEGER>`
+  , `dsl.SET<INTEGER>?`
+  , `dsl.SET<INTEGER?>`
+  , `dsl.SET<INTEGER?>?`
+  , `dsl.Int`
+  , `dsl.Int?`
+  , `dsl.Array<Int>`
+  , `dsl.Int[]`
+  , `dsl.Array<Int>?`
+  , `dsl.Int[]?`
+  , `dsl.Array<Int?>`
+  , `dsl.Int?[]`
+  , `dsl.Array<Int?>?`
+  , `dsl.Int?[]?`
+  , `dsl.List<Int>`
+  , `dsl.List<Int>?`
+  , `dsl.List<Int?>`
+  , `dsl.List<Int?>?`
+  , `dsl.Set<Int>`
+  , `dsl.Set<Int>?`
+  , `dsl.Set<Int?>`
+  , `dsl.Set<Int?>?`
+  , `dsl.int`
+  , `dsl.int?`
+  , `dsl.array<int>`
+  , `dsl.int[]`
+  , `dsl.array<int>?`
+  , `dsl.int[]?`
+  , `dsl.array<int?>`
+  , `dsl.int?[]`
+  , `dsl.array<int?>?`
+  , `dsl.int?[]?`
+  , `dsl.list<int>`
+  , `dsl.list<int>?`
+  , `dsl.list<int?>`
+  , `dsl.list<int?>?`
+  , `dsl.set<int>`
+  , `dsl.set<int>?`
+  , `dsl.set<int?>`
+  , `dsl.set<int?>?`
+  , `dsl.integer`
+  , `dsl.integer?`
+  , `dsl.array<integer>`
+  , `dsl.integer[]`
+  , `dsl.array<integer>?`
+  , `dsl.integer[]?`
+  , `dsl.array<integer?>`
+  , `dsl.integer?[]`
+  , `dsl.array<integer?>?`
+  , `dsl.integer?[]?`
+  , `dsl.list<integer>`
+  , `dsl.list<integer>?`
+  , `dsl.list<integer?>`
+  , `dsl.list<integer?>?`
+  , `dsl.set<integer>`
+  , `dsl.set<integer>?`
+  , `dsl.set<integer?>`
+  , `dsl.set<integer?>?`
   , `dsl.Ip`
   , `dsl.Ip?`
   , `dsl.Array<Ip>`
@@ -255,6 +939,42 @@ trait OcdDslBoxTypeValues {
   , `dsl.Set<Ip>?`
   , `dsl.Set<Ip?>`
   , `dsl.Set<Ip?>?`
+  , `dsl.IP`
+  , `dsl.IP?`
+  , `dsl.ARRAY<IP>`
+  , `dsl.IP[]`
+  , `dsl.ARRAY<IP>?`
+  , `dsl.IP[]?`
+  , `dsl.ARRAY<IP?>`
+  , `dsl.IP?[]`
+  , `dsl.ARRAY<IP?>?`
+  , `dsl.IP?[]?`
+  , `dsl.LIST<IP>`
+  , `dsl.LIST<IP>?`
+  , `dsl.LIST<IP?>`
+  , `dsl.LIST<IP?>?`
+  , `dsl.SET<IP>`
+  , `dsl.SET<IP>?`
+  , `dsl.SET<IP?>`
+  , `dsl.SET<IP?>?`
+  , `dsl.ip`
+  , `dsl.ip?`
+  , `dsl.array<ip>`
+  , `dsl.ip[]`
+  , `dsl.array<ip>?`
+  , `dsl.ip[]?`
+  , `dsl.array<ip?>`
+  , `dsl.ip?[]`
+  , `dsl.array<ip?>?`
+  , `dsl.ip?[]?`
+  , `dsl.list<ip>`
+  , `dsl.list<ip>?`
+  , `dsl.list<ip?>`
+  , `dsl.list<ip?>?`
+  , `dsl.set<ip>`
+  , `dsl.set<ip>?`
+  , `dsl.set<ip?>`
+  , `dsl.set<ip?>?`
   , `dsl.Json`
   , `dsl.Json?`
   , `dsl.Array<Json>`
@@ -273,6 +993,42 @@ trait OcdDslBoxTypeValues {
   , `dsl.Set<Json>?`
   , `dsl.Set<Json?>`
   , `dsl.Set<Json?>?`
+  , `dsl.JSON`
+  , `dsl.JSON?`
+  , `dsl.ARRAY<JSON>`
+  , `dsl.JSON[]`
+  , `dsl.ARRAY<JSON>?`
+  , `dsl.JSON[]?`
+  , `dsl.ARRAY<JSON?>`
+  , `dsl.JSON?[]`
+  , `dsl.ARRAY<JSON?>?`
+  , `dsl.JSON?[]?`
+  , `dsl.LIST<JSON>`
+  , `dsl.LIST<JSON>?`
+  , `dsl.LIST<JSON?>`
+  , `dsl.LIST<JSON?>?`
+  , `dsl.SET<JSON>`
+  , `dsl.SET<JSON>?`
+  , `dsl.SET<JSON?>`
+  , `dsl.SET<JSON?>?`
+  , `dsl.json`
+  , `dsl.json?`
+  , `dsl.array<json>`
+  , `dsl.json[]`
+  , `dsl.array<json>?`
+  , `dsl.json[]?`
+  , `dsl.array<json?>`
+  , `dsl.json?[]`
+  , `dsl.array<json?>?`
+  , `dsl.json?[]?`
+  , `dsl.list<json>`
+  , `dsl.list<json>?`
+  , `dsl.list<json?>`
+  , `dsl.list<json?>?`
+  , `dsl.set<json>`
+  , `dsl.set<json>?`
+  , `dsl.set<json?>`
+  , `dsl.set<json?>?`
   , `dsl.JsonOf<Map>`
   , `dsl.JsonOf<Map>?`
   , `dsl.Array<JsonOf<Map>>`
@@ -291,6 +1047,60 @@ trait OcdDslBoxTypeValues {
   , `dsl.Set<JsonOf<Map>>?`
   , `dsl.Set<JsonOf<Map>?>`
   , `dsl.Set<JsonOf<Map>?>?`
+  , `dsl.JSONOF<MAP>`
+  , `dsl.JSONOF<MAP>?`
+  , `dsl.ARRAY<JSONOF<MAP>>`
+  , `dsl.JSONOF<MAP>[]`
+  , `dsl.ARRAY<JSONOF<MAP>>?`
+  , `dsl.JSONOF<MAP>[]?`
+  , `dsl.ARRAY<JSONOF<MAP>?>`
+  , `dsl.JSONOF<MAP>?[]`
+  , `dsl.ARRAY<JSONOF<MAP>?>?`
+  , `dsl.JSONOF<MAP>?[]?`
+  , `dsl.LIST<JSONOF<MAP>>`
+  , `dsl.LIST<JSONOF<MAP>>?`
+  , `dsl.LIST<JSONOF<MAP>?>`
+  , `dsl.LIST<JSONOF<MAP>?>?`
+  , `dsl.SET<JSONOF<MAP>>`
+  , `dsl.SET<JSONOF<MAP>>?`
+  , `dsl.SET<JSONOF<MAP>?>`
+  , `dsl.SET<JSONOF<MAP>?>?`
+  , `dsl.Jsonof<map>`
+  , `dsl.Jsonof<map>?`
+  , `dsl.Array<Jsonof<map>>`
+  , `dsl.Jsonof<map>[]`
+  , `dsl.Array<Jsonof<map>>?`
+  , `dsl.Jsonof<map>[]?`
+  , `dsl.Array<Jsonof<map>?>`
+  , `dsl.Jsonof<map>?[]`
+  , `dsl.Array<Jsonof<map>?>?`
+  , `dsl.Jsonof<map>?[]?`
+  , `dsl.List<Jsonof<map>>`
+  , `dsl.List<Jsonof<map>>?`
+  , `dsl.List<Jsonof<map>?>`
+  , `dsl.List<Jsonof<map>?>?`
+  , `dsl.Set<Jsonof<map>>`
+  , `dsl.Set<Jsonof<map>>?`
+  , `dsl.Set<Jsonof<map>?>`
+  , `dsl.Set<Jsonof<map>?>?`
+  , `dsl.jsonof<map>`
+  , `dsl.jsonof<map>?`
+  , `dsl.array<jsonof<map>>`
+  , `dsl.jsonof<map>[]`
+  , `dsl.array<jsonof<map>>?`
+  , `dsl.jsonof<map>[]?`
+  , `dsl.array<jsonof<map>?>`
+  , `dsl.jsonof<map>?[]`
+  , `dsl.array<jsonof<map>?>?`
+  , `dsl.jsonof<map>?[]?`
+  , `dsl.list<jsonof<map>>`
+  , `dsl.list<jsonof<map>>?`
+  , `dsl.list<jsonof<map>?>`
+  , `dsl.list<jsonof<map>?>?`
+  , `dsl.set<jsonof<map>>`
+  , `dsl.set<jsonof<map>>?`
+  , `dsl.set<jsonof<map>?>`
+  , `dsl.set<jsonof<map>?>?`
   , `dsl.Location`
   , `dsl.Location?`
   , `dsl.Array<Location>`
@@ -309,6 +1119,42 @@ trait OcdDslBoxTypeValues {
   , `dsl.Set<Location>?`
   , `dsl.Set<Location?>`
   , `dsl.Set<Location?>?`
+  , `dsl.LOCATION`
+  , `dsl.LOCATION?`
+  , `dsl.ARRAY<LOCATION>`
+  , `dsl.LOCATION[]`
+  , `dsl.ARRAY<LOCATION>?`
+  , `dsl.LOCATION[]?`
+  , `dsl.ARRAY<LOCATION?>`
+  , `dsl.LOCATION?[]`
+  , `dsl.ARRAY<LOCATION?>?`
+  , `dsl.LOCATION?[]?`
+  , `dsl.LIST<LOCATION>`
+  , `dsl.LIST<LOCATION>?`
+  , `dsl.LIST<LOCATION?>`
+  , `dsl.LIST<LOCATION?>?`
+  , `dsl.SET<LOCATION>`
+  , `dsl.SET<LOCATION>?`
+  , `dsl.SET<LOCATION?>`
+  , `dsl.SET<LOCATION?>?`
+  , `dsl.location`
+  , `dsl.location?`
+  , `dsl.array<location>`
+  , `dsl.location[]`
+  , `dsl.array<location>?`
+  , `dsl.location[]?`
+  , `dsl.array<location?>`
+  , `dsl.location?[]`
+  , `dsl.array<location?>?`
+  , `dsl.location?[]?`
+  , `dsl.list<location>`
+  , `dsl.list<location>?`
+  , `dsl.list<location?>`
+  , `dsl.list<location?>?`
+  , `dsl.set<location>`
+  , `dsl.set<location>?`
+  , `dsl.set<location?>`
+  , `dsl.set<location?>?`
   , `dsl.Long`
   , `dsl.Long?`
   , `dsl.Array<Long>`
@@ -327,6 +1173,42 @@ trait OcdDslBoxTypeValues {
   , `dsl.Set<Long>?`
   , `dsl.Set<Long?>`
   , `dsl.Set<Long?>?`
+  , `dsl.LONG`
+  , `dsl.LONG?`
+  , `dsl.ARRAY<LONG>`
+  , `dsl.LONG[]`
+  , `dsl.ARRAY<LONG>?`
+  , `dsl.LONG[]?`
+  , `dsl.ARRAY<LONG?>`
+  , `dsl.LONG?[]`
+  , `dsl.ARRAY<LONG?>?`
+  , `dsl.LONG?[]?`
+  , `dsl.LIST<LONG>`
+  , `dsl.LIST<LONG>?`
+  , `dsl.LIST<LONG?>`
+  , `dsl.LIST<LONG?>?`
+  , `dsl.SET<LONG>`
+  , `dsl.SET<LONG>?`
+  , `dsl.SET<LONG?>`
+  , `dsl.SET<LONG?>?`
+  , `dsl.long`
+  , `dsl.long?`
+  , `dsl.array<long>`
+  , `dsl.long[]`
+  , `dsl.array<long>?`
+  , `dsl.long[]?`
+  , `dsl.array<long?>`
+  , `dsl.long?[]`
+  , `dsl.array<long?>?`
+  , `dsl.long?[]?`
+  , `dsl.list<long>`
+  , `dsl.list<long>?`
+  , `dsl.list<long?>`
+  , `dsl.list<long?>?`
+  , `dsl.set<long>`
+  , `dsl.set<long>?`
+  , `dsl.set<long?>`
+  , `dsl.set<long?>?`
   , `dsl.Map`
   , `dsl.Map?`
   , `dsl.Array<Map>`
@@ -345,6 +1227,96 @@ trait OcdDslBoxTypeValues {
   , `dsl.Set<Map>?`
   , `dsl.Set<Map?>`
   , `dsl.Set<Map?>?`
+  , `dsl.DICTIONARY`
+  , `dsl.DICTIONARY?`
+  , `dsl.ARRAY<DICTIONARY>`
+  , `dsl.DICTIONARY[]`
+  , `dsl.ARRAY<DICTIONARY>?`
+  , `dsl.DICTIONARY[]?`
+  , `dsl.ARRAY<DICTIONARY?>`
+  , `dsl.DICTIONARY?[]`
+  , `dsl.ARRAY<DICTIONARY?>?`
+  , `dsl.DICTIONARY?[]?`
+  , `dsl.LIST<DICTIONARY>`
+  , `dsl.LIST<DICTIONARY>?`
+  , `dsl.LIST<DICTIONARY?>`
+  , `dsl.LIST<DICTIONARY?>?`
+  , `dsl.SET<DICTIONARY>`
+  , `dsl.SET<DICTIONARY>?`
+  , `dsl.SET<DICTIONARY?>`
+  , `dsl.SET<DICTIONARY?>?`
+  , `dsl.Dictionary`
+  , `dsl.Dictionary?`
+  , `dsl.Array<Dictionary>`
+  , `dsl.Dictionary[]`
+  , `dsl.Array<Dictionary>?`
+  , `dsl.Dictionary[]?`
+  , `dsl.Array<Dictionary?>`
+  , `dsl.Dictionary?[]`
+  , `dsl.Array<Dictionary?>?`
+  , `dsl.Dictionary?[]?`
+  , `dsl.List<Dictionary>`
+  , `dsl.List<Dictionary>?`
+  , `dsl.List<Dictionary?>`
+  , `dsl.List<Dictionary?>?`
+  , `dsl.Set<Dictionary>`
+  , `dsl.Set<Dictionary>?`
+  , `dsl.Set<Dictionary?>`
+  , `dsl.Set<Dictionary?>?`
+  , `dsl.MAP`
+  , `dsl.MAP?`
+  , `dsl.ARRAY<MAP>`
+  , `dsl.MAP[]`
+  , `dsl.ARRAY<MAP>?`
+  , `dsl.MAP[]?`
+  , `dsl.ARRAY<MAP?>`
+  , `dsl.MAP?[]`
+  , `dsl.ARRAY<MAP?>?`
+  , `dsl.MAP?[]?`
+  , `dsl.LIST<MAP>`
+  , `dsl.LIST<MAP>?`
+  , `dsl.LIST<MAP?>`
+  , `dsl.LIST<MAP?>?`
+  , `dsl.SET<MAP>`
+  , `dsl.SET<MAP>?`
+  , `dsl.SET<MAP?>`
+  , `dsl.SET<MAP?>?`
+  , `dsl.dictionary`
+  , `dsl.dictionary?`
+  , `dsl.array<dictionary>`
+  , `dsl.dictionary[]`
+  , `dsl.array<dictionary>?`
+  , `dsl.dictionary[]?`
+  , `dsl.array<dictionary?>`
+  , `dsl.dictionary?[]`
+  , `dsl.array<dictionary?>?`
+  , `dsl.dictionary?[]?`
+  , `dsl.list<dictionary>`
+  , `dsl.list<dictionary>?`
+  , `dsl.list<dictionary?>`
+  , `dsl.list<dictionary?>?`
+  , `dsl.set<dictionary>`
+  , `dsl.set<dictionary>?`
+  , `dsl.set<dictionary?>`
+  , `dsl.set<dictionary?>?`
+  , `dsl.map`
+  , `dsl.map?`
+  , `dsl.array<map>`
+  , `dsl.map[]`
+  , `dsl.array<map>?`
+  , `dsl.map[]?`
+  , `dsl.array<map?>`
+  , `dsl.map?[]`
+  , `dsl.array<map?>?`
+  , `dsl.map?[]?`
+  , `dsl.list<map>`
+  , `dsl.list<map>?`
+  , `dsl.list<map?>`
+  , `dsl.list<map?>?`
+  , `dsl.set<map>`
+  , `dsl.set<map>?`
+  , `dsl.set<map?>`
+  , `dsl.set<map?>?`
   , `dsl.Money`
   , `dsl.Money?`
   , `dsl.Array<Money>`
@@ -363,6 +1335,42 @@ trait OcdDslBoxTypeValues {
   , `dsl.Set<Money>?`
   , `dsl.Set<Money?>`
   , `dsl.Set<Money?>?`
+  , `dsl.MONEY`
+  , `dsl.MONEY?`
+  , `dsl.ARRAY<MONEY>`
+  , `dsl.MONEY[]`
+  , `dsl.ARRAY<MONEY>?`
+  , `dsl.MONEY[]?`
+  , `dsl.ARRAY<MONEY?>`
+  , `dsl.MONEY?[]`
+  , `dsl.ARRAY<MONEY?>?`
+  , `dsl.MONEY?[]?`
+  , `dsl.LIST<MONEY>`
+  , `dsl.LIST<MONEY>?`
+  , `dsl.LIST<MONEY?>`
+  , `dsl.LIST<MONEY?>?`
+  , `dsl.SET<MONEY>`
+  , `dsl.SET<MONEY>?`
+  , `dsl.SET<MONEY?>`
+  , `dsl.SET<MONEY?>?`
+  , `dsl.money`
+  , `dsl.money?`
+  , `dsl.array<money>`
+  , `dsl.money[]`
+  , `dsl.array<money>?`
+  , `dsl.money[]?`
+  , `dsl.array<money?>`
+  , `dsl.money?[]`
+  , `dsl.array<money?>?`
+  , `dsl.money?[]?`
+  , `dsl.list<money>`
+  , `dsl.list<money>?`
+  , `dsl.list<money?>`
+  , `dsl.list<money?>?`
+  , `dsl.set<money>`
+  , `dsl.set<money>?`
+  , `dsl.set<money?>`
+  , `dsl.set<money?>?`
   , `dsl.Native`
   , `dsl.Native?`
   , `dsl.Array<Native>`
@@ -381,6 +1389,42 @@ trait OcdDslBoxTypeValues {
   , `dsl.Set<Native>?`
   , `dsl.Set<Native?>`
   , `dsl.Set<Native?>?`
+  , `dsl.NATIVE`
+  , `dsl.NATIVE?`
+  , `dsl.ARRAY<NATIVE>`
+  , `dsl.NATIVE[]`
+  , `dsl.ARRAY<NATIVE>?`
+  , `dsl.NATIVE[]?`
+  , `dsl.ARRAY<NATIVE?>`
+  , `dsl.NATIVE?[]`
+  , `dsl.ARRAY<NATIVE?>?`
+  , `dsl.NATIVE?[]?`
+  , `dsl.LIST<NATIVE>`
+  , `dsl.LIST<NATIVE>?`
+  , `dsl.LIST<NATIVE?>`
+  , `dsl.LIST<NATIVE?>?`
+  , `dsl.SET<NATIVE>`
+  , `dsl.SET<NATIVE>?`
+  , `dsl.SET<NATIVE?>`
+  , `dsl.SET<NATIVE?>?`
+  , `dsl.native`
+  , `dsl.native?`
+  , `dsl.array<native>`
+  , `dsl.native[]`
+  , `dsl.array<native>?`
+  , `dsl.native[]?`
+  , `dsl.array<native?>`
+  , `dsl.native?[]`
+  , `dsl.array<native?>?`
+  , `dsl.native?[]?`
+  , `dsl.list<native>`
+  , `dsl.list<native>?`
+  , `dsl.list<native?>`
+  , `dsl.list<native?>?`
+  , `dsl.set<native>`
+  , `dsl.set<native>?`
+  , `dsl.set<native?>`
+  , `dsl.set<native?>?`
   , `dsl.Phone`
   , `dsl.Phone?`
   , `dsl.Array<Phone>`
@@ -399,6 +1443,42 @@ trait OcdDslBoxTypeValues {
   , `dsl.Set<Phone>?`
   , `dsl.Set<Phone?>`
   , `dsl.Set<Phone?>?`
+  , `dsl.PHONE`
+  , `dsl.PHONE?`
+  , `dsl.ARRAY<PHONE>`
+  , `dsl.PHONE[]`
+  , `dsl.ARRAY<PHONE>?`
+  , `dsl.PHONE[]?`
+  , `dsl.ARRAY<PHONE?>`
+  , `dsl.PHONE?[]`
+  , `dsl.ARRAY<PHONE?>?`
+  , `dsl.PHONE?[]?`
+  , `dsl.LIST<PHONE>`
+  , `dsl.LIST<PHONE>?`
+  , `dsl.LIST<PHONE?>`
+  , `dsl.LIST<PHONE?>?`
+  , `dsl.SET<PHONE>`
+  , `dsl.SET<PHONE>?`
+  , `dsl.SET<PHONE?>`
+  , `dsl.SET<PHONE?>?`
+  , `dsl.phone`
+  , `dsl.phone?`
+  , `dsl.array<phone>`
+  , `dsl.phone[]`
+  , `dsl.array<phone>?`
+  , `dsl.phone[]?`
+  , `dsl.array<phone?>`
+  , `dsl.phone?[]`
+  , `dsl.array<phone?>?`
+  , `dsl.phone?[]?`
+  , `dsl.list<phone>`
+  , `dsl.list<phone>?`
+  , `dsl.list<phone?>`
+  , `dsl.list<phone?>?`
+  , `dsl.set<phone>`
+  , `dsl.set<phone>?`
+  , `dsl.set<phone?>`
+  , `dsl.set<phone?>?`
   , `dsl.Point`
   , `dsl.Point?`
   , `dsl.Array<Point>`
@@ -417,6 +1497,42 @@ trait OcdDslBoxTypeValues {
   , `dsl.Set<Point>?`
   , `dsl.Set<Point?>`
   , `dsl.Set<Point?>?`
+  , `dsl.POINT`
+  , `dsl.POINT?`
+  , `dsl.ARRAY<POINT>`
+  , `dsl.POINT[]`
+  , `dsl.ARRAY<POINT>?`
+  , `dsl.POINT[]?`
+  , `dsl.ARRAY<POINT?>`
+  , `dsl.POINT?[]`
+  , `dsl.ARRAY<POINT?>?`
+  , `dsl.POINT?[]?`
+  , `dsl.LIST<POINT>`
+  , `dsl.LIST<POINT>?`
+  , `dsl.LIST<POINT?>`
+  , `dsl.LIST<POINT?>?`
+  , `dsl.SET<POINT>`
+  , `dsl.SET<POINT>?`
+  , `dsl.SET<POINT?>`
+  , `dsl.SET<POINT?>?`
+  , `dsl.point`
+  , `dsl.point?`
+  , `dsl.array<point>`
+  , `dsl.point[]`
+  , `dsl.array<point>?`
+  , `dsl.point[]?`
+  , `dsl.array<point?>`
+  , `dsl.point?[]`
+  , `dsl.array<point?>?`
+  , `dsl.point?[]?`
+  , `dsl.list<point>`
+  , `dsl.list<point>?`
+  , `dsl.list<point?>`
+  , `dsl.list<point?>?`
+  , `dsl.set<point>`
+  , `dsl.set<point>?`
+  , `dsl.set<point?>`
+  , `dsl.set<point?>?`
   , `dsl.Rectangle`
   , `dsl.Rectangle?`
   , `dsl.Array<Rectangle>`
@@ -435,6 +1551,96 @@ trait OcdDslBoxTypeValues {
   , `dsl.Set<Rectangle>?`
   , `dsl.Set<Rectangle?>`
   , `dsl.Set<Rectangle?>?`
+  , `dsl.BOX`
+  , `dsl.BOX?`
+  , `dsl.ARRAY<BOX>`
+  , `dsl.BOX[]`
+  , `dsl.ARRAY<BOX>?`
+  , `dsl.BOX[]?`
+  , `dsl.ARRAY<BOX?>`
+  , `dsl.BOX?[]`
+  , `dsl.ARRAY<BOX?>?`
+  , `dsl.BOX?[]?`
+  , `dsl.LIST<BOX>`
+  , `dsl.LIST<BOX>?`
+  , `dsl.LIST<BOX?>`
+  , `dsl.LIST<BOX?>?`
+  , `dsl.SET<BOX>`
+  , `dsl.SET<BOX>?`
+  , `dsl.SET<BOX?>`
+  , `dsl.SET<BOX?>?`
+  , `dsl.Box`
+  , `dsl.Box?`
+  , `dsl.Array<Box>`
+  , `dsl.Box[]`
+  , `dsl.Array<Box>?`
+  , `dsl.Box[]?`
+  , `dsl.Array<Box?>`
+  , `dsl.Box?[]`
+  , `dsl.Array<Box?>?`
+  , `dsl.Box?[]?`
+  , `dsl.List<Box>`
+  , `dsl.List<Box>?`
+  , `dsl.List<Box?>`
+  , `dsl.List<Box?>?`
+  , `dsl.Set<Box>`
+  , `dsl.Set<Box>?`
+  , `dsl.Set<Box?>`
+  , `dsl.Set<Box?>?`
+  , `dsl.RECTANGLE`
+  , `dsl.RECTANGLE?`
+  , `dsl.ARRAY<RECTANGLE>`
+  , `dsl.RECTANGLE[]`
+  , `dsl.ARRAY<RECTANGLE>?`
+  , `dsl.RECTANGLE[]?`
+  , `dsl.ARRAY<RECTANGLE?>`
+  , `dsl.RECTANGLE?[]`
+  , `dsl.ARRAY<RECTANGLE?>?`
+  , `dsl.RECTANGLE?[]?`
+  , `dsl.LIST<RECTANGLE>`
+  , `dsl.LIST<RECTANGLE>?`
+  , `dsl.LIST<RECTANGLE?>`
+  , `dsl.LIST<RECTANGLE?>?`
+  , `dsl.SET<RECTANGLE>`
+  , `dsl.SET<RECTANGLE>?`
+  , `dsl.SET<RECTANGLE?>`
+  , `dsl.SET<RECTANGLE?>?`
+  , `dsl.box`
+  , `dsl.box?`
+  , `dsl.array<box>`
+  , `dsl.box[]`
+  , `dsl.array<box>?`
+  , `dsl.box[]?`
+  , `dsl.array<box?>`
+  , `dsl.box?[]`
+  , `dsl.array<box?>?`
+  , `dsl.box?[]?`
+  , `dsl.list<box>`
+  , `dsl.list<box>?`
+  , `dsl.list<box?>`
+  , `dsl.list<box?>?`
+  , `dsl.set<box>`
+  , `dsl.set<box>?`
+  , `dsl.set<box?>`
+  , `dsl.set<box?>?`
+  , `dsl.rectangle`
+  , `dsl.rectangle?`
+  , `dsl.array<rectangle>`
+  , `dsl.rectangle[]`
+  , `dsl.array<rectangle>?`
+  , `dsl.rectangle[]?`
+  , `dsl.array<rectangle?>`
+  , `dsl.rectangle?[]`
+  , `dsl.array<rectangle?>?`
+  , `dsl.rectangle?[]?`
+  , `dsl.list<rectangle>`
+  , `dsl.list<rectangle>?`
+  , `dsl.list<rectangle?>`
+  , `dsl.list<rectangle?>?`
+  , `dsl.set<rectangle>`
+  , `dsl.set<rectangle>?`
+  , `dsl.set<rectangle?>`
+  , `dsl.set<rectangle?>?`
   , `dsl.S3`
   , `dsl.S3?`
   , `dsl.ARRAY<S3>`
@@ -453,6 +1659,24 @@ trait OcdDslBoxTypeValues {
   , `dsl.SET<S3>?`
   , `dsl.SET<S3?>`
   , `dsl.SET<S3?>?`
+  , `dsl.s3`
+  , `dsl.s3?`
+  , `dsl.array<s3>`
+  , `dsl.s3[]`
+  , `dsl.array<s3>?`
+  , `dsl.s3[]?`
+  , `dsl.array<s3?>`
+  , `dsl.s3?[]`
+  , `dsl.array<s3?>?`
+  , `dsl.s3?[]?`
+  , `dsl.list<s3>`
+  , `dsl.list<s3>?`
+  , `dsl.list<s3?>`
+  , `dsl.list<s3?>?`
+  , `dsl.set<s3>`
+  , `dsl.set<s3>?`
+  , `dsl.set<s3?>`
+  , `dsl.set<s3?>?`
   , `dsl.Secret`
   , `dsl.Secret?`
   , `dsl.Array<Secret>`
@@ -471,6 +1695,42 @@ trait OcdDslBoxTypeValues {
   , `dsl.Set<Secret>?`
   , `dsl.Set<Secret?>`
   , `dsl.Set<Secret?>?`
+  , `dsl.SECRET`
+  , `dsl.SECRET?`
+  , `dsl.ARRAY<SECRET>`
+  , `dsl.SECRET[]`
+  , `dsl.ARRAY<SECRET>?`
+  , `dsl.SECRET[]?`
+  , `dsl.ARRAY<SECRET?>`
+  , `dsl.SECRET?[]`
+  , `dsl.ARRAY<SECRET?>?`
+  , `dsl.SECRET?[]?`
+  , `dsl.LIST<SECRET>`
+  , `dsl.LIST<SECRET>?`
+  , `dsl.LIST<SECRET?>`
+  , `dsl.LIST<SECRET?>?`
+  , `dsl.SET<SECRET>`
+  , `dsl.SET<SECRET>?`
+  , `dsl.SET<SECRET?>`
+  , `dsl.SET<SECRET?>?`
+  , `dsl.secret`
+  , `dsl.secret?`
+  , `dsl.array<secret>`
+  , `dsl.secret[]`
+  , `dsl.array<secret>?`
+  , `dsl.secret[]?`
+  , `dsl.array<secret?>`
+  , `dsl.secret?[]`
+  , `dsl.array<secret?>?`
+  , `dsl.secret?[]?`
+  , `dsl.list<secret>`
+  , `dsl.list<secret>?`
+  , `dsl.list<secret?>`
+  , `dsl.list<secret?>?`
+  , `dsl.set<secret>`
+  , `dsl.set<secret>?`
+  , `dsl.set<secret?>`
+  , `dsl.set<secret?>?`
   , `dsl.Stream`
   , `dsl.Stream?`
   , `dsl.Array<Stream>`
@@ -489,6 +1749,42 @@ trait OcdDslBoxTypeValues {
   , `dsl.Set<Stream>?`
   , `dsl.Set<Stream?>`
   , `dsl.Set<Stream?>?`
+  , `dsl.STREAM`
+  , `dsl.STREAM?`
+  , `dsl.ARRAY<STREAM>`
+  , `dsl.STREAM[]`
+  , `dsl.ARRAY<STREAM>?`
+  , `dsl.STREAM[]?`
+  , `dsl.ARRAY<STREAM?>`
+  , `dsl.STREAM?[]`
+  , `dsl.ARRAY<STREAM?>?`
+  , `dsl.STREAM?[]?`
+  , `dsl.LIST<STREAM>`
+  , `dsl.LIST<STREAM>?`
+  , `dsl.LIST<STREAM?>`
+  , `dsl.LIST<STREAM?>?`
+  , `dsl.SET<STREAM>`
+  , `dsl.SET<STREAM>?`
+  , `dsl.SET<STREAM?>`
+  , `dsl.SET<STREAM?>?`
+  , `dsl.stream`
+  , `dsl.stream?`
+  , `dsl.array<stream>`
+  , `dsl.stream[]`
+  , `dsl.array<stream>?`
+  , `dsl.stream[]?`
+  , `dsl.array<stream?>`
+  , `dsl.stream?[]`
+  , `dsl.array<stream?>?`
+  , `dsl.stream?[]?`
+  , `dsl.list<stream>`
+  , `dsl.list<stream>?`
+  , `dsl.list<stream?>`
+  , `dsl.list<stream?>?`
+  , `dsl.set<stream>`
+  , `dsl.set<stream>?`
+  , `dsl.set<stream?>`
+  , `dsl.set<stream?>?`
   , `dsl.String`
   , `dsl.String?`
   , `dsl.Array<String>`
@@ -507,6 +1803,42 @@ trait OcdDslBoxTypeValues {
   , `dsl.Set<String>?`
   , `dsl.Set<String?>`
   , `dsl.Set<String?>?`
+  , `dsl.STRING`
+  , `dsl.STRING?`
+  , `dsl.ARRAY<STRING>`
+  , `dsl.STRING[]`
+  , `dsl.ARRAY<STRING>?`
+  , `dsl.STRING[]?`
+  , `dsl.ARRAY<STRING?>`
+  , `dsl.STRING?[]`
+  , `dsl.ARRAY<STRING?>?`
+  , `dsl.STRING?[]?`
+  , `dsl.LIST<STRING>`
+  , `dsl.LIST<STRING>?`
+  , `dsl.LIST<STRING?>`
+  , `dsl.LIST<STRING?>?`
+  , `dsl.SET<STRING>`
+  , `dsl.SET<STRING>?`
+  , `dsl.SET<STRING?>`
+  , `dsl.SET<STRING?>?`
+  , `dsl.string`
+  , `dsl.string?`
+  , `dsl.array<string>`
+  , `dsl.string[]`
+  , `dsl.array<string>?`
+  , `dsl.string[]?`
+  , `dsl.array<string?>`
+  , `dsl.string?[]`
+  , `dsl.array<string?>?`
+  , `dsl.string?[]?`
+  , `dsl.list<string>`
+  , `dsl.list<string>?`
+  , `dsl.list<string?>`
+  , `dsl.list<string?>?`
+  , `dsl.set<string>`
+  , `dsl.set<string>?`
+  , `dsl.set<string?>`
+  , `dsl.set<string?>?`
   , `dsl.String(9)`
   , `dsl.String(9)?`
   , `dsl.Array<String(9)>`
@@ -525,6 +1857,42 @@ trait OcdDslBoxTypeValues {
   , `dsl.Set<String(9)>?`
   , `dsl.Set<String(9)?>`
   , `dsl.Set<String(9)?>?`
+  , `dsl.STRING(9)`
+  , `dsl.STRING(9)?`
+  , `dsl.ARRAY<STRING(9)>`
+  , `dsl.STRING(9)[]`
+  , `dsl.ARRAY<STRING(9)>?`
+  , `dsl.STRING(9)[]?`
+  , `dsl.ARRAY<STRING(9)?>`
+  , `dsl.STRING(9)?[]`
+  , `dsl.ARRAY<STRING(9)?>?`
+  , `dsl.STRING(9)?[]?`
+  , `dsl.LIST<STRING(9)>`
+  , `dsl.LIST<STRING(9)>?`
+  , `dsl.LIST<STRING(9)?>`
+  , `dsl.LIST<STRING(9)?>?`
+  , `dsl.SET<STRING(9)>`
+  , `dsl.SET<STRING(9)>?`
+  , `dsl.SET<STRING(9)?>`
+  , `dsl.SET<STRING(9)?>?`
+  , `dsl.string(9)`
+  , `dsl.string(9)?`
+  , `dsl.array<string(9)>`
+  , `dsl.string(9)[]`
+  , `dsl.array<string(9)>?`
+  , `dsl.string(9)[]?`
+  , `dsl.array<string(9)?>`
+  , `dsl.string(9)?[]`
+  , `dsl.array<string(9)?>?`
+  , `dsl.string(9)?[]?`
+  , `dsl.list<string(9)>`
+  , `dsl.list<string(9)>?`
+  , `dsl.list<string(9)?>`
+  , `dsl.list<string(9)?>?`
+  , `dsl.set<string(9)>`
+  , `dsl.set<string(9)>?`
+  , `dsl.set<string(9)?>`
+  , `dsl.set<string(9)?>?`
   , `dsl.Text`
   , `dsl.Text?`
   , `dsl.Array<Text>`
@@ -543,6 +1911,42 @@ trait OcdDslBoxTypeValues {
   , `dsl.Set<Text>?`
   , `dsl.Set<Text?>`
   , `dsl.Set<Text?>?`
+  , `dsl.TEXT`
+  , `dsl.TEXT?`
+  , `dsl.ARRAY<TEXT>`
+  , `dsl.TEXT[]`
+  , `dsl.ARRAY<TEXT>?`
+  , `dsl.TEXT[]?`
+  , `dsl.ARRAY<TEXT?>`
+  , `dsl.TEXT?[]`
+  , `dsl.ARRAY<TEXT?>?`
+  , `dsl.TEXT?[]?`
+  , `dsl.LIST<TEXT>`
+  , `dsl.LIST<TEXT>?`
+  , `dsl.LIST<TEXT?>`
+  , `dsl.LIST<TEXT?>?`
+  , `dsl.SET<TEXT>`
+  , `dsl.SET<TEXT>?`
+  , `dsl.SET<TEXT?>`
+  , `dsl.SET<TEXT?>?`
+  , `dsl.text`
+  , `dsl.text?`
+  , `dsl.array<text>`
+  , `dsl.text[]`
+  , `dsl.array<text>?`
+  , `dsl.text[]?`
+  , `dsl.array<text?>`
+  , `dsl.text?[]`
+  , `dsl.array<text?>?`
+  , `dsl.text?[]?`
+  , `dsl.list<text>`
+  , `dsl.list<text>?`
+  , `dsl.list<text?>`
+  , `dsl.list<text?>?`
+  , `dsl.set<text>`
+  , `dsl.set<text>?`
+  , `dsl.set<text?>`
+  , `dsl.set<text?>?`
   , `dsl.Time`
   , `dsl.Time?`
   , `dsl.Array<Time>`
@@ -561,6 +1965,42 @@ trait OcdDslBoxTypeValues {
   , `dsl.Set<Time>?`
   , `dsl.Set<Time?>`
   , `dsl.Set<Time?>?`
+  , `dsl.TIME`
+  , `dsl.TIME?`
+  , `dsl.ARRAY<TIME>`
+  , `dsl.TIME[]`
+  , `dsl.ARRAY<TIME>?`
+  , `dsl.TIME[]?`
+  , `dsl.ARRAY<TIME?>`
+  , `dsl.TIME?[]`
+  , `dsl.ARRAY<TIME?>?`
+  , `dsl.TIME?[]?`
+  , `dsl.LIST<TIME>`
+  , `dsl.LIST<TIME>?`
+  , `dsl.LIST<TIME?>`
+  , `dsl.LIST<TIME?>?`
+  , `dsl.SET<TIME>`
+  , `dsl.SET<TIME>?`
+  , `dsl.SET<TIME?>`
+  , `dsl.SET<TIME?>?`
+  , `dsl.time`
+  , `dsl.time?`
+  , `dsl.array<time>`
+  , `dsl.time[]`
+  , `dsl.array<time>?`
+  , `dsl.time[]?`
+  , `dsl.array<time?>`
+  , `dsl.time?[]`
+  , `dsl.array<time?>?`
+  , `dsl.time?[]?`
+  , `dsl.list<time>`
+  , `dsl.list<time>?`
+  , `dsl.list<time?>`
+  , `dsl.list<time?>?`
+  , `dsl.set<time>`
+  , `dsl.set<time>?`
+  , `dsl.set<time?>`
+  , `dsl.set<time?>?`
   , `dsl.Timestamp`
   , `dsl.Timestamp?`
   , `dsl.Array<Timestamp>`
@@ -579,6 +2019,114 @@ trait OcdDslBoxTypeValues {
   , `dsl.Set<Timestamp>?`
   , `dsl.Set<Timestamp?>`
   , `dsl.Set<Timestamp?>?`
+  , `dsl.DATETIME`
+  , `dsl.DATETIME?`
+  , `dsl.ARRAY<DATETIME>`
+  , `dsl.DATETIME[]`
+  , `dsl.ARRAY<DATETIME>?`
+  , `dsl.DATETIME[]?`
+  , `dsl.ARRAY<DATETIME?>`
+  , `dsl.DATETIME?[]`
+  , `dsl.ARRAY<DATETIME?>?`
+  , `dsl.DATETIME?[]?`
+  , `dsl.LIST<DATETIME>`
+  , `dsl.LIST<DATETIME>?`
+  , `dsl.LIST<DATETIME?>`
+  , `dsl.LIST<DATETIME?>?`
+  , `dsl.SET<DATETIME>`
+  , `dsl.SET<DATETIME>?`
+  , `dsl.SET<DATETIME?>`
+  , `dsl.SET<DATETIME?>?`
+  , `dsl.DateTime`
+  , `dsl.DateTime?`
+  , `dsl.Array<DateTime>`
+  , `dsl.DateTime[]`
+  , `dsl.Array<DateTime>?`
+  , `dsl.DateTime[]?`
+  , `dsl.Array<DateTime?>`
+  , `dsl.DateTime?[]`
+  , `dsl.Array<DateTime?>?`
+  , `dsl.DateTime?[]?`
+  , `dsl.List<DateTime>`
+  , `dsl.List<DateTime>?`
+  , `dsl.List<DateTime?>`
+  , `dsl.List<DateTime?>?`
+  , `dsl.Set<DateTime>`
+  , `dsl.Set<DateTime>?`
+  , `dsl.Set<DateTime?>`
+  , `dsl.Set<DateTime?>?`
+  , `dsl.Datetime`
+  , `dsl.Datetime?`
+  , `dsl.Array<Datetime>`
+  , `dsl.Datetime[]`
+  , `dsl.Array<Datetime>?`
+  , `dsl.Datetime[]?`
+  , `dsl.Array<Datetime?>`
+  , `dsl.Datetime?[]`
+  , `dsl.Array<Datetime?>?`
+  , `dsl.Datetime?[]?`
+  , `dsl.List<Datetime>`
+  , `dsl.List<Datetime>?`
+  , `dsl.List<Datetime?>`
+  , `dsl.List<Datetime?>?`
+  , `dsl.Set<Datetime>`
+  , `dsl.Set<Datetime>?`
+  , `dsl.Set<Datetime?>`
+  , `dsl.Set<Datetime?>?`
+  , `dsl.TIMESTAMP`
+  , `dsl.TIMESTAMP?`
+  , `dsl.ARRAY<TIMESTAMP>`
+  , `dsl.TIMESTAMP[]`
+  , `dsl.ARRAY<TIMESTAMP>?`
+  , `dsl.TIMESTAMP[]?`
+  , `dsl.ARRAY<TIMESTAMP?>`
+  , `dsl.TIMESTAMP?[]`
+  , `dsl.ARRAY<TIMESTAMP?>?`
+  , `dsl.TIMESTAMP?[]?`
+  , `dsl.LIST<TIMESTAMP>`
+  , `dsl.LIST<TIMESTAMP>?`
+  , `dsl.LIST<TIMESTAMP?>`
+  , `dsl.LIST<TIMESTAMP?>?`
+  , `dsl.SET<TIMESTAMP>`
+  , `dsl.SET<TIMESTAMP>?`
+  , `dsl.SET<TIMESTAMP?>`
+  , `dsl.SET<TIMESTAMP?>?`
+  , `dsl.datetime`
+  , `dsl.datetime?`
+  , `dsl.array<datetime>`
+  , `dsl.datetime[]`
+  , `dsl.array<datetime>?`
+  , `dsl.datetime[]?`
+  , `dsl.array<datetime?>`
+  , `dsl.datetime?[]`
+  , `dsl.array<datetime?>?`
+  , `dsl.datetime?[]?`
+  , `dsl.list<datetime>`
+  , `dsl.list<datetime>?`
+  , `dsl.list<datetime?>`
+  , `dsl.list<datetime?>?`
+  , `dsl.set<datetime>`
+  , `dsl.set<datetime>?`
+  , `dsl.set<datetime?>`
+  , `dsl.set<datetime?>?`
+  , `dsl.timestamp`
+  , `dsl.timestamp?`
+  , `dsl.array<timestamp>`
+  , `dsl.timestamp[]`
+  , `dsl.array<timestamp>?`
+  , `dsl.timestamp[]?`
+  , `dsl.array<timestamp?>`
+  , `dsl.timestamp?[]`
+  , `dsl.array<timestamp?>?`
+  , `dsl.timestamp?[]?`
+  , `dsl.list<timestamp>`
+  , `dsl.list<timestamp>?`
+  , `dsl.list<timestamp?>`
+  , `dsl.list<timestamp?>?`
+  , `dsl.set<timestamp>`
+  , `dsl.set<timestamp>?`
+  , `dsl.set<timestamp?>`
+  , `dsl.set<timestamp?>?`
   , `dsl.Url`
   , `dsl.Url?`
   , `dsl.Array<Url>`
@@ -597,6 +2145,96 @@ trait OcdDslBoxTypeValues {
   , `dsl.Set<Url>?`
   , `dsl.Set<Url?>`
   , `dsl.Set<Url?>?`
+  , `dsl.LINK`
+  , `dsl.LINK?`
+  , `dsl.ARRAY<LINK>`
+  , `dsl.LINK[]`
+  , `dsl.ARRAY<LINK>?`
+  , `dsl.LINK[]?`
+  , `dsl.ARRAY<LINK?>`
+  , `dsl.LINK?[]`
+  , `dsl.ARRAY<LINK?>?`
+  , `dsl.LINK?[]?`
+  , `dsl.LIST<LINK>`
+  , `dsl.LIST<LINK>?`
+  , `dsl.LIST<LINK?>`
+  , `dsl.LIST<LINK?>?`
+  , `dsl.SET<LINK>`
+  , `dsl.SET<LINK>?`
+  , `dsl.SET<LINK?>`
+  , `dsl.SET<LINK?>?`
+  , `dsl.Link`
+  , `dsl.Link?`
+  , `dsl.Array<Link>`
+  , `dsl.Link[]`
+  , `dsl.Array<Link>?`
+  , `dsl.Link[]?`
+  , `dsl.Array<Link?>`
+  , `dsl.Link?[]`
+  , `dsl.Array<Link?>?`
+  , `dsl.Link?[]?`
+  , `dsl.List<Link>`
+  , `dsl.List<Link>?`
+  , `dsl.List<Link?>`
+  , `dsl.List<Link?>?`
+  , `dsl.Set<Link>`
+  , `dsl.Set<Link>?`
+  , `dsl.Set<Link?>`
+  , `dsl.Set<Link?>?`
+  , `dsl.URL`
+  , `dsl.URL?`
+  , `dsl.ARRAY<URL>`
+  , `dsl.URL[]`
+  , `dsl.ARRAY<URL>?`
+  , `dsl.URL[]?`
+  , `dsl.ARRAY<URL?>`
+  , `dsl.URL?[]`
+  , `dsl.ARRAY<URL?>?`
+  , `dsl.URL?[]?`
+  , `dsl.LIST<URL>`
+  , `dsl.LIST<URL>?`
+  , `dsl.LIST<URL?>`
+  , `dsl.LIST<URL?>?`
+  , `dsl.SET<URL>`
+  , `dsl.SET<URL>?`
+  , `dsl.SET<URL?>`
+  , `dsl.SET<URL?>?`
+  , `dsl.link`
+  , `dsl.link?`
+  , `dsl.array<link>`
+  , `dsl.link[]`
+  , `dsl.array<link>?`
+  , `dsl.link[]?`
+  , `dsl.array<link?>`
+  , `dsl.link?[]`
+  , `dsl.array<link?>?`
+  , `dsl.link?[]?`
+  , `dsl.list<link>`
+  , `dsl.list<link>?`
+  , `dsl.list<link?>`
+  , `dsl.list<link?>?`
+  , `dsl.set<link>`
+  , `dsl.set<link>?`
+  , `dsl.set<link?>`
+  , `dsl.set<link?>?`
+  , `dsl.url`
+  , `dsl.url?`
+  , `dsl.array<url>`
+  , `dsl.url[]`
+  , `dsl.array<url>?`
+  , `dsl.url[]?`
+  , `dsl.array<url?>`
+  , `dsl.url?[]`
+  , `dsl.array<url?>?`
+  , `dsl.url?[]?`
+  , `dsl.list<url>`
+  , `dsl.list<url>?`
+  , `dsl.list<url?>`
+  , `dsl.list<url?>?`
+  , `dsl.set<url>`
+  , `dsl.set<url>?`
+  , `dsl.set<url?>`
+  , `dsl.set<url?>?`
   , `dsl.Xml`
   , `dsl.Xml?`
   , `dsl.Array<Xml>`
@@ -615,5 +2253,41 @@ trait OcdDslBoxTypeValues {
   , `dsl.Set<Xml>?`
   , `dsl.Set<Xml?>`
   , `dsl.Set<Xml?>?`
+  , `dsl.XML`
+  , `dsl.XML?`
+  , `dsl.ARRAY<XML>`
+  , `dsl.XML[]`
+  , `dsl.ARRAY<XML>?`
+  , `dsl.XML[]?`
+  , `dsl.ARRAY<XML?>`
+  , `dsl.XML?[]`
+  , `dsl.ARRAY<XML?>?`
+  , `dsl.XML?[]?`
+  , `dsl.LIST<XML>`
+  , `dsl.LIST<XML>?`
+  , `dsl.LIST<XML?>`
+  , `dsl.LIST<XML?>?`
+  , `dsl.SET<XML>`
+  , `dsl.SET<XML>?`
+  , `dsl.SET<XML?>`
+  , `dsl.SET<XML?>?`
+  , `dsl.xml`
+  , `dsl.xml?`
+  , `dsl.array<xml>`
+  , `dsl.xml[]`
+  , `dsl.array<xml>?`
+  , `dsl.xml[]?`
+  , `dsl.array<xml?>`
+  , `dsl.xml?[]`
+  , `dsl.array<xml?>?`
+  , `dsl.xml?[]?`
+  , `dsl.list<xml>`
+  , `dsl.list<xml>?`
+  , `dsl.list<xml?>`
+  , `dsl.list<xml?>?`
+  , `dsl.set<xml>`
+  , `dsl.set<xml>?`
+  , `dsl.set<xml?>`
+  , `dsl.set<xml?>?`
   )
 }
