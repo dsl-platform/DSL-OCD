@@ -47,7 +47,7 @@ object TestJavaPropertySetterTypeTurtle
         val modifiers = test.modifiers.map(_.javaFieldPrefix).mkString
         val clazz = ojbt.javaClass
         val name = test.property.name
-        val value = ojbt.defaultValue
+//        val value = ojbt.defaultValue
 
         s"""
     ${visibility}${modifiers}${testName} set${name.fciu}(final ${clazz} ${name}) {

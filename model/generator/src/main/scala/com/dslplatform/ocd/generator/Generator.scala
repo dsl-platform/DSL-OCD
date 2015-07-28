@@ -9,7 +9,7 @@ trait Generator {
   ) / ".config" / "DSL-OCD" / "ocd.config").string
 
   private val generated =
-    "model=(.*)".r.findFirstMatchIn(config).get.group(1).trim
+    "model=(.*)".r.findFirstMatchIn(config).get.group(1).trim.replace('\\', '/')
 
   private def gene(name: String, language: String) = Path(generated, '/') /
     name / "src" / "generated" / language / "com" / "dslplatform" / "ocd"

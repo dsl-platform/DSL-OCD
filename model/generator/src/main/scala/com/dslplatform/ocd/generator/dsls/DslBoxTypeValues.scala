@@ -32,9 +32,7 @@ trait DslBoxTypeValues {
 
     val segments =
       for (t <- TypeGenerator.typeValues) yield {
-        t -> (for (typeName <- t.name.dslName +: t.derivedAliases.take(0)) yield {
-
-          val name = t.name.dslName
+        t -> (for (typeName <- t.name.dslName +: t.derivedAliases /*.take(0)*/) yield {
           val letters = typeName.filter(_.isLetter)
 
           val caser =

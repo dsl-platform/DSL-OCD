@@ -1,30 +1,19 @@
 package com.dslplatform.ocd
 package config
 
-import scalax.io.Codec.UTF8
-import scala.collection.mutable.LinkedHashMap
-import scala.collection.JavaConverters._
-import test.javatest.TestSuiteCreator
-import test.javatest.JavaInfo
+import java.nio.file.FileVisitResult
+import java.nio.file.Files
+import java.nio.file.SimpleFileVisitor
+import java.nio.file.StandardCopyOption
+import java.nio.file.attribute.BasicFileAttributes
+import java.nio.file.attribute.PosixFilePermission
+
 import org.apache.commons.io.IOUtils
 import org.apache.commons.lang.SystemUtils
-import java.io.InputStream
-import java.nio.file.Files
-import java.nio.file.StandardCopyOption
-import java.io.FileOutputStream
-import java.nio.file.SimpleFileVisitor
-import java.nio.file.FileVisitResult
-import java.nio.file.attribute.BasicFileAttributeView
-import java.nio.file.attribute.BasicFileAttributes
-import java.nio.file.attribute.DosFileAttributes
-import java.nio.file.attribute.PosixFileAttributes
-import java.nio.file.attribute.PosixFileAttributeView
-import java.nio.file.attribute.AclFileAttributeView
-import java.nio.file.attribute.DosFileAttributeView
-import java.nio.file.attribute.FileOwnerAttributeView
-import java.nio.file.attribute.UserDefinedFileAttributeView
-import java.nio.file.attribute.PosixFilePermission
-import java.nio.file.attribute.PosixFilePermissions
+
+import scalax.io.Codec.UTF8
+import test.javatest.JavaInfo
+import test.javatest.TestSuiteCreator
 
 
 private[config] class TestDeployer(
@@ -37,22 +26,20 @@ private[config] class TestDeployer(
   private val configTargetPath = toolsTargetPath / "config"
 
   if (!root.exists) {
-          logger.trace("Creating the root target path: " + root.path)
-          root.createDirectory(true, false)
+    logger.trace("Creating the root target path: " + root.path)
+    root.createDirectory(true, false)
   }
 
   class TestSetup(testProject: ITestProject, projectNamesAndPortsRepository : ProjectNamesAndPortsRepository) {
-
-    private def javaParentBasedOnCurrentOs: String = {
-      if(SystemUtils.IS_OS_WINDOWS){
-        return "java_windows"
-      }else if(SystemUtils.IS_OS_LINUX){
-        return "java_linux"
-      }else{
-        throw new RuntimeException("Unsupported OS, cannot deploy project java tools resource.")
-      }
-    }
-
+//    private def javaParentBasedOnCurrentOs: String = {
+//      if (SystemUtils.IS_OS_WINDOWS) {
+//        "java_windows"
+//      } else if (SystemUtils.IS_OS_LINUX){
+//        "java_linux"
+//      } else{
+//        sys.error("Unsupported OS, cannot deploy project java tools resource.")
+//      }
+//    }
 
     private val projectRoot = root / (testProject.projectPath, '/')
     private val libPath = root / "tools" / "java" / "lib"
@@ -63,8 +50,8 @@ private[config] class TestDeployer(
     private val dslSource = projectRoot / "dsl"
 
     private val DSL_PROJECT_INI = "dsl-project.ini"
-    private val REVENJ_CONFIG_TEMPLATE_DIRNAME = "revenj"
-    private val REVENJ_CONFIG_TEMPLATE_FILENAME = "Revenj.Http.exe.config.template"
+//    private val REVENJ_CONFIG_TEMPLATE_DIRNAME = "revenj"
+//    private val REVENJ_CONFIG_TEMPLATE_FILENAME = "Revenj.Http.exe.config.template"
 
     private def languageProjectRoot(language: Language) =
       projectRoot / language.language.toLowerCase.concat("_project")
@@ -90,8 +77,8 @@ private[config] class TestDeployer(
     private def testRoot(language: Language) =
       languageProjectRoot(language) / "src" / "test"
 
-    private def testCode(language: Language) =
-      testRoot(language) / language.language.toLowerCase()
+//    private def testCode(language: Language) =
+//      testRoot(language) / language.language.toLowerCase()
 
     private def testResources(language: Language) =
       testRoot(language) / "resources"
@@ -106,9 +93,19 @@ private[config] class TestDeployer(
       }
     }
 
+    private val placeholder = IOUtils.toString(
+      classOf[TestDeployer].getResourceAsStream("/placeholder.dsl"))
+
     private def deployDsl(): Unit = {
       val dsls = testProject.dslFiles
-      dsls.par foreach { case (filename, body) =>
+
+      // ugly hack to make turtles compile (doesn't work with empty DSL)
+      // TODO: add condition to skip DSL compilation if empty in Ant build
+      val patchDsls = if (dsls.nonEmpty) dsls else {
+        Map("placeholder.dsl" -> placeholder)
+      }
+
+      patchDsls.par foreach { case (filename, body) =>
         val path = dslSource / (filename, '/')
         logger.trace("Deploying DSL: " + path.path)
         path.write(body)
@@ -232,10 +229,8 @@ private[config] class TestDeployer(
         val languageRoot = languageProjectRoot(language)
         language match {
           case JAVA =>
-            {
-                copyTemplate("build.xml", languageRoot);
-                copyTemplate(".pgpass", languageRoot);
-            }
+            copyTemplate("build.xml", languageRoot);
+            copyTemplate(".pgpass", languageRoot);
           case _ =>
         }
       }
@@ -245,16 +240,17 @@ private[config] class TestDeployer(
         logger.trace("Creating the "+ scriptName +" script: " + path.path)
 
         val body = applyTemplates(IOUtils.toString(
-        classOf[TestDeployer].getResourceAsStream("/template."+scriptName)))
-
+            classOf[TestDeployer].getResourceAsStream("/template."+scriptName)))
         path.write(body)
 
-        val javaPath = java.nio.file.Paths.get(path.toURI)
-        val perms = Files.getPosixFilePermissions(javaPath)
-        for (permission <- permissions){
-                perms.add(permission);
+        if (!SystemUtils.IS_OS_WINDOWS) {
+          val javaPath = java.nio.file.Paths.get(path.toURI)
+          val perms = Files.getPosixFilePermissions(javaPath)
+          for (permission <- permissions){
+                  perms.add(permission);
+          }
+          Files.setPosixFilePermissions(javaPath, perms)
         }
-        Files.setPosixFilePermissions(javaPath, perms)
     }
 
     private def deployEclipseProject(): Unit =
@@ -313,8 +309,7 @@ private[config] class TestDeployer(
         , "dbOwnerPassword" -> "ocdpassword"
         , "revenjHost" -> "localhost"
         , "revenjPort" -> projectNamesAndPortsRepository.generateProjectRevenjPort(projectShortName).toString()
-        , "toolsPath" -> "../../../" // TODO: deprecated, remove, this needs to be a common relative path
-        , "javaParent" -> javaParentBasedOnCurrentOs
+        , "toolsPath" -> (testSettings.workspace.path.path + "/tools")
         , "dslSource" -> dslSource.path
         , "revenjPath" -> revenjConfigTemplateTargetPath.path
         )
@@ -322,12 +317,10 @@ private[config] class TestDeployer(
     private def applyTemplates(stringWithTemplateProperties:String):String = {
         var retVal = stringWithTemplateProperties
         for((name,value)<-projectParamTemplates){
-            retVal = retVal
-                    .replace("#{"+name+"}", value)
+            retVal = retVal.replace("#{"+name+"}", value)
         }
         retVal
     }
-
   }
 
   /**
@@ -371,9 +364,9 @@ private[config] class TestDeployer(
       copyPath(revenjConfigTemplate.toPath(), revenjConfigTemplateTarget.toPath())
     }
 
-  private def copyPath(fromPath: java.nio.file.Path, toPath: java.nio.file.Path):Unit = {
-      Files.walkFileTree(fromPath, new CopyDirVisitor(logger, fromPath, toPath))
-      ()
+  private def copyPath(fromPath: java.nio.file.Path, toPath: java.nio.file.Path): Unit = {
+    Files.walkFileTree(fromPath, new CopyDirVisitor(logger, fromPath, toPath))
+    ()
   }
 
   def deployTests(tests: Seq[ITestProject]): Unit = {
@@ -391,19 +384,17 @@ private class CopyDirVisitor(logger: Logger, sourcePath: java.nio.file.Path, tar
   }
 
     override def visitFile(file: java.nio.file.Path, attrs: BasicFileAttributes): FileVisitResult = {
-
       val targetFile = targetPath.resolve(sourcePath.relativize(file))
-
       Files.copy(file, targetFile, StandardCopyOption.COPY_ATTRIBUTES, StandardCopyOption.REPLACE_EXISTING)
 
-      val perms = Files.getPosixFilePermissions(file)
-
-
-      /* TODO: Fix, for some reason the 'executable' permissions are never retrieved here, rendering all
-       * binaries copied non-executable. As a quickfix we try a chmod in the script, but it ought to be done here.
-       * An alternative would be to use the java system binaries instead of our internal copy of the JDK/JRE.*/
-      if(Files.exists(targetFile)){
-        Files.setPosixFilePermissions(targetFile, perms)
+      if (!SystemUtils.IS_OS_WINDOWS) {
+        val perms = Files.getPosixFilePermissions(file)
+        /* TODO: Fix, for some reason the 'executable' permissions are never retrieved here, rendering all
+         * binaries copied non-executable. As a quickfix we try a chmod in the script, but it ought to be done here.
+         * An alternative would be to use the java system binaries instead of our internal copy of the JDK/JRE.*/
+        if(Files.exists(targetFile)){
+          Files.setPosixFilePermissions(targetFile, perms)
+        }
       }
 
       FileVisitResult.CONTINUE
@@ -425,7 +416,7 @@ private class ProjectNamesAndPortsRepository(logger: Logger, testSettings: ITest
   if(propertiesSourceFile.exists){
    props.load(new java.io.FileInputStream(propertiesSourceFile.path))
    val propsIt = props.stringPropertyNames().iterator();
-   while(propsIt.hasNext()){
+   while(propsIt.hasNext()) {
     val propName = propsIt.next()
     val propVal = props.getProperty(propName).toInt
     if (propVal > portSequence){
@@ -438,7 +429,7 @@ private class ProjectNamesAndPortsRepository(logger: Logger, testSettings: ITest
     if(this.props.containsKey(projectDatabaseName)){
       this.apply(projectDatabaseName)
     }else{
-      this.portSequence += 1;
+      this.portSequence += 1
       this.update(projectDatabaseName, portSequence)
       this.portSequence
     }

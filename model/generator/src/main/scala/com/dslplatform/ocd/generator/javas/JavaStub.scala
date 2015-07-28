@@ -84,7 +84,7 @@ case class SetOfJavaValues(
 }
 
 object MapOfJavaValues {
-  def apply(entries: Pair[String, String]*): MapOfJavaValues =
+  def apply(entries: (String, String)*): MapOfJavaValues =
     MapOfJavaValues("String", "String", (entries.map { case (k, v) => (k: TestValue, v: TestValue)}).toMap)
 }
 

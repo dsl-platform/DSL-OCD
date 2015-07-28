@@ -32,6 +32,7 @@ object TestJavaAssertsBorderValuesTurtle
       override def imports = Seq(
         "com.dslplatform.client.JsonSerialization"
       , "com.dslplatform.client.Bootstrap"
+      , "com.dslplatform.patterns.Bytes"
       , "com.dslplatform.patterns.ServiceLocator"
       , "com.fasterxml.jackson.databind.JavaType"
       , "java.io.IOException"
@@ -48,7 +49,7 @@ object TestJavaAssertsBorderValuesTurtle
     }
 """)
 
-      private val clazz = ojbt.javaClass
+//      private val clazz = ojbt.javaClass
 
       def tests = ojbt.borderValues
         .filter(DisallowedNullValue ne)
@@ -59,18 +60,21 @@ object TestJavaAssertsBorderValuesTurtle
           }
         }
 
-      private def buildType(javaType: JavaType): String = javaType match {
+      private def deserialization(javaType: JavaType, bytes: String): String = javaType match {
         case JavaClass(baseClass) =>
-          s"""${baseClass}.class"""
+          s"""jsonSerialization.deserialize(xxx${baseClass}, ${bytes}.content, ${bytes}.length)"""
 
         case JavaSimpleType(baseClass) =>
-          s"""JsonSerialization.buildType(${baseClass}.class)"""
+          s"""jsonSerialization.deserialize(${baseClass}.class, ${bytes}.content, ${bytes}.length)"""
 
-        case JavaCollectionType(baseClass, elementType) =>
-          s"""JsonSerialization.buildCollectionType(${baseClass}.class, ${buildType(elementType)})"""
+        case JavaCollectionType("java.util.List", elementType) =>
+          s"""jsonSerialization.deserializeList(${elementType}.class, ${bytes}.content, ${bytes}.length)"""
+
+        case JavaCollectionType("java.util.Set", elementType) =>
+          s"""new java.util.HashSet<${elementType}>(${deserialization(JavaCollectionType("java.util.List", elementType), bytes)})"""
 
         case JavaGenericType(baseClass, elementTypes @ _*) =>
-          s"""JsonSerialization.buildGenericType(${baseClass}.class, ${elementTypes.map(buildType).mkString(", ")})"""
+          s"""jsonSerialization.deserialize(${baseClass}, ${bytes}.content, ${bytes}.length)"""
       }
 
       private def testValue(ojbt: OcdJavaBoxType, name: String, value: JavaValue) = s"""
@@ -78,9 +82,8 @@ object TestJavaAssertsBorderValuesTurtle
     @org.junit.Test
     public void test${name.fciu}Equality() throws IOException {
         final ${ojbt.javaClass} ${name} = ${value};
-        final String ${name}JsonSerialized = jsonSerialization.serialize($name).toUtf8();
-        final JavaType ${name}JavaType = ${buildType(ojbt.javaType)};
-        final ${ojbt.javaClass} ${name}JsonDeserialized = jsonSerialization.deserialize(${name}JavaType, ${name}JsonSerialized);
+        final Bytes ${name}JsonSerialized = jsonSerialization.serialize($name);
+        final ${ojbt.javaClass} ${name}JsonDeserialized = ${deserialization(ojbt.javaType, s"${name}JsonSerialized")};
         com.dslplatform.ocd.javaasserts.${ojbt.typeSingleName}Asserts.assert${ojbt.boxName}Equals(${name}, ${name}JsonDeserialized);
     }
 """

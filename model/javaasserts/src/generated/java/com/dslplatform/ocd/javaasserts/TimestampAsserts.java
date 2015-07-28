@@ -3,7 +3,7 @@ package com.dslplatform.ocd.javaasserts;
 import org.junit.Assert;
 
 public class TimestampAsserts {
-// TODO: update generator before regenerating
+    // FIXME: TODO: update generator before regenerating
     static void assertSingleEqualsZeroDelta(final String message, final org.joda.time.DateTime expected, final org.joda.time.DateTime actual){
 
         final StringBuilder failMsg = new StringBuilder();

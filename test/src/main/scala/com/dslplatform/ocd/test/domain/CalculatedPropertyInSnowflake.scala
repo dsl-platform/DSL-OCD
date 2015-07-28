@@ -108,7 +108,7 @@ class CalculatedPropertyInSnowflakeTestProject(
 """)
 
     private val uriProperty = OcdJavaBoxTypeProperty("URI", `java.String`)
-    private val idProperty = OcdJavaBoxTypeProperty("ID", `java.Integer`)
+//    private val idProperty = OcdJavaBoxTypeProperty("ID", `java.Integer`)
 
     val aggregateCloneProperty = OcdJavaBoxTypeProperty(setup.aggregateClonePropertyName, ojbt)
     val snowflakeCloneProperty = OcdJavaBoxTypeProperty(setup.snowflakeClonePropertyName, ojbt)

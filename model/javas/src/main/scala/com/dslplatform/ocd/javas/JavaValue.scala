@@ -65,7 +65,7 @@ case class SetOfJavaValues(
 case class MapOfJavaValues(
     keyClass: String
   , valueClass: String
-  , values: Pair[JavaValue, JavaValue]*
+  , values: (JavaValue, JavaValue)*
   ) extends JavaEntryContainer {
 
   override val toString = "new java.util.HashMap<" + keyClass + ", " + valueClass + ">() " + (values.map{ case (k, v) =>

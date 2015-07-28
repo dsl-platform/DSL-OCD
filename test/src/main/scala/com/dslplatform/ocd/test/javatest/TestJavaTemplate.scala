@@ -38,12 +38,14 @@ trait TestJavaTemplate {
      * The reason we're putting html here, is because otherwise the heap space in the XSLT transformer
      * goes up too quickly, and the transform breaks. */
     tests foreach { test =>
-      sb ++= test.testComponentBody.trim()
+      sb ++= test.testComponentBody // .trim()
           .replaceAll(
               "public[ ]+void[ ]+test([^\\(]+)\\(\\)(.*)\\{"
               ,s"""public void test$$1()$$2{
-              org.slf4j.LoggerFactory.getLogger("ocd-anchor-logger").trace("<a id='$packageName.$testName.test$$1'><h4>$packageName.$testName.test$$1</h4></a>");
-              org.slf4j.MDC.put("ocdTestMethodName","test$$1:");
+        org.slf4j.LoggerFactory.getLogger("ocd-anchor-logger").trace(
+                "<a id='$packageName.$testName.test$$1'>" +
+                "<h4>$packageName.$testName.test$$1</h4></a>");
+        org.slf4j.MDC.put("ocdTestMethodName","test$$1:");
               """)
           ;
     }

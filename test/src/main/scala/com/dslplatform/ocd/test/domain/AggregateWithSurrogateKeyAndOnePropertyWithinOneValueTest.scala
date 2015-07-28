@@ -100,8 +100,8 @@ class AggregateWithSurrogateKeyAndOnePropertyWithinOneValueTestProject(
     }
 """)
 
-    private val uriProperty = OcdJavaBoxTypeProperty("URI", `java.String`)
-    private val idProperty = OcdJavaBoxTypeProperty("ID", `java.Integer`)
+//    private val uriProperty = OcdJavaBoxTypeProperty("URI", `java.String`)
+//    private val idProperty = OcdJavaBoxTypeProperty("ID", `java.Integer`)
 
     override def tests = Seq(
       new TestJavaOneValueInAggregate {
