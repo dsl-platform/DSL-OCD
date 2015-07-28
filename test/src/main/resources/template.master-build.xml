@@ -7,7 +7,7 @@
   <property name="report.generated" location="report/site/summaries" />
   <property name="report.stylesheet" location="report/xsl/report.xsl" />
   <property name="saxon.jar" location="report/lib/saxon9he.jar" />
-  <property name="ocd-report-generator" location="tools/lib/ocd-report-generator.jar" />
+  <property name="ocd-report-generator" location="tools/build/ocd-report-0.1.0-SNAPSHOT-jar-with-dependencies.jar" />
 
   <property name="tools" location="tools" />
   <property name="tools.revenj" location="tools/revenj" />
@@ -207,4 +207,3 @@
     </subant>
   </target>
 </project>
-

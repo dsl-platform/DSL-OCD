@@ -1,7 +1,0 @@
-# This is not used at all atm.
-u=rinmalavi@gmail.com
-p=qwe321
-namespace=ocd
-#output-path=client/java/src/generated/java
-sql=commons/migration/migration.sql
-db="User ID=#{dbUser}; Password=#{dbPassword}; Host=#{dbHost}; Port=#{dbPort}; Database=#{dbName}"

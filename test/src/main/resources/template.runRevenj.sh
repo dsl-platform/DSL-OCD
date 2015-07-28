@@ -7,4 +7,3 @@ REVENJ_PATH=./revenj/
 
 echo "Starting our instance of Revenj, on ${revenjHost}:${revenjPort}"
 mono "$REVENJ_PATH/Revenj.Http.exe"
-

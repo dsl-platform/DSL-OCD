@@ -251,4 +251,3 @@ public class DomHelper {
         return this.attr("style", value);
     }
 }
-

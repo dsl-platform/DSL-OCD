@@ -159,13 +159,13 @@ private[config] class TestDeployer(
           resourcePath.createDirectory(true, false)
         }
 
-        val path = resourcePath / "dsl.props"
-        logger.trace("Deploying the dsl.props file: " + path.path)
-
-        val body = applyTemplates(IOUtils.toString(
-          classOf[TestDeployer].getResourceAsStream("/template.dsl.props")))
-
-        path.write(body)
+//        val path = resourcePath / "dsl.props"
+//        logger.trace("Deploying the dsl.props file: " + path.path)
+//
+//        val body = applyTemplates(IOUtils.toString(
+//          classOf[TestDeployer].getResourceAsStream("/template.dsl.props")))
+//
+//        path.write(body)
       }
 
     private def cleanTests(): Unit = {
