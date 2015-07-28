@@ -5,10 +5,8 @@ val NGSPrivateSnapshots = "NGS Private Snapshots" at "http://ngs.hr/nexus/conten
 // ### BASIC SETTINGS ### //
 
 organization := "com.dslplatform.ocd"
-
 name := "DSL-OCD-Model-Types"
-
-version := "0.0.0-SNAPSHOT"
+version := "0.1.0-SNAPSHOT"
 
 unmanagedSourceDirectories in Compile := Seq(
   (scalaSource in Compile).value
@@ -18,36 +16,36 @@ unmanagedSourceDirectories in Compile := Seq(
 unmanagedSourceDirectories in Test := Nil
 
 libraryDependencies := Seq(
-  "com.dslplatform.ocd" %% "dsl-ocd-model-kinds" % "0.0.0-SNAPSHOT"
+  "com.dslplatform.ocd" %% "dsl-ocd-model-kinds" % "0.1.0-SNAPSHOT"
 )
 
 // ### RESOLVERS ### //
 
 resolvers := Seq(NGSNexus, NGSPrivateReleases, NGSPrivateSnapshots)
-
 externalResolvers := Resolver.withDefaultResolvers(resolvers.value, mavenCentral = false)
 
-publishTo := Some(
-  if (version.value endsWith "SNAPSHOT") NGSPrivateSnapshots else NGSPrivateReleases
-)
+publishTo := Some(if (version.value endsWith "-SNAPSHOT") NGSPrivateSnapshots else NGSPrivateReleases)
+publishArtifact in (Compile, packageDoc) := false
 
 credentials in ThisBuild ++= {
   val creds = Path.userHome / ".config" / "DSL-OCD" / "nexus.config"
   if (creds.exists) Some(Credentials(creds)) else None
 }.toSeq
 
-publishArtifact in (Compile, packageDoc) := false
-
-
 // ### COMPILE SETTINGS ### //
 
-crossScalaVersions := Seq("2.10.4")
-
+crossScalaVersions := Seq("2.11.7")
 scalaVersion := crossScalaVersions.value.head
 
 scalacOptions := Seq(
-  "-encoding", "UTF-8"
-, "-deprecation"
+  "-deprecation"
+, "-encoding", "UTF-8"
+, "-feature"
+, "-language:postfixOps"
+, "-language:reflectiveCalls"
+, "-language:implicitConversions"
+, "-language:existentials"
+, "-language:dynamics"
 , "-optimise"
 , "-unchecked"
 , "-Xcheckinit"
@@ -55,22 +53,19 @@ scalacOptions := Seq(
 , "-Xmax-classfile-name", "72"
 , "-Xverify"
 , "-Yclosure-elim"
+, "-Yconst-opt"
 , "-Ydead-code"
+, "-Yinline-warnings"
 , "-Yinline"
 , "-Yrepl-sync"
 , "-Ywarn-adapted-args"
 , "-Ywarn-dead-code"
 , "-Ywarn-inaccessible"
+, "-Ywarn-infer-any"
 , "-Ywarn-nullary-override"
 , "-Ywarn-nullary-unit"
 , "-Ywarn-numeric-widen"
-, "-Ywarn-value-discard"
-, "-feature"
-, "-language:postfixOps"
-, "-language:reflectiveCalls"
-, "-language:implicitConversions"
-, "-language:existentials"
-, "-language:dynamics"
+, "-Ywarn-unused"
 )
 
 javacOptions in doc := Seq(
@@ -87,10 +82,9 @@ javacOptions := Seq(
 , "-target", "1.6"
 ) ++ (javacOptions in doc).value
 
-net.virtualvoid.sbt.graph.Plugin.graphSettings
+graphSettings
 
 // ### ECLIPSE ### //
 
 EclipseKeys.executionEnvironment := Some(EclipseExecutionEnvironment.JavaSE16)
-
 EclipseKeys.eclipseOutput := Some(".target")

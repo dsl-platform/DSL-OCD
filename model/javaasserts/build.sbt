@@ -5,10 +5,8 @@ val NGSPrivateSnapshots = "NGS Private Snapshots" at "http://ngs.hr/nexus/conten
 // ### BASIC SETTINGS ### //
 
 organization := "com.dslplatform.ocd"
-
 name := "DSL-OCD-Model-Java-Asserts"
-
-version := "0.0.0-SNAPSHOT"
+version := "0.1.0-SNAPSHOT"
 
 unmanagedSourceDirectories in Compile := Seq(
   sourceDirectory.value / "generated" / "java"
@@ -17,31 +15,28 @@ unmanagedSourceDirectories in Compile := Seq(
 unmanagedSourceDirectories in Test := Nil
 
 libraryDependencies ++= Seq(
-  "com.dslplatform" % "dsl-client-tools" % "0.0.0-SNAPSHOT"
-, "joda-time" % "joda-time" % "2.3"
-, "junit" % "junit" % "4.11"
+  "com.dslplatform.ocd" % "dsl-ocd-util-testing" % "0.1.0-SNAPSHOT"
+, "joda-time" % "joda-time" % "2.7"
+, "junit" % "junit" % "4.12"
 )
 
 // ### RESOLVERS ### //
 
 resolvers := Seq(NGSNexus, NGSPrivateReleases, NGSPrivateSnapshots)
-
 externalResolvers := Resolver.withDefaultResolvers(resolvers.value, mavenCentral = false)
 
-publishTo := Some(
-  if (version.value endsWith "SNAPSHOT") NGSPrivateSnapshots else NGSPrivateReleases
-)
+publishTo := Some(if (version.value endsWith "-SNAPSHOT") NGSPrivateSnapshots else NGSPrivateReleases)
+publishArtifact in (Compile, packageDoc) := false
 
 credentials in ThisBuild ++= {
   val creds = Path.userHome / ".config" / "DSL-OCD" / "nexus.config"
   if (creds.exists) Some(Credentials(creds)) else None
 }.toSeq
 
-publishArtifact in (Compile, packageDoc) := false
-
 // ### COMPILE SETTINGS ### //
 
-scalaVersion := "2.10.4"
+crossScalaVersions := Seq("2.11.7")
+scalaVersion := crossScalaVersions.value.head
 
 javacOptions in doc := Seq(
   "-encoding", "UTF-8"
@@ -58,15 +53,12 @@ javacOptions := Seq(
 ) ++ (javacOptions in doc).value
 
 crossPaths := false
-
 autoScalaLibrary := false
 
-net.virtualvoid.sbt.graph.Plugin.graphSettings
+graphSettings
 
 // ### ECLIPSE ### //
 
 EclipseKeys.executionEnvironment := Some(EclipseExecutionEnvironment.JavaSE16)
-
 EclipseKeys.eclipseOutput := Some(".target")
-
 EclipseKeys.projectFlavor := EclipseProjectFlavor.Java

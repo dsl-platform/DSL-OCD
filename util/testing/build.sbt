@@ -5,12 +5,63 @@ val NGSPrivateSnapshots = "NGS Private Snapshots" at "http://ngs.hr/nexus/conten
 // ### BASIC SETTINGS ### //
 
 organization := "com.dslplatform.ocd"
-
 name := "DSL-OCD-Util-Testing"
+version := "0.1.0-SNAPSHOT"
 
-version := "0.0.0-SNAPSHOT"
+unmanagedSourceDirectories in Compile := Seq(
+  (javaSource in Compile).value
+)
 
-scalaVersion := "2.10.4"
+unmanagedSourceDirectories in Test := Nil
+
+// ### RESOLVERS ### //
+
+resolvers := Seq(NGSNexus, NGSPrivateReleases, NGSPrivateSnapshots)
+externalResolvers := Resolver.withDefaultResolvers(resolvers.value, mavenCentral = false)
+
+publishTo := Some(if (version.value endsWith "-SNAPSHOT") NGSPrivateSnapshots else NGSPrivateReleases)
+publishArtifact in (Compile, packageDoc) := false
+
+credentials in ThisBuild ++= {
+  val creds = Path.userHome / ".config" / "DSL-OCD" / "nexus.config"
+  if (creds.exists) Some(Credentials(creds)) else None
+}.toSeq
+
+// ### COMPILE SETTINGS ### //
+
+crossScalaVersions := Seq("2.11.7")
+scalaVersion := crossScalaVersions.value.head
+
+scalacOptions := Seq(
+  "-deprecation"
+, "-encoding", "UTF-8"
+, "-feature"
+, "-language:postfixOps"
+, "-language:reflectiveCalls"
+, "-language:implicitConversions"
+, "-language:existentials"
+, "-language:dynamics"
+, "-optimise"
+, "-unchecked"
+, "-Xcheckinit"
+, "-Xlint"
+, "-Xmax-classfile-name", "72"
+, "-Xverify"
+, "-Yclosure-elim"
+, "-Yconst-opt"
+, "-Ydead-code"
+, "-Yinline-warnings"
+, "-Yinline"
+, "-Yrepl-sync"
+, "-Ywarn-adapted-args"
+, "-Ywarn-dead-code"
+, "-Ywarn-inaccessible"
+, "-Ywarn-infer-any"
+, "-Ywarn-nullary-override"
+, "-Ywarn-nullary-unit"
+, "-Ywarn-numeric-widen"
+, "-Ywarn-unused"
+)
 
 javacOptions in doc := Seq(
   "-encoding", "UTF-8"
@@ -27,34 +78,12 @@ javacOptions := Seq(
 ) ++ (javacOptions in doc).value
 
 crossPaths := false
-
 autoScalaLibrary := false
 
-unmanagedSourceDirectories in Compile := (javaSource in Compile).value :: Nil
-
-unmanagedSourceDirectories in Test := Nil
-
-// ### RESOLVERS ### //
-
-resolvers := Seq(NGSNexus, NGSPrivateReleases, NGSPrivateSnapshots)
-
-externalResolvers := Resolver.withDefaultResolvers(resolvers.value, mavenCentral = false)
-
-publishTo := Some(
-  if (version.value endsWith "SNAPSHOT") NGSPrivateSnapshots else NGSPrivateReleases
-)
-
-credentials in ThisBuild ++= {
-  val creds = Path.userHome / ".config" / "DSL-OCD" / "nexus.config"
-  if (creds.exists) Some(Credentials(creds)) else None
-}.toSeq
-
-publishArtifact in (Compile, packageDoc) := false
+graphSettings
 
 // ### ECLIPSE ### //
 
-EclipseKeys.eclipseOutput := Some(".target")
-
 EclipseKeys.executionEnvironment := Some(EclipseExecutionEnvironment.JavaSE16)
-
+EclipseKeys.eclipseOutput := Some(".target")
 EclipseKeys.projectFlavor := EclipseProjectFlavor.Java
