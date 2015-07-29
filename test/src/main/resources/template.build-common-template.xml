@@ -226,9 +226,9 @@
   </target>
 
   <target name="compile-generated" description="Compiles the generated Java client sources.">
-    <javac srcdir="${java.generated.dir}" destdir="${target.main}" fork="true" verbose="true" deprecation="true" encoding="UTF-8" source="1.6" target="1.6">
+    <javac srcdir="${java.generated.dir}" destdir="${target.main}" fork="true" deprecation="true" encoding="UTF-8" source="1.6" target="1.6" includeantruntime="false">
       <classpath refid="compile.classpath" />
-      <compilerarg value="-Xlint:unchecked" />
+      <compilerarg value="-Xlint:all" />
     </javac>
     <copy todir="${target.main}">
       <fileset dir="${resources.generated.dir}" />
@@ -240,11 +240,11 @@
   </target>
 
   <target name="compile-tests" description="Compiles the test sources">
-    <javac srcdir="${java.test.dir}" destdir="${target.test}" fork="true" verbose="true" deprecation="true" encoding="UTF-8" source="1.6" target="1.6">
+    <javac srcdir="${java.test.dir}" destdir="${target.test}" fork="true" deprecation="true" encoding="UTF-8" source="1.6" target="1.6" includeantruntime="false">
       <classpath refid="compile.classpath" />
       <classpath refid="test.classpath" />
       <classpath location="${target.main}" />
-      <compilerarg value="-Xlint:unchecked" />
+      <compilerarg value="-Xlint:all" />
     </javac>
     <copy todir="${target.test}">
       <fileset dir="${resources.test.dir}" />
