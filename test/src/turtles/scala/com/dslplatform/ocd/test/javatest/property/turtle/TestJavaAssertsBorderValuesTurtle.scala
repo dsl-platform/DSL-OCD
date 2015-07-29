@@ -34,7 +34,6 @@ object TestJavaAssertsBorderValuesTurtle
       , "com.dslplatform.client.Bootstrap"
       , "com.dslplatform.patterns.Bytes"
       , "com.dslplatform.patterns.ServiceLocator"
-      , "com.fasterxml.jackson.databind.JavaType"
       , "java.io.IOException"
       )
 
@@ -61,20 +60,22 @@ object TestJavaAssertsBorderValuesTurtle
         }
 
       private def deserialization(javaType: JavaType, bytes: String): String = javaType match {
-        case JavaClass(baseClass) =>
-          s"""jsonSerialization.deserialize(xxx${baseClass}, ${bytes}.content, ${bytes}.length)"""
-
         case JavaSimpleType(baseClass) =>
-          s"""jsonSerialization.deserialize(${baseClass}.class, ${bytes}.content, ${bytes}.length)"""
+          s"jsonSerialization.deserialize(${baseClass}.class, ${bytes}.content, ${bytes}.length)"
+
+        case JavaCollectionType("java.util.List", JavaGenericType(baseClass @ "java.util.Map", _*)) =>
+          s"(${javaType}) (java.util.List<?>) jsonSerialization.deserialize(${baseClass}.class, ${bytes}.content, ${bytes}.length)"
 
         case JavaCollectionType("java.util.List", elementType) =>
-          s"""jsonSerialization.deserializeList(${elementType}.class, ${bytes}.content, ${bytes}.length)"""
+          s"jsonSerialization.deserializeList(${elementType.baseClass}.class, ${bytes}.content, ${bytes}.length)"
 
         case JavaCollectionType("java.util.Set", elementType) =>
-          s"""new java.util.HashSet<${elementType}>(${deserialization(JavaCollectionType("java.util.List", elementType), bytes)})"""
+          s"new java.util.HashSet<${elementType}>(${deserialization(JavaCollectionType("java.util.List", elementType), bytes)})"
 
-        case JavaGenericType(baseClass, elementTypes @ _*) =>
-          s"""jsonSerialization.deserialize(${baseClass}, ${bytes}.content, ${bytes}.length)"""
+        case JavaGenericType(baseClass @ "java.util.Map", _*) =>
+          s"(java.util.Map<String, String>) jsonSerialization.deserialize(${baseClass}.class, ${bytes}.content, ${bytes}.length)"
+
+        case _ => ???
       }
 
       private def testValue(ojbt: OcdJavaBoxType, name: String, value: JavaValue) = s"""

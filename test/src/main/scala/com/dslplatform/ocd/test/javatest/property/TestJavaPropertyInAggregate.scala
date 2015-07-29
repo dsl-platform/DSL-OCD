@@ -50,11 +50,11 @@ trait TestJavaPropertyInAggregate
         // check that the property was properly assigned
         ${assertEquals("aggregate")}
 
-        final String serialized = jsonSerialization.serialize(aggregate).toUtf8();
+        final com.dslplatform.patterns.Bytes serialized = jsonSerialization.serialize(aggregate);
         final ${conceptName} aggregateDeserialized = jsonSerialization.deserialize(
                 ${conceptName}.class,
-                serialized.getBytes(java.nio.charset.Charset.forName("UTF-8")),
-                serialized.getBytes(java.nio.charset.Charset.forName("UTF-8")).length);
+                serialized.content,
+                serialized.length);
 
         // check that the property was properly deserialized
         ${assertEquals("aggregateDeserialized")}

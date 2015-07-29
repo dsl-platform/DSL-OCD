@@ -45,11 +45,11 @@ trait TestJavaPropertyInValue
         // check that the property was properly assigned
         ${assertEquals("domainValue")}
 
-        final String serialized = jsonSerialization.serialize(domainValue).toUtf8();
+        final com.dslplatform.patterns.Bytes serialized = jsonSerialization.serialize(domainValue);
         final ${conceptName} domainValueDeserialized = jsonSerialization.deserialize(
                 ${conceptName}.class,
-                serialized.getBytes(java.nio.charset.Charset.forName("UTF-8")),
-                serialized.getBytes(java.nio.charset.Charset.forName("UTF-8")).length);
+                serialized.content,
+                serialized.length);
 
         // check that the property was properly deserialized
         ${assertEquals("domainValueDeserialized")}

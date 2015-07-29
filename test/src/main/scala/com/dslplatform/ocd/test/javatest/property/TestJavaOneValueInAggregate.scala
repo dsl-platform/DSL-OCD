@@ -45,7 +45,7 @@ trait TestJavaOneValueInAggregate
     /* Testing the "${propertyName}" within one ${ValueName} ${testID} aggregate property JSON serialization */
     @org.junit.Test
     public void test${PropertyName}WithinOne${ValueName}${testID}PropertyInAggregateJsonSerialization() throws java.io.IOException {
-    ${isDefault match {
+${isDefault match {
            case true => s"""
         final ${conceptName} aggregate =
                 new ${conceptName}();
@@ -57,16 +57,16 @@ trait TestJavaOneValueInAggregate
                 new ${conceptName}()
                 .set${ValueName}(new ${valueConceptName}().set${PropertyName}(testValue));"""
         }
-    }
+}
 
         // check that the property was properly assigned
         ${assertEquals("aggregate")}
 
+        final com.dslplatform.patterns.Bytes serialized = jsonSerialization.serialize(aggregate);
         final ${conceptName} aggregateDeserialized = jsonSerialization.deserialize(
                 ${conceptName}.class,
-                serialized.getBytes(java.nio.charset.Charset.forName("UTF-8")),
-                serialized.getBytes(java.nio.charset.Charset.forName("UTF-8")).length);
-
+                serialized.content,
+                serialized.length);
 
         // check that the property was properly deserialized
         ${assertEquals("aggregateDeserialized")}
