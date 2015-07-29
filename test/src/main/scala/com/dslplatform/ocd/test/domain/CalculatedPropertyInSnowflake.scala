@@ -67,7 +67,7 @@ class CalculatedPropertyInSnowflakeTestProject(
   ) extends ITestProject {
 
   def projectPath = "snowflakes/calculated-single-" + setup.AggregateName
-  def ProjectNameCamel="CalculatedSingle" + setup.AggregateName
+  def ProjectNameCamel = "CalculatedSingle" + setup.AggregateName
   def projectName = s"OCD Single Calculated Property in Snowflake Tests (${setup.AggregateName})"
 
   def dslFiles = setup.dslFiles
@@ -284,8 +284,8 @@ object CalculatedPropertyInSnowflakeTestProject {
     (setups.groupBy(_.propertyType.typeNameSafe) map { case (typeNameSafe, typeSetups) =>
       new ITestProject {
         def projectPath = "snowflakes/calculated-single-" + typeNameSafe
-        def ProjectNameCamel="CalculatedSingle"+typeNameSafe
-        def projectNameCamel="calculatedSingle"+typeNameSafe
+        def ProjectNameCamel = "CalculatedSingle"+typeNameSafe
+        def projectNameCamel = "calculatedSingle"+typeNameSafe
         def projectName = s"OCD Single Calculated Property in Snowflake Tests (${typeNameSafe})"
         val dslFiles = typeSetups.dslFiles
         val testFiles = typeSetups.map(new CalculatedPropertyInSnowflakeTestProject(_)).testFiles

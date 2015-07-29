@@ -63,7 +63,7 @@ class AggregateWithSurrogateKeyAndOnePropertyTestProject(
   ) extends ITestProject {
 
   def projectPath = "aggregates/surrogate-single-" + setup.AggregateName
-  def ProjectNameCamel = "SurrogateSingle"+setup.AggregateName
+  def ProjectNameCamel = "SurrogateSingle" + setup.AggregateName
   def projectName = s"OCD Single Property in ${setup.sugarType} With Surrogate Key Tests (${setup.AggregateName})"
 
   def dslFiles = setup.dslFiles
@@ -183,7 +183,7 @@ object AggregateWithSurrogateKeyAndOnePropertyTestProject {
     (setups.groupBy(_.propertyType.typeNameSafe) map { case (typeNameSafe, typeSetups) =>
       new ITestProject {
         def projectPath = "aggregates/surrogate-single-" + typeNameSafe
-        def ProjectNameCamel="SurrogateSingle"+typeNameSafe
+        def ProjectNameCamel = "SurrogateSingle"+typeNameSafe
         def projectName = s"OCD Single Property in Aggregate With Surrogate Key Tests (${typeNameSafe})"
         val dslFiles = typeSetups.dslFiles
         val testFiles = typeSetups.map(new AggregateWithSurrogateKeyAndOnePropertyTestProject(_)).testFiles
