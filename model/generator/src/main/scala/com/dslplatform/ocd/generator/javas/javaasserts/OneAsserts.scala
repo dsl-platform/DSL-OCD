@@ -132,9 +132,44 @@ trait OneAsserts { self: JavaAsserts =>
 
 
     case JavaTimestamp => s"""
+        // TODO: Chronologies will not be compared if milliseconds were an exact match
+        final boolean EXACT_MILLIS_GOOD_ENOUGH = true;
+
         if (delta == org.joda.time.Duration.ZERO) {
-            if (expected.equals(actual)) return;
-            Assert.fail(message + "expected was \\"" + expected + "\\", but actual was \\"" + actual + "\\" - WARNING: You are comparing exact instants - not using a delta duration!");
+            if (expected == actual || expected.equals(actual)) return;
+
+            final StringBuilder failMsg = new StringBuilder(message)
+                    .append("expected was: \\"")
+                    .append(expected)
+                    .append("\\", but actual was: \\"")
+                    .append(actual)
+                    .append("\\" [WARNING - not using a delta duration, comparing two instants directly]");
+
+            if (expected != null && actual != null) {
+                if (expected.getMillis() == actual.getMillis()) {
+                    if (EXACT_MILLIS_GOOD_ENOUGH) return;
+
+                    if (org.joda.time.field.FieldUtils.equals(expected.getChronology(), actual.getChronology())) return;
+                    failMsg.append("; Chronologies: ")
+                            .append(expected.getChronology()).append(" vs. ")
+                            .append(actual.getChronology());
+                } else {
+                    failMsg.append("; Millis: ").append(expected.getMillis())
+                            .append(" vs. ").append(actual.getMillis());
+                }
+            }
+
+            if (expected.getChronology() != null && actual.getChronology() != null) {
+                if (expected.getChronology().getZone().getOffset(0) == actual.getChronology().getZone().getOffset(0)) return;
+                failMsg.append("; Chronology offsets: ")
+                        .append(expected.getChronology().getZone().getOffset(0))
+                        .append(" vs. ")
+                        .append(actual.getChronology().getZone().getOffset(0));
+            } else {
+                failMsg.append("; One of the chronologies is null. ");
+            }
+
+            Assert.fail(failMsg.toString());
         }
 
         if (expected.isBefore(actual) && expected.plus(delta).isAfter(actual)) return;
