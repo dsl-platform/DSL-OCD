@@ -12,7 +12,7 @@ object JavaAssertGenerator
     extends Generator {
 
   def generate() {
-    val root = spawnDirectory("javaasserts", "java")
+    val root = spawnDirectory("java-asserts", "java")
     for (t <- TypeGenerator.typeValues if JavaGenerator.stubs.isDefinedAt(t.name.dslName)) {
       val name = t.name.singleName
       val stub = JavaGenerator.stubs(t.name.dslName)

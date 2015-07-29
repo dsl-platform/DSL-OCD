@@ -15,7 +15,8 @@ trait Generator {
     name / "src" / "generated" / language / "com" / "dslplatform" / "ocd"
 
   def spawnDirectory(name: String, language: String) = {
-    val root = gene(name, language) / name
+    val pack = name.replaceAll("-", "")
+    val root = gene(name, language) / pack
 
     if (root.isDirectory) {
       println(s"Cleaning directory: ${root.path} ...")
