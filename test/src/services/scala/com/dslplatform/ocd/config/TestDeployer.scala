@@ -34,7 +34,7 @@ private[config] class TestDeployer(
 //    private def javaParentBasedOnCurrentOs: String = {
 //      if (SystemUtils.IS_OS_WINDOWS) {
 //        "java_windows"
-//      } else if (SystemUtils.IS_OS_LINUX){
+//      } else if (SystemUtils.IS_OS_LINUX) {
 //        "java_linux"
 //      } else{
 //        sys.error("Unsupported OS, cannot deploy project java tools resource.")
@@ -237,17 +237,17 @@ private[config] class TestDeployer(
 
     private def copyTemplate(scriptName: String, target: Path, permissions: PosixFilePermission*) = {
         val path = target / scriptName
-        logger.trace("Creating the "+ scriptName +" script: " + path.path)
+        logger.trace("Creating the "+ scriptName + " script: " + path.path)
 
         val body = applyTemplates(IOUtils.toString(
-            classOf[TestDeployer].getResourceAsStream("/template."+scriptName)))
+            classOf[TestDeployer].getResourceAsStream("/template." + scriptName)))
         path.write(body)
 
         if (!SystemUtils.IS_OS_WINDOWS) {
           val javaPath = java.nio.file.Paths.get(path.toURI)
           val perms = Files.getPosixFilePermissions(javaPath)
-          for (permission <- permissions){
-                  perms.add(permission);
+          for (permission <- permissions) {
+             perms.add(permission)
           }
           Files.setPosixFilePermissions(javaPath, perms)
         }
@@ -314,10 +314,10 @@ private[config] class TestDeployer(
         , "revenjPath" -> revenjConfigTemplateTargetPath.path
         )
 
-    private def applyTemplates(stringWithTemplateProperties:String):String = {
+    private def applyTemplates(stringWithTemplateProperties: String): String = {
         var retVal = stringWithTemplateProperties
-        for((name,value)<-projectParamTemplates){
-            retVal = retVal.replace("#{"+name+"}", value)
+        for((name, value) <- projectParamTemplates) {
+            retVal = retVal.replace("#{" + name + "}", value)
         }
         retVal
     }
@@ -328,7 +328,7 @@ private[config] class TestDeployer(
    */
   private def copyStatic() {
       // Copy the tools resources
-      val toolsTemplateDir = new java.io.File(classOf[TestDeployer].getResource("/template.tools").toURI());
+      val toolsTemplateDir = new java.io.File(classOf[TestDeployer].getResource("/template.tools").toURI);
       val toolsTargetDir = new java.io.File((toolsTargetPath).toURI);
 
       if (!toolsTargetPath.exists) {
@@ -343,25 +343,30 @@ private[config] class TestDeployer(
 
       copyPath(toolsTemplateDir.toPath, toolsTargetDir.toPath)
 
+      // Copy the .gitignore for diff via versioning
+      val gitignore = new java.io.File(classOf[TestDeployer].getResource("/template..gitignore").toURI)
+      val gitignoreTarget = new java.io.File((root / ".gitignore").toURI)
+      copyPath(gitignore.toPath, gitignoreTarget.toPath)
+
       /* Copy the xsl sheets for JUnit report transformation: */
       val xslTemplateDir = new java.io.File(classOf[TestDeployer].getResource("/template.report").toURI)
       val xslTargetDir = new java.io.File((root / "report").toURI)
-      copyPath(xslTemplateDir.toPath(), xslTargetDir.toPath())
+      copyPath(xslTemplateDir.toPath, xslTargetDir.toPath)
 
       // Copy the master build.xml
-      val masterReportBuilder = new java.io.File(classOf[TestDeployer].getResource("/template.master-build.xml").toURI())
+      val masterReportBuilder = new java.io.File(classOf[TestDeployer].getResource("/template.master-build.xml").toURI)
       val masterReportBuilderTarget = new java.io.File((root / "build.xml").toURI)
-      copyPath(masterReportBuilder.toPath(), masterReportBuilderTarget.toPath())
+      copyPath(masterReportBuilder.toPath, masterReportBuilderTarget.toPath)
 
       // Copy the common build template file
-      val commonTemplate = new java.io.File(classOf[TestDeployer].getResource("/template.build-common-template.xml").toURI())
+      val commonTemplate = new java.io.File(classOf[TestDeployer].getResource("/template.build-common-template.xml").toURI)
       val commonTemplateTarget = new java.io.File((root / "build-common-template.xml").toURI)
-      copyPath(commonTemplate.toPath(), commonTemplateTarget.toPath())
+      copyPath(commonTemplate.toPath, commonTemplateTarget.toPath)
 
       // Copy the revenj config template file
-      val revenjConfigTemplate = new java.io.File(classOf[TestDeployer].getResource("/template.revenj/Revenj.Http.exe.config.template").toURI())
+      val revenjConfigTemplate = new java.io.File(classOf[TestDeployer].getResource("/template.revenj/Revenj.Http.exe.config.template").toURI)
       val revenjConfigTemplateTarget = new java.io.File((configTargetPath / "Revenj.Http.exe.config.template").toURI)
-      copyPath(revenjConfigTemplate.toPath(), revenjConfigTemplateTarget.toPath())
+      copyPath(revenjConfigTemplate.toPath, revenjConfigTemplateTarget.toPath)
     }
 
   private def copyPath(fromPath: java.nio.file.Path, toPath: java.nio.file.Path): Unit = {
@@ -392,7 +397,7 @@ private class CopyDirVisitor(logger: Logger, sourcePath: java.nio.file.Path, tar
         /* TODO: Fix, for some reason the 'executable' permissions are never retrieved here, rendering all
          * binaries copied non-executable. As a quickfix we try a chmod in the script, but it ought to be done here.
          * An alternative would be to use the java system binaries instead of our internal copy of the JDK/JRE.*/
-        if(Files.exists(targetFile)){
+        if(Files.exists(targetFile)) {
           Files.setPosixFilePermissions(targetFile, perms)
         }
       }
@@ -407,26 +412,25 @@ private class CopyDirVisitor(logger: Logger, sourcePath: java.nio.file.Path, tar
  *
  * On the first run the mappings are persisted in an on-disk .properties file.
  */
-private class ProjectNamesAndPortsRepository(logger: Logger, testSettings: ITestSettings){
-
+private class ProjectNamesAndPortsRepository(logger: Logger, testSettings: ITestSettings) {
   val propertiesSourceFile = testSettings.workspace.path / "projectNamesAndPortsRepository.properties"
-  var portSequence: Int = 2000;
+  var portSequence = 2000
 
   private val props = new java.util.Properties()
-  if(propertiesSourceFile.exists){
+  if(propertiesSourceFile.exists) {
    props.load(new java.io.FileInputStream(propertiesSourceFile.path))
    val propsIt = props.stringPropertyNames().iterator();
    while(propsIt.hasNext()) {
     val propName = propsIt.next()
     val propVal = props.getProperty(propName).toInt
-    if (propVal > portSequence){
+    if (propVal > portSequence) {
       portSequence = propVal
     }
    }
   }
 
   def generateProjectRevenjPort(projectDatabaseName: String) = {
-    if(this.props.containsKey(projectDatabaseName)){
+    if(this.props.containsKey(projectDatabaseName)) {
       this.apply(projectDatabaseName)
     }else{
       this.portSequence += 1
@@ -435,7 +439,7 @@ private class ProjectNamesAndPortsRepository(logger: Logger, testSettings: ITest
     }
   }
 
-  def update(projectDatabase:String, port:Int) = {
+  def update(projectDatabase: String, port: Int) = {
     props.setProperty(projectDatabase, port.toString())
     props.store(new java.io.FileOutputStream(propertiesSourceFile.path), "Generated mappings for project names to their server ports.")
   }

@@ -1,0 +1,15 @@
+client.tmp
+server.tmp
+
+java_client
+revenj.net
+GeneratedModel.dll
+
+target
+
+testsuites
+generated
+
+TEST-*.xml
+OCD-Tests-Summary.xml
+index.html
