@@ -18,6 +18,7 @@ object JavaGenerator
       case SingleFamily.Nullable => "?"
     })
 
+/*
   private def boxToJava(b: Box) =
     b match {
       case Box(base, None, _*) =>
@@ -29,6 +30,7 @@ object JavaGenerator
       case Box(base, Some((ct, et)), _*) =>
         (t: String) => SingleFamilyToJavaName(base)(ct + "<" + SingleFamilyToJavaName(et)(t) + ">")
     }
+*/
 
   private def boxToJavaName(b: Box) =
     b match {
