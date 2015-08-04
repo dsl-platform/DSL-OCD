@@ -7,12 +7,12 @@
   <property name="report.generated" location="report/site/summaries" />
   <property name="report.stylesheet" location="report/xsl/report.xsl" />
   <property name="saxon.jar" location="report/lib/saxon9he.jar" />
-  <property name="ocd-report-generator" location="tools/build/ocd-report-0.1.0-SNAPSHOT-jar-with-dependencies.jar" />
+  <property name="ocd-report-generator" location="tools/build/ocd-report-0.1.0.jar" />
 
   <property name="tools" location="tools" />
   <property name="tools.revenj" location="tools/revenj" />
   <property name="tools.java_client" location="tools/java_client" />
-  <property name="tools.dsl-compiler" location="tools/dsl-compiler.exe" />
+  <property name="tools.dsl-compiler" location="tools/dsl-compiler-1.3.-SNAPSHOT.exe" />
 
   <tstamp>
     <format property="test.timestamp" pattern="yyyy-MM-dd_hh:mm:ss" />

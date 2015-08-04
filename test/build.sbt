@@ -27,7 +27,7 @@ libraryDependencies ++= Seq(
 , "com.dslplatform.ocd" %% "dsl-ocd-model-scalas" % "0.1.0-SNAPSHOT"
 , "com.dslplatform" % "dsl-compiler-client-cmdline" % "0.8.13"
 , "hr.element.etb" %% "etb-util" % "0.2.23"
-, "io.jvm" %% "scala-uuid" % "0.1.3"
+, "io.jvm" %% "scala-uuid" % "0.1.4"
 , "ch.qos.logback" % "logback-classic" % "1.1.3" % "compile->default"
 , "commons-io" % "commons-io" % "2.4"
 , "commons-lang" % "commons-lang" % "2.6"

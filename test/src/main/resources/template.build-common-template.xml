@@ -15,12 +15,12 @@
   <property name="java.test.dir" location="src/test/java" />
   <property name="resources.test.dir" location="src/test/resources" />
 
-  <property name="revenj.exe.name" value="Revenj.http.exe" />
+  <property name="revenj.exe.name" value="Revenj.Http.exe" />
 
   <property name="client.tmp" location="client.tmp" />
   <property name="server.tmp" location="server.tmp" />
 
-  <property name="dsl-compiler" value="dsl-compiler.exe" />
+  <property name="dsl-compiler" value="dsl-compiler-1.3-SNAPSHOT.exe" />
   <property name="project.dsl-compiler.temporary.download" location="${client.tmp}/${dsl-compiler}" />
   <property name="project.java_client" location="java_client" />
 
@@ -28,7 +28,7 @@
   <property name="tools.build" location="${tools}/build" />
   <property name="tools.revenj" location="${tools}/revenj.net" />
   <property name="tools.java_client" location="${tools}/java_client" />
-  <property name="dsl-compiler-client" location="/${tools.build}/dsl-clc.jar" />
+  <property name="dsl-compiler-client" location="/${tools.build}/dsl-clc-1.3.2-SNAPSHOT.jar" />
   <property name="tools.dsl-compiler" location="${tools.build}/${dsl-compiler}" />
 
   <property name="dsl.src" value="../dsl" />

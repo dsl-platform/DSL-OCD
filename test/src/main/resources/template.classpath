@@ -7,32 +7,20 @@
   <classpathentry kind="src" path="src/test/java"/>
   <classpathentry kind="src" path="src/test/resources"/>
 
-  <classpathentry kind="lib" path="java_client/android-4.1.1.4.jar"/>
-  <classpathentry kind="lib" path="java_client/aws-java-sdk-core-1.9.16.jar"/>
-  <classpathentry kind="lib" path="java_client/aws-java-sdk-kms-1.9.16.jar"/>
-  <classpathentry kind="lib" path="java_client/aws-java-sdk-s3-1.9.16.jar"/>
-  <classpathentry kind="lib" path="java_client/commons-codec-1.3.jar"/>
-  <classpathentry kind="lib" path="java_client/commons-logging-1.1.1.jar"/>
-  <classpathentry kind="lib" path="java_client/dsl-client-java-1.3.1.jar"/>
+  <classpathentry kind="lib" path="java_client/dsl-client-java-1.3.1-SNAPSHOT.jar"/>
   <classpathentry kind="lib" path="java_client/hamcrest-core-1.3.jar"/>
-  <classpathentry kind="lib" path="java_client/httpclient-4.0.1.jar"/>
-  <classpathentry kind="lib" path="java_client/httpcore-4.0.1.jar"/>
+
+  <classpathentry kind="lib" path="java_client/joda-time-2.7.jar"/>
+  <classpathentry kind="lib" path="java_client/junit-4.12.jar"/>
+  <classpathentry kind="lib" path="java_client/logback-classic-1.1.2.jar"/>
+  <classpathentry kind="lib" path="java_client/logback-core-1.1.2.jar"/>
+  <classpathentry kind="lib" path="java_client/slf4j-api-1.7.10.jar"/>
+
+<!--
   <classpathentry kind="lib" path="java_client/jackson-annotations-2.5.0.jar"/>
   <classpathentry kind="lib" path="java_client/jackson-core-2.5.0.jar"/>
   <classpathentry kind="lib" path="java_client/jackson-databind-2.5.0.jar"/>
-  <classpathentry kind="lib" path="java_client/joda-time-2.7.jar"/>
-  <classpathentry kind="lib" path="java_client/json-20080701.jar"/>
-  <classpathentry kind="lib" path="java_client/jsonassert-1.2.3.jar"/>
-  <classpathentry kind="lib" path="java_client/junit-4.12.jar"/>
-  <classpathentry kind="lib" path="java_client/junit-interface-0.11.jar"/>
-  <classpathentry kind="lib" path="java_client/logback-classic-1.1.2.jar"/>
-  <classpathentry kind="lib" path="java_client/logback-core-1.1.2.jar"/>
-  <classpathentry kind="lib" path="java_client/opengl-api-gl1.1-android-2.1_r1.jar"/>
-  <classpathentry kind="lib" path="java_client/slf4j-api-1.7.10.jar"/>
-  <classpathentry kind="lib" path="java_client/test-interface-1.0.jar"/>
-  <classpathentry kind="lib" path="java_client/xmlParserAPIs-2.6.2.jar"/>
-  <classpathentry kind="lib" path="java_client/xmlunit-1.5.jar"/>
-  <classpathentry kind="lib" path="java_client/xpp3-1.1.4c.jar"/>
+-->
 
   <classpathentry kind="lib" path="#{toolsPath}/lib/dsl-ocd-util-testing-0.1.0-SNAPSHOT.jar"/>
   <classpathentry kind="lib" path="#{toolsPath}/lib/dsl-ocd-model-java-asserts-0.1.0-SNAPSHOT.jar"/>
