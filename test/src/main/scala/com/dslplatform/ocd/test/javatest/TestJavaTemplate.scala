@@ -12,13 +12,23 @@ trait TestJavaTemplate {
   def leadingBlocks: Seq[String] = Nil
   def tests: Seq[test.TestComponent]
 
+  def isSuite = this match { case _: TestSuiteCreator => true; case _ => false }
+
   def testBody = {
     val sb = new StringBuilder
 
     sb ++= "package " ++= packageName ++= ";\n\n"
 
     if (imports.nonEmpty) {
-      imports foreach { imp =>
+      val withLogging = imports ++ (if (isSuite) Nil else Seq(
+        "org.slf4j.Logger"
+      , "org.slf4j.LoggerFactory"
+      , "org.slf4j.MDC"
+      ))
+
+      val sorted = withLogging.distinct.sortBy(identity)
+
+      sorted foreach { imp =>
         sb ++= "import " ++= imp ++= ";\n"
       }
 
@@ -30,9 +40,21 @@ trait TestJavaTemplate {
     }
     sb ++= "public class " ++= testName ++=" {\n"
 
+    if (!isSuite) {
+      sb ++= """    private static Logger anchorLogger;
+
+    @org.junit.BeforeClass
+    public static void initializeLogging() {
+        anchorLogger = LoggerFactory.getLogger("ocd-anchor-logger");
+    }
+
+"""
+    }
+
     leadingBlocks foreach { test =>
       sb ++= test
     }
+
 
     /* Quick and filthy regex replace to inject some logging, for easier report creation.
      * The reason we're putting html here, is because otherwise the heap space in the XSLT transformer
@@ -41,10 +63,9 @@ trait TestJavaTemplate {
       sb ++= test.testComponentBody.replaceAll(
           """public[ ]+void[ ]+test([^\(]+)\(\)(.*?)\{"""
         , s"""public void test$$1()$$2{
-        org.slf4j.LoggerFactory.getLogger("ocd-anchor-logger").trace(
-                "<a id='$packageName.$testName.test$$1'>" +
-                "<h4>$packageName.$testName.test$$1</h4></a>");
-        org.slf4j.MDC.put("ocdTestMethodName","test$$1:");
+        final String thisTest = "$packageName.$testName.test$$1";
+        anchorLogger.trace("<a id='" + thisTest + "'><h4>" + thisTest + "</h4></a>");
+        MDC.put("ocdTestMethodName", "test$$1:");
 """)
     }
 

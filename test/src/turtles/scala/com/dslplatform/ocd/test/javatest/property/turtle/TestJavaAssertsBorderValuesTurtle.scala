@@ -30,18 +30,23 @@ object TestJavaAssertsBorderValuesTurtle
       def testName = _testName
 
       override def imports = Seq(
-        "com.dslplatform.client.JsonSerialization"
-      , "com.dslplatform.client.json.DslJsonSerialization"
+        "com.dslplatform.client.Bootstrap"
+      , "com.dslplatform.client.JsonSerialization"
+      , "com.dslplatform.patterns.ServiceLocator"
       , "com.dslplatform.patterns.Bytes"
       , "java.io.IOException"
+      , "org.slf4j.Logger"
       )
 
       override def leadingBlocks = Seq(
-"""    private static JsonSerialization jsonSerialization;
+s"""    private static JsonSerialization jsonSerialization;
+    private static Logger logger;
 
     @org.junit.BeforeClass
     public static void initializeJsonSerialization() throws IOException {
-        jsonSerialization = new DslJsonSerialization(null);
+        final ServiceLocator locator = Bootstrap.init(${testName}.class.getResourceAsStream("/dsl-project.ini"));
+        jsonSerialization = locator.resolve(JsonSerialization.class);
+        logger = locator.resolve(Logger.class);
     }
 """)
 
@@ -90,8 +95,14 @@ object TestJavaAssertsBorderValuesTurtle
     @org.junit.Test
     public void test${name.fciu}Equality() throws IOException {
         final ${ojbt.javaClass} ${name} = ${value};
+        logger.trace("About to serialize: " + ${name});
+
         final Bytes ${name}JsonSerialized = jsonSerialization.serialize($name);
+        logger.debug("Serialized: " + ${name}JsonSerialized.toUtf8());
+
         ${deserialization(ojbt, s"${name}JsonSerialized", s"${name}JsonDeserialized")}
+        logger.trace("Deserialized: " + ${name}JsonDeserialized);
+
         com.dslplatform.ocd.javaasserts.${ojbt.typeSingleName}Asserts.assert${ojbt.boxName}Equals(${name}, ${name}JsonDeserialized);
     }
 """
