@@ -204,7 +204,7 @@
       <classpath refid="compile.classpath" />
       <arg value="-temp=${client.tmp}" />
       <arg value="-dsl=${dsl.src}" />
-      <arg value="-settings=active-record,manual-json,no-jackson" />
+      <arg value="-settings=active-record,manual-json" />
       <arg value="-namespace=ocd" />
       <arg value="-postgres=${dbHost}:${dbPort}/${dbName}?user=${dbUser}&amp;password=${dbPassword}" />
       <arg value="-target=java_client" />
