@@ -1,0 +1,40 @@
+0) Preparations:
+
+in ~/.config/DSL-OCD/nexus.config
+
+realm=Sonatype Nexus Repository Manager
+host=ngs.hr
+user=deployment
+password=ngngngha12!
+
+in ~/.config/DSL-OCD/ocd.config
+
+model=d:/Code/DSL-OCD/model
+test-projects=d:/Code/DSL-OCD-Target
+
+1) Run run-ocd.bat or run-ocd.sh script, which will:
+
+1.a) Checkout the latest DSL-OCD from GitHub
+1.b) Run generator and create DSL-OCD-Target
+1.c) Pause until tweaks are made to the default configuration
+
+1.d) Manual tweaks:
+
+- change port number in DSL-OCD-Target/build-common-template.xml
+  <property name="dbPort" value="5432" />
+
+- server json settings (Under target name="compile-revenj"):
+  <arg value="-settings=active-record,manual-json" />
+
+- client json settings (Under target name="compile-java-client"):
+  <arg value="-settings=active-record,manual-json" />
+
+- optionally (if testing full manual), erase jackson libs from DSL-OCD-Target\tools\java_client folder:
+  jackson-annotations-2.6.0.jar
+  jackson-core-2.6.0.jar
+  jackson-databind-2.6.0.jar
+
+1.e) Run all tests
+1.f) Generate report
+
+Report will be generated in the DSL-OCD-Target\report\site folder
