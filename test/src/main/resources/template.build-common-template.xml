@@ -221,7 +221,7 @@
 
   <target name="dsl-deploy" description="Moves the generated model DLL and Java files to their respective directories. Also applies the Revenj template configuration for this project.">
     <copy todir="${java.generated.dir}/ocd">
-      <fileset dir="${client.tmp}/java_client/ocd" />
+      <fileset dir="${client.tmp}/JAVA_CLIENT/ocd" />
     </copy>
   </target>
 

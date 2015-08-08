@@ -42,6 +42,10 @@ object TestJavaPropertySetterTypeTurtle
       def packageName = "com.dslplatform.ocd.test.javatest.property.turtles." + ojbt.typeSingleName
       def testName = _testName
 
+      override def imports = Seq(
+        "org.slf4j.Logger"
+      )
+
       override def leadingBlocks = setterTests map { case (ojbt, test) =>
         val visibility = test.visibility.javaFieldPrefix
         val modifiers = test.modifiers.map(_.javaFieldPrefix).mkString

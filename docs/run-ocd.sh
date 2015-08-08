@@ -12,5 +12,5 @@ read -n1 -r -p "Press any key to continue..." key
 
 cd ../../DSL-OCD-Target
 ant drop-db
-ant all >report\linux-run.log 2>&1
+ant all >report/linux-run.log 2>&1
 ant report
