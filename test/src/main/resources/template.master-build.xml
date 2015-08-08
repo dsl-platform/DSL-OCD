@@ -12,7 +12,6 @@
   <property name="tools" location="tools" />
   <property name="tools.revenj" location="tools/revenj" />
   <property name="tools.java_client" location="tools/java_client" />
-  <property name="tools.dsl-compiler" location="tools/dsl-compiler-1.3.-SNAPSHOT.exe" />
 
   <tstamp>
     <format property="test.timestamp" pattern="yyyy-MM-dd_hh:mm:ss" />
