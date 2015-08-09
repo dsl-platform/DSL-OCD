@@ -1,8 +1,5 @@
 <?xml version="1.0"?>
 <project name="common" xmlns:if="ant:if" xmlns:unless="ant:unless">
-
-  <!-- This is meant for when we'll be using static JDK and Ant tools, now we aren't -->
-
   <property name="dbOwner" value="postgres" />
   <property name="dbOwnerPassword" value="6666" />
   <property name="dbUser" value="ocduser" />
@@ -19,12 +16,13 @@
 
   <property name="client.tmp" location="client.tmp" />
   <property name="server.tmp" location="server.tmp" />
+  <property name="migration.tmp" location="migration.tmp" />
 
   <property name="dsl-compiler" value="dsl-compiler-1.3-SNAPSHOT.exe" />
   <property name="project.dsl-compiler.temporary.download" location="${client.tmp}/${dsl-compiler}" />
   <property name="project.java_client" location="java_client" />
 
-  <property name="tools.lib" location="${tools}/lib" /> <!-- TODO: change this when we start using th -->
+  <property name="tools.lib" location="${tools}/lib" />
   <property name="tools.build" location="${tools}/build" />
   <property name="tools.revenj" location="${tools}/revenj.net" />
   <property name="tools.java_client" location="${tools}/java_client" />
@@ -104,6 +102,7 @@
     <delete dir="${target}" />
     <delete dir="${client.tmp}" />
     <delete dir="${server.tmp}" />
+    <delete dir="${migration.tmp}" />
     <delete dir="${generated.model}" />
     <delete dir="${project.java_client}" />
     <delete dir="${project.revenj}" />
@@ -117,6 +116,7 @@
     <mkdir dir="${target.test}" />
     <mkdir dir="${client.tmp}" />
     <mkdir dir="${server.tmp}" />
+    <mkdir dir="${migration.tmp}" />
     <mkdir dir="${generated.model}" />
     <mkdir dir="${project.java_client}" />
   </target>
@@ -161,15 +161,16 @@
     <antcall target="copy-revenj-template" />
     <java jar="${dsl-compiler-client}" fork="true">
       <classpath refid="compile.classpath" />
-      <arg value="-temp=${server.tmp}" />
-      <arg value="-dsl=${dsl.src}" />
+      <arg value="dsl=${dsl.src}" />
+      <arg value="compiler=${tools.dsl-compiler}" />
+      <arg value="target=revenj.net" />
       <arg line="${revenj.optional.download}" />
-      <arg value="-settings=active-record,manual-json" />
-      <arg value="-namespace=ocd" />
-      <arg value="-postgres=${dbHost}:${dbPort}/${dbName}?user=${dbUser}&amp;password=${dbPassword}" />
-      <arg value="-target=revenj.net" />
-      <!--arg value="-log" /-->
-      <arg value="-compiler=${tools.dsl-compiler}" />
+      <arg value="temp=${server.tmp}" />
+      <arg value="settings=active-record,manual-json" />
+      <arg value="namespace=ocd" />
+      <arg value="postgres=${dbHost}:${dbPort}/${dbName}?user=${dbUser}&amp;password=${dbPassword}" />
+      <arg value="sql=${migration.tmp}" />
+      <arg value="apply" />
     </java>
     <move file="GeneratedModel.dll" todir="${generated.model}" />
     <antcall target="copy-downloaded-revenj-template" />
@@ -202,17 +203,13 @@
     <antcall target="copy-java-client-template" />
     <java jar="${dsl-compiler-client}" fork="true">
       <classpath refid="compile.classpath" />
-      <arg value="-temp=${client.tmp}" />
-      <arg value="-dsl=${dsl.src}" />
-      <arg value="-settings=active-record,manual-json" />
-      <arg value="-namespace=ocd" />
-      <arg value="-postgres=${dbHost}:${dbPort}/${dbName}?user=${dbUser}&amp;password=${dbPassword}" />
-      <arg value="-target=java_client" />
+      <arg value="dsl=${dsl.src}" />
+      <arg value="compiler=${tools.dsl-compiler}" />
+      <arg value="target=java_client" />
       <arg line="${java_client.optional.download}" />
-      <arg value="-apply" />
-      <!--arg value="-log" /-->
-      <arg value="-no-prompt" />
-      <arg value="-compiler=${tools.dsl-compiler}" />
+      <arg value="temp=${client.tmp}" />
+      <arg value="settings=active-record,manual-json" />
+      <arg value="namespace=ocd" />
     </java>
     <delete file="generated-model-java.jar" />
     <antcall target="copy-downloaded-java-client-template" />
@@ -225,10 +222,20 @@
     </copy>
   </target>
 
+  <property environment="env"/>
+  <condition property="bootclasspath1" value="-bootclasspath" else="">
+    <isset property="env.JDK16_HOME" />
+  </condition>
+  <condition property="bootclasspath2" value="${env.JDK16_HOME}/jre/lib/rt.jar" else="">
+    <isset property="env.JDK16_HOME" />
+  </condition>
+
   <target name="compile-generated" description="Compiles the generated Java client sources.">
     <javac srcdir="${java.generated.dir}" destdir="${target.main}" fork="true" deprecation="true" encoding="UTF-8" source="1.6" target="1.6" includeantruntime="false">
       <classpath refid="compile.classpath" />
       <compilerarg value="-Xlint:all" />
+      <compilerarg value="${bootclasspath1}"/>
+      <compilerarg value="${bootclasspath2}"/>
     </javac>
     <copy todir="${target.main}">
       <fileset dir="${resources.generated.dir}" />
@@ -245,6 +252,8 @@
       <classpath refid="test.classpath" />
       <classpath location="${target.main}" />
       <compilerarg value="-Xlint:all" />
+      <compilerarg value="${bootclasspath1}"/>
+      <compilerarg value="${bootclasspath2}"/>
     </javac>
     <copy todir="${target.test}">
       <fileset dir="${resources.test.dir}" />

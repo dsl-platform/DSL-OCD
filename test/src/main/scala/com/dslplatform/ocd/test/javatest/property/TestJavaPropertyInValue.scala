@@ -27,6 +27,24 @@ trait TestJavaPropertyInValue
     case _ => ???
   }
 
+  private def assertEqualHashCodes = (property match {
+    case p: OcdJavaBoxTypeProperty if !p.boxType.isEqualable =>
+      s"""// cannot compare hashCode equality since domainValue contains property
+        // of type ${p.boxType.javaClass} which does not have a "stable" hashCode
+        // """
+    case _ => """// values are checked internally by comparing hashcodes of all properties
+        """
+  }) + "org.junit.Assert.assertEquals(domainValue.hashCode(), domainValueDeserialized.hashCode());"
+
+  private def assertEqualValues = (property match {
+    case p: OcdJavaBoxTypeProperty if !p.boxType.isEqualable =>
+      s"""// cannot compare for value equality since domainValue contains property
+        // of type ${p.boxType.javaClass} which is not equalable
+        // """
+    case _ => """// values are checked internally by comparing all properties for equality
+        """
+  }) + "org.junit.Assert.assertEquals(domainValue, domainValueDeserialized);"
+
   def testComponentBody = s"""
     /* Testing the "${propertyName}" ${testID} value property JSON serialization */
     @org.junit.Test
@@ -54,11 +72,9 @@ trait TestJavaPropertyInValue
         // check that the property was properly deserialized
         ${assertEquals("domainValueDeserialized")}
 
-        // values are checked internally by comparing hashcodes of all properties
-        org.junit.Assert.assertEquals(domainValue.hashCode(), domainValueDeserialized.hashCode());
+        ${assertEqualHashCodes}
 
-        // values are checked internally by comparing all properties for equality
-        org.junit.Assert.assertEquals(domainValue, domainValueDeserialized);
+        ${assertEqualValues}
     }
 """
 }

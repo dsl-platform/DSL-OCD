@@ -14,6 +14,9 @@ import javatest.property._
 private[domain] object AggregateWithOnePropertySetup {
   val setups = for {
     t <- OcdType.useCaseValues
+    if t != `type.Image`                                // Image types shouldn't be a primary key
+    if t != `type.Location` && t != `type.Point`        // ERROR: data type point has no default operator class for access method "btree"
+    if t != `type.Xml`                                  // ERROR: data type xml has no default operator class for access method "btree"
     b <- OcdBox.values
     if !b.isNullable                                    // Primary keys cannot be nullable
     if b.collectionFamily != Some(CollectionFamily.Set) // URIs from Set PKs are currently behaving erratically

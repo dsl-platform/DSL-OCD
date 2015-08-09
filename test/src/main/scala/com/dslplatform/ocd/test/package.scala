@@ -36,18 +36,18 @@ package object test {
 //    , `type.Email`
     , `type.Float`
     , `type.Guid`
-//    , `type.Image`
+    , `type.Image`
     , `type.Integer`
-//    , `type.Ip`
+    , `type.Ip`
 //    , `type.Json`
-//    , `type.Location`
+    , `type.Location`
     , `type.Long`
-//    , `type.Map`
+    , `type.Map`
     , `type.Money`
 //    , `type.Native`
 //    , `type.Phone`
-//    , `type.Point`
-//    , `type.Rectangle`
+    , `type.Point`
+    , `type.Rectangle`
 //    , `type.S3`
 //    , `type.Secret`
 //    , `type.Stream`
@@ -57,7 +57,7 @@ package object test {
 //    , `type.Time`
     , `type.Timestamp`
     , `type.Url`
-//    , `type.Xml`
+    , `type.Xml`
     )
   }
 

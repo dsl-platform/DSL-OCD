@@ -414,7 +414,7 @@ private class CopyDirVisitor(logger: Logger, sourcePath: java.nio.file.Path, tar
  */
 private class ProjectNamesAndPortsRepository(logger: Logger, testSettings: ITestSettings) {
   val propertiesSourceFile = testSettings.workspace.path / "projectNamesAndPortsRepository.properties"
-  var portSequence = 2000
+  var portSequence = 10000
 
   private val props = new java.util.Properties()
   if(propertiesSourceFile.exists) {
