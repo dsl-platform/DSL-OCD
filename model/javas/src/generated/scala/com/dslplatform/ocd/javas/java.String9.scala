@@ -10,6 +10,7 @@ sealed trait JavaStringWithMaxLengthOf9
 
   val isPrecise = false
   val isPrimitive = false
+  val isEqualable = true
 }
 
 case object `java.String(9)`

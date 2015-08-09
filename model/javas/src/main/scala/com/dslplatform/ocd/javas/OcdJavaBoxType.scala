@@ -24,6 +24,7 @@ trait OcdJavaBoxType
   val isPrecise: Boolean
   val isPrimitive: Boolean
   val hasGenerics: Boolean
+  val isEqualable: Boolean
 
   protected val Stable = JavaStability.Stable
   protected val Unstable = JavaStability.Unstable

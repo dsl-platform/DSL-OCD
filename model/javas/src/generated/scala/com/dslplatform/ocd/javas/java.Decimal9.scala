@@ -10,6 +10,7 @@ sealed trait JavaDecimalWithScaleOf9
 
   val isPrecise = false
   val isPrimitive = false
+  val isEqualable = true
 }
 
 case object `java.Decimal(9)`

@@ -10,6 +10,7 @@ sealed trait JavaXml
 
   val isPrecise = false
   val isPrimitive = false
+  val isEqualable = false
 }
 
 case object `java.Xml`

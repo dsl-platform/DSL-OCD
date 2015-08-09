@@ -10,6 +10,7 @@ sealed trait JavaDouble
 
   val isPrecise = true
   val isPrimitive = true
+  val isEqualable = true
 }
 
 case object `java.Double`

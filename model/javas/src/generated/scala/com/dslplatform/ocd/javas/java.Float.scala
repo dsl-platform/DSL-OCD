@@ -10,6 +10,7 @@ sealed trait JavaFloat
 
   val isPrecise = true
   val isPrimitive = true
+  val isEqualable = true
 }
 
 case object `java.Float`

@@ -10,6 +10,7 @@ sealed trait JavaRectangle
 
   val isPrecise = true
   val isPrimitive = false
+  val isEqualable = true
 }
 
 case object `java.Rectangle`

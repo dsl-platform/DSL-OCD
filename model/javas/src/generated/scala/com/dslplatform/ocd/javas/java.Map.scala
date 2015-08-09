@@ -10,6 +10,7 @@ sealed trait JavaMap
 
   val isPrecise = false
   val isPrimitive = false
+  val isEqualable = true
 }
 
 case object `java.Map`

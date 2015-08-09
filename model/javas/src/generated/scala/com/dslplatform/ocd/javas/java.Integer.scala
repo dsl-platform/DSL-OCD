@@ -10,6 +10,7 @@ sealed trait JavaInteger
 
   val isPrecise = false
   val isPrimitive = true
+  val isEqualable = true
 }
 
 case object `java.Integer`

@@ -10,6 +10,7 @@ sealed trait JavaLocation
 
   val isPrecise = true
   val isPrimitive = false
+  val isEqualable = true
 }
 
 case object `java.Location`

@@ -10,6 +10,7 @@ sealed trait JavaBoolean
 
   val isPrecise = false
   val isPrimitive = true
+  val isEqualable = true
 }
 
 case object `java.Boolean`

@@ -72,6 +72,10 @@ sealed trait Java${t.name.singleName}
     case _ => false
   }}
   val isPrimitive = ${stub.isPrimitive}
+  val isEqualable = ${stub match {
+    case JavaImage | JavaXml => false
+    case _ => true
+  }}
 }
 
 ${

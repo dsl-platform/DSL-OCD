@@ -10,6 +10,7 @@ sealed trait JavaDate
 
   val isPrecise = false
   val isPrimitive = false
+  val isEqualable = true
 }
 
 case object `java.Date`
