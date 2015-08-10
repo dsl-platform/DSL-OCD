@@ -21,7 +21,7 @@ object JavaRectangle
   , "new java.awt.geom.Rectangle2D.Float(Float.MIN_VALUE, Float.MIN_VALUE, Float.MAX_VALUE, Float.MAX_VALUE)"
   , "new java.awt.geom.Rectangle2D.Float(-1.0000001f, -1.0000001f, 1.0000001f, 1.0000001f)"
     /* Double */
-  , "new java.awt.geom.Rectangle2D.Double(Double.MIN_VALUE, Double.MIN_VALUE, Double.MAX_VALUE, Double.MAX_VALUE)"
-  , "new java.awt.geom.Rectangle2D.Double(-1.000000000000001, -1.000000000000001, 1.000000000000001, 1.000000000000001)"
+//  , "new java.awt.geom.Rectangle2D.Double(Double.MIN_VALUE, Double.MIN_VALUE, Double.MAX_VALUE, Double.MAX_VALUE)"     // Rectangle is a RectangleF value in Revenj and cannot support values > E38
+  , "new java.awt.geom.Rectangle2D.Double(-2.000000000000123, -2.000000000000234, 1.000000000000345, 1.000000000000456)" // Will probably be rounded down to (-2, -2, 1, 1)
   )
 }

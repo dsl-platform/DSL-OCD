@@ -21,7 +21,7 @@ object JavaLocation
   , "new java.awt.geom.Point2D.Float(Float.MIN_VALUE, Float.MAX_VALUE)"
   , "new java.awt.geom.Point2D.Float(-1.0000001f, 1.0000001f)"
     /* Double */
-  , "new java.awt.geom.Point2D.Double(Double.MIN_VALUE, Double.MAX_VALUE)"
-  , "new java.awt.geom.Point2D.Double(-1.000000000000001, 1.000000000000001)"
+//  , "new java.awt.geom.Point2D.Double(Double.MIN_VALUE, Double.MAX_VALUE)"  // Location is a PointF value in Revenj and cannot support values > E38
+  , "new java.awt.geom.Point2D.Double(-2.000000000000345, 1.000000000000234)" // Will probably be rounded down to (-2, 1)
   )
 }

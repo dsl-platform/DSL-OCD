@@ -15,14 +15,20 @@ trait TestJavaPropertyInAggregate
   def setupBlock: String = ""
 
   def testComponentBody = (
-  jsonSerializationTest +
-  (!isDisallowed(isDefault)).ifTrue(activeRecordPersistTest)
+    jsonSerializationTest
+  + (!isDisallowed(isDefault)).ifTrue(activeRecordPersistTest)
   )
 
   private def assertEquals(target: String) = property match {
     case _ if isDisallowed(isDefault) =>
       s"""// special null check for dissalowed null value in a non-nullable property
         org.junit.Assert.assertNull(${target}.get${PropertyName}());"""
+
+    case p: OcdJavaBoxTypeProperty if p.boxType.isPrecise =>
+      s"""com.dslplatform.ocd.javaasserts.${p.boxType.typeSingleName}Asserts.assert${p.box.boxName}Equals(
+                testValue,
+                ${target}.get${PropertyName}(),
+                2);"""
 
     case p: OcdJavaBoxTypeProperty =>
       s"""com.dslplatform.ocd.javaasserts.${p.boxType.typeSingleName}Asserts.assert${p.box.boxName}Equals(
@@ -84,9 +90,6 @@ trait TestJavaPropertyInAggregate
 
         final ${conceptName} aggregateFound =
                 ${conceptName}.find(aggregate.getURI());
-
-        //final ${conceptName} aggregateFound =
-        //        ${conceptName}.find(aggregate.getURI());
 
         // check the property retrieved from the database
         ${assertEquals("aggregateFound")}
