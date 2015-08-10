@@ -16,6 +16,7 @@ private[domain] object CalculatedPropertyInSnowflakeSetup {
     t <- OcdType.useCaseValues // if t.typeNameSafe == "Integer"
     b <- OcdBox.values
     d = OcdDslBoxType.resolve(t, b)
+    if !(b.collectionFamily == Some(CollectionFamily.Queue) && b.areElementsNullable == Some(true)) // Queue cannot contain null elements
   } yield {
     new CalculatedPropertyInSnowflakeSetup(d)
   }

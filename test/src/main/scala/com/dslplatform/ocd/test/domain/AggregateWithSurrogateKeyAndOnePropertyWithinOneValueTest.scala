@@ -15,6 +15,7 @@ private[domain] object AggregateWithSurrogateKeyAndOnePropertyWithinOneValueSetu
   val setups = for {
     t <- OcdType.useCaseValues
     b <- OcdBox.values
+    if !(b.collectionFamily == Some(CollectionFamily.Queue) && b.areElementsNullable == Some(true)) // Queue cannot contain null elements
     d = OcdDslBoxType.resolve(t, b)
   } yield {
     new AggregateWithSurrogateKeyAndOnePropertyWithinOneValueSetup(d)
