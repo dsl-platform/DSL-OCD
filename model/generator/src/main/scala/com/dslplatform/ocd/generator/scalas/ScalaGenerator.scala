@@ -20,6 +20,7 @@ object ScalaGenerator
       case SingleFamily.Nullable => "?"
     })
 
+/*
   private def boxToScala(b: Box) =
     b match {
       case Box(base, None, _*) =>
@@ -31,6 +32,7 @@ object ScalaGenerator
       case Box(base, Some((ct, et)), _*) =>
         (t: String) => singleFamilyToScalaName(base)(ct + "<" + singleFamilyToScalaName(et)(t) + ">")
     }
+*/
 
   private def boxToScalaName(b: Box) =
     b match {
