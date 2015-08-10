@@ -50,7 +50,6 @@ scalacOptions := Seq(
 , "-Yclosure-elim"
 , "-Yconst-opt"
 , "-Ydead-code"
-, "-Yinline-warnings"
 , "-Yinline"
 , "-Yrepl-sync"
 , "-Ywarn-adapted-args"
