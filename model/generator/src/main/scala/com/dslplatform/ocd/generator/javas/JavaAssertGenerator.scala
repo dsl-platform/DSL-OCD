@@ -43,7 +43,11 @@ case class JavaAsserts(name: String, stub: JavaStub, box: Box)
     with OneSetOfOneAsserts
     with NullableSetOfOneAsserts
     with OneSetOfNullableAsserts
-    with NullableSetOfNullableAsserts {
+    with NullableSetOfNullableAsserts
+    with OneQueueOfOneAsserts
+    with NullableQueueOfOneAsserts
+    with OneQueueOfNullableAsserts
+    with NullableQueueOfNullableAsserts {
 
   import SingleFamily._
   import CollectionFamily._
@@ -90,6 +94,18 @@ case class JavaAsserts(name: String, stub: JavaStub, box: Box)
 
     case Box(Nullable, Some((Set, Nullable)), _*) =>
       nullableSetOfNullableAsserts
+
+    case Box(One, Some((Queue, One)), _*) =>
+      oneQueueOfOneAsserts
+
+    case Box(Nullable, Some((Queue, One)), _*) =>
+      nullableQueueOfOneAsserts
+
+    case Box(One, Some((Queue, Nullable)), _*) =>
+      oneQueueOfNullableAsserts
+
+    case Box(Nullable, Some((Queue, Nullable)), _*) =>
+      nullableQueueOfNullableAsserts
   }
 
   val clazz = stub.classValue(box)

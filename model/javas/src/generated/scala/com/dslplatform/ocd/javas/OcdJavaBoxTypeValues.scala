@@ -13,6 +13,10 @@ trait OcdJavaBoxTypeValues {
   , `java.List<Binary>?`
   , `java.List<Binary?>`
   , `java.List<Binary?>?`
+  , `java.Queue<Binary>`
+  , `java.Queue<Binary>?`
+  , `java.Queue<Binary?>`
+  , `java.Queue<Binary?>?`
   , `java.Set<Binary>`
   , `java.Set<Binary>?`
   , `java.Set<Binary?>`
@@ -27,6 +31,10 @@ trait OcdJavaBoxTypeValues {
   , `java.List<Boolean>?`
   , `java.List<Boolean?>`
   , `java.List<Boolean?>?`
+  , `java.Queue<Boolean>`
+  , `java.Queue<Boolean>?`
+  , `java.Queue<Boolean?>`
+  , `java.Queue<Boolean?>?`
   , `java.Set<Boolean>`
   , `java.Set<Boolean>?`
   , `java.Set<Boolean?>`
@@ -41,6 +49,10 @@ trait OcdJavaBoxTypeValues {
   , `java.List<Date>?`
   , `java.List<Date?>`
   , `java.List<Date?>?`
+  , `java.Queue<Date>`
+  , `java.Queue<Date>?`
+  , `java.Queue<Date?>`
+  , `java.Queue<Date?>?`
   , `java.Set<Date>`
   , `java.Set<Date>?`
   , `java.Set<Date?>`
@@ -55,6 +67,10 @@ trait OcdJavaBoxTypeValues {
   , `java.List<Decimal>?`
   , `java.List<Decimal?>`
   , `java.List<Decimal?>?`
+  , `java.Queue<Decimal>`
+  , `java.Queue<Decimal>?`
+  , `java.Queue<Decimal?>`
+  , `java.Queue<Decimal?>?`
   , `java.Set<Decimal>`
   , `java.Set<Decimal>?`
   , `java.Set<Decimal?>`
@@ -69,6 +85,10 @@ trait OcdJavaBoxTypeValues {
   , `java.List<Decimal(9)>?`
   , `java.List<Decimal(9)?>`
   , `java.List<Decimal(9)?>?`
+  , `java.Queue<Decimal(9)>`
+  , `java.Queue<Decimal(9)>?`
+  , `java.Queue<Decimal(9)?>`
+  , `java.Queue<Decimal(9)?>?`
   , `java.Set<Decimal(9)>`
   , `java.Set<Decimal(9)>?`
   , `java.Set<Decimal(9)?>`
@@ -83,6 +103,10 @@ trait OcdJavaBoxTypeValues {
   , `java.List<Double>?`
   , `java.List<Double?>`
   , `java.List<Double?>?`
+  , `java.Queue<Double>`
+  , `java.Queue<Double>?`
+  , `java.Queue<Double?>`
+  , `java.Queue<Double?>?`
   , `java.Set<Double>`
   , `java.Set<Double>?`
   , `java.Set<Double?>`
@@ -97,6 +121,10 @@ trait OcdJavaBoxTypeValues {
   , `java.List<Float>?`
   , `java.List<Float?>`
   , `java.List<Float?>?`
+  , `java.Queue<Float>`
+  , `java.Queue<Float>?`
+  , `java.Queue<Float?>`
+  , `java.Queue<Float?>?`
   , `java.Set<Float>`
   , `java.Set<Float>?`
   , `java.Set<Float?>`
@@ -111,6 +139,10 @@ trait OcdJavaBoxTypeValues {
   , `java.List<Guid>?`
   , `java.List<Guid?>`
   , `java.List<Guid?>?`
+  , `java.Queue<Guid>`
+  , `java.Queue<Guid>?`
+  , `java.Queue<Guid?>`
+  , `java.Queue<Guid?>?`
   , `java.Set<Guid>`
   , `java.Set<Guid>?`
   , `java.Set<Guid?>`
@@ -125,6 +157,10 @@ trait OcdJavaBoxTypeValues {
   , `java.List<Image>?`
   , `java.List<Image?>`
   , `java.List<Image?>?`
+  , `java.Queue<Image>`
+  , `java.Queue<Image>?`
+  , `java.Queue<Image?>`
+  , `java.Queue<Image?>?`
   , `java.Set<Image>`
   , `java.Set<Image>?`
   , `java.Set<Image?>`
@@ -139,6 +175,10 @@ trait OcdJavaBoxTypeValues {
   , `java.List<Integer>?`
   , `java.List<Integer?>`
   , `java.List<Integer?>?`
+  , `java.Queue<Integer>`
+  , `java.Queue<Integer>?`
+  , `java.Queue<Integer?>`
+  , `java.Queue<Integer?>?`
   , `java.Set<Integer>`
   , `java.Set<Integer>?`
   , `java.Set<Integer?>`
@@ -153,6 +193,10 @@ trait OcdJavaBoxTypeValues {
   , `java.List<Ip>?`
   , `java.List<Ip?>`
   , `java.List<Ip?>?`
+  , `java.Queue<Ip>`
+  , `java.Queue<Ip>?`
+  , `java.Queue<Ip?>`
+  , `java.Queue<Ip?>?`
   , `java.Set<Ip>`
   , `java.Set<Ip>?`
   , `java.Set<Ip?>`
@@ -167,6 +211,10 @@ trait OcdJavaBoxTypeValues {
   , `java.List<Location>?`
   , `java.List<Location?>`
   , `java.List<Location?>?`
+  , `java.Queue<Location>`
+  , `java.Queue<Location>?`
+  , `java.Queue<Location?>`
+  , `java.Queue<Location?>?`
   , `java.Set<Location>`
   , `java.Set<Location>?`
   , `java.Set<Location?>`
@@ -181,6 +229,10 @@ trait OcdJavaBoxTypeValues {
   , `java.List<Long>?`
   , `java.List<Long?>`
   , `java.List<Long?>?`
+  , `java.Queue<Long>`
+  , `java.Queue<Long>?`
+  , `java.Queue<Long?>`
+  , `java.Queue<Long?>?`
   , `java.Set<Long>`
   , `java.Set<Long>?`
   , `java.Set<Long?>`
@@ -195,6 +247,10 @@ trait OcdJavaBoxTypeValues {
   , `java.List<Map>?`
   , `java.List<Map?>`
   , `java.List<Map?>?`
+  , `java.Queue<Map>`
+  , `java.Queue<Map>?`
+  , `java.Queue<Map?>`
+  , `java.Queue<Map?>?`
   , `java.Set<Map>`
   , `java.Set<Map>?`
   , `java.Set<Map?>`
@@ -209,6 +265,10 @@ trait OcdJavaBoxTypeValues {
   , `java.List<Money>?`
   , `java.List<Money?>`
   , `java.List<Money?>?`
+  , `java.Queue<Money>`
+  , `java.Queue<Money>?`
+  , `java.Queue<Money?>`
+  , `java.Queue<Money?>?`
   , `java.Set<Money>`
   , `java.Set<Money>?`
   , `java.Set<Money?>`
@@ -223,6 +283,10 @@ trait OcdJavaBoxTypeValues {
   , `java.List<Point>?`
   , `java.List<Point?>`
   , `java.List<Point?>?`
+  , `java.Queue<Point>`
+  , `java.Queue<Point>?`
+  , `java.Queue<Point?>`
+  , `java.Queue<Point?>?`
   , `java.Set<Point>`
   , `java.Set<Point>?`
   , `java.Set<Point?>`
@@ -237,6 +301,10 @@ trait OcdJavaBoxTypeValues {
   , `java.List<Rectangle>?`
   , `java.List<Rectangle?>`
   , `java.List<Rectangle?>?`
+  , `java.Queue<Rectangle>`
+  , `java.Queue<Rectangle>?`
+  , `java.Queue<Rectangle?>`
+  , `java.Queue<Rectangle?>?`
   , `java.Set<Rectangle>`
   , `java.Set<Rectangle>?`
   , `java.Set<Rectangle?>`
@@ -251,6 +319,10 @@ trait OcdJavaBoxTypeValues {
   , `java.List<String>?`
   , `java.List<String?>`
   , `java.List<String?>?`
+  , `java.Queue<String>`
+  , `java.Queue<String>?`
+  , `java.Queue<String?>`
+  , `java.Queue<String?>?`
   , `java.Set<String>`
   , `java.Set<String>?`
   , `java.Set<String?>`
@@ -265,6 +337,10 @@ trait OcdJavaBoxTypeValues {
   , `java.List<String(9)>?`
   , `java.List<String(9)?>`
   , `java.List<String(9)?>?`
+  , `java.Queue<String(9)>`
+  , `java.Queue<String(9)>?`
+  , `java.Queue<String(9)?>`
+  , `java.Queue<String(9)?>?`
   , `java.Set<String(9)>`
   , `java.Set<String(9)>?`
   , `java.Set<String(9)?>`
@@ -279,6 +355,10 @@ trait OcdJavaBoxTypeValues {
   , `java.List<Text>?`
   , `java.List<Text?>`
   , `java.List<Text?>?`
+  , `java.Queue<Text>`
+  , `java.Queue<Text>?`
+  , `java.Queue<Text?>`
+  , `java.Queue<Text?>?`
   , `java.Set<Text>`
   , `java.Set<Text>?`
   , `java.Set<Text?>`
@@ -293,6 +373,10 @@ trait OcdJavaBoxTypeValues {
   , `java.List<Timestamp>?`
   , `java.List<Timestamp?>`
   , `java.List<Timestamp?>?`
+  , `java.Queue<Timestamp>`
+  , `java.Queue<Timestamp>?`
+  , `java.Queue<Timestamp?>`
+  , `java.Queue<Timestamp?>?`
   , `java.Set<Timestamp>`
   , `java.Set<Timestamp>?`
   , `java.Set<Timestamp?>`
@@ -307,6 +391,10 @@ trait OcdJavaBoxTypeValues {
   , `java.List<Url>?`
   , `java.List<Url?>`
   , `java.List<Url?>?`
+  , `java.Queue<Url>`
+  , `java.Queue<Url>?`
+  , `java.Queue<Url?>`
+  , `java.Queue<Url?>?`
   , `java.Set<Url>`
   , `java.Set<Url>?`
   , `java.Set<Url?>`
@@ -321,6 +409,10 @@ trait OcdJavaBoxTypeValues {
   , `java.List<Xml>?`
   , `java.List<Xml?>`
   , `java.List<Xml?>?`
+  , `java.Queue<Xml>`
+  , `java.Queue<Xml>?`
+  , `java.Queue<Xml?>`
+  , `java.Queue<Xml?>?`
   , `java.Set<Xml>`
   , `java.Set<Xml>?`
   , `java.Set<Xml?>`

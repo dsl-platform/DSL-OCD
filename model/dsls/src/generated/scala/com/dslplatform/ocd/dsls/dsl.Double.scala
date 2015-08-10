@@ -22,6 +22,10 @@ case object `dsl.List<Double>`    extends DslDouble with `box.OneListOfOne`
 case object `dsl.List<Double>?`   extends DslDouble with `box.NullableListOfOne`
 case object `dsl.List<Double?>`   extends DslDouble with `box.OneListOfNullable`
 case object `dsl.List<Double?>?`  extends DslDouble with `box.NullableListOfNullable`
+case object `dsl.Queue<Double>`   extends DslDouble with `box.OneQueueOfOne`
+case object `dsl.Queue<Double>?`  extends DslDouble with `box.NullableQueueOfOne`
+case object `dsl.Queue<Double?>`  extends DslDouble with `box.OneQueueOfNullable`
+case object `dsl.Queue<Double?>?` extends DslDouble with `box.NullableQueueOfNullable`
 case object `dsl.Set<Double>`     extends DslDouble with `box.OneSetOfOne`
 case object `dsl.Set<Double>?`    extends DslDouble with `box.NullableSetOfOne`
 case object `dsl.Set<Double?>`    extends DslDouble with `box.OneSetOfNullable`
@@ -41,6 +45,10 @@ case object `dsl.LIST<DOUBLE>`    extends DslDouble with `box.OneListOfOne`
 case object `dsl.LIST<DOUBLE>?`   extends DslDouble with `box.NullableListOfOne`
 case object `dsl.LIST<DOUBLE?>`   extends DslDouble with `box.OneListOfNullable`
 case object `dsl.LIST<DOUBLE?>?`  extends DslDouble with `box.NullableListOfNullable`
+case object `dsl.QUEUE<DOUBLE>`   extends DslDouble with `box.OneQueueOfOne`
+case object `dsl.QUEUE<DOUBLE>?`  extends DslDouble with `box.NullableQueueOfOne`
+case object `dsl.QUEUE<DOUBLE?>`  extends DslDouble with `box.OneQueueOfNullable`
+case object `dsl.QUEUE<DOUBLE?>?` extends DslDouble with `box.NullableQueueOfNullable`
 case object `dsl.SET<DOUBLE>`     extends DslDouble with `box.OneSetOfOne`
 case object `dsl.SET<DOUBLE>?`    extends DslDouble with `box.NullableSetOfOne`
 case object `dsl.SET<DOUBLE?>`    extends DslDouble with `box.OneSetOfNullable`
@@ -60,6 +68,10 @@ case object `dsl.list<double>`    extends DslDouble with `box.OneListOfOne`
 case object `dsl.list<double>?`   extends DslDouble with `box.NullableListOfOne`
 case object `dsl.list<double?>`   extends DslDouble with `box.OneListOfNullable`
 case object `dsl.list<double?>?`  extends DslDouble with `box.NullableListOfNullable`
+case object `dsl.queue<double>`   extends DslDouble with `box.OneQueueOfOne`
+case object `dsl.queue<double>?`  extends DslDouble with `box.NullableQueueOfOne`
+case object `dsl.queue<double?>`  extends DslDouble with `box.OneQueueOfNullable`
+case object `dsl.queue<double?>?` extends DslDouble with `box.NullableQueueOfNullable`
 case object `dsl.set<double>`     extends DslDouble with `box.OneSetOfOne`
 case object `dsl.set<double>?`    extends DslDouble with `box.NullableSetOfOne`
 case object `dsl.set<double?>`    extends DslDouble with `box.OneSetOfNullable`

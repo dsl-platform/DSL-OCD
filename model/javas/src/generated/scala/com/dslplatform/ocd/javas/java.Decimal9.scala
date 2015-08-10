@@ -320,6 +320,140 @@ case object `java.List<Decimal(9)?>?`
   val hasGenerics = true
 }
 
+case object `java.Queue<Decimal(9)>`
+    extends JavaDecimalWithScaleOf9 with `box.OneQueueOfOne` {
+
+  val javaClass = "java.util.Queue<java.math.BigDecimal>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("java.math.BigDecimal"))
+  val javaDescription = "OneQueueOfOneDecimalsWithScaleOf9"
+
+  def defaultValue = SingleJavaValue("new java.util.ArrayDeque<java.math.BigDecimal>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("java.math.BigDecimal.ZERO.setScale(9)")
+    )
+  , QueueOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("new java.math.BigDecimal(\"1E19\")")
+    )
+  , QueueOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("java.math.BigDecimal.ZERO.setScale(9)")
+    , SingleJavaValue("java.math.BigDecimal.ONE")
+    , SingleJavaValue("new java.math.BigDecimal(\"3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679\").setScale(9, java.math.BigDecimal.ROUND_HALF_UP)")
+    , SingleJavaValue("new java.math.BigDecimal(\"-1E-9\")")
+    , SingleJavaValue("new java.math.BigDecimal(\"1E19\")")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Decimal(9)>?`
+    extends JavaDecimalWithScaleOf9 with `box.NullableQueueOfOne` {
+
+  val javaClass = "java.util.Queue<java.math.BigDecimal>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("java.math.BigDecimal"))
+  val javaDescription = "NullableQueueOfOneDecimalsWithScaleOf9"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("java.math.BigDecimal.ZERO.setScale(9)")
+    )
+  , QueueOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("new java.math.BigDecimal(\"1E19\")")
+    )
+  , QueueOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("java.math.BigDecimal.ZERO.setScale(9)")
+    , SingleJavaValue("java.math.BigDecimal.ONE")
+    , SingleJavaValue("new java.math.BigDecimal(\"3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679\").setScale(9, java.math.BigDecimal.ROUND_HALF_UP)")
+    , SingleJavaValue("new java.math.BigDecimal(\"-1E-9\")")
+    , SingleJavaValue("new java.math.BigDecimal(\"1E19\")")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Decimal(9)?>`
+    extends JavaDecimalWithScaleOf9 with `box.OneQueueOfNullable` {
+
+  val javaClass = "java.util.Queue<java.math.BigDecimal>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("java.math.BigDecimal"))
+  val javaDescription = "OneQueueOfNullableDecimalsWithScaleOf9"
+
+  def defaultValue = SingleJavaValue("new java.util.ArrayDeque<java.math.BigDecimal>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("null")
+    )
+  , QueueOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("java.math.BigDecimal.ZERO.setScale(9)")
+    )
+  , QueueOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("new java.math.BigDecimal(\"1E19\")")
+    )
+  , QueueOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("java.math.BigDecimal.ZERO.setScale(9)")
+    , SingleJavaValue("java.math.BigDecimal.ONE")
+    , SingleJavaValue("new java.math.BigDecimal(\"3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679\").setScale(9, java.math.BigDecimal.ROUND_HALF_UP)")
+    , SingleJavaValue("new java.math.BigDecimal(\"-1E-9\")")
+    , SingleJavaValue("new java.math.BigDecimal(\"1E19\")")
+    )
+  , QueueOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("null")
+    , SingleJavaValue("java.math.BigDecimal.ZERO.setScale(9)")
+    , SingleJavaValue("java.math.BigDecimal.ONE")
+    , SingleJavaValue("new java.math.BigDecimal(\"3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679\").setScale(9, java.math.BigDecimal.ROUND_HALF_UP)")
+    , SingleJavaValue("new java.math.BigDecimal(\"-1E-9\")")
+    , SingleJavaValue("new java.math.BigDecimal(\"1E19\")")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Decimal(9)?>?`
+    extends JavaDecimalWithScaleOf9 with `box.NullableQueueOfNullable` {
+
+  val javaClass = "java.util.Queue<java.math.BigDecimal>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("java.math.BigDecimal"))
+  val javaDescription = "NullableQueueOfNullableDecimalsWithScaleOf9"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("null")
+    )
+  , QueueOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("java.math.BigDecimal.ZERO.setScale(9)")
+    )
+  , QueueOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("new java.math.BigDecimal(\"1E19\")")
+    )
+  , QueueOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("java.math.BigDecimal.ZERO.setScale(9)")
+    , SingleJavaValue("java.math.BigDecimal.ONE")
+    , SingleJavaValue("new java.math.BigDecimal(\"3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679\").setScale(9, java.math.BigDecimal.ROUND_HALF_UP)")
+    , SingleJavaValue("new java.math.BigDecimal(\"-1E-9\")")
+    , SingleJavaValue("new java.math.BigDecimal(\"1E19\")")
+    )
+  , QueueOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("null")
+    , SingleJavaValue("java.math.BigDecimal.ZERO.setScale(9)")
+    , SingleJavaValue("java.math.BigDecimal.ONE")
+    , SingleJavaValue("new java.math.BigDecimal(\"3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679\").setScale(9, java.math.BigDecimal.ROUND_HALF_UP)")
+    , SingleJavaValue("new java.math.BigDecimal(\"-1E-9\")")
+    , SingleJavaValue("new java.math.BigDecimal(\"1E19\")")
+    )
+  )
+
+  val hasGenerics = true
+}
+
 case object `java.Set<Decimal(9)>`
     extends JavaDecimalWithScaleOf9 with `box.OneSetOfOne` {
 

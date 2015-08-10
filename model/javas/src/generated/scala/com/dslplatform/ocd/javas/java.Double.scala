@@ -362,6 +362,158 @@ case object `java.List<Double?>?`
   val hasGenerics = true
 }
 
+case object `java.Queue<Double>`
+    extends JavaDouble with `box.OneQueueOfOne` {
+
+  val javaClass = "java.util.Queue<Double>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("Double"))
+  val javaDescription = "OneQueueOfOneDoubles"
+
+  def defaultValue = SingleJavaValue("new java.util.ArrayDeque<Double>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("Double",
+      SingleJavaValue("0.0")
+    )
+  , QueueOfJavaValues("Double",
+      SingleJavaValue("Double.NaN")
+    )
+  , QueueOfJavaValues("Double",
+      SingleJavaValue("0.0")
+    , SingleJavaValue("1E-307")
+    , SingleJavaValue("9E307")
+    , SingleJavaValue("-1.23456789012345E-10")
+    , SingleJavaValue("1.23456789012345E20")
+    , SingleJavaValue("Double.NEGATIVE_INFINITY")
+    , SingleJavaValue("Double.POSITIVE_INFINITY")
+    , SingleJavaValue("Double.NaN")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Double>?`
+    extends JavaDouble with `box.NullableQueueOfOne` {
+
+  val javaClass = "java.util.Queue<Double>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("Double"))
+  val javaDescription = "NullableQueueOfOneDoubles"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("Double",
+      SingleJavaValue("0.0")
+    )
+  , QueueOfJavaValues("Double",
+      SingleJavaValue("Double.NaN")
+    )
+  , QueueOfJavaValues("Double",
+      SingleJavaValue("0.0")
+    , SingleJavaValue("1E-307")
+    , SingleJavaValue("9E307")
+    , SingleJavaValue("-1.23456789012345E-10")
+    , SingleJavaValue("1.23456789012345E20")
+    , SingleJavaValue("Double.NEGATIVE_INFINITY")
+    , SingleJavaValue("Double.POSITIVE_INFINITY")
+    , SingleJavaValue("Double.NaN")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Double?>`
+    extends JavaDouble with `box.OneQueueOfNullable` {
+
+  val javaClass = "java.util.Queue<Double>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("Double"))
+  val javaDescription = "OneQueueOfNullableDoubles"
+
+  def defaultValue = SingleJavaValue("new java.util.ArrayDeque<Double>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("Double",
+      SingleJavaValue("null")
+    )
+  , QueueOfJavaValues("Double",
+      SingleJavaValue("0.0")
+    )
+  , QueueOfJavaValues("Double",
+      SingleJavaValue("Double.NaN")
+    )
+  , QueueOfJavaValues("Double",
+      SingleJavaValue("0.0")
+    , SingleJavaValue("1E-307")
+    , SingleJavaValue("9E307")
+    , SingleJavaValue("-1.23456789012345E-10")
+    , SingleJavaValue("1.23456789012345E20")
+    , SingleJavaValue("Double.NEGATIVE_INFINITY")
+    , SingleJavaValue("Double.POSITIVE_INFINITY")
+    , SingleJavaValue("Double.NaN")
+    )
+  , QueueOfJavaValues("Double",
+      SingleJavaValue("null")
+    , SingleJavaValue("0.0")
+    , SingleJavaValue("1E-307")
+    , SingleJavaValue("9E307")
+    , SingleJavaValue("-1.23456789012345E-10")
+    , SingleJavaValue("1.23456789012345E20")
+    , SingleJavaValue("Double.NEGATIVE_INFINITY")
+    , SingleJavaValue("Double.POSITIVE_INFINITY")
+    , SingleJavaValue("Double.NaN")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Double?>?`
+    extends JavaDouble with `box.NullableQueueOfNullable` {
+
+  val javaClass = "java.util.Queue<Double>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("Double"))
+  val javaDescription = "NullableQueueOfNullableDoubles"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("Double",
+      SingleJavaValue("null")
+    )
+  , QueueOfJavaValues("Double",
+      SingleJavaValue("0.0")
+    )
+  , QueueOfJavaValues("Double",
+      SingleJavaValue("Double.NaN")
+    )
+  , QueueOfJavaValues("Double",
+      SingleJavaValue("0.0")
+    , SingleJavaValue("1E-307")
+    , SingleJavaValue("9E307")
+    , SingleJavaValue("-1.23456789012345E-10")
+    , SingleJavaValue("1.23456789012345E20")
+    , SingleJavaValue("Double.NEGATIVE_INFINITY")
+    , SingleJavaValue("Double.POSITIVE_INFINITY")
+    , SingleJavaValue("Double.NaN")
+    )
+  , QueueOfJavaValues("Double",
+      SingleJavaValue("null")
+    , SingleJavaValue("0.0")
+    , SingleJavaValue("1E-307")
+    , SingleJavaValue("9E307")
+    , SingleJavaValue("-1.23456789012345E-10")
+    , SingleJavaValue("1.23456789012345E20")
+    , SingleJavaValue("Double.NEGATIVE_INFINITY")
+    , SingleJavaValue("Double.POSITIVE_INFINITY")
+    , SingleJavaValue("Double.NaN")
+    )
+  )
+
+  val hasGenerics = true
+}
+
 case object `java.Set<Double>`
     extends JavaDouble with `box.OneSetOfOne` {
 

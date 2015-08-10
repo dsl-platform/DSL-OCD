@@ -88,6 +88,38 @@ case object `scala.List<Binary?>?`
   val defaultValue = "None"
 }
 
+case object `scala.Queue<Binary>`
+    extends ScalaBinary with `box.OneQueueOfOne` {
+
+  val scalaClass = "Queue[Array[Byte]]"
+
+  val defaultValue = "Queue[Array[Byte]].empty"
+}
+
+case object `scala.Queue<Binary>?`
+    extends ScalaBinary with `box.NullableQueueOfOne` {
+
+  val scalaClass = "Option[Queue[Array[Byte]]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Queue<Binary?>`
+    extends ScalaBinary with `box.OneQueueOfNullable` {
+
+  val scalaClass = "Queue[Option[Array[Byte]]]"
+
+  val defaultValue = "Queue[Option[Array[Byte]]].empty"
+}
+
+case object `scala.Queue<Binary?>?`
+    extends ScalaBinary with `box.NullableQueueOfNullable` {
+
+  val scalaClass = "Option[Queue[Option[Array[Byte]]]]"
+
+  val defaultValue = "None"
+}
+
 case object `scala.Set<Binary>`
     extends ScalaBinary with `box.OneSetOfOne` {
 

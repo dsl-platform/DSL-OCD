@@ -17,6 +17,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.List<Binary>?`
   , `dsl.List<Binary?>`
   , `dsl.List<Binary?>?`
+  , `dsl.Queue<Binary>`
+  , `dsl.Queue<Binary>?`
+  , `dsl.Queue<Binary?>`
+  , `dsl.Queue<Binary?>?`
   , `dsl.Set<Binary>`
   , `dsl.Set<Binary>?`
   , `dsl.Set<Binary?>`
@@ -35,6 +39,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.LIST<BINARY>?`
   , `dsl.LIST<BINARY?>`
   , `dsl.LIST<BINARY?>?`
+  , `dsl.QUEUE<BINARY>`
+  , `dsl.QUEUE<BINARY>?`
+  , `dsl.QUEUE<BINARY?>`
+  , `dsl.QUEUE<BINARY?>?`
   , `dsl.SET<BINARY>`
   , `dsl.SET<BINARY>?`
   , `dsl.SET<BINARY?>`
@@ -53,6 +61,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.list<binary>?`
   , `dsl.list<binary?>`
   , `dsl.list<binary?>?`
+  , `dsl.queue<binary>`
+  , `dsl.queue<binary>?`
+  , `dsl.queue<binary?>`
+  , `dsl.queue<binary?>?`
   , `dsl.set<binary>`
   , `dsl.set<binary>?`
   , `dsl.set<binary?>`
@@ -71,6 +83,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.List<Bits>?`
   , `dsl.List<Bits?>`
   , `dsl.List<Bits?>?`
+  , `dsl.Queue<Bits>`
+  , `dsl.Queue<Bits>?`
+  , `dsl.Queue<Bits?>`
+  , `dsl.Queue<Bits?>?`
   , `dsl.Set<Bits>`
   , `dsl.Set<Bits>?`
   , `dsl.Set<Bits?>`
@@ -89,6 +105,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.LIST<BITS>?`
   , `dsl.LIST<BITS?>`
   , `dsl.LIST<BITS?>?`
+  , `dsl.QUEUE<BITS>`
+  , `dsl.QUEUE<BITS>?`
+  , `dsl.QUEUE<BITS?>`
+  , `dsl.QUEUE<BITS?>?`
   , `dsl.SET<BITS>`
   , `dsl.SET<BITS>?`
   , `dsl.SET<BITS?>`
@@ -107,6 +127,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.list<bits>?`
   , `dsl.list<bits?>`
   , `dsl.list<bits?>?`
+  , `dsl.queue<bits>`
+  , `dsl.queue<bits>?`
+  , `dsl.queue<bits?>`
+  , `dsl.queue<bits?>?`
   , `dsl.set<bits>`
   , `dsl.set<bits>?`
   , `dsl.set<bits?>`
@@ -125,6 +149,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.List<Boolean>?`
   , `dsl.List<Boolean?>`
   , `dsl.List<Boolean?>?`
+  , `dsl.Queue<Boolean>`
+  , `dsl.Queue<Boolean>?`
+  , `dsl.Queue<Boolean?>`
+  , `dsl.Queue<Boolean?>?`
   , `dsl.Set<Boolean>`
   , `dsl.Set<Boolean>?`
   , `dsl.Set<Boolean?>`
@@ -143,6 +171,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.LIST<BOOL>?`
   , `dsl.LIST<BOOL?>`
   , `dsl.LIST<BOOL?>?`
+  , `dsl.QUEUE<BOOL>`
+  , `dsl.QUEUE<BOOL>?`
+  , `dsl.QUEUE<BOOL?>`
+  , `dsl.QUEUE<BOOL?>?`
   , `dsl.SET<BOOL>`
   , `dsl.SET<BOOL>?`
   , `dsl.SET<BOOL?>`
@@ -161,6 +193,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.LIST<BOOLEAN>?`
   , `dsl.LIST<BOOLEAN?>`
   , `dsl.LIST<BOOLEAN?>?`
+  , `dsl.QUEUE<BOOLEAN>`
+  , `dsl.QUEUE<BOOLEAN>?`
+  , `dsl.QUEUE<BOOLEAN?>`
+  , `dsl.QUEUE<BOOLEAN?>?`
   , `dsl.SET<BOOLEAN>`
   , `dsl.SET<BOOLEAN>?`
   , `dsl.SET<BOOLEAN?>`
@@ -179,6 +215,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.List<Bool>?`
   , `dsl.List<Bool?>`
   , `dsl.List<Bool?>?`
+  , `dsl.Queue<Bool>`
+  , `dsl.Queue<Bool>?`
+  , `dsl.Queue<Bool?>`
+  , `dsl.Queue<Bool?>?`
   , `dsl.Set<Bool>`
   , `dsl.Set<Bool>?`
   , `dsl.Set<Bool?>`
@@ -197,6 +237,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.list<bool>?`
   , `dsl.list<bool?>`
   , `dsl.list<bool?>?`
+  , `dsl.queue<bool>`
+  , `dsl.queue<bool>?`
+  , `dsl.queue<bool?>`
+  , `dsl.queue<bool?>?`
   , `dsl.set<bool>`
   , `dsl.set<bool>?`
   , `dsl.set<bool?>`
@@ -215,6 +259,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.list<boolean>?`
   , `dsl.list<boolean?>`
   , `dsl.list<boolean?>?`
+  , `dsl.queue<boolean>`
+  , `dsl.queue<boolean>?`
+  , `dsl.queue<boolean?>`
+  , `dsl.queue<boolean?>?`
   , `dsl.set<boolean>`
   , `dsl.set<boolean>?`
   , `dsl.set<boolean?>`
@@ -233,6 +281,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.List<Color>?`
   , `dsl.List<Color?>`
   , `dsl.List<Color?>?`
+  , `dsl.Queue<Color>`
+  , `dsl.Queue<Color>?`
+  , `dsl.Queue<Color?>`
+  , `dsl.Queue<Color?>?`
   , `dsl.Set<Color>`
   , `dsl.Set<Color>?`
   , `dsl.Set<Color?>`
@@ -251,6 +303,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.LIST<COLOR>?`
   , `dsl.LIST<COLOR?>`
   , `dsl.LIST<COLOR?>?`
+  , `dsl.QUEUE<COLOR>`
+  , `dsl.QUEUE<COLOR>?`
+  , `dsl.QUEUE<COLOR?>`
+  , `dsl.QUEUE<COLOR?>?`
   , `dsl.SET<COLOR>`
   , `dsl.SET<COLOR>?`
   , `dsl.SET<COLOR?>`
@@ -269,6 +325,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.list<color>?`
   , `dsl.list<color?>`
   , `dsl.list<color?>?`
+  , `dsl.queue<color>`
+  , `dsl.queue<color>?`
+  , `dsl.queue<color?>`
+  , `dsl.queue<color?>?`
   , `dsl.set<color>`
   , `dsl.set<color>?`
   , `dsl.set<color?>`
@@ -287,6 +347,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.List<Date>?`
   , `dsl.List<Date?>`
   , `dsl.List<Date?>?`
+  , `dsl.Queue<Date>`
+  , `dsl.Queue<Date>?`
+  , `dsl.Queue<Date?>`
+  , `dsl.Queue<Date?>?`
   , `dsl.Set<Date>`
   , `dsl.Set<Date>?`
   , `dsl.Set<Date?>`
@@ -305,6 +369,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.LIST<DATE>?`
   , `dsl.LIST<DATE?>`
   , `dsl.LIST<DATE?>?`
+  , `dsl.QUEUE<DATE>`
+  , `dsl.QUEUE<DATE>?`
+  , `dsl.QUEUE<DATE?>`
+  , `dsl.QUEUE<DATE?>?`
   , `dsl.SET<DATE>`
   , `dsl.SET<DATE>?`
   , `dsl.SET<DATE?>`
@@ -323,6 +391,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.list<date>?`
   , `dsl.list<date?>`
   , `dsl.list<date?>?`
+  , `dsl.queue<date>`
+  , `dsl.queue<date>?`
+  , `dsl.queue<date?>`
+  , `dsl.queue<date?>?`
   , `dsl.set<date>`
   , `dsl.set<date>?`
   , `dsl.set<date?>`
@@ -341,6 +413,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.List<Decimal>?`
   , `dsl.List<Decimal?>`
   , `dsl.List<Decimal?>?`
+  , `dsl.Queue<Decimal>`
+  , `dsl.Queue<Decimal>?`
+  , `dsl.Queue<Decimal?>`
+  , `dsl.Queue<Decimal?>?`
   , `dsl.Set<Decimal>`
   , `dsl.Set<Decimal>?`
   , `dsl.Set<Decimal?>`
@@ -359,6 +435,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.LIST<DECIMAL>?`
   , `dsl.LIST<DECIMAL?>`
   , `dsl.LIST<DECIMAL?>?`
+  , `dsl.QUEUE<DECIMAL>`
+  , `dsl.QUEUE<DECIMAL>?`
+  , `dsl.QUEUE<DECIMAL?>`
+  , `dsl.QUEUE<DECIMAL?>?`
   , `dsl.SET<DECIMAL>`
   , `dsl.SET<DECIMAL>?`
   , `dsl.SET<DECIMAL?>`
@@ -377,6 +457,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.list<decimal>?`
   , `dsl.list<decimal?>`
   , `dsl.list<decimal?>?`
+  , `dsl.queue<decimal>`
+  , `dsl.queue<decimal>?`
+  , `dsl.queue<decimal?>`
+  , `dsl.queue<decimal?>?`
   , `dsl.set<decimal>`
   , `dsl.set<decimal>?`
   , `dsl.set<decimal?>`
@@ -395,6 +479,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.List<Decimal(9)>?`
   , `dsl.List<Decimal(9)?>`
   , `dsl.List<Decimal(9)?>?`
+  , `dsl.Queue<Decimal(9)>`
+  , `dsl.Queue<Decimal(9)>?`
+  , `dsl.Queue<Decimal(9)?>`
+  , `dsl.Queue<Decimal(9)?>?`
   , `dsl.Set<Decimal(9)>`
   , `dsl.Set<Decimal(9)>?`
   , `dsl.Set<Decimal(9)?>`
@@ -413,6 +501,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.LIST<DECIMAL(9)>?`
   , `dsl.LIST<DECIMAL(9)?>`
   , `dsl.LIST<DECIMAL(9)?>?`
+  , `dsl.QUEUE<DECIMAL(9)>`
+  , `dsl.QUEUE<DECIMAL(9)>?`
+  , `dsl.QUEUE<DECIMAL(9)?>`
+  , `dsl.QUEUE<DECIMAL(9)?>?`
   , `dsl.SET<DECIMAL(9)>`
   , `dsl.SET<DECIMAL(9)>?`
   , `dsl.SET<DECIMAL(9)?>`
@@ -431,6 +523,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.list<decimal(9)>?`
   , `dsl.list<decimal(9)?>`
   , `dsl.list<decimal(9)?>?`
+  , `dsl.queue<decimal(9)>`
+  , `dsl.queue<decimal(9)>?`
+  , `dsl.queue<decimal(9)?>`
+  , `dsl.queue<decimal(9)?>?`
   , `dsl.set<decimal(9)>`
   , `dsl.set<decimal(9)>?`
   , `dsl.set<decimal(9)?>`
@@ -449,6 +545,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.List<Double>?`
   , `dsl.List<Double?>`
   , `dsl.List<Double?>?`
+  , `dsl.Queue<Double>`
+  , `dsl.Queue<Double>?`
+  , `dsl.Queue<Double?>`
+  , `dsl.Queue<Double?>?`
   , `dsl.Set<Double>`
   , `dsl.Set<Double>?`
   , `dsl.Set<Double?>`
@@ -467,6 +567,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.LIST<DOUBLE>?`
   , `dsl.LIST<DOUBLE?>`
   , `dsl.LIST<DOUBLE?>?`
+  , `dsl.QUEUE<DOUBLE>`
+  , `dsl.QUEUE<DOUBLE>?`
+  , `dsl.QUEUE<DOUBLE?>`
+  , `dsl.QUEUE<DOUBLE?>?`
   , `dsl.SET<DOUBLE>`
   , `dsl.SET<DOUBLE>?`
   , `dsl.SET<DOUBLE?>`
@@ -485,6 +589,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.list<double>?`
   , `dsl.list<double?>`
   , `dsl.list<double?>?`
+  , `dsl.queue<double>`
+  , `dsl.queue<double>?`
+  , `dsl.queue<double?>`
+  , `dsl.queue<double?>?`
   , `dsl.set<double>`
   , `dsl.set<double>?`
   , `dsl.set<double?>`
@@ -503,6 +611,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.List<Email>?`
   , `dsl.List<Email?>`
   , `dsl.List<Email?>?`
+  , `dsl.Queue<Email>`
+  , `dsl.Queue<Email>?`
+  , `dsl.Queue<Email?>`
+  , `dsl.Queue<Email?>?`
   , `dsl.Set<Email>`
   , `dsl.Set<Email>?`
   , `dsl.Set<Email?>`
@@ -521,6 +633,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.LIST<EMAIL>?`
   , `dsl.LIST<EMAIL?>`
   , `dsl.LIST<EMAIL?>?`
+  , `dsl.QUEUE<EMAIL>`
+  , `dsl.QUEUE<EMAIL>?`
+  , `dsl.QUEUE<EMAIL?>`
+  , `dsl.QUEUE<EMAIL?>?`
   , `dsl.SET<EMAIL>`
   , `dsl.SET<EMAIL>?`
   , `dsl.SET<EMAIL?>`
@@ -539,6 +655,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.list<email>?`
   , `dsl.list<email?>`
   , `dsl.list<email?>?`
+  , `dsl.queue<email>`
+  , `dsl.queue<email>?`
+  , `dsl.queue<email?>`
+  , `dsl.queue<email?>?`
   , `dsl.set<email>`
   , `dsl.set<email>?`
   , `dsl.set<email?>`
@@ -557,6 +677,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.List<Float>?`
   , `dsl.List<Float?>`
   , `dsl.List<Float?>?`
+  , `dsl.Queue<Float>`
+  , `dsl.Queue<Float>?`
+  , `dsl.Queue<Float?>`
+  , `dsl.Queue<Float?>?`
   , `dsl.Set<Float>`
   , `dsl.Set<Float>?`
   , `dsl.Set<Float?>`
@@ -575,6 +699,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.LIST<FLOAT>?`
   , `dsl.LIST<FLOAT?>`
   , `dsl.LIST<FLOAT?>?`
+  , `dsl.QUEUE<FLOAT>`
+  , `dsl.QUEUE<FLOAT>?`
+  , `dsl.QUEUE<FLOAT?>`
+  , `dsl.QUEUE<FLOAT?>?`
   , `dsl.SET<FLOAT>`
   , `dsl.SET<FLOAT>?`
   , `dsl.SET<FLOAT?>`
@@ -593,6 +721,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.list<float>?`
   , `dsl.list<float?>`
   , `dsl.list<float?>?`
+  , `dsl.queue<float>`
+  , `dsl.queue<float>?`
+  , `dsl.queue<float?>`
+  , `dsl.queue<float?>?`
   , `dsl.set<float>`
   , `dsl.set<float>?`
   , `dsl.set<float?>`
@@ -611,6 +743,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.List<Guid>?`
   , `dsl.List<Guid?>`
   , `dsl.List<Guid?>?`
+  , `dsl.Queue<Guid>`
+  , `dsl.Queue<Guid>?`
+  , `dsl.Queue<Guid?>`
+  , `dsl.Queue<Guid?>?`
   , `dsl.Set<Guid>`
   , `dsl.Set<Guid>?`
   , `dsl.Set<Guid?>`
@@ -629,6 +765,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.LIST<GUID>?`
   , `dsl.LIST<GUID?>`
   , `dsl.LIST<GUID?>?`
+  , `dsl.QUEUE<GUID>`
+  , `dsl.QUEUE<GUID>?`
+  , `dsl.QUEUE<GUID?>`
+  , `dsl.QUEUE<GUID?>?`
   , `dsl.SET<GUID>`
   , `dsl.SET<GUID>?`
   , `dsl.SET<GUID?>`
@@ -647,6 +787,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.LIST<UUID>?`
   , `dsl.LIST<UUID?>`
   , `dsl.LIST<UUID?>?`
+  , `dsl.QUEUE<UUID>`
+  , `dsl.QUEUE<UUID>?`
+  , `dsl.QUEUE<UUID?>`
+  , `dsl.QUEUE<UUID?>?`
   , `dsl.SET<UUID>`
   , `dsl.SET<UUID>?`
   , `dsl.SET<UUID?>`
@@ -665,6 +809,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.List<Uuid>?`
   , `dsl.List<Uuid?>`
   , `dsl.List<Uuid?>?`
+  , `dsl.Queue<Uuid>`
+  , `dsl.Queue<Uuid>?`
+  , `dsl.Queue<Uuid?>`
+  , `dsl.Queue<Uuid?>?`
   , `dsl.Set<Uuid>`
   , `dsl.Set<Uuid>?`
   , `dsl.Set<Uuid?>`
@@ -683,6 +831,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.list<guid>?`
   , `dsl.list<guid?>`
   , `dsl.list<guid?>?`
+  , `dsl.queue<guid>`
+  , `dsl.queue<guid>?`
+  , `dsl.queue<guid?>`
+  , `dsl.queue<guid?>?`
   , `dsl.set<guid>`
   , `dsl.set<guid>?`
   , `dsl.set<guid?>`
@@ -701,6 +853,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.list<uuid>?`
   , `dsl.list<uuid?>`
   , `dsl.list<uuid?>?`
+  , `dsl.queue<uuid>`
+  , `dsl.queue<uuid>?`
+  , `dsl.queue<uuid?>`
+  , `dsl.queue<uuid?>?`
   , `dsl.set<uuid>`
   , `dsl.set<uuid>?`
   , `dsl.set<uuid?>`
@@ -719,6 +875,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.List<Image>?`
   , `dsl.List<Image?>`
   , `dsl.List<Image?>?`
+  , `dsl.Queue<Image>`
+  , `dsl.Queue<Image>?`
+  , `dsl.Queue<Image?>`
+  , `dsl.Queue<Image?>?`
   , `dsl.Set<Image>`
   , `dsl.Set<Image>?`
   , `dsl.Set<Image?>`
@@ -737,6 +897,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.LIST<IMAGE>?`
   , `dsl.LIST<IMAGE?>`
   , `dsl.LIST<IMAGE?>?`
+  , `dsl.QUEUE<IMAGE>`
+  , `dsl.QUEUE<IMAGE>?`
+  , `dsl.QUEUE<IMAGE?>`
+  , `dsl.QUEUE<IMAGE?>?`
   , `dsl.SET<IMAGE>`
   , `dsl.SET<IMAGE>?`
   , `dsl.SET<IMAGE?>`
@@ -755,6 +919,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.LIST<PICTURE>?`
   , `dsl.LIST<PICTURE?>`
   , `dsl.LIST<PICTURE?>?`
+  , `dsl.QUEUE<PICTURE>`
+  , `dsl.QUEUE<PICTURE>?`
+  , `dsl.QUEUE<PICTURE?>`
+  , `dsl.QUEUE<PICTURE?>?`
   , `dsl.SET<PICTURE>`
   , `dsl.SET<PICTURE>?`
   , `dsl.SET<PICTURE?>`
@@ -773,6 +941,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.List<Picture>?`
   , `dsl.List<Picture?>`
   , `dsl.List<Picture?>?`
+  , `dsl.Queue<Picture>`
+  , `dsl.Queue<Picture>?`
+  , `dsl.Queue<Picture?>`
+  , `dsl.Queue<Picture?>?`
   , `dsl.Set<Picture>`
   , `dsl.Set<Picture>?`
   , `dsl.Set<Picture?>`
@@ -791,6 +963,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.list<image>?`
   , `dsl.list<image?>`
   , `dsl.list<image?>?`
+  , `dsl.queue<image>`
+  , `dsl.queue<image>?`
+  , `dsl.queue<image?>`
+  , `dsl.queue<image?>?`
   , `dsl.set<image>`
   , `dsl.set<image>?`
   , `dsl.set<image?>`
@@ -809,6 +985,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.list<picture>?`
   , `dsl.list<picture?>`
   , `dsl.list<picture?>?`
+  , `dsl.queue<picture>`
+  , `dsl.queue<picture>?`
+  , `dsl.queue<picture?>`
+  , `dsl.queue<picture?>?`
   , `dsl.set<picture>`
   , `dsl.set<picture>?`
   , `dsl.set<picture?>`
@@ -827,6 +1007,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.List<Integer>?`
   , `dsl.List<Integer?>`
   , `dsl.List<Integer?>?`
+  , `dsl.Queue<Integer>`
+  , `dsl.Queue<Integer>?`
+  , `dsl.Queue<Integer?>`
+  , `dsl.Queue<Integer?>?`
   , `dsl.Set<Integer>`
   , `dsl.Set<Integer>?`
   , `dsl.Set<Integer?>`
@@ -845,6 +1029,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.LIST<INT>?`
   , `dsl.LIST<INT?>`
   , `dsl.LIST<INT?>?`
+  , `dsl.QUEUE<INT>`
+  , `dsl.QUEUE<INT>?`
+  , `dsl.QUEUE<INT?>`
+  , `dsl.QUEUE<INT?>?`
   , `dsl.SET<INT>`
   , `dsl.SET<INT>?`
   , `dsl.SET<INT?>`
@@ -863,6 +1051,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.LIST<INTEGER>?`
   , `dsl.LIST<INTEGER?>`
   , `dsl.LIST<INTEGER?>?`
+  , `dsl.QUEUE<INTEGER>`
+  , `dsl.QUEUE<INTEGER>?`
+  , `dsl.QUEUE<INTEGER?>`
+  , `dsl.QUEUE<INTEGER?>?`
   , `dsl.SET<INTEGER>`
   , `dsl.SET<INTEGER>?`
   , `dsl.SET<INTEGER?>`
@@ -881,6 +1073,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.List<Int>?`
   , `dsl.List<Int?>`
   , `dsl.List<Int?>?`
+  , `dsl.Queue<Int>`
+  , `dsl.Queue<Int>?`
+  , `dsl.Queue<Int?>`
+  , `dsl.Queue<Int?>?`
   , `dsl.Set<Int>`
   , `dsl.Set<Int>?`
   , `dsl.Set<Int?>`
@@ -899,6 +1095,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.list<int>?`
   , `dsl.list<int?>`
   , `dsl.list<int?>?`
+  , `dsl.queue<int>`
+  , `dsl.queue<int>?`
+  , `dsl.queue<int?>`
+  , `dsl.queue<int?>?`
   , `dsl.set<int>`
   , `dsl.set<int>?`
   , `dsl.set<int?>`
@@ -917,6 +1117,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.list<integer>?`
   , `dsl.list<integer?>`
   , `dsl.list<integer?>?`
+  , `dsl.queue<integer>`
+  , `dsl.queue<integer>?`
+  , `dsl.queue<integer?>`
+  , `dsl.queue<integer?>?`
   , `dsl.set<integer>`
   , `dsl.set<integer>?`
   , `dsl.set<integer?>`
@@ -935,6 +1139,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.List<Ip>?`
   , `dsl.List<Ip?>`
   , `dsl.List<Ip?>?`
+  , `dsl.Queue<Ip>`
+  , `dsl.Queue<Ip>?`
+  , `dsl.Queue<Ip?>`
+  , `dsl.Queue<Ip?>?`
   , `dsl.Set<Ip>`
   , `dsl.Set<Ip>?`
   , `dsl.Set<Ip?>`
@@ -953,6 +1161,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.LIST<IP>?`
   , `dsl.LIST<IP?>`
   , `dsl.LIST<IP?>?`
+  , `dsl.QUEUE<IP>`
+  , `dsl.QUEUE<IP>?`
+  , `dsl.QUEUE<IP?>`
+  , `dsl.QUEUE<IP?>?`
   , `dsl.SET<IP>`
   , `dsl.SET<IP>?`
   , `dsl.SET<IP?>`
@@ -971,6 +1183,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.list<ip>?`
   , `dsl.list<ip?>`
   , `dsl.list<ip?>?`
+  , `dsl.queue<ip>`
+  , `dsl.queue<ip>?`
+  , `dsl.queue<ip?>`
+  , `dsl.queue<ip?>?`
   , `dsl.set<ip>`
   , `dsl.set<ip>?`
   , `dsl.set<ip?>`
@@ -989,6 +1205,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.List<Json>?`
   , `dsl.List<Json?>`
   , `dsl.List<Json?>?`
+  , `dsl.Queue<Json>`
+  , `dsl.Queue<Json>?`
+  , `dsl.Queue<Json?>`
+  , `dsl.Queue<Json?>?`
   , `dsl.Set<Json>`
   , `dsl.Set<Json>?`
   , `dsl.Set<Json?>`
@@ -1007,6 +1227,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.LIST<JSON>?`
   , `dsl.LIST<JSON?>`
   , `dsl.LIST<JSON?>?`
+  , `dsl.QUEUE<JSON>`
+  , `dsl.QUEUE<JSON>?`
+  , `dsl.QUEUE<JSON?>`
+  , `dsl.QUEUE<JSON?>?`
   , `dsl.SET<JSON>`
   , `dsl.SET<JSON>?`
   , `dsl.SET<JSON?>`
@@ -1025,6 +1249,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.list<json>?`
   , `dsl.list<json?>`
   , `dsl.list<json?>?`
+  , `dsl.queue<json>`
+  , `dsl.queue<json>?`
+  , `dsl.queue<json?>`
+  , `dsl.queue<json?>?`
   , `dsl.set<json>`
   , `dsl.set<json>?`
   , `dsl.set<json?>`
@@ -1043,6 +1271,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.List<JsonOf<Map>>?`
   , `dsl.List<JsonOf<Map>?>`
   , `dsl.List<JsonOf<Map>?>?`
+  , `dsl.Queue<JsonOf<Map>>`
+  , `dsl.Queue<JsonOf<Map>>?`
+  , `dsl.Queue<JsonOf<Map>?>`
+  , `dsl.Queue<JsonOf<Map>?>?`
   , `dsl.Set<JsonOf<Map>>`
   , `dsl.Set<JsonOf<Map>>?`
   , `dsl.Set<JsonOf<Map>?>`
@@ -1061,6 +1293,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.LIST<JSONOF<MAP>>?`
   , `dsl.LIST<JSONOF<MAP>?>`
   , `dsl.LIST<JSONOF<MAP>?>?`
+  , `dsl.QUEUE<JSONOF<MAP>>`
+  , `dsl.QUEUE<JSONOF<MAP>>?`
+  , `dsl.QUEUE<JSONOF<MAP>?>`
+  , `dsl.QUEUE<JSONOF<MAP>?>?`
   , `dsl.SET<JSONOF<MAP>>`
   , `dsl.SET<JSONOF<MAP>>?`
   , `dsl.SET<JSONOF<MAP>?>`
@@ -1079,6 +1315,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.List<Jsonof<map>>?`
   , `dsl.List<Jsonof<map>?>`
   , `dsl.List<Jsonof<map>?>?`
+  , `dsl.Queue<Jsonof<map>>`
+  , `dsl.Queue<Jsonof<map>>?`
+  , `dsl.Queue<Jsonof<map>?>`
+  , `dsl.Queue<Jsonof<map>?>?`
   , `dsl.Set<Jsonof<map>>`
   , `dsl.Set<Jsonof<map>>?`
   , `dsl.Set<Jsonof<map>?>`
@@ -1097,6 +1337,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.list<jsonof<map>>?`
   , `dsl.list<jsonof<map>?>`
   , `dsl.list<jsonof<map>?>?`
+  , `dsl.queue<jsonof<map>>`
+  , `dsl.queue<jsonof<map>>?`
+  , `dsl.queue<jsonof<map>?>`
+  , `dsl.queue<jsonof<map>?>?`
   , `dsl.set<jsonof<map>>`
   , `dsl.set<jsonof<map>>?`
   , `dsl.set<jsonof<map>?>`
@@ -1115,6 +1359,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.List<Location>?`
   , `dsl.List<Location?>`
   , `dsl.List<Location?>?`
+  , `dsl.Queue<Location>`
+  , `dsl.Queue<Location>?`
+  , `dsl.Queue<Location?>`
+  , `dsl.Queue<Location?>?`
   , `dsl.Set<Location>`
   , `dsl.Set<Location>?`
   , `dsl.Set<Location?>`
@@ -1133,6 +1381,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.LIST<LOCATION>?`
   , `dsl.LIST<LOCATION?>`
   , `dsl.LIST<LOCATION?>?`
+  , `dsl.QUEUE<LOCATION>`
+  , `dsl.QUEUE<LOCATION>?`
+  , `dsl.QUEUE<LOCATION?>`
+  , `dsl.QUEUE<LOCATION?>?`
   , `dsl.SET<LOCATION>`
   , `dsl.SET<LOCATION>?`
   , `dsl.SET<LOCATION?>`
@@ -1151,6 +1403,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.list<location>?`
   , `dsl.list<location?>`
   , `dsl.list<location?>?`
+  , `dsl.queue<location>`
+  , `dsl.queue<location>?`
+  , `dsl.queue<location?>`
+  , `dsl.queue<location?>?`
   , `dsl.set<location>`
   , `dsl.set<location>?`
   , `dsl.set<location?>`
@@ -1169,6 +1425,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.List<Long>?`
   , `dsl.List<Long?>`
   , `dsl.List<Long?>?`
+  , `dsl.Queue<Long>`
+  , `dsl.Queue<Long>?`
+  , `dsl.Queue<Long?>`
+  , `dsl.Queue<Long?>?`
   , `dsl.Set<Long>`
   , `dsl.Set<Long>?`
   , `dsl.Set<Long?>`
@@ -1187,6 +1447,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.LIST<LONG>?`
   , `dsl.LIST<LONG?>`
   , `dsl.LIST<LONG?>?`
+  , `dsl.QUEUE<LONG>`
+  , `dsl.QUEUE<LONG>?`
+  , `dsl.QUEUE<LONG?>`
+  , `dsl.QUEUE<LONG?>?`
   , `dsl.SET<LONG>`
   , `dsl.SET<LONG>?`
   , `dsl.SET<LONG?>`
@@ -1205,6 +1469,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.list<long>?`
   , `dsl.list<long?>`
   , `dsl.list<long?>?`
+  , `dsl.queue<long>`
+  , `dsl.queue<long>?`
+  , `dsl.queue<long?>`
+  , `dsl.queue<long?>?`
   , `dsl.set<long>`
   , `dsl.set<long>?`
   , `dsl.set<long?>`
@@ -1223,6 +1491,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.List<Map>?`
   , `dsl.List<Map?>`
   , `dsl.List<Map?>?`
+  , `dsl.Queue<Map>`
+  , `dsl.Queue<Map>?`
+  , `dsl.Queue<Map?>`
+  , `dsl.Queue<Map?>?`
   , `dsl.Set<Map>`
   , `dsl.Set<Map>?`
   , `dsl.Set<Map?>`
@@ -1241,6 +1513,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.LIST<DICTIONARY>?`
   , `dsl.LIST<DICTIONARY?>`
   , `dsl.LIST<DICTIONARY?>?`
+  , `dsl.QUEUE<DICTIONARY>`
+  , `dsl.QUEUE<DICTIONARY>?`
+  , `dsl.QUEUE<DICTIONARY?>`
+  , `dsl.QUEUE<DICTIONARY?>?`
   , `dsl.SET<DICTIONARY>`
   , `dsl.SET<DICTIONARY>?`
   , `dsl.SET<DICTIONARY?>`
@@ -1259,6 +1535,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.List<Dictionary>?`
   , `dsl.List<Dictionary?>`
   , `dsl.List<Dictionary?>?`
+  , `dsl.Queue<Dictionary>`
+  , `dsl.Queue<Dictionary>?`
+  , `dsl.Queue<Dictionary?>`
+  , `dsl.Queue<Dictionary?>?`
   , `dsl.Set<Dictionary>`
   , `dsl.Set<Dictionary>?`
   , `dsl.Set<Dictionary?>`
@@ -1277,6 +1557,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.LIST<MAP>?`
   , `dsl.LIST<MAP?>`
   , `dsl.LIST<MAP?>?`
+  , `dsl.QUEUE<MAP>`
+  , `dsl.QUEUE<MAP>?`
+  , `dsl.QUEUE<MAP?>`
+  , `dsl.QUEUE<MAP?>?`
   , `dsl.SET<MAP>`
   , `dsl.SET<MAP>?`
   , `dsl.SET<MAP?>`
@@ -1295,6 +1579,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.list<dictionary>?`
   , `dsl.list<dictionary?>`
   , `dsl.list<dictionary?>?`
+  , `dsl.queue<dictionary>`
+  , `dsl.queue<dictionary>?`
+  , `dsl.queue<dictionary?>`
+  , `dsl.queue<dictionary?>?`
   , `dsl.set<dictionary>`
   , `dsl.set<dictionary>?`
   , `dsl.set<dictionary?>`
@@ -1313,6 +1601,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.list<map>?`
   , `dsl.list<map?>`
   , `dsl.list<map?>?`
+  , `dsl.queue<map>`
+  , `dsl.queue<map>?`
+  , `dsl.queue<map?>`
+  , `dsl.queue<map?>?`
   , `dsl.set<map>`
   , `dsl.set<map>?`
   , `dsl.set<map?>`
@@ -1331,6 +1623,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.List<Money>?`
   , `dsl.List<Money?>`
   , `dsl.List<Money?>?`
+  , `dsl.Queue<Money>`
+  , `dsl.Queue<Money>?`
+  , `dsl.Queue<Money?>`
+  , `dsl.Queue<Money?>?`
   , `dsl.Set<Money>`
   , `dsl.Set<Money>?`
   , `dsl.Set<Money?>`
@@ -1349,6 +1645,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.LIST<MONEY>?`
   , `dsl.LIST<MONEY?>`
   , `dsl.LIST<MONEY?>?`
+  , `dsl.QUEUE<MONEY>`
+  , `dsl.QUEUE<MONEY>?`
+  , `dsl.QUEUE<MONEY?>`
+  , `dsl.QUEUE<MONEY?>?`
   , `dsl.SET<MONEY>`
   , `dsl.SET<MONEY>?`
   , `dsl.SET<MONEY?>`
@@ -1367,6 +1667,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.list<money>?`
   , `dsl.list<money?>`
   , `dsl.list<money?>?`
+  , `dsl.queue<money>`
+  , `dsl.queue<money>?`
+  , `dsl.queue<money?>`
+  , `dsl.queue<money?>?`
   , `dsl.set<money>`
   , `dsl.set<money>?`
   , `dsl.set<money?>`
@@ -1385,6 +1689,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.List<Native>?`
   , `dsl.List<Native?>`
   , `dsl.List<Native?>?`
+  , `dsl.Queue<Native>`
+  , `dsl.Queue<Native>?`
+  , `dsl.Queue<Native?>`
+  , `dsl.Queue<Native?>?`
   , `dsl.Set<Native>`
   , `dsl.Set<Native>?`
   , `dsl.Set<Native?>`
@@ -1403,6 +1711,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.LIST<NATIVE>?`
   , `dsl.LIST<NATIVE?>`
   , `dsl.LIST<NATIVE?>?`
+  , `dsl.QUEUE<NATIVE>`
+  , `dsl.QUEUE<NATIVE>?`
+  , `dsl.QUEUE<NATIVE?>`
+  , `dsl.QUEUE<NATIVE?>?`
   , `dsl.SET<NATIVE>`
   , `dsl.SET<NATIVE>?`
   , `dsl.SET<NATIVE?>`
@@ -1421,6 +1733,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.list<native>?`
   , `dsl.list<native?>`
   , `dsl.list<native?>?`
+  , `dsl.queue<native>`
+  , `dsl.queue<native>?`
+  , `dsl.queue<native?>`
+  , `dsl.queue<native?>?`
   , `dsl.set<native>`
   , `dsl.set<native>?`
   , `dsl.set<native?>`
@@ -1439,6 +1755,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.List<Phone>?`
   , `dsl.List<Phone?>`
   , `dsl.List<Phone?>?`
+  , `dsl.Queue<Phone>`
+  , `dsl.Queue<Phone>?`
+  , `dsl.Queue<Phone?>`
+  , `dsl.Queue<Phone?>?`
   , `dsl.Set<Phone>`
   , `dsl.Set<Phone>?`
   , `dsl.Set<Phone?>`
@@ -1457,6 +1777,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.LIST<PHONE>?`
   , `dsl.LIST<PHONE?>`
   , `dsl.LIST<PHONE?>?`
+  , `dsl.QUEUE<PHONE>`
+  , `dsl.QUEUE<PHONE>?`
+  , `dsl.QUEUE<PHONE?>`
+  , `dsl.QUEUE<PHONE?>?`
   , `dsl.SET<PHONE>`
   , `dsl.SET<PHONE>?`
   , `dsl.SET<PHONE?>`
@@ -1475,6 +1799,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.list<phone>?`
   , `dsl.list<phone?>`
   , `dsl.list<phone?>?`
+  , `dsl.queue<phone>`
+  , `dsl.queue<phone>?`
+  , `dsl.queue<phone?>`
+  , `dsl.queue<phone?>?`
   , `dsl.set<phone>`
   , `dsl.set<phone>?`
   , `dsl.set<phone?>`
@@ -1493,6 +1821,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.List<Point>?`
   , `dsl.List<Point?>`
   , `dsl.List<Point?>?`
+  , `dsl.Queue<Point>`
+  , `dsl.Queue<Point>?`
+  , `dsl.Queue<Point?>`
+  , `dsl.Queue<Point?>?`
   , `dsl.Set<Point>`
   , `dsl.Set<Point>?`
   , `dsl.Set<Point?>`
@@ -1511,6 +1843,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.LIST<POINT>?`
   , `dsl.LIST<POINT?>`
   , `dsl.LIST<POINT?>?`
+  , `dsl.QUEUE<POINT>`
+  , `dsl.QUEUE<POINT>?`
+  , `dsl.QUEUE<POINT?>`
+  , `dsl.QUEUE<POINT?>?`
   , `dsl.SET<POINT>`
   , `dsl.SET<POINT>?`
   , `dsl.SET<POINT?>`
@@ -1529,6 +1865,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.list<point>?`
   , `dsl.list<point?>`
   , `dsl.list<point?>?`
+  , `dsl.queue<point>`
+  , `dsl.queue<point>?`
+  , `dsl.queue<point?>`
+  , `dsl.queue<point?>?`
   , `dsl.set<point>`
   , `dsl.set<point>?`
   , `dsl.set<point?>`
@@ -1547,6 +1887,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.List<Rectangle>?`
   , `dsl.List<Rectangle?>`
   , `dsl.List<Rectangle?>?`
+  , `dsl.Queue<Rectangle>`
+  , `dsl.Queue<Rectangle>?`
+  , `dsl.Queue<Rectangle?>`
+  , `dsl.Queue<Rectangle?>?`
   , `dsl.Set<Rectangle>`
   , `dsl.Set<Rectangle>?`
   , `dsl.Set<Rectangle?>`
@@ -1565,6 +1909,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.LIST<BOX>?`
   , `dsl.LIST<BOX?>`
   , `dsl.LIST<BOX?>?`
+  , `dsl.QUEUE<BOX>`
+  , `dsl.QUEUE<BOX>?`
+  , `dsl.QUEUE<BOX?>`
+  , `dsl.QUEUE<BOX?>?`
   , `dsl.SET<BOX>`
   , `dsl.SET<BOX>?`
   , `dsl.SET<BOX?>`
@@ -1583,6 +1931,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.List<Box>?`
   , `dsl.List<Box?>`
   , `dsl.List<Box?>?`
+  , `dsl.Queue<Box>`
+  , `dsl.Queue<Box>?`
+  , `dsl.Queue<Box?>`
+  , `dsl.Queue<Box?>?`
   , `dsl.Set<Box>`
   , `dsl.Set<Box>?`
   , `dsl.Set<Box?>`
@@ -1601,6 +1953,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.LIST<RECTANGLE>?`
   , `dsl.LIST<RECTANGLE?>`
   , `dsl.LIST<RECTANGLE?>?`
+  , `dsl.QUEUE<RECTANGLE>`
+  , `dsl.QUEUE<RECTANGLE>?`
+  , `dsl.QUEUE<RECTANGLE?>`
+  , `dsl.QUEUE<RECTANGLE?>?`
   , `dsl.SET<RECTANGLE>`
   , `dsl.SET<RECTANGLE>?`
   , `dsl.SET<RECTANGLE?>`
@@ -1619,6 +1975,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.list<box>?`
   , `dsl.list<box?>`
   , `dsl.list<box?>?`
+  , `dsl.queue<box>`
+  , `dsl.queue<box>?`
+  , `dsl.queue<box?>`
+  , `dsl.queue<box?>?`
   , `dsl.set<box>`
   , `dsl.set<box>?`
   , `dsl.set<box?>`
@@ -1637,6 +1997,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.list<rectangle>?`
   , `dsl.list<rectangle?>`
   , `dsl.list<rectangle?>?`
+  , `dsl.queue<rectangle>`
+  , `dsl.queue<rectangle>?`
+  , `dsl.queue<rectangle?>`
+  , `dsl.queue<rectangle?>?`
   , `dsl.set<rectangle>`
   , `dsl.set<rectangle>?`
   , `dsl.set<rectangle?>`
@@ -1655,6 +2019,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.LIST<S3>?`
   , `dsl.LIST<S3?>`
   , `dsl.LIST<S3?>?`
+  , `dsl.QUEUE<S3>`
+  , `dsl.QUEUE<S3>?`
+  , `dsl.QUEUE<S3?>`
+  , `dsl.QUEUE<S3?>?`
   , `dsl.SET<S3>`
   , `dsl.SET<S3>?`
   , `dsl.SET<S3?>`
@@ -1673,6 +2041,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.list<s3>?`
   , `dsl.list<s3?>`
   , `dsl.list<s3?>?`
+  , `dsl.queue<s3>`
+  , `dsl.queue<s3>?`
+  , `dsl.queue<s3?>`
+  , `dsl.queue<s3?>?`
   , `dsl.set<s3>`
   , `dsl.set<s3>?`
   , `dsl.set<s3?>`
@@ -1691,6 +2063,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.List<Secret>?`
   , `dsl.List<Secret?>`
   , `dsl.List<Secret?>?`
+  , `dsl.Queue<Secret>`
+  , `dsl.Queue<Secret>?`
+  , `dsl.Queue<Secret?>`
+  , `dsl.Queue<Secret?>?`
   , `dsl.Set<Secret>`
   , `dsl.Set<Secret>?`
   , `dsl.Set<Secret?>`
@@ -1709,6 +2085,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.LIST<SECRET>?`
   , `dsl.LIST<SECRET?>`
   , `dsl.LIST<SECRET?>?`
+  , `dsl.QUEUE<SECRET>`
+  , `dsl.QUEUE<SECRET>?`
+  , `dsl.QUEUE<SECRET?>`
+  , `dsl.QUEUE<SECRET?>?`
   , `dsl.SET<SECRET>`
   , `dsl.SET<SECRET>?`
   , `dsl.SET<SECRET?>`
@@ -1727,6 +2107,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.list<secret>?`
   , `dsl.list<secret?>`
   , `dsl.list<secret?>?`
+  , `dsl.queue<secret>`
+  , `dsl.queue<secret>?`
+  , `dsl.queue<secret?>`
+  , `dsl.queue<secret?>?`
   , `dsl.set<secret>`
   , `dsl.set<secret>?`
   , `dsl.set<secret?>`
@@ -1745,6 +2129,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.List<Stream>?`
   , `dsl.List<Stream?>`
   , `dsl.List<Stream?>?`
+  , `dsl.Queue<Stream>`
+  , `dsl.Queue<Stream>?`
+  , `dsl.Queue<Stream?>`
+  , `dsl.Queue<Stream?>?`
   , `dsl.Set<Stream>`
   , `dsl.Set<Stream>?`
   , `dsl.Set<Stream?>`
@@ -1763,6 +2151,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.LIST<STREAM>?`
   , `dsl.LIST<STREAM?>`
   , `dsl.LIST<STREAM?>?`
+  , `dsl.QUEUE<STREAM>`
+  , `dsl.QUEUE<STREAM>?`
+  , `dsl.QUEUE<STREAM?>`
+  , `dsl.QUEUE<STREAM?>?`
   , `dsl.SET<STREAM>`
   , `dsl.SET<STREAM>?`
   , `dsl.SET<STREAM?>`
@@ -1781,6 +2173,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.list<stream>?`
   , `dsl.list<stream?>`
   , `dsl.list<stream?>?`
+  , `dsl.queue<stream>`
+  , `dsl.queue<stream>?`
+  , `dsl.queue<stream?>`
+  , `dsl.queue<stream?>?`
   , `dsl.set<stream>`
   , `dsl.set<stream>?`
   , `dsl.set<stream?>`
@@ -1799,6 +2195,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.List<String>?`
   , `dsl.List<String?>`
   , `dsl.List<String?>?`
+  , `dsl.Queue<String>`
+  , `dsl.Queue<String>?`
+  , `dsl.Queue<String?>`
+  , `dsl.Queue<String?>?`
   , `dsl.Set<String>`
   , `dsl.Set<String>?`
   , `dsl.Set<String?>`
@@ -1817,6 +2217,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.LIST<STRING>?`
   , `dsl.LIST<STRING?>`
   , `dsl.LIST<STRING?>?`
+  , `dsl.QUEUE<STRING>`
+  , `dsl.QUEUE<STRING>?`
+  , `dsl.QUEUE<STRING?>`
+  , `dsl.QUEUE<STRING?>?`
   , `dsl.SET<STRING>`
   , `dsl.SET<STRING>?`
   , `dsl.SET<STRING?>`
@@ -1835,6 +2239,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.list<string>?`
   , `dsl.list<string?>`
   , `dsl.list<string?>?`
+  , `dsl.queue<string>`
+  , `dsl.queue<string>?`
+  , `dsl.queue<string?>`
+  , `dsl.queue<string?>?`
   , `dsl.set<string>`
   , `dsl.set<string>?`
   , `dsl.set<string?>`
@@ -1853,6 +2261,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.List<String(9)>?`
   , `dsl.List<String(9)?>`
   , `dsl.List<String(9)?>?`
+  , `dsl.Queue<String(9)>`
+  , `dsl.Queue<String(9)>?`
+  , `dsl.Queue<String(9)?>`
+  , `dsl.Queue<String(9)?>?`
   , `dsl.Set<String(9)>`
   , `dsl.Set<String(9)>?`
   , `dsl.Set<String(9)?>`
@@ -1871,6 +2283,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.LIST<STRING(9)>?`
   , `dsl.LIST<STRING(9)?>`
   , `dsl.LIST<STRING(9)?>?`
+  , `dsl.QUEUE<STRING(9)>`
+  , `dsl.QUEUE<STRING(9)>?`
+  , `dsl.QUEUE<STRING(9)?>`
+  , `dsl.QUEUE<STRING(9)?>?`
   , `dsl.SET<STRING(9)>`
   , `dsl.SET<STRING(9)>?`
   , `dsl.SET<STRING(9)?>`
@@ -1889,6 +2305,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.list<string(9)>?`
   , `dsl.list<string(9)?>`
   , `dsl.list<string(9)?>?`
+  , `dsl.queue<string(9)>`
+  , `dsl.queue<string(9)>?`
+  , `dsl.queue<string(9)?>`
+  , `dsl.queue<string(9)?>?`
   , `dsl.set<string(9)>`
   , `dsl.set<string(9)>?`
   , `dsl.set<string(9)?>`
@@ -1907,6 +2327,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.List<Text>?`
   , `dsl.List<Text?>`
   , `dsl.List<Text?>?`
+  , `dsl.Queue<Text>`
+  , `dsl.Queue<Text>?`
+  , `dsl.Queue<Text?>`
+  , `dsl.Queue<Text?>?`
   , `dsl.Set<Text>`
   , `dsl.Set<Text>?`
   , `dsl.Set<Text?>`
@@ -1925,6 +2349,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.LIST<TEXT>?`
   , `dsl.LIST<TEXT?>`
   , `dsl.LIST<TEXT?>?`
+  , `dsl.QUEUE<TEXT>`
+  , `dsl.QUEUE<TEXT>?`
+  , `dsl.QUEUE<TEXT?>`
+  , `dsl.QUEUE<TEXT?>?`
   , `dsl.SET<TEXT>`
   , `dsl.SET<TEXT>?`
   , `dsl.SET<TEXT?>`
@@ -1943,6 +2371,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.list<text>?`
   , `dsl.list<text?>`
   , `dsl.list<text?>?`
+  , `dsl.queue<text>`
+  , `dsl.queue<text>?`
+  , `dsl.queue<text?>`
+  , `dsl.queue<text?>?`
   , `dsl.set<text>`
   , `dsl.set<text>?`
   , `dsl.set<text?>`
@@ -1961,6 +2393,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.List<Time>?`
   , `dsl.List<Time?>`
   , `dsl.List<Time?>?`
+  , `dsl.Queue<Time>`
+  , `dsl.Queue<Time>?`
+  , `dsl.Queue<Time?>`
+  , `dsl.Queue<Time?>?`
   , `dsl.Set<Time>`
   , `dsl.Set<Time>?`
   , `dsl.Set<Time?>`
@@ -1979,6 +2415,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.LIST<TIME>?`
   , `dsl.LIST<TIME?>`
   , `dsl.LIST<TIME?>?`
+  , `dsl.QUEUE<TIME>`
+  , `dsl.QUEUE<TIME>?`
+  , `dsl.QUEUE<TIME?>`
+  , `dsl.QUEUE<TIME?>?`
   , `dsl.SET<TIME>`
   , `dsl.SET<TIME>?`
   , `dsl.SET<TIME?>`
@@ -1997,6 +2437,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.list<time>?`
   , `dsl.list<time?>`
   , `dsl.list<time?>?`
+  , `dsl.queue<time>`
+  , `dsl.queue<time>?`
+  , `dsl.queue<time?>`
+  , `dsl.queue<time?>?`
   , `dsl.set<time>`
   , `dsl.set<time>?`
   , `dsl.set<time?>`
@@ -2015,6 +2459,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.List<Timestamp>?`
   , `dsl.List<Timestamp?>`
   , `dsl.List<Timestamp?>?`
+  , `dsl.Queue<Timestamp>`
+  , `dsl.Queue<Timestamp>?`
+  , `dsl.Queue<Timestamp?>`
+  , `dsl.Queue<Timestamp?>?`
   , `dsl.Set<Timestamp>`
   , `dsl.Set<Timestamp>?`
   , `dsl.Set<Timestamp?>`
@@ -2033,6 +2481,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.LIST<DATETIME>?`
   , `dsl.LIST<DATETIME?>`
   , `dsl.LIST<DATETIME?>?`
+  , `dsl.QUEUE<DATETIME>`
+  , `dsl.QUEUE<DATETIME>?`
+  , `dsl.QUEUE<DATETIME?>`
+  , `dsl.QUEUE<DATETIME?>?`
   , `dsl.SET<DATETIME>`
   , `dsl.SET<DATETIME>?`
   , `dsl.SET<DATETIME?>`
@@ -2051,6 +2503,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.List<DateTime>?`
   , `dsl.List<DateTime?>`
   , `dsl.List<DateTime?>?`
+  , `dsl.Queue<DateTime>`
+  , `dsl.Queue<DateTime>?`
+  , `dsl.Queue<DateTime?>`
+  , `dsl.Queue<DateTime?>?`
   , `dsl.Set<DateTime>`
   , `dsl.Set<DateTime>?`
   , `dsl.Set<DateTime?>`
@@ -2069,6 +2525,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.List<Datetime>?`
   , `dsl.List<Datetime?>`
   , `dsl.List<Datetime?>?`
+  , `dsl.Queue<Datetime>`
+  , `dsl.Queue<Datetime>?`
+  , `dsl.Queue<Datetime?>`
+  , `dsl.Queue<Datetime?>?`
   , `dsl.Set<Datetime>`
   , `dsl.Set<Datetime>?`
   , `dsl.Set<Datetime?>`
@@ -2087,6 +2547,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.LIST<TIMESTAMP>?`
   , `dsl.LIST<TIMESTAMP?>`
   , `dsl.LIST<TIMESTAMP?>?`
+  , `dsl.QUEUE<TIMESTAMP>`
+  , `dsl.QUEUE<TIMESTAMP>?`
+  , `dsl.QUEUE<TIMESTAMP?>`
+  , `dsl.QUEUE<TIMESTAMP?>?`
   , `dsl.SET<TIMESTAMP>`
   , `dsl.SET<TIMESTAMP>?`
   , `dsl.SET<TIMESTAMP?>`
@@ -2105,6 +2569,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.list<datetime>?`
   , `dsl.list<datetime?>`
   , `dsl.list<datetime?>?`
+  , `dsl.queue<datetime>`
+  , `dsl.queue<datetime>?`
+  , `dsl.queue<datetime?>`
+  , `dsl.queue<datetime?>?`
   , `dsl.set<datetime>`
   , `dsl.set<datetime>?`
   , `dsl.set<datetime?>`
@@ -2123,6 +2591,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.list<timestamp>?`
   , `dsl.list<timestamp?>`
   , `dsl.list<timestamp?>?`
+  , `dsl.queue<timestamp>`
+  , `dsl.queue<timestamp>?`
+  , `dsl.queue<timestamp?>`
+  , `dsl.queue<timestamp?>?`
   , `dsl.set<timestamp>`
   , `dsl.set<timestamp>?`
   , `dsl.set<timestamp?>`
@@ -2141,6 +2613,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.List<Url>?`
   , `dsl.List<Url?>`
   , `dsl.List<Url?>?`
+  , `dsl.Queue<Url>`
+  , `dsl.Queue<Url>?`
+  , `dsl.Queue<Url?>`
+  , `dsl.Queue<Url?>?`
   , `dsl.Set<Url>`
   , `dsl.Set<Url>?`
   , `dsl.Set<Url?>`
@@ -2159,6 +2635,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.LIST<LINK>?`
   , `dsl.LIST<LINK?>`
   , `dsl.LIST<LINK?>?`
+  , `dsl.QUEUE<LINK>`
+  , `dsl.QUEUE<LINK>?`
+  , `dsl.QUEUE<LINK?>`
+  , `dsl.QUEUE<LINK?>?`
   , `dsl.SET<LINK>`
   , `dsl.SET<LINK>?`
   , `dsl.SET<LINK?>`
@@ -2177,6 +2657,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.List<Link>?`
   , `dsl.List<Link?>`
   , `dsl.List<Link?>?`
+  , `dsl.Queue<Link>`
+  , `dsl.Queue<Link>?`
+  , `dsl.Queue<Link?>`
+  , `dsl.Queue<Link?>?`
   , `dsl.Set<Link>`
   , `dsl.Set<Link>?`
   , `dsl.Set<Link?>`
@@ -2195,6 +2679,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.LIST<URL>?`
   , `dsl.LIST<URL?>`
   , `dsl.LIST<URL?>?`
+  , `dsl.QUEUE<URL>`
+  , `dsl.QUEUE<URL>?`
+  , `dsl.QUEUE<URL?>`
+  , `dsl.QUEUE<URL?>?`
   , `dsl.SET<URL>`
   , `dsl.SET<URL>?`
   , `dsl.SET<URL?>`
@@ -2213,6 +2701,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.list<link>?`
   , `dsl.list<link?>`
   , `dsl.list<link?>?`
+  , `dsl.queue<link>`
+  , `dsl.queue<link>?`
+  , `dsl.queue<link?>`
+  , `dsl.queue<link?>?`
   , `dsl.set<link>`
   , `dsl.set<link>?`
   , `dsl.set<link?>`
@@ -2231,6 +2723,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.list<url>?`
   , `dsl.list<url?>`
   , `dsl.list<url?>?`
+  , `dsl.queue<url>`
+  , `dsl.queue<url>?`
+  , `dsl.queue<url?>`
+  , `dsl.queue<url?>?`
   , `dsl.set<url>`
   , `dsl.set<url>?`
   , `dsl.set<url?>`
@@ -2249,6 +2745,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.List<Xml>?`
   , `dsl.List<Xml?>`
   , `dsl.List<Xml?>?`
+  , `dsl.Queue<Xml>`
+  , `dsl.Queue<Xml>?`
+  , `dsl.Queue<Xml?>`
+  , `dsl.Queue<Xml?>?`
   , `dsl.Set<Xml>`
   , `dsl.Set<Xml>?`
   , `dsl.Set<Xml?>`
@@ -2267,6 +2767,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.LIST<XML>?`
   , `dsl.LIST<XML?>`
   , `dsl.LIST<XML?>?`
+  , `dsl.QUEUE<XML>`
+  , `dsl.QUEUE<XML>?`
+  , `dsl.QUEUE<XML?>`
+  , `dsl.QUEUE<XML?>?`
   , `dsl.SET<XML>`
   , `dsl.SET<XML>?`
   , `dsl.SET<XML?>`
@@ -2285,6 +2789,10 @@ trait OcdDslBoxTypeValues {
   , `dsl.list<xml>?`
   , `dsl.list<xml?>`
   , `dsl.list<xml?>?`
+  , `dsl.queue<xml>`
+  , `dsl.queue<xml>?`
+  , `dsl.queue<xml?>`
+  , `dsl.queue<xml?>?`
   , `dsl.set<xml>`
   , `dsl.set<xml>?`
   , `dsl.set<xml?>`

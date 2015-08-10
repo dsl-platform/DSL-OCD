@@ -88,6 +88,38 @@ case object `scala.List<Ip?>?`
   val defaultValue = "None"
 }
 
+case object `scala.Queue<Ip>`
+    extends ScalaIp with `box.OneQueueOfOne` {
+
+  val scalaClass = "Queue[java.net.InetAddress]"
+
+  val defaultValue = "Queue[java.net.InetAddress].empty"
+}
+
+case object `scala.Queue<Ip>?`
+    extends ScalaIp with `box.NullableQueueOfOne` {
+
+  val scalaClass = "Option[Queue[java.net.InetAddress]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Queue<Ip?>`
+    extends ScalaIp with `box.OneQueueOfNullable` {
+
+  val scalaClass = "Queue[Option[java.net.InetAddress]]"
+
+  val defaultValue = "Queue[Option[java.net.InetAddress]].empty"
+}
+
+case object `scala.Queue<Ip?>?`
+    extends ScalaIp with `box.NullableQueueOfNullable` {
+
+  val scalaClass = "Option[Queue[Option[java.net.InetAddress]]]"
+
+  val defaultValue = "None"
+}
+
 case object `scala.Set<Ip>`
     extends ScalaIp with `box.OneSetOfOne` {
 

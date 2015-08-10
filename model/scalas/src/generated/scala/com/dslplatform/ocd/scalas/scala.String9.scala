@@ -88,6 +88,38 @@ case object `scala.List<String(9)?>?`
   val defaultValue = "None"
 }
 
+case object `scala.Queue<String(9)>`
+    extends ScalaStringWithMaxLengthOf9 with `box.OneQueueOfOne` {
+
+  val scalaClass = "Queue[String]"
+
+  val defaultValue = "Queue[String].empty"
+}
+
+case object `scala.Queue<String(9)>?`
+    extends ScalaStringWithMaxLengthOf9 with `box.NullableQueueOfOne` {
+
+  val scalaClass = "Option[Queue[String]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Queue<String(9)?>`
+    extends ScalaStringWithMaxLengthOf9 with `box.OneQueueOfNullable` {
+
+  val scalaClass = "Queue[Option[String]]"
+
+  val defaultValue = "Queue[Option[String]].empty"
+}
+
+case object `scala.Queue<String(9)?>?`
+    extends ScalaStringWithMaxLengthOf9 with `box.NullableQueueOfNullable` {
+
+  val scalaClass = "Option[Queue[Option[String]]]"
+
+  val defaultValue = "None"
+}
+
 case object `scala.Set<String(9)>`
     extends ScalaStringWithMaxLengthOf9 with `box.OneSetOfOne` {
 

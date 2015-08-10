@@ -320,6 +320,140 @@ case object `java.List<String(9)?>?`
   val hasGenerics = true
 }
 
+case object `java.Queue<String(9)>`
+    extends JavaStringWithMaxLengthOf9 with `box.OneQueueOfOne` {
+
+  val javaClass = "java.util.Queue<String>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("String"))
+  val javaDescription = "OneQueueOfOneStringsWithMaxLengthOf9"
+
+  def defaultValue = SingleJavaValue("new java.util.ArrayDeque<String>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("String",
+      SingleJavaValue("\"\"")
+    )
+  , QueueOfJavaValues("String",
+      SingleJavaValue("\"xxxxxxxxx\"")
+    )
+  , QueueOfJavaValues("String",
+      SingleJavaValue("\"\"")
+    , SingleJavaValue("\"\\\"\"")
+    , SingleJavaValue("\"'/\\\\[](){}\"")
+    , SingleJavaValue("\"\\u0001\\u0002\\u0003\\u0004\\u0005\\u0006\\u0007\\b\\t\"")
+    , SingleJavaValue("\"xxxxxxxxx\"")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<String(9)>?`
+    extends JavaStringWithMaxLengthOf9 with `box.NullableQueueOfOne` {
+
+  val javaClass = "java.util.Queue<String>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("String"))
+  val javaDescription = "NullableQueueOfOneStringsWithMaxLengthOf9"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("String",
+      SingleJavaValue("\"\"")
+    )
+  , QueueOfJavaValues("String",
+      SingleJavaValue("\"xxxxxxxxx\"")
+    )
+  , QueueOfJavaValues("String",
+      SingleJavaValue("\"\"")
+    , SingleJavaValue("\"\\\"\"")
+    , SingleJavaValue("\"'/\\\\[](){}\"")
+    , SingleJavaValue("\"\\u0001\\u0002\\u0003\\u0004\\u0005\\u0006\\u0007\\b\\t\"")
+    , SingleJavaValue("\"xxxxxxxxx\"")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<String(9)?>`
+    extends JavaStringWithMaxLengthOf9 with `box.OneQueueOfNullable` {
+
+  val javaClass = "java.util.Queue<String>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("String"))
+  val javaDescription = "OneQueueOfNullableStringsWithMaxLengthOf9"
+
+  def defaultValue = SingleJavaValue("new java.util.ArrayDeque<String>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("String",
+      SingleJavaValue("null")
+    )
+  , QueueOfJavaValues("String",
+      SingleJavaValue("\"\"")
+    )
+  , QueueOfJavaValues("String",
+      SingleJavaValue("\"xxxxxxxxx\"")
+    )
+  , QueueOfJavaValues("String",
+      SingleJavaValue("\"\"")
+    , SingleJavaValue("\"\\\"\"")
+    , SingleJavaValue("\"'/\\\\[](){}\"")
+    , SingleJavaValue("\"\\u0001\\u0002\\u0003\\u0004\\u0005\\u0006\\u0007\\b\\t\"")
+    , SingleJavaValue("\"xxxxxxxxx\"")
+    )
+  , QueueOfJavaValues("String",
+      SingleJavaValue("null")
+    , SingleJavaValue("\"\"")
+    , SingleJavaValue("\"\\\"\"")
+    , SingleJavaValue("\"'/\\\\[](){}\"")
+    , SingleJavaValue("\"\\u0001\\u0002\\u0003\\u0004\\u0005\\u0006\\u0007\\b\\t\"")
+    , SingleJavaValue("\"xxxxxxxxx\"")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<String(9)?>?`
+    extends JavaStringWithMaxLengthOf9 with `box.NullableQueueOfNullable` {
+
+  val javaClass = "java.util.Queue<String>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("String"))
+  val javaDescription = "NullableQueueOfNullableStringsWithMaxLengthOf9"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("String",
+      SingleJavaValue("null")
+    )
+  , QueueOfJavaValues("String",
+      SingleJavaValue("\"\"")
+    )
+  , QueueOfJavaValues("String",
+      SingleJavaValue("\"xxxxxxxxx\"")
+    )
+  , QueueOfJavaValues("String",
+      SingleJavaValue("\"\"")
+    , SingleJavaValue("\"\\\"\"")
+    , SingleJavaValue("\"'/\\\\[](){}\"")
+    , SingleJavaValue("\"\\u0001\\u0002\\u0003\\u0004\\u0005\\u0006\\u0007\\b\\t\"")
+    , SingleJavaValue("\"xxxxxxxxx\"")
+    )
+  , QueueOfJavaValues("String",
+      SingleJavaValue("null")
+    , SingleJavaValue("\"\"")
+    , SingleJavaValue("\"\\\"\"")
+    , SingleJavaValue("\"'/\\\\[](){}\"")
+    , SingleJavaValue("\"\\u0001\\u0002\\u0003\\u0004\\u0005\\u0006\\u0007\\b\\t\"")
+    , SingleJavaValue("\"xxxxxxxxx\"")
+    )
+  )
+
+  val hasGenerics = true
+}
+
 case object `java.Set<String(9)>`
     extends JavaStringWithMaxLengthOf9 with `box.OneSetOfOne` {
 

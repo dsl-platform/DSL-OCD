@@ -22,6 +22,10 @@ case object `dsl.List<Date>`    extends DslDate with `box.OneListOfOne`
 case object `dsl.List<Date>?`   extends DslDate with `box.NullableListOfOne`
 case object `dsl.List<Date?>`   extends DslDate with `box.OneListOfNullable`
 case object `dsl.List<Date?>?`  extends DslDate with `box.NullableListOfNullable`
+case object `dsl.Queue<Date>`   extends DslDate with `box.OneQueueOfOne`
+case object `dsl.Queue<Date>?`  extends DslDate with `box.NullableQueueOfOne`
+case object `dsl.Queue<Date?>`  extends DslDate with `box.OneQueueOfNullable`
+case object `dsl.Queue<Date?>?` extends DslDate with `box.NullableQueueOfNullable`
 case object `dsl.Set<Date>`     extends DslDate with `box.OneSetOfOne`
 case object `dsl.Set<Date>?`    extends DslDate with `box.NullableSetOfOne`
 case object `dsl.Set<Date?>`    extends DslDate with `box.OneSetOfNullable`
@@ -41,6 +45,10 @@ case object `dsl.LIST<DATE>`    extends DslDate with `box.OneListOfOne`
 case object `dsl.LIST<DATE>?`   extends DslDate with `box.NullableListOfOne`
 case object `dsl.LIST<DATE?>`   extends DslDate with `box.OneListOfNullable`
 case object `dsl.LIST<DATE?>?`  extends DslDate with `box.NullableListOfNullable`
+case object `dsl.QUEUE<DATE>`   extends DslDate with `box.OneQueueOfOne`
+case object `dsl.QUEUE<DATE>?`  extends DslDate with `box.NullableQueueOfOne`
+case object `dsl.QUEUE<DATE?>`  extends DslDate with `box.OneQueueOfNullable`
+case object `dsl.QUEUE<DATE?>?` extends DslDate with `box.NullableQueueOfNullable`
 case object `dsl.SET<DATE>`     extends DslDate with `box.OneSetOfOne`
 case object `dsl.SET<DATE>?`    extends DslDate with `box.NullableSetOfOne`
 case object `dsl.SET<DATE?>`    extends DslDate with `box.OneSetOfNullable`
@@ -60,6 +68,10 @@ case object `dsl.list<date>`    extends DslDate with `box.OneListOfOne`
 case object `dsl.list<date>?`   extends DslDate with `box.NullableListOfOne`
 case object `dsl.list<date?>`   extends DslDate with `box.OneListOfNullable`
 case object `dsl.list<date?>?`  extends DslDate with `box.NullableListOfNullable`
+case object `dsl.queue<date>`   extends DslDate with `box.OneQueueOfOne`
+case object `dsl.queue<date>?`  extends DslDate with `box.NullableQueueOfOne`
+case object `dsl.queue<date?>`  extends DslDate with `box.OneQueueOfNullable`
+case object `dsl.queue<date?>?` extends DslDate with `box.NullableQueueOfNullable`
 case object `dsl.set<date>`     extends DslDate with `box.OneSetOfOne`
 case object `dsl.set<date>?`    extends DslDate with `box.NullableSetOfOne`
 case object `dsl.set<date?>`    extends DslDate with `box.OneSetOfNullable`

@@ -88,6 +88,38 @@ case object `scala.List<Boolean?>?`
   val defaultValue = "None"
 }
 
+case object `scala.Queue<Boolean>`
+    extends ScalaBoolean with `box.OneQueueOfOne` {
+
+  val scalaClass = "Queue[Boolean]"
+
+  val defaultValue = "Queue[Boolean].empty"
+}
+
+case object `scala.Queue<Boolean>?`
+    extends ScalaBoolean with `box.NullableQueueOfOne` {
+
+  val scalaClass = "Option[Queue[Boolean]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Queue<Boolean?>`
+    extends ScalaBoolean with `box.OneQueueOfNullable` {
+
+  val scalaClass = "Queue[Option[Boolean]]"
+
+  val defaultValue = "Queue[Option[Boolean]].empty"
+}
+
+case object `scala.Queue<Boolean?>?`
+    extends ScalaBoolean with `box.NullableQueueOfNullable` {
+
+  val scalaClass = "Option[Queue[Option[Boolean]]]"
+
+  val defaultValue = "None"
+}
+
 case object `scala.Set<Boolean>`
     extends ScalaBoolean with `box.OneSetOfOne` {
 

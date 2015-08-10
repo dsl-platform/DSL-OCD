@@ -334,6 +334,146 @@ case object `java.List<Long?>?`
   val hasGenerics = true
 }
 
+case object `java.Queue<Long>`
+    extends JavaLong with `box.OneQueueOfOne` {
+
+  val javaClass = "java.util.Queue<Long>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("Long"))
+  val javaDescription = "OneQueueOfOneLongs"
+
+  def defaultValue = SingleJavaValue("new java.util.ArrayDeque<Long>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("Long",
+      SingleJavaValue("0L")
+    )
+  , QueueOfJavaValues("Long",
+      SingleJavaValue("Long.MAX_VALUE")
+    )
+  , QueueOfJavaValues("Long",
+      SingleJavaValue("0L")
+    , SingleJavaValue("1L")
+    , SingleJavaValue("1000000000000000000L")
+    , SingleJavaValue("-1000000000000000000L")
+    , SingleJavaValue("Long.MIN_VALUE")
+    , SingleJavaValue("Long.MAX_VALUE")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Long>?`
+    extends JavaLong with `box.NullableQueueOfOne` {
+
+  val javaClass = "java.util.Queue<Long>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("Long"))
+  val javaDescription = "NullableQueueOfOneLongs"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("Long",
+      SingleJavaValue("0L")
+    )
+  , QueueOfJavaValues("Long",
+      SingleJavaValue("Long.MAX_VALUE")
+    )
+  , QueueOfJavaValues("Long",
+      SingleJavaValue("0L")
+    , SingleJavaValue("1L")
+    , SingleJavaValue("1000000000000000000L")
+    , SingleJavaValue("-1000000000000000000L")
+    , SingleJavaValue("Long.MIN_VALUE")
+    , SingleJavaValue("Long.MAX_VALUE")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Long?>`
+    extends JavaLong with `box.OneQueueOfNullable` {
+
+  val javaClass = "java.util.Queue<Long>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("Long"))
+  val javaDescription = "OneQueueOfNullableLongs"
+
+  def defaultValue = SingleJavaValue("new java.util.ArrayDeque<Long>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("Long",
+      SingleJavaValue("null")
+    )
+  , QueueOfJavaValues("Long",
+      SingleJavaValue("0L")
+    )
+  , QueueOfJavaValues("Long",
+      SingleJavaValue("Long.MAX_VALUE")
+    )
+  , QueueOfJavaValues("Long",
+      SingleJavaValue("0L")
+    , SingleJavaValue("1L")
+    , SingleJavaValue("1000000000000000000L")
+    , SingleJavaValue("-1000000000000000000L")
+    , SingleJavaValue("Long.MIN_VALUE")
+    , SingleJavaValue("Long.MAX_VALUE")
+    )
+  , QueueOfJavaValues("Long",
+      SingleJavaValue("null")
+    , SingleJavaValue("0L")
+    , SingleJavaValue("1L")
+    , SingleJavaValue("1000000000000000000L")
+    , SingleJavaValue("-1000000000000000000L")
+    , SingleJavaValue("Long.MIN_VALUE")
+    , SingleJavaValue("Long.MAX_VALUE")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Long?>?`
+    extends JavaLong with `box.NullableQueueOfNullable` {
+
+  val javaClass = "java.util.Queue<Long>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("Long"))
+  val javaDescription = "NullableQueueOfNullableLongs"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("Long",
+      SingleJavaValue("null")
+    )
+  , QueueOfJavaValues("Long",
+      SingleJavaValue("0L")
+    )
+  , QueueOfJavaValues("Long",
+      SingleJavaValue("Long.MAX_VALUE")
+    )
+  , QueueOfJavaValues("Long",
+      SingleJavaValue("0L")
+    , SingleJavaValue("1L")
+    , SingleJavaValue("1000000000000000000L")
+    , SingleJavaValue("-1000000000000000000L")
+    , SingleJavaValue("Long.MIN_VALUE")
+    , SingleJavaValue("Long.MAX_VALUE")
+    )
+  , QueueOfJavaValues("Long",
+      SingleJavaValue("null")
+    , SingleJavaValue("0L")
+    , SingleJavaValue("1L")
+    , SingleJavaValue("1000000000000000000L")
+    , SingleJavaValue("-1000000000000000000L")
+    , SingleJavaValue("Long.MIN_VALUE")
+    , SingleJavaValue("Long.MAX_VALUE")
+    )
+  )
+
+  val hasGenerics = true
+}
+
 case object `java.Set<Long>`
     extends JavaLong with `box.OneSetOfOne` {
 

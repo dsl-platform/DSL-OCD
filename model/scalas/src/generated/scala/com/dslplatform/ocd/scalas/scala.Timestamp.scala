@@ -88,6 +88,38 @@ case object `scala.List<Timestamp?>?`
   val defaultValue = "None"
 }
 
+case object `scala.Queue<Timestamp>`
+    extends ScalaTimestamp with `box.OneQueueOfOne` {
+
+  val scalaClass = "Queue[org.joda.time.DateTime]"
+
+  val defaultValue = "Queue[org.joda.time.DateTime].empty"
+}
+
+case object `scala.Queue<Timestamp>?`
+    extends ScalaTimestamp with `box.NullableQueueOfOne` {
+
+  val scalaClass = "Option[Queue[org.joda.time.DateTime]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Queue<Timestamp?>`
+    extends ScalaTimestamp with `box.OneQueueOfNullable` {
+
+  val scalaClass = "Queue[Option[org.joda.time.DateTime]]"
+
+  val defaultValue = "Queue[Option[org.joda.time.DateTime]].empty"
+}
+
+case object `scala.Queue<Timestamp?>?`
+    extends ScalaTimestamp with `box.NullableQueueOfNullable` {
+
+  val scalaClass = "Option[Queue[Option[org.joda.time.DateTime]]]"
+
+  val defaultValue = "None"
+}
+
 case object `scala.Set<Timestamp>`
     extends ScalaTimestamp with `box.OneSetOfOne` {
 

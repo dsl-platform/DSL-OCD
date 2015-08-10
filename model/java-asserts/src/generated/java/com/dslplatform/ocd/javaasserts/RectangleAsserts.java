@@ -223,6 +223,104 @@ public class RectangleAsserts {
         assertNullableListOfNullableEquals(expecteds, actuals, 0);
     }
 
+    private static void assertQueueOfOneEquals(final String message, final java.util.Queue<java.awt.geom.Rectangle2D> expecteds, final java.util.Queue<java.awt.geom.Rectangle2D> actuals, final int ulps) {
+        final int expectedsSize = expecteds.size();
+        final int actualsSize = actuals.size();
+        if (expectedsSize != actualsSize) {
+            Assert.fail(message + "expecteds was a list of size " + expectedsSize + ", but actuals was a list of size " + actualsSize);
+        }
+
+        final java.util.Iterator<java.awt.geom.Rectangle2D> expectedsIterator = expecteds.iterator();
+        final java.util.Iterator<java.awt.geom.Rectangle2D> actualsIterator = actuals.iterator();
+        for (int i = 0; i < expectedsSize; i++) {
+            final java.awt.geom.Rectangle2D expected = expectedsIterator.next();
+            final java.awt.geom.Rectangle2D actual = actualsIterator.next();
+            assertOneEquals(message + "element mismatch occurred at index " + i + ": ", expected, actual, ulps);
+        }
+    }
+
+    private static void assertOneQueueOfOneEquals(final String message, final java.util.Queue<java.awt.geom.Rectangle2D> expecteds, final java.util.Queue<java.awt.geom.Rectangle2D> actuals, final int ulps) {
+        int i = 0;
+        for (final java.awt.geom.Rectangle2D expected : expecteds) {
+            if (expected == null) {
+                Assert.fail(message + "element mismatch occurred at index " + i + ": expected was <null> - WARNING: This is a preconditions failure in expected, this assertion will never succeed!");
+            }
+            i++;
+        }
+        if (expecteds == actuals) return;
+        if (actuals == null) Assert.fail(message + "expecteds was a list of size " + expecteds.size() + ", but actuals was <null>");
+        assertQueueOfOneEquals(message, expecteds, actuals, ulps);
+    }
+
+    public static void assertOneQueueOfOneEquals(final java.util.Queue<java.awt.geom.Rectangle2D> expecteds, final java.util.Queue<java.awt.geom.Rectangle2D> actuals, final int ulps) {
+        assertOneQueueOfOneEquals("OneQueueOfOneRectangle mismatch: ", expecteds, actuals, ulps);
+    }
+
+    public static void assertOneQueueOfOneEquals(final java.util.Queue<java.awt.geom.Rectangle2D> expecteds, final java.util.Queue<java.awt.geom.Rectangle2D> actuals) {
+        assertOneQueueOfOneEquals(expecteds, actuals, 0);
+    }
+
+    private static void assertNullableQueueOfOneEquals(final String message, final java.util.Queue<java.awt.geom.Rectangle2D> expecteds, final java.util.Queue<java.awt.geom.Rectangle2D> actuals, final int ulps) {
+        if (expecteds == actuals) return;
+        if (expecteds == null) Assert.fail(message + "expecteds was <null>, but actuals was a list of size " + actuals.size());
+        if (actuals == null) Assert.fail(message + " expecteds was a list of size " + expecteds.size() + ", but actuals was <null>");
+        assertQueueOfOneEquals(message, expecteds, actuals, ulps);
+    }
+
+    public static void assertNullableQueueOfOneEquals(final java.util.Queue<java.awt.geom.Rectangle2D> expecteds, final java.util.Queue<java.awt.geom.Rectangle2D> actuals, final int ulps) {
+        assertNullableQueueOfOneEquals("NullableQueueOfOneRectangle mismatch: ", expecteds, actuals, ulps);
+    }
+
+    public static void assertNullableQueueOfOneEquals(final java.util.Queue<java.awt.geom.Rectangle2D> expecteds, final java.util.Queue<java.awt.geom.Rectangle2D> actuals) {
+        assertNullableQueueOfOneEquals(expecteds, actuals, 0);
+    }
+
+    private static void assertQueueOfNullableEquals(final String message, final java.util.Queue<java.awt.geom.Rectangle2D> expecteds, final java.util.Queue<java.awt.geom.Rectangle2D> actuals, final int ulps) {
+        final int expectedsSize = expecteds.size();
+        final int actualsSize = actuals.size();
+        if (expectedsSize != actualsSize) {
+            Assert.fail(message + "expecteds was a list of size " + expectedsSize + ", but actuals was a list of size " + actualsSize);
+        }
+
+        final java.util.Iterator<java.awt.geom.Rectangle2D> expectedsIterator = expecteds.iterator();
+        final java.util.Iterator<java.awt.geom.Rectangle2D> actualsIterator = actuals.iterator();
+        for (int i = 0; i < expectedsSize; i++) {
+            final java.awt.geom.Rectangle2D expected = expectedsIterator.next();
+            final java.awt.geom.Rectangle2D actual = actualsIterator.next();
+            assertNullableEquals(message + "element mismatch occurred at index " + i + ": ", expected, actual, ulps);
+        }
+    }
+
+    private static void assertOneQueueOfNullableEquals(final String message, final java.util.Queue<java.awt.geom.Rectangle2D> expecteds, final java.util.Queue<java.awt.geom.Rectangle2D> actuals, final int ulps) {
+        if (expecteds == null) Assert.fail(message + "expecteds was <null> - WARNING: This is a preconditions failure in expecteds, this assertion will never succeed!");
+        if (expecteds == actuals) return;
+        if (actuals == null) Assert.fail(message + "expecteds was a list of size " + expecteds.size() + ", but actuals was <null>");
+        assertQueueOfNullableEquals(message, expecteds, actuals, ulps);
+    }
+
+    public static void assertOneQueueOfNullableEquals(final java.util.Queue<java.awt.geom.Rectangle2D> expecteds, final java.util.Queue<java.awt.geom.Rectangle2D> actuals, final int ulps) {
+        assertOneQueueOfNullableEquals("OneQueueOfNullableRectangle mismatch: ", expecteds, actuals, ulps);
+    }
+
+    public static void assertOneQueueOfNullableEquals(final java.util.Queue<java.awt.geom.Rectangle2D> expecteds, final java.util.Queue<java.awt.geom.Rectangle2D> actuals) {
+        assertOneQueueOfNullableEquals(expecteds, actuals, 0);
+    }
+
+    private static void assertNullableQueueOfNullableEquals(final String message, final java.util.Queue<java.awt.geom.Rectangle2D> expecteds, final java.util.Queue<java.awt.geom.Rectangle2D> actuals, final int ulps) {
+        if (expecteds == actuals) return;
+        if (expecteds == null) Assert.fail(message + "expecteds was <null>, but actuals was a list of size " + actuals.size());
+        if (actuals == null) Assert.fail(message + " expecteds was a list of size " + expecteds.size() + ", but actuals was <null>");
+        assertQueueOfNullableEquals(message, expecteds, actuals, ulps);
+    }
+
+    public static void assertNullableQueueOfNullableEquals(final java.util.Queue<java.awt.geom.Rectangle2D> expecteds, final java.util.Queue<java.awt.geom.Rectangle2D> actuals, final int ulps) {
+        assertNullableQueueOfNullableEquals("NullableQueueOfNullableRectangle mismatch: ", expecteds, actuals, ulps);
+    }
+
+    public static void assertNullableQueueOfNullableEquals(final java.util.Queue<java.awt.geom.Rectangle2D> expecteds, final java.util.Queue<java.awt.geom.Rectangle2D> actuals) {
+        assertNullableQueueOfNullableEquals(expecteds, actuals, 0);
+    }
+
     private static void assertSetOfOneEquals(final String message, final java.util.Set<java.awt.geom.Rectangle2D> expecteds, final java.util.Set<java.awt.geom.Rectangle2D> actuals, final int ulps) {
         if (actuals.contains(null)) {
             Assert.fail(message + "actuals contained a <null> element");

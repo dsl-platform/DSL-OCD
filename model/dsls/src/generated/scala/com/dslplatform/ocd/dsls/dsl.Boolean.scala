@@ -22,6 +22,10 @@ case object `dsl.List<Boolean>`    extends DslBoolean with `box.OneListOfOne`
 case object `dsl.List<Boolean>?`   extends DslBoolean with `box.NullableListOfOne`
 case object `dsl.List<Boolean?>`   extends DslBoolean with `box.OneListOfNullable`
 case object `dsl.List<Boolean?>?`  extends DslBoolean with `box.NullableListOfNullable`
+case object `dsl.Queue<Boolean>`   extends DslBoolean with `box.OneQueueOfOne`
+case object `dsl.Queue<Boolean>?`  extends DslBoolean with `box.NullableQueueOfOne`
+case object `dsl.Queue<Boolean?>`  extends DslBoolean with `box.OneQueueOfNullable`
+case object `dsl.Queue<Boolean?>?` extends DslBoolean with `box.NullableQueueOfNullable`
 case object `dsl.Set<Boolean>`     extends DslBoolean with `box.OneSetOfOne`
 case object `dsl.Set<Boolean>?`    extends DslBoolean with `box.NullableSetOfOne`
 case object `dsl.Set<Boolean?>`    extends DslBoolean with `box.OneSetOfNullable`
@@ -41,6 +45,10 @@ case object `dsl.LIST<BOOL>`    extends DslBoolean with `box.OneListOfOne`
 case object `dsl.LIST<BOOL>?`   extends DslBoolean with `box.NullableListOfOne`
 case object `dsl.LIST<BOOL?>`   extends DslBoolean with `box.OneListOfNullable`
 case object `dsl.LIST<BOOL?>?`  extends DslBoolean with `box.NullableListOfNullable`
+case object `dsl.QUEUE<BOOL>`   extends DslBoolean with `box.OneQueueOfOne`
+case object `dsl.QUEUE<BOOL>?`  extends DslBoolean with `box.NullableQueueOfOne`
+case object `dsl.QUEUE<BOOL?>`  extends DslBoolean with `box.OneQueueOfNullable`
+case object `dsl.QUEUE<BOOL?>?` extends DslBoolean with `box.NullableQueueOfNullable`
 case object `dsl.SET<BOOL>`     extends DslBoolean with `box.OneSetOfOne`
 case object `dsl.SET<BOOL>?`    extends DslBoolean with `box.NullableSetOfOne`
 case object `dsl.SET<BOOL?>`    extends DslBoolean with `box.OneSetOfNullable`
@@ -60,6 +68,10 @@ case object `dsl.LIST<BOOLEAN>`    extends DslBoolean with `box.OneListOfOne`
 case object `dsl.LIST<BOOLEAN>?`   extends DslBoolean with `box.NullableListOfOne`
 case object `dsl.LIST<BOOLEAN?>`   extends DslBoolean with `box.OneListOfNullable`
 case object `dsl.LIST<BOOLEAN?>?`  extends DslBoolean with `box.NullableListOfNullable`
+case object `dsl.QUEUE<BOOLEAN>`   extends DslBoolean with `box.OneQueueOfOne`
+case object `dsl.QUEUE<BOOLEAN>?`  extends DslBoolean with `box.NullableQueueOfOne`
+case object `dsl.QUEUE<BOOLEAN?>`  extends DslBoolean with `box.OneQueueOfNullable`
+case object `dsl.QUEUE<BOOLEAN?>?` extends DslBoolean with `box.NullableQueueOfNullable`
 case object `dsl.SET<BOOLEAN>`     extends DslBoolean with `box.OneSetOfOne`
 case object `dsl.SET<BOOLEAN>?`    extends DslBoolean with `box.NullableSetOfOne`
 case object `dsl.SET<BOOLEAN?>`    extends DslBoolean with `box.OneSetOfNullable`
@@ -79,6 +91,10 @@ case object `dsl.List<Bool>`    extends DslBoolean with `box.OneListOfOne`
 case object `dsl.List<Bool>?`   extends DslBoolean with `box.NullableListOfOne`
 case object `dsl.List<Bool?>`   extends DslBoolean with `box.OneListOfNullable`
 case object `dsl.List<Bool?>?`  extends DslBoolean with `box.NullableListOfNullable`
+case object `dsl.Queue<Bool>`   extends DslBoolean with `box.OneQueueOfOne`
+case object `dsl.Queue<Bool>?`  extends DslBoolean with `box.NullableQueueOfOne`
+case object `dsl.Queue<Bool?>`  extends DslBoolean with `box.OneQueueOfNullable`
+case object `dsl.Queue<Bool?>?` extends DslBoolean with `box.NullableQueueOfNullable`
 case object `dsl.Set<Bool>`     extends DslBoolean with `box.OneSetOfOne`
 case object `dsl.Set<Bool>?`    extends DslBoolean with `box.NullableSetOfOne`
 case object `dsl.Set<Bool?>`    extends DslBoolean with `box.OneSetOfNullable`
@@ -98,6 +114,10 @@ case object `dsl.list<bool>`    extends DslBoolean with `box.OneListOfOne`
 case object `dsl.list<bool>?`   extends DslBoolean with `box.NullableListOfOne`
 case object `dsl.list<bool?>`   extends DslBoolean with `box.OneListOfNullable`
 case object `dsl.list<bool?>?`  extends DslBoolean with `box.NullableListOfNullable`
+case object `dsl.queue<bool>`   extends DslBoolean with `box.OneQueueOfOne`
+case object `dsl.queue<bool>?`  extends DslBoolean with `box.NullableQueueOfOne`
+case object `dsl.queue<bool?>`  extends DslBoolean with `box.OneQueueOfNullable`
+case object `dsl.queue<bool?>?` extends DslBoolean with `box.NullableQueueOfNullable`
 case object `dsl.set<bool>`     extends DslBoolean with `box.OneSetOfOne`
 case object `dsl.set<bool>?`    extends DslBoolean with `box.NullableSetOfOne`
 case object `dsl.set<bool?>`    extends DslBoolean with `box.OneSetOfNullable`
@@ -117,6 +137,10 @@ case object `dsl.list<boolean>`    extends DslBoolean with `box.OneListOfOne`
 case object `dsl.list<boolean>?`   extends DslBoolean with `box.NullableListOfOne`
 case object `dsl.list<boolean?>`   extends DslBoolean with `box.OneListOfNullable`
 case object `dsl.list<boolean?>?`  extends DslBoolean with `box.NullableListOfNullable`
+case object `dsl.queue<boolean>`   extends DslBoolean with `box.OneQueueOfOne`
+case object `dsl.queue<boolean>?`  extends DslBoolean with `box.NullableQueueOfOne`
+case object `dsl.queue<boolean?>`  extends DslBoolean with `box.OneQueueOfNullable`
+case object `dsl.queue<boolean?>?` extends DslBoolean with `box.NullableQueueOfNullable`
 case object `dsl.set<boolean>`     extends DslBoolean with `box.OneSetOfOne`
 case object `dsl.set<boolean>?`    extends DslBoolean with `box.NullableSetOfOne`
 case object `dsl.set<boolean?>`    extends DslBoolean with `box.OneSetOfNullable`

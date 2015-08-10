@@ -22,6 +22,10 @@ case object `dsl.List<Text>`    extends DslText with `box.OneListOfOne`
 case object `dsl.List<Text>?`   extends DslText with `box.NullableListOfOne`
 case object `dsl.List<Text?>`   extends DslText with `box.OneListOfNullable`
 case object `dsl.List<Text?>?`  extends DslText with `box.NullableListOfNullable`
+case object `dsl.Queue<Text>`   extends DslText with `box.OneQueueOfOne`
+case object `dsl.Queue<Text>?`  extends DslText with `box.NullableQueueOfOne`
+case object `dsl.Queue<Text?>`  extends DslText with `box.OneQueueOfNullable`
+case object `dsl.Queue<Text?>?` extends DslText with `box.NullableQueueOfNullable`
 case object `dsl.Set<Text>`     extends DslText with `box.OneSetOfOne`
 case object `dsl.Set<Text>?`    extends DslText with `box.NullableSetOfOne`
 case object `dsl.Set<Text?>`    extends DslText with `box.OneSetOfNullable`
@@ -41,6 +45,10 @@ case object `dsl.LIST<TEXT>`    extends DslText with `box.OneListOfOne`
 case object `dsl.LIST<TEXT>?`   extends DslText with `box.NullableListOfOne`
 case object `dsl.LIST<TEXT?>`   extends DslText with `box.OneListOfNullable`
 case object `dsl.LIST<TEXT?>?`  extends DslText with `box.NullableListOfNullable`
+case object `dsl.QUEUE<TEXT>`   extends DslText with `box.OneQueueOfOne`
+case object `dsl.QUEUE<TEXT>?`  extends DslText with `box.NullableQueueOfOne`
+case object `dsl.QUEUE<TEXT?>`  extends DslText with `box.OneQueueOfNullable`
+case object `dsl.QUEUE<TEXT?>?` extends DslText with `box.NullableQueueOfNullable`
 case object `dsl.SET<TEXT>`     extends DslText with `box.OneSetOfOne`
 case object `dsl.SET<TEXT>?`    extends DslText with `box.NullableSetOfOne`
 case object `dsl.SET<TEXT?>`    extends DslText with `box.OneSetOfNullable`
@@ -60,6 +68,10 @@ case object `dsl.list<text>`    extends DslText with `box.OneListOfOne`
 case object `dsl.list<text>?`   extends DslText with `box.NullableListOfOne`
 case object `dsl.list<text?>`   extends DslText with `box.OneListOfNullable`
 case object `dsl.list<text?>?`  extends DslText with `box.NullableListOfNullable`
+case object `dsl.queue<text>`   extends DslText with `box.OneQueueOfOne`
+case object `dsl.queue<text>?`  extends DslText with `box.NullableQueueOfOne`
+case object `dsl.queue<text?>`  extends DslText with `box.OneQueueOfNullable`
+case object `dsl.queue<text?>?` extends DslText with `box.NullableQueueOfNullable`
 case object `dsl.set<text>`     extends DslText with `box.OneSetOfOne`
 case object `dsl.set<text>?`    extends DslText with `box.NullableSetOfOne`
 case object `dsl.set<text?>`    extends DslText with `box.OneSetOfNullable`

@@ -22,6 +22,10 @@ case object `dsl.List<Float>`    extends DslFloat with `box.OneListOfOne`
 case object `dsl.List<Float>?`   extends DslFloat with `box.NullableListOfOne`
 case object `dsl.List<Float?>`   extends DslFloat with `box.OneListOfNullable`
 case object `dsl.List<Float?>?`  extends DslFloat with `box.NullableListOfNullable`
+case object `dsl.Queue<Float>`   extends DslFloat with `box.OneQueueOfOne`
+case object `dsl.Queue<Float>?`  extends DslFloat with `box.NullableQueueOfOne`
+case object `dsl.Queue<Float?>`  extends DslFloat with `box.OneQueueOfNullable`
+case object `dsl.Queue<Float?>?` extends DslFloat with `box.NullableQueueOfNullable`
 case object `dsl.Set<Float>`     extends DslFloat with `box.OneSetOfOne`
 case object `dsl.Set<Float>?`    extends DslFloat with `box.NullableSetOfOne`
 case object `dsl.Set<Float?>`    extends DslFloat with `box.OneSetOfNullable`
@@ -41,6 +45,10 @@ case object `dsl.LIST<FLOAT>`    extends DslFloat with `box.OneListOfOne`
 case object `dsl.LIST<FLOAT>?`   extends DslFloat with `box.NullableListOfOne`
 case object `dsl.LIST<FLOAT?>`   extends DslFloat with `box.OneListOfNullable`
 case object `dsl.LIST<FLOAT?>?`  extends DslFloat with `box.NullableListOfNullable`
+case object `dsl.QUEUE<FLOAT>`   extends DslFloat with `box.OneQueueOfOne`
+case object `dsl.QUEUE<FLOAT>?`  extends DslFloat with `box.NullableQueueOfOne`
+case object `dsl.QUEUE<FLOAT?>`  extends DslFloat with `box.OneQueueOfNullable`
+case object `dsl.QUEUE<FLOAT?>?` extends DslFloat with `box.NullableQueueOfNullable`
 case object `dsl.SET<FLOAT>`     extends DslFloat with `box.OneSetOfOne`
 case object `dsl.SET<FLOAT>?`    extends DslFloat with `box.NullableSetOfOne`
 case object `dsl.SET<FLOAT?>`    extends DslFloat with `box.OneSetOfNullable`
@@ -60,6 +68,10 @@ case object `dsl.list<float>`    extends DslFloat with `box.OneListOfOne`
 case object `dsl.list<float>?`   extends DslFloat with `box.NullableListOfOne`
 case object `dsl.list<float?>`   extends DslFloat with `box.OneListOfNullable`
 case object `dsl.list<float?>?`  extends DslFloat with `box.NullableListOfNullable`
+case object `dsl.queue<float>`   extends DslFloat with `box.OneQueueOfOne`
+case object `dsl.queue<float>?`  extends DslFloat with `box.NullableQueueOfOne`
+case object `dsl.queue<float?>`  extends DslFloat with `box.OneQueueOfNullable`
+case object `dsl.queue<float?>?` extends DslFloat with `box.NullableQueueOfNullable`
 case object `dsl.set<float>`     extends DslFloat with `box.OneSetOfOne`
 case object `dsl.set<float>?`    extends DslFloat with `box.NullableSetOfOne`
 case object `dsl.set<float?>`    extends DslFloat with `box.OneSetOfNullable`

@@ -320,6 +320,140 @@ case object `java.List<Integer?>?`
   val hasGenerics = true
 }
 
+case object `java.Queue<Integer>`
+    extends JavaInteger with `box.OneQueueOfOne` {
+
+  val javaClass = "java.util.Queue<Integer>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("Integer"))
+  val javaDescription = "OneQueueOfOneIntegers"
+
+  def defaultValue = SingleJavaValue("new java.util.ArrayDeque<Integer>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("Integer",
+      SingleJavaValue("0")
+    )
+  , QueueOfJavaValues("Integer",
+      SingleJavaValue("1000000000")
+    )
+  , QueueOfJavaValues("Integer",
+      SingleJavaValue("0")
+    , SingleJavaValue("Integer.MIN_VALUE")
+    , SingleJavaValue("Integer.MAX_VALUE")
+    , SingleJavaValue("-1000000000")
+    , SingleJavaValue("1000000000")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Integer>?`
+    extends JavaInteger with `box.NullableQueueOfOne` {
+
+  val javaClass = "java.util.Queue<Integer>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("Integer"))
+  val javaDescription = "NullableQueueOfOneIntegers"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("Integer",
+      SingleJavaValue("0")
+    )
+  , QueueOfJavaValues("Integer",
+      SingleJavaValue("1000000000")
+    )
+  , QueueOfJavaValues("Integer",
+      SingleJavaValue("0")
+    , SingleJavaValue("Integer.MIN_VALUE")
+    , SingleJavaValue("Integer.MAX_VALUE")
+    , SingleJavaValue("-1000000000")
+    , SingleJavaValue("1000000000")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Integer?>`
+    extends JavaInteger with `box.OneQueueOfNullable` {
+
+  val javaClass = "java.util.Queue<Integer>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("Integer"))
+  val javaDescription = "OneQueueOfNullableIntegers"
+
+  def defaultValue = SingleJavaValue("new java.util.ArrayDeque<Integer>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("Integer",
+      SingleJavaValue("null")
+    )
+  , QueueOfJavaValues("Integer",
+      SingleJavaValue("0")
+    )
+  , QueueOfJavaValues("Integer",
+      SingleJavaValue("1000000000")
+    )
+  , QueueOfJavaValues("Integer",
+      SingleJavaValue("0")
+    , SingleJavaValue("Integer.MIN_VALUE")
+    , SingleJavaValue("Integer.MAX_VALUE")
+    , SingleJavaValue("-1000000000")
+    , SingleJavaValue("1000000000")
+    )
+  , QueueOfJavaValues("Integer",
+      SingleJavaValue("null")
+    , SingleJavaValue("0")
+    , SingleJavaValue("Integer.MIN_VALUE")
+    , SingleJavaValue("Integer.MAX_VALUE")
+    , SingleJavaValue("-1000000000")
+    , SingleJavaValue("1000000000")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Integer?>?`
+    extends JavaInteger with `box.NullableQueueOfNullable` {
+
+  val javaClass = "java.util.Queue<Integer>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("Integer"))
+  val javaDescription = "NullableQueueOfNullableIntegers"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("Integer",
+      SingleJavaValue("null")
+    )
+  , QueueOfJavaValues("Integer",
+      SingleJavaValue("0")
+    )
+  , QueueOfJavaValues("Integer",
+      SingleJavaValue("1000000000")
+    )
+  , QueueOfJavaValues("Integer",
+      SingleJavaValue("0")
+    , SingleJavaValue("Integer.MIN_VALUE")
+    , SingleJavaValue("Integer.MAX_VALUE")
+    , SingleJavaValue("-1000000000")
+    , SingleJavaValue("1000000000")
+    )
+  , QueueOfJavaValues("Integer",
+      SingleJavaValue("null")
+    , SingleJavaValue("0")
+    , SingleJavaValue("Integer.MIN_VALUE")
+    , SingleJavaValue("Integer.MAX_VALUE")
+    , SingleJavaValue("-1000000000")
+    , SingleJavaValue("1000000000")
+    )
+  )
+
+  val hasGenerics = true
+}
+
 case object `java.Set<Integer>`
     extends JavaInteger with `box.OneSetOfOne` {
 

@@ -22,6 +22,10 @@ case object `dsl.List<Money>`    extends DslMoney with `box.OneListOfOne`
 case object `dsl.List<Money>?`   extends DslMoney with `box.NullableListOfOne`
 case object `dsl.List<Money?>`   extends DslMoney with `box.OneListOfNullable`
 case object `dsl.List<Money?>?`  extends DslMoney with `box.NullableListOfNullable`
+case object `dsl.Queue<Money>`   extends DslMoney with `box.OneQueueOfOne`
+case object `dsl.Queue<Money>?`  extends DslMoney with `box.NullableQueueOfOne`
+case object `dsl.Queue<Money?>`  extends DslMoney with `box.OneQueueOfNullable`
+case object `dsl.Queue<Money?>?` extends DslMoney with `box.NullableQueueOfNullable`
 case object `dsl.Set<Money>`     extends DslMoney with `box.OneSetOfOne`
 case object `dsl.Set<Money>?`    extends DslMoney with `box.NullableSetOfOne`
 case object `dsl.Set<Money?>`    extends DslMoney with `box.OneSetOfNullable`
@@ -41,6 +45,10 @@ case object `dsl.LIST<MONEY>`    extends DslMoney with `box.OneListOfOne`
 case object `dsl.LIST<MONEY>?`   extends DslMoney with `box.NullableListOfOne`
 case object `dsl.LIST<MONEY?>`   extends DslMoney with `box.OneListOfNullable`
 case object `dsl.LIST<MONEY?>?`  extends DslMoney with `box.NullableListOfNullable`
+case object `dsl.QUEUE<MONEY>`   extends DslMoney with `box.OneQueueOfOne`
+case object `dsl.QUEUE<MONEY>?`  extends DslMoney with `box.NullableQueueOfOne`
+case object `dsl.QUEUE<MONEY?>`  extends DslMoney with `box.OneQueueOfNullable`
+case object `dsl.QUEUE<MONEY?>?` extends DslMoney with `box.NullableQueueOfNullable`
 case object `dsl.SET<MONEY>`     extends DslMoney with `box.OneSetOfOne`
 case object `dsl.SET<MONEY>?`    extends DslMoney with `box.NullableSetOfOne`
 case object `dsl.SET<MONEY?>`    extends DslMoney with `box.OneSetOfNullable`
@@ -60,6 +68,10 @@ case object `dsl.list<money>`    extends DslMoney with `box.OneListOfOne`
 case object `dsl.list<money>?`   extends DslMoney with `box.NullableListOfOne`
 case object `dsl.list<money?>`   extends DslMoney with `box.OneListOfNullable`
 case object `dsl.list<money?>?`  extends DslMoney with `box.NullableListOfNullable`
+case object `dsl.queue<money>`   extends DslMoney with `box.OneQueueOfOne`
+case object `dsl.queue<money>?`  extends DslMoney with `box.NullableQueueOfOne`
+case object `dsl.queue<money?>`  extends DslMoney with `box.OneQueueOfNullable`
+case object `dsl.queue<money?>?` extends DslMoney with `box.NullableQueueOfNullable`
 case object `dsl.set<money>`     extends DslMoney with `box.OneSetOfOne`
 case object `dsl.set<money>?`    extends DslMoney with `box.NullableSetOfOne`
 case object `dsl.set<money?>`    extends DslMoney with `box.OneSetOfNullable`

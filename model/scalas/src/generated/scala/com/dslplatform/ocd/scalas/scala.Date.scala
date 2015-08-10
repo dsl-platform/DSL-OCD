@@ -88,6 +88,38 @@ case object `scala.List<Date?>?`
   val defaultValue = "None"
 }
 
+case object `scala.Queue<Date>`
+    extends ScalaDate with `box.OneQueueOfOne` {
+
+  val scalaClass = "Queue[org.joda.time.LocalDate]"
+
+  val defaultValue = "Queue[org.joda.time.LocalDate].empty"
+}
+
+case object `scala.Queue<Date>?`
+    extends ScalaDate with `box.NullableQueueOfOne` {
+
+  val scalaClass = "Option[Queue[org.joda.time.LocalDate]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Queue<Date?>`
+    extends ScalaDate with `box.OneQueueOfNullable` {
+
+  val scalaClass = "Queue[Option[org.joda.time.LocalDate]]"
+
+  val defaultValue = "Queue[Option[org.joda.time.LocalDate]].empty"
+}
+
+case object `scala.Queue<Date?>?`
+    extends ScalaDate with `box.NullableQueueOfNullable` {
+
+  val scalaClass = "Option[Queue[Option[org.joda.time.LocalDate]]]"
+
+  val defaultValue = "None"
+}
+
 case object `scala.Set<Date>`
     extends ScalaDate with `box.OneSetOfOne` {
 

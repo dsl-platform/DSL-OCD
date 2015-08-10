@@ -26,6 +26,8 @@ case object `java.Float`
     SingleJavaValue("-1.2345E-10f")
   , SingleJavaValue("1.2345E20f")
   , SingleJavaValue("-1E-5f")
+  , SingleJavaValue("-1E-32f")
+  , SingleJavaValue("1E32f")
   , SingleJavaValue("Float.NaN")
   , SingleJavaValue("Float.NEGATIVE_INFINITY")
   , SingleJavaValue("Float.POSITIVE_INFINITY")
@@ -48,6 +50,8 @@ case object `java.Float?`
   , SingleJavaValue("-1.2345E-10f")
   , SingleJavaValue("1.2345E20f")
   , SingleJavaValue("-1E-5f")
+  , SingleJavaValue("-1E-32f")
+  , SingleJavaValue("1E32f")
   , SingleJavaValue("Float.NaN")
   , SingleJavaValue("Float.NEGATIVE_INFINITY")
   , SingleJavaValue("Float.POSITIVE_INFINITY")
@@ -77,6 +81,8 @@ case object `java.Float[]`
     , SingleJavaValue("-1.2345E-10f")
     , SingleJavaValue("1.2345E20f")
     , SingleJavaValue("-1E-5f")
+    , SingleJavaValue("-1E-32f")
+    , SingleJavaValue("1E32f")
     , SingleJavaValue("Float.NaN")
     , SingleJavaValue("Float.NEGATIVE_INFINITY")
     , SingleJavaValue("Float.POSITIVE_INFINITY")
@@ -107,6 +113,8 @@ case object `java.Float[]?`
     , SingleJavaValue("-1.2345E-10f")
     , SingleJavaValue("1.2345E20f")
     , SingleJavaValue("-1E-5f")
+    , SingleJavaValue("-1E-32f")
+    , SingleJavaValue("1E32f")
     , SingleJavaValue("Float.NaN")
     , SingleJavaValue("Float.NEGATIVE_INFINITY")
     , SingleJavaValue("Float.POSITIVE_INFINITY")
@@ -140,6 +148,8 @@ case object `java.Float?[]`
     , SingleJavaValue("-1.2345E-10f")
     , SingleJavaValue("1.2345E20f")
     , SingleJavaValue("-1E-5f")
+    , SingleJavaValue("-1E-32f")
+    , SingleJavaValue("1E32f")
     , SingleJavaValue("Float.NaN")
     , SingleJavaValue("Float.NEGATIVE_INFINITY")
     , SingleJavaValue("Float.POSITIVE_INFINITY")
@@ -150,6 +160,8 @@ case object `java.Float?[]`
     , SingleJavaValue("-1.2345E-10f")
     , SingleJavaValue("1.2345E20f")
     , SingleJavaValue("-1E-5f")
+    , SingleJavaValue("-1E-32f")
+    , SingleJavaValue("1E32f")
     , SingleJavaValue("Float.NaN")
     , SingleJavaValue("Float.NEGATIVE_INFINITY")
     , SingleJavaValue("Float.POSITIVE_INFINITY")
@@ -183,6 +195,8 @@ case object `java.Float?[]?`
     , SingleJavaValue("-1.2345E-10f")
     , SingleJavaValue("1.2345E20f")
     , SingleJavaValue("-1E-5f")
+    , SingleJavaValue("-1E-32f")
+    , SingleJavaValue("1E32f")
     , SingleJavaValue("Float.NaN")
     , SingleJavaValue("Float.NEGATIVE_INFINITY")
     , SingleJavaValue("Float.POSITIVE_INFINITY")
@@ -193,6 +207,8 @@ case object `java.Float?[]?`
     , SingleJavaValue("-1.2345E-10f")
     , SingleJavaValue("1.2345E20f")
     , SingleJavaValue("-1E-5f")
+    , SingleJavaValue("-1E-32f")
+    , SingleJavaValue("1E32f")
     , SingleJavaValue("Float.NaN")
     , SingleJavaValue("Float.NEGATIVE_INFINITY")
     , SingleJavaValue("Float.POSITIVE_INFINITY")
@@ -223,6 +239,8 @@ case object `java.List<Float>`
     , SingleJavaValue("-1.2345E-10f")
     , SingleJavaValue("1.2345E20f")
     , SingleJavaValue("-1E-5f")
+    , SingleJavaValue("-1E-32f")
+    , SingleJavaValue("1E32f")
     , SingleJavaValue("Float.NaN")
     , SingleJavaValue("Float.NEGATIVE_INFINITY")
     , SingleJavaValue("Float.POSITIVE_INFINITY")
@@ -253,6 +271,8 @@ case object `java.List<Float>?`
     , SingleJavaValue("-1.2345E-10f")
     , SingleJavaValue("1.2345E20f")
     , SingleJavaValue("-1E-5f")
+    , SingleJavaValue("-1E-32f")
+    , SingleJavaValue("1E32f")
     , SingleJavaValue("Float.NaN")
     , SingleJavaValue("Float.NEGATIVE_INFINITY")
     , SingleJavaValue("Float.POSITIVE_INFINITY")
@@ -286,6 +306,8 @@ case object `java.List<Float?>`
     , SingleJavaValue("-1.2345E-10f")
     , SingleJavaValue("1.2345E20f")
     , SingleJavaValue("-1E-5f")
+    , SingleJavaValue("-1E-32f")
+    , SingleJavaValue("1E32f")
     , SingleJavaValue("Float.NaN")
     , SingleJavaValue("Float.NEGATIVE_INFINITY")
     , SingleJavaValue("Float.POSITIVE_INFINITY")
@@ -296,6 +318,8 @@ case object `java.List<Float?>`
     , SingleJavaValue("-1.2345E-10f")
     , SingleJavaValue("1.2345E20f")
     , SingleJavaValue("-1E-5f")
+    , SingleJavaValue("-1E-32f")
+    , SingleJavaValue("1E32f")
     , SingleJavaValue("Float.NaN")
     , SingleJavaValue("Float.NEGATIVE_INFINITY")
     , SingleJavaValue("Float.POSITIVE_INFINITY")
@@ -329,6 +353,8 @@ case object `java.List<Float?>?`
     , SingleJavaValue("-1.2345E-10f")
     , SingleJavaValue("1.2345E20f")
     , SingleJavaValue("-1E-5f")
+    , SingleJavaValue("-1E-32f")
+    , SingleJavaValue("1E32f")
     , SingleJavaValue("Float.NaN")
     , SingleJavaValue("Float.NEGATIVE_INFINITY")
     , SingleJavaValue("Float.POSITIVE_INFINITY")
@@ -339,6 +365,166 @@ case object `java.List<Float?>?`
     , SingleJavaValue("-1.2345E-10f")
     , SingleJavaValue("1.2345E20f")
     , SingleJavaValue("-1E-5f")
+    , SingleJavaValue("-1E-32f")
+    , SingleJavaValue("1E32f")
+    , SingleJavaValue("Float.NaN")
+    , SingleJavaValue("Float.NEGATIVE_INFINITY")
+    , SingleJavaValue("Float.POSITIVE_INFINITY")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Float>`
+    extends JavaFloat with `box.OneQueueOfOne` {
+
+  val javaClass = "java.util.Queue<Float>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("Float"))
+  val javaDescription = "OneQueueOfOneFloats"
+
+  def defaultValue = SingleJavaValue("new java.util.ArrayDeque<Float>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("Float",
+      SingleJavaValue("0.0f")
+    )
+  , QueueOfJavaValues("Float",
+      SingleJavaValue("Float.POSITIVE_INFINITY")
+    )
+  , QueueOfJavaValues("Float",
+      SingleJavaValue("0.0f")
+    , SingleJavaValue("-1.2345E-10f")
+    , SingleJavaValue("1.2345E20f")
+    , SingleJavaValue("-1E-5f")
+    , SingleJavaValue("-1E-32f")
+    , SingleJavaValue("1E32f")
+    , SingleJavaValue("Float.NaN")
+    , SingleJavaValue("Float.NEGATIVE_INFINITY")
+    , SingleJavaValue("Float.POSITIVE_INFINITY")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Float>?`
+    extends JavaFloat with `box.NullableQueueOfOne` {
+
+  val javaClass = "java.util.Queue<Float>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("Float"))
+  val javaDescription = "NullableQueueOfOneFloats"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("Float",
+      SingleJavaValue("0.0f")
+    )
+  , QueueOfJavaValues("Float",
+      SingleJavaValue("Float.POSITIVE_INFINITY")
+    )
+  , QueueOfJavaValues("Float",
+      SingleJavaValue("0.0f")
+    , SingleJavaValue("-1.2345E-10f")
+    , SingleJavaValue("1.2345E20f")
+    , SingleJavaValue("-1E-5f")
+    , SingleJavaValue("-1E-32f")
+    , SingleJavaValue("1E32f")
+    , SingleJavaValue("Float.NaN")
+    , SingleJavaValue("Float.NEGATIVE_INFINITY")
+    , SingleJavaValue("Float.POSITIVE_INFINITY")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Float?>`
+    extends JavaFloat with `box.OneQueueOfNullable` {
+
+  val javaClass = "java.util.Queue<Float>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("Float"))
+  val javaDescription = "OneQueueOfNullableFloats"
+
+  def defaultValue = SingleJavaValue("new java.util.ArrayDeque<Float>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("Float",
+      SingleJavaValue("null")
+    )
+  , QueueOfJavaValues("Float",
+      SingleJavaValue("0.0f")
+    )
+  , QueueOfJavaValues("Float",
+      SingleJavaValue("Float.POSITIVE_INFINITY")
+    )
+  , QueueOfJavaValues("Float",
+      SingleJavaValue("0.0f")
+    , SingleJavaValue("-1.2345E-10f")
+    , SingleJavaValue("1.2345E20f")
+    , SingleJavaValue("-1E-5f")
+    , SingleJavaValue("-1E-32f")
+    , SingleJavaValue("1E32f")
+    , SingleJavaValue("Float.NaN")
+    , SingleJavaValue("Float.NEGATIVE_INFINITY")
+    , SingleJavaValue("Float.POSITIVE_INFINITY")
+    )
+  , QueueOfJavaValues("Float",
+      SingleJavaValue("null")
+    , SingleJavaValue("0.0f")
+    , SingleJavaValue("-1.2345E-10f")
+    , SingleJavaValue("1.2345E20f")
+    , SingleJavaValue("-1E-5f")
+    , SingleJavaValue("-1E-32f")
+    , SingleJavaValue("1E32f")
+    , SingleJavaValue("Float.NaN")
+    , SingleJavaValue("Float.NEGATIVE_INFINITY")
+    , SingleJavaValue("Float.POSITIVE_INFINITY")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Float?>?`
+    extends JavaFloat with `box.NullableQueueOfNullable` {
+
+  val javaClass = "java.util.Queue<Float>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("Float"))
+  val javaDescription = "NullableQueueOfNullableFloats"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("Float",
+      SingleJavaValue("null")
+    )
+  , QueueOfJavaValues("Float",
+      SingleJavaValue("0.0f")
+    )
+  , QueueOfJavaValues("Float",
+      SingleJavaValue("Float.POSITIVE_INFINITY")
+    )
+  , QueueOfJavaValues("Float",
+      SingleJavaValue("0.0f")
+    , SingleJavaValue("-1.2345E-10f")
+    , SingleJavaValue("1.2345E20f")
+    , SingleJavaValue("-1E-5f")
+    , SingleJavaValue("-1E-32f")
+    , SingleJavaValue("1E32f")
+    , SingleJavaValue("Float.NaN")
+    , SingleJavaValue("Float.NEGATIVE_INFINITY")
+    , SingleJavaValue("Float.POSITIVE_INFINITY")
+    )
+  , QueueOfJavaValues("Float",
+      SingleJavaValue("null")
+    , SingleJavaValue("0.0f")
+    , SingleJavaValue("-1.2345E-10f")
+    , SingleJavaValue("1.2345E20f")
+    , SingleJavaValue("-1E-5f")
+    , SingleJavaValue("-1E-32f")
+    , SingleJavaValue("1E32f")
     , SingleJavaValue("Float.NaN")
     , SingleJavaValue("Float.NEGATIVE_INFINITY")
     , SingleJavaValue("Float.POSITIVE_INFINITY")
@@ -369,6 +555,8 @@ case object `java.Set<Float>`
     , SingleJavaValue("-1.2345E-10f")
     , SingleJavaValue("1.2345E20f")
     , SingleJavaValue("-1E-5f")
+    , SingleJavaValue("-1E-32f")
+    , SingleJavaValue("1E32f")
     , SingleJavaValue("Float.NaN")
     , SingleJavaValue("Float.NEGATIVE_INFINITY")
     , SingleJavaValue("Float.POSITIVE_INFINITY")
@@ -399,6 +587,8 @@ case object `java.Set<Float>?`
     , SingleJavaValue("-1.2345E-10f")
     , SingleJavaValue("1.2345E20f")
     , SingleJavaValue("-1E-5f")
+    , SingleJavaValue("-1E-32f")
+    , SingleJavaValue("1E32f")
     , SingleJavaValue("Float.NaN")
     , SingleJavaValue("Float.NEGATIVE_INFINITY")
     , SingleJavaValue("Float.POSITIVE_INFINITY")
@@ -432,6 +622,8 @@ case object `java.Set<Float?>`
     , SingleJavaValue("-1.2345E-10f")
     , SingleJavaValue("1.2345E20f")
     , SingleJavaValue("-1E-5f")
+    , SingleJavaValue("-1E-32f")
+    , SingleJavaValue("1E32f")
     , SingleJavaValue("Float.NaN")
     , SingleJavaValue("Float.NEGATIVE_INFINITY")
     , SingleJavaValue("Float.POSITIVE_INFINITY")
@@ -442,6 +634,8 @@ case object `java.Set<Float?>`
     , SingleJavaValue("-1.2345E-10f")
     , SingleJavaValue("1.2345E20f")
     , SingleJavaValue("-1E-5f")
+    , SingleJavaValue("-1E-32f")
+    , SingleJavaValue("1E32f")
     , SingleJavaValue("Float.NaN")
     , SingleJavaValue("Float.NEGATIVE_INFINITY")
     , SingleJavaValue("Float.POSITIVE_INFINITY")
@@ -475,6 +669,8 @@ case object `java.Set<Float?>?`
     , SingleJavaValue("-1.2345E-10f")
     , SingleJavaValue("1.2345E20f")
     , SingleJavaValue("-1E-5f")
+    , SingleJavaValue("-1E-32f")
+    , SingleJavaValue("1E32f")
     , SingleJavaValue("Float.NaN")
     , SingleJavaValue("Float.NEGATIVE_INFINITY")
     , SingleJavaValue("Float.POSITIVE_INFINITY")
@@ -485,6 +681,8 @@ case object `java.Set<Float?>?`
     , SingleJavaValue("-1.2345E-10f")
     , SingleJavaValue("1.2345E20f")
     , SingleJavaValue("-1E-5f")
+    , SingleJavaValue("-1E-32f")
+    , SingleJavaValue("1E32f")
     , SingleJavaValue("Float.NaN")
     , SingleJavaValue("Float.NEGATIVE_INFINITY")
     , SingleJavaValue("Float.POSITIVE_INFINITY")

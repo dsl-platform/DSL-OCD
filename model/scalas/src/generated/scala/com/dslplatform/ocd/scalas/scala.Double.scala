@@ -88,6 +88,38 @@ case object `scala.List<Double?>?`
   val defaultValue = "None"
 }
 
+case object `scala.Queue<Double>`
+    extends ScalaDouble with `box.OneQueueOfOne` {
+
+  val scalaClass = "Queue[Double]"
+
+  val defaultValue = "Queue[Double].empty"
+}
+
+case object `scala.Queue<Double>?`
+    extends ScalaDouble with `box.NullableQueueOfOne` {
+
+  val scalaClass = "Option[Queue[Double]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Queue<Double?>`
+    extends ScalaDouble with `box.OneQueueOfNullable` {
+
+  val scalaClass = "Queue[Option[Double]]"
+
+  val defaultValue = "Queue[Option[Double]].empty"
+}
+
+case object `scala.Queue<Double?>?`
+    extends ScalaDouble with `box.NullableQueueOfNullable` {
+
+  val scalaClass = "Option[Queue[Option[Double]]]"
+
+  val defaultValue = "None"
+}
+
 case object `scala.Set<Double>`
     extends ScalaDouble with `box.OneSetOfOne` {
 

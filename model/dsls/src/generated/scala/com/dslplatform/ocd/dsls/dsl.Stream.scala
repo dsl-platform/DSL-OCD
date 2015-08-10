@@ -22,6 +22,10 @@ case object `dsl.List<Stream>`    extends DslStream with `box.OneListOfOne`
 case object `dsl.List<Stream>?`   extends DslStream with `box.NullableListOfOne`
 case object `dsl.List<Stream?>`   extends DslStream with `box.OneListOfNullable`
 case object `dsl.List<Stream?>?`  extends DslStream with `box.NullableListOfNullable`
+case object `dsl.Queue<Stream>`   extends DslStream with `box.OneQueueOfOne`
+case object `dsl.Queue<Stream>?`  extends DslStream with `box.NullableQueueOfOne`
+case object `dsl.Queue<Stream?>`  extends DslStream with `box.OneQueueOfNullable`
+case object `dsl.Queue<Stream?>?` extends DslStream with `box.NullableQueueOfNullable`
 case object `dsl.Set<Stream>`     extends DslStream with `box.OneSetOfOne`
 case object `dsl.Set<Stream>?`    extends DslStream with `box.NullableSetOfOne`
 case object `dsl.Set<Stream?>`    extends DslStream with `box.OneSetOfNullable`
@@ -41,6 +45,10 @@ case object `dsl.LIST<STREAM>`    extends DslStream with `box.OneListOfOne`
 case object `dsl.LIST<STREAM>?`   extends DslStream with `box.NullableListOfOne`
 case object `dsl.LIST<STREAM?>`   extends DslStream with `box.OneListOfNullable`
 case object `dsl.LIST<STREAM?>?`  extends DslStream with `box.NullableListOfNullable`
+case object `dsl.QUEUE<STREAM>`   extends DslStream with `box.OneQueueOfOne`
+case object `dsl.QUEUE<STREAM>?`  extends DslStream with `box.NullableQueueOfOne`
+case object `dsl.QUEUE<STREAM?>`  extends DslStream with `box.OneQueueOfNullable`
+case object `dsl.QUEUE<STREAM?>?` extends DslStream with `box.NullableQueueOfNullable`
 case object `dsl.SET<STREAM>`     extends DslStream with `box.OneSetOfOne`
 case object `dsl.SET<STREAM>?`    extends DslStream with `box.NullableSetOfOne`
 case object `dsl.SET<STREAM?>`    extends DslStream with `box.OneSetOfNullable`
@@ -60,6 +68,10 @@ case object `dsl.list<stream>`    extends DslStream with `box.OneListOfOne`
 case object `dsl.list<stream>?`   extends DslStream with `box.NullableListOfOne`
 case object `dsl.list<stream?>`   extends DslStream with `box.OneListOfNullable`
 case object `dsl.list<stream?>?`  extends DslStream with `box.NullableListOfNullable`
+case object `dsl.queue<stream>`   extends DslStream with `box.OneQueueOfOne`
+case object `dsl.queue<stream>?`  extends DslStream with `box.NullableQueueOfOne`
+case object `dsl.queue<stream?>`  extends DslStream with `box.OneQueueOfNullable`
+case object `dsl.queue<stream?>?` extends DslStream with `box.NullableQueueOfNullable`
 case object `dsl.set<stream>`     extends DslStream with `box.OneSetOfOne`
 case object `dsl.set<stream>?`    extends DslStream with `box.NullableSetOfOne`
 case object `dsl.set<stream?>`    extends DslStream with `box.OneSetOfNullable`

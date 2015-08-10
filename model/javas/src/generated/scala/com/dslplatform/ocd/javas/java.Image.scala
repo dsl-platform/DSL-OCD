@@ -334,6 +334,146 @@ case object `java.List<Image?>?`
   val hasGenerics = true
 }
 
+case object `java.Queue<Image>`
+    extends JavaImage with `box.OneQueueOfOne` {
+
+  val javaClass = "java.util.Queue<java.awt.image.BufferedImage>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("java.awt.image.BufferedImage"))
+  val javaDescription = "OneQueueOfOneImages"
+
+  def defaultValue = SingleJavaValue("new java.util.ArrayDeque<java.awt.image.BufferedImage>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("java.awt.image.BufferedImage",
+      SingleJavaValue("new java.awt.image.BufferedImage(1, 1, java.awt.image.BufferedImage.TYPE_4BYTE_ABGR)")
+    )
+  , QueueOfJavaValues("java.awt.image.BufferedImage",
+      SingleJavaValue("new java.awt.image.BufferedImage(6, 6, java.awt.image.BufferedImage.TYPE_INT_RGB)")
+    )
+  , QueueOfJavaValues("java.awt.image.BufferedImage",
+      SingleJavaValue("new java.awt.image.BufferedImage(1, 1, java.awt.image.BufferedImage.TYPE_4BYTE_ABGR)")
+    , SingleJavaValue("new java.awt.image.BufferedImage(2, 2, java.awt.image.BufferedImage.TYPE_3BYTE_BGR)")
+    , SingleJavaValue("new java.awt.image.BufferedImage(3, 3, java.awt.image.BufferedImage.TYPE_BYTE_BINARY)")
+    , SingleJavaValue("new java.awt.image.BufferedImage(4, 4, java.awt.image.BufferedImage.TYPE_BYTE_GRAY)")
+    , SingleJavaValue("new java.awt.image.BufferedImage(5, 5, java.awt.image.BufferedImage.TYPE_BYTE_INDEXED)")
+    , SingleJavaValue("new java.awt.image.BufferedImage(6, 6, java.awt.image.BufferedImage.TYPE_INT_RGB)")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Image>?`
+    extends JavaImage with `box.NullableQueueOfOne` {
+
+  val javaClass = "java.util.Queue<java.awt.image.BufferedImage>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("java.awt.image.BufferedImage"))
+  val javaDescription = "NullableQueueOfOneImages"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("java.awt.image.BufferedImage",
+      SingleJavaValue("new java.awt.image.BufferedImage(1, 1, java.awt.image.BufferedImage.TYPE_4BYTE_ABGR)")
+    )
+  , QueueOfJavaValues("java.awt.image.BufferedImage",
+      SingleJavaValue("new java.awt.image.BufferedImage(6, 6, java.awt.image.BufferedImage.TYPE_INT_RGB)")
+    )
+  , QueueOfJavaValues("java.awt.image.BufferedImage",
+      SingleJavaValue("new java.awt.image.BufferedImage(1, 1, java.awt.image.BufferedImage.TYPE_4BYTE_ABGR)")
+    , SingleJavaValue("new java.awt.image.BufferedImage(2, 2, java.awt.image.BufferedImage.TYPE_3BYTE_BGR)")
+    , SingleJavaValue("new java.awt.image.BufferedImage(3, 3, java.awt.image.BufferedImage.TYPE_BYTE_BINARY)")
+    , SingleJavaValue("new java.awt.image.BufferedImage(4, 4, java.awt.image.BufferedImage.TYPE_BYTE_GRAY)")
+    , SingleJavaValue("new java.awt.image.BufferedImage(5, 5, java.awt.image.BufferedImage.TYPE_BYTE_INDEXED)")
+    , SingleJavaValue("new java.awt.image.BufferedImage(6, 6, java.awt.image.BufferedImage.TYPE_INT_RGB)")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Image?>`
+    extends JavaImage with `box.OneQueueOfNullable` {
+
+  val javaClass = "java.util.Queue<java.awt.image.BufferedImage>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("java.awt.image.BufferedImage"))
+  val javaDescription = "OneQueueOfNullableImages"
+
+  def defaultValue = SingleJavaValue("new java.util.ArrayDeque<java.awt.image.BufferedImage>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("java.awt.image.BufferedImage",
+      SingleJavaValue("null")
+    )
+  , QueueOfJavaValues("java.awt.image.BufferedImage",
+      SingleJavaValue("new java.awt.image.BufferedImage(1, 1, java.awt.image.BufferedImage.TYPE_4BYTE_ABGR)")
+    )
+  , QueueOfJavaValues("java.awt.image.BufferedImage",
+      SingleJavaValue("new java.awt.image.BufferedImage(6, 6, java.awt.image.BufferedImage.TYPE_INT_RGB)")
+    )
+  , QueueOfJavaValues("java.awt.image.BufferedImage",
+      SingleJavaValue("new java.awt.image.BufferedImage(1, 1, java.awt.image.BufferedImage.TYPE_4BYTE_ABGR)")
+    , SingleJavaValue("new java.awt.image.BufferedImage(2, 2, java.awt.image.BufferedImage.TYPE_3BYTE_BGR)")
+    , SingleJavaValue("new java.awt.image.BufferedImage(3, 3, java.awt.image.BufferedImage.TYPE_BYTE_BINARY)")
+    , SingleJavaValue("new java.awt.image.BufferedImage(4, 4, java.awt.image.BufferedImage.TYPE_BYTE_GRAY)")
+    , SingleJavaValue("new java.awt.image.BufferedImage(5, 5, java.awt.image.BufferedImage.TYPE_BYTE_INDEXED)")
+    , SingleJavaValue("new java.awt.image.BufferedImage(6, 6, java.awt.image.BufferedImage.TYPE_INT_RGB)")
+    )
+  , QueueOfJavaValues("java.awt.image.BufferedImage",
+      SingleJavaValue("null")
+    , SingleJavaValue("new java.awt.image.BufferedImage(1, 1, java.awt.image.BufferedImage.TYPE_4BYTE_ABGR)")
+    , SingleJavaValue("new java.awt.image.BufferedImage(2, 2, java.awt.image.BufferedImage.TYPE_3BYTE_BGR)")
+    , SingleJavaValue("new java.awt.image.BufferedImage(3, 3, java.awt.image.BufferedImage.TYPE_BYTE_BINARY)")
+    , SingleJavaValue("new java.awt.image.BufferedImage(4, 4, java.awt.image.BufferedImage.TYPE_BYTE_GRAY)")
+    , SingleJavaValue("new java.awt.image.BufferedImage(5, 5, java.awt.image.BufferedImage.TYPE_BYTE_INDEXED)")
+    , SingleJavaValue("new java.awt.image.BufferedImage(6, 6, java.awt.image.BufferedImage.TYPE_INT_RGB)")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Image?>?`
+    extends JavaImage with `box.NullableQueueOfNullable` {
+
+  val javaClass = "java.util.Queue<java.awt.image.BufferedImage>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("java.awt.image.BufferedImage"))
+  val javaDescription = "NullableQueueOfNullableImages"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("java.awt.image.BufferedImage",
+      SingleJavaValue("null")
+    )
+  , QueueOfJavaValues("java.awt.image.BufferedImage",
+      SingleJavaValue("new java.awt.image.BufferedImage(1, 1, java.awt.image.BufferedImage.TYPE_4BYTE_ABGR)")
+    )
+  , QueueOfJavaValues("java.awt.image.BufferedImage",
+      SingleJavaValue("new java.awt.image.BufferedImage(6, 6, java.awt.image.BufferedImage.TYPE_INT_RGB)")
+    )
+  , QueueOfJavaValues("java.awt.image.BufferedImage",
+      SingleJavaValue("new java.awt.image.BufferedImage(1, 1, java.awt.image.BufferedImage.TYPE_4BYTE_ABGR)")
+    , SingleJavaValue("new java.awt.image.BufferedImage(2, 2, java.awt.image.BufferedImage.TYPE_3BYTE_BGR)")
+    , SingleJavaValue("new java.awt.image.BufferedImage(3, 3, java.awt.image.BufferedImage.TYPE_BYTE_BINARY)")
+    , SingleJavaValue("new java.awt.image.BufferedImage(4, 4, java.awt.image.BufferedImage.TYPE_BYTE_GRAY)")
+    , SingleJavaValue("new java.awt.image.BufferedImage(5, 5, java.awt.image.BufferedImage.TYPE_BYTE_INDEXED)")
+    , SingleJavaValue("new java.awt.image.BufferedImage(6, 6, java.awt.image.BufferedImage.TYPE_INT_RGB)")
+    )
+  , QueueOfJavaValues("java.awt.image.BufferedImage",
+      SingleJavaValue("null")
+    , SingleJavaValue("new java.awt.image.BufferedImage(1, 1, java.awt.image.BufferedImage.TYPE_4BYTE_ABGR)")
+    , SingleJavaValue("new java.awt.image.BufferedImage(2, 2, java.awt.image.BufferedImage.TYPE_3BYTE_BGR)")
+    , SingleJavaValue("new java.awt.image.BufferedImage(3, 3, java.awt.image.BufferedImage.TYPE_BYTE_BINARY)")
+    , SingleJavaValue("new java.awt.image.BufferedImage(4, 4, java.awt.image.BufferedImage.TYPE_BYTE_GRAY)")
+    , SingleJavaValue("new java.awt.image.BufferedImage(5, 5, java.awt.image.BufferedImage.TYPE_BYTE_INDEXED)")
+    , SingleJavaValue("new java.awt.image.BufferedImage(6, 6, java.awt.image.BufferedImage.TYPE_INT_RGB)")
+    )
+  )
+
+  val hasGenerics = true
+}
+
 case object `java.Set<Image>`
     extends JavaImage with `box.OneSetOfOne` {
 

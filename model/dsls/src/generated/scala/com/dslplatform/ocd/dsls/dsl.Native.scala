@@ -22,6 +22,10 @@ case object `dsl.List<Native>`    extends DslNative with `box.OneListOfOne`
 case object `dsl.List<Native>?`   extends DslNative with `box.NullableListOfOne`
 case object `dsl.List<Native?>`   extends DslNative with `box.OneListOfNullable`
 case object `dsl.List<Native?>?`  extends DslNative with `box.NullableListOfNullable`
+case object `dsl.Queue<Native>`   extends DslNative with `box.OneQueueOfOne`
+case object `dsl.Queue<Native>?`  extends DslNative with `box.NullableQueueOfOne`
+case object `dsl.Queue<Native?>`  extends DslNative with `box.OneQueueOfNullable`
+case object `dsl.Queue<Native?>?` extends DslNative with `box.NullableQueueOfNullable`
 case object `dsl.Set<Native>`     extends DslNative with `box.OneSetOfOne`
 case object `dsl.Set<Native>?`    extends DslNative with `box.NullableSetOfOne`
 case object `dsl.Set<Native?>`    extends DslNative with `box.OneSetOfNullable`
@@ -41,6 +45,10 @@ case object `dsl.LIST<NATIVE>`    extends DslNative with `box.OneListOfOne`
 case object `dsl.LIST<NATIVE>?`   extends DslNative with `box.NullableListOfOne`
 case object `dsl.LIST<NATIVE?>`   extends DslNative with `box.OneListOfNullable`
 case object `dsl.LIST<NATIVE?>?`  extends DslNative with `box.NullableListOfNullable`
+case object `dsl.QUEUE<NATIVE>`   extends DslNative with `box.OneQueueOfOne`
+case object `dsl.QUEUE<NATIVE>?`  extends DslNative with `box.NullableQueueOfOne`
+case object `dsl.QUEUE<NATIVE?>`  extends DslNative with `box.OneQueueOfNullable`
+case object `dsl.QUEUE<NATIVE?>?` extends DslNative with `box.NullableQueueOfNullable`
 case object `dsl.SET<NATIVE>`     extends DslNative with `box.OneSetOfOne`
 case object `dsl.SET<NATIVE>?`    extends DslNative with `box.NullableSetOfOne`
 case object `dsl.SET<NATIVE?>`    extends DslNative with `box.OneSetOfNullable`
@@ -60,6 +68,10 @@ case object `dsl.list<native>`    extends DslNative with `box.OneListOfOne`
 case object `dsl.list<native>?`   extends DslNative with `box.NullableListOfOne`
 case object `dsl.list<native?>`   extends DslNative with `box.OneListOfNullable`
 case object `dsl.list<native?>?`  extends DslNative with `box.NullableListOfNullable`
+case object `dsl.queue<native>`   extends DslNative with `box.OneQueueOfOne`
+case object `dsl.queue<native>?`  extends DslNative with `box.NullableQueueOfOne`
+case object `dsl.queue<native?>`  extends DslNative with `box.OneQueueOfNullable`
+case object `dsl.queue<native?>?` extends DslNative with `box.NullableQueueOfNullable`
 case object `dsl.set<native>`     extends DslNative with `box.OneSetOfOne`
 case object `dsl.set<native>?`    extends DslNative with `box.NullableSetOfOne`
 case object `dsl.set<native?>`    extends DslNative with `box.OneSetOfNullable`

@@ -22,6 +22,10 @@ case object `dsl.List<Rectangle>`    extends DslRectangle with `box.OneListOfOne
 case object `dsl.List<Rectangle>?`   extends DslRectangle with `box.NullableListOfOne`
 case object `dsl.List<Rectangle?>`   extends DslRectangle with `box.OneListOfNullable`
 case object `dsl.List<Rectangle?>?`  extends DslRectangle with `box.NullableListOfNullable`
+case object `dsl.Queue<Rectangle>`   extends DslRectangle with `box.OneQueueOfOne`
+case object `dsl.Queue<Rectangle>?`  extends DslRectangle with `box.NullableQueueOfOne`
+case object `dsl.Queue<Rectangle?>`  extends DslRectangle with `box.OneQueueOfNullable`
+case object `dsl.Queue<Rectangle?>?` extends DslRectangle with `box.NullableQueueOfNullable`
 case object `dsl.Set<Rectangle>`     extends DslRectangle with `box.OneSetOfOne`
 case object `dsl.Set<Rectangle>?`    extends DslRectangle with `box.NullableSetOfOne`
 case object `dsl.Set<Rectangle?>`    extends DslRectangle with `box.OneSetOfNullable`
@@ -41,6 +45,10 @@ case object `dsl.LIST<BOX>`    extends DslRectangle with `box.OneListOfOne`
 case object `dsl.LIST<BOX>?`   extends DslRectangle with `box.NullableListOfOne`
 case object `dsl.LIST<BOX?>`   extends DslRectangle with `box.OneListOfNullable`
 case object `dsl.LIST<BOX?>?`  extends DslRectangle with `box.NullableListOfNullable`
+case object `dsl.QUEUE<BOX>`   extends DslRectangle with `box.OneQueueOfOne`
+case object `dsl.QUEUE<BOX>?`  extends DslRectangle with `box.NullableQueueOfOne`
+case object `dsl.QUEUE<BOX?>`  extends DslRectangle with `box.OneQueueOfNullable`
+case object `dsl.QUEUE<BOX?>?` extends DslRectangle with `box.NullableQueueOfNullable`
 case object `dsl.SET<BOX>`     extends DslRectangle with `box.OneSetOfOne`
 case object `dsl.SET<BOX>?`    extends DslRectangle with `box.NullableSetOfOne`
 case object `dsl.SET<BOX?>`    extends DslRectangle with `box.OneSetOfNullable`
@@ -60,6 +68,10 @@ case object `dsl.List<Box>`    extends DslRectangle with `box.OneListOfOne`
 case object `dsl.List<Box>?`   extends DslRectangle with `box.NullableListOfOne`
 case object `dsl.List<Box?>`   extends DslRectangle with `box.OneListOfNullable`
 case object `dsl.List<Box?>?`  extends DslRectangle with `box.NullableListOfNullable`
+case object `dsl.Queue<Box>`   extends DslRectangle with `box.OneQueueOfOne`
+case object `dsl.Queue<Box>?`  extends DslRectangle with `box.NullableQueueOfOne`
+case object `dsl.Queue<Box?>`  extends DslRectangle with `box.OneQueueOfNullable`
+case object `dsl.Queue<Box?>?` extends DslRectangle with `box.NullableQueueOfNullable`
 case object `dsl.Set<Box>`     extends DslRectangle with `box.OneSetOfOne`
 case object `dsl.Set<Box>?`    extends DslRectangle with `box.NullableSetOfOne`
 case object `dsl.Set<Box?>`    extends DslRectangle with `box.OneSetOfNullable`
@@ -79,6 +91,10 @@ case object `dsl.LIST<RECTANGLE>`    extends DslRectangle with `box.OneListOfOne
 case object `dsl.LIST<RECTANGLE>?`   extends DslRectangle with `box.NullableListOfOne`
 case object `dsl.LIST<RECTANGLE?>`   extends DslRectangle with `box.OneListOfNullable`
 case object `dsl.LIST<RECTANGLE?>?`  extends DslRectangle with `box.NullableListOfNullable`
+case object `dsl.QUEUE<RECTANGLE>`   extends DslRectangle with `box.OneQueueOfOne`
+case object `dsl.QUEUE<RECTANGLE>?`  extends DslRectangle with `box.NullableQueueOfOne`
+case object `dsl.QUEUE<RECTANGLE?>`  extends DslRectangle with `box.OneQueueOfNullable`
+case object `dsl.QUEUE<RECTANGLE?>?` extends DslRectangle with `box.NullableQueueOfNullable`
 case object `dsl.SET<RECTANGLE>`     extends DslRectangle with `box.OneSetOfOne`
 case object `dsl.SET<RECTANGLE>?`    extends DslRectangle with `box.NullableSetOfOne`
 case object `dsl.SET<RECTANGLE?>`    extends DslRectangle with `box.OneSetOfNullable`
@@ -98,6 +114,10 @@ case object `dsl.list<box>`    extends DslRectangle with `box.OneListOfOne`
 case object `dsl.list<box>?`   extends DslRectangle with `box.NullableListOfOne`
 case object `dsl.list<box?>`   extends DslRectangle with `box.OneListOfNullable`
 case object `dsl.list<box?>?`  extends DslRectangle with `box.NullableListOfNullable`
+case object `dsl.queue<box>`   extends DslRectangle with `box.OneQueueOfOne`
+case object `dsl.queue<box>?`  extends DslRectangle with `box.NullableQueueOfOne`
+case object `dsl.queue<box?>`  extends DslRectangle with `box.OneQueueOfNullable`
+case object `dsl.queue<box?>?` extends DslRectangle with `box.NullableQueueOfNullable`
 case object `dsl.set<box>`     extends DslRectangle with `box.OneSetOfOne`
 case object `dsl.set<box>?`    extends DslRectangle with `box.NullableSetOfOne`
 case object `dsl.set<box?>`    extends DslRectangle with `box.OneSetOfNullable`
@@ -117,6 +137,10 @@ case object `dsl.list<rectangle>`    extends DslRectangle with `box.OneListOfOne
 case object `dsl.list<rectangle>?`   extends DslRectangle with `box.NullableListOfOne`
 case object `dsl.list<rectangle?>`   extends DslRectangle with `box.OneListOfNullable`
 case object `dsl.list<rectangle?>?`  extends DslRectangle with `box.NullableListOfNullable`
+case object `dsl.queue<rectangle>`   extends DslRectangle with `box.OneQueueOfOne`
+case object `dsl.queue<rectangle>?`  extends DslRectangle with `box.NullableQueueOfOne`
+case object `dsl.queue<rectangle?>`  extends DslRectangle with `box.OneQueueOfNullable`
+case object `dsl.queue<rectangle?>?` extends DslRectangle with `box.NullableQueueOfNullable`
 case object `dsl.set<rectangle>`     extends DslRectangle with `box.OneSetOfOne`
 case object `dsl.set<rectangle>?`    extends DslRectangle with `box.NullableSetOfOne`
 case object `dsl.set<rectangle?>`    extends DslRectangle with `box.OneSetOfNullable`

@@ -472,6 +472,208 @@ case object `java.List<Map?>?`
   val hasGenerics = true
 }
 
+case object `java.Queue<Map>`
+    extends JavaMap with `box.OneQueueOfOne` {
+
+  val javaClass = "java.util.Queue<java.util.Map<String, String>>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaGenericType("java.util.Map", JavaClass("String"), JavaClass("String")))
+  val javaDescription = "OneQueueOfOneMaps"
+
+  def defaultValue = SingleJavaValue("new java.util.ArrayDeque<java.util.Map<String, String>>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("java.util.Map<String, String>",
+      SingleJavaValue("new java.util.HashMap<String, String>(0)")
+    )
+  , QueueOfJavaValues("java.util.Map<String, String>",
+      MapOfJavaValues("String", "String",
+        SingleJavaValue("\"\"") -> SingleJavaValue("\"empty\"")
+      , SingleJavaValue("\"a\"") -> SingleJavaValue("\"1\"")
+      , SingleJavaValue("\"b\"") -> SingleJavaValue("\"2\"")
+      , SingleJavaValue("\"c\"") -> SingleJavaValue("\"3\"")
+      )
+    )
+  , QueueOfJavaValues("java.util.Map<String, String>",
+      SingleJavaValue("new java.util.HashMap<String, String>(0)")
+    , MapOfJavaValues("String", "String",
+        SingleJavaValue("\"a\"") -> SingleJavaValue("\"b\"")
+      )
+    , MapOfJavaValues("String", "String",
+        SingleJavaValue("\"Quote: \\\", Solidus /\"") -> SingleJavaValue("\"Backslash: \\\\, Aphos: ', Brackets: [] () {}\"")
+      )
+    , MapOfJavaValues("String", "String",
+        SingleJavaValue("\"\"") -> SingleJavaValue("\"empty\"")
+      , SingleJavaValue("\"a\"") -> SingleJavaValue("\"1\"")
+      , SingleJavaValue("\"b\"") -> SingleJavaValue("\"2\"")
+      , SingleJavaValue("\"c\"") -> SingleJavaValue("\"3\"")
+      )
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Map>?`
+    extends JavaMap with `box.NullableQueueOfOne` {
+
+  val javaClass = "java.util.Queue<java.util.Map<String, String>>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaGenericType("java.util.Map", JavaClass("String"), JavaClass("String")))
+  val javaDescription = "NullableQueueOfOneMaps"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("java.util.Map<String, String>",
+      SingleJavaValue("new java.util.HashMap<String, String>(0)")
+    )
+  , QueueOfJavaValues("java.util.Map<String, String>",
+      MapOfJavaValues("String", "String",
+        SingleJavaValue("\"\"") -> SingleJavaValue("\"empty\"")
+      , SingleJavaValue("\"a\"") -> SingleJavaValue("\"1\"")
+      , SingleJavaValue("\"b\"") -> SingleJavaValue("\"2\"")
+      , SingleJavaValue("\"c\"") -> SingleJavaValue("\"3\"")
+      )
+    )
+  , QueueOfJavaValues("java.util.Map<String, String>",
+      SingleJavaValue("new java.util.HashMap<String, String>(0)")
+    , MapOfJavaValues("String", "String",
+        SingleJavaValue("\"a\"") -> SingleJavaValue("\"b\"")
+      )
+    , MapOfJavaValues("String", "String",
+        SingleJavaValue("\"Quote: \\\", Solidus /\"") -> SingleJavaValue("\"Backslash: \\\\, Aphos: ', Brackets: [] () {}\"")
+      )
+    , MapOfJavaValues("String", "String",
+        SingleJavaValue("\"\"") -> SingleJavaValue("\"empty\"")
+      , SingleJavaValue("\"a\"") -> SingleJavaValue("\"1\"")
+      , SingleJavaValue("\"b\"") -> SingleJavaValue("\"2\"")
+      , SingleJavaValue("\"c\"") -> SingleJavaValue("\"3\"")
+      )
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Map?>`
+    extends JavaMap with `box.OneQueueOfNullable` {
+
+  val javaClass = "java.util.Queue<java.util.Map<String, String>>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaGenericType("java.util.Map", JavaClass("String"), JavaClass("String")))
+  val javaDescription = "OneQueueOfNullableMaps"
+
+  def defaultValue = SingleJavaValue("new java.util.ArrayDeque<java.util.Map<String, String>>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("java.util.Map<String, String>",
+      SingleJavaValue("null")
+    )
+  , QueueOfJavaValues("java.util.Map<String, String>",
+      SingleJavaValue("new java.util.HashMap<String, String>(0)")
+    )
+  , QueueOfJavaValues("java.util.Map<String, String>",
+      MapOfJavaValues("String", "String",
+        SingleJavaValue("\"\"") -> SingleJavaValue("\"empty\"")
+      , SingleJavaValue("\"a\"") -> SingleJavaValue("\"1\"")
+      , SingleJavaValue("\"b\"") -> SingleJavaValue("\"2\"")
+      , SingleJavaValue("\"c\"") -> SingleJavaValue("\"3\"")
+      )
+    )
+  , QueueOfJavaValues("java.util.Map<String, String>",
+      SingleJavaValue("new java.util.HashMap<String, String>(0)")
+    , MapOfJavaValues("String", "String",
+        SingleJavaValue("\"a\"") -> SingleJavaValue("\"b\"")
+      )
+    , MapOfJavaValues("String", "String",
+        SingleJavaValue("\"Quote: \\\", Solidus /\"") -> SingleJavaValue("\"Backslash: \\\\, Aphos: ', Brackets: [] () {}\"")
+      )
+    , MapOfJavaValues("String", "String",
+        SingleJavaValue("\"\"") -> SingleJavaValue("\"empty\"")
+      , SingleJavaValue("\"a\"") -> SingleJavaValue("\"1\"")
+      , SingleJavaValue("\"b\"") -> SingleJavaValue("\"2\"")
+      , SingleJavaValue("\"c\"") -> SingleJavaValue("\"3\"")
+      )
+    )
+  , QueueOfJavaValues("java.util.Map<String, String>",
+      SingleJavaValue("null")
+    , SingleJavaValue("new java.util.HashMap<String, String>(0)")
+    , MapOfJavaValues("String", "String",
+        SingleJavaValue("\"a\"") -> SingleJavaValue("\"b\"")
+      )
+    , MapOfJavaValues("String", "String",
+        SingleJavaValue("\"Quote: \\\", Solidus /\"") -> SingleJavaValue("\"Backslash: \\\\, Aphos: ', Brackets: [] () {}\"")
+      )
+    , MapOfJavaValues("String", "String",
+        SingleJavaValue("\"\"") -> SingleJavaValue("\"empty\"")
+      , SingleJavaValue("\"a\"") -> SingleJavaValue("\"1\"")
+      , SingleJavaValue("\"b\"") -> SingleJavaValue("\"2\"")
+      , SingleJavaValue("\"c\"") -> SingleJavaValue("\"3\"")
+      )
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Map?>?`
+    extends JavaMap with `box.NullableQueueOfNullable` {
+
+  val javaClass = "java.util.Queue<java.util.Map<String, String>>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaGenericType("java.util.Map", JavaClass("String"), JavaClass("String")))
+  val javaDescription = "NullableQueueOfNullableMaps"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("java.util.Map<String, String>",
+      SingleJavaValue("null")
+    )
+  , QueueOfJavaValues("java.util.Map<String, String>",
+      SingleJavaValue("new java.util.HashMap<String, String>(0)")
+    )
+  , QueueOfJavaValues("java.util.Map<String, String>",
+      MapOfJavaValues("String", "String",
+        SingleJavaValue("\"\"") -> SingleJavaValue("\"empty\"")
+      , SingleJavaValue("\"a\"") -> SingleJavaValue("\"1\"")
+      , SingleJavaValue("\"b\"") -> SingleJavaValue("\"2\"")
+      , SingleJavaValue("\"c\"") -> SingleJavaValue("\"3\"")
+      )
+    )
+  , QueueOfJavaValues("java.util.Map<String, String>",
+      SingleJavaValue("new java.util.HashMap<String, String>(0)")
+    , MapOfJavaValues("String", "String",
+        SingleJavaValue("\"a\"") -> SingleJavaValue("\"b\"")
+      )
+    , MapOfJavaValues("String", "String",
+        SingleJavaValue("\"Quote: \\\", Solidus /\"") -> SingleJavaValue("\"Backslash: \\\\, Aphos: ', Brackets: [] () {}\"")
+      )
+    , MapOfJavaValues("String", "String",
+        SingleJavaValue("\"\"") -> SingleJavaValue("\"empty\"")
+      , SingleJavaValue("\"a\"") -> SingleJavaValue("\"1\"")
+      , SingleJavaValue("\"b\"") -> SingleJavaValue("\"2\"")
+      , SingleJavaValue("\"c\"") -> SingleJavaValue("\"3\"")
+      )
+    )
+  , QueueOfJavaValues("java.util.Map<String, String>",
+      SingleJavaValue("null")
+    , SingleJavaValue("new java.util.HashMap<String, String>(0)")
+    , MapOfJavaValues("String", "String",
+        SingleJavaValue("\"a\"") -> SingleJavaValue("\"b\"")
+      )
+    , MapOfJavaValues("String", "String",
+        SingleJavaValue("\"Quote: \\\", Solidus /\"") -> SingleJavaValue("\"Backslash: \\\\, Aphos: ', Brackets: [] () {}\"")
+      )
+    , MapOfJavaValues("String", "String",
+        SingleJavaValue("\"\"") -> SingleJavaValue("\"empty\"")
+      , SingleJavaValue("\"a\"") -> SingleJavaValue("\"1\"")
+      , SingleJavaValue("\"b\"") -> SingleJavaValue("\"2\"")
+      , SingleJavaValue("\"c\"") -> SingleJavaValue("\"3\"")
+      )
+    )
+  )
+
+  val hasGenerics = true
+}
+
 case object `java.Set<Map>`
     extends JavaMap with `box.OneSetOfOne` {
 

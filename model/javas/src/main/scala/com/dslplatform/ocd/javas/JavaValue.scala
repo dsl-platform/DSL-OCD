@@ -54,7 +54,7 @@ case class ListOfJavaValues(
   override val toString = "new java.util.ArrayList<" + elementClass + values.map(_ match {
     case x if x.isNull => "(" + elementClass + ") " + x
     case x => x
-  }).mkString(">(java.util.Arrays.asList(", ", ", "))")
+  }).mkString(">(java.util.Arrays.<" + elementClass + ">asList(", ", ", "))")
 }
 
 case class SetOfJavaValues(
@@ -65,7 +65,18 @@ case class SetOfJavaValues(
   override val toString = "new java.util.HashSet<" + elementClass + values.map(_ match {
     case x if x.isNull => "(" + elementClass + ") " + x
     case x => x
-  }).mkString(">(java.util.Arrays.asList(", ", ", "))")
+  }).mkString(">(java.util.Arrays.<" + elementClass + ">asList(", ", ", "))")
+}
+
+case class QueueOfJavaValues(
+    elementClass: String
+  , values: JavaValue*
+  ) extends JavaValueContainer {
+
+  override val toString = "new java.util.ArrayDeque<" + elementClass + values.map(_ match {
+    case x if x.isNull => "(" + elementClass + ") " + x
+    case x => x
+  }).mkString(">(java.util.Arrays.<" + elementClass + ">asList(", ", ", "))")
 }
 
 case class MapOfJavaValues(

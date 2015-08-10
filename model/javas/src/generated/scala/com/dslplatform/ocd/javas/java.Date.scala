@@ -334,6 +334,146 @@ case object `java.List<Date?>?`
   val hasGenerics = true
 }
 
+case object `java.Queue<Date>`
+    extends JavaDate with `box.OneQueueOfOne` {
+
+  val javaClass = "java.util.Queue<org.joda.time.LocalDate>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("org.joda.time.LocalDate"))
+  val javaDescription = "OneQueueOfOneDates"
+
+  def defaultValue = SingleJavaValue("new java.util.ArrayDeque<org.joda.time.LocalDate>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("org.joda.time.LocalDate",
+      SingleJavaValue("org.joda.time.LocalDate.now()", Unstable)
+    )
+  , QueueOfJavaValues("org.joda.time.LocalDate",
+      SingleJavaValue("new org.joda.time.LocalDate(9999, 12, 31)")
+    )
+  , QueueOfJavaValues("org.joda.time.LocalDate",
+      SingleJavaValue("org.joda.time.LocalDate.now()", Unstable)
+    , SingleJavaValue("new org.joda.time.LocalDate(1, 2, 3)")
+    , SingleJavaValue("new org.joda.time.LocalDate(1, 1, 1)")
+    , SingleJavaValue("new org.joda.time.LocalDate(0)")
+    , SingleJavaValue("new org.joda.time.LocalDate(Integer.MAX_VALUE * 1001L)")
+    , SingleJavaValue("new org.joda.time.LocalDate(9999, 12, 31)")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Date>?`
+    extends JavaDate with `box.NullableQueueOfOne` {
+
+  val javaClass = "java.util.Queue<org.joda.time.LocalDate>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("org.joda.time.LocalDate"))
+  val javaDescription = "NullableQueueOfOneDates"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("org.joda.time.LocalDate",
+      SingleJavaValue("org.joda.time.LocalDate.now()", Unstable)
+    )
+  , QueueOfJavaValues("org.joda.time.LocalDate",
+      SingleJavaValue("new org.joda.time.LocalDate(9999, 12, 31)")
+    )
+  , QueueOfJavaValues("org.joda.time.LocalDate",
+      SingleJavaValue("org.joda.time.LocalDate.now()", Unstable)
+    , SingleJavaValue("new org.joda.time.LocalDate(1, 2, 3)")
+    , SingleJavaValue("new org.joda.time.LocalDate(1, 1, 1)")
+    , SingleJavaValue("new org.joda.time.LocalDate(0)")
+    , SingleJavaValue("new org.joda.time.LocalDate(Integer.MAX_VALUE * 1001L)")
+    , SingleJavaValue("new org.joda.time.LocalDate(9999, 12, 31)")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Date?>`
+    extends JavaDate with `box.OneQueueOfNullable` {
+
+  val javaClass = "java.util.Queue<org.joda.time.LocalDate>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("org.joda.time.LocalDate"))
+  val javaDescription = "OneQueueOfNullableDates"
+
+  def defaultValue = SingleJavaValue("new java.util.ArrayDeque<org.joda.time.LocalDate>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("org.joda.time.LocalDate",
+      SingleJavaValue("null")
+    )
+  , QueueOfJavaValues("org.joda.time.LocalDate",
+      SingleJavaValue("org.joda.time.LocalDate.now()", Unstable)
+    )
+  , QueueOfJavaValues("org.joda.time.LocalDate",
+      SingleJavaValue("new org.joda.time.LocalDate(9999, 12, 31)")
+    )
+  , QueueOfJavaValues("org.joda.time.LocalDate",
+      SingleJavaValue("org.joda.time.LocalDate.now()", Unstable)
+    , SingleJavaValue("new org.joda.time.LocalDate(1, 2, 3)")
+    , SingleJavaValue("new org.joda.time.LocalDate(1, 1, 1)")
+    , SingleJavaValue("new org.joda.time.LocalDate(0)")
+    , SingleJavaValue("new org.joda.time.LocalDate(Integer.MAX_VALUE * 1001L)")
+    , SingleJavaValue("new org.joda.time.LocalDate(9999, 12, 31)")
+    )
+  , QueueOfJavaValues("org.joda.time.LocalDate",
+      SingleJavaValue("null")
+    , SingleJavaValue("org.joda.time.LocalDate.now()", Unstable)
+    , SingleJavaValue("new org.joda.time.LocalDate(1, 2, 3)")
+    , SingleJavaValue("new org.joda.time.LocalDate(1, 1, 1)")
+    , SingleJavaValue("new org.joda.time.LocalDate(0)")
+    , SingleJavaValue("new org.joda.time.LocalDate(Integer.MAX_VALUE * 1001L)")
+    , SingleJavaValue("new org.joda.time.LocalDate(9999, 12, 31)")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Date?>?`
+    extends JavaDate with `box.NullableQueueOfNullable` {
+
+  val javaClass = "java.util.Queue<org.joda.time.LocalDate>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("org.joda.time.LocalDate"))
+  val javaDescription = "NullableQueueOfNullableDates"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("org.joda.time.LocalDate",
+      SingleJavaValue("null")
+    )
+  , QueueOfJavaValues("org.joda.time.LocalDate",
+      SingleJavaValue("org.joda.time.LocalDate.now()", Unstable)
+    )
+  , QueueOfJavaValues("org.joda.time.LocalDate",
+      SingleJavaValue("new org.joda.time.LocalDate(9999, 12, 31)")
+    )
+  , QueueOfJavaValues("org.joda.time.LocalDate",
+      SingleJavaValue("org.joda.time.LocalDate.now()", Unstable)
+    , SingleJavaValue("new org.joda.time.LocalDate(1, 2, 3)")
+    , SingleJavaValue("new org.joda.time.LocalDate(1, 1, 1)")
+    , SingleJavaValue("new org.joda.time.LocalDate(0)")
+    , SingleJavaValue("new org.joda.time.LocalDate(Integer.MAX_VALUE * 1001L)")
+    , SingleJavaValue("new org.joda.time.LocalDate(9999, 12, 31)")
+    )
+  , QueueOfJavaValues("org.joda.time.LocalDate",
+      SingleJavaValue("null")
+    , SingleJavaValue("org.joda.time.LocalDate.now()", Unstable)
+    , SingleJavaValue("new org.joda.time.LocalDate(1, 2, 3)")
+    , SingleJavaValue("new org.joda.time.LocalDate(1, 1, 1)")
+    , SingleJavaValue("new org.joda.time.LocalDate(0)")
+    , SingleJavaValue("new org.joda.time.LocalDate(Integer.MAX_VALUE * 1001L)")
+    , SingleJavaValue("new org.joda.time.LocalDate(9999, 12, 31)")
+    )
+  )
+
+  val hasGenerics = true
+}
+
 case object `java.Set<Date>`
     extends JavaDate with `box.OneSetOfOne` {
 

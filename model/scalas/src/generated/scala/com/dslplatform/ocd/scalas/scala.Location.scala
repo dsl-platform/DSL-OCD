@@ -88,6 +88,38 @@ case object `scala.List<Location?>?`
   val defaultValue = "None"
 }
 
+case object `scala.Queue<Location>`
+    extends ScalaLocation with `box.OneQueueOfOne` {
+
+  val scalaClass = "Queue[java.awt.geom.Point2D]"
+
+  val defaultValue = "Queue[java.awt.geom.Point2D].empty"
+}
+
+case object `scala.Queue<Location>?`
+    extends ScalaLocation with `box.NullableQueueOfOne` {
+
+  val scalaClass = "Option[Queue[java.awt.geom.Point2D]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Queue<Location?>`
+    extends ScalaLocation with `box.OneQueueOfNullable` {
+
+  val scalaClass = "Queue[Option[java.awt.geom.Point2D]]"
+
+  val defaultValue = "Queue[Option[java.awt.geom.Point2D]].empty"
+}
+
+case object `scala.Queue<Location?>?`
+    extends ScalaLocation with `box.NullableQueueOfNullable` {
+
+  val scalaClass = "Option[Queue[Option[java.awt.geom.Point2D]]]"
+
+  val defaultValue = "None"
+}
+
 case object `scala.Set<Location>`
     extends ScalaLocation with `box.OneSetOfOne` {
 

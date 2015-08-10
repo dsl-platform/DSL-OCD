@@ -292,6 +292,128 @@ case object `java.List<Guid?>?`
   val hasGenerics = true
 }
 
+case object `java.Queue<Guid>`
+    extends JavaGuid with `box.OneQueueOfOne` {
+
+  val javaClass = "java.util.Queue<java.util.UUID>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("java.util.UUID"))
+  val javaDescription = "OneQueueOfOneGuids"
+
+  def defaultValue = SingleJavaValue("new java.util.ArrayDeque<java.util.UUID>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("java.util.UUID",
+      SingleJavaValue("java.util.UUID.randomUUID()", Unstable)
+    )
+  , QueueOfJavaValues("java.util.UUID",
+      SingleJavaValue("new java.util.UUID(0L, 0L)")
+    )
+  , QueueOfJavaValues("java.util.UUID",
+      SingleJavaValue("java.util.UUID.randomUUID()", Unstable)
+    , SingleJavaValue("java.util.UUID.fromString(\"1-2-3-4-5\")")
+    , SingleJavaValue("new java.util.UUID(0L, 0L)")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Guid>?`
+    extends JavaGuid with `box.NullableQueueOfOne` {
+
+  val javaClass = "java.util.Queue<java.util.UUID>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("java.util.UUID"))
+  val javaDescription = "NullableQueueOfOneGuids"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("java.util.UUID",
+      SingleJavaValue("java.util.UUID.randomUUID()", Unstable)
+    )
+  , QueueOfJavaValues("java.util.UUID",
+      SingleJavaValue("new java.util.UUID(0L, 0L)")
+    )
+  , QueueOfJavaValues("java.util.UUID",
+      SingleJavaValue("java.util.UUID.randomUUID()", Unstable)
+    , SingleJavaValue("java.util.UUID.fromString(\"1-2-3-4-5\")")
+    , SingleJavaValue("new java.util.UUID(0L, 0L)")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Guid?>`
+    extends JavaGuid with `box.OneQueueOfNullable` {
+
+  val javaClass = "java.util.Queue<java.util.UUID>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("java.util.UUID"))
+  val javaDescription = "OneQueueOfNullableGuids"
+
+  def defaultValue = SingleJavaValue("new java.util.ArrayDeque<java.util.UUID>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("java.util.UUID",
+      SingleJavaValue("null")
+    )
+  , QueueOfJavaValues("java.util.UUID",
+      SingleJavaValue("java.util.UUID.randomUUID()", Unstable)
+    )
+  , QueueOfJavaValues("java.util.UUID",
+      SingleJavaValue("new java.util.UUID(0L, 0L)")
+    )
+  , QueueOfJavaValues("java.util.UUID",
+      SingleJavaValue("java.util.UUID.randomUUID()", Unstable)
+    , SingleJavaValue("java.util.UUID.fromString(\"1-2-3-4-5\")")
+    , SingleJavaValue("new java.util.UUID(0L, 0L)")
+    )
+  , QueueOfJavaValues("java.util.UUID",
+      SingleJavaValue("null")
+    , SingleJavaValue("java.util.UUID.randomUUID()", Unstable)
+    , SingleJavaValue("java.util.UUID.fromString(\"1-2-3-4-5\")")
+    , SingleJavaValue("new java.util.UUID(0L, 0L)")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Guid?>?`
+    extends JavaGuid with `box.NullableQueueOfNullable` {
+
+  val javaClass = "java.util.Queue<java.util.UUID>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("java.util.UUID"))
+  val javaDescription = "NullableQueueOfNullableGuids"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("java.util.UUID",
+      SingleJavaValue("null")
+    )
+  , QueueOfJavaValues("java.util.UUID",
+      SingleJavaValue("java.util.UUID.randomUUID()", Unstable)
+    )
+  , QueueOfJavaValues("java.util.UUID",
+      SingleJavaValue("new java.util.UUID(0L, 0L)")
+    )
+  , QueueOfJavaValues("java.util.UUID",
+      SingleJavaValue("java.util.UUID.randomUUID()", Unstable)
+    , SingleJavaValue("java.util.UUID.fromString(\"1-2-3-4-5\")")
+    , SingleJavaValue("new java.util.UUID(0L, 0L)")
+    )
+  , QueueOfJavaValues("java.util.UUID",
+      SingleJavaValue("null")
+    , SingleJavaValue("java.util.UUID.randomUUID()", Unstable)
+    , SingleJavaValue("java.util.UUID.fromString(\"1-2-3-4-5\")")
+    , SingleJavaValue("new java.util.UUID(0L, 0L)")
+    )
+  )
+
+  val hasGenerics = true
+}
+
 case object `java.Set<Guid>`
     extends JavaGuid with `box.OneSetOfOne` {
 

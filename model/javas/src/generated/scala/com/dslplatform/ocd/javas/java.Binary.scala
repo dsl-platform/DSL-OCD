@@ -464,6 +464,204 @@ case object `java.List<Binary?>?`
   val hasGenerics = true
 }
 
+case object `java.Queue<Binary>`
+    extends JavaBinary with `box.OneQueueOfOne` {
+
+  val javaClass = "java.util.Queue<byte[]>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("byte[]"))
+  val javaDescription = "OneQueueOfOneBinaries"
+
+  def defaultValue = SingleJavaValue("new java.util.ArrayDeque<byte[]>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("byte[]",
+      SingleJavaValue("new byte[0]")
+    )
+  , QueueOfJavaValues("byte[]",
+      ArrayOfJavaValues("byte",
+      SingleJavaValue("Byte.MIN_VALUE")
+    , SingleJavaValue("0")
+    , SingleJavaValue("Byte.MAX_VALUE")
+    )
+    )
+  , QueueOfJavaValues("byte[]",
+      SingleJavaValue("new byte[0]")
+    , ArrayOfJavaValues("byte",
+      SingleJavaValue("Byte.MIN_VALUE")
+    )
+    , ArrayOfJavaValues("byte",
+      SingleJavaValue("Byte.MIN_VALUE")
+    , SingleJavaValue("0")
+    )
+    , ArrayOfJavaValues("byte",
+      SingleJavaValue("Byte.MIN_VALUE")
+    , SingleJavaValue("0")
+    , SingleJavaValue("Byte.MAX_VALUE")
+    )
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Binary>?`
+    extends JavaBinary with `box.NullableQueueOfOne` {
+
+  val javaClass = "java.util.Queue<byte[]>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("byte[]"))
+  val javaDescription = "NullableQueueOfOneBinaries"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("byte[]",
+      SingleJavaValue("new byte[0]")
+    )
+  , QueueOfJavaValues("byte[]",
+      ArrayOfJavaValues("byte",
+      SingleJavaValue("Byte.MIN_VALUE")
+    , SingleJavaValue("0")
+    , SingleJavaValue("Byte.MAX_VALUE")
+    )
+    )
+  , QueueOfJavaValues("byte[]",
+      SingleJavaValue("new byte[0]")
+    , ArrayOfJavaValues("byte",
+      SingleJavaValue("Byte.MIN_VALUE")
+    )
+    , ArrayOfJavaValues("byte",
+      SingleJavaValue("Byte.MIN_VALUE")
+    , SingleJavaValue("0")
+    )
+    , ArrayOfJavaValues("byte",
+      SingleJavaValue("Byte.MIN_VALUE")
+    , SingleJavaValue("0")
+    , SingleJavaValue("Byte.MAX_VALUE")
+    )
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Binary?>`
+    extends JavaBinary with `box.OneQueueOfNullable` {
+
+  val javaClass = "java.util.Queue<byte[]>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("byte[]"))
+  val javaDescription = "OneQueueOfNullableBinaries"
+
+  def defaultValue = SingleJavaValue("new java.util.ArrayDeque<byte[]>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("byte[]",
+      SingleJavaValue("null")
+    )
+  , QueueOfJavaValues("byte[]",
+      SingleJavaValue("new byte[0]")
+    )
+  , QueueOfJavaValues("byte[]",
+      ArrayOfJavaValues("byte",
+      SingleJavaValue("Byte.MIN_VALUE")
+    , SingleJavaValue("0")
+    , SingleJavaValue("Byte.MAX_VALUE")
+    )
+    )
+  , QueueOfJavaValues("byte[]",
+      SingleJavaValue("new byte[0]")
+    , ArrayOfJavaValues("byte",
+      SingleJavaValue("Byte.MIN_VALUE")
+    )
+    , ArrayOfJavaValues("byte",
+      SingleJavaValue("Byte.MIN_VALUE")
+    , SingleJavaValue("0")
+    )
+    , ArrayOfJavaValues("byte",
+      SingleJavaValue("Byte.MIN_VALUE")
+    , SingleJavaValue("0")
+    , SingleJavaValue("Byte.MAX_VALUE")
+    )
+    )
+  , QueueOfJavaValues("byte[]",
+      SingleJavaValue("null")
+    , SingleJavaValue("new byte[0]")
+    , ArrayOfJavaValues("byte",
+      SingleJavaValue("Byte.MIN_VALUE")
+    )
+    , ArrayOfJavaValues("byte",
+      SingleJavaValue("Byte.MIN_VALUE")
+    , SingleJavaValue("0")
+    )
+    , ArrayOfJavaValues("byte",
+      SingleJavaValue("Byte.MIN_VALUE")
+    , SingleJavaValue("0")
+    , SingleJavaValue("Byte.MAX_VALUE")
+    )
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Binary?>?`
+    extends JavaBinary with `box.NullableQueueOfNullable` {
+
+  val javaClass = "java.util.Queue<byte[]>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("byte[]"))
+  val javaDescription = "NullableQueueOfNullableBinaries"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("byte[]",
+      SingleJavaValue("null")
+    )
+  , QueueOfJavaValues("byte[]",
+      SingleJavaValue("new byte[0]")
+    )
+  , QueueOfJavaValues("byte[]",
+      ArrayOfJavaValues("byte",
+      SingleJavaValue("Byte.MIN_VALUE")
+    , SingleJavaValue("0")
+    , SingleJavaValue("Byte.MAX_VALUE")
+    )
+    )
+  , QueueOfJavaValues("byte[]",
+      SingleJavaValue("new byte[0]")
+    , ArrayOfJavaValues("byte",
+      SingleJavaValue("Byte.MIN_VALUE")
+    )
+    , ArrayOfJavaValues("byte",
+      SingleJavaValue("Byte.MIN_VALUE")
+    , SingleJavaValue("0")
+    )
+    , ArrayOfJavaValues("byte",
+      SingleJavaValue("Byte.MIN_VALUE")
+    , SingleJavaValue("0")
+    , SingleJavaValue("Byte.MAX_VALUE")
+    )
+    )
+  , QueueOfJavaValues("byte[]",
+      SingleJavaValue("null")
+    , SingleJavaValue("new byte[0]")
+    , ArrayOfJavaValues("byte",
+      SingleJavaValue("Byte.MIN_VALUE")
+    )
+    , ArrayOfJavaValues("byte",
+      SingleJavaValue("Byte.MIN_VALUE")
+    , SingleJavaValue("0")
+    )
+    , ArrayOfJavaValues("byte",
+      SingleJavaValue("Byte.MIN_VALUE")
+    , SingleJavaValue("0")
+    , SingleJavaValue("Byte.MAX_VALUE")
+    )
+    )
+  )
+
+  val hasGenerics = true
+}
+
 case object `java.Set<Binary>`
     extends JavaBinary with `box.OneSetOfOne` {
 

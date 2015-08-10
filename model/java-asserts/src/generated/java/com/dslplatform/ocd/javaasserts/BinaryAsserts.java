@@ -188,6 +188,88 @@ public class BinaryAsserts {
         assertNullableListOfNullableEquals("NullableListOfNullableBinary mismatch: ", expecteds, actuals);
     }
 
+    private static void assertQueueOfOneEquals(final String message, final java.util.Queue<byte[]> expecteds, final java.util.Queue<byte[]> actuals) {
+        final int expectedsSize = expecteds.size();
+        final int actualsSize = actuals.size();
+        if (expectedsSize != actualsSize) {
+            Assert.fail(message + "expecteds was a list of size " + expectedsSize + ", but actuals was a list of size " + actualsSize);
+        }
+
+        final java.util.Iterator<byte[]> expectedsIterator = expecteds.iterator();
+        final java.util.Iterator<byte[]> actualsIterator = actuals.iterator();
+        for (int i = 0; i < expectedsSize; i++) {
+            final byte[] expected = expectedsIterator.next();
+            final byte[] actual = actualsIterator.next();
+            assertOneEquals(message + "element mismatch occurred at index " + i + ": ", expected, actual);
+        }
+    }
+
+    private static void assertOneQueueOfOneEquals(final String message, final java.util.Queue<byte[]> expecteds, final java.util.Queue<byte[]> actuals) {
+        int i = 0;
+        for (final byte[] expected : expecteds) {
+            if (expected == null) {
+                Assert.fail(message + "element mismatch occurred at index " + i + ": expected was <null> - WARNING: This is a preconditions failure in expected, this assertion will never succeed!");
+            }
+            i++;
+        }
+        if (expecteds == actuals) return;
+        if (actuals == null) Assert.fail(message + "expecteds was a list of size " + expecteds.size() + ", but actuals was <null>");
+        assertQueueOfOneEquals(message, expecteds, actuals);
+    }
+
+    public static void assertOneQueueOfOneEquals(final java.util.Queue<byte[]> expecteds, final java.util.Queue<byte[]> actuals) {
+        assertOneQueueOfOneEquals("OneQueueOfOneBinary mismatch: ", expecteds, actuals);
+    }
+
+    private static void assertNullableQueueOfOneEquals(final String message, final java.util.Queue<byte[]> expecteds, final java.util.Queue<byte[]> actuals) {
+        if (expecteds == actuals) return;
+        if (expecteds == null) Assert.fail(message + "expecteds was <null>, but actuals was a list of size " + actuals.size());
+        if (actuals == null) Assert.fail(message + " expecteds was a list of size " + expecteds.size() + ", but actuals was <null>");
+        assertQueueOfOneEquals(message, expecteds, actuals);
+    }
+
+    public static void assertNullableQueueOfOneEquals(final java.util.Queue<byte[]> expecteds, final java.util.Queue<byte[]> actuals) {
+        assertNullableQueueOfOneEquals("NullableQueueOfOneBinary mismatch: ", expecteds, actuals);
+    }
+
+    private static void assertQueueOfNullableEquals(final String message, final java.util.Queue<byte[]> expecteds, final java.util.Queue<byte[]> actuals) {
+        final int expectedsSize = expecteds.size();
+        final int actualsSize = actuals.size();
+        if (expectedsSize != actualsSize) {
+            Assert.fail(message + "expecteds was a list of size " + expectedsSize + ", but actuals was a list of size " + actualsSize);
+        }
+
+        final java.util.Iterator<byte[]> expectedsIterator = expecteds.iterator();
+        final java.util.Iterator<byte[]> actualsIterator = actuals.iterator();
+        for (int i = 0; i < expectedsSize; i++) {
+            final byte[] expected = expectedsIterator.next();
+            final byte[] actual = actualsIterator.next();
+            assertNullableEquals(message + "element mismatch occurred at index " + i + ": ", expected, actual);
+        }
+    }
+
+    private static void assertOneQueueOfNullableEquals(final String message, final java.util.Queue<byte[]> expecteds, final java.util.Queue<byte[]> actuals) {
+        if (expecteds == null) Assert.fail(message + "expecteds was <null> - WARNING: This is a preconditions failure in expecteds, this assertion will never succeed!");
+        if (expecteds == actuals) return;
+        if (actuals == null) Assert.fail(message + "expecteds was a list of size " + expecteds.size() + ", but actuals was <null>");
+        assertQueueOfNullableEquals(message, expecteds, actuals);
+    }
+
+    public static void assertOneQueueOfNullableEquals(final java.util.Queue<byte[]> expecteds, final java.util.Queue<byte[]> actuals) {
+        assertOneQueueOfNullableEquals("OneQueueOfNullableBinary mismatch: ", expecteds, actuals);
+    }
+
+    private static void assertNullableQueueOfNullableEquals(final String message, final java.util.Queue<byte[]> expecteds, final java.util.Queue<byte[]> actuals) {
+        if (expecteds == actuals) return;
+        if (expecteds == null) Assert.fail(message + "expecteds was <null>, but actuals was a list of size " + actuals.size());
+        if (actuals == null) Assert.fail(message + " expecteds was a list of size " + expecteds.size() + ", but actuals was <null>");
+        assertQueueOfNullableEquals(message, expecteds, actuals);
+    }
+
+    public static void assertNullableQueueOfNullableEquals(final java.util.Queue<byte[]> expecteds, final java.util.Queue<byte[]> actuals) {
+        assertNullableQueueOfNullableEquals("NullableQueueOfNullableBinary mismatch: ", expecteds, actuals);
+    }
+
     private static void assertSetOfOneEquals(final String message, final java.util.Set<byte[]> expecteds, final java.util.Set<byte[]> actuals) {
         if (actuals.contains(null)) {
             Assert.fail(message + "actuals contained a <null> element");

@@ -41,6 +41,9 @@ object JavaMap
 
     case Box(_, Some((CollectionFamily.Set, _)), _*) =>
       s"""JavaCollectionType("java.util.Set", JavaGenericType("java.util.Map", JavaClass("String"), JavaClass("String")))"""
+
+    case Box(_, Some((CollectionFamily.Queue, _)), _*) =>
+      s"""JavaCollectionType("java.util.Queue", JavaGenericType("java.util.Map", JavaClass("String"), JavaClass("String")))"""
   }
 
   val nonDefaultValues: Seq[TestValue] = Seq(

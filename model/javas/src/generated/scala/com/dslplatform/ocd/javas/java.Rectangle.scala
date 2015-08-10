@@ -27,8 +27,7 @@ case object `java.Rectangle`
   , SingleJavaValue("new java.awt.Rectangle(-1000000000, -1000000000, 1000000000, 1000000000)")
   , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(Float.MIN_VALUE, Float.MIN_VALUE, Float.MAX_VALUE, Float.MAX_VALUE)")
   , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(-1.0000001f, -1.0000001f, 1.0000001f, 1.0000001f)")
-  , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(Double.MIN_VALUE, Double.MIN_VALUE, Double.MAX_VALUE, Double.MAX_VALUE)")
-  , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-1.000000000000001, -1.000000000000001, 1.000000000000001, 1.000000000000001)")
+  , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-2.000000000000123, -2.000000000000234, 1.000000000000345, 1.000000000000456)")
   )
 
   val hasGenerics = false
@@ -49,8 +48,7 @@ case object `java.Rectangle?`
   , SingleJavaValue("new java.awt.Rectangle(-1000000000, -1000000000, 1000000000, 1000000000)")
   , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(Float.MIN_VALUE, Float.MIN_VALUE, Float.MAX_VALUE, Float.MAX_VALUE)")
   , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(-1.0000001f, -1.0000001f, 1.0000001f, 1.0000001f)")
-  , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(Double.MIN_VALUE, Double.MIN_VALUE, Double.MAX_VALUE, Double.MAX_VALUE)")
-  , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-1.000000000000001, -1.000000000000001, 1.000000000000001, 1.000000000000001)")
+  , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-2.000000000000123, -2.000000000000234, 1.000000000000345, 1.000000000000456)")
   )
 
   val hasGenerics = false
@@ -70,7 +68,7 @@ case object `java.Rectangle[]`
       SingleJavaValue("new java.awt.geom.Rectangle2D.Float()")
     )
   , ArrayOfJavaValues("java.awt.geom.Rectangle2D",
-      SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-1.000000000000001, -1.000000000000001, 1.000000000000001, 1.000000000000001)")
+      SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-2.000000000000123, -2.000000000000234, 1.000000000000345, 1.000000000000456)")
     )
   , ArrayOfJavaValues("java.awt.geom.Rectangle2D",
       SingleJavaValue("new java.awt.geom.Rectangle2D.Float()")
@@ -78,8 +76,7 @@ case object `java.Rectangle[]`
     , SingleJavaValue("new java.awt.Rectangle(-1000000000, -1000000000, 1000000000, 1000000000)")
     , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(Float.MIN_VALUE, Float.MIN_VALUE, Float.MAX_VALUE, Float.MAX_VALUE)")
     , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(-1.0000001f, -1.0000001f, 1.0000001f, 1.0000001f)")
-    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(Double.MIN_VALUE, Double.MIN_VALUE, Double.MAX_VALUE, Double.MAX_VALUE)")
-    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-1.000000000000001, -1.000000000000001, 1.000000000000001, 1.000000000000001)")
+    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-2.000000000000123, -2.000000000000234, 1.000000000000345, 1.000000000000456)")
     )
   )
 
@@ -100,7 +97,7 @@ case object `java.Rectangle[]?`
       SingleJavaValue("new java.awt.geom.Rectangle2D.Float()")
     )
   , ArrayOfJavaValues("java.awt.geom.Rectangle2D",
-      SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-1.000000000000001, -1.000000000000001, 1.000000000000001, 1.000000000000001)")
+      SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-2.000000000000123, -2.000000000000234, 1.000000000000345, 1.000000000000456)")
     )
   , ArrayOfJavaValues("java.awt.geom.Rectangle2D",
       SingleJavaValue("new java.awt.geom.Rectangle2D.Float()")
@@ -108,8 +105,7 @@ case object `java.Rectangle[]?`
     , SingleJavaValue("new java.awt.Rectangle(-1000000000, -1000000000, 1000000000, 1000000000)")
     , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(Float.MIN_VALUE, Float.MIN_VALUE, Float.MAX_VALUE, Float.MAX_VALUE)")
     , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(-1.0000001f, -1.0000001f, 1.0000001f, 1.0000001f)")
-    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(Double.MIN_VALUE, Double.MIN_VALUE, Double.MAX_VALUE, Double.MAX_VALUE)")
-    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-1.000000000000001, -1.000000000000001, 1.000000000000001, 1.000000000000001)")
+    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-2.000000000000123, -2.000000000000234, 1.000000000000345, 1.000000000000456)")
     )
   )
 
@@ -133,7 +129,7 @@ case object `java.Rectangle?[]`
       SingleJavaValue("new java.awt.geom.Rectangle2D.Float()")
     )
   , ArrayOfJavaValues("java.awt.geom.Rectangle2D",
-      SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-1.000000000000001, -1.000000000000001, 1.000000000000001, 1.000000000000001)")
+      SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-2.000000000000123, -2.000000000000234, 1.000000000000345, 1.000000000000456)")
     )
   , ArrayOfJavaValues("java.awt.geom.Rectangle2D",
       SingleJavaValue("new java.awt.geom.Rectangle2D.Float()")
@@ -141,8 +137,7 @@ case object `java.Rectangle?[]`
     , SingleJavaValue("new java.awt.Rectangle(-1000000000, -1000000000, 1000000000, 1000000000)")
     , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(Float.MIN_VALUE, Float.MIN_VALUE, Float.MAX_VALUE, Float.MAX_VALUE)")
     , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(-1.0000001f, -1.0000001f, 1.0000001f, 1.0000001f)")
-    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(Double.MIN_VALUE, Double.MIN_VALUE, Double.MAX_VALUE, Double.MAX_VALUE)")
-    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-1.000000000000001, -1.000000000000001, 1.000000000000001, 1.000000000000001)")
+    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-2.000000000000123, -2.000000000000234, 1.000000000000345, 1.000000000000456)")
     )
   , ArrayOfJavaValues("java.awt.geom.Rectangle2D",
       SingleJavaValue("null")
@@ -151,8 +146,7 @@ case object `java.Rectangle?[]`
     , SingleJavaValue("new java.awt.Rectangle(-1000000000, -1000000000, 1000000000, 1000000000)")
     , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(Float.MIN_VALUE, Float.MIN_VALUE, Float.MAX_VALUE, Float.MAX_VALUE)")
     , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(-1.0000001f, -1.0000001f, 1.0000001f, 1.0000001f)")
-    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(Double.MIN_VALUE, Double.MIN_VALUE, Double.MAX_VALUE, Double.MAX_VALUE)")
-    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-1.000000000000001, -1.000000000000001, 1.000000000000001, 1.000000000000001)")
+    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-2.000000000000123, -2.000000000000234, 1.000000000000345, 1.000000000000456)")
     )
   )
 
@@ -176,7 +170,7 @@ case object `java.Rectangle?[]?`
       SingleJavaValue("new java.awt.geom.Rectangle2D.Float()")
     )
   , ArrayOfJavaValues("java.awt.geom.Rectangle2D",
-      SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-1.000000000000001, -1.000000000000001, 1.000000000000001, 1.000000000000001)")
+      SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-2.000000000000123, -2.000000000000234, 1.000000000000345, 1.000000000000456)")
     )
   , ArrayOfJavaValues("java.awt.geom.Rectangle2D",
       SingleJavaValue("new java.awt.geom.Rectangle2D.Float()")
@@ -184,8 +178,7 @@ case object `java.Rectangle?[]?`
     , SingleJavaValue("new java.awt.Rectangle(-1000000000, -1000000000, 1000000000, 1000000000)")
     , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(Float.MIN_VALUE, Float.MIN_VALUE, Float.MAX_VALUE, Float.MAX_VALUE)")
     , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(-1.0000001f, -1.0000001f, 1.0000001f, 1.0000001f)")
-    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(Double.MIN_VALUE, Double.MIN_VALUE, Double.MAX_VALUE, Double.MAX_VALUE)")
-    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-1.000000000000001, -1.000000000000001, 1.000000000000001, 1.000000000000001)")
+    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-2.000000000000123, -2.000000000000234, 1.000000000000345, 1.000000000000456)")
     )
   , ArrayOfJavaValues("java.awt.geom.Rectangle2D",
       SingleJavaValue("null")
@@ -194,8 +187,7 @@ case object `java.Rectangle?[]?`
     , SingleJavaValue("new java.awt.Rectangle(-1000000000, -1000000000, 1000000000, 1000000000)")
     , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(Float.MIN_VALUE, Float.MIN_VALUE, Float.MAX_VALUE, Float.MAX_VALUE)")
     , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(-1.0000001f, -1.0000001f, 1.0000001f, 1.0000001f)")
-    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(Double.MIN_VALUE, Double.MIN_VALUE, Double.MAX_VALUE, Double.MAX_VALUE)")
-    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-1.000000000000001, -1.000000000000001, 1.000000000000001, 1.000000000000001)")
+    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-2.000000000000123, -2.000000000000234, 1.000000000000345, 1.000000000000456)")
     )
   )
 
@@ -216,7 +208,7 @@ case object `java.List<Rectangle>`
       SingleJavaValue("new java.awt.geom.Rectangle2D.Float()")
     )
   , ListOfJavaValues("java.awt.geom.Rectangle2D",
-      SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-1.000000000000001, -1.000000000000001, 1.000000000000001, 1.000000000000001)")
+      SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-2.000000000000123, -2.000000000000234, 1.000000000000345, 1.000000000000456)")
     )
   , ListOfJavaValues("java.awt.geom.Rectangle2D",
       SingleJavaValue("new java.awt.geom.Rectangle2D.Float()")
@@ -224,8 +216,7 @@ case object `java.List<Rectangle>`
     , SingleJavaValue("new java.awt.Rectangle(-1000000000, -1000000000, 1000000000, 1000000000)")
     , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(Float.MIN_VALUE, Float.MIN_VALUE, Float.MAX_VALUE, Float.MAX_VALUE)")
     , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(-1.0000001f, -1.0000001f, 1.0000001f, 1.0000001f)")
-    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(Double.MIN_VALUE, Double.MIN_VALUE, Double.MAX_VALUE, Double.MAX_VALUE)")
-    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-1.000000000000001, -1.000000000000001, 1.000000000000001, 1.000000000000001)")
+    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-2.000000000000123, -2.000000000000234, 1.000000000000345, 1.000000000000456)")
     )
   )
 
@@ -246,7 +237,7 @@ case object `java.List<Rectangle>?`
       SingleJavaValue("new java.awt.geom.Rectangle2D.Float()")
     )
   , ListOfJavaValues("java.awt.geom.Rectangle2D",
-      SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-1.000000000000001, -1.000000000000001, 1.000000000000001, 1.000000000000001)")
+      SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-2.000000000000123, -2.000000000000234, 1.000000000000345, 1.000000000000456)")
     )
   , ListOfJavaValues("java.awt.geom.Rectangle2D",
       SingleJavaValue("new java.awt.geom.Rectangle2D.Float()")
@@ -254,8 +245,7 @@ case object `java.List<Rectangle>?`
     , SingleJavaValue("new java.awt.Rectangle(-1000000000, -1000000000, 1000000000, 1000000000)")
     , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(Float.MIN_VALUE, Float.MIN_VALUE, Float.MAX_VALUE, Float.MAX_VALUE)")
     , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(-1.0000001f, -1.0000001f, 1.0000001f, 1.0000001f)")
-    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(Double.MIN_VALUE, Double.MIN_VALUE, Double.MAX_VALUE, Double.MAX_VALUE)")
-    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-1.000000000000001, -1.000000000000001, 1.000000000000001, 1.000000000000001)")
+    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-2.000000000000123, -2.000000000000234, 1.000000000000345, 1.000000000000456)")
     )
   )
 
@@ -279,7 +269,7 @@ case object `java.List<Rectangle?>`
       SingleJavaValue("new java.awt.geom.Rectangle2D.Float()")
     )
   , ListOfJavaValues("java.awt.geom.Rectangle2D",
-      SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-1.000000000000001, -1.000000000000001, 1.000000000000001, 1.000000000000001)")
+      SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-2.000000000000123, -2.000000000000234, 1.000000000000345, 1.000000000000456)")
     )
   , ListOfJavaValues("java.awt.geom.Rectangle2D",
       SingleJavaValue("new java.awt.geom.Rectangle2D.Float()")
@@ -287,8 +277,7 @@ case object `java.List<Rectangle?>`
     , SingleJavaValue("new java.awt.Rectangle(-1000000000, -1000000000, 1000000000, 1000000000)")
     , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(Float.MIN_VALUE, Float.MIN_VALUE, Float.MAX_VALUE, Float.MAX_VALUE)")
     , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(-1.0000001f, -1.0000001f, 1.0000001f, 1.0000001f)")
-    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(Double.MIN_VALUE, Double.MIN_VALUE, Double.MAX_VALUE, Double.MAX_VALUE)")
-    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-1.000000000000001, -1.000000000000001, 1.000000000000001, 1.000000000000001)")
+    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-2.000000000000123, -2.000000000000234, 1.000000000000345, 1.000000000000456)")
     )
   , ListOfJavaValues("java.awt.geom.Rectangle2D",
       SingleJavaValue("null")
@@ -297,8 +286,7 @@ case object `java.List<Rectangle?>`
     , SingleJavaValue("new java.awt.Rectangle(-1000000000, -1000000000, 1000000000, 1000000000)")
     , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(Float.MIN_VALUE, Float.MIN_VALUE, Float.MAX_VALUE, Float.MAX_VALUE)")
     , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(-1.0000001f, -1.0000001f, 1.0000001f, 1.0000001f)")
-    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(Double.MIN_VALUE, Double.MIN_VALUE, Double.MAX_VALUE, Double.MAX_VALUE)")
-    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-1.000000000000001, -1.000000000000001, 1.000000000000001, 1.000000000000001)")
+    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-2.000000000000123, -2.000000000000234, 1.000000000000345, 1.000000000000456)")
     )
   )
 
@@ -322,7 +310,7 @@ case object `java.List<Rectangle?>?`
       SingleJavaValue("new java.awt.geom.Rectangle2D.Float()")
     )
   , ListOfJavaValues("java.awt.geom.Rectangle2D",
-      SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-1.000000000000001, -1.000000000000001, 1.000000000000001, 1.000000000000001)")
+      SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-2.000000000000123, -2.000000000000234, 1.000000000000345, 1.000000000000456)")
     )
   , ListOfJavaValues("java.awt.geom.Rectangle2D",
       SingleJavaValue("new java.awt.geom.Rectangle2D.Float()")
@@ -330,8 +318,7 @@ case object `java.List<Rectangle?>?`
     , SingleJavaValue("new java.awt.Rectangle(-1000000000, -1000000000, 1000000000, 1000000000)")
     , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(Float.MIN_VALUE, Float.MIN_VALUE, Float.MAX_VALUE, Float.MAX_VALUE)")
     , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(-1.0000001f, -1.0000001f, 1.0000001f, 1.0000001f)")
-    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(Double.MIN_VALUE, Double.MIN_VALUE, Double.MAX_VALUE, Double.MAX_VALUE)")
-    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-1.000000000000001, -1.000000000000001, 1.000000000000001, 1.000000000000001)")
+    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-2.000000000000123, -2.000000000000234, 1.000000000000345, 1.000000000000456)")
     )
   , ListOfJavaValues("java.awt.geom.Rectangle2D",
       SingleJavaValue("null")
@@ -340,8 +327,147 @@ case object `java.List<Rectangle?>?`
     , SingleJavaValue("new java.awt.Rectangle(-1000000000, -1000000000, 1000000000, 1000000000)")
     , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(Float.MIN_VALUE, Float.MIN_VALUE, Float.MAX_VALUE, Float.MAX_VALUE)")
     , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(-1.0000001f, -1.0000001f, 1.0000001f, 1.0000001f)")
-    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(Double.MIN_VALUE, Double.MIN_VALUE, Double.MAX_VALUE, Double.MAX_VALUE)")
-    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-1.000000000000001, -1.000000000000001, 1.000000000000001, 1.000000000000001)")
+    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-2.000000000000123, -2.000000000000234, 1.000000000000345, 1.000000000000456)")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Rectangle>`
+    extends JavaRectangle with `box.OneQueueOfOne` {
+
+  val javaClass = "java.util.Queue<java.awt.geom.Rectangle2D>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("java.awt.geom.Rectangle2D"))
+  val javaDescription = "OneQueueOfOneRectangles"
+
+  def defaultValue = SingleJavaValue("new java.util.ArrayDeque<java.awt.geom.Rectangle2D>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("java.awt.geom.Rectangle2D",
+      SingleJavaValue("new java.awt.geom.Rectangle2D.Float()")
+    )
+  , QueueOfJavaValues("java.awt.geom.Rectangle2D",
+      SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-2.000000000000123, -2.000000000000234, 1.000000000000345, 1.000000000000456)")
+    )
+  , QueueOfJavaValues("java.awt.geom.Rectangle2D",
+      SingleJavaValue("new java.awt.geom.Rectangle2D.Float()")
+    , SingleJavaValue("new java.awt.Rectangle(Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.Rectangle(-1000000000, -1000000000, 1000000000, 1000000000)")
+    , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(Float.MIN_VALUE, Float.MIN_VALUE, Float.MAX_VALUE, Float.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(-1.0000001f, -1.0000001f, 1.0000001f, 1.0000001f)")
+    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-2.000000000000123, -2.000000000000234, 1.000000000000345, 1.000000000000456)")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Rectangle>?`
+    extends JavaRectangle with `box.NullableQueueOfOne` {
+
+  val javaClass = "java.util.Queue<java.awt.geom.Rectangle2D>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("java.awt.geom.Rectangle2D"))
+  val javaDescription = "NullableQueueOfOneRectangles"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("java.awt.geom.Rectangle2D",
+      SingleJavaValue("new java.awt.geom.Rectangle2D.Float()")
+    )
+  , QueueOfJavaValues("java.awt.geom.Rectangle2D",
+      SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-2.000000000000123, -2.000000000000234, 1.000000000000345, 1.000000000000456)")
+    )
+  , QueueOfJavaValues("java.awt.geom.Rectangle2D",
+      SingleJavaValue("new java.awt.geom.Rectangle2D.Float()")
+    , SingleJavaValue("new java.awt.Rectangle(Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.Rectangle(-1000000000, -1000000000, 1000000000, 1000000000)")
+    , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(Float.MIN_VALUE, Float.MIN_VALUE, Float.MAX_VALUE, Float.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(-1.0000001f, -1.0000001f, 1.0000001f, 1.0000001f)")
+    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-2.000000000000123, -2.000000000000234, 1.000000000000345, 1.000000000000456)")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Rectangle?>`
+    extends JavaRectangle with `box.OneQueueOfNullable` {
+
+  val javaClass = "java.util.Queue<java.awt.geom.Rectangle2D>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("java.awt.geom.Rectangle2D"))
+  val javaDescription = "OneQueueOfNullableRectangles"
+
+  def defaultValue = SingleJavaValue("new java.util.ArrayDeque<java.awt.geom.Rectangle2D>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("java.awt.geom.Rectangle2D",
+      SingleJavaValue("null")
+    )
+  , QueueOfJavaValues("java.awt.geom.Rectangle2D",
+      SingleJavaValue("new java.awt.geom.Rectangle2D.Float()")
+    )
+  , QueueOfJavaValues("java.awt.geom.Rectangle2D",
+      SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-2.000000000000123, -2.000000000000234, 1.000000000000345, 1.000000000000456)")
+    )
+  , QueueOfJavaValues("java.awt.geom.Rectangle2D",
+      SingleJavaValue("new java.awt.geom.Rectangle2D.Float()")
+    , SingleJavaValue("new java.awt.Rectangle(Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.Rectangle(-1000000000, -1000000000, 1000000000, 1000000000)")
+    , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(Float.MIN_VALUE, Float.MIN_VALUE, Float.MAX_VALUE, Float.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(-1.0000001f, -1.0000001f, 1.0000001f, 1.0000001f)")
+    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-2.000000000000123, -2.000000000000234, 1.000000000000345, 1.000000000000456)")
+    )
+  , QueueOfJavaValues("java.awt.geom.Rectangle2D",
+      SingleJavaValue("null")
+    , SingleJavaValue("new java.awt.geom.Rectangle2D.Float()")
+    , SingleJavaValue("new java.awt.Rectangle(Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.Rectangle(-1000000000, -1000000000, 1000000000, 1000000000)")
+    , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(Float.MIN_VALUE, Float.MIN_VALUE, Float.MAX_VALUE, Float.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(-1.0000001f, -1.0000001f, 1.0000001f, 1.0000001f)")
+    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-2.000000000000123, -2.000000000000234, 1.000000000000345, 1.000000000000456)")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Rectangle?>?`
+    extends JavaRectangle with `box.NullableQueueOfNullable` {
+
+  val javaClass = "java.util.Queue<java.awt.geom.Rectangle2D>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("java.awt.geom.Rectangle2D"))
+  val javaDescription = "NullableQueueOfNullableRectangles"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("java.awt.geom.Rectangle2D",
+      SingleJavaValue("null")
+    )
+  , QueueOfJavaValues("java.awt.geom.Rectangle2D",
+      SingleJavaValue("new java.awt.geom.Rectangle2D.Float()")
+    )
+  , QueueOfJavaValues("java.awt.geom.Rectangle2D",
+      SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-2.000000000000123, -2.000000000000234, 1.000000000000345, 1.000000000000456)")
+    )
+  , QueueOfJavaValues("java.awt.geom.Rectangle2D",
+      SingleJavaValue("new java.awt.geom.Rectangle2D.Float()")
+    , SingleJavaValue("new java.awt.Rectangle(Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.Rectangle(-1000000000, -1000000000, 1000000000, 1000000000)")
+    , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(Float.MIN_VALUE, Float.MIN_VALUE, Float.MAX_VALUE, Float.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(-1.0000001f, -1.0000001f, 1.0000001f, 1.0000001f)")
+    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-2.000000000000123, -2.000000000000234, 1.000000000000345, 1.000000000000456)")
+    )
+  , QueueOfJavaValues("java.awt.geom.Rectangle2D",
+      SingleJavaValue("null")
+    , SingleJavaValue("new java.awt.geom.Rectangle2D.Float()")
+    , SingleJavaValue("new java.awt.Rectangle(Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.Rectangle(-1000000000, -1000000000, 1000000000, 1000000000)")
+    , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(Float.MIN_VALUE, Float.MIN_VALUE, Float.MAX_VALUE, Float.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(-1.0000001f, -1.0000001f, 1.0000001f, 1.0000001f)")
+    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-2.000000000000123, -2.000000000000234, 1.000000000000345, 1.000000000000456)")
     )
   )
 
@@ -362,7 +488,7 @@ case object `java.Set<Rectangle>`
       SingleJavaValue("new java.awt.geom.Rectangle2D.Float()")
     )
   , SetOfJavaValues("java.awt.geom.Rectangle2D",
-      SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-1.000000000000001, -1.000000000000001, 1.000000000000001, 1.000000000000001)")
+      SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-2.000000000000123, -2.000000000000234, 1.000000000000345, 1.000000000000456)")
     )
   , SetOfJavaValues("java.awt.geom.Rectangle2D",
       SingleJavaValue("new java.awt.geom.Rectangle2D.Float()")
@@ -370,8 +496,7 @@ case object `java.Set<Rectangle>`
     , SingleJavaValue("new java.awt.Rectangle(-1000000000, -1000000000, 1000000000, 1000000000)")
     , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(Float.MIN_VALUE, Float.MIN_VALUE, Float.MAX_VALUE, Float.MAX_VALUE)")
     , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(-1.0000001f, -1.0000001f, 1.0000001f, 1.0000001f)")
-    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(Double.MIN_VALUE, Double.MIN_VALUE, Double.MAX_VALUE, Double.MAX_VALUE)")
-    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-1.000000000000001, -1.000000000000001, 1.000000000000001, 1.000000000000001)")
+    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-2.000000000000123, -2.000000000000234, 1.000000000000345, 1.000000000000456)")
     )
   )
 
@@ -392,7 +517,7 @@ case object `java.Set<Rectangle>?`
       SingleJavaValue("new java.awt.geom.Rectangle2D.Float()")
     )
   , SetOfJavaValues("java.awt.geom.Rectangle2D",
-      SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-1.000000000000001, -1.000000000000001, 1.000000000000001, 1.000000000000001)")
+      SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-2.000000000000123, -2.000000000000234, 1.000000000000345, 1.000000000000456)")
     )
   , SetOfJavaValues("java.awt.geom.Rectangle2D",
       SingleJavaValue("new java.awt.geom.Rectangle2D.Float()")
@@ -400,8 +525,7 @@ case object `java.Set<Rectangle>?`
     , SingleJavaValue("new java.awt.Rectangle(-1000000000, -1000000000, 1000000000, 1000000000)")
     , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(Float.MIN_VALUE, Float.MIN_VALUE, Float.MAX_VALUE, Float.MAX_VALUE)")
     , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(-1.0000001f, -1.0000001f, 1.0000001f, 1.0000001f)")
-    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(Double.MIN_VALUE, Double.MIN_VALUE, Double.MAX_VALUE, Double.MAX_VALUE)")
-    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-1.000000000000001, -1.000000000000001, 1.000000000000001, 1.000000000000001)")
+    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-2.000000000000123, -2.000000000000234, 1.000000000000345, 1.000000000000456)")
     )
   )
 
@@ -425,7 +549,7 @@ case object `java.Set<Rectangle?>`
       SingleJavaValue("new java.awt.geom.Rectangle2D.Float()")
     )
   , SetOfJavaValues("java.awt.geom.Rectangle2D",
-      SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-1.000000000000001, -1.000000000000001, 1.000000000000001, 1.000000000000001)")
+      SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-2.000000000000123, -2.000000000000234, 1.000000000000345, 1.000000000000456)")
     )
   , SetOfJavaValues("java.awt.geom.Rectangle2D",
       SingleJavaValue("new java.awt.geom.Rectangle2D.Float()")
@@ -433,8 +557,7 @@ case object `java.Set<Rectangle?>`
     , SingleJavaValue("new java.awt.Rectangle(-1000000000, -1000000000, 1000000000, 1000000000)")
     , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(Float.MIN_VALUE, Float.MIN_VALUE, Float.MAX_VALUE, Float.MAX_VALUE)")
     , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(-1.0000001f, -1.0000001f, 1.0000001f, 1.0000001f)")
-    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(Double.MIN_VALUE, Double.MIN_VALUE, Double.MAX_VALUE, Double.MAX_VALUE)")
-    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-1.000000000000001, -1.000000000000001, 1.000000000000001, 1.000000000000001)")
+    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-2.000000000000123, -2.000000000000234, 1.000000000000345, 1.000000000000456)")
     )
   , SetOfJavaValues("java.awt.geom.Rectangle2D",
       SingleJavaValue("null")
@@ -443,8 +566,7 @@ case object `java.Set<Rectangle?>`
     , SingleJavaValue("new java.awt.Rectangle(-1000000000, -1000000000, 1000000000, 1000000000)")
     , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(Float.MIN_VALUE, Float.MIN_VALUE, Float.MAX_VALUE, Float.MAX_VALUE)")
     , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(-1.0000001f, -1.0000001f, 1.0000001f, 1.0000001f)")
-    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(Double.MIN_VALUE, Double.MIN_VALUE, Double.MAX_VALUE, Double.MAX_VALUE)")
-    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-1.000000000000001, -1.000000000000001, 1.000000000000001, 1.000000000000001)")
+    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-2.000000000000123, -2.000000000000234, 1.000000000000345, 1.000000000000456)")
     )
   )
 
@@ -468,7 +590,7 @@ case object `java.Set<Rectangle?>?`
       SingleJavaValue("new java.awt.geom.Rectangle2D.Float()")
     )
   , SetOfJavaValues("java.awt.geom.Rectangle2D",
-      SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-1.000000000000001, -1.000000000000001, 1.000000000000001, 1.000000000000001)")
+      SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-2.000000000000123, -2.000000000000234, 1.000000000000345, 1.000000000000456)")
     )
   , SetOfJavaValues("java.awt.geom.Rectangle2D",
       SingleJavaValue("new java.awt.geom.Rectangle2D.Float()")
@@ -476,8 +598,7 @@ case object `java.Set<Rectangle?>?`
     , SingleJavaValue("new java.awt.Rectangle(-1000000000, -1000000000, 1000000000, 1000000000)")
     , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(Float.MIN_VALUE, Float.MIN_VALUE, Float.MAX_VALUE, Float.MAX_VALUE)")
     , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(-1.0000001f, -1.0000001f, 1.0000001f, 1.0000001f)")
-    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(Double.MIN_VALUE, Double.MIN_VALUE, Double.MAX_VALUE, Double.MAX_VALUE)")
-    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-1.000000000000001, -1.000000000000001, 1.000000000000001, 1.000000000000001)")
+    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-2.000000000000123, -2.000000000000234, 1.000000000000345, 1.000000000000456)")
     )
   , SetOfJavaValues("java.awt.geom.Rectangle2D",
       SingleJavaValue("null")
@@ -486,8 +607,7 @@ case object `java.Set<Rectangle?>?`
     , SingleJavaValue("new java.awt.Rectangle(-1000000000, -1000000000, 1000000000, 1000000000)")
     , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(Float.MIN_VALUE, Float.MIN_VALUE, Float.MAX_VALUE, Float.MAX_VALUE)")
     , SingleJavaValue("new java.awt.geom.Rectangle2D.Float(-1.0000001f, -1.0000001f, 1.0000001f, 1.0000001f)")
-    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(Double.MIN_VALUE, Double.MIN_VALUE, Double.MAX_VALUE, Double.MAX_VALUE)")
-    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-1.000000000000001, -1.000000000000001, 1.000000000000001, 1.000000000000001)")
+    , SingleJavaValue("new java.awt.geom.Rectangle2D.Double(-2.000000000000123, -2.000000000000234, 1.000000000000345, 1.000000000000456)")
     )
   )
 

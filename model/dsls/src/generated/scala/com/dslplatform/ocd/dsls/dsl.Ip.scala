@@ -22,6 +22,10 @@ case object `dsl.List<Ip>`    extends DslIp with `box.OneListOfOne`
 case object `dsl.List<Ip>?`   extends DslIp with `box.NullableListOfOne`
 case object `dsl.List<Ip?>`   extends DslIp with `box.OneListOfNullable`
 case object `dsl.List<Ip?>?`  extends DslIp with `box.NullableListOfNullable`
+case object `dsl.Queue<Ip>`   extends DslIp with `box.OneQueueOfOne`
+case object `dsl.Queue<Ip>?`  extends DslIp with `box.NullableQueueOfOne`
+case object `dsl.Queue<Ip?>`  extends DslIp with `box.OneQueueOfNullable`
+case object `dsl.Queue<Ip?>?` extends DslIp with `box.NullableQueueOfNullable`
 case object `dsl.Set<Ip>`     extends DslIp with `box.OneSetOfOne`
 case object `dsl.Set<Ip>?`    extends DslIp with `box.NullableSetOfOne`
 case object `dsl.Set<Ip?>`    extends DslIp with `box.OneSetOfNullable`
@@ -41,6 +45,10 @@ case object `dsl.LIST<IP>`    extends DslIp with `box.OneListOfOne`
 case object `dsl.LIST<IP>?`   extends DslIp with `box.NullableListOfOne`
 case object `dsl.LIST<IP?>`   extends DslIp with `box.OneListOfNullable`
 case object `dsl.LIST<IP?>?`  extends DslIp with `box.NullableListOfNullable`
+case object `dsl.QUEUE<IP>`   extends DslIp with `box.OneQueueOfOne`
+case object `dsl.QUEUE<IP>?`  extends DslIp with `box.NullableQueueOfOne`
+case object `dsl.QUEUE<IP?>`  extends DslIp with `box.OneQueueOfNullable`
+case object `dsl.QUEUE<IP?>?` extends DslIp with `box.NullableQueueOfNullable`
 case object `dsl.SET<IP>`     extends DslIp with `box.OneSetOfOne`
 case object `dsl.SET<IP>?`    extends DslIp with `box.NullableSetOfOne`
 case object `dsl.SET<IP?>`    extends DslIp with `box.OneSetOfNullable`
@@ -60,6 +68,10 @@ case object `dsl.list<ip>`    extends DslIp with `box.OneListOfOne`
 case object `dsl.list<ip>?`   extends DslIp with `box.NullableListOfOne`
 case object `dsl.list<ip?>`   extends DslIp with `box.OneListOfNullable`
 case object `dsl.list<ip?>?`  extends DslIp with `box.NullableListOfNullable`
+case object `dsl.queue<ip>`   extends DslIp with `box.OneQueueOfOne`
+case object `dsl.queue<ip>?`  extends DslIp with `box.NullableQueueOfOne`
+case object `dsl.queue<ip?>`  extends DslIp with `box.OneQueueOfNullable`
+case object `dsl.queue<ip?>?` extends DslIp with `box.NullableQueueOfNullable`
 case object `dsl.set<ip>`     extends DslIp with `box.OneSetOfOne`
 case object `dsl.set<ip>?`    extends DslIp with `box.NullableSetOfOne`
 case object `dsl.set<ip?>`    extends DslIp with `box.OneSetOfNullable`

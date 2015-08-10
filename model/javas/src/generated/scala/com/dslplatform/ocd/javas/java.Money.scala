@@ -320,6 +320,140 @@ case object `java.List<Money?>?`
   val hasGenerics = true
 }
 
+case object `java.Queue<Money>`
+    extends JavaMoney with `box.OneQueueOfOne` {
+
+  val javaClass = "java.util.Queue<java.math.BigDecimal>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("java.math.BigDecimal"))
+  val javaDescription = "OneQueueOfOneMonies"
+
+  def defaultValue = SingleJavaValue("new java.util.ArrayDeque<java.math.BigDecimal>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("java.math.BigDecimal.ZERO.setScale(2)")
+    )
+  , QueueOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("new java.math.BigDecimal(\"1E19\")")
+    )
+  , QueueOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("java.math.BigDecimal.ZERO.setScale(2)")
+    , SingleJavaValue("java.math.BigDecimal.ONE")
+    , SingleJavaValue("new java.math.BigDecimal(\"3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679\").setScale(2, java.math.BigDecimal.ROUND_HALF_UP)")
+    , SingleJavaValue("new java.math.BigDecimal(\"-1E-2\")")
+    , SingleJavaValue("new java.math.BigDecimal(\"1E19\")")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Money>?`
+    extends JavaMoney with `box.NullableQueueOfOne` {
+
+  val javaClass = "java.util.Queue<java.math.BigDecimal>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("java.math.BigDecimal"))
+  val javaDescription = "NullableQueueOfOneMonies"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("java.math.BigDecimal.ZERO.setScale(2)")
+    )
+  , QueueOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("new java.math.BigDecimal(\"1E19\")")
+    )
+  , QueueOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("java.math.BigDecimal.ZERO.setScale(2)")
+    , SingleJavaValue("java.math.BigDecimal.ONE")
+    , SingleJavaValue("new java.math.BigDecimal(\"3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679\").setScale(2, java.math.BigDecimal.ROUND_HALF_UP)")
+    , SingleJavaValue("new java.math.BigDecimal(\"-1E-2\")")
+    , SingleJavaValue("new java.math.BigDecimal(\"1E19\")")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Money?>`
+    extends JavaMoney with `box.OneQueueOfNullable` {
+
+  val javaClass = "java.util.Queue<java.math.BigDecimal>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("java.math.BigDecimal"))
+  val javaDescription = "OneQueueOfNullableMonies"
+
+  def defaultValue = SingleJavaValue("new java.util.ArrayDeque<java.math.BigDecimal>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("null")
+    )
+  , QueueOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("java.math.BigDecimal.ZERO.setScale(2)")
+    )
+  , QueueOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("new java.math.BigDecimal(\"1E19\")")
+    )
+  , QueueOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("java.math.BigDecimal.ZERO.setScale(2)")
+    , SingleJavaValue("java.math.BigDecimal.ONE")
+    , SingleJavaValue("new java.math.BigDecimal(\"3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679\").setScale(2, java.math.BigDecimal.ROUND_HALF_UP)")
+    , SingleJavaValue("new java.math.BigDecimal(\"-1E-2\")")
+    , SingleJavaValue("new java.math.BigDecimal(\"1E19\")")
+    )
+  , QueueOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("null")
+    , SingleJavaValue("java.math.BigDecimal.ZERO.setScale(2)")
+    , SingleJavaValue("java.math.BigDecimal.ONE")
+    , SingleJavaValue("new java.math.BigDecimal(\"3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679\").setScale(2, java.math.BigDecimal.ROUND_HALF_UP)")
+    , SingleJavaValue("new java.math.BigDecimal(\"-1E-2\")")
+    , SingleJavaValue("new java.math.BigDecimal(\"1E19\")")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Money?>?`
+    extends JavaMoney with `box.NullableQueueOfNullable` {
+
+  val javaClass = "java.util.Queue<java.math.BigDecimal>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("java.math.BigDecimal"))
+  val javaDescription = "NullableQueueOfNullableMonies"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("null")
+    )
+  , QueueOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("java.math.BigDecimal.ZERO.setScale(2)")
+    )
+  , QueueOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("new java.math.BigDecimal(\"1E19\")")
+    )
+  , QueueOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("java.math.BigDecimal.ZERO.setScale(2)")
+    , SingleJavaValue("java.math.BigDecimal.ONE")
+    , SingleJavaValue("new java.math.BigDecimal(\"3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679\").setScale(2, java.math.BigDecimal.ROUND_HALF_UP)")
+    , SingleJavaValue("new java.math.BigDecimal(\"-1E-2\")")
+    , SingleJavaValue("new java.math.BigDecimal(\"1E19\")")
+    )
+  , QueueOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("null")
+    , SingleJavaValue("java.math.BigDecimal.ZERO.setScale(2)")
+    , SingleJavaValue("java.math.BigDecimal.ONE")
+    , SingleJavaValue("new java.math.BigDecimal(\"3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679\").setScale(2, java.math.BigDecimal.ROUND_HALF_UP)")
+    , SingleJavaValue("new java.math.BigDecimal(\"-1E-2\")")
+    , SingleJavaValue("new java.math.BigDecimal(\"1E19\")")
+    )
+  )
+
+  val hasGenerics = true
+}
+
 case object `java.Set<Money>`
     extends JavaMoney with `box.OneSetOfOne` {
 

@@ -88,6 +88,38 @@ case object `scala.List<Integer?>?`
   val defaultValue = "None"
 }
 
+case object `scala.Queue<Integer>`
+    extends ScalaInteger with `box.OneQueueOfOne` {
+
+  val scalaClass = "Queue[Int]"
+
+  val defaultValue = "Queue[Int].empty"
+}
+
+case object `scala.Queue<Integer>?`
+    extends ScalaInteger with `box.NullableQueueOfOne` {
+
+  val scalaClass = "Option[Queue[Int]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Queue<Integer?>`
+    extends ScalaInteger with `box.OneQueueOfNullable` {
+
+  val scalaClass = "Queue[Option[Int]]"
+
+  val defaultValue = "Queue[Option[Int]].empty"
+}
+
+case object `scala.Queue<Integer?>?`
+    extends ScalaInteger with `box.NullableQueueOfNullable` {
+
+  val scalaClass = "Option[Queue[Option[Int]]]"
+
+  val defaultValue = "None"
+}
+
 case object `scala.Set<Integer>`
     extends ScalaInteger with `box.OneSetOfOne` {
 

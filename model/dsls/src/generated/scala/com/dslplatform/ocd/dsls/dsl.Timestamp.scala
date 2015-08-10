@@ -22,6 +22,10 @@ case object `dsl.List<Timestamp>`    extends DslTimestamp with `box.OneListOfOne
 case object `dsl.List<Timestamp>?`   extends DslTimestamp with `box.NullableListOfOne`
 case object `dsl.List<Timestamp?>`   extends DslTimestamp with `box.OneListOfNullable`
 case object `dsl.List<Timestamp?>?`  extends DslTimestamp with `box.NullableListOfNullable`
+case object `dsl.Queue<Timestamp>`   extends DslTimestamp with `box.OneQueueOfOne`
+case object `dsl.Queue<Timestamp>?`  extends DslTimestamp with `box.NullableQueueOfOne`
+case object `dsl.Queue<Timestamp?>`  extends DslTimestamp with `box.OneQueueOfNullable`
+case object `dsl.Queue<Timestamp?>?` extends DslTimestamp with `box.NullableQueueOfNullable`
 case object `dsl.Set<Timestamp>`     extends DslTimestamp with `box.OneSetOfOne`
 case object `dsl.Set<Timestamp>?`    extends DslTimestamp with `box.NullableSetOfOne`
 case object `dsl.Set<Timestamp?>`    extends DslTimestamp with `box.OneSetOfNullable`
@@ -41,6 +45,10 @@ case object `dsl.LIST<DATETIME>`    extends DslTimestamp with `box.OneListOfOne`
 case object `dsl.LIST<DATETIME>?`   extends DslTimestamp with `box.NullableListOfOne`
 case object `dsl.LIST<DATETIME?>`   extends DslTimestamp with `box.OneListOfNullable`
 case object `dsl.LIST<DATETIME?>?`  extends DslTimestamp with `box.NullableListOfNullable`
+case object `dsl.QUEUE<DATETIME>`   extends DslTimestamp with `box.OneQueueOfOne`
+case object `dsl.QUEUE<DATETIME>?`  extends DslTimestamp with `box.NullableQueueOfOne`
+case object `dsl.QUEUE<DATETIME?>`  extends DslTimestamp with `box.OneQueueOfNullable`
+case object `dsl.QUEUE<DATETIME?>?` extends DslTimestamp with `box.NullableQueueOfNullable`
 case object `dsl.SET<DATETIME>`     extends DslTimestamp with `box.OneSetOfOne`
 case object `dsl.SET<DATETIME>?`    extends DslTimestamp with `box.NullableSetOfOne`
 case object `dsl.SET<DATETIME?>`    extends DslTimestamp with `box.OneSetOfNullable`
@@ -60,6 +68,10 @@ case object `dsl.List<DateTime>`    extends DslTimestamp with `box.OneListOfOne`
 case object `dsl.List<DateTime>?`   extends DslTimestamp with `box.NullableListOfOne`
 case object `dsl.List<DateTime?>`   extends DslTimestamp with `box.OneListOfNullable`
 case object `dsl.List<DateTime?>?`  extends DslTimestamp with `box.NullableListOfNullable`
+case object `dsl.Queue<DateTime>`   extends DslTimestamp with `box.OneQueueOfOne`
+case object `dsl.Queue<DateTime>?`  extends DslTimestamp with `box.NullableQueueOfOne`
+case object `dsl.Queue<DateTime?>`  extends DslTimestamp with `box.OneQueueOfNullable`
+case object `dsl.Queue<DateTime?>?` extends DslTimestamp with `box.NullableQueueOfNullable`
 case object `dsl.Set<DateTime>`     extends DslTimestamp with `box.OneSetOfOne`
 case object `dsl.Set<DateTime>?`    extends DslTimestamp with `box.NullableSetOfOne`
 case object `dsl.Set<DateTime?>`    extends DslTimestamp with `box.OneSetOfNullable`
@@ -79,6 +91,10 @@ case object `dsl.List<Datetime>`    extends DslTimestamp with `box.OneListOfOne`
 case object `dsl.List<Datetime>?`   extends DslTimestamp with `box.NullableListOfOne`
 case object `dsl.List<Datetime?>`   extends DslTimestamp with `box.OneListOfNullable`
 case object `dsl.List<Datetime?>?`  extends DslTimestamp with `box.NullableListOfNullable`
+case object `dsl.Queue<Datetime>`   extends DslTimestamp with `box.OneQueueOfOne`
+case object `dsl.Queue<Datetime>?`  extends DslTimestamp with `box.NullableQueueOfOne`
+case object `dsl.Queue<Datetime?>`  extends DslTimestamp with `box.OneQueueOfNullable`
+case object `dsl.Queue<Datetime?>?` extends DslTimestamp with `box.NullableQueueOfNullable`
 case object `dsl.Set<Datetime>`     extends DslTimestamp with `box.OneSetOfOne`
 case object `dsl.Set<Datetime>?`    extends DslTimestamp with `box.NullableSetOfOne`
 case object `dsl.Set<Datetime?>`    extends DslTimestamp with `box.OneSetOfNullable`
@@ -98,6 +114,10 @@ case object `dsl.LIST<TIMESTAMP>`    extends DslTimestamp with `box.OneListOfOne
 case object `dsl.LIST<TIMESTAMP>?`   extends DslTimestamp with `box.NullableListOfOne`
 case object `dsl.LIST<TIMESTAMP?>`   extends DslTimestamp with `box.OneListOfNullable`
 case object `dsl.LIST<TIMESTAMP?>?`  extends DslTimestamp with `box.NullableListOfNullable`
+case object `dsl.QUEUE<TIMESTAMP>`   extends DslTimestamp with `box.OneQueueOfOne`
+case object `dsl.QUEUE<TIMESTAMP>?`  extends DslTimestamp with `box.NullableQueueOfOne`
+case object `dsl.QUEUE<TIMESTAMP?>`  extends DslTimestamp with `box.OneQueueOfNullable`
+case object `dsl.QUEUE<TIMESTAMP?>?` extends DslTimestamp with `box.NullableQueueOfNullable`
 case object `dsl.SET<TIMESTAMP>`     extends DslTimestamp with `box.OneSetOfOne`
 case object `dsl.SET<TIMESTAMP>?`    extends DslTimestamp with `box.NullableSetOfOne`
 case object `dsl.SET<TIMESTAMP?>`    extends DslTimestamp with `box.OneSetOfNullable`
@@ -117,6 +137,10 @@ case object `dsl.list<datetime>`    extends DslTimestamp with `box.OneListOfOne`
 case object `dsl.list<datetime>?`   extends DslTimestamp with `box.NullableListOfOne`
 case object `dsl.list<datetime?>`   extends DslTimestamp with `box.OneListOfNullable`
 case object `dsl.list<datetime?>?`  extends DslTimestamp with `box.NullableListOfNullable`
+case object `dsl.queue<datetime>`   extends DslTimestamp with `box.OneQueueOfOne`
+case object `dsl.queue<datetime>?`  extends DslTimestamp with `box.NullableQueueOfOne`
+case object `dsl.queue<datetime?>`  extends DslTimestamp with `box.OneQueueOfNullable`
+case object `dsl.queue<datetime?>?` extends DslTimestamp with `box.NullableQueueOfNullable`
 case object `dsl.set<datetime>`     extends DslTimestamp with `box.OneSetOfOne`
 case object `dsl.set<datetime>?`    extends DslTimestamp with `box.NullableSetOfOne`
 case object `dsl.set<datetime?>`    extends DslTimestamp with `box.OneSetOfNullable`
@@ -136,6 +160,10 @@ case object `dsl.list<timestamp>`    extends DslTimestamp with `box.OneListOfOne
 case object `dsl.list<timestamp>?`   extends DslTimestamp with `box.NullableListOfOne`
 case object `dsl.list<timestamp?>`   extends DslTimestamp with `box.OneListOfNullable`
 case object `dsl.list<timestamp?>?`  extends DslTimestamp with `box.NullableListOfNullable`
+case object `dsl.queue<timestamp>`   extends DslTimestamp with `box.OneQueueOfOne`
+case object `dsl.queue<timestamp>?`  extends DslTimestamp with `box.NullableQueueOfOne`
+case object `dsl.queue<timestamp?>`  extends DslTimestamp with `box.OneQueueOfNullable`
+case object `dsl.queue<timestamp?>?` extends DslTimestamp with `box.NullableQueueOfNullable`
 case object `dsl.set<timestamp>`     extends DslTimestamp with `box.OneSetOfOne`
 case object `dsl.set<timestamp>?`    extends DslTimestamp with `box.NullableSetOfOne`
 case object `dsl.set<timestamp?>`    extends DslTimestamp with `box.OneSetOfNullable`

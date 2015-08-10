@@ -22,6 +22,10 @@ case object `dsl.List<Bits>`    extends DslBits with `box.OneListOfOne`
 case object `dsl.List<Bits>?`   extends DslBits with `box.NullableListOfOne`
 case object `dsl.List<Bits?>`   extends DslBits with `box.OneListOfNullable`
 case object `dsl.List<Bits?>?`  extends DslBits with `box.NullableListOfNullable`
+case object `dsl.Queue<Bits>`   extends DslBits with `box.OneQueueOfOne`
+case object `dsl.Queue<Bits>?`  extends DslBits with `box.NullableQueueOfOne`
+case object `dsl.Queue<Bits?>`  extends DslBits with `box.OneQueueOfNullable`
+case object `dsl.Queue<Bits?>?` extends DslBits with `box.NullableQueueOfNullable`
 case object `dsl.Set<Bits>`     extends DslBits with `box.OneSetOfOne`
 case object `dsl.Set<Bits>?`    extends DslBits with `box.NullableSetOfOne`
 case object `dsl.Set<Bits?>`    extends DslBits with `box.OneSetOfNullable`
@@ -41,6 +45,10 @@ case object `dsl.LIST<BITS>`    extends DslBits with `box.OneListOfOne`
 case object `dsl.LIST<BITS>?`   extends DslBits with `box.NullableListOfOne`
 case object `dsl.LIST<BITS?>`   extends DslBits with `box.OneListOfNullable`
 case object `dsl.LIST<BITS?>?`  extends DslBits with `box.NullableListOfNullable`
+case object `dsl.QUEUE<BITS>`   extends DslBits with `box.OneQueueOfOne`
+case object `dsl.QUEUE<BITS>?`  extends DslBits with `box.NullableQueueOfOne`
+case object `dsl.QUEUE<BITS?>`  extends DslBits with `box.OneQueueOfNullable`
+case object `dsl.QUEUE<BITS?>?` extends DslBits with `box.NullableQueueOfNullable`
 case object `dsl.SET<BITS>`     extends DslBits with `box.OneSetOfOne`
 case object `dsl.SET<BITS>?`    extends DslBits with `box.NullableSetOfOne`
 case object `dsl.SET<BITS?>`    extends DslBits with `box.OneSetOfNullable`
@@ -60,6 +68,10 @@ case object `dsl.list<bits>`    extends DslBits with `box.OneListOfOne`
 case object `dsl.list<bits>?`   extends DslBits with `box.NullableListOfOne`
 case object `dsl.list<bits?>`   extends DslBits with `box.OneListOfNullable`
 case object `dsl.list<bits?>?`  extends DslBits with `box.NullableListOfNullable`
+case object `dsl.queue<bits>`   extends DslBits with `box.OneQueueOfOne`
+case object `dsl.queue<bits>?`  extends DslBits with `box.NullableQueueOfOne`
+case object `dsl.queue<bits?>`  extends DslBits with `box.OneQueueOfNullable`
+case object `dsl.queue<bits?>?` extends DslBits with `box.NullableQueueOfNullable`
 case object `dsl.set<bits>`     extends DslBits with `box.OneSetOfOne`
 case object `dsl.set<bits>?`    extends DslBits with `box.NullableSetOfOne`
 case object `dsl.set<bits?>`    extends DslBits with `box.OneSetOfNullable`

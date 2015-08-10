@@ -22,6 +22,10 @@ case object `dsl.List<Map>`    extends DslMap with `box.OneListOfOne`
 case object `dsl.List<Map>?`   extends DslMap with `box.NullableListOfOne`
 case object `dsl.List<Map?>`   extends DslMap with `box.OneListOfNullable`
 case object `dsl.List<Map?>?`  extends DslMap with `box.NullableListOfNullable`
+case object `dsl.Queue<Map>`   extends DslMap with `box.OneQueueOfOne`
+case object `dsl.Queue<Map>?`  extends DslMap with `box.NullableQueueOfOne`
+case object `dsl.Queue<Map?>`  extends DslMap with `box.OneQueueOfNullable`
+case object `dsl.Queue<Map?>?` extends DslMap with `box.NullableQueueOfNullable`
 case object `dsl.Set<Map>`     extends DslMap with `box.OneSetOfOne`
 case object `dsl.Set<Map>?`    extends DslMap with `box.NullableSetOfOne`
 case object `dsl.Set<Map?>`    extends DslMap with `box.OneSetOfNullable`
@@ -41,6 +45,10 @@ case object `dsl.LIST<DICTIONARY>`    extends DslMap with `box.OneListOfOne`
 case object `dsl.LIST<DICTIONARY>?`   extends DslMap with `box.NullableListOfOne`
 case object `dsl.LIST<DICTIONARY?>`   extends DslMap with `box.OneListOfNullable`
 case object `dsl.LIST<DICTIONARY?>?`  extends DslMap with `box.NullableListOfNullable`
+case object `dsl.QUEUE<DICTIONARY>`   extends DslMap with `box.OneQueueOfOne`
+case object `dsl.QUEUE<DICTIONARY>?`  extends DslMap with `box.NullableQueueOfOne`
+case object `dsl.QUEUE<DICTIONARY?>`  extends DslMap with `box.OneQueueOfNullable`
+case object `dsl.QUEUE<DICTIONARY?>?` extends DslMap with `box.NullableQueueOfNullable`
 case object `dsl.SET<DICTIONARY>`     extends DslMap with `box.OneSetOfOne`
 case object `dsl.SET<DICTIONARY>?`    extends DslMap with `box.NullableSetOfOne`
 case object `dsl.SET<DICTIONARY?>`    extends DslMap with `box.OneSetOfNullable`
@@ -60,6 +68,10 @@ case object `dsl.List<Dictionary>`    extends DslMap with `box.OneListOfOne`
 case object `dsl.List<Dictionary>?`   extends DslMap with `box.NullableListOfOne`
 case object `dsl.List<Dictionary?>`   extends DslMap with `box.OneListOfNullable`
 case object `dsl.List<Dictionary?>?`  extends DslMap with `box.NullableListOfNullable`
+case object `dsl.Queue<Dictionary>`   extends DslMap with `box.OneQueueOfOne`
+case object `dsl.Queue<Dictionary>?`  extends DslMap with `box.NullableQueueOfOne`
+case object `dsl.Queue<Dictionary?>`  extends DslMap with `box.OneQueueOfNullable`
+case object `dsl.Queue<Dictionary?>?` extends DslMap with `box.NullableQueueOfNullable`
 case object `dsl.Set<Dictionary>`     extends DslMap with `box.OneSetOfOne`
 case object `dsl.Set<Dictionary>?`    extends DslMap with `box.NullableSetOfOne`
 case object `dsl.Set<Dictionary?>`    extends DslMap with `box.OneSetOfNullable`
@@ -79,6 +91,10 @@ case object `dsl.LIST<MAP>`    extends DslMap with `box.OneListOfOne`
 case object `dsl.LIST<MAP>?`   extends DslMap with `box.NullableListOfOne`
 case object `dsl.LIST<MAP?>`   extends DslMap with `box.OneListOfNullable`
 case object `dsl.LIST<MAP?>?`  extends DslMap with `box.NullableListOfNullable`
+case object `dsl.QUEUE<MAP>`   extends DslMap with `box.OneQueueOfOne`
+case object `dsl.QUEUE<MAP>?`  extends DslMap with `box.NullableQueueOfOne`
+case object `dsl.QUEUE<MAP?>`  extends DslMap with `box.OneQueueOfNullable`
+case object `dsl.QUEUE<MAP?>?` extends DslMap with `box.NullableQueueOfNullable`
 case object `dsl.SET<MAP>`     extends DslMap with `box.OneSetOfOne`
 case object `dsl.SET<MAP>?`    extends DslMap with `box.NullableSetOfOne`
 case object `dsl.SET<MAP?>`    extends DslMap with `box.OneSetOfNullable`
@@ -98,6 +114,10 @@ case object `dsl.list<dictionary>`    extends DslMap with `box.OneListOfOne`
 case object `dsl.list<dictionary>?`   extends DslMap with `box.NullableListOfOne`
 case object `dsl.list<dictionary?>`   extends DslMap with `box.OneListOfNullable`
 case object `dsl.list<dictionary?>?`  extends DslMap with `box.NullableListOfNullable`
+case object `dsl.queue<dictionary>`   extends DslMap with `box.OneQueueOfOne`
+case object `dsl.queue<dictionary>?`  extends DslMap with `box.NullableQueueOfOne`
+case object `dsl.queue<dictionary?>`  extends DslMap with `box.OneQueueOfNullable`
+case object `dsl.queue<dictionary?>?` extends DslMap with `box.NullableQueueOfNullable`
 case object `dsl.set<dictionary>`     extends DslMap with `box.OneSetOfOne`
 case object `dsl.set<dictionary>?`    extends DslMap with `box.NullableSetOfOne`
 case object `dsl.set<dictionary?>`    extends DslMap with `box.OneSetOfNullable`
@@ -117,6 +137,10 @@ case object `dsl.list<map>`    extends DslMap with `box.OneListOfOne`
 case object `dsl.list<map>?`   extends DslMap with `box.NullableListOfOne`
 case object `dsl.list<map?>`   extends DslMap with `box.OneListOfNullable`
 case object `dsl.list<map?>?`  extends DslMap with `box.NullableListOfNullable`
+case object `dsl.queue<map>`   extends DslMap with `box.OneQueueOfOne`
+case object `dsl.queue<map>?`  extends DslMap with `box.NullableQueueOfOne`
+case object `dsl.queue<map?>`  extends DslMap with `box.OneQueueOfNullable`
+case object `dsl.queue<map?>?` extends DslMap with `box.NullableQueueOfNullable`
 case object `dsl.set<map>`     extends DslMap with `box.OneSetOfOne`
 case object `dsl.set<map>?`    extends DslMap with `box.NullableSetOfOne`
 case object `dsl.set<map?>`    extends DslMap with `box.OneSetOfNullable`

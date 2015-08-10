@@ -320,6 +320,140 @@ case object `java.List<Point?>?`
   val hasGenerics = true
 }
 
+case object `java.Queue<Point>`
+    extends JavaPoint with `box.OneQueueOfOne` {
+
+  val javaClass = "java.util.Queue<java.awt.Point>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("java.awt.Point"))
+  val javaDescription = "OneQueueOfOnePoints"
+
+  def defaultValue = SingleJavaValue("new java.util.ArrayDeque<java.awt.Point>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("java.awt.Point",
+      SingleJavaValue("new java.awt.Point()")
+    )
+  , QueueOfJavaValues("java.awt.Point",
+      SingleJavaValue("new java.awt.Point(0, 1000000000)")
+    )
+  , QueueOfJavaValues("java.awt.Point",
+      SingleJavaValue("new java.awt.Point()")
+    , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MIN_VALUE)")
+    , SingleJavaValue("new java.awt.Point(Integer.MAX_VALUE, Integer.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.Point(0, -1000000000)")
+    , SingleJavaValue("new java.awt.Point(0, 1000000000)")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Point>?`
+    extends JavaPoint with `box.NullableQueueOfOne` {
+
+  val javaClass = "java.util.Queue<java.awt.Point>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("java.awt.Point"))
+  val javaDescription = "NullableQueueOfOnePoints"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("java.awt.Point",
+      SingleJavaValue("new java.awt.Point()")
+    )
+  , QueueOfJavaValues("java.awt.Point",
+      SingleJavaValue("new java.awt.Point(0, 1000000000)")
+    )
+  , QueueOfJavaValues("java.awt.Point",
+      SingleJavaValue("new java.awt.Point()")
+    , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MIN_VALUE)")
+    , SingleJavaValue("new java.awt.Point(Integer.MAX_VALUE, Integer.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.Point(0, -1000000000)")
+    , SingleJavaValue("new java.awt.Point(0, 1000000000)")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Point?>`
+    extends JavaPoint with `box.OneQueueOfNullable` {
+
+  val javaClass = "java.util.Queue<java.awt.Point>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("java.awt.Point"))
+  val javaDescription = "OneQueueOfNullablePoints"
+
+  def defaultValue = SingleJavaValue("new java.util.ArrayDeque<java.awt.Point>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("java.awt.Point",
+      SingleJavaValue("null")
+    )
+  , QueueOfJavaValues("java.awt.Point",
+      SingleJavaValue("new java.awt.Point()")
+    )
+  , QueueOfJavaValues("java.awt.Point",
+      SingleJavaValue("new java.awt.Point(0, 1000000000)")
+    )
+  , QueueOfJavaValues("java.awt.Point",
+      SingleJavaValue("new java.awt.Point()")
+    , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MIN_VALUE)")
+    , SingleJavaValue("new java.awt.Point(Integer.MAX_VALUE, Integer.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.Point(0, -1000000000)")
+    , SingleJavaValue("new java.awt.Point(0, 1000000000)")
+    )
+  , QueueOfJavaValues("java.awt.Point",
+      SingleJavaValue("null")
+    , SingleJavaValue("new java.awt.Point()")
+    , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MIN_VALUE)")
+    , SingleJavaValue("new java.awt.Point(Integer.MAX_VALUE, Integer.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.Point(0, -1000000000)")
+    , SingleJavaValue("new java.awt.Point(0, 1000000000)")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Point?>?`
+    extends JavaPoint with `box.NullableQueueOfNullable` {
+
+  val javaClass = "java.util.Queue<java.awt.Point>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("java.awt.Point"))
+  val javaDescription = "NullableQueueOfNullablePoints"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("java.awt.Point",
+      SingleJavaValue("null")
+    )
+  , QueueOfJavaValues("java.awt.Point",
+      SingleJavaValue("new java.awt.Point()")
+    )
+  , QueueOfJavaValues("java.awt.Point",
+      SingleJavaValue("new java.awt.Point(0, 1000000000)")
+    )
+  , QueueOfJavaValues("java.awt.Point",
+      SingleJavaValue("new java.awt.Point()")
+    , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MIN_VALUE)")
+    , SingleJavaValue("new java.awt.Point(Integer.MAX_VALUE, Integer.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.Point(0, -1000000000)")
+    , SingleJavaValue("new java.awt.Point(0, 1000000000)")
+    )
+  , QueueOfJavaValues("java.awt.Point",
+      SingleJavaValue("null")
+    , SingleJavaValue("new java.awt.Point()")
+    , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MIN_VALUE)")
+    , SingleJavaValue("new java.awt.Point(Integer.MAX_VALUE, Integer.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.Point(0, -1000000000)")
+    , SingleJavaValue("new java.awt.Point(0, 1000000000)")
+    )
+  )
+
+  val hasGenerics = true
+}
+
 case object `java.Set<Point>`
     extends JavaPoint with `box.OneSetOfOne` {
 

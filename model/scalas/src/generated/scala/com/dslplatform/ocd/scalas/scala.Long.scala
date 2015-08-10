@@ -88,6 +88,38 @@ case object `scala.List<Long?>?`
   val defaultValue = "None"
 }
 
+case object `scala.Queue<Long>`
+    extends ScalaLong with `box.OneQueueOfOne` {
+
+  val scalaClass = "Queue[Long]"
+
+  val defaultValue = "Queue[Long].empty"
+}
+
+case object `scala.Queue<Long>?`
+    extends ScalaLong with `box.NullableQueueOfOne` {
+
+  val scalaClass = "Option[Queue[Long]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Queue<Long?>`
+    extends ScalaLong with `box.OneQueueOfNullable` {
+
+  val scalaClass = "Queue[Option[Long]]"
+
+  val defaultValue = "Queue[Option[Long]].empty"
+}
+
+case object `scala.Queue<Long?>?`
+    extends ScalaLong with `box.NullableQueueOfNullable` {
+
+  val scalaClass = "Option[Queue[Option[Long]]]"
+
+  val defaultValue = "None"
+}
+
 case object `scala.Set<Long>`
     extends ScalaLong with `box.OneSetOfOne` {
 

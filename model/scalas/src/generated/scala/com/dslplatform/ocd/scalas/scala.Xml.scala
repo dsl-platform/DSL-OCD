@@ -88,6 +88,38 @@ case object `scala.List<Xml?>?`
   val defaultValue = "None"
 }
 
+case object `scala.Queue<Xml>`
+    extends ScalaXml with `box.OneQueueOfOne` {
+
+  val scalaClass = "Queue[scala.xml.Elem]"
+
+  val defaultValue = "Queue[scala.xml.Elem].empty"
+}
+
+case object `scala.Queue<Xml>?`
+    extends ScalaXml with `box.NullableQueueOfOne` {
+
+  val scalaClass = "Option[Queue[scala.xml.Elem]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Queue<Xml?>`
+    extends ScalaXml with `box.OneQueueOfNullable` {
+
+  val scalaClass = "Queue[Option[scala.xml.Elem]]"
+
+  val defaultValue = "Queue[Option[scala.xml.Elem]].empty"
+}
+
+case object `scala.Queue<Xml?>?`
+    extends ScalaXml with `box.NullableQueueOfNullable` {
+
+  val scalaClass = "Option[Queue[Option[scala.xml.Elem]]]"
+
+  val defaultValue = "None"
+}
+
 case object `scala.Set<Xml>`
     extends ScalaXml with `box.OneSetOfOne` {
 

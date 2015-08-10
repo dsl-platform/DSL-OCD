@@ -88,6 +88,38 @@ case object `scala.List<Map?>?`
   val defaultValue = "None"
 }
 
+case object `scala.Queue<Map>`
+    extends ScalaMap with `box.OneQueueOfOne` {
+
+  val scalaClass = "Queue[Map[String, String]]"
+
+  val defaultValue = "Queue[Map[String, String]].empty"
+}
+
+case object `scala.Queue<Map>?`
+    extends ScalaMap with `box.NullableQueueOfOne` {
+
+  val scalaClass = "Option[Queue[Map[String, String]]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Queue<Map?>`
+    extends ScalaMap with `box.OneQueueOfNullable` {
+
+  val scalaClass = "Queue[Option[Map[String, String]]]"
+
+  val defaultValue = "Queue[Option[Map[String, String]]].empty"
+}
+
+case object `scala.Queue<Map?>?`
+    extends ScalaMap with `box.NullableQueueOfNullable` {
+
+  val scalaClass = "Option[Queue[Option[Map[String, String]]]]"
+
+  val defaultValue = "None"
+}
+
 case object `scala.Set<Map>`
     extends ScalaMap with `box.OneSetOfOne` {
 

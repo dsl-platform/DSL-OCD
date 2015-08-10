@@ -353,6 +353,152 @@ case object `java.List<Url?>?`
   val hasGenerics = true
 }
 
+case object `java.Queue<Url>`
+    extends JavaUrl with `box.OneQueueOfOne` {
+
+  val javaClass = "java.util.Queue<java.net.URI>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("java.net.URI"))
+  val javaDescription = "OneQueueOfOneUrls"
+
+  def defaultValue = SingleJavaValue("new java.util.ArrayDeque<java.net.URI>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("java.net.URI",
+      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"failover:(tcp://localhost:8181,tcp://localhost:8080/)\")")
+    )
+  , QueueOfJavaValues("java.net.URI",
+      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"http://127.0.0.1/\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"http://www.xyz.com/\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"https://www.abc.com/\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"ftp://www.pqr.com/\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"https://localhost:8080/\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"mailto:snail@mail.hu\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"file:///~/opt/somefile.md\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"tcp://localhost:8181/\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"failover:(tcp://localhost:8181,tcp://localhost:8080/)\")")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Url>?`
+    extends JavaUrl with `box.NullableQueueOfOne` {
+
+  val javaClass = "java.util.Queue<java.net.URI>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("java.net.URI"))
+  val javaDescription = "NullableQueueOfOneUrls"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("java.net.URI",
+      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"failover:(tcp://localhost:8181,tcp://localhost:8080/)\")")
+    )
+  , QueueOfJavaValues("java.net.URI",
+      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"http://127.0.0.1/\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"http://www.xyz.com/\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"https://www.abc.com/\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"ftp://www.pqr.com/\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"https://localhost:8080/\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"mailto:snail@mail.hu\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"file:///~/opt/somefile.md\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"tcp://localhost:8181/\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"failover:(tcp://localhost:8181,tcp://localhost:8080/)\")")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Url?>`
+    extends JavaUrl with `box.OneQueueOfNullable` {
+
+  val javaClass = "java.util.Queue<java.net.URI>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("java.net.URI"))
+  val javaDescription = "OneQueueOfNullableUrls"
+
+  def defaultValue = SingleJavaValue("new java.util.ArrayDeque<java.net.URI>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("java.net.URI",
+      SingleJavaValue("null")
+    )
+  , QueueOfJavaValues("java.net.URI",
+      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"failover:(tcp://localhost:8181,tcp://localhost:8080/)\")")
+    )
+  , QueueOfJavaValues("java.net.URI",
+      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"http://127.0.0.1/\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"http://www.xyz.com/\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"https://www.abc.com/\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"ftp://www.pqr.com/\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"https://localhost:8080/\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"mailto:snail@mail.hu\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"file:///~/opt/somefile.md\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"tcp://localhost:8181/\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"failover:(tcp://localhost:8181,tcp://localhost:8080/)\")")
+    )
+  , QueueOfJavaValues("java.net.URI",
+      SingleJavaValue("null")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"http://127.0.0.1/\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"http://www.xyz.com/\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"https://www.abc.com/\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"ftp://www.pqr.com/\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"https://localhost:8080/\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"mailto:snail@mail.hu\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"file:///~/opt/somefile.md\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"tcp://localhost:8181/\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"failover:(tcp://localhost:8181,tcp://localhost:8080/)\")")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Url?>?`
+    extends JavaUrl with `box.NullableQueueOfNullable` {
+
+  val javaClass = "java.util.Queue<java.net.URI>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("java.net.URI"))
+  val javaDescription = "NullableQueueOfNullableUrls"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("java.net.URI",
+      SingleJavaValue("null")
+    )
+  , QueueOfJavaValues("java.net.URI",
+      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"failover:(tcp://localhost:8181,tcp://localhost:8080/)\")")
+    )
+  , QueueOfJavaValues("java.net.URI",
+      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"http://127.0.0.1/\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"http://www.xyz.com/\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"https://www.abc.com/\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"ftp://www.pqr.com/\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"https://localhost:8080/\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"mailto:snail@mail.hu\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"file:///~/opt/somefile.md\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"tcp://localhost:8181/\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"failover:(tcp://localhost:8181,tcp://localhost:8080/)\")")
+    )
+  , QueueOfJavaValues("java.net.URI",
+      SingleJavaValue("null")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"http://127.0.0.1/\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"http://www.xyz.com/\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"https://www.abc.com/\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"ftp://www.pqr.com/\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"https://localhost:8080/\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"mailto:snail@mail.hu\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"file:///~/opt/somefile.md\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"tcp://localhost:8181/\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildURI(\"failover:(tcp://localhost:8181,tcp://localhost:8080/)\")")
+    )
+  )
+
+  val hasGenerics = true
+}
+
 case object `java.Set<Url>`
     extends JavaUrl with `box.OneSetOfOne` {
 

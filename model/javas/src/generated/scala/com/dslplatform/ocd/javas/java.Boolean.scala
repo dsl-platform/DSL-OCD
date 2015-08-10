@@ -278,6 +278,122 @@ case object `java.List<Boolean?>?`
   val hasGenerics = true
 }
 
+case object `java.Queue<Boolean>`
+    extends JavaBoolean with `box.OneQueueOfOne` {
+
+  val javaClass = "java.util.Queue<Boolean>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("Boolean"))
+  val javaDescription = "OneQueueOfOneBooleans"
+
+  def defaultValue = SingleJavaValue("new java.util.ArrayDeque<Boolean>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("Boolean",
+      SingleJavaValue("false")
+    )
+  , QueueOfJavaValues("Boolean",
+      SingleJavaValue("true")
+    )
+  , QueueOfJavaValues("Boolean",
+      SingleJavaValue("false")
+    , SingleJavaValue("true")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Boolean>?`
+    extends JavaBoolean with `box.NullableQueueOfOne` {
+
+  val javaClass = "java.util.Queue<Boolean>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("Boolean"))
+  val javaDescription = "NullableQueueOfOneBooleans"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("Boolean",
+      SingleJavaValue("false")
+    )
+  , QueueOfJavaValues("Boolean",
+      SingleJavaValue("true")
+    )
+  , QueueOfJavaValues("Boolean",
+      SingleJavaValue("false")
+    , SingleJavaValue("true")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Boolean?>`
+    extends JavaBoolean with `box.OneQueueOfNullable` {
+
+  val javaClass = "java.util.Queue<Boolean>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("Boolean"))
+  val javaDescription = "OneQueueOfNullableBooleans"
+
+  def defaultValue = SingleJavaValue("new java.util.ArrayDeque<Boolean>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("Boolean",
+      SingleJavaValue("null")
+    )
+  , QueueOfJavaValues("Boolean",
+      SingleJavaValue("false")
+    )
+  , QueueOfJavaValues("Boolean",
+      SingleJavaValue("true")
+    )
+  , QueueOfJavaValues("Boolean",
+      SingleJavaValue("false")
+    , SingleJavaValue("true")
+    )
+  , QueueOfJavaValues("Boolean",
+      SingleJavaValue("null")
+    , SingleJavaValue("false")
+    , SingleJavaValue("true")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Boolean?>?`
+    extends JavaBoolean with `box.NullableQueueOfNullable` {
+
+  val javaClass = "java.util.Queue<Boolean>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("Boolean"))
+  val javaDescription = "NullableQueueOfNullableBooleans"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("Boolean",
+      SingleJavaValue("null")
+    )
+  , QueueOfJavaValues("Boolean",
+      SingleJavaValue("false")
+    )
+  , QueueOfJavaValues("Boolean",
+      SingleJavaValue("true")
+    )
+  , QueueOfJavaValues("Boolean",
+      SingleJavaValue("false")
+    , SingleJavaValue("true")
+    )
+  , QueueOfJavaValues("Boolean",
+      SingleJavaValue("null")
+    , SingleJavaValue("false")
+    , SingleJavaValue("true")
+    )
+  )
+
+  val hasGenerics = true
+}
+
 case object `java.Set<Boolean>`
     extends JavaBoolean with `box.OneSetOfOne` {
 

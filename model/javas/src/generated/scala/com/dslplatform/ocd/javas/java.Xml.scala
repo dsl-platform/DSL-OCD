@@ -311,6 +311,134 @@ case object `java.List<Xml?>?`
   val hasGenerics = true
 }
 
+case object `java.Queue<Xml>`
+    extends JavaXml with `box.OneQueueOfOne` {
+
+  val javaClass = "java.util.Queue<org.w3c.dom.Element>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("org.w3c.dom.Element"))
+  val javaDescription = "OneQueueOfOneXmls"
+
+  def defaultValue = SingleJavaValue("new java.util.ArrayDeque<org.w3c.dom.Element>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("org.w3c.dom.Element",
+      SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
+    )
+  , QueueOfJavaValues("org.w3c.dom.Element",
+      SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<document/>\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<TextElement>some text &amp; &lt;stuff&gt;</TextElement>\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ElementWithCData>&lt;?xml?&gt;&lt;xml&gt;&lt;!xml!&gt;</ElementWithCData>\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<AtributedElement foo=\\\"bar\\\" qwe=\\\"poi\\\"/>\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<NestedTextElement><FirstNest><SecondNest>bird</SecondNest></FirstNest></NestedTextElement>\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Xml>?`
+    extends JavaXml with `box.NullableQueueOfOne` {
+
+  val javaClass = "java.util.Queue<org.w3c.dom.Element>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("org.w3c.dom.Element"))
+  val javaDescription = "NullableQueueOfOneXmls"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("org.w3c.dom.Element",
+      SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
+    )
+  , QueueOfJavaValues("org.w3c.dom.Element",
+      SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<document/>\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<TextElement>some text &amp; &lt;stuff&gt;</TextElement>\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ElementWithCData>&lt;?xml?&gt;&lt;xml&gt;&lt;!xml!&gt;</ElementWithCData>\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<AtributedElement foo=\\\"bar\\\" qwe=\\\"poi\\\"/>\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<NestedTextElement><FirstNest><SecondNest>bird</SecondNest></FirstNest></NestedTextElement>\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Xml?>`
+    extends JavaXml with `box.OneQueueOfNullable` {
+
+  val javaClass = "java.util.Queue<org.w3c.dom.Element>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("org.w3c.dom.Element"))
+  val javaDescription = "OneQueueOfNullableXmls"
+
+  def defaultValue = SingleJavaValue("new java.util.ArrayDeque<org.w3c.dom.Element>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("org.w3c.dom.Element",
+      SingleJavaValue("null")
+    )
+  , QueueOfJavaValues("org.w3c.dom.Element",
+      SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
+    )
+  , QueueOfJavaValues("org.w3c.dom.Element",
+      SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<document/>\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<TextElement>some text &amp; &lt;stuff&gt;</TextElement>\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ElementWithCData>&lt;?xml?&gt;&lt;xml&gt;&lt;!xml!&gt;</ElementWithCData>\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<AtributedElement foo=\\\"bar\\\" qwe=\\\"poi\\\"/>\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<NestedTextElement><FirstNest><SecondNest>bird</SecondNest></FirstNest></NestedTextElement>\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
+    )
+  , QueueOfJavaValues("org.w3c.dom.Element",
+      SingleJavaValue("null")
+    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<document/>\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<TextElement>some text &amp; &lt;stuff&gt;</TextElement>\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ElementWithCData>&lt;?xml?&gt;&lt;xml&gt;&lt;!xml!&gt;</ElementWithCData>\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<AtributedElement foo=\\\"bar\\\" qwe=\\\"poi\\\"/>\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<NestedTextElement><FirstNest><SecondNest>bird</SecondNest></FirstNest></NestedTextElement>\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Xml?>?`
+    extends JavaXml with `box.NullableQueueOfNullable` {
+
+  val javaClass = "java.util.Queue<org.w3c.dom.Element>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("org.w3c.dom.Element"))
+  val javaDescription = "NullableQueueOfNullableXmls"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("org.w3c.dom.Element",
+      SingleJavaValue("null")
+    )
+  , QueueOfJavaValues("org.w3c.dom.Element",
+      SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
+    )
+  , QueueOfJavaValues("org.w3c.dom.Element",
+      SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<document/>\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<TextElement>some text &amp; &lt;stuff&gt;</TextElement>\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ElementWithCData>&lt;?xml?&gt;&lt;xml&gt;&lt;!xml!&gt;</ElementWithCData>\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<AtributedElement foo=\\\"bar\\\" qwe=\\\"poi\\\"/>\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<NestedTextElement><FirstNest><SecondNest>bird</SecondNest></FirstNest></NestedTextElement>\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
+    )
+  , QueueOfJavaValues("org.w3c.dom.Element",
+      SingleJavaValue("null")
+    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<document/>\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<TextElement>some text &amp; &lt;stuff&gt;</TextElement>\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ElementWithCData>&lt;?xml?&gt;&lt;xml&gt;&lt;!xml!&gt;</ElementWithCData>\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<AtributedElement foo=\\\"bar\\\" qwe=\\\"poi\\\"/>\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<NestedTextElement><FirstNest><SecondNest>bird</SecondNest></FirstNest></NestedTextElement>\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
+    )
+  )
+
+  val hasGenerics = true
+}
+
 case object `java.Set<Xml>`
     extends JavaXml with `box.OneSetOfOne` {
 

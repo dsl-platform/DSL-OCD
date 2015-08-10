@@ -13,6 +13,10 @@ trait OcdScalaBoxTypeValues {
   , `scala.List<Binary>?`
   , `scala.List<Binary?>`
   , `scala.List<Binary?>?`
+  , `scala.Queue<Binary>`
+  , `scala.Queue<Binary>?`
+  , `scala.Queue<Binary?>`
+  , `scala.Queue<Binary?>?`
   , `scala.Set<Binary>`
   , `scala.Set<Binary>?`
   , `scala.Set<Binary?>`
@@ -27,6 +31,10 @@ trait OcdScalaBoxTypeValues {
   , `scala.List<Boolean>?`
   , `scala.List<Boolean?>`
   , `scala.List<Boolean?>?`
+  , `scala.Queue<Boolean>`
+  , `scala.Queue<Boolean>?`
+  , `scala.Queue<Boolean?>`
+  , `scala.Queue<Boolean?>?`
   , `scala.Set<Boolean>`
   , `scala.Set<Boolean>?`
   , `scala.Set<Boolean?>`
@@ -41,6 +49,10 @@ trait OcdScalaBoxTypeValues {
   , `scala.List<Date>?`
   , `scala.List<Date?>`
   , `scala.List<Date?>?`
+  , `scala.Queue<Date>`
+  , `scala.Queue<Date>?`
+  , `scala.Queue<Date?>`
+  , `scala.Queue<Date?>?`
   , `scala.Set<Date>`
   , `scala.Set<Date>?`
   , `scala.Set<Date?>`
@@ -55,6 +67,10 @@ trait OcdScalaBoxTypeValues {
   , `scala.List<Decimal>?`
   , `scala.List<Decimal?>`
   , `scala.List<Decimal?>?`
+  , `scala.Queue<Decimal>`
+  , `scala.Queue<Decimal>?`
+  , `scala.Queue<Decimal?>`
+  , `scala.Queue<Decimal?>?`
   , `scala.Set<Decimal>`
   , `scala.Set<Decimal>?`
   , `scala.Set<Decimal?>`
@@ -69,6 +85,10 @@ trait OcdScalaBoxTypeValues {
   , `scala.List<Decimal(9)>?`
   , `scala.List<Decimal(9)?>`
   , `scala.List<Decimal(9)?>?`
+  , `scala.Queue<Decimal(9)>`
+  , `scala.Queue<Decimal(9)>?`
+  , `scala.Queue<Decimal(9)?>`
+  , `scala.Queue<Decimal(9)?>?`
   , `scala.Set<Decimal(9)>`
   , `scala.Set<Decimal(9)>?`
   , `scala.Set<Decimal(9)?>`
@@ -83,6 +103,10 @@ trait OcdScalaBoxTypeValues {
   , `scala.List<Double>?`
   , `scala.List<Double?>`
   , `scala.List<Double?>?`
+  , `scala.Queue<Double>`
+  , `scala.Queue<Double>?`
+  , `scala.Queue<Double?>`
+  , `scala.Queue<Double?>?`
   , `scala.Set<Double>`
   , `scala.Set<Double>?`
   , `scala.Set<Double?>`
@@ -97,6 +121,10 @@ trait OcdScalaBoxTypeValues {
   , `scala.List<Float>?`
   , `scala.List<Float?>`
   , `scala.List<Float?>?`
+  , `scala.Queue<Float>`
+  , `scala.Queue<Float>?`
+  , `scala.Queue<Float?>`
+  , `scala.Queue<Float?>?`
   , `scala.Set<Float>`
   , `scala.Set<Float>?`
   , `scala.Set<Float?>`
@@ -111,6 +139,10 @@ trait OcdScalaBoxTypeValues {
   , `scala.List<Guid>?`
   , `scala.List<Guid?>`
   , `scala.List<Guid?>?`
+  , `scala.Queue<Guid>`
+  , `scala.Queue<Guid>?`
+  , `scala.Queue<Guid?>`
+  , `scala.Queue<Guid?>?`
   , `scala.Set<Guid>`
   , `scala.Set<Guid>?`
   , `scala.Set<Guid?>`
@@ -125,6 +157,10 @@ trait OcdScalaBoxTypeValues {
   , `scala.List<Image>?`
   , `scala.List<Image?>`
   , `scala.List<Image?>?`
+  , `scala.Queue<Image>`
+  , `scala.Queue<Image>?`
+  , `scala.Queue<Image?>`
+  , `scala.Queue<Image?>?`
   , `scala.Set<Image>`
   , `scala.Set<Image>?`
   , `scala.Set<Image?>`
@@ -139,6 +175,10 @@ trait OcdScalaBoxTypeValues {
   , `scala.List<Integer>?`
   , `scala.List<Integer?>`
   , `scala.List<Integer?>?`
+  , `scala.Queue<Integer>`
+  , `scala.Queue<Integer>?`
+  , `scala.Queue<Integer?>`
+  , `scala.Queue<Integer?>?`
   , `scala.Set<Integer>`
   , `scala.Set<Integer>?`
   , `scala.Set<Integer?>`
@@ -153,6 +193,10 @@ trait OcdScalaBoxTypeValues {
   , `scala.List<Ip>?`
   , `scala.List<Ip?>`
   , `scala.List<Ip?>?`
+  , `scala.Queue<Ip>`
+  , `scala.Queue<Ip>?`
+  , `scala.Queue<Ip?>`
+  , `scala.Queue<Ip?>?`
   , `scala.Set<Ip>`
   , `scala.Set<Ip>?`
   , `scala.Set<Ip?>`
@@ -167,6 +211,10 @@ trait OcdScalaBoxTypeValues {
   , `scala.List<Location>?`
   , `scala.List<Location?>`
   , `scala.List<Location?>?`
+  , `scala.Queue<Location>`
+  , `scala.Queue<Location>?`
+  , `scala.Queue<Location?>`
+  , `scala.Queue<Location?>?`
   , `scala.Set<Location>`
   , `scala.Set<Location>?`
   , `scala.Set<Location?>`
@@ -181,6 +229,10 @@ trait OcdScalaBoxTypeValues {
   , `scala.List<Long>?`
   , `scala.List<Long?>`
   , `scala.List<Long?>?`
+  , `scala.Queue<Long>`
+  , `scala.Queue<Long>?`
+  , `scala.Queue<Long?>`
+  , `scala.Queue<Long?>?`
   , `scala.Set<Long>`
   , `scala.Set<Long>?`
   , `scala.Set<Long?>`
@@ -195,6 +247,10 @@ trait OcdScalaBoxTypeValues {
   , `scala.List<Map>?`
   , `scala.List<Map?>`
   , `scala.List<Map?>?`
+  , `scala.Queue<Map>`
+  , `scala.Queue<Map>?`
+  , `scala.Queue<Map?>`
+  , `scala.Queue<Map?>?`
   , `scala.Set<Map>`
   , `scala.Set<Map>?`
   , `scala.Set<Map?>`
@@ -209,6 +265,10 @@ trait OcdScalaBoxTypeValues {
   , `scala.List<Money>?`
   , `scala.List<Money?>`
   , `scala.List<Money?>?`
+  , `scala.Queue<Money>`
+  , `scala.Queue<Money>?`
+  , `scala.Queue<Money?>`
+  , `scala.Queue<Money?>?`
   , `scala.Set<Money>`
   , `scala.Set<Money>?`
   , `scala.Set<Money?>`
@@ -223,6 +283,10 @@ trait OcdScalaBoxTypeValues {
   , `scala.List<Point>?`
   , `scala.List<Point?>`
   , `scala.List<Point?>?`
+  , `scala.Queue<Point>`
+  , `scala.Queue<Point>?`
+  , `scala.Queue<Point?>`
+  , `scala.Queue<Point?>?`
   , `scala.Set<Point>`
   , `scala.Set<Point>?`
   , `scala.Set<Point?>`
@@ -237,6 +301,10 @@ trait OcdScalaBoxTypeValues {
   , `scala.List<Rectangle>?`
   , `scala.List<Rectangle?>`
   , `scala.List<Rectangle?>?`
+  , `scala.Queue<Rectangle>`
+  , `scala.Queue<Rectangle>?`
+  , `scala.Queue<Rectangle?>`
+  , `scala.Queue<Rectangle?>?`
   , `scala.Set<Rectangle>`
   , `scala.Set<Rectangle>?`
   , `scala.Set<Rectangle?>`
@@ -251,6 +319,10 @@ trait OcdScalaBoxTypeValues {
   , `scala.List<String>?`
   , `scala.List<String?>`
   , `scala.List<String?>?`
+  , `scala.Queue<String>`
+  , `scala.Queue<String>?`
+  , `scala.Queue<String?>`
+  , `scala.Queue<String?>?`
   , `scala.Set<String>`
   , `scala.Set<String>?`
   , `scala.Set<String?>`
@@ -265,6 +337,10 @@ trait OcdScalaBoxTypeValues {
   , `scala.List<String(9)>?`
   , `scala.List<String(9)?>`
   , `scala.List<String(9)?>?`
+  , `scala.Queue<String(9)>`
+  , `scala.Queue<String(9)>?`
+  , `scala.Queue<String(9)?>`
+  , `scala.Queue<String(9)?>?`
   , `scala.Set<String(9)>`
   , `scala.Set<String(9)>?`
   , `scala.Set<String(9)?>`
@@ -279,6 +355,10 @@ trait OcdScalaBoxTypeValues {
   , `scala.List<Text>?`
   , `scala.List<Text?>`
   , `scala.List<Text?>?`
+  , `scala.Queue<Text>`
+  , `scala.Queue<Text>?`
+  , `scala.Queue<Text?>`
+  , `scala.Queue<Text?>?`
   , `scala.Set<Text>`
   , `scala.Set<Text>?`
   , `scala.Set<Text?>`
@@ -293,6 +373,10 @@ trait OcdScalaBoxTypeValues {
   , `scala.List<Timestamp>?`
   , `scala.List<Timestamp?>`
   , `scala.List<Timestamp?>?`
+  , `scala.Queue<Timestamp>`
+  , `scala.Queue<Timestamp>?`
+  , `scala.Queue<Timestamp?>`
+  , `scala.Queue<Timestamp?>?`
   , `scala.Set<Timestamp>`
   , `scala.Set<Timestamp>?`
   , `scala.Set<Timestamp?>`
@@ -307,6 +391,10 @@ trait OcdScalaBoxTypeValues {
   , `scala.List<Url>?`
   , `scala.List<Url?>`
   , `scala.List<Url?>?`
+  , `scala.Queue<Url>`
+  , `scala.Queue<Url>?`
+  , `scala.Queue<Url?>`
+  , `scala.Queue<Url?>?`
   , `scala.Set<Url>`
   , `scala.Set<Url>?`
   , `scala.Set<Url?>`
@@ -321,6 +409,10 @@ trait OcdScalaBoxTypeValues {
   , `scala.List<Xml>?`
   , `scala.List<Xml?>`
   , `scala.List<Xml?>?`
+  , `scala.Queue<Xml>`
+  , `scala.Queue<Xml>?`
+  , `scala.Queue<Xml?>`
+  , `scala.Queue<Xml?>?`
   , `scala.Set<Xml>`
   , `scala.Set<Xml>?`
   , `scala.Set<Xml?>`

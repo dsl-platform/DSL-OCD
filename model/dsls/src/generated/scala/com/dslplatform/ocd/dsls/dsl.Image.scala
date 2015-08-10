@@ -22,6 +22,10 @@ case object `dsl.List<Image>`    extends DslImage with `box.OneListOfOne`
 case object `dsl.List<Image>?`   extends DslImage with `box.NullableListOfOne`
 case object `dsl.List<Image?>`   extends DslImage with `box.OneListOfNullable`
 case object `dsl.List<Image?>?`  extends DslImage with `box.NullableListOfNullable`
+case object `dsl.Queue<Image>`   extends DslImage with `box.OneQueueOfOne`
+case object `dsl.Queue<Image>?`  extends DslImage with `box.NullableQueueOfOne`
+case object `dsl.Queue<Image?>`  extends DslImage with `box.OneQueueOfNullable`
+case object `dsl.Queue<Image?>?` extends DslImage with `box.NullableQueueOfNullable`
 case object `dsl.Set<Image>`     extends DslImage with `box.OneSetOfOne`
 case object `dsl.Set<Image>?`    extends DslImage with `box.NullableSetOfOne`
 case object `dsl.Set<Image?>`    extends DslImage with `box.OneSetOfNullable`
@@ -41,6 +45,10 @@ case object `dsl.LIST<IMAGE>`    extends DslImage with `box.OneListOfOne`
 case object `dsl.LIST<IMAGE>?`   extends DslImage with `box.NullableListOfOne`
 case object `dsl.LIST<IMAGE?>`   extends DslImage with `box.OneListOfNullable`
 case object `dsl.LIST<IMAGE?>?`  extends DslImage with `box.NullableListOfNullable`
+case object `dsl.QUEUE<IMAGE>`   extends DslImage with `box.OneQueueOfOne`
+case object `dsl.QUEUE<IMAGE>?`  extends DslImage with `box.NullableQueueOfOne`
+case object `dsl.QUEUE<IMAGE?>`  extends DslImage with `box.OneQueueOfNullable`
+case object `dsl.QUEUE<IMAGE?>?` extends DslImage with `box.NullableQueueOfNullable`
 case object `dsl.SET<IMAGE>`     extends DslImage with `box.OneSetOfOne`
 case object `dsl.SET<IMAGE>?`    extends DslImage with `box.NullableSetOfOne`
 case object `dsl.SET<IMAGE?>`    extends DslImage with `box.OneSetOfNullable`
@@ -60,6 +68,10 @@ case object `dsl.LIST<PICTURE>`    extends DslImage with `box.OneListOfOne`
 case object `dsl.LIST<PICTURE>?`   extends DslImage with `box.NullableListOfOne`
 case object `dsl.LIST<PICTURE?>`   extends DslImage with `box.OneListOfNullable`
 case object `dsl.LIST<PICTURE?>?`  extends DslImage with `box.NullableListOfNullable`
+case object `dsl.QUEUE<PICTURE>`   extends DslImage with `box.OneQueueOfOne`
+case object `dsl.QUEUE<PICTURE>?`  extends DslImage with `box.NullableQueueOfOne`
+case object `dsl.QUEUE<PICTURE?>`  extends DslImage with `box.OneQueueOfNullable`
+case object `dsl.QUEUE<PICTURE?>?` extends DslImage with `box.NullableQueueOfNullable`
 case object `dsl.SET<PICTURE>`     extends DslImage with `box.OneSetOfOne`
 case object `dsl.SET<PICTURE>?`    extends DslImage with `box.NullableSetOfOne`
 case object `dsl.SET<PICTURE?>`    extends DslImage with `box.OneSetOfNullable`
@@ -79,6 +91,10 @@ case object `dsl.List<Picture>`    extends DslImage with `box.OneListOfOne`
 case object `dsl.List<Picture>?`   extends DslImage with `box.NullableListOfOne`
 case object `dsl.List<Picture?>`   extends DslImage with `box.OneListOfNullable`
 case object `dsl.List<Picture?>?`  extends DslImage with `box.NullableListOfNullable`
+case object `dsl.Queue<Picture>`   extends DslImage with `box.OneQueueOfOne`
+case object `dsl.Queue<Picture>?`  extends DslImage with `box.NullableQueueOfOne`
+case object `dsl.Queue<Picture?>`  extends DslImage with `box.OneQueueOfNullable`
+case object `dsl.Queue<Picture?>?` extends DslImage with `box.NullableQueueOfNullable`
 case object `dsl.Set<Picture>`     extends DslImage with `box.OneSetOfOne`
 case object `dsl.Set<Picture>?`    extends DslImage with `box.NullableSetOfOne`
 case object `dsl.Set<Picture?>`    extends DslImage with `box.OneSetOfNullable`
@@ -98,6 +114,10 @@ case object `dsl.list<image>`    extends DslImage with `box.OneListOfOne`
 case object `dsl.list<image>?`   extends DslImage with `box.NullableListOfOne`
 case object `dsl.list<image?>`   extends DslImage with `box.OneListOfNullable`
 case object `dsl.list<image?>?`  extends DslImage with `box.NullableListOfNullable`
+case object `dsl.queue<image>`   extends DslImage with `box.OneQueueOfOne`
+case object `dsl.queue<image>?`  extends DslImage with `box.NullableQueueOfOne`
+case object `dsl.queue<image?>`  extends DslImage with `box.OneQueueOfNullable`
+case object `dsl.queue<image?>?` extends DslImage with `box.NullableQueueOfNullable`
 case object `dsl.set<image>`     extends DslImage with `box.OneSetOfOne`
 case object `dsl.set<image>?`    extends DslImage with `box.NullableSetOfOne`
 case object `dsl.set<image?>`    extends DslImage with `box.OneSetOfNullable`
@@ -117,6 +137,10 @@ case object `dsl.list<picture>`    extends DslImage with `box.OneListOfOne`
 case object `dsl.list<picture>?`   extends DslImage with `box.NullableListOfOne`
 case object `dsl.list<picture?>`   extends DslImage with `box.OneListOfNullable`
 case object `dsl.list<picture?>?`  extends DslImage with `box.NullableListOfNullable`
+case object `dsl.queue<picture>`   extends DslImage with `box.OneQueueOfOne`
+case object `dsl.queue<picture>?`  extends DslImage with `box.NullableQueueOfOne`
+case object `dsl.queue<picture?>`  extends DslImage with `box.OneQueueOfNullable`
+case object `dsl.queue<picture?>?` extends DslImage with `box.NullableQueueOfNullable`
 case object `dsl.set<picture>`     extends DslImage with `box.OneSetOfOne`
 case object `dsl.set<picture>?`    extends DslImage with `box.NullableSetOfOne`
 case object `dsl.set<picture?>`    extends DslImage with `box.OneSetOfNullable`

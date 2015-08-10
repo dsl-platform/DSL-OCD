@@ -195,6 +195,88 @@ public class DecimalWithScaleOf9Asserts {
         assertNullableListOfNullableEquals("NullableListOfNullableDecimalWithScaleOf9 mismatch: ", expecteds, actuals);
     }
 
+    private static void assertQueueOfOneEquals(final String message, final java.util.Queue<java.math.BigDecimal> expecteds, final java.util.Queue<java.math.BigDecimal> actuals) {
+        final int expectedsSize = expecteds.size();
+        final int actualsSize = actuals.size();
+        if (expectedsSize != actualsSize) {
+            Assert.fail(message + "expecteds was a list of size " + expectedsSize + ", but actuals was a list of size " + actualsSize);
+        }
+
+        final java.util.Iterator<java.math.BigDecimal> expectedsIterator = expecteds.iterator();
+        final java.util.Iterator<java.math.BigDecimal> actualsIterator = actuals.iterator();
+        for (int i = 0; i < expectedsSize; i++) {
+            final java.math.BigDecimal expected = expectedsIterator.next();
+            final java.math.BigDecimal actual = actualsIterator.next();
+            assertOneEquals(message + "element mismatch occurred at index " + i + ": ", expected, actual);
+        }
+    }
+
+    private static void assertOneQueueOfOneEquals(final String message, final java.util.Queue<java.math.BigDecimal> expecteds, final java.util.Queue<java.math.BigDecimal> actuals) {
+        int i = 0;
+        for (final java.math.BigDecimal expected : expecteds) {
+            if (expected == null) {
+                Assert.fail(message + "element mismatch occurred at index " + i + ": expected was <null> - WARNING: This is a preconditions failure in expected, this assertion will never succeed!");
+            }
+            i++;
+        }
+        if (expecteds == actuals) return;
+        if (actuals == null) Assert.fail(message + "expecteds was a list of size " + expecteds.size() + ", but actuals was <null>");
+        assertQueueOfOneEquals(message, expecteds, actuals);
+    }
+
+    public static void assertOneQueueOfOneEquals(final java.util.Queue<java.math.BigDecimal> expecteds, final java.util.Queue<java.math.BigDecimal> actuals) {
+        assertOneQueueOfOneEquals("OneQueueOfOneDecimalWithScaleOf9 mismatch: ", expecteds, actuals);
+    }
+
+    private static void assertNullableQueueOfOneEquals(final String message, final java.util.Queue<java.math.BigDecimal> expecteds, final java.util.Queue<java.math.BigDecimal> actuals) {
+        if (expecteds == actuals) return;
+        if (expecteds == null) Assert.fail(message + "expecteds was <null>, but actuals was a list of size " + actuals.size());
+        if (actuals == null) Assert.fail(message + " expecteds was a list of size " + expecteds.size() + ", but actuals was <null>");
+        assertQueueOfOneEquals(message, expecteds, actuals);
+    }
+
+    public static void assertNullableQueueOfOneEquals(final java.util.Queue<java.math.BigDecimal> expecteds, final java.util.Queue<java.math.BigDecimal> actuals) {
+        assertNullableQueueOfOneEquals("NullableQueueOfOneDecimalWithScaleOf9 mismatch: ", expecteds, actuals);
+    }
+
+    private static void assertQueueOfNullableEquals(final String message, final java.util.Queue<java.math.BigDecimal> expecteds, final java.util.Queue<java.math.BigDecimal> actuals) {
+        final int expectedsSize = expecteds.size();
+        final int actualsSize = actuals.size();
+        if (expectedsSize != actualsSize) {
+            Assert.fail(message + "expecteds was a list of size " + expectedsSize + ", but actuals was a list of size " + actualsSize);
+        }
+
+        final java.util.Iterator<java.math.BigDecimal> expectedsIterator = expecteds.iterator();
+        final java.util.Iterator<java.math.BigDecimal> actualsIterator = actuals.iterator();
+        for (int i = 0; i < expectedsSize; i++) {
+            final java.math.BigDecimal expected = expectedsIterator.next();
+            final java.math.BigDecimal actual = actualsIterator.next();
+            assertNullableEquals(message + "element mismatch occurred at index " + i + ": ", expected, actual);
+        }
+    }
+
+    private static void assertOneQueueOfNullableEquals(final String message, final java.util.Queue<java.math.BigDecimal> expecteds, final java.util.Queue<java.math.BigDecimal> actuals) {
+        if (expecteds == null) Assert.fail(message + "expecteds was <null> - WARNING: This is a preconditions failure in expecteds, this assertion will never succeed!");
+        if (expecteds == actuals) return;
+        if (actuals == null) Assert.fail(message + "expecteds was a list of size " + expecteds.size() + ", but actuals was <null>");
+        assertQueueOfNullableEquals(message, expecteds, actuals);
+    }
+
+    public static void assertOneQueueOfNullableEquals(final java.util.Queue<java.math.BigDecimal> expecteds, final java.util.Queue<java.math.BigDecimal> actuals) {
+        assertOneQueueOfNullableEquals("OneQueueOfNullableDecimalWithScaleOf9 mismatch: ", expecteds, actuals);
+    }
+
+    private static void assertNullableQueueOfNullableEquals(final String message, final java.util.Queue<java.math.BigDecimal> expecteds, final java.util.Queue<java.math.BigDecimal> actuals) {
+        if (expecteds == actuals) return;
+        if (expecteds == null) Assert.fail(message + "expecteds was <null>, but actuals was a list of size " + actuals.size());
+        if (actuals == null) Assert.fail(message + " expecteds was a list of size " + expecteds.size() + ", but actuals was <null>");
+        assertQueueOfNullableEquals(message, expecteds, actuals);
+    }
+
+    public static void assertNullableQueueOfNullableEquals(final java.util.Queue<java.math.BigDecimal> expecteds, final java.util.Queue<java.math.BigDecimal> actuals) {
+        assertNullableQueueOfNullableEquals("NullableQueueOfNullableDecimalWithScaleOf9 mismatch: ", expecteds, actuals);
+    }
+
     private static void assertSetOfOneEquals(final String message, final java.util.Set<java.math.BigDecimal> expecteds, final java.util.Set<java.math.BigDecimal> actuals) {
         if (actuals.contains(null)) {
             Assert.fail(message + "actuals contained a <null> element");

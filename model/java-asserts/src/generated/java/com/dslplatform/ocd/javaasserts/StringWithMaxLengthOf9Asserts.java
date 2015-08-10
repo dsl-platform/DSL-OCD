@@ -189,6 +189,88 @@ public class StringWithMaxLengthOf9Asserts {
         assertNullableListOfNullableEquals("NullableListOfNullableStringWithMaxLengthOf9 mismatch: ", expecteds, actuals);
     }
 
+    private static void assertQueueOfOneEquals(final String message, final java.util.Queue<String> expecteds, final java.util.Queue<String> actuals) {
+        final int expectedsSize = expecteds.size();
+        final int actualsSize = actuals.size();
+        if (expectedsSize != actualsSize) {
+            Assert.fail(message + "expecteds was a list of size " + expectedsSize + ", but actuals was a list of size " + actualsSize);
+        }
+
+        final java.util.Iterator<String> expectedsIterator = expecteds.iterator();
+        final java.util.Iterator<String> actualsIterator = actuals.iterator();
+        for (int i = 0; i < expectedsSize; i++) {
+            final String expected = expectedsIterator.next();
+            final String actual = actualsIterator.next();
+            assertOneEquals(message + "element mismatch occurred at index " + i + ": ", expected, actual);
+        }
+    }
+
+    private static void assertOneQueueOfOneEquals(final String message, final java.util.Queue<String> expecteds, final java.util.Queue<String> actuals) {
+        int i = 0;
+        for (final String expected : expecteds) {
+            if (expected == null) {
+                Assert.fail(message + "element mismatch occurred at index " + i + ": expected was <null> - WARNING: This is a preconditions failure in expected, this assertion will never succeed!");
+            }
+            i++;
+        }
+        if (expecteds == actuals) return;
+        if (actuals == null) Assert.fail(message + "expecteds was a list of size " + expecteds.size() + ", but actuals was <null>");
+        assertQueueOfOneEquals(message, expecteds, actuals);
+    }
+
+    public static void assertOneQueueOfOneEquals(final java.util.Queue<String> expecteds, final java.util.Queue<String> actuals) {
+        assertOneQueueOfOneEquals("OneQueueOfOneStringWithMaxLengthOf9 mismatch: ", expecteds, actuals);
+    }
+
+    private static void assertNullableQueueOfOneEquals(final String message, final java.util.Queue<String> expecteds, final java.util.Queue<String> actuals) {
+        if (expecteds == actuals) return;
+        if (expecteds == null) Assert.fail(message + "expecteds was <null>, but actuals was a list of size " + actuals.size());
+        if (actuals == null) Assert.fail(message + " expecteds was a list of size " + expecteds.size() + ", but actuals was <null>");
+        assertQueueOfOneEquals(message, expecteds, actuals);
+    }
+
+    public static void assertNullableQueueOfOneEquals(final java.util.Queue<String> expecteds, final java.util.Queue<String> actuals) {
+        assertNullableQueueOfOneEquals("NullableQueueOfOneStringWithMaxLengthOf9 mismatch: ", expecteds, actuals);
+    }
+
+    private static void assertQueueOfNullableEquals(final String message, final java.util.Queue<String> expecteds, final java.util.Queue<String> actuals) {
+        final int expectedsSize = expecteds.size();
+        final int actualsSize = actuals.size();
+        if (expectedsSize != actualsSize) {
+            Assert.fail(message + "expecteds was a list of size " + expectedsSize + ", but actuals was a list of size " + actualsSize);
+        }
+
+        final java.util.Iterator<String> expectedsIterator = expecteds.iterator();
+        final java.util.Iterator<String> actualsIterator = actuals.iterator();
+        for (int i = 0; i < expectedsSize; i++) {
+            final String expected = expectedsIterator.next();
+            final String actual = actualsIterator.next();
+            assertNullableEquals(message + "element mismatch occurred at index " + i + ": ", expected, actual);
+        }
+    }
+
+    private static void assertOneQueueOfNullableEquals(final String message, final java.util.Queue<String> expecteds, final java.util.Queue<String> actuals) {
+        if (expecteds == null) Assert.fail(message + "expecteds was <null> - WARNING: This is a preconditions failure in expecteds, this assertion will never succeed!");
+        if (expecteds == actuals) return;
+        if (actuals == null) Assert.fail(message + "expecteds was a list of size " + expecteds.size() + ", but actuals was <null>");
+        assertQueueOfNullableEquals(message, expecteds, actuals);
+    }
+
+    public static void assertOneQueueOfNullableEquals(final java.util.Queue<String> expecteds, final java.util.Queue<String> actuals) {
+        assertOneQueueOfNullableEquals("OneQueueOfNullableStringWithMaxLengthOf9 mismatch: ", expecteds, actuals);
+    }
+
+    private static void assertNullableQueueOfNullableEquals(final String message, final java.util.Queue<String> expecteds, final java.util.Queue<String> actuals) {
+        if (expecteds == actuals) return;
+        if (expecteds == null) Assert.fail(message + "expecteds was <null>, but actuals was a list of size " + actuals.size());
+        if (actuals == null) Assert.fail(message + " expecteds was a list of size " + expecteds.size() + ", but actuals was <null>");
+        assertQueueOfNullableEquals(message, expecteds, actuals);
+    }
+
+    public static void assertNullableQueueOfNullableEquals(final java.util.Queue<String> expecteds, final java.util.Queue<String> actuals) {
+        assertNullableQueueOfNullableEquals("NullableQueueOfNullableStringWithMaxLengthOf9 mismatch: ", expecteds, actuals);
+    }
+
     private static void assertSetOfOneEquals(final String message, final java.util.Set<String> expecteds, final java.util.Set<String> actuals) {
         if (actuals.contains(null)) {
             Assert.fail(message + "actuals contained a <null> element");

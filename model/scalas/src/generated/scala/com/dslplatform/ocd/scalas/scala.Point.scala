@@ -88,6 +88,38 @@ case object `scala.List<Point?>?`
   val defaultValue = "None"
 }
 
+case object `scala.Queue<Point>`
+    extends ScalaPoint with `box.OneQueueOfOne` {
+
+  val scalaClass = "Queue[java.awt.Point]"
+
+  val defaultValue = "Queue[java.awt.Point].empty"
+}
+
+case object `scala.Queue<Point>?`
+    extends ScalaPoint with `box.NullableQueueOfOne` {
+
+  val scalaClass = "Option[Queue[java.awt.Point]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Queue<Point?>`
+    extends ScalaPoint with `box.OneQueueOfNullable` {
+
+  val scalaClass = "Queue[Option[java.awt.Point]]"
+
+  val defaultValue = "Queue[Option[java.awt.Point]].empty"
+}
+
+case object `scala.Queue<Point?>?`
+    extends ScalaPoint with `box.NullableQueueOfNullable` {
+
+  val scalaClass = "Option[Queue[Option[java.awt.Point]]]"
+
+  val defaultValue = "None"
+}
+
 case object `scala.Set<Point>`
     extends ScalaPoint with `box.OneSetOfOne` {
 

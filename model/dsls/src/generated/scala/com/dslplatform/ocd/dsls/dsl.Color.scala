@@ -22,6 +22,10 @@ case object `dsl.List<Color>`    extends DslColor with `box.OneListOfOne`
 case object `dsl.List<Color>?`   extends DslColor with `box.NullableListOfOne`
 case object `dsl.List<Color?>`   extends DslColor with `box.OneListOfNullable`
 case object `dsl.List<Color?>?`  extends DslColor with `box.NullableListOfNullable`
+case object `dsl.Queue<Color>`   extends DslColor with `box.OneQueueOfOne`
+case object `dsl.Queue<Color>?`  extends DslColor with `box.NullableQueueOfOne`
+case object `dsl.Queue<Color?>`  extends DslColor with `box.OneQueueOfNullable`
+case object `dsl.Queue<Color?>?` extends DslColor with `box.NullableQueueOfNullable`
 case object `dsl.Set<Color>`     extends DslColor with `box.OneSetOfOne`
 case object `dsl.Set<Color>?`    extends DslColor with `box.NullableSetOfOne`
 case object `dsl.Set<Color?>`    extends DslColor with `box.OneSetOfNullable`
@@ -41,6 +45,10 @@ case object `dsl.LIST<COLOR>`    extends DslColor with `box.OneListOfOne`
 case object `dsl.LIST<COLOR>?`   extends DslColor with `box.NullableListOfOne`
 case object `dsl.LIST<COLOR?>`   extends DslColor with `box.OneListOfNullable`
 case object `dsl.LIST<COLOR?>?`  extends DslColor with `box.NullableListOfNullable`
+case object `dsl.QUEUE<COLOR>`   extends DslColor with `box.OneQueueOfOne`
+case object `dsl.QUEUE<COLOR>?`  extends DslColor with `box.NullableQueueOfOne`
+case object `dsl.QUEUE<COLOR?>`  extends DslColor with `box.OneQueueOfNullable`
+case object `dsl.QUEUE<COLOR?>?` extends DslColor with `box.NullableQueueOfNullable`
 case object `dsl.SET<COLOR>`     extends DslColor with `box.OneSetOfOne`
 case object `dsl.SET<COLOR>?`    extends DslColor with `box.NullableSetOfOne`
 case object `dsl.SET<COLOR?>`    extends DslColor with `box.OneSetOfNullable`
@@ -60,6 +68,10 @@ case object `dsl.list<color>`    extends DslColor with `box.OneListOfOne`
 case object `dsl.list<color>?`   extends DslColor with `box.NullableListOfOne`
 case object `dsl.list<color?>`   extends DslColor with `box.OneListOfNullable`
 case object `dsl.list<color?>?`  extends DslColor with `box.NullableListOfNullable`
+case object `dsl.queue<color>`   extends DslColor with `box.OneQueueOfOne`
+case object `dsl.queue<color>?`  extends DslColor with `box.NullableQueueOfOne`
+case object `dsl.queue<color?>`  extends DslColor with `box.OneQueueOfNullable`
+case object `dsl.queue<color?>?` extends DslColor with `box.NullableQueueOfNullable`
 case object `dsl.set<color>`     extends DslColor with `box.OneSetOfOne`
 case object `dsl.set<color>?`    extends DslColor with `box.NullableSetOfOne`
 case object `dsl.set<color?>`    extends DslColor with `box.OneSetOfNullable`

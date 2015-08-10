@@ -306,6 +306,134 @@ case object `java.List<Timestamp?>?`
   val hasGenerics = true
 }
 
+case object `java.Queue<Timestamp>`
+    extends JavaTimestamp with `box.OneQueueOfOne` {
+
+  val javaClass = "java.util.Queue<org.joda.time.DateTime>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("org.joda.time.DateTime"))
+  val javaDescription = "OneQueueOfOneTimestamps"
+
+  def defaultValue = SingleJavaValue("new java.util.ArrayDeque<org.joda.time.DateTime>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("org.joda.time.DateTime",
+      SingleJavaValue("org.joda.time.DateTime.now()", Unstable)
+    )
+  , QueueOfJavaValues("org.joda.time.DateTime",
+      SingleJavaValue("new org.joda.time.DateTime(Integer.MAX_VALUE * 1001L)")
+    )
+  , QueueOfJavaValues("org.joda.time.DateTime",
+      SingleJavaValue("org.joda.time.DateTime.now()", Unstable)
+    , SingleJavaValue("new org.joda.time.DateTime(0)")
+    , SingleJavaValue("new org.joda.time.DateTime(1, 1, 1, 0, 0, org.joda.time.DateTimeZone.UTC)")
+    , SingleJavaValue("new org.joda.time.DateTime(Integer.MAX_VALUE * 1001L)")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Timestamp>?`
+    extends JavaTimestamp with `box.NullableQueueOfOne` {
+
+  val javaClass = "java.util.Queue<org.joda.time.DateTime>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("org.joda.time.DateTime"))
+  val javaDescription = "NullableQueueOfOneTimestamps"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("org.joda.time.DateTime",
+      SingleJavaValue("org.joda.time.DateTime.now()", Unstable)
+    )
+  , QueueOfJavaValues("org.joda.time.DateTime",
+      SingleJavaValue("new org.joda.time.DateTime(Integer.MAX_VALUE * 1001L)")
+    )
+  , QueueOfJavaValues("org.joda.time.DateTime",
+      SingleJavaValue("org.joda.time.DateTime.now()", Unstable)
+    , SingleJavaValue("new org.joda.time.DateTime(0)")
+    , SingleJavaValue("new org.joda.time.DateTime(1, 1, 1, 0, 0, org.joda.time.DateTimeZone.UTC)")
+    , SingleJavaValue("new org.joda.time.DateTime(Integer.MAX_VALUE * 1001L)")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Timestamp?>`
+    extends JavaTimestamp with `box.OneQueueOfNullable` {
+
+  val javaClass = "java.util.Queue<org.joda.time.DateTime>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("org.joda.time.DateTime"))
+  val javaDescription = "OneQueueOfNullableTimestamps"
+
+  def defaultValue = SingleJavaValue("new java.util.ArrayDeque<org.joda.time.DateTime>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("org.joda.time.DateTime",
+      SingleJavaValue("null")
+    )
+  , QueueOfJavaValues("org.joda.time.DateTime",
+      SingleJavaValue("org.joda.time.DateTime.now()", Unstable)
+    )
+  , QueueOfJavaValues("org.joda.time.DateTime",
+      SingleJavaValue("new org.joda.time.DateTime(Integer.MAX_VALUE * 1001L)")
+    )
+  , QueueOfJavaValues("org.joda.time.DateTime",
+      SingleJavaValue("org.joda.time.DateTime.now()", Unstable)
+    , SingleJavaValue("new org.joda.time.DateTime(0)")
+    , SingleJavaValue("new org.joda.time.DateTime(1, 1, 1, 0, 0, org.joda.time.DateTimeZone.UTC)")
+    , SingleJavaValue("new org.joda.time.DateTime(Integer.MAX_VALUE * 1001L)")
+    )
+  , QueueOfJavaValues("org.joda.time.DateTime",
+      SingleJavaValue("null")
+    , SingleJavaValue("org.joda.time.DateTime.now()", Unstable)
+    , SingleJavaValue("new org.joda.time.DateTime(0)")
+    , SingleJavaValue("new org.joda.time.DateTime(1, 1, 1, 0, 0, org.joda.time.DateTimeZone.UTC)")
+    , SingleJavaValue("new org.joda.time.DateTime(Integer.MAX_VALUE * 1001L)")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Queue<Timestamp?>?`
+    extends JavaTimestamp with `box.NullableQueueOfNullable` {
+
+  val javaClass = "java.util.Queue<org.joda.time.DateTime>"
+  val javaType = JavaCollectionType("java.util.Queue", JavaClass("org.joda.time.DateTime"))
+  val javaDescription = "NullableQueueOfNullableTimestamps"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    QueueOfJavaValues("org.joda.time.DateTime",
+      SingleJavaValue("null")
+    )
+  , QueueOfJavaValues("org.joda.time.DateTime",
+      SingleJavaValue("org.joda.time.DateTime.now()", Unstable)
+    )
+  , QueueOfJavaValues("org.joda.time.DateTime",
+      SingleJavaValue("new org.joda.time.DateTime(Integer.MAX_VALUE * 1001L)")
+    )
+  , QueueOfJavaValues("org.joda.time.DateTime",
+      SingleJavaValue("org.joda.time.DateTime.now()", Unstable)
+    , SingleJavaValue("new org.joda.time.DateTime(0)")
+    , SingleJavaValue("new org.joda.time.DateTime(1, 1, 1, 0, 0, org.joda.time.DateTimeZone.UTC)")
+    , SingleJavaValue("new org.joda.time.DateTime(Integer.MAX_VALUE * 1001L)")
+    )
+  , QueueOfJavaValues("org.joda.time.DateTime",
+      SingleJavaValue("null")
+    , SingleJavaValue("org.joda.time.DateTime.now()", Unstable)
+    , SingleJavaValue("new org.joda.time.DateTime(0)")
+    , SingleJavaValue("new org.joda.time.DateTime(1, 1, 1, 0, 0, org.joda.time.DateTimeZone.UTC)")
+    , SingleJavaValue("new org.joda.time.DateTime(Integer.MAX_VALUE * 1001L)")
+    )
+  )
+
+  val hasGenerics = true
+}
+
 case object `java.Set<Timestamp>`
     extends JavaTimestamp with `box.OneSetOfOne` {
 

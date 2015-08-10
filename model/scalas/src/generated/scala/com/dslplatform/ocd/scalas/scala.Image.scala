@@ -88,6 +88,38 @@ case object `scala.List<Image?>?`
   val defaultValue = "None"
 }
 
+case object `scala.Queue<Image>`
+    extends ScalaImage with `box.OneQueueOfOne` {
+
+  val scalaClass = "Queue[java.awt.image.BufferedImage]"
+
+  val defaultValue = "Queue[java.awt.image.BufferedImage].empty"
+}
+
+case object `scala.Queue<Image>?`
+    extends ScalaImage with `box.NullableQueueOfOne` {
+
+  val scalaClass = "Option[Queue[java.awt.image.BufferedImage]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Queue<Image?>`
+    extends ScalaImage with `box.OneQueueOfNullable` {
+
+  val scalaClass = "Queue[Option[java.awt.image.BufferedImage]]"
+
+  val defaultValue = "Queue[Option[java.awt.image.BufferedImage]].empty"
+}
+
+case object `scala.Queue<Image?>?`
+    extends ScalaImage with `box.NullableQueueOfNullable` {
+
+  val scalaClass = "Option[Queue[Option[java.awt.image.BufferedImage]]]"
+
+  val defaultValue = "None"
+}
+
 case object `scala.Set<Image>`
     extends ScalaImage with `box.OneSetOfOne` {
 

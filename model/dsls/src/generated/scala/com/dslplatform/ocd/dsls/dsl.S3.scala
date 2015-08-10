@@ -22,6 +22,10 @@ case object `dsl.LIST<S3>`    extends DslS3 with `box.OneListOfOne`
 case object `dsl.LIST<S3>?`   extends DslS3 with `box.NullableListOfOne`
 case object `dsl.LIST<S3?>`   extends DslS3 with `box.OneListOfNullable`
 case object `dsl.LIST<S3?>?`  extends DslS3 with `box.NullableListOfNullable`
+case object `dsl.QUEUE<S3>`   extends DslS3 with `box.OneQueueOfOne`
+case object `dsl.QUEUE<S3>?`  extends DslS3 with `box.NullableQueueOfOne`
+case object `dsl.QUEUE<S3?>`  extends DslS3 with `box.OneQueueOfNullable`
+case object `dsl.QUEUE<S3?>?` extends DslS3 with `box.NullableQueueOfNullable`
 case object `dsl.SET<S3>`     extends DslS3 with `box.OneSetOfOne`
 case object `dsl.SET<S3>?`    extends DslS3 with `box.NullableSetOfOne`
 case object `dsl.SET<S3?>`    extends DslS3 with `box.OneSetOfNullable`
@@ -41,6 +45,10 @@ case object `dsl.list<s3>`    extends DslS3 with `box.OneListOfOne`
 case object `dsl.list<s3>?`   extends DslS3 with `box.NullableListOfOne`
 case object `dsl.list<s3?>`   extends DslS3 with `box.OneListOfNullable`
 case object `dsl.list<s3?>?`  extends DslS3 with `box.NullableListOfNullable`
+case object `dsl.queue<s3>`   extends DslS3 with `box.OneQueueOfOne`
+case object `dsl.queue<s3>?`  extends DslS3 with `box.NullableQueueOfOne`
+case object `dsl.queue<s3?>`  extends DslS3 with `box.OneQueueOfNullable`
+case object `dsl.queue<s3?>?` extends DslS3 with `box.NullableQueueOfNullable`
 case object `dsl.set<s3>`     extends DslS3 with `box.OneSetOfOne`
 case object `dsl.set<s3>?`    extends DslS3 with `box.NullableSetOfOne`
 case object `dsl.set<s3?>`    extends DslS3 with `box.OneSetOfNullable`

@@ -261,6 +261,104 @@ public class TimestampAsserts {
         assertNullableListOfNullableEquals(expecteds, actuals, org.joda.time.Duration.ZERO);
     }
 
+    private static void assertQueueOfOneEquals(final String message, final java.util.Queue<org.joda.time.DateTime> expecteds, final java.util.Queue<org.joda.time.DateTime> actuals, final org.joda.time.Duration delta) {
+        final int expectedsSize = expecteds.size();
+        final int actualsSize = actuals.size();
+        if (expectedsSize != actualsSize) {
+            Assert.fail(message + "expecteds was a list of size " + expectedsSize + ", but actuals was a list of size " + actualsSize);
+        }
+
+        final java.util.Iterator<org.joda.time.DateTime> expectedsIterator = expecteds.iterator();
+        final java.util.Iterator<org.joda.time.DateTime> actualsIterator = actuals.iterator();
+        for (int i = 0; i < expectedsSize; i++) {
+            final org.joda.time.DateTime expected = expectedsIterator.next();
+            final org.joda.time.DateTime actual = actualsIterator.next();
+            assertOneEquals(message + "element mismatch occurred at index " + i + ": ", expected, actual, delta);
+        }
+    }
+
+    private static void assertOneQueueOfOneEquals(final String message, final java.util.Queue<org.joda.time.DateTime> expecteds, final java.util.Queue<org.joda.time.DateTime> actuals, final org.joda.time.Duration delta) {
+        int i = 0;
+        for (final org.joda.time.DateTime expected : expecteds) {
+            if (expected == null) {
+                Assert.fail(message + "element mismatch occurred at index " + i + ": expected was <null> - WARNING: This is a preconditions failure in expected, this assertion will never succeed!");
+            }
+            i++;
+        }
+        if (expecteds == actuals) return;
+        if (actuals == null) Assert.fail(message + "expecteds was a list of size " + expecteds.size() + ", but actuals was <null>");
+        assertQueueOfOneEquals(message, expecteds, actuals, delta);
+    }
+
+    public static void assertOneQueueOfOneEquals(final java.util.Queue<org.joda.time.DateTime> expecteds, final java.util.Queue<org.joda.time.DateTime> actuals, final org.joda.time.Duration delta) {
+        assertOneQueueOfOneEquals("OneQueueOfOneTimestamp mismatch: ", expecteds, actuals, delta);
+    }
+
+    public static void assertOneQueueOfOneEquals(final java.util.Queue<org.joda.time.DateTime> expecteds, final java.util.Queue<org.joda.time.DateTime> actuals) {
+        assertOneQueueOfOneEquals(expecteds, actuals, org.joda.time.Duration.ZERO);
+    }
+
+    private static void assertNullableQueueOfOneEquals(final String message, final java.util.Queue<org.joda.time.DateTime> expecteds, final java.util.Queue<org.joda.time.DateTime> actuals, final org.joda.time.Duration delta) {
+        if (expecteds == actuals) return;
+        if (expecteds == null) Assert.fail(message + "expecteds was <null>, but actuals was a list of size " + actuals.size());
+        if (actuals == null) Assert.fail(message + " expecteds was a list of size " + expecteds.size() + ", but actuals was <null>");
+        assertQueueOfOneEquals(message, expecteds, actuals, delta);
+    }
+
+    public static void assertNullableQueueOfOneEquals(final java.util.Queue<org.joda.time.DateTime> expecteds, final java.util.Queue<org.joda.time.DateTime> actuals, final org.joda.time.Duration delta) {
+        assertNullableQueueOfOneEquals("NullableQueueOfOneTimestamp mismatch: ", expecteds, actuals, delta);
+    }
+
+    public static void assertNullableQueueOfOneEquals(final java.util.Queue<org.joda.time.DateTime> expecteds, final java.util.Queue<org.joda.time.DateTime> actuals) {
+        assertNullableQueueOfOneEquals(expecteds, actuals, org.joda.time.Duration.ZERO);
+    }
+
+    private static void assertQueueOfNullableEquals(final String message, final java.util.Queue<org.joda.time.DateTime> expecteds, final java.util.Queue<org.joda.time.DateTime> actuals, final org.joda.time.Duration delta) {
+        final int expectedsSize = expecteds.size();
+        final int actualsSize = actuals.size();
+        if (expectedsSize != actualsSize) {
+            Assert.fail(message + "expecteds was a list of size " + expectedsSize + ", but actuals was a list of size " + actualsSize);
+        }
+
+        final java.util.Iterator<org.joda.time.DateTime> expectedsIterator = expecteds.iterator();
+        final java.util.Iterator<org.joda.time.DateTime> actualsIterator = actuals.iterator();
+        for (int i = 0; i < expectedsSize; i++) {
+            final org.joda.time.DateTime expected = expectedsIterator.next();
+            final org.joda.time.DateTime actual = actualsIterator.next();
+            assertNullableEquals(message + "element mismatch occurred at index " + i + ": ", expected, actual, delta);
+        }
+    }
+
+    private static void assertOneQueueOfNullableEquals(final String message, final java.util.Queue<org.joda.time.DateTime> expecteds, final java.util.Queue<org.joda.time.DateTime> actuals, final org.joda.time.Duration delta) {
+        if (expecteds == null) Assert.fail(message + "expecteds was <null> - WARNING: This is a preconditions failure in expecteds, this assertion will never succeed!");
+        if (expecteds == actuals) return;
+        if (actuals == null) Assert.fail(message + "expecteds was a list of size " + expecteds.size() + ", but actuals was <null>");
+        assertQueueOfNullableEquals(message, expecteds, actuals, delta);
+    }
+
+    public static void assertOneQueueOfNullableEquals(final java.util.Queue<org.joda.time.DateTime> expecteds, final java.util.Queue<org.joda.time.DateTime> actuals, final org.joda.time.Duration delta) {
+        assertOneQueueOfNullableEquals("OneQueueOfNullableTimestamp mismatch: ", expecteds, actuals, delta);
+    }
+
+    public static void assertOneQueueOfNullableEquals(final java.util.Queue<org.joda.time.DateTime> expecteds, final java.util.Queue<org.joda.time.DateTime> actuals) {
+        assertOneQueueOfNullableEquals(expecteds, actuals, org.joda.time.Duration.ZERO);
+    }
+
+    private static void assertNullableQueueOfNullableEquals(final String message, final java.util.Queue<org.joda.time.DateTime> expecteds, final java.util.Queue<org.joda.time.DateTime> actuals, final org.joda.time.Duration delta) {
+        if (expecteds == actuals) return;
+        if (expecteds == null) Assert.fail(message + "expecteds was <null>, but actuals was a list of size " + actuals.size());
+        if (actuals == null) Assert.fail(message + " expecteds was a list of size " + expecteds.size() + ", but actuals was <null>");
+        assertQueueOfNullableEquals(message, expecteds, actuals, delta);
+    }
+
+    public static void assertNullableQueueOfNullableEquals(final java.util.Queue<org.joda.time.DateTime> expecteds, final java.util.Queue<org.joda.time.DateTime> actuals, final org.joda.time.Duration delta) {
+        assertNullableQueueOfNullableEquals("NullableQueueOfNullableTimestamp mismatch: ", expecteds, actuals, delta);
+    }
+
+    public static void assertNullableQueueOfNullableEquals(final java.util.Queue<org.joda.time.DateTime> expecteds, final java.util.Queue<org.joda.time.DateTime> actuals) {
+        assertNullableQueueOfNullableEquals(expecteds, actuals, org.joda.time.Duration.ZERO);
+    }
+
     private static void assertSetOfOneEquals(final String message, final java.util.Set<org.joda.time.DateTime> expecteds, final java.util.Set<org.joda.time.DateTime> actuals, final org.joda.time.Duration delta) {
         if (actuals.contains(null)) {
             Assert.fail(message + "actuals contained a <null> element");

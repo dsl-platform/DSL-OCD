@@ -22,6 +22,10 @@ case object `dsl.List<Point>`    extends DslPoint with `box.OneListOfOne`
 case object `dsl.List<Point>?`   extends DslPoint with `box.NullableListOfOne`
 case object `dsl.List<Point?>`   extends DslPoint with `box.OneListOfNullable`
 case object `dsl.List<Point?>?`  extends DslPoint with `box.NullableListOfNullable`
+case object `dsl.Queue<Point>`   extends DslPoint with `box.OneQueueOfOne`
+case object `dsl.Queue<Point>?`  extends DslPoint with `box.NullableQueueOfOne`
+case object `dsl.Queue<Point?>`  extends DslPoint with `box.OneQueueOfNullable`
+case object `dsl.Queue<Point?>?` extends DslPoint with `box.NullableQueueOfNullable`
 case object `dsl.Set<Point>`     extends DslPoint with `box.OneSetOfOne`
 case object `dsl.Set<Point>?`    extends DslPoint with `box.NullableSetOfOne`
 case object `dsl.Set<Point?>`    extends DslPoint with `box.OneSetOfNullable`
@@ -41,6 +45,10 @@ case object `dsl.LIST<POINT>`    extends DslPoint with `box.OneListOfOne`
 case object `dsl.LIST<POINT>?`   extends DslPoint with `box.NullableListOfOne`
 case object `dsl.LIST<POINT?>`   extends DslPoint with `box.OneListOfNullable`
 case object `dsl.LIST<POINT?>?`  extends DslPoint with `box.NullableListOfNullable`
+case object `dsl.QUEUE<POINT>`   extends DslPoint with `box.OneQueueOfOne`
+case object `dsl.QUEUE<POINT>?`  extends DslPoint with `box.NullableQueueOfOne`
+case object `dsl.QUEUE<POINT?>`  extends DslPoint with `box.OneQueueOfNullable`
+case object `dsl.QUEUE<POINT?>?` extends DslPoint with `box.NullableQueueOfNullable`
 case object `dsl.SET<POINT>`     extends DslPoint with `box.OneSetOfOne`
 case object `dsl.SET<POINT>?`    extends DslPoint with `box.NullableSetOfOne`
 case object `dsl.SET<POINT?>`    extends DslPoint with `box.OneSetOfNullable`
@@ -60,6 +68,10 @@ case object `dsl.list<point>`    extends DslPoint with `box.OneListOfOne`
 case object `dsl.list<point>?`   extends DslPoint with `box.NullableListOfOne`
 case object `dsl.list<point?>`   extends DslPoint with `box.OneListOfNullable`
 case object `dsl.list<point?>?`  extends DslPoint with `box.NullableListOfNullable`
+case object `dsl.queue<point>`   extends DslPoint with `box.OneQueueOfOne`
+case object `dsl.queue<point>?`  extends DslPoint with `box.NullableQueueOfOne`
+case object `dsl.queue<point?>`  extends DslPoint with `box.OneQueueOfNullable`
+case object `dsl.queue<point?>?` extends DslPoint with `box.NullableQueueOfNullable`
 case object `dsl.set<point>`     extends DslPoint with `box.OneSetOfOne`
 case object `dsl.set<point>?`    extends DslPoint with `box.NullableSetOfOne`
 case object `dsl.set<point?>`    extends DslPoint with `box.OneSetOfNullable`

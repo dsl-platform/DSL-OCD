@@ -50,6 +50,9 @@ object JavaValueContainer {
 
     case CollectionFamily.Set =>
       SetOfJavaValues(clazz, values)
+
+    case CollectionFamily.Queue =>
+      QueueOfJavaValues(clazz, values)
   }
 }
 
@@ -79,6 +82,16 @@ case class SetOfJavaValues(
   ) extends TestValueContainer {
 
   override val toString = s"""SetOfJavaValues(${E"${elementClass}"},
+      ${values.mkString("\n    , ")}
+    )"""
+}
+
+case class QueueOfJavaValues(
+    elementClass: String
+  , val values: Seq[TestValue]
+  ) extends TestValueContainer {
+
+  override val toString = s"""QueueOfJavaValues(${E"${elementClass}"},
       ${values.mkString("\n    , ")}
     )"""
 }
@@ -116,11 +129,26 @@ trait JavaStub {
     case Box(_, Some((CollectionFamily.Array, _)), _*) =>
       classReference + "[]"
 
+    case Box(_, Some((CollectionFamily.List, _)), _*) =>
+      "java.util.List<" + classReference + ">"
+
     case Box(_, Some((CollectionFamily.Set, _)), _*) =>
       "java.util.Set<" + classReference + ">"
 
-    case Box(_, Some((CollectionFamily.List, _)), _*) =>
-      "java.util.List<" + classReference + ">"
+    case Box(_, Some((CollectionFamily.Queue, _)), _*) =>
+      "java.util.Queue<" + classReference + ">"
+//
+//    case Box(_, Some((CollectionFamily.Stack, _)), _*) =>
+//      "java.util.Stack<" + classReference + ">"
+//
+//    case Box(_, Some((CollectionFamily.Vector, _)), _*) =>
+//      "java.util.Vector<" + classReference + ">"
+//
+//    case Box(_, Some((CollectionFamily.LinkedList, _)), _*) =>
+//      "java.util.LinkedList<" + classReference + ">"
+//
+//    case Box(_, Some((CollectionFamily.Bag, _)), _*) =>
+//      "java.util.Bag<" + classReference + ">"
   }
 
   val defaultSingle: TestValue
@@ -142,11 +170,26 @@ trait JavaStub {
     case Box(_, Some((CollectionFamily.Array, _)), _*) =>
       ("new " + classReference + "[0]") ~ Stable
 
+    case Box(_, Some((CollectionFamily.List, _)), _*) =>
+      ("new java.util.ArrayList<" + classReference + ">(0)") ~ Stable
+
     case Box(_, Some((CollectionFamily.Set, _)), _*) =>
       ("new java.util.HashSet<" + classReference + ">(0)") ~ Stable
 
-    case Box(_, Some((CollectionFamily.List, _)), _*) =>
-      ("new java.util.ArrayList<" + classReference + ">(0)") ~ Stable
+    case Box(_, Some((CollectionFamily.Queue, _)), _*) =>
+      ("new java.util.ArrayDeque<" + classReference + ">(0)") ~ Stable
+//
+//    case Box(_, Some((CollectionFamily.Stack, _)), _*) =>
+//      ("new java.util.Stack<" + classReference + ">(0)") ~ Stable
+//
+//    case Box(_, Some((CollectionFamily.Vector, _)), _*) =>
+//      ("new java.util.Vector<" + classReference + ">(0)") ~ Stable
+//
+//    case Box(_, Some((CollectionFamily.LinkedList, _)), _*) =>
+//      ("new java.util.LinkedList<" + classReference + ">(0)") ~ Stable
+//
+//    case Box(_, Some((CollectionFamily.Bag, _)), _*) =>
+//      ("new java.util.Bag<" + classReference + ">(0)") ~ Stable
   }
 
   def defaultConcreteType(box: Box, values: TestValue*) = box.collectionFamily.get match {

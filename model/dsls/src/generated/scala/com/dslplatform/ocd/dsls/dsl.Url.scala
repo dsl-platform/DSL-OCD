@@ -22,6 +22,10 @@ case object `dsl.List<Url>`    extends DslUrl with `box.OneListOfOne`
 case object `dsl.List<Url>?`   extends DslUrl with `box.NullableListOfOne`
 case object `dsl.List<Url?>`   extends DslUrl with `box.OneListOfNullable`
 case object `dsl.List<Url?>?`  extends DslUrl with `box.NullableListOfNullable`
+case object `dsl.Queue<Url>`   extends DslUrl with `box.OneQueueOfOne`
+case object `dsl.Queue<Url>?`  extends DslUrl with `box.NullableQueueOfOne`
+case object `dsl.Queue<Url?>`  extends DslUrl with `box.OneQueueOfNullable`
+case object `dsl.Queue<Url?>?` extends DslUrl with `box.NullableQueueOfNullable`
 case object `dsl.Set<Url>`     extends DslUrl with `box.OneSetOfOne`
 case object `dsl.Set<Url>?`    extends DslUrl with `box.NullableSetOfOne`
 case object `dsl.Set<Url?>`    extends DslUrl with `box.OneSetOfNullable`
@@ -41,6 +45,10 @@ case object `dsl.LIST<LINK>`    extends DslUrl with `box.OneListOfOne`
 case object `dsl.LIST<LINK>?`   extends DslUrl with `box.NullableListOfOne`
 case object `dsl.LIST<LINK?>`   extends DslUrl with `box.OneListOfNullable`
 case object `dsl.LIST<LINK?>?`  extends DslUrl with `box.NullableListOfNullable`
+case object `dsl.QUEUE<LINK>`   extends DslUrl with `box.OneQueueOfOne`
+case object `dsl.QUEUE<LINK>?`  extends DslUrl with `box.NullableQueueOfOne`
+case object `dsl.QUEUE<LINK?>`  extends DslUrl with `box.OneQueueOfNullable`
+case object `dsl.QUEUE<LINK?>?` extends DslUrl with `box.NullableQueueOfNullable`
 case object `dsl.SET<LINK>`     extends DslUrl with `box.OneSetOfOne`
 case object `dsl.SET<LINK>?`    extends DslUrl with `box.NullableSetOfOne`
 case object `dsl.SET<LINK?>`    extends DslUrl with `box.OneSetOfNullable`
@@ -60,6 +68,10 @@ case object `dsl.List<Link>`    extends DslUrl with `box.OneListOfOne`
 case object `dsl.List<Link>?`   extends DslUrl with `box.NullableListOfOne`
 case object `dsl.List<Link?>`   extends DslUrl with `box.OneListOfNullable`
 case object `dsl.List<Link?>?`  extends DslUrl with `box.NullableListOfNullable`
+case object `dsl.Queue<Link>`   extends DslUrl with `box.OneQueueOfOne`
+case object `dsl.Queue<Link>?`  extends DslUrl with `box.NullableQueueOfOne`
+case object `dsl.Queue<Link?>`  extends DslUrl with `box.OneQueueOfNullable`
+case object `dsl.Queue<Link?>?` extends DslUrl with `box.NullableQueueOfNullable`
 case object `dsl.Set<Link>`     extends DslUrl with `box.OneSetOfOne`
 case object `dsl.Set<Link>?`    extends DslUrl with `box.NullableSetOfOne`
 case object `dsl.Set<Link?>`    extends DslUrl with `box.OneSetOfNullable`
@@ -79,6 +91,10 @@ case object `dsl.LIST<URL>`    extends DslUrl with `box.OneListOfOne`
 case object `dsl.LIST<URL>?`   extends DslUrl with `box.NullableListOfOne`
 case object `dsl.LIST<URL?>`   extends DslUrl with `box.OneListOfNullable`
 case object `dsl.LIST<URL?>?`  extends DslUrl with `box.NullableListOfNullable`
+case object `dsl.QUEUE<URL>`   extends DslUrl with `box.OneQueueOfOne`
+case object `dsl.QUEUE<URL>?`  extends DslUrl with `box.NullableQueueOfOne`
+case object `dsl.QUEUE<URL?>`  extends DslUrl with `box.OneQueueOfNullable`
+case object `dsl.QUEUE<URL?>?` extends DslUrl with `box.NullableQueueOfNullable`
 case object `dsl.SET<URL>`     extends DslUrl with `box.OneSetOfOne`
 case object `dsl.SET<URL>?`    extends DslUrl with `box.NullableSetOfOne`
 case object `dsl.SET<URL?>`    extends DslUrl with `box.OneSetOfNullable`
@@ -98,6 +114,10 @@ case object `dsl.list<link>`    extends DslUrl with `box.OneListOfOne`
 case object `dsl.list<link>?`   extends DslUrl with `box.NullableListOfOne`
 case object `dsl.list<link?>`   extends DslUrl with `box.OneListOfNullable`
 case object `dsl.list<link?>?`  extends DslUrl with `box.NullableListOfNullable`
+case object `dsl.queue<link>`   extends DslUrl with `box.OneQueueOfOne`
+case object `dsl.queue<link>?`  extends DslUrl with `box.NullableQueueOfOne`
+case object `dsl.queue<link?>`  extends DslUrl with `box.OneQueueOfNullable`
+case object `dsl.queue<link?>?` extends DslUrl with `box.NullableQueueOfNullable`
 case object `dsl.set<link>`     extends DslUrl with `box.OneSetOfOne`
 case object `dsl.set<link>?`    extends DslUrl with `box.NullableSetOfOne`
 case object `dsl.set<link?>`    extends DslUrl with `box.OneSetOfNullable`
@@ -117,6 +137,10 @@ case object `dsl.list<url>`    extends DslUrl with `box.OneListOfOne`
 case object `dsl.list<url>?`   extends DslUrl with `box.NullableListOfOne`
 case object `dsl.list<url?>`   extends DslUrl with `box.OneListOfNullable`
 case object `dsl.list<url?>?`  extends DslUrl with `box.NullableListOfNullable`
+case object `dsl.queue<url>`   extends DslUrl with `box.OneQueueOfOne`
+case object `dsl.queue<url>?`  extends DslUrl with `box.NullableQueueOfOne`
+case object `dsl.queue<url?>`  extends DslUrl with `box.OneQueueOfNullable`
+case object `dsl.queue<url?>?` extends DslUrl with `box.NullableQueueOfNullable`
 case object `dsl.set<url>`     extends DslUrl with `box.OneSetOfOne`
 case object `dsl.set<url>?`    extends DslUrl with `box.NullableSetOfOne`
 case object `dsl.set<url?>`    extends DslUrl with `box.OneSetOfNullable`

@@ -22,6 +22,10 @@ case object `dsl.List<Decimal>`    extends DslDecimal with `box.OneListOfOne`
 case object `dsl.List<Decimal>?`   extends DslDecimal with `box.NullableListOfOne`
 case object `dsl.List<Decimal?>`   extends DslDecimal with `box.OneListOfNullable`
 case object `dsl.List<Decimal?>?`  extends DslDecimal with `box.NullableListOfNullable`
+case object `dsl.Queue<Decimal>`   extends DslDecimal with `box.OneQueueOfOne`
+case object `dsl.Queue<Decimal>?`  extends DslDecimal with `box.NullableQueueOfOne`
+case object `dsl.Queue<Decimal?>`  extends DslDecimal with `box.OneQueueOfNullable`
+case object `dsl.Queue<Decimal?>?` extends DslDecimal with `box.NullableQueueOfNullable`
 case object `dsl.Set<Decimal>`     extends DslDecimal with `box.OneSetOfOne`
 case object `dsl.Set<Decimal>?`    extends DslDecimal with `box.NullableSetOfOne`
 case object `dsl.Set<Decimal?>`    extends DslDecimal with `box.OneSetOfNullable`
@@ -41,6 +45,10 @@ case object `dsl.LIST<DECIMAL>`    extends DslDecimal with `box.OneListOfOne`
 case object `dsl.LIST<DECIMAL>?`   extends DslDecimal with `box.NullableListOfOne`
 case object `dsl.LIST<DECIMAL?>`   extends DslDecimal with `box.OneListOfNullable`
 case object `dsl.LIST<DECIMAL?>?`  extends DslDecimal with `box.NullableListOfNullable`
+case object `dsl.QUEUE<DECIMAL>`   extends DslDecimal with `box.OneQueueOfOne`
+case object `dsl.QUEUE<DECIMAL>?`  extends DslDecimal with `box.NullableQueueOfOne`
+case object `dsl.QUEUE<DECIMAL?>`  extends DslDecimal with `box.OneQueueOfNullable`
+case object `dsl.QUEUE<DECIMAL?>?` extends DslDecimal with `box.NullableQueueOfNullable`
 case object `dsl.SET<DECIMAL>`     extends DslDecimal with `box.OneSetOfOne`
 case object `dsl.SET<DECIMAL>?`    extends DslDecimal with `box.NullableSetOfOne`
 case object `dsl.SET<DECIMAL?>`    extends DslDecimal with `box.OneSetOfNullable`
@@ -60,6 +68,10 @@ case object `dsl.list<decimal>`    extends DslDecimal with `box.OneListOfOne`
 case object `dsl.list<decimal>?`   extends DslDecimal with `box.NullableListOfOne`
 case object `dsl.list<decimal?>`   extends DslDecimal with `box.OneListOfNullable`
 case object `dsl.list<decimal?>?`  extends DslDecimal with `box.NullableListOfNullable`
+case object `dsl.queue<decimal>`   extends DslDecimal with `box.OneQueueOfOne`
+case object `dsl.queue<decimal>?`  extends DslDecimal with `box.NullableQueueOfOne`
+case object `dsl.queue<decimal?>`  extends DslDecimal with `box.OneQueueOfNullable`
+case object `dsl.queue<decimal?>?` extends DslDecimal with `box.NullableQueueOfNullable`
 case object `dsl.set<decimal>`     extends DslDecimal with `box.OneSetOfOne`
 case object `dsl.set<decimal>?`    extends DslDecimal with `box.NullableSetOfOne`
 case object `dsl.set<decimal?>`    extends DslDecimal with `box.OneSetOfNullable`

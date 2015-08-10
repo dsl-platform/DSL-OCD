@@ -13,6 +13,10 @@ package boxes {
     , `box.NullableListOfOne`
     , `box.OneListOfNullable`
     , `box.NullableListOfNullable`
+    , `box.OneQueueOfOne`
+    , `box.NullableQueueOfOne`
+    , `box.OneQueueOfNullable`
+    , `box.NullableQueueOfNullable`
     , `box.OneSetOfOne`
     , `box.NullableSetOfOne`
     , `box.OneSetOfNullable`

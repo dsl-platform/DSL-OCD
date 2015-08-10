@@ -22,6 +22,10 @@ case object `dsl.List<JsonOf<Map>>`    extends DslJsonOfMapKind with `box.OneLis
 case object `dsl.List<JsonOf<Map>>?`   extends DslJsonOfMapKind with `box.NullableListOfOne`
 case object `dsl.List<JsonOf<Map>?>`   extends DslJsonOfMapKind with `box.OneListOfNullable`
 case object `dsl.List<JsonOf<Map>?>?`  extends DslJsonOfMapKind with `box.NullableListOfNullable`
+case object `dsl.Queue<JsonOf<Map>>`   extends DslJsonOfMapKind with `box.OneQueueOfOne`
+case object `dsl.Queue<JsonOf<Map>>?`  extends DslJsonOfMapKind with `box.NullableQueueOfOne`
+case object `dsl.Queue<JsonOf<Map>?>`  extends DslJsonOfMapKind with `box.OneQueueOfNullable`
+case object `dsl.Queue<JsonOf<Map>?>?` extends DslJsonOfMapKind with `box.NullableQueueOfNullable`
 case object `dsl.Set<JsonOf<Map>>`     extends DslJsonOfMapKind with `box.OneSetOfOne`
 case object `dsl.Set<JsonOf<Map>>?`    extends DslJsonOfMapKind with `box.NullableSetOfOne`
 case object `dsl.Set<JsonOf<Map>?>`    extends DslJsonOfMapKind with `box.OneSetOfNullable`
@@ -41,6 +45,10 @@ case object `dsl.LIST<JSONOF<MAP>>`    extends DslJsonOfMapKind with `box.OneLis
 case object `dsl.LIST<JSONOF<MAP>>?`   extends DslJsonOfMapKind with `box.NullableListOfOne`
 case object `dsl.LIST<JSONOF<MAP>?>`   extends DslJsonOfMapKind with `box.OneListOfNullable`
 case object `dsl.LIST<JSONOF<MAP>?>?`  extends DslJsonOfMapKind with `box.NullableListOfNullable`
+case object `dsl.QUEUE<JSONOF<MAP>>`   extends DslJsonOfMapKind with `box.OneQueueOfOne`
+case object `dsl.QUEUE<JSONOF<MAP>>?`  extends DslJsonOfMapKind with `box.NullableQueueOfOne`
+case object `dsl.QUEUE<JSONOF<MAP>?>`  extends DslJsonOfMapKind with `box.OneQueueOfNullable`
+case object `dsl.QUEUE<JSONOF<MAP>?>?` extends DslJsonOfMapKind with `box.NullableQueueOfNullable`
 case object `dsl.SET<JSONOF<MAP>>`     extends DslJsonOfMapKind with `box.OneSetOfOne`
 case object `dsl.SET<JSONOF<MAP>>?`    extends DslJsonOfMapKind with `box.NullableSetOfOne`
 case object `dsl.SET<JSONOF<MAP>?>`    extends DslJsonOfMapKind with `box.OneSetOfNullable`
@@ -60,6 +68,10 @@ case object `dsl.List<Jsonof<map>>`    extends DslJsonOfMapKind with `box.OneLis
 case object `dsl.List<Jsonof<map>>?`   extends DslJsonOfMapKind with `box.NullableListOfOne`
 case object `dsl.List<Jsonof<map>?>`   extends DslJsonOfMapKind with `box.OneListOfNullable`
 case object `dsl.List<Jsonof<map>?>?`  extends DslJsonOfMapKind with `box.NullableListOfNullable`
+case object `dsl.Queue<Jsonof<map>>`   extends DslJsonOfMapKind with `box.OneQueueOfOne`
+case object `dsl.Queue<Jsonof<map>>?`  extends DslJsonOfMapKind with `box.NullableQueueOfOne`
+case object `dsl.Queue<Jsonof<map>?>`  extends DslJsonOfMapKind with `box.OneQueueOfNullable`
+case object `dsl.Queue<Jsonof<map>?>?` extends DslJsonOfMapKind with `box.NullableQueueOfNullable`
 case object `dsl.Set<Jsonof<map>>`     extends DslJsonOfMapKind with `box.OneSetOfOne`
 case object `dsl.Set<Jsonof<map>>?`    extends DslJsonOfMapKind with `box.NullableSetOfOne`
 case object `dsl.Set<Jsonof<map>?>`    extends DslJsonOfMapKind with `box.OneSetOfNullable`
@@ -79,6 +91,10 @@ case object `dsl.list<jsonof<map>>`    extends DslJsonOfMapKind with `box.OneLis
 case object `dsl.list<jsonof<map>>?`   extends DslJsonOfMapKind with `box.NullableListOfOne`
 case object `dsl.list<jsonof<map>?>`   extends DslJsonOfMapKind with `box.OneListOfNullable`
 case object `dsl.list<jsonof<map>?>?`  extends DslJsonOfMapKind with `box.NullableListOfNullable`
+case object `dsl.queue<jsonof<map>>`   extends DslJsonOfMapKind with `box.OneQueueOfOne`
+case object `dsl.queue<jsonof<map>>?`  extends DslJsonOfMapKind with `box.NullableQueueOfOne`
+case object `dsl.queue<jsonof<map>?>`  extends DslJsonOfMapKind with `box.OneQueueOfNullable`
+case object `dsl.queue<jsonof<map>?>?` extends DslJsonOfMapKind with `box.NullableQueueOfNullable`
 case object `dsl.set<jsonof<map>>`     extends DslJsonOfMapKind with `box.OneSetOfOne`
 case object `dsl.set<jsonof<map>>?`    extends DslJsonOfMapKind with `box.NullableSetOfOne`
 case object `dsl.set<jsonof<map>?>`    extends DslJsonOfMapKind with `box.OneSetOfNullable`

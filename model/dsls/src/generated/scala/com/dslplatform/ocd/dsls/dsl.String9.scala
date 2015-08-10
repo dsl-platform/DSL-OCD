@@ -22,6 +22,10 @@ case object `dsl.List<String(9)>`    extends DslStringWithMaxLengthOf9 with `box
 case object `dsl.List<String(9)>?`   extends DslStringWithMaxLengthOf9 with `box.NullableListOfOne`
 case object `dsl.List<String(9)?>`   extends DslStringWithMaxLengthOf9 with `box.OneListOfNullable`
 case object `dsl.List<String(9)?>?`  extends DslStringWithMaxLengthOf9 with `box.NullableListOfNullable`
+case object `dsl.Queue<String(9)>`   extends DslStringWithMaxLengthOf9 with `box.OneQueueOfOne`
+case object `dsl.Queue<String(9)>?`  extends DslStringWithMaxLengthOf9 with `box.NullableQueueOfOne`
+case object `dsl.Queue<String(9)?>`  extends DslStringWithMaxLengthOf9 with `box.OneQueueOfNullable`
+case object `dsl.Queue<String(9)?>?` extends DslStringWithMaxLengthOf9 with `box.NullableQueueOfNullable`
 case object `dsl.Set<String(9)>`     extends DslStringWithMaxLengthOf9 with `box.OneSetOfOne`
 case object `dsl.Set<String(9)>?`    extends DslStringWithMaxLengthOf9 with `box.NullableSetOfOne`
 case object `dsl.Set<String(9)?>`    extends DslStringWithMaxLengthOf9 with `box.OneSetOfNullable`
@@ -41,6 +45,10 @@ case object `dsl.LIST<STRING(9)>`    extends DslStringWithMaxLengthOf9 with `box
 case object `dsl.LIST<STRING(9)>?`   extends DslStringWithMaxLengthOf9 with `box.NullableListOfOne`
 case object `dsl.LIST<STRING(9)?>`   extends DslStringWithMaxLengthOf9 with `box.OneListOfNullable`
 case object `dsl.LIST<STRING(9)?>?`  extends DslStringWithMaxLengthOf9 with `box.NullableListOfNullable`
+case object `dsl.QUEUE<STRING(9)>`   extends DslStringWithMaxLengthOf9 with `box.OneQueueOfOne`
+case object `dsl.QUEUE<STRING(9)>?`  extends DslStringWithMaxLengthOf9 with `box.NullableQueueOfOne`
+case object `dsl.QUEUE<STRING(9)?>`  extends DslStringWithMaxLengthOf9 with `box.OneQueueOfNullable`
+case object `dsl.QUEUE<STRING(9)?>?` extends DslStringWithMaxLengthOf9 with `box.NullableQueueOfNullable`
 case object `dsl.SET<STRING(9)>`     extends DslStringWithMaxLengthOf9 with `box.OneSetOfOne`
 case object `dsl.SET<STRING(9)>?`    extends DslStringWithMaxLengthOf9 with `box.NullableSetOfOne`
 case object `dsl.SET<STRING(9)?>`    extends DslStringWithMaxLengthOf9 with `box.OneSetOfNullable`
@@ -60,6 +68,10 @@ case object `dsl.list<string(9)>`    extends DslStringWithMaxLengthOf9 with `box
 case object `dsl.list<string(9)>?`   extends DslStringWithMaxLengthOf9 with `box.NullableListOfOne`
 case object `dsl.list<string(9)?>`   extends DslStringWithMaxLengthOf9 with `box.OneListOfNullable`
 case object `dsl.list<string(9)?>?`  extends DslStringWithMaxLengthOf9 with `box.NullableListOfNullable`
+case object `dsl.queue<string(9)>`   extends DslStringWithMaxLengthOf9 with `box.OneQueueOfOne`
+case object `dsl.queue<string(9)>?`  extends DslStringWithMaxLengthOf9 with `box.NullableQueueOfOne`
+case object `dsl.queue<string(9)?>`  extends DslStringWithMaxLengthOf9 with `box.OneQueueOfNullable`
+case object `dsl.queue<string(9)?>?` extends DslStringWithMaxLengthOf9 with `box.NullableQueueOfNullable`
 case object `dsl.set<string(9)>`     extends DslStringWithMaxLengthOf9 with `box.OneSetOfOne`
 case object `dsl.set<string(9)>?`    extends DslStringWithMaxLengthOf9 with `box.NullableSetOfOne`
 case object `dsl.set<string(9)?>`    extends DslStringWithMaxLengthOf9 with `box.OneSetOfNullable`

@@ -22,6 +22,10 @@ case object `dsl.List<Xml>`    extends DslXml with `box.OneListOfOne`
 case object `dsl.List<Xml>?`   extends DslXml with `box.NullableListOfOne`
 case object `dsl.List<Xml?>`   extends DslXml with `box.OneListOfNullable`
 case object `dsl.List<Xml?>?`  extends DslXml with `box.NullableListOfNullable`
+case object `dsl.Queue<Xml>`   extends DslXml with `box.OneQueueOfOne`
+case object `dsl.Queue<Xml>?`  extends DslXml with `box.NullableQueueOfOne`
+case object `dsl.Queue<Xml?>`  extends DslXml with `box.OneQueueOfNullable`
+case object `dsl.Queue<Xml?>?` extends DslXml with `box.NullableQueueOfNullable`
 case object `dsl.Set<Xml>`     extends DslXml with `box.OneSetOfOne`
 case object `dsl.Set<Xml>?`    extends DslXml with `box.NullableSetOfOne`
 case object `dsl.Set<Xml?>`    extends DslXml with `box.OneSetOfNullable`
@@ -41,6 +45,10 @@ case object `dsl.LIST<XML>`    extends DslXml with `box.OneListOfOne`
 case object `dsl.LIST<XML>?`   extends DslXml with `box.NullableListOfOne`
 case object `dsl.LIST<XML?>`   extends DslXml with `box.OneListOfNullable`
 case object `dsl.LIST<XML?>?`  extends DslXml with `box.NullableListOfNullable`
+case object `dsl.QUEUE<XML>`   extends DslXml with `box.OneQueueOfOne`
+case object `dsl.QUEUE<XML>?`  extends DslXml with `box.NullableQueueOfOne`
+case object `dsl.QUEUE<XML?>`  extends DslXml with `box.OneQueueOfNullable`
+case object `dsl.QUEUE<XML?>?` extends DslXml with `box.NullableQueueOfNullable`
 case object `dsl.SET<XML>`     extends DslXml with `box.OneSetOfOne`
 case object `dsl.SET<XML>?`    extends DslXml with `box.NullableSetOfOne`
 case object `dsl.SET<XML?>`    extends DslXml with `box.OneSetOfNullable`
@@ -60,6 +68,10 @@ case object `dsl.list<xml>`    extends DslXml with `box.OneListOfOne`
 case object `dsl.list<xml>?`   extends DslXml with `box.NullableListOfOne`
 case object `dsl.list<xml?>`   extends DslXml with `box.OneListOfNullable`
 case object `dsl.list<xml?>?`  extends DslXml with `box.NullableListOfNullable`
+case object `dsl.queue<xml>`   extends DslXml with `box.OneQueueOfOne`
+case object `dsl.queue<xml>?`  extends DslXml with `box.NullableQueueOfOne`
+case object `dsl.queue<xml?>`  extends DslXml with `box.OneQueueOfNullable`
+case object `dsl.queue<xml?>?` extends DslXml with `box.NullableQueueOfNullable`
 case object `dsl.set<xml>`     extends DslXml with `box.OneSetOfOne`
 case object `dsl.set<xml>?`    extends DslXml with `box.NullableSetOfOne`
 case object `dsl.set<xml?>`    extends DslXml with `box.OneSetOfNullable`

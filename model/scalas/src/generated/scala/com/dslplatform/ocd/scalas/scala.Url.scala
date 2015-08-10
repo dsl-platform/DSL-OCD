@@ -88,6 +88,38 @@ case object `scala.List<Url?>?`
   val defaultValue = "None"
 }
 
+case object `scala.Queue<Url>`
+    extends ScalaUrl with `box.OneQueueOfOne` {
+
+  val scalaClass = "Queue[java.net.URI]"
+
+  val defaultValue = "Queue[java.net.URI].empty"
+}
+
+case object `scala.Queue<Url>?`
+    extends ScalaUrl with `box.NullableQueueOfOne` {
+
+  val scalaClass = "Option[Queue[java.net.URI]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Queue<Url?>`
+    extends ScalaUrl with `box.OneQueueOfNullable` {
+
+  val scalaClass = "Queue[Option[java.net.URI]]"
+
+  val defaultValue = "Queue[Option[java.net.URI]].empty"
+}
+
+case object `scala.Queue<Url?>?`
+    extends ScalaUrl with `box.NullableQueueOfNullable` {
+
+  val scalaClass = "Option[Queue[Option[java.net.URI]]]"
+
+  val defaultValue = "None"
+}
+
 case object `scala.Set<Url>`
     extends ScalaUrl with `box.OneSetOfOne` {
 

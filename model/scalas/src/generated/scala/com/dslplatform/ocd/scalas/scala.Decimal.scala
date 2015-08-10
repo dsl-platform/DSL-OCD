@@ -88,6 +88,38 @@ case object `scala.List<Decimal?>?`
   val defaultValue = "None"
 }
 
+case object `scala.Queue<Decimal>`
+    extends ScalaDecimal with `box.OneQueueOfOne` {
+
+  val scalaClass = "Queue[BigDecimal]"
+
+  val defaultValue = "Queue[BigDecimal].empty"
+}
+
+case object `scala.Queue<Decimal>?`
+    extends ScalaDecimal with `box.NullableQueueOfOne` {
+
+  val scalaClass = "Option[Queue[BigDecimal]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Queue<Decimal?>`
+    extends ScalaDecimal with `box.OneQueueOfNullable` {
+
+  val scalaClass = "Queue[Option[BigDecimal]]"
+
+  val defaultValue = "Queue[Option[BigDecimal]].empty"
+}
+
+case object `scala.Queue<Decimal?>?`
+    extends ScalaDecimal with `box.NullableQueueOfNullable` {
+
+  val scalaClass = "Option[Queue[Option[BigDecimal]]]"
+
+  val defaultValue = "None"
+}
+
 case object `scala.Set<Decimal>`
     extends ScalaDecimal with `box.OneSetOfOne` {
 

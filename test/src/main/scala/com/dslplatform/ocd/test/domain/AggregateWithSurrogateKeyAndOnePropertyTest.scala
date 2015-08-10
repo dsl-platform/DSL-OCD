@@ -24,6 +24,7 @@ private[domain] object AggregateWithSurrogateKeyAndOnePropertySetup {
     st <- AggregateRootSugar.values
     t <- OcdType.useCaseValues
     b <- OcdBox.values
+    if !(b.collectionFamily == Some(CollectionFamily.Queue) && b.areElementsNullable == Some(true)) // Queue cannot contain null elements
     d = OcdDslBoxType.resolve(t, b)
   } yield {
     new AggregateWithSurrogateKeyAndOnePropertySetup(st, d)

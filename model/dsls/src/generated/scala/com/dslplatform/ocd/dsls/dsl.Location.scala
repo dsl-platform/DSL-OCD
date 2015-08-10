@@ -22,6 +22,10 @@ case object `dsl.List<Location>`    extends DslLocation with `box.OneListOfOne`
 case object `dsl.List<Location>?`   extends DslLocation with `box.NullableListOfOne`
 case object `dsl.List<Location?>`   extends DslLocation with `box.OneListOfNullable`
 case object `dsl.List<Location?>?`  extends DslLocation with `box.NullableListOfNullable`
+case object `dsl.Queue<Location>`   extends DslLocation with `box.OneQueueOfOne`
+case object `dsl.Queue<Location>?`  extends DslLocation with `box.NullableQueueOfOne`
+case object `dsl.Queue<Location?>`  extends DslLocation with `box.OneQueueOfNullable`
+case object `dsl.Queue<Location?>?` extends DslLocation with `box.NullableQueueOfNullable`
 case object `dsl.Set<Location>`     extends DslLocation with `box.OneSetOfOne`
 case object `dsl.Set<Location>?`    extends DslLocation with `box.NullableSetOfOne`
 case object `dsl.Set<Location?>`    extends DslLocation with `box.OneSetOfNullable`
@@ -41,6 +45,10 @@ case object `dsl.LIST<LOCATION>`    extends DslLocation with `box.OneListOfOne`
 case object `dsl.LIST<LOCATION>?`   extends DslLocation with `box.NullableListOfOne`
 case object `dsl.LIST<LOCATION?>`   extends DslLocation with `box.OneListOfNullable`
 case object `dsl.LIST<LOCATION?>?`  extends DslLocation with `box.NullableListOfNullable`
+case object `dsl.QUEUE<LOCATION>`   extends DslLocation with `box.OneQueueOfOne`
+case object `dsl.QUEUE<LOCATION>?`  extends DslLocation with `box.NullableQueueOfOne`
+case object `dsl.QUEUE<LOCATION?>`  extends DslLocation with `box.OneQueueOfNullable`
+case object `dsl.QUEUE<LOCATION?>?` extends DslLocation with `box.NullableQueueOfNullable`
 case object `dsl.SET<LOCATION>`     extends DslLocation with `box.OneSetOfOne`
 case object `dsl.SET<LOCATION>?`    extends DslLocation with `box.NullableSetOfOne`
 case object `dsl.SET<LOCATION?>`    extends DslLocation with `box.OneSetOfNullable`
@@ -60,6 +68,10 @@ case object `dsl.list<location>`    extends DslLocation with `box.OneListOfOne`
 case object `dsl.list<location>?`   extends DslLocation with `box.NullableListOfOne`
 case object `dsl.list<location?>`   extends DslLocation with `box.OneListOfNullable`
 case object `dsl.list<location?>?`  extends DslLocation with `box.NullableListOfNullable`
+case object `dsl.queue<location>`   extends DslLocation with `box.OneQueueOfOne`
+case object `dsl.queue<location>?`  extends DslLocation with `box.NullableQueueOfOne`
+case object `dsl.queue<location?>`  extends DslLocation with `box.OneQueueOfNullable`
+case object `dsl.queue<location?>?` extends DslLocation with `box.NullableQueueOfNullable`
 case object `dsl.set<location>`     extends DslLocation with `box.OneSetOfOne`
 case object `dsl.set<location>?`    extends DslLocation with `box.NullableSetOfOne`
 case object `dsl.set<location?>`    extends DslLocation with `box.OneSetOfNullable`

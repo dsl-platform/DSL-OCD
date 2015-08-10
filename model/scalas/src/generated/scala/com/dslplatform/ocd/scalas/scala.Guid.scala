@@ -88,6 +88,38 @@ case object `scala.List<Guid?>?`
   val defaultValue = "None"
 }
 
+case object `scala.Queue<Guid>`
+    extends ScalaGuid with `box.OneQueueOfOne` {
+
+  val scalaClass = "Queue[java.util.UUID]"
+
+  val defaultValue = "Queue[java.util.UUID].empty"
+}
+
+case object `scala.Queue<Guid>?`
+    extends ScalaGuid with `box.NullableQueueOfOne` {
+
+  val scalaClass = "Option[Queue[java.util.UUID]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Queue<Guid?>`
+    extends ScalaGuid with `box.OneQueueOfNullable` {
+
+  val scalaClass = "Queue[Option[java.util.UUID]]"
+
+  val defaultValue = "Queue[Option[java.util.UUID]].empty"
+}
+
+case object `scala.Queue<Guid?>?`
+    extends ScalaGuid with `box.NullableQueueOfNullable` {
+
+  val scalaClass = "Option[Queue[Option[java.util.UUID]]]"
+
+  val defaultValue = "None"
+}
+
 case object `scala.Set<Guid>`
     extends ScalaGuid with `box.OneSetOfOne` {
 

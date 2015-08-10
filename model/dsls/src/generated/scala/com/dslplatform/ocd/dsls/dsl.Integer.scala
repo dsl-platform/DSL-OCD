@@ -22,6 +22,10 @@ case object `dsl.List<Integer>`    extends DslInteger with `box.OneListOfOne`
 case object `dsl.List<Integer>?`   extends DslInteger with `box.NullableListOfOne`
 case object `dsl.List<Integer?>`   extends DslInteger with `box.OneListOfNullable`
 case object `dsl.List<Integer?>?`  extends DslInteger with `box.NullableListOfNullable`
+case object `dsl.Queue<Integer>`   extends DslInteger with `box.OneQueueOfOne`
+case object `dsl.Queue<Integer>?`  extends DslInteger with `box.NullableQueueOfOne`
+case object `dsl.Queue<Integer?>`  extends DslInteger with `box.OneQueueOfNullable`
+case object `dsl.Queue<Integer?>?` extends DslInteger with `box.NullableQueueOfNullable`
 case object `dsl.Set<Integer>`     extends DslInteger with `box.OneSetOfOne`
 case object `dsl.Set<Integer>?`    extends DslInteger with `box.NullableSetOfOne`
 case object `dsl.Set<Integer?>`    extends DslInteger with `box.OneSetOfNullable`
@@ -41,6 +45,10 @@ case object `dsl.LIST<INT>`    extends DslInteger with `box.OneListOfOne`
 case object `dsl.LIST<INT>?`   extends DslInteger with `box.NullableListOfOne`
 case object `dsl.LIST<INT?>`   extends DslInteger with `box.OneListOfNullable`
 case object `dsl.LIST<INT?>?`  extends DslInteger with `box.NullableListOfNullable`
+case object `dsl.QUEUE<INT>`   extends DslInteger with `box.OneQueueOfOne`
+case object `dsl.QUEUE<INT>?`  extends DslInteger with `box.NullableQueueOfOne`
+case object `dsl.QUEUE<INT?>`  extends DslInteger with `box.OneQueueOfNullable`
+case object `dsl.QUEUE<INT?>?` extends DslInteger with `box.NullableQueueOfNullable`
 case object `dsl.SET<INT>`     extends DslInteger with `box.OneSetOfOne`
 case object `dsl.SET<INT>?`    extends DslInteger with `box.NullableSetOfOne`
 case object `dsl.SET<INT?>`    extends DslInteger with `box.OneSetOfNullable`
@@ -60,6 +68,10 @@ case object `dsl.LIST<INTEGER>`    extends DslInteger with `box.OneListOfOne`
 case object `dsl.LIST<INTEGER>?`   extends DslInteger with `box.NullableListOfOne`
 case object `dsl.LIST<INTEGER?>`   extends DslInteger with `box.OneListOfNullable`
 case object `dsl.LIST<INTEGER?>?`  extends DslInteger with `box.NullableListOfNullable`
+case object `dsl.QUEUE<INTEGER>`   extends DslInteger with `box.OneQueueOfOne`
+case object `dsl.QUEUE<INTEGER>?`  extends DslInteger with `box.NullableQueueOfOne`
+case object `dsl.QUEUE<INTEGER?>`  extends DslInteger with `box.OneQueueOfNullable`
+case object `dsl.QUEUE<INTEGER?>?` extends DslInteger with `box.NullableQueueOfNullable`
 case object `dsl.SET<INTEGER>`     extends DslInteger with `box.OneSetOfOne`
 case object `dsl.SET<INTEGER>?`    extends DslInteger with `box.NullableSetOfOne`
 case object `dsl.SET<INTEGER?>`    extends DslInteger with `box.OneSetOfNullable`
@@ -79,6 +91,10 @@ case object `dsl.List<Int>`    extends DslInteger with `box.OneListOfOne`
 case object `dsl.List<Int>?`   extends DslInteger with `box.NullableListOfOne`
 case object `dsl.List<Int?>`   extends DslInteger with `box.OneListOfNullable`
 case object `dsl.List<Int?>?`  extends DslInteger with `box.NullableListOfNullable`
+case object `dsl.Queue<Int>`   extends DslInteger with `box.OneQueueOfOne`
+case object `dsl.Queue<Int>?`  extends DslInteger with `box.NullableQueueOfOne`
+case object `dsl.Queue<Int?>`  extends DslInteger with `box.OneQueueOfNullable`
+case object `dsl.Queue<Int?>?` extends DslInteger with `box.NullableQueueOfNullable`
 case object `dsl.Set<Int>`     extends DslInteger with `box.OneSetOfOne`
 case object `dsl.Set<Int>?`    extends DslInteger with `box.NullableSetOfOne`
 case object `dsl.Set<Int?>`    extends DslInteger with `box.OneSetOfNullable`
@@ -98,6 +114,10 @@ case object `dsl.list<int>`    extends DslInteger with `box.OneListOfOne`
 case object `dsl.list<int>?`   extends DslInteger with `box.NullableListOfOne`
 case object `dsl.list<int?>`   extends DslInteger with `box.OneListOfNullable`
 case object `dsl.list<int?>?`  extends DslInteger with `box.NullableListOfNullable`
+case object `dsl.queue<int>`   extends DslInteger with `box.OneQueueOfOne`
+case object `dsl.queue<int>?`  extends DslInteger with `box.NullableQueueOfOne`
+case object `dsl.queue<int?>`  extends DslInteger with `box.OneQueueOfNullable`
+case object `dsl.queue<int?>?` extends DslInteger with `box.NullableQueueOfNullable`
 case object `dsl.set<int>`     extends DslInteger with `box.OneSetOfOne`
 case object `dsl.set<int>?`    extends DslInteger with `box.NullableSetOfOne`
 case object `dsl.set<int?>`    extends DslInteger with `box.OneSetOfNullable`
@@ -117,6 +137,10 @@ case object `dsl.list<integer>`    extends DslInteger with `box.OneListOfOne`
 case object `dsl.list<integer>?`   extends DslInteger with `box.NullableListOfOne`
 case object `dsl.list<integer?>`   extends DslInteger with `box.OneListOfNullable`
 case object `dsl.list<integer?>?`  extends DslInteger with `box.NullableListOfNullable`
+case object `dsl.queue<integer>`   extends DslInteger with `box.OneQueueOfOne`
+case object `dsl.queue<integer>?`  extends DslInteger with `box.NullableQueueOfOne`
+case object `dsl.queue<integer?>`  extends DslInteger with `box.OneQueueOfNullable`
+case object `dsl.queue<integer?>?` extends DslInteger with `box.NullableQueueOfNullable`
 case object `dsl.set<integer>`     extends DslInteger with `box.OneSetOfOne`
 case object `dsl.set<integer>?`    extends DslInteger with `box.NullableSetOfOne`
 case object `dsl.set<integer?>`    extends DslInteger with `box.OneSetOfNullable`

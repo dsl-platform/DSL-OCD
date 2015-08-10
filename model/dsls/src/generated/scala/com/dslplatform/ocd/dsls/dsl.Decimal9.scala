@@ -22,6 +22,10 @@ case object `dsl.List<Decimal(9)>`    extends DslDecimalWithScaleOf9 with `box.O
 case object `dsl.List<Decimal(9)>?`   extends DslDecimalWithScaleOf9 with `box.NullableListOfOne`
 case object `dsl.List<Decimal(9)?>`   extends DslDecimalWithScaleOf9 with `box.OneListOfNullable`
 case object `dsl.List<Decimal(9)?>?`  extends DslDecimalWithScaleOf9 with `box.NullableListOfNullable`
+case object `dsl.Queue<Decimal(9)>`   extends DslDecimalWithScaleOf9 with `box.OneQueueOfOne`
+case object `dsl.Queue<Decimal(9)>?`  extends DslDecimalWithScaleOf9 with `box.NullableQueueOfOne`
+case object `dsl.Queue<Decimal(9)?>`  extends DslDecimalWithScaleOf9 with `box.OneQueueOfNullable`
+case object `dsl.Queue<Decimal(9)?>?` extends DslDecimalWithScaleOf9 with `box.NullableQueueOfNullable`
 case object `dsl.Set<Decimal(9)>`     extends DslDecimalWithScaleOf9 with `box.OneSetOfOne`
 case object `dsl.Set<Decimal(9)>?`    extends DslDecimalWithScaleOf9 with `box.NullableSetOfOne`
 case object `dsl.Set<Decimal(9)?>`    extends DslDecimalWithScaleOf9 with `box.OneSetOfNullable`
@@ -41,6 +45,10 @@ case object `dsl.LIST<DECIMAL(9)>`    extends DslDecimalWithScaleOf9 with `box.O
 case object `dsl.LIST<DECIMAL(9)>?`   extends DslDecimalWithScaleOf9 with `box.NullableListOfOne`
 case object `dsl.LIST<DECIMAL(9)?>`   extends DslDecimalWithScaleOf9 with `box.OneListOfNullable`
 case object `dsl.LIST<DECIMAL(9)?>?`  extends DslDecimalWithScaleOf9 with `box.NullableListOfNullable`
+case object `dsl.QUEUE<DECIMAL(9)>`   extends DslDecimalWithScaleOf9 with `box.OneQueueOfOne`
+case object `dsl.QUEUE<DECIMAL(9)>?`  extends DslDecimalWithScaleOf9 with `box.NullableQueueOfOne`
+case object `dsl.QUEUE<DECIMAL(9)?>`  extends DslDecimalWithScaleOf9 with `box.OneQueueOfNullable`
+case object `dsl.QUEUE<DECIMAL(9)?>?` extends DslDecimalWithScaleOf9 with `box.NullableQueueOfNullable`
 case object `dsl.SET<DECIMAL(9)>`     extends DslDecimalWithScaleOf9 with `box.OneSetOfOne`
 case object `dsl.SET<DECIMAL(9)>?`    extends DslDecimalWithScaleOf9 with `box.NullableSetOfOne`
 case object `dsl.SET<DECIMAL(9)?>`    extends DslDecimalWithScaleOf9 with `box.OneSetOfNullable`
@@ -60,6 +68,10 @@ case object `dsl.list<decimal(9)>`    extends DslDecimalWithScaleOf9 with `box.O
 case object `dsl.list<decimal(9)>?`   extends DslDecimalWithScaleOf9 with `box.NullableListOfOne`
 case object `dsl.list<decimal(9)?>`   extends DslDecimalWithScaleOf9 with `box.OneListOfNullable`
 case object `dsl.list<decimal(9)?>?`  extends DslDecimalWithScaleOf9 with `box.NullableListOfNullable`
+case object `dsl.queue<decimal(9)>`   extends DslDecimalWithScaleOf9 with `box.OneQueueOfOne`
+case object `dsl.queue<decimal(9)>?`  extends DslDecimalWithScaleOf9 with `box.NullableQueueOfOne`
+case object `dsl.queue<decimal(9)?>`  extends DslDecimalWithScaleOf9 with `box.OneQueueOfNullable`
+case object `dsl.queue<decimal(9)?>?` extends DslDecimalWithScaleOf9 with `box.NullableQueueOfNullable`
 case object `dsl.set<decimal(9)>`     extends DslDecimalWithScaleOf9 with `box.OneSetOfOne`
 case object `dsl.set<decimal(9)>?`    extends DslDecimalWithScaleOf9 with `box.NullableSetOfOne`
 case object `dsl.set<decimal(9)?>`    extends DslDecimalWithScaleOf9 with `box.OneSetOfNullable`

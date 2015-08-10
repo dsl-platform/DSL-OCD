@@ -88,6 +88,38 @@ case object `scala.List<Float?>?`
   val defaultValue = "None"
 }
 
+case object `scala.Queue<Float>`
+    extends ScalaFloat with `box.OneQueueOfOne` {
+
+  val scalaClass = "Queue[Float]"
+
+  val defaultValue = "Queue[Float].empty"
+}
+
+case object `scala.Queue<Float>?`
+    extends ScalaFloat with `box.NullableQueueOfOne` {
+
+  val scalaClass = "Option[Queue[Float]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Queue<Float?>`
+    extends ScalaFloat with `box.OneQueueOfNullable` {
+
+  val scalaClass = "Queue[Option[Float]]"
+
+  val defaultValue = "Queue[Option[Float]].empty"
+}
+
+case object `scala.Queue<Float?>?`
+    extends ScalaFloat with `box.NullableQueueOfNullable` {
+
+  val scalaClass = "Option[Queue[Option[Float]]]"
+
+  val defaultValue = "None"
+}
+
 case object `scala.Set<Float>`
     extends ScalaFloat with `box.OneSetOfOne` {
 

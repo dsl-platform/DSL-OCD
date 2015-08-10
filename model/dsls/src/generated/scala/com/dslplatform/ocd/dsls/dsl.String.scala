@@ -22,6 +22,10 @@ case object `dsl.List<String>`    extends DslString with `box.OneListOfOne`
 case object `dsl.List<String>?`   extends DslString with `box.NullableListOfOne`
 case object `dsl.List<String?>`   extends DslString with `box.OneListOfNullable`
 case object `dsl.List<String?>?`  extends DslString with `box.NullableListOfNullable`
+case object `dsl.Queue<String>`   extends DslString with `box.OneQueueOfOne`
+case object `dsl.Queue<String>?`  extends DslString with `box.NullableQueueOfOne`
+case object `dsl.Queue<String?>`  extends DslString with `box.OneQueueOfNullable`
+case object `dsl.Queue<String?>?` extends DslString with `box.NullableQueueOfNullable`
 case object `dsl.Set<String>`     extends DslString with `box.OneSetOfOne`
 case object `dsl.Set<String>?`    extends DslString with `box.NullableSetOfOne`
 case object `dsl.Set<String?>`    extends DslString with `box.OneSetOfNullable`
@@ -41,6 +45,10 @@ case object `dsl.LIST<STRING>`    extends DslString with `box.OneListOfOne`
 case object `dsl.LIST<STRING>?`   extends DslString with `box.NullableListOfOne`
 case object `dsl.LIST<STRING?>`   extends DslString with `box.OneListOfNullable`
 case object `dsl.LIST<STRING?>?`  extends DslString with `box.NullableListOfNullable`
+case object `dsl.QUEUE<STRING>`   extends DslString with `box.OneQueueOfOne`
+case object `dsl.QUEUE<STRING>?`  extends DslString with `box.NullableQueueOfOne`
+case object `dsl.QUEUE<STRING?>`  extends DslString with `box.OneQueueOfNullable`
+case object `dsl.QUEUE<STRING?>?` extends DslString with `box.NullableQueueOfNullable`
 case object `dsl.SET<STRING>`     extends DslString with `box.OneSetOfOne`
 case object `dsl.SET<STRING>?`    extends DslString with `box.NullableSetOfOne`
 case object `dsl.SET<STRING?>`    extends DslString with `box.OneSetOfNullable`
@@ -60,6 +68,10 @@ case object `dsl.list<string>`    extends DslString with `box.OneListOfOne`
 case object `dsl.list<string>?`   extends DslString with `box.NullableListOfOne`
 case object `dsl.list<string?>`   extends DslString with `box.OneListOfNullable`
 case object `dsl.list<string?>?`  extends DslString with `box.NullableListOfNullable`
+case object `dsl.queue<string>`   extends DslString with `box.OneQueueOfOne`
+case object `dsl.queue<string>?`  extends DslString with `box.NullableQueueOfOne`
+case object `dsl.queue<string?>`  extends DslString with `box.OneQueueOfNullable`
+case object `dsl.queue<string?>?` extends DslString with `box.NullableQueueOfNullable`
 case object `dsl.set<string>`     extends DslString with `box.OneSetOfOne`
 case object `dsl.set<string>?`    extends DslString with `box.NullableSetOfOne`
 case object `dsl.set<string?>`    extends DslString with `box.OneSetOfNullable`

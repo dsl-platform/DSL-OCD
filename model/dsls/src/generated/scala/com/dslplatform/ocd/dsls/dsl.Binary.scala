@@ -22,6 +22,10 @@ case object `dsl.List<Binary>`    extends DslBinary with `box.OneListOfOne`
 case object `dsl.List<Binary>?`   extends DslBinary with `box.NullableListOfOne`
 case object `dsl.List<Binary?>`   extends DslBinary with `box.OneListOfNullable`
 case object `dsl.List<Binary?>?`  extends DslBinary with `box.NullableListOfNullable`
+case object `dsl.Queue<Binary>`   extends DslBinary with `box.OneQueueOfOne`
+case object `dsl.Queue<Binary>?`  extends DslBinary with `box.NullableQueueOfOne`
+case object `dsl.Queue<Binary?>`  extends DslBinary with `box.OneQueueOfNullable`
+case object `dsl.Queue<Binary?>?` extends DslBinary with `box.NullableQueueOfNullable`
 case object `dsl.Set<Binary>`     extends DslBinary with `box.OneSetOfOne`
 case object `dsl.Set<Binary>?`    extends DslBinary with `box.NullableSetOfOne`
 case object `dsl.Set<Binary?>`    extends DslBinary with `box.OneSetOfNullable`
@@ -41,6 +45,10 @@ case object `dsl.LIST<BINARY>`    extends DslBinary with `box.OneListOfOne`
 case object `dsl.LIST<BINARY>?`   extends DslBinary with `box.NullableListOfOne`
 case object `dsl.LIST<BINARY?>`   extends DslBinary with `box.OneListOfNullable`
 case object `dsl.LIST<BINARY?>?`  extends DslBinary with `box.NullableListOfNullable`
+case object `dsl.QUEUE<BINARY>`   extends DslBinary with `box.OneQueueOfOne`
+case object `dsl.QUEUE<BINARY>?`  extends DslBinary with `box.NullableQueueOfOne`
+case object `dsl.QUEUE<BINARY?>`  extends DslBinary with `box.OneQueueOfNullable`
+case object `dsl.QUEUE<BINARY?>?` extends DslBinary with `box.NullableQueueOfNullable`
 case object `dsl.SET<BINARY>`     extends DslBinary with `box.OneSetOfOne`
 case object `dsl.SET<BINARY>?`    extends DslBinary with `box.NullableSetOfOne`
 case object `dsl.SET<BINARY?>`    extends DslBinary with `box.OneSetOfNullable`
@@ -60,6 +68,10 @@ case object `dsl.list<binary>`    extends DslBinary with `box.OneListOfOne`
 case object `dsl.list<binary>?`   extends DslBinary with `box.NullableListOfOne`
 case object `dsl.list<binary?>`   extends DslBinary with `box.OneListOfNullable`
 case object `dsl.list<binary?>?`  extends DslBinary with `box.NullableListOfNullable`
+case object `dsl.queue<binary>`   extends DslBinary with `box.OneQueueOfOne`
+case object `dsl.queue<binary>?`  extends DslBinary with `box.NullableQueueOfOne`
+case object `dsl.queue<binary?>`  extends DslBinary with `box.OneQueueOfNullable`
+case object `dsl.queue<binary?>?` extends DslBinary with `box.NullableQueueOfNullable`
 case object `dsl.set<binary>`     extends DslBinary with `box.OneSetOfOne`
 case object `dsl.set<binary>?`    extends DslBinary with `box.NullableSetOfOne`
 case object `dsl.set<binary?>`    extends DslBinary with `box.OneSetOfNullable`
