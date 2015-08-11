@@ -1,5 +1,6 @@
 client.tmp
 server.tmp
+migration.tmp
 
 java_client
 revenj.net

@@ -44,7 +44,8 @@ s"""    private static JsonSerialization jsonSerialization;
 
     @org.junit.BeforeClass
     public static void initializeJsonSerialization() throws IOException {
-        final ServiceLocator locator = Bootstrap.init(${testName}.class.getResourceAsStream("/dsl-project.ini"));
+        final ServiceLocator locator = Bootstrap.init(
+                ${testName}.class.getResourceAsStream("/dsl-project.ini"));
         jsonSerialization = locator.resolve(JsonSerialization.class);
         logger = locator.resolve(Logger.class);
     }

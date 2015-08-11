@@ -102,7 +102,8 @@ class CalculatedPropertyInSnowflakeTestProject(
 
     @org.junit.BeforeClass
     public static void initialize() throws IOException {
-        final com.dslplatform.patterns.ServiceLocator locator = com.dslplatform.client.Bootstrap.init(${testName}.class.getResourceAsStream("/dsl-project.ini"));
+        final com.dslplatform.patterns.ServiceLocator locator = com.dslplatform.client.Bootstrap.init(
+                ${testName}.class.getResourceAsStream("/dsl-project.ini"));
         jsonSerialization = locator.resolve(com.dslplatform.client.JsonSerialization.class);
         ${repoName} = locator.resolve(${repoClass}.class);
     }

@@ -20,14 +20,7 @@ trait TestJavaTemplate {
     sb ++= "package " ++= packageName ++= ";\n\n"
 
     if (imports.nonEmpty) {
-      val withLogging = imports ++ (if (isSuite) Nil else Seq(
-        "org.slf4j.Logger"
-      , "org.slf4j.LoggerFactory"
-      , "org.slf4j.MDC"
-      ))
-
-      val sorted = withLogging.distinct.sortBy(identity)
-
+      val sorted = imports.distinct.sorted
       sorted foreach { imp =>
         sb ++= "import " ++= imp ++= ";\n"
       }
@@ -41,13 +34,28 @@ trait TestJavaTemplate {
     sb ++= "public class " ++= testName ++=" {\n"
 
     if (!isSuite) {
-      sb ++= """    private static Logger anchorLogger;
+      sb ++= s"""    @org.junit.ClassRule
+    public static org.junit.rules.TestName testName;
+    private static org.slf4j.Logger anchorLogger;
 
     @org.junit.BeforeClass
     public static void initializeLogging() {
-        anchorLogger = LoggerFactory.getLogger("ocd-anchor-logger");
+        testName = new org.junit.rules.TestName();
+        anchorLogger = org.slf4j.LoggerFactory.getLogger("ocd-anchor-logger");
     }
 
+    @org.junit.Before
+    public void openLoggingContext() {
+        final String methodName = testName.getMethodName();
+        final String methodPath = getClass().getName() + "." + methodName;
+        anchorLogger.trace("<a id=\\"" + methodPath + "\\"><h4>" + methodPath + "</h4></a><tt>");
+        org.slf4j.MDC.put("ocdTestMethodName", methodName);
+    }
+
+    @org.junit.After
+    public void closeLoggingContext() {
+        anchorLogger.trace("</tt>");
+    }
 """
     }
 
@@ -55,19 +63,7 @@ trait TestJavaTemplate {
       sb ++= test
     }
 
-
-    /* Quick and filthy regex replace to inject some logging, for easier report creation.
-     * The reason we're putting html here, is because otherwise the heap space in the XSLT transformer
-     * goes up too quickly, and the transform breaks. */
-    tests foreach { test =>
-      sb ++= test.testComponentBody.replaceAll(
-          """public[ ]+void[ ]+test([^\(]+)\(\)(.*?)\{"""
-        , s"""public void test$$1()$$2{
-        final String thisTest = "$packageName.$testName.test$$1";
-        anchorLogger.trace("<a id='" + thisTest + "'><h4>" + thisTest + "</h4></a>");
-        MDC.put("ocdTestMethodName", "test$$1:");
-""")
-    }
+    tests foreach { test => sb ++= test.testComponentBody }
 
     sb ++= "}\n" toString
   }
