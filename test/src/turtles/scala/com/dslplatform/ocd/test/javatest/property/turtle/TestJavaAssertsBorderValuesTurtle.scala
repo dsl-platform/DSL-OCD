@@ -6,6 +6,7 @@ package turtle
 
 import config._
 import javas._
+import com.dslplatform.ocd.boxes.CollectionFamily
 
 object TestJavaAssertsBorderValuesTurtle
     extends ITestProject {
@@ -16,7 +17,10 @@ object TestJavaAssertsBorderValuesTurtle
 
   def dslFiles = Map.empty
   def testFiles = Map(
-    JAVA -> (for (ojbt <- OcdJavaBoxType.values) yield {
+    JAVA -> (for {
+      ojbt <- OcdJavaBoxType.values
+      if !(ojbt.collectionFamily == Some(CollectionFamily.Queue) && ojbt.areElementsNullable == Some(true))
+    } yield {
       JavaInfo(makeTemplate(ojbt).testBody).toEntry
     }).toMap
   )

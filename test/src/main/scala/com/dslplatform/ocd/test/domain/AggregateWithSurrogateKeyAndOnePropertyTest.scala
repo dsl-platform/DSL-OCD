@@ -82,7 +82,11 @@ class AggregateWithSurrogateKeyAndOnePropertyTestProject(
     def packageName = "com.dslplatform.ocd.aggregates"
     def testName = setup.aggregateComment + "Test"
 
-    override def imports = Seq("java.io.IOException")
+    override def imports = Seq(
+      "java.io.IOException"
+    , "java.util.concurrent.ExecutionException"
+    )
+
     override def classDecorations: Seq[String] = Nil
 
     val repoClass = "ocd." + setup.ModuleName + ".repositories." + setup.AggregateName + "Repository"
@@ -165,6 +169,7 @@ class AggregateWithSurrogateKeyAndOnePropertyTestProject(
         def isDefault = true
         def testID = "Default"
         def testValue = ojbt.defaultValue
+        def repositoryName = repoName
       }
     ) ++ ojbt.nonDefaultValues.zipWithIndex.map { case (ndv, index) =>
       new TestJavaPropertyInAggregate {
@@ -173,6 +178,7 @@ class AggregateWithSurrogateKeyAndOnePropertyTestProject(
         def isDefault = false
         def testID = "NonDefault" + (index + 1)
         def testValue = ndv
+        def repositoryName = repoName
       }
     }
   }

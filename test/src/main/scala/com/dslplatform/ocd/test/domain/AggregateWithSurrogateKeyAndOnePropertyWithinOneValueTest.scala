@@ -79,7 +79,11 @@ class AggregateWithSurrogateKeyAndOnePropertyWithinOneValueTestProject(
     def packageName = "com.dslplatform.ocd.aggregates"
     def testName = setup.aggregateComment + "Test"
 
-    override def imports = Seq("java.io.IOException")
+    override def imports = Seq(
+      "java.io.IOException"
+    , "java.util.concurrent.ExecutionException"
+    )
+
     override def classDecorations: Seq[String] = Nil
 
     val repoClass = "ocd." + setup.ModuleName + ".repositories." + setup.AggregateName + "Repository"

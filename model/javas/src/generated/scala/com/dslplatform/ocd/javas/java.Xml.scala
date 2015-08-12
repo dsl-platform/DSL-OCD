@@ -28,7 +28,6 @@ case object `java.Xml`
   , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ElementWithCData>&lt;?xml?&gt;&lt;xml&gt;&lt;!xml!&gt;</ElementWithCData>\")")
   , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<AtributedElement foo=\\\"bar\\\" qwe=\\\"poi\\\"/>\")")
   , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<NestedTextElement><FirstNest><SecondNest>bird</SecondNest></FirstNest></NestedTextElement>\")")
-  , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
   )
 
   val hasGenerics = false
@@ -49,7 +48,6 @@ case object `java.Xml?`
   , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ElementWithCData>&lt;?xml?&gt;&lt;xml&gt;&lt;!xml!&gt;</ElementWithCData>\")")
   , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<AtributedElement foo=\\\"bar\\\" qwe=\\\"poi\\\"/>\")")
   , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<NestedTextElement><FirstNest><SecondNest>bird</SecondNest></FirstNest></NestedTextElement>\")")
-  , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
   )
 
   val hasGenerics = false
@@ -66,7 +64,7 @@ case object `java.Xml[]`
 
   def nonDefaultValues = IndexedSeq(
     ArrayOfJavaValues("org.w3c.dom.Element",
-      SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
+      SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<NestedTextElement><FirstNest><SecondNest>bird</SecondNest></FirstNest></NestedTextElement>\")")
     )
   , ArrayOfJavaValues("org.w3c.dom.Element",
       SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<document/>\")")
@@ -74,7 +72,6 @@ case object `java.Xml[]`
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ElementWithCData>&lt;?xml?&gt;&lt;xml&gt;&lt;!xml!&gt;</ElementWithCData>\")")
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<AtributedElement foo=\\\"bar\\\" qwe=\\\"poi\\\"/>\")")
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<NestedTextElement><FirstNest><SecondNest>bird</SecondNest></FirstNest></NestedTextElement>\")")
-    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
     )
   )
 
@@ -92,7 +89,7 @@ case object `java.Xml[]?`
 
   def nonDefaultValues = IndexedSeq(
     ArrayOfJavaValues("org.w3c.dom.Element",
-      SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
+      SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<NestedTextElement><FirstNest><SecondNest>bird</SecondNest></FirstNest></NestedTextElement>\")")
     )
   , ArrayOfJavaValues("org.w3c.dom.Element",
       SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<document/>\")")
@@ -100,7 +97,6 @@ case object `java.Xml[]?`
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ElementWithCData>&lt;?xml?&gt;&lt;xml&gt;&lt;!xml!&gt;</ElementWithCData>\")")
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<AtributedElement foo=\\\"bar\\\" qwe=\\\"poi\\\"/>\")")
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<NestedTextElement><FirstNest><SecondNest>bird</SecondNest></FirstNest></NestedTextElement>\")")
-    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
     )
   )
 
@@ -121,7 +117,7 @@ case object `java.Xml?[]`
       SingleJavaValue("null")
     )
   , ArrayOfJavaValues("org.w3c.dom.Element",
-      SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
+      SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<NestedTextElement><FirstNest><SecondNest>bird</SecondNest></FirstNest></NestedTextElement>\")")
     )
   , ArrayOfJavaValues("org.w3c.dom.Element",
       SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<document/>\")")
@@ -129,7 +125,6 @@ case object `java.Xml?[]`
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ElementWithCData>&lt;?xml?&gt;&lt;xml&gt;&lt;!xml!&gt;</ElementWithCData>\")")
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<AtributedElement foo=\\\"bar\\\" qwe=\\\"poi\\\"/>\")")
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<NestedTextElement><FirstNest><SecondNest>bird</SecondNest></FirstNest></NestedTextElement>\")")
-    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
     )
   , ArrayOfJavaValues("org.w3c.dom.Element",
       SingleJavaValue("null")
@@ -138,7 +133,6 @@ case object `java.Xml?[]`
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ElementWithCData>&lt;?xml?&gt;&lt;xml&gt;&lt;!xml!&gt;</ElementWithCData>\")")
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<AtributedElement foo=\\\"bar\\\" qwe=\\\"poi\\\"/>\")")
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<NestedTextElement><FirstNest><SecondNest>bird</SecondNest></FirstNest></NestedTextElement>\")")
-    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
     )
   )
 
@@ -159,7 +153,7 @@ case object `java.Xml?[]?`
       SingleJavaValue("null")
     )
   , ArrayOfJavaValues("org.w3c.dom.Element",
-      SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
+      SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<NestedTextElement><FirstNest><SecondNest>bird</SecondNest></FirstNest></NestedTextElement>\")")
     )
   , ArrayOfJavaValues("org.w3c.dom.Element",
       SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<document/>\")")
@@ -167,7 +161,6 @@ case object `java.Xml?[]?`
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ElementWithCData>&lt;?xml?&gt;&lt;xml&gt;&lt;!xml!&gt;</ElementWithCData>\")")
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<AtributedElement foo=\\\"bar\\\" qwe=\\\"poi\\\"/>\")")
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<NestedTextElement><FirstNest><SecondNest>bird</SecondNest></FirstNest></NestedTextElement>\")")
-    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
     )
   , ArrayOfJavaValues("org.w3c.dom.Element",
       SingleJavaValue("null")
@@ -176,7 +169,6 @@ case object `java.Xml?[]?`
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ElementWithCData>&lt;?xml?&gt;&lt;xml&gt;&lt;!xml!&gt;</ElementWithCData>\")")
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<AtributedElement foo=\\\"bar\\\" qwe=\\\"poi\\\"/>\")")
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<NestedTextElement><FirstNest><SecondNest>bird</SecondNest></FirstNest></NestedTextElement>\")")
-    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
     )
   )
 
@@ -194,7 +186,7 @@ case object `java.List<Xml>`
 
   def nonDefaultValues = IndexedSeq(
     ListOfJavaValues("org.w3c.dom.Element",
-      SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
+      SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<NestedTextElement><FirstNest><SecondNest>bird</SecondNest></FirstNest></NestedTextElement>\")")
     )
   , ListOfJavaValues("org.w3c.dom.Element",
       SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<document/>\")")
@@ -202,7 +194,6 @@ case object `java.List<Xml>`
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ElementWithCData>&lt;?xml?&gt;&lt;xml&gt;&lt;!xml!&gt;</ElementWithCData>\")")
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<AtributedElement foo=\\\"bar\\\" qwe=\\\"poi\\\"/>\")")
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<NestedTextElement><FirstNest><SecondNest>bird</SecondNest></FirstNest></NestedTextElement>\")")
-    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
     )
   )
 
@@ -220,7 +211,7 @@ case object `java.List<Xml>?`
 
   def nonDefaultValues = IndexedSeq(
     ListOfJavaValues("org.w3c.dom.Element",
-      SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
+      SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<NestedTextElement><FirstNest><SecondNest>bird</SecondNest></FirstNest></NestedTextElement>\")")
     )
   , ListOfJavaValues("org.w3c.dom.Element",
       SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<document/>\")")
@@ -228,7 +219,6 @@ case object `java.List<Xml>?`
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ElementWithCData>&lt;?xml?&gt;&lt;xml&gt;&lt;!xml!&gt;</ElementWithCData>\")")
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<AtributedElement foo=\\\"bar\\\" qwe=\\\"poi\\\"/>\")")
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<NestedTextElement><FirstNest><SecondNest>bird</SecondNest></FirstNest></NestedTextElement>\")")
-    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
     )
   )
 
@@ -249,7 +239,7 @@ case object `java.List<Xml?>`
       SingleJavaValue("null")
     )
   , ListOfJavaValues("org.w3c.dom.Element",
-      SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
+      SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<NestedTextElement><FirstNest><SecondNest>bird</SecondNest></FirstNest></NestedTextElement>\")")
     )
   , ListOfJavaValues("org.w3c.dom.Element",
       SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<document/>\")")
@@ -257,7 +247,6 @@ case object `java.List<Xml?>`
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ElementWithCData>&lt;?xml?&gt;&lt;xml&gt;&lt;!xml!&gt;</ElementWithCData>\")")
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<AtributedElement foo=\\\"bar\\\" qwe=\\\"poi\\\"/>\")")
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<NestedTextElement><FirstNest><SecondNest>bird</SecondNest></FirstNest></NestedTextElement>\")")
-    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
     )
   , ListOfJavaValues("org.w3c.dom.Element",
       SingleJavaValue("null")
@@ -266,7 +255,6 @@ case object `java.List<Xml?>`
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ElementWithCData>&lt;?xml?&gt;&lt;xml&gt;&lt;!xml!&gt;</ElementWithCData>\")")
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<AtributedElement foo=\\\"bar\\\" qwe=\\\"poi\\\"/>\")")
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<NestedTextElement><FirstNest><SecondNest>bird</SecondNest></FirstNest></NestedTextElement>\")")
-    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
     )
   )
 
@@ -287,7 +275,7 @@ case object `java.List<Xml?>?`
       SingleJavaValue("null")
     )
   , ListOfJavaValues("org.w3c.dom.Element",
-      SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
+      SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<NestedTextElement><FirstNest><SecondNest>bird</SecondNest></FirstNest></NestedTextElement>\")")
     )
   , ListOfJavaValues("org.w3c.dom.Element",
       SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<document/>\")")
@@ -295,7 +283,6 @@ case object `java.List<Xml?>?`
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ElementWithCData>&lt;?xml?&gt;&lt;xml&gt;&lt;!xml!&gt;</ElementWithCData>\")")
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<AtributedElement foo=\\\"bar\\\" qwe=\\\"poi\\\"/>\")")
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<NestedTextElement><FirstNest><SecondNest>bird</SecondNest></FirstNest></NestedTextElement>\")")
-    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
     )
   , ListOfJavaValues("org.w3c.dom.Element",
       SingleJavaValue("null")
@@ -304,7 +291,6 @@ case object `java.List<Xml?>?`
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ElementWithCData>&lt;?xml?&gt;&lt;xml&gt;&lt;!xml!&gt;</ElementWithCData>\")")
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<AtributedElement foo=\\\"bar\\\" qwe=\\\"poi\\\"/>\")")
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<NestedTextElement><FirstNest><SecondNest>bird</SecondNest></FirstNest></NestedTextElement>\")")
-    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
     )
   )
 
@@ -322,7 +308,7 @@ case object `java.Queue<Xml>`
 
   def nonDefaultValues = IndexedSeq(
     QueueOfJavaValues("org.w3c.dom.Element",
-      SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
+      SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<NestedTextElement><FirstNest><SecondNest>bird</SecondNest></FirstNest></NestedTextElement>\")")
     )
   , QueueOfJavaValues("org.w3c.dom.Element",
       SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<document/>\")")
@@ -330,7 +316,6 @@ case object `java.Queue<Xml>`
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ElementWithCData>&lt;?xml?&gt;&lt;xml&gt;&lt;!xml!&gt;</ElementWithCData>\")")
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<AtributedElement foo=\\\"bar\\\" qwe=\\\"poi\\\"/>\")")
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<NestedTextElement><FirstNest><SecondNest>bird</SecondNest></FirstNest></NestedTextElement>\")")
-    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
     )
   )
 
@@ -348,7 +333,7 @@ case object `java.Queue<Xml>?`
 
   def nonDefaultValues = IndexedSeq(
     QueueOfJavaValues("org.w3c.dom.Element",
-      SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
+      SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<NestedTextElement><FirstNest><SecondNest>bird</SecondNest></FirstNest></NestedTextElement>\")")
     )
   , QueueOfJavaValues("org.w3c.dom.Element",
       SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<document/>\")")
@@ -356,7 +341,6 @@ case object `java.Queue<Xml>?`
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ElementWithCData>&lt;?xml?&gt;&lt;xml&gt;&lt;!xml!&gt;</ElementWithCData>\")")
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<AtributedElement foo=\\\"bar\\\" qwe=\\\"poi\\\"/>\")")
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<NestedTextElement><FirstNest><SecondNest>bird</SecondNest></FirstNest></NestedTextElement>\")")
-    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
     )
   )
 
@@ -377,7 +361,7 @@ case object `java.Queue<Xml?>`
       SingleJavaValue("null")
     )
   , QueueOfJavaValues("org.w3c.dom.Element",
-      SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
+      SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<NestedTextElement><FirstNest><SecondNest>bird</SecondNest></FirstNest></NestedTextElement>\")")
     )
   , QueueOfJavaValues("org.w3c.dom.Element",
       SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<document/>\")")
@@ -385,7 +369,6 @@ case object `java.Queue<Xml?>`
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ElementWithCData>&lt;?xml?&gt;&lt;xml&gt;&lt;!xml!&gt;</ElementWithCData>\")")
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<AtributedElement foo=\\\"bar\\\" qwe=\\\"poi\\\"/>\")")
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<NestedTextElement><FirstNest><SecondNest>bird</SecondNest></FirstNest></NestedTextElement>\")")
-    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
     )
   , QueueOfJavaValues("org.w3c.dom.Element",
       SingleJavaValue("null")
@@ -394,7 +377,6 @@ case object `java.Queue<Xml?>`
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ElementWithCData>&lt;?xml?&gt;&lt;xml&gt;&lt;!xml!&gt;</ElementWithCData>\")")
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<AtributedElement foo=\\\"bar\\\" qwe=\\\"poi\\\"/>\")")
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<NestedTextElement><FirstNest><SecondNest>bird</SecondNest></FirstNest></NestedTextElement>\")")
-    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
     )
   )
 
@@ -415,7 +397,7 @@ case object `java.Queue<Xml?>?`
       SingleJavaValue("null")
     )
   , QueueOfJavaValues("org.w3c.dom.Element",
-      SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
+      SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<NestedTextElement><FirstNest><SecondNest>bird</SecondNest></FirstNest></NestedTextElement>\")")
     )
   , QueueOfJavaValues("org.w3c.dom.Element",
       SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<document/>\")")
@@ -423,7 +405,6 @@ case object `java.Queue<Xml?>?`
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ElementWithCData>&lt;?xml?&gt;&lt;xml&gt;&lt;!xml!&gt;</ElementWithCData>\")")
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<AtributedElement foo=\\\"bar\\\" qwe=\\\"poi\\\"/>\")")
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<NestedTextElement><FirstNest><SecondNest>bird</SecondNest></FirstNest></NestedTextElement>\")")
-    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
     )
   , QueueOfJavaValues("org.w3c.dom.Element",
       SingleJavaValue("null")
@@ -432,7 +413,6 @@ case object `java.Queue<Xml?>?`
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ElementWithCData>&lt;?xml?&gt;&lt;xml&gt;&lt;!xml!&gt;</ElementWithCData>\")")
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<AtributedElement foo=\\\"bar\\\" qwe=\\\"poi\\\"/>\")")
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<NestedTextElement><FirstNest><SecondNest>bird</SecondNest></FirstNest></NestedTextElement>\")")
-    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
     )
   )
 
@@ -450,7 +430,7 @@ case object `java.Set<Xml>`
 
   def nonDefaultValues = IndexedSeq(
     SetOfJavaValues("org.w3c.dom.Element",
-      SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
+      SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<NestedTextElement><FirstNest><SecondNest>bird</SecondNest></FirstNest></NestedTextElement>\")")
     )
   , SetOfJavaValues("org.w3c.dom.Element",
       SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<document/>\")")
@@ -458,7 +438,6 @@ case object `java.Set<Xml>`
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ElementWithCData>&lt;?xml?&gt;&lt;xml&gt;&lt;!xml!&gt;</ElementWithCData>\")")
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<AtributedElement foo=\\\"bar\\\" qwe=\\\"poi\\\"/>\")")
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<NestedTextElement><FirstNest><SecondNest>bird</SecondNest></FirstNest></NestedTextElement>\")")
-    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
     )
   )
 
@@ -476,7 +455,7 @@ case object `java.Set<Xml>?`
 
   def nonDefaultValues = IndexedSeq(
     SetOfJavaValues("org.w3c.dom.Element",
-      SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
+      SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<NestedTextElement><FirstNest><SecondNest>bird</SecondNest></FirstNest></NestedTextElement>\")")
     )
   , SetOfJavaValues("org.w3c.dom.Element",
       SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<document/>\")")
@@ -484,7 +463,6 @@ case object `java.Set<Xml>?`
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ElementWithCData>&lt;?xml?&gt;&lt;xml&gt;&lt;!xml!&gt;</ElementWithCData>\")")
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<AtributedElement foo=\\\"bar\\\" qwe=\\\"poi\\\"/>\")")
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<NestedTextElement><FirstNest><SecondNest>bird</SecondNest></FirstNest></NestedTextElement>\")")
-    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
     )
   )
 
@@ -505,7 +483,7 @@ case object `java.Set<Xml?>`
       SingleJavaValue("null")
     )
   , SetOfJavaValues("org.w3c.dom.Element",
-      SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
+      SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<NestedTextElement><FirstNest><SecondNest>bird</SecondNest></FirstNest></NestedTextElement>\")")
     )
   , SetOfJavaValues("org.w3c.dom.Element",
       SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<document/>\")")
@@ -513,7 +491,6 @@ case object `java.Set<Xml?>`
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ElementWithCData>&lt;?xml?&gt;&lt;xml&gt;&lt;!xml!&gt;</ElementWithCData>\")")
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<AtributedElement foo=\\\"bar\\\" qwe=\\\"poi\\\"/>\")")
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<NestedTextElement><FirstNest><SecondNest>bird</SecondNest></FirstNest></NestedTextElement>\")")
-    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
     )
   , SetOfJavaValues("org.w3c.dom.Element",
       SingleJavaValue("null")
@@ -522,7 +499,6 @@ case object `java.Set<Xml?>`
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ElementWithCData>&lt;?xml?&gt;&lt;xml&gt;&lt;!xml!&gt;</ElementWithCData>\")")
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<AtributedElement foo=\\\"bar\\\" qwe=\\\"poi\\\"/>\")")
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<NestedTextElement><FirstNest><SecondNest>bird</SecondNest></FirstNest></NestedTextElement>\")")
-    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
     )
   )
 
@@ -543,7 +519,7 @@ case object `java.Set<Xml?>?`
       SingleJavaValue("null")
     )
   , SetOfJavaValues("org.w3c.dom.Element",
-      SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
+      SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<NestedTextElement><FirstNest><SecondNest>bird</SecondNest></FirstNest></NestedTextElement>\")")
     )
   , SetOfJavaValues("org.w3c.dom.Element",
       SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<document/>\")")
@@ -551,7 +527,6 @@ case object `java.Set<Xml?>?`
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ElementWithCData>&lt;?xml?&gt;&lt;xml&gt;&lt;!xml!&gt;</ElementWithCData>\")")
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<AtributedElement foo=\\\"bar\\\" qwe=\\\"poi\\\"/>\")")
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<NestedTextElement><FirstNest><SecondNest>bird</SecondNest></FirstNest></NestedTextElement>\")")
-    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
     )
   , SetOfJavaValues("org.w3c.dom.Element",
       SingleJavaValue("null")
@@ -560,7 +535,6 @@ case object `java.Set<Xml?>?`
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ElementWithCData>&lt;?xml?&gt;&lt;xml&gt;&lt;!xml!&gt;</ElementWithCData>\")")
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<AtributedElement foo=\\\"bar\\\" qwe=\\\"poi\\\"/>\")")
     , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<NestedTextElement><FirstNest><SecondNest>bird</SecondNest></FirstNest></NestedTextElement>\")")
-    , SingleJavaValue("com.dslplatform.ocd.test.Utils.stringToElement(\"<ns3000:NamespacedElement/>\")")
     )
   )
 

@@ -13,10 +13,12 @@ trait TestJavaPropertyInAggregate
   def isDefault: Boolean
   def testValue: JavaValue
   def setupBlock: String = ""
+  def repositoryName: String
 
   def testComponentBody = (
     jsonSerializationTest
   + (!isDisallowed(isDefault)).ifTrue(activeRecordPersistTest)
+  + (!isDisallowed(isDefault)).ifTrue(repositoryPersistTest)
   )
 
   private def assertEquals(target: String) = property match {
@@ -41,7 +43,7 @@ trait TestJavaPropertyInAggregate
   def jsonSerializationTest = s"""
     /* Testing the "${propertyName}" ${testID} aggregate property JSON serialization */
     @org.junit.Test
-    public void test${PropertyName}${testID}PropertyInAggregateJsonSerialization() throws java.io.IOException {${isDefault match {
+    public void test${PropertyName}${testID}PropertyInAggregateJsonSerialization() throws IOException {${isDefault match {
            case true => s"""
         final ${conceptName} aggregate =
                 new ${conceptName}();
@@ -70,7 +72,7 @@ trait TestJavaPropertyInAggregate
   def activeRecordPersistTest = s"""
     /* Testing the "${propertyName}" ${testID} property value after active record persist */
     @org.junit.Test
-    public void test${PropertyName}${testID}PropertyValueInAggregateAfterActiveRecordPersist() throws java.io.IOException {${setupBlock}${isDefault match {
+    public void test${PropertyName}${testID}PropertyValueInAggregateAfterActiveRecordPersist() throws IOException {${setupBlock}${isDefault match {
            case true => s"""
         final ${conceptName} aggregate =
                 new ${conceptName}();
@@ -99,6 +101,32 @@ trait TestJavaPropertyInAggregate
 
         // hashCodes are generated from the URI
         org.junit.Assert.assertEquals(aggregate.hashCode(), aggregateFound.hashCode());
+    }
+"""
+
+  def repositoryPersistTest = s"""
+    /* Testing the "${propertyName}" ${testID} property value after repository persist */
+    @org.junit.Test
+    public void test${PropertyName}${testID}PropertyValueInAggregateAfterRepositoryPersist() throws IOException, InterruptedException, ExecutionException {${setupBlock}${isDefault match {
+           case true => s"""
+        final ${conceptName} aggregate =
+                new ${conceptName}();
+        final ${propertyType.javaClass} testValue = aggregate.get${PropertyName}();"""
+
+           case _ => s"""
+        final ${propertyType.javaClass} testValue = ${testValue};
+        final ${conceptName} aggregate =
+                new ${conceptName}()
+                .set${PropertyName}(testValue);"""}}
+
+        // persist via active record pattern
+        final String uri = ${repositoryName}.insert(aggregate).get();
+
+        final ${conceptName} aggregateFound =
+                ${repositoryName}.find(uri).get();
+
+        // check the property retrieved from the database
+        ${assertEquals("aggregateFound")}
     }
 """
 }

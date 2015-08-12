@@ -86,7 +86,11 @@ class CalculatedPropertyInSnowflakeTestProject(
     def packageName = "com.dslplatform.ocd.snowflakes"
     def testName = setup.snowflakeComment + "Test"
 
-    override def imports = Seq("java.io.IOException")
+    override def imports = Seq(
+      "java.io.IOException"
+    , "java.util.concurrent.ExecutionException"
+    )
+
     override def classDecorations: Seq[String] = Nil
 
     val repoClass = s"ocd.${setup.ModuleName}.repositories.${setup.AggregateName}Repository"
@@ -244,6 +248,7 @@ class CalculatedPropertyInSnowflakeTestProject(
         def testID = "Default"
         def testValue = ojbt.defaultValue
         def clonePropertyName = setup.aggregateClonePropertyName
+        def repositoryName = repoName
       }
     , new TestJavaCalculatedPropertyInSnowflake {
         def conceptName = aggregateConcept
@@ -254,6 +259,7 @@ class CalculatedPropertyInSnowflakeTestProject(
         def snowflakeName = snowflakeConcept
         def aggregateClonePropertyName = setup.aggregateClonePropertyName
         def snowflakeClonePropertyName = setup.snowflakeClonePropertyName
+        def repositoryName = repoName
       }
     ) ++ ojbt.nonDefaultValues.zipWithIndex.map { case (ndv, index) =>
       new TestJavaCalculatedPropertyInAggregate {
@@ -263,6 +269,7 @@ class CalculatedPropertyInSnowflakeTestProject(
         def testID = "NonDefault" + (index + 1)
         def testValue = ndv
         def clonePropertyName = setup.aggregateClonePropertyName
+        def repositoryName = repoName
       }
     } ++ ojbt.nonDefaultValues.zipWithIndex.map { case (ndv, index) =>
       new TestJavaCalculatedPropertyInSnowflake {
@@ -274,6 +281,7 @@ class CalculatedPropertyInSnowflakeTestProject(
         def snowflakeName = snowflakeConcept
         def aggregateClonePropertyName = setup.aggregateClonePropertyName
         def snowflakeClonePropertyName = setup.snowflakeClonePropertyName
+        def repositoryName = repoName
       }
     }
   }

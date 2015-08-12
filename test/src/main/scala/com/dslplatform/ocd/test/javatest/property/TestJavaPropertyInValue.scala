@@ -19,6 +19,12 @@ trait TestJavaPropertyInValue
       s"""// special null check for dissalowed null value in a non-nullable property
         org.junit.Assert.assertNull(${target}.get${PropertyName}());"""
 
+    case p: OcdJavaBoxTypeProperty if p.boxType.isPrecise =>
+      s"""com.dslplatform.ocd.javaasserts.${p.boxType.typeSingleName}Asserts.assert${p.box.boxName}Equals(
+                testValue,
+                ${target}.get${PropertyName}(),
+                2);"""
+
     case p: OcdJavaBoxTypeProperty =>
       s"""com.dslplatform.ocd.javaasserts.${p.boxType.typeSingleName}Asserts.assert${p.box.boxName}Equals(
                 testValue,
@@ -48,7 +54,7 @@ trait TestJavaPropertyInValue
   def testComponentBody = s"""
     /* Testing the "${propertyName}" ${testID} value property JSON serialization */
     @org.junit.Test
-    public void test${PropertyName}${testID}PropertyValueJsonSerialization() throws java.io.IOException {${setupBlock}${isDefault match {
+    public void test${PropertyName}${testID}PropertyValueJsonSerialization() throws IOException {${setupBlock}${isDefault match {
            case true => s"""
         final ${conceptName} domainValue =
                 new ${conceptName}();

@@ -34,15 +34,15 @@ trait TestJavaTemplate {
     sb ++= "public class " ++= testName ++=" {\n"
 
     if (!isSuite) {
-      sb ++= s"""    @org.junit.ClassRule
-    public static org.junit.rules.TestName testName;
-    private static org.slf4j.Logger anchorLogger;
+      sb ++= s"""    private static org.slf4j.Logger anchorLogger;
 
     @org.junit.BeforeClass
     public static void initializeLogging() {
-        testName = new org.junit.rules.TestName();
         anchorLogger = org.slf4j.LoggerFactory.getLogger("ocd-anchor-logger");
     }
+
+    @org.junit.Rule
+    public final org.junit.rules.TestName testName = new org.junit.rules.TestName();
 
     @org.junit.Before
     public void openLoggingContext() {

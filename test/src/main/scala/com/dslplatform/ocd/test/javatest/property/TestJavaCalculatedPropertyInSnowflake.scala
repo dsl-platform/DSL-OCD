@@ -20,14 +20,23 @@ trait TestJavaCalculatedPropertyInSnowflake
   def snowflakeClonePropertyName: String
   def SnowflakeClonePropertyName = snowflakeClonePropertyName.fciu
 
+  def repositoryName: String
+
   def testComponentBody = (
     (!isDisallowed(isDefault)).ifTrue(activeRecordPersistTest)
+  + (!isDisallowed(isDefault)).ifTrue(repositoryPersistTest)
   )
 
   private def assertEquals(target: String) = property match {
     case _ if isDisallowed(isDefault) =>
       s"""// special null check for dissalowed null value in a non-nullable property
         org.junit.Assert.assertNull(${target});"""
+
+    case p: OcdJavaBoxTypeProperty if p.boxType.isPrecise =>
+      s"""com.dslplatform.ocd.javaasserts.${p.boxType.typeSingleName}Asserts.assert${p.box.boxName}Equals(
+                testValue,
+                ${target},
+                2);"""
 
     case p: OcdJavaBoxTypeProperty =>
       s"""com.dslplatform.ocd.javaasserts.${p.boxType.typeSingleName}Asserts.assert${p.box.boxName}Equals(
@@ -40,7 +49,7 @@ trait TestJavaCalculatedPropertyInSnowflake
   def activeRecordPersistTest = s"""
     /* Testing the "${propertyName}" ${testID} property value after active record persist */
     @org.junit.Test
-    public void test${PropertyName}${testID}PropertyValueInSnowflakeAfterActiveRecordPersist() throws java.io.IOException {${setupBlock}${isDefault match {
+    public void test${PropertyName}${testID}PropertyValueInSnowflakeAfterActiveRecordPersist() throws IOException {${setupBlock}${isDefault match {
            case true => s"""
         final ${conceptName} aggregate =
                 new ${conceptName}();
@@ -57,6 +66,38 @@ trait TestJavaCalculatedPropertyInSnowflake
 
         final ${snowflakeName} snowflake =
                 ${snowflakeName}.find(aggregate.getURI());
+
+        // check the snowflake aggregate property retrieved from the database
+        ${assertEquals(s"snowflake.get${PropertyName}()")}
+
+        // check the snowflake aggregate calculated property clone retrieved from the database
+        ${assertEquals(s"snowflake.get${AggregateClonePropertyName}()")}
+
+        // check the snowflake aggregate calculated property clone retrieved from the database
+        ${assertEquals(s"snowflake.get${SnowflakeClonePropertyName}()")}
+    }
+"""
+
+  def repositoryPersistTest = s"""
+    /* Testing the "${propertyName}" ${testID} property value after repository persist */
+    @org.junit.Test
+    public void test${PropertyName}${testID}PropertyValueInSnowflakeAfterRepositoryPersist() throws IOException, InterruptedException, ExecutionException {${setupBlock}${isDefault match {
+           case true => s"""
+        final ${conceptName} aggregate =
+                new ${conceptName}();
+        final ${propertyType.javaClass} testValue = aggregate.get${PropertyName}();"""
+
+           case _ => s"""
+        final ${propertyType.javaClass} testValue = ${testValue};
+        final ${conceptName} aggregate =
+                new ${conceptName}()
+                .set${PropertyName}(testValue);"""}}
+
+        // persist via repository
+        final String uri = ${repositoryName}.insert(aggregate).get();
+
+        final ${snowflakeName} snowflake =
+                ${snowflakeName}.find(uri);
 
         // check the snowflake aggregate property retrieved from the database
         ${assertEquals(s"snowflake.get${PropertyName}()")}

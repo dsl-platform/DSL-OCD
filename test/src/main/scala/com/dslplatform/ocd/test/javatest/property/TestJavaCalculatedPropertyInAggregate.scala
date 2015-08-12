@@ -17,14 +17,23 @@ trait TestJavaCalculatedPropertyInAggregate
   def clonePropertyName: String
   val ClonePropertyName = clonePropertyName.fciu
 
+  def repositoryName: String
+
   def testComponentBody = (
     (!isDisallowed(isDefault)).ifTrue(activeRecordPersistTest)
+  + (!isDisallowed(isDefault)).ifTrue(repositoryPersistTest)
   )
 
   private def assertEquals(target: String) = property match {
     case _ if isDisallowed(isDefault) =>
       s"""// special null check for dissalowed null value in a non-nullable property
         org.junit.Assert.assertNull(${target});"""
+
+    case p: OcdJavaBoxTypeProperty if p.boxType.isPrecise =>
+      s"""com.dslplatform.ocd.javaasserts.${p.boxType.typeSingleName}Asserts.assert${p.box.boxName}Equals(
+                testValue,
+                ${target},
+                2);"""
 
     case p: OcdJavaBoxTypeProperty =>
       s"""com.dslplatform.ocd.javaasserts.${p.boxType.typeSingleName}Asserts.assert${p.box.boxName}Equals(
@@ -37,7 +46,7 @@ trait TestJavaCalculatedPropertyInAggregate
   def activeRecordPersistTest = s"""
     /* Testing the "${propertyName}" ${testID} property value after active record persist */
     @org.junit.Test
-    public void test${PropertyName}${testID}PropertyValueInAggregateAfterActiveRecordPersist() throws java.io.IOException {${setupBlock}${isDefault match {
+    public void test${PropertyName}${testID}PropertyValueInAggregateAfterActiveRecordPersist() throws IOException {${setupBlock}${isDefault match {
            case true => s"""
         final ${conceptName} aggregate =
                 new ${conceptName}();
@@ -72,6 +81,35 @@ trait TestJavaCalculatedPropertyInAggregate
 
         // hashCodes are generated from the URI
         org.junit.Assert.assertEquals(aggregate.hashCode(), aggregateFound.hashCode());
+    }
+"""
+
+  def repositoryPersistTest = s"""
+    /* Testing the "${propertyName}" ${testID} property value after repository persist */
+    @org.junit.Test
+    public void test${PropertyName}${testID}PropertyValueInAggregateAfterRepositoryPersist() throws IOException, InterruptedException, ExecutionException {${setupBlock}${isDefault match {
+           case true => s"""
+        final ${conceptName} aggregate =
+                new ${conceptName}();
+        final ${propertyType.javaClass} testValue = aggregate.get${PropertyName}();"""
+
+           case _ => s"""
+        final ${propertyType.javaClass} testValue = ${testValue};
+        final ${conceptName} aggregate =
+                new ${conceptName}()
+                .set${PropertyName}(testValue);"""}}
+
+        // persist via repository
+        final String uri = ${repositoryName}.insert(aggregate).get();
+
+        final ${conceptName} aggregateFound =
+                ${repositoryName}.find(uri).get();
+
+        // check the property retrieved from the database
+        ${assertEquals(s"aggregateFound.get${PropertyName}()")}
+
+        // ditto for the calculated property clone
+        ${assertEquals(s"aggregateFound.get${ClonePropertyName}()")}
     }
 """
 }
