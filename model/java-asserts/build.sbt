@@ -35,8 +35,7 @@ credentials in ThisBuild ++= {
 
 // ### COMPILE SETTINGS ### //
 
-crossScalaVersions := Seq("2.11.7")
-scalaVersion := crossScalaVersions.value.head
+scalaVersion := "2.11.7"
 
 javacOptions in doc := Seq(
   "-encoding", "UTF-8"
