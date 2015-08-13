@@ -94,7 +94,7 @@ trait TestJavaCalculatedPropertyInSnowflake
                 .set${PropertyName}(testValue);"""}}
 
         // persist via repository
-        final String uri = ${repositoryName}.insert(aggregate).get();
+        final String uri = ${repositoryName}.insert(new ${conceptName}[] { aggregate }).get().get(0);
 
         final ${snowflakeName} snowflake =
                 ${snowflakeName}.find(uri);

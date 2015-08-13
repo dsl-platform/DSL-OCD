@@ -58,11 +58,15 @@ trait TestJavaPropertyInAggregate
         // check that the property was properly assigned
         ${assertEquals("aggregate")}
 
+        logger.trace("Serializing ${conceptName}: {}", aggregate);
         final com.dslplatform.patterns.Bytes serialized = jsonSerialization.serialize(aggregate);
+        logger.debug("Serialized ${conceptName}: {}", serialized.toUtf8());
+
         final ${conceptName} aggregateDeserialized = jsonSerialization.deserialize(
                 ${conceptName}.class,
                 serialized.content,
                 serialized.length);
+        logger.trace("Deserialized ${conceptName}: {}", aggregateDeserialized);
 
         // check that the property was properly deserialized
         ${assertEquals("aggregateDeserialized")}
@@ -120,7 +124,7 @@ trait TestJavaPropertyInAggregate
                 .set${PropertyName}(testValue);"""}}
 
         // persist via active record pattern
-        final String uri = ${repositoryName}.insert(aggregate).get();
+        final String uri = ${repositoryName}.insert(new ${conceptName}[] { aggregate }).get().get(0);
 
         final ${conceptName} aggregateFound =
                 ${repositoryName}.find(uri).get();
