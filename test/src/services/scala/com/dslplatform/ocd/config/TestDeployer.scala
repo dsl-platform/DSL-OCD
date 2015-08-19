@@ -359,12 +359,12 @@ private[config] class TestDeployer(
       copyPath(masterReportBuilder.toPath, masterReportBuilderTarget.toPath)
 
       // Copy the common build template file
-      val commonTemplate = new java.io.File(classOf[TestDeployer].getResource("/template.build-common-template.xml").toURI)
+      val commonTemplate = new java.io.File(classOf[TestDeployer].getResource("/template.build-common-template-oracle.xml").toURI)
       val commonTemplateTarget = new java.io.File((root / "build-common-template.xml").toURI)
       copyPath(commonTemplate.toPath, commonTemplateTarget.toPath)
 
       // Copy the revenj config template file
-      val revenjConfigTemplate = new java.io.File(classOf[TestDeployer].getResource("/template.revenj/Revenj.Http.exe.config.template").toURI)
+      val revenjConfigTemplate = new java.io.File(classOf[TestDeployer].getResource("/template.dotnet_server_oracle_64/Revenj.Http.exe.config.template").toURI)
       val revenjConfigTemplateTarget = new java.io.File((configTargetPath / "Revenj.Http.exe.config.template").toURI)
       copyPath(revenjConfigTemplate.toPath, revenjConfigTemplateTarget.toPath)
     }

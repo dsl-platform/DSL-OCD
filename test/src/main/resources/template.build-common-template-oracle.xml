@@ -1,0 +1,329 @@
+<?xml version="1.0"?>
+<project name="common" xmlns:if="ant:if" xmlns:unless="ant:unless">
+  <property name="dbOwner" value="ocdcontainer" />
+  <property name="dbOwnerPassword" value="6666" />
+  <property name="dbUser" value="OCDUSER" />
+  <property name="dbPassword" value="ocdpassword" />
+  <property name="dbHost" value="localhost" />
+  <property name="dbPort" value="1521" />
+
+  <property name="java.generated.dir" location="src/generated/java" />
+  <property name="resources.generated.dir" location="src/generated/resources" />
+  <property name="java.test.dir" location="src/test/java" />
+  <property name="resources.test.dir" location="src/test/resources" />
+
+  <property name="revenj.exe.name" value="Revenj.Http.exe" />
+
+  <property name="client.tmp" location="client.tmp" />
+  <property name="server.tmp" location="server.tmp" />
+  <property name="migration.tmp" location="migration.tmp" />
+
+  <property name="dsl-compiler" value="dsl-compiler-1.3-SNAPSHOT.exe" />
+  <property name="project.dsl-compiler.temporary.download" location="${client.tmp}/${dsl-compiler}" />
+  <property name="project.java_client" location="java_client" />
+
+  <property name="tools.lib" location="${tools}/lib" />
+  <property name="tools.build" location="${tools}/build" />
+  <property name="tools.revenj" location="${tools}/dotnet_server_oracle_64" />
+  <property name="tools.java_client" location="${tools}/java_client" />
+  <property name="dsl-compiler-client" location="/${tools.build}/dsl-clc-1.4.0.jar" />
+  <property name="ojdbc" location="d:/Code/DSL-OCD-Target/tools/build/ojdbc6.jar" />
+  <property name="tools.dsl-compiler" location="${tools.build}/${dsl-compiler}" />
+
+  <property name="dsl.src" value="../dsl" />
+  <property name="generated.model" value="model" />
+
+  <property name="target" location="target" />
+  <property name="target.test" location="target/test-classes" />
+  <property name="target.main" location="target/classes" />
+  <property name="target.main.packaged" location="${target}/${projectShortName}.jar" />
+  <property name="target.test.packaged" location="${target}/${projectShortName}-test.jar" />
+
+  <property name="project.revenj" location="dotnet_server_oracle_64" />
+  <property name="revenj.exe" location="${project.revenj}/Revenj.Http.exe" />
+  <property name="revenj.config.template" location="${tools}/config/Revenj.Http.exe.config.template" />
+  <property name="revenj.config" location="${project.revenj}/Revenj.Http.exe.config" />
+
+  <filter token="dbOwner" value="${dbOwner}" />
+  <filter token="dbOwnerPassword" value="${dbOwnerPassword}" />
+  <filter token="dbUser" value="${dbUser}" />
+  <filter token="dbPassword" value="${dbPassword}" />
+  <filter token="dbHost" value="${dbHost}" />
+  <filter token="dbPort" value="${dbPort}" />
+
+  <path id="compile.classpath">
+    <fileset dir="${project.java_client}">
+      <include name="**/*.jar" />
+    </fileset>
+  </path>
+
+  <path id="test.classpath">
+    <fileset dir="${tools.lib}">
+      <include name="**/*.jar" />
+    </fileset>
+    <fileset dir="${project.java_client}">
+      <include name="**/*.jar" />
+    </fileset>
+  </path>
+
+  <path id="postgres.classpath" location="${tools.build}/postgresql-9.4-1201-jdbc4.jar" />
+
+  <target name="create-db" description="Tries to create this project's database. Does not fail the build on failure, since the database might already exist.">
+    <!--sql driver="org.postgresql.Driver" url="jdbc:postgresql://${dbHost}:${dbPort}/" userid="${dbOwner}" password="${dbOwnerPassword}" autocommit="true" onerror="continue">
+      <classpath refid="postgres.classpath" />
+      CREATE DATABASE "${dbName}";
+    </sql-->
+  </target>
+
+  <target name="drop-db" description="Tries to drop this project's database. Does not fail the build on failure, since the database might already be dropped.">
+    <!--sql driver="org.postgresql.Driver" url="jdbc:postgresql://${dbHost}:${dbPort}/" userid="${dbOwner}" password="${dbOwnerPassword}" autocommit="true" onerror="continue">
+      <classpath refid="postgres.classpath" />
+      DROP DATABASE "${dbName}";
+    </sql-->
+  </target>
+
+  <target name="clean-revenj-project" description="Deletes the project Revenj copy">
+    <delete dir="${project.revenj}" />
+  </target>
+
+  <target name="clean-java-client-project" description="Deletes the project Java client copy">
+    <delete dir="${project.java_client}" />
+  </target>
+
+
+  <target name="clean-test" description="Deletes the test result for the project">
+    <delete file="TEST-${testName}.xml" />
+  </target>
+
+  <target name="clean" description="Performs a project clean, but tries to save time by not deleting the downloaded static dependencies. (Does not delete test results.)">
+    <delete dir="${java.generated.dir}" />
+    <delete dir="${resources.generated.dir}" />
+    <delete dir="${target.main}" />
+    <delete dir="${target.test}" />
+    <delete dir="${target}" />
+    <delete dir="${client.tmp}" />
+    <delete dir="${server.tmp}" />
+    <delete dir="${migration.tmp}" />
+    <delete dir="${generated.model}" />
+    <delete dir="${project.java_client}" />
+    <delete dir="${project.revenj}" />
+  </target>
+
+  <target name="setup" description="Sets up the project directory structure">
+    <mkdir dir="${java.generated.dir}" />
+    <mkdir dir="${resources.generated.dir}" />
+    <mkdir dir="${target}" />
+    <mkdir dir="${target.main}" />
+    <mkdir dir="${target.test}" />
+    <mkdir dir="${client.tmp}" />
+    <mkdir dir="${server.tmp}" />
+    <mkdir dir="${migration.tmp}" />
+    <mkdir dir="${generated.model}" />
+    <mkdir dir="${project.java_client}" />
+  </target>
+
+  <target name="copy-revenj-template" if="revenj.template.exists">
+    <copy todir="${project.revenj}">
+      <fileset dir="${tools.revenj}" />
+    </copy>
+  </target>
+  <target name="copy-downloaded-revenj-template" unless="revenj.template.exists">
+    <mkdir dir="${tools.revenj}" />
+    <copy todir="${tools.revenj}">
+      <fileset dir="${project.revenj}" />
+    </copy>
+  </target>
+
+  <target name="copy-java-client-template" if="java_client.template.exists">
+    <copy todir="${project.java_client}">
+      <fileset dir="${tools.java_client}" />
+    </copy>
+  </target>
+  <target name="copy-downloaded-java-client-template" unless="java_client.template.exists">
+    <mkdir dir="${tools.java_client}" />
+    <copy todir="${tools.java_client}">
+      <fileset dir="${project.java_client}" />
+    </copy>
+  </target>
+
+  <target name="copy-downloaded-dsl-compiler-template" unless="dsl-compiler.template.exists">
+    <copy file="${project.dsl-compiler.temporary.download}" tofile="${tools.dsl-compiler}" />
+  </target>
+
+  <target name="compile-revenj" description="Calls the DSL command line client and tries to compile the Revenj server code">
+    <delete dir="${server.tmp}" />
+    <mkdir dir="${server.tmp}" />
+    <condition property="revenj.optional.download" value="" else="-download">
+      <available file="${tools.revenj}" type="dir" />
+    </condition>
+    <condition property="revenj.template.exists">
+      <available file="${tools.revenj}" type="dir" />
+    </condition>
+    <antcall target="copy-revenj-template" />
+    <java classname="com.dslplatform.compiler.client.Main" fork="true">
+      <classpath>
+        <pathelement location="${dsl-compiler-client}"/>
+        <pathelement location="${ojdbc}"/>
+      </classpath>
+      <arg value="dsl=${dsl.src}" />
+      <arg value="compiler=${tools.dsl-compiler}" />
+      <arg value="target=dotnet_server_oracle_64" />
+      <arg line="${revenj.optional.download}" />
+      <arg value="temp=${server.tmp}" />
+      <arg value="settings=active-record,manual-json" />
+      <arg value="oracle=${dbUser}/${dbPassword}@${dbHost}:${dbPort}:xe" />
+      <arg value="sql=${migration.tmp}" />
+      <arg value="force" />
+      <arg value="apply" />
+    </java>
+    <move file="GeneratedModel.dll" todir="${generated.model}" />
+    <antcall target="copy-downloaded-revenj-template" />
+    <antcall target="copy-revenj-config-template" />
+  </target>
+
+  <target name="copy-revenj-config-template" description="Copy the template Revenj configuration file, and replace the template strings with actual configuration values.">
+    <copy file="${revenj.config.template}" tofile="${revenj.config}" overwrite="true" filtering="true" />
+  </target>
+
+  <target name="compile-java-client" description="Calls the DSL command line client and tries to compile the Java client code to be used for testing">
+    <delete dir="${client.tmp}" />
+    <mkdir dir="${client.tmp}" />
+    <condition property="java_client.optional.download" value="-download" else="">
+      <or>
+        <length length="0">
+          <fileset dir="${project.java_client}" />
+        </length>
+        <not>
+          <available file="${tools.dsl-compiler}" type="file" />
+        </not>
+      </or>
+    </condition>
+    <condition property="java_client.template.exists">
+      <available file="${tools.java_client}" type="dir" />
+    </condition>
+    <condition property="dsl-compiler.template.exists">
+      <available file="${tools.dsl-compiler}" type="file" />
+    </condition>
+    <antcall target="copy-java-client-template" />
+    <java jar="${dsl-compiler-client}" fork="true">
+      <classpath refid="compile.classpath" />
+      <arg value="dsl=${dsl.src}" />
+      <arg value="compiler=${tools.dsl-compiler}" />
+      <arg value="target=java_client" />
+      <arg line="${java_client.optional.download}" />
+      <arg value="temp=${client.tmp}" />
+      <arg value="settings=active-record,manual-json" />
+      <arg value="namespace=ocd" />
+    </java>
+    <delete file="generated-model-java.jar" />
+    <antcall target="copy-downloaded-java-client-template" />
+    <antcall target="copy-downloaded-dsl-compiler-template" />
+  </target>
+
+  <target name="dsl-deploy" description="Moves the generated model DLL and Java files to their respective directories. Also applies the Revenj template configuration for this project.">
+    <copy todir="${java.generated.dir}/ocd">
+      <fileset dir="${client.tmp}/JAVA_CLIENT/ocd" />
+    </copy>
+  </target>
+
+  <property environment="env"/>
+  <condition property="bootclasspath1" value="-bootclasspath" else="">
+    <isset property="env.JDK16_HOME" />
+  </condition>
+  <condition property="bootclasspath2" value="${env.JDK16_HOME}/jre/lib/rt.jar" else="">
+    <isset property="env.JDK16_HOME" />
+  </condition>
+
+  <target name="compile-generated" description="Compiles the generated Java client sources.">
+    <javac srcdir="${java.generated.dir}" destdir="${target.main}" fork="true" deprecation="true" encoding="UTF-8" source="1.6" target="1.6" includeantruntime="false">
+      <classpath refid="compile.classpath" />
+      <compilerarg value="-Xlint:all" />
+      <compilerarg value="${bootclasspath1}"/>
+      <compilerarg value="${bootclasspath2}"/>
+    </javac>
+    <copy todir="${target.main}">
+      <fileset dir="${resources.generated.dir}" />
+    </copy>
+  </target>
+
+  <target name="package-generated" description="Packages the generated java client sources in one common JAR.">
+    <jar destfile="${target.main.packaged}" basedir="${target.main}" />
+  </target>
+
+  <target name="compile-tests" description="Compiles the test sources">
+    <javac srcdir="${java.test.dir}" destdir="${target.test}" fork="true" deprecation="true" encoding="UTF-8" source="1.6" target="1.6" includeantruntime="false">
+      <classpath refid="compile.classpath" />
+      <classpath refid="test.classpath" />
+      <classpath location="${target.main}" />
+      <compilerarg value="-Xlint:all" />
+      <compilerarg value="${bootclasspath1}"/>
+      <compilerarg value="${bootclasspath2}"/>
+    </javac>
+    <copy todir="${target.test}">
+      <fileset dir="${resources.test.dir}" />
+    </copy>
+  </target>
+
+  <target name="package-tests" description="Packages the compiled test sources in one common JAR.">
+    <jar destfile="${target.test.packaged}" basedir="${target.test}" />
+  </target>
+
+  <target name="run-revenj" description="Tries to invoke mono on our local Revenj instance, if it exists.">
+    <exec executable="mono" spawn="true" osfamily="unix">
+      <arg value="${revenj.exe}" />
+    </exec>
+    <exec executable="${revenj.exe}" spawn="true" osfamily="windows" />
+    <sleep seconds="1" />
+  </target>
+
+  <target name="kill-revenj" description="Tries to kill our instance of revenj">
+    <exec executable="bash" osfamily="unix">
+      <arg value="-c" />
+      <arg value="ps aux | grep '${revenj.exe}' | grep -v grep | awk '{print $2;}' | xargs kill -9 " />
+    </exec>
+    <exec executable="taskkill" osfamily="windows">
+      <arg line="/im ${revenj.exe.name} /f /t" />
+    </exec>
+  </target>
+
+  <target name="run-junit-ant" description="Runs the generated JUnit test suite using Ant's 'junit' goal, generates the XML otput">
+    <junit printsummary="on" fork="true" showoutput="true">
+      <classpath refid="compile.classpath" />
+      <classpath refid="test.classpath" />
+      <classpath location="${target.main.packaged}" />
+      <classpath location="${target.test.packaged}" />
+      <test name="${testName}">
+        <formatter type="xml" />
+      </test>
+    </junit>
+  </target>
+
+  <target name="run-junit-suite" description="Runs the generated JUnit test suite">
+    <antcall target="run-junit-ant" />
+  </target>
+
+  <target name="run-tests" description="Starts the project's Revenj instance, runs the generated JUnit test suite, and then kills the Revenj instance">
+    <antcall target="run-revenj" />
+    <antcall target="run-junit-suite" />
+    <antcall target="kill-revenj" />
+  </target>
+
+  <target name="all" description="Runs the full build and test suite">
+    <antcall target="setup" />
+
+    <antcall target="create-db" />
+
+    <antcall target="compile-java-client" />
+    <antcall target="compile-revenj" />
+
+    <antcall target="dsl-deploy" />
+
+    <antcall target="compile-generated" />
+    <antcall target="package-generated" />
+
+    <antcall target="compile-tests" />
+    <antcall target="package-tests" />
+    <antcall target="run-tests" />
+  </target>
+
+</project>

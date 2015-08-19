@@ -16,6 +16,7 @@ private[domain] object ValueWithOnePropertySetup {
     t <- OcdType.useCaseValues
     b <- OcdBox.values
     if !(b.collectionFamily == Some(CollectionFamily.Queue) && b.areElementsNullable == Some(true)) // Queue cannot contain null elements
+    if (t.typeName != "String" && t.typeName != "Text" && t.typeName != "Binary") || !b.isCollection
     d = OcdDslBoxType.resolve(t, b)
   } yield {
     new ValueWithOnePropertySetup(d)

@@ -6,10 +6,11 @@
   <appSettings>
     <add key="PluginsPath" value="." />
     <add key="ServerAssembly" value="../model/GeneratedModel.dll"/>
-    <add key="ConnectionString" value="server=@dbHost@;port=@dbPort@;database=@dbName@;user=@dbUser@;password=@dbPassword@;encoding=unicode" />
-    <add key="HttpAddress_local8999" value="http://@revenjHost@:@revenjPort@/" />
+    <add key="ConnectionString" value="Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=@dbHost@)(PORT=@dbPort@)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=xe)));User Id=@dbUser@;Password=@dbPassword@;" />
+    <add key="HttpAddress_localport" value="http://@revenjHost@:@revenjPort@/" />
     <add key="DefaultAuthorization" value="Basic cmV2ZW5qOnJldmVuag==" />
     <add key="CustomAuth" value="Revenj.Http.NoAuth"/>
+    <add key="ApplicationMode" value="Debug" />
   </appSettings>
   <!--system.diagnostics>
     <sources>
@@ -52,7 +53,7 @@
   </system.serviceModel>
   <autofacConfiguration>
     <modules>
-      <module type="Revenj.Wcf.StandardModule, Revenj.Wcf" />
+      <module type="Revenj.Wcf.StandardModuleOracle, Revenj.Wcf" />
     </modules>
     <components>
       <component type="Revenj.Http.NoAuth, Revenj.Http" service="Revenj.Security.IPermissionManager, Revenj.Security.Interface" />
