@@ -48,6 +48,8 @@
              service="Revenj.Plugins.Rest.Commands.DomainCommands, Revenj.Plugins.Rest.Commands" />
         <add relativeAddress="Reporting.svc"
              service="Revenj.Plugins.Rest.Commands.ReportingCommands, Revenj.Plugins.Rest.Commands" />
+        <!--add relativeAddress="Bench.svc" 
+             service="Revenj.Bench.RestService, Revenj.Bench" /-->
       </serviceActivations>
     </serviceHostingEnvironment>
   </system.serviceModel>
