@@ -77,7 +77,7 @@
   <target name="drop-db" description="Tries to drop this project's database. Does not fail the build on failure, since the database might already be dropped.">
     <sql driver="org.postgresql.Driver" url="jdbc:postgresql://${dbHost}:${dbPort}/" userid="${dbOwner}" password="${dbOwnerPassword}" autocommit="true" onerror="continue">
       <classpath refid="postgres.classpath" />
-      DROP DATABASE "${dbName}";
+      DROP DATABASE IF EXISTS "${dbName}";
     </sql>
   </target>
 
