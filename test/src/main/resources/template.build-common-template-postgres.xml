@@ -222,10 +222,10 @@
   </target>
 
   <property environment="env"/>
-  <condition property="bootclasspath1" value="-bootclasspath" else="">
+  <condition property="bootclasspath1" value="-bootclasspath" else="-g"><!-- find a better else="noop" variable, linux javac doesn't understand empty parameters -->
     <isset property="env.JDK16_HOME" />
   </condition>
-  <condition property="bootclasspath2" value="${env.JDK16_HOME}/jre/lib/rt.jar" else="">
+  <condition property="bootclasspath2" value="${env.JDK16_HOME}/jre/lib/rt.jar" else="-g"><!-- find a better else="noop" variable, linux javac doesn't understand empty parameters -->
     <isset property="env.JDK16_HOME" />
   </condition>
 
