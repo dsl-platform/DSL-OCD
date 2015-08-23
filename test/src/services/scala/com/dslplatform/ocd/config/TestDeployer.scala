@@ -307,20 +307,18 @@ private[config] class TestDeployer(
         , "dbPassword" -> "ocdpassword"
         , "dbOwner" -> "postgres"
         , "dbOwnerPassword" -> "ocdpassword"
-        , "revenjHost" -> "localhost" // "[::1]"
+        , "revenjHost" -> "[::1]"
         , "revenjPort" -> projectNamesAndPortsRepository.generateProjectRevenjPort(projectShortName).toString()
         , "toolsPath" -> (testSettings.workspace.path.path + "/tools")
         , "dslSource" -> dslSource.path
         , "revenjPath" -> revenjConfigTemplateTargetPath.path
         )
 
-    private def applyTemplates(stringWithTemplateProperties: String): String = {
-        var retVal = stringWithTemplateProperties
-        for((name, value) <- projectParamTemplates) {
-            retVal = retVal.replace("#{" + name + "}", value)
-        }
-        retVal
-    }
+    private def applyTemplates(stringWithTemplateProperties: String): String =
+      (projectParamTemplates :\ stringWithTemplateProperties){ case ((name, value), retVal) => retVal
+        .replace("#{" + name + ":escape}", value.replaceAll("([#!:=])", "\\\\$1"))
+        .replace("#{" + name + "}", value)
+      }
   }
 
   /**

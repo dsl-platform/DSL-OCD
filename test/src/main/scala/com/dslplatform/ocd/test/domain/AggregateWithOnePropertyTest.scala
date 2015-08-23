@@ -17,6 +17,7 @@ private[domain] object AggregateWithOnePropertySetup {
     if t != `type.Image`                                // Image types shouldn't be a primary key
     if t != `type.Location` && t != `type.Point`        // ERROR: data type point has no default operator class for access method "btree"
     if t != `type.Xml`                                  // ERROR: data type xml has no default operator class for access method "btree"
+    if t != `type.Rectangle`                            // ERROR: data type box has no default operator class for access method "btree"
 //    if t != `type.Binary` && t != `type.String` && t != `type.Text` // Oracle doesn't support BLOB or CLOB as primary key
     b <- OcdBox.values
     if !b.isNullable                                    // Primary keys cannot be nullable
