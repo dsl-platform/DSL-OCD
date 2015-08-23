@@ -47,65 +47,61 @@ case class JavaAsserts(name: String, stub: JavaStub, box: Box)
     with OneQueueOfOneAsserts
     with NullableQueueOfOneAsserts
     with OneQueueOfNullableAsserts
-    with NullableQueueOfNullableAsserts {
+    with NullableQueueOfNullableAsserts
+    with OneLinkedListOfOneAsserts
+    with NullableLinkedListOfOneAsserts
+    with OneLinkedListOfNullableAsserts
+    with NullableLinkedListOfNullableAsserts
+    with OneStackOfOneAsserts
+    with NullableStackOfOneAsserts
+    with OneStackOfNullableAsserts
+    with NullableStackOfNullableAsserts
+    with OneVectorOfOneAsserts
+    with NullableVectorOfOneAsserts
+    with OneVectorOfNullableAsserts
+    with NullableVectorOfNullableAsserts {
 
   import SingleFamily._
   import CollectionFamily._
 
   def body: String = (box: Box) match {
-    case Box(One, None, _*) =>
-      oneAsserts
+    case Box(One, None, _*) =>      oneAsserts
+    case Box(Nullable, None, _*) => nullableAsserts
 
-    case Box(Nullable, None, _*) =>
-      nullableAsserts
+    case Box(One, Some((Array, One)), _*)           => oneArrayOfOneAsserts
+    case Box(Nullable, Some((Array, One)), _*)      => nullableArrayOfOneAsserts
+    case Box(One, Some((Array, Nullable)), _*)      => oneArrayOfNullableAsserts
+    case Box(Nullable, Some((Array, Nullable)), _*) => nullableArrayOfNullableAsserts
 
-    case Box(One, Some((Array, One)), _*) =>
-      oneArrayOfOneAsserts
+    case Box(One, Some((List, One)), _*)           => oneListOfOneAsserts
+    case Box(Nullable, Some((List, One)), _*)      => nullableListOfOneAsserts
+    case Box(One, Some((List, Nullable)), _*)      => oneListOfNullableAsserts
+    case Box(Nullable, Some((List, Nullable)), _*) => nullableListOfNullableAsserts
 
-    case Box(Nullable, Some((Array, One)), _*) =>
-      nullableArrayOfOneAsserts
+    case Box(One, Some((Set, One)), _*)           => oneSetOfOneAsserts
+    case Box(Nullable, Some((Set, One)), _*)      => nullableSetOfOneAsserts
+    case Box(One, Some((Set, Nullable)), _*)      => oneSetOfNullableAsserts
+    case Box(Nullable, Some((Set, Nullable)), _*) => nullableSetOfNullableAsserts
 
-    case Box(One, Some((Array, Nullable)), _*) =>
-      oneArrayOfNullableAsserts
+    case Box(One, Some((Queue, One)), _*)           => oneQueueOfOneAsserts
+    case Box(Nullable, Some((Queue, One)), _*)      => nullableQueueOfOneAsserts
+    case Box(One, Some((Queue, Nullable)), _*)      => oneQueueOfNullableAsserts
+    case Box(Nullable, Some((Queue, Nullable)), _*) => nullableQueueOfNullableAsserts
 
-    case Box(Nullable, Some((Array, Nullable)), _*) =>
-      nullableArrayOfNullableAsserts
+    case Box(One, Some((LinkedList, One)), _*)           => oneLinkedListOfOneAsserts
+    case Box(Nullable, Some((LinkedList, One)), _*)      => nullableLinkedListOfOneAsserts
+    case Box(One, Some((LinkedList, Nullable)), _*)      => oneLinkedListOfNullableAsserts
+    case Box(Nullable, Some((LinkedList, Nullable)), _*) => nullableLinkedListOfNullableAsserts
 
-    case Box(One, Some((List, One)), _*) =>
-      oneListOfOneAsserts
+    case Box(One, Some((Stack, One)), _*)           => oneStackOfOneAsserts
+    case Box(Nullable, Some((Stack, One)), _*)      => nullableStackOfOneAsserts
+    case Box(One, Some((Stack, Nullable)), _*)      => oneStackOfNullableAsserts
+    case Box(Nullable, Some((Stack, Nullable)), _*) => nullableStackOfNullableAsserts
 
-    case Box(Nullable, Some((List, One)), _*) =>
-      nullableListOfOneAsserts
-
-    case Box(One, Some((List, Nullable)), _*) =>
-      oneListOfNullableAsserts
-
-    case Box(Nullable, Some((List, Nullable)), _*) =>
-      nullableListOfNullableAsserts
-
-    case Box(One, Some((Set, One)), _*) =>
-      oneSetOfOneAsserts
-
-    case Box(Nullable, Some((Set, One)), _*) =>
-      nullableSetOfOneAsserts
-
-    case Box(One, Some((Set, Nullable)), _*) =>
-      oneSetOfNullableAsserts
-
-    case Box(Nullable, Some((Set, Nullable)), _*) =>
-      nullableSetOfNullableAsserts
-
-    case Box(One, Some((Queue, One)), _*) =>
-      oneQueueOfOneAsserts
-
-    case Box(Nullable, Some((Queue, One)), _*) =>
-      nullableQueueOfOneAsserts
-
-    case Box(One, Some((Queue, Nullable)), _*) =>
-      oneQueueOfNullableAsserts
-
-    case Box(Nullable, Some((Queue, Nullable)), _*) =>
-      nullableQueueOfNullableAsserts
+    case Box(One, Some((Vector, One)), _*)           => oneVectorOfOneAsserts
+    case Box(Nullable, Some((Vector, One)), _*)      => nullableVectorOfOneAsserts
+    case Box(One, Some((Vector, Nullable)), _*)      => oneVectorOfNullableAsserts
+    case Box(Nullable, Some((Vector, Nullable)), _*) => nullableVectorOfNullableAsserts
   }
 
   val clazz = stub.classValue(box)

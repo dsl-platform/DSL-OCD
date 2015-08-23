@@ -63,7 +63,7 @@ package scalas
 import types._
 import boxes._
 
-sealed trait Scala${t.name.singleName}
+sealed abstract class Scala${t.name.singleName}
     extends OcdScalaBoxType
     with `type.${name}`
 

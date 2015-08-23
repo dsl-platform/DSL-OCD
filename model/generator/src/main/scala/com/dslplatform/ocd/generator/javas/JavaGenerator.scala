@@ -52,7 +52,6 @@ object JavaGenerator
     val values = new LinkedHashSet[String]
 
     for (t <- TypeGenerator.typeValues if stubs.isDefinedAt(t.name.dslName)) yield {
-
       val name = t.name.dslName
       val stub = stubs(name)
 
@@ -63,7 +62,7 @@ package javas
 import types._
 import boxes._
 
-sealed trait Java${t.name.singleName}
+sealed abstract class Java${t.name.singleName}
     extends OcdJavaBoxType
     with `type.${name}` {
 

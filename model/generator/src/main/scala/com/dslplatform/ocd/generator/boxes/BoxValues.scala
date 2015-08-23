@@ -12,9 +12,11 @@ case class Box(
 }
 
 trait BoxValues {
+  private val familyOrder = CollectionFamily.values.zipWithIndex.toMap
+
   private def boxOrder(box: Box) = (
-    box.collectionFamily.map(_._1.toString.head)
-  , box.collectionFamily.map(-_._2.toString.head)
+    box.collectionFamily.map(cf => familyOrder(cf._1))
+  , box.collectionFamily.map(-_._2.shortName.toInt)
   )
 
   val boxValues =

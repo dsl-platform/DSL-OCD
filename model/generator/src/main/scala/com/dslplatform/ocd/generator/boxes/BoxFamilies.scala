@@ -21,9 +21,9 @@ object CollectionFamily {
   case object List extends CollectionFamily("L")
   case object Set extends CollectionFamily("S")
   case object Queue extends CollectionFamily("Q")
-//  case object Stack extends CollectionFamily("S")
-//  case object Vector extends CollectionFamily("V")
-//  case object LinkedList extends CollectionFamily("K")
+  case object LinkedList extends CollectionFamily("K")
+  case object Stack extends CollectionFamily("C")
+  case object Vector extends CollectionFamily("V")
 //  case object Bag extends CollectionFamily("B")
 
   val values: IndexedSeq[CollectionFamily] = IndexedSeq(
@@ -31,9 +31,9 @@ object CollectionFamily {
   , List
   , Set
   , Queue
-//  , Stack
-//  , Vector
-//  , LinkedList
+  , LinkedList
+  , Stack
+  , Vector
 //  , Bag
   )
 }

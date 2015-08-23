@@ -3,7 +3,7 @@ package dsls
 
 trait OcdDslBoxType
     extends types.OcdType
-    with boxes.OcdBox{
+    with boxes.OcdBox {
 
   def dslName = toString substring 4 // "dsl."
   def dslDesc = boxName + (if (isCollection) typePluralName else typeSingleName)

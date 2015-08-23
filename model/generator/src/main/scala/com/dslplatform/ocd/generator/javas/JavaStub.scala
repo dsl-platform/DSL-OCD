@@ -53,6 +53,18 @@ object JavaValueContainer {
 
     case CollectionFamily.Queue =>
       QueueOfJavaValues(clazz, values)
+
+    case CollectionFamily.LinkedList =>
+      LinkedListOfJavaValues(clazz, values)
+
+    case CollectionFamily.Stack =>
+      StackOfJavaValues(clazz, values)
+
+    case CollectionFamily.Vector =>
+      VectorOfJavaValues(clazz, values)
+//
+//    case CollectionFamily.Bag =>
+//      BagOfJavaValues(clazz, values)
   }
 }
 
@@ -96,6 +108,46 @@ case class QueueOfJavaValues(
     )"""
 }
 
+case class LinkedListOfJavaValues(
+    elementClass: String
+  , val values: Seq[TestValue]
+  ) extends TestValueContainer {
+
+  override val toString = s"""LinkedListOfJavaValues(${E"${elementClass}"},
+      ${values.mkString("\n    , ")}
+    )"""
+}
+
+case class StackOfJavaValues(
+    elementClass: String
+  , val values: Seq[TestValue]
+  ) extends TestValueContainer {
+
+  override val toString = s"""StackOfJavaValues(${E"${elementClass}"},
+      ${values.mkString("\n    , ")}
+    )"""
+}
+
+case class VectorOfJavaValues(
+    elementClass: String
+  , val values: Seq[TestValue]
+  ) extends TestValueContainer {
+
+  override val toString = s"""VectorOfJavaValues(${E"${elementClass}"},
+      ${values.mkString("\n    , ")}
+    )"""
+}
+//
+//case class BagOfJavaValues(
+//    elementClass: String
+//  , val values: Seq[TestValue]
+//  ) extends TestValueContainer {
+//
+//  override val toString = s"""BagOfJavaValues(${E"${elementClass}"},
+//      ${values.mkString("\n    , ")}
+//    )"""
+//}
+
 object MapOfJavaValues {
   def apply(entries: (String, String)*): MapOfJavaValues =
     MapOfJavaValues("String", "String", (entries.map { case (k, v) => (k: TestValue, v: TestValue)}).toMap)
@@ -137,18 +189,18 @@ trait JavaStub {
 
     case Box(_, Some((CollectionFamily.Queue, _)), _*) =>
       "java.util.Queue<" + classReference + ">"
-//
-//    case Box(_, Some((CollectionFamily.Stack, _)), _*) =>
-//      "java.util.Stack<" + classReference + ">"
-//
-//    case Box(_, Some((CollectionFamily.Vector, _)), _*) =>
-//      "java.util.Vector<" + classReference + ">"
-//
-//    case Box(_, Some((CollectionFamily.LinkedList, _)), _*) =>
-//      "java.util.LinkedList<" + classReference + ">"
+
+    case Box(_, Some((CollectionFamily.LinkedList, _)), _*) =>
+      "java.util.LinkedList<" + classReference + ">"
+
+    case Box(_, Some((CollectionFamily.Stack, _)), _*) =>
+      "java.util.Stack<" + classReference + ">"
+
+    case Box(_, Some((CollectionFamily.Vector, _)), _*) =>
+      "java.util.Vector<" + classReference + ">"
 //
 //    case Box(_, Some((CollectionFamily.Bag, _)), _*) =>
-//      "java.util.Bag<" + classReference + ">"
+//      "java.util.ArrayList<" + classReference + ">"
   }
 
   val defaultSingle: TestValue
@@ -178,18 +230,18 @@ trait JavaStub {
 
     case Box(_, Some((CollectionFamily.Queue, _)), _*) =>
       ("new java.util.ArrayDeque<" + classReference + ">(0)") ~ Stable
-//
-//    case Box(_, Some((CollectionFamily.Stack, _)), _*) =>
-//      ("new java.util.Stack<" + classReference + ">(0)") ~ Stable
-//
-//    case Box(_, Some((CollectionFamily.Vector, _)), _*) =>
-//      ("new java.util.Vector<" + classReference + ">(0)") ~ Stable
-//
-//    case Box(_, Some((CollectionFamily.LinkedList, _)), _*) =>
-//      ("new java.util.LinkedList<" + classReference + ">(0)") ~ Stable
+
+    case Box(_, Some((CollectionFamily.LinkedList, _)), _*) =>
+      ("new java.util.LinkedList<" + classReference + ">()") ~ Stable
+
+    case Box(_, Some((CollectionFamily.Stack, _)), _*) =>
+      ("new java.util.Stack<" + classReference + ">()") ~ Stable
+
+    case Box(_, Some((CollectionFamily.Vector, _)), _*) =>
+      ("new java.util.Vector<" + classReference + ">(0)") ~ Stable
 //
 //    case Box(_, Some((CollectionFamily.Bag, _)), _*) =>
-//      ("new java.util.Bag<" + classReference + ">(0)") ~ Stable
+//      ("new java.util.ArrayList<" + classReference + ">(0)") ~ Stable
   }
 
   def defaultConcreteType(box: Box, values: TestValue*) = box.collectionFamily.get match {

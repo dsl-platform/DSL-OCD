@@ -100,6 +100,51 @@ s"""    private static JsonSerialization jsonSerialization;
           s"""final java.util.List<${elementType}> deserializedTmpList = jsonSerialization.deserializeList(${elementType.baseClass}.class, ${input}.content, ${input}.length);
         final ${ojbt.javaClass} ${output} = deserializedTmpList == null ? null : new java.util.ArrayDeque<${elementType}>(deserializedTmpList);"""
 
+        case JavaCollectionType("java.util.LinkedList", elementType @ JavaGenericType(baseClass @ "java.util.Map", _*)) =>
+          s"""@SuppressWarnings("unchecked")
+        final java.util.List<${elementType}> deserializedTmpList =
+                (java.util.List<${elementType}>) (java.util.List<?>)
+                jsonSerialization.deserializeList(${elementType.baseClass}.class, ${input}.content, ${input}.length);
+        final ${ojbt.javaClass} ${output} = deserializedTmpList == null ? null : new java.util.LinkedList<${elementType}>(deserializedTmpList);"""
+
+        case JavaCollectionType("java.util.LinkedList", elementType) =>
+          s"""final java.util.List<${elementType}> deserializedTmpList = jsonSerialization.deserializeList(${elementType.baseClass}.class, ${input}.content, ${input}.length);
+        final ${ojbt.javaClass} ${output} = deserializedTmpList == null ? null : new java.util.LinkedList<${elementType}>(deserializedTmpList);"""
+
+        case JavaCollectionType("java.util.Stack", elementType @ JavaGenericType(baseClass @ "java.util.Map", _*)) =>
+          s"""@SuppressWarnings("unchecked")
+        final java.util.List<${elementType}> deserializedTmpList =
+                (java.util.List<${elementType}>) (java.util.List<?>)
+                jsonSerialization.deserializeList(${elementType.baseClass}.class, ${input}.content, ${input}.length);
+        final ${ojbt.javaClass} ${output};
+        if (deserializedTmpList == null) {
+            ${output} = null;
+        } else {
+            ${output} = new java.util.Stack<${elementType}>();
+            ${output}.addAll(deserializedTmpList);
+        }"""
+
+        case JavaCollectionType("java.util.Stack", elementType) =>
+          s"""final java.util.List<${elementType}> deserializedTmpList = jsonSerialization.deserializeList(${elementType.baseClass}.class, ${input}.content, ${input}.length);
+        final ${ojbt.javaClass} ${output};
+        if (deserializedTmpList == null) {
+            ${output} = null;
+        } else {
+            ${output} = new java.util.Stack<${elementType}>();
+            ${output}.addAll(deserializedTmpList);
+        }"""
+
+        case JavaCollectionType("java.util.Vector", elementType @ JavaGenericType(baseClass @ "java.util.Map", _*)) =>
+          s"""@SuppressWarnings("unchecked")
+        final java.util.List<${elementType}> deserializedTmpList =
+                (java.util.List<${elementType}>) (java.util.List<?>)
+                jsonSerialization.deserializeList(${elementType.baseClass}.class, ${input}.content, ${input}.length);
+        final ${ojbt.javaClass} ${output} = deserializedTmpList == null ? null : new java.util.Vector<${elementType}>(deserializedTmpList);"""
+
+        case JavaCollectionType("java.util.Vector", elementType) =>
+          s"""final java.util.List<${elementType}> deserializedTmpList = jsonSerialization.deserializeList(${elementType.baseClass}.class, ${input}.content, ${input}.length);
+        final ${ojbt.javaClass} ${output} = deserializedTmpList == null ? null : new java.util.Vector<${elementType}>(deserializedTmpList);"""
+
         case JavaGenericType(baseClass @ "java.util.Map", _*) =>
           s"final ${ojbt.javaClass} ${output} = (java.util.Map<String, String>) jsonSerialization.deserialize(${baseClass}.class, ${input}.content, ${input}.length);"
 

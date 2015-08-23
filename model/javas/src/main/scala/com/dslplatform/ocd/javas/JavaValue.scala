@@ -79,6 +79,39 @@ case class QueueOfJavaValues(
   }).mkString(">(java.util.Arrays.<" + elementClass + ">asList(", ", ", "))")
 }
 
+case class LinkedListOfJavaValues(
+    elementClass: String
+  , values: JavaValue*
+  ) extends JavaValueContainer {
+
+  override val toString = "new java.util.LinkedList<" + elementClass + values.map(_ match {
+    case x if x.isNull => "(" + elementClass + ") " + x
+    case x => x
+  }).mkString(">(java.util.Arrays.<" + elementClass + ">asList(", ", ", "))")
+}
+
+case class StackOfJavaValues(
+    elementClass: String
+  , values: JavaValue*
+  ) extends JavaValueContainer {
+
+  override val toString = "new java.util.Stack<" + elementClass + values.map(_ match {
+    case x if x.isNull => "(" + elementClass + ") " + x
+    case x => x
+  }).mkString(">() {{ addAll(java.util.Arrays.<" + elementClass + ">asList(", ", ", ")); }}")
+}
+
+case class VectorOfJavaValues(
+    elementClass: String
+  , values: JavaValue*
+  ) extends JavaValueContainer {
+
+  override val toString = "new java.util.Vector<" + elementClass + values.map(_ match {
+    case x if x.isNull => "(" + elementClass + ") " + x
+    case x => x
+  }).mkString(">(java.util.Arrays.<" + elementClass + ">asList(", ", ", "))")
+}
+
 case class MapOfJavaValues(
     keyClass: String
   , valueClass: String
