@@ -1,9 +1,12 @@
 @echo off
 pushd "%~dp0"
 
-if exist "%USERPROFILE%\.ivy2\cache\com.dslplatform.ocd" rmdir /S /Q "%USERPROFILE%\.ivy2\cache\com.dslplatform.ocd"
-if exist DSL-OCD rmdir /S /Q DSL-OCD
-if exist DSL-OCD-Target rmdir /S /Q DSL-OCD-Target
+if exist DSL-Trash rmdir /S /Q DSL-Trash
+if exist "%USERPROFILE%\.ivy2\cache\com.dslplatform.ocd" move "%USERPROFILE%\.ivy2\cache\com.dslplatform.ocd" DSL-Trash
+if exist DSL-OCD move DSL-OCD DSL-Trash
+if exist DSL-OCD-Target move DSL-OCD-Target DSL-Trash
+
+start /MIN cmd /c rmdir /S /Q DSL-Trash
 
 git clone --depth 1 https://melezov@github.com/element-doo/DSL-OCD.git
 cd DSL-OCD\test

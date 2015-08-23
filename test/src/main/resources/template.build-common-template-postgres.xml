@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <project name="common" xmlns:if="ant:if" xmlns:unless="ant:unless">
-  <property name="dbOwner" value="postgres" />
-  <property name="dbOwnerPassword" value="6666" />
+  <property name="dbOwner" value="OCDSUPERUSER" />
+  <property name="dbOwnerPassword" value="D11B6BE3-E928-4C9A-AABC-545BA449CC76" />
   <property name="dbUser" value="ocduser" />
-  <property name="dbPassword" value="ocdpassword" />
+  <property name="dbPassword" value="116469d7-4764-49af-9315-367d826fc8fd" />
   <property name="dbHost" value="localhost" />
   <property name="dbPort" value="5432" />
 
@@ -68,14 +68,14 @@
   <path id="postgres.classpath" location="${tools.build}/postgresql-9.4-1201-jdbc4.jar" />
 
   <target name="create-db" description="Tries to create this project's database. Does not fail the build on failure, since the database might already exist.">
-    <sql driver="org.postgresql.Driver" url="jdbc:postgresql://${dbHost}:${dbPort}/" userid="${dbOwner}" password="${dbOwnerPassword}" autocommit="true" onerror="continue">
+    <sql driver="org.postgresql.Driver" url="jdbc:postgresql://${dbHost}:${dbPort}/postgres" userid="${dbOwner}" password="${dbOwnerPassword}" autocommit="true" onerror="continue">
       <classpath refid="postgres.classpath" />
       CREATE DATABASE "${dbName}";
     </sql>
   </target>
 
   <target name="drop-db" description="Tries to drop this project's database. Does not fail the build on failure, since the database might already be dropped.">
-    <sql driver="org.postgresql.Driver" url="jdbc:postgresql://${dbHost}:${dbPort}/" userid="${dbOwner}" password="${dbOwnerPassword}" autocommit="true" onerror="continue">
+    <sql driver="org.postgresql.Driver" url="jdbc:postgresql://${dbHost}:${dbPort}/postgres" userid="${dbOwner}" password="${dbOwnerPassword}" autocommit="true" onerror="continue">
       <classpath refid="postgres.classpath" />
       DROP DATABASE IF EXISTS "${dbName}";
     </sql>
