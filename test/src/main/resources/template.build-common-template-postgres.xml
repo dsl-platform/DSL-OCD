@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <project name="common" xmlns:if="ant:if" xmlns:unless="ant:unless">
-  <property name="dbOwner" value="OCDSUPERUSER" />
-  <property name="dbOwnerPassword" value="D11B6BE3-E928-4C9A-AABC-545BA449CC76" />
+  <property name="dbSuperUser" value="OCDSUPERUSER" />
+  <property name="dbSuperPassword" value="D11B6BE3-E928-4C9A-AABC-545BA449CC76" />
   <property name="dbUser" value="ocduser" />
   <property name="dbPassword" value="116469d7-4764-49af-9315-367d826fc8fd" />
   <property name="dbHost" value="localhost" />
@@ -43,8 +43,8 @@
   <property name="revenj.config.template" location="${tools}/config/Revenj.Http.exe.config.template" />
   <property name="revenj.config" location="${project.revenj}/Revenj.Http.exe.config" />
 
-  <filter token="dbOwner" value="${dbOwner}" />
-  <filter token="dbOwnerPassword" value="${dbOwnerPassword}" />
+  <filter token="dbSuperUser" value="${dbSuperUser}" />
+  <filter token="dbSuperPassword" value="${dbSuperPassword}" />
   <filter token="dbUser" value="${dbUser}" />
   <filter token="dbPassword" value="${dbPassword}" />
   <filter token="dbHost" value="${dbHost}" />
@@ -68,14 +68,14 @@
   <path id="postgres.classpath" location="${tools.build}/postgresql-9.4-1201-jdbc4.jar" />
 
   <target name="create-db" description="Tries to create this project's database. Does not fail the build on failure, since the database might already exist.">
-    <sql driver="org.postgresql.Driver" url="jdbc:postgresql://${dbHost}:${dbPort}/postgres" userid="${dbOwner}" password="${dbOwnerPassword}" autocommit="true" onerror="continue">
+    <sql driver="org.postgresql.Driver" url="jdbc:postgresql://${dbHost}:${dbPort}/postgres" userid="${dbSuperUser}" password="${dbSuperPassword}" autocommit="true" onerror="continue">
       <classpath refid="postgres.classpath" />
       CREATE DATABASE "${dbName}" OWNER "${dbUser}" ENCODING 'utf8' TEMPLATE template1;
     </sql>
   </target>
 
   <target name="drop-db" description="Tries to drop this project's database. Does not fail the build on failure, since the database might already be dropped.">
-    <sql driver="org.postgresql.Driver" url="jdbc:postgresql://${dbHost}:${dbPort}/postgres" userid="${dbOwner}" password="${dbOwnerPassword}" autocommit="true" onerror="continue">
+    <sql driver="org.postgresql.Driver" url="jdbc:postgresql://${dbHost}:${dbPort}/postgres" userid="${dbSuperUser}" password="${dbSuperPassword}" autocommit="true" onerror="continue">
       <classpath refid="postgres.classpath" />
       DROP DATABASE IF EXISTS "${dbName}";
     </sql>
@@ -167,7 +167,7 @@
       <arg line="${revenj.optional.download}" />
       <arg value="temp=${server.tmp}" />
       <arg value="settings=active-record,manual-json" />
-      <arg value="postgres=${dbHost}:${dbPort}/${dbName}?user=${dbUser}&amp;password=${dbPassword}" />
+      <arg value="postgres=${dbHost}:${dbPort}/${dbName}?user=${dbSuperUser}&amp;password=${dbSuperPassword}" />
       <arg value="sql=${migration.tmp}" />
       <arg value="apply" />
     </java>
