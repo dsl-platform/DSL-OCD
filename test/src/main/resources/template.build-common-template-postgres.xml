@@ -70,7 +70,7 @@
   <target name="create-db" description="Tries to create this project's database. Does not fail the build on failure, since the database might already exist.">
     <sql driver="org.postgresql.Driver" url="jdbc:postgresql://${dbHost}:${dbPort}/postgres" userid="${dbOwner}" password="${dbOwnerPassword}" autocommit="true" onerror="continue">
       <classpath refid="postgres.classpath" />
-      CREATE DATABASE "${dbName}";
+      CREATE DATABASE "${dbName}" OWNER "${dbUser}" ENCODING 'utf8' TEMPLATE template1;
     </sql>
   </target>
 
