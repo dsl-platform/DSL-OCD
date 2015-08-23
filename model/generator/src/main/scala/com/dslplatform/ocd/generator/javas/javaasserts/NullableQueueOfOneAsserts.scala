@@ -19,6 +19,6 @@ trait NullableQueueOfOneAsserts { self: JavaAsserts =>
 
   def assertNullableQueueEquals = s"""
         if (expecteds == actuals) return;
-        if (expecteds == null) Assert.fail(message + "expecteds was <null>, but actuals was a list of size " + actuals.size());
-        if (actuals == null) Assert.fail(message + " expecteds was a list of size " + expecteds.size() + ", but actuals was <null>");"""
+        if (expecteds == null) Assert.fail(message + "expecteds was <null>, but actuals was a queue of size " + actuals.size());
+        if (actuals == null) Assert.fail(message + " expecteds was a queue of size " + expecteds.size() + ", but actuals was <null>");"""
 }

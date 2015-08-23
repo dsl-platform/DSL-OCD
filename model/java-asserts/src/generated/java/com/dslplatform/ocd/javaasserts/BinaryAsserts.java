@@ -192,7 +192,7 @@ public class BinaryAsserts {
         final int expectedsSize = expecteds.size();
         final int actualsSize = actuals.size();
         if (expectedsSize != actualsSize) {
-            Assert.fail(message + "expecteds was a list of size " + expectedsSize + ", but actuals was a list of size " + actualsSize);
+            Assert.fail(message + "expecteds was a queue of size " + expectedsSize + ", but actuals was a queue of size " + actualsSize);
         }
 
         final java.util.Iterator<byte[]> expectedsIterator = expecteds.iterator();
@@ -213,7 +213,7 @@ public class BinaryAsserts {
             i++;
         }
         if (expecteds == actuals) return;
-        if (actuals == null) Assert.fail(message + "expecteds was a list of size " + expecteds.size() + ", but actuals was <null>");
+        if (actuals == null) Assert.fail(message + "expecteds was a queue of size " + expecteds.size() + ", but actuals was <null>");
         assertQueueOfOneEquals(message, expecteds, actuals);
     }
 
@@ -223,8 +223,8 @@ public class BinaryAsserts {
 
     private static void assertNullableQueueOfOneEquals(final String message, final java.util.Queue<byte[]> expecteds, final java.util.Queue<byte[]> actuals) {
         if (expecteds == actuals) return;
-        if (expecteds == null) Assert.fail(message + "expecteds was <null>, but actuals was a list of size " + actuals.size());
-        if (actuals == null) Assert.fail(message + " expecteds was a list of size " + expecteds.size() + ", but actuals was <null>");
+        if (expecteds == null) Assert.fail(message + "expecteds was <null>, but actuals was a queue of size " + actuals.size());
+        if (actuals == null) Assert.fail(message + " expecteds was a queue of size " + expecteds.size() + ", but actuals was <null>");
         assertQueueOfOneEquals(message, expecteds, actuals);
     }
 
@@ -236,7 +236,7 @@ public class BinaryAsserts {
         final int expectedsSize = expecteds.size();
         final int actualsSize = actuals.size();
         if (expectedsSize != actualsSize) {
-            Assert.fail(message + "expecteds was a list of size " + expectedsSize + ", but actuals was a list of size " + actualsSize);
+            Assert.fail(message + "expecteds was a queue of size " + expectedsSize + ", but actuals was a queue of size " + actualsSize);
         }
 
         final java.util.Iterator<byte[]> expectedsIterator = expecteds.iterator();
@@ -251,7 +251,7 @@ public class BinaryAsserts {
     private static void assertOneQueueOfNullableEquals(final String message, final java.util.Queue<byte[]> expecteds, final java.util.Queue<byte[]> actuals) {
         if (expecteds == null) Assert.fail(message + "expecteds was <null> - WARNING: This is a preconditions failure in expecteds, this assertion will never succeed!");
         if (expecteds == actuals) return;
-        if (actuals == null) Assert.fail(message + "expecteds was a list of size " + expecteds.size() + ", but actuals was <null>");
+        if (actuals == null) Assert.fail(message + "expecteds was a queue of size " + expecteds.size() + ", but actuals was <null>");
         assertQueueOfNullableEquals(message, expecteds, actuals);
     }
 
@@ -261,8 +261,8 @@ public class BinaryAsserts {
 
     private static void assertNullableQueueOfNullableEquals(final String message, final java.util.Queue<byte[]> expecteds, final java.util.Queue<byte[]> actuals) {
         if (expecteds == actuals) return;
-        if (expecteds == null) Assert.fail(message + "expecteds was <null>, but actuals was a list of size " + actuals.size());
-        if (actuals == null) Assert.fail(message + " expecteds was a list of size " + expecteds.size() + ", but actuals was <null>");
+        if (expecteds == null) Assert.fail(message + "expecteds was <null>, but actuals was a queue of size " + actuals.size());
+        if (actuals == null) Assert.fail(message + " expecteds was a queue of size " + expecteds.size() + ", but actuals was <null>");
         assertQueueOfNullableEquals(message, expecteds, actuals);
     }
 

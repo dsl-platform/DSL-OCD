@@ -24,7 +24,7 @@ trait OneQueueOfOneAsserts { self: JavaAsserts =>
         final int expectedsSize = expecteds.size();
         final int actualsSize = actuals.size();
         if (expectedsSize != actualsSize) {
-            Assert.fail(message + "expecteds was a list of size " + expectedsSize + ", but actuals was a list of size " + actualsSize);
+            Assert.fail(message + "expecteds was a queue of size " + expectedsSize + ", but actuals was a queue of size " + actualsSize);
         }
 
         final java.util.Iterator<${reference}> expectedsIterator = expecteds.iterator();
@@ -47,5 +47,5 @@ trait OneQueueOfOneAsserts { self: JavaAsserts =>
             i++;
         }
         if (expecteds == actuals) return;
-        if (actuals == null) Assert.fail(message + "expecteds was a list of size " + expecteds.size() + ", but actuals was <null>");"""
+        if (actuals == null) Assert.fail(message + "expecteds was a queue of size " + expecteds.size() + ", but actuals was <null>");"""
 }
