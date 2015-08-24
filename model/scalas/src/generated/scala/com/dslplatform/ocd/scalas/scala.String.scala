@@ -4,7 +4,7 @@ package scalas
 import types._
 import boxes._
 
-sealed trait ScalaString
+sealed abstract class ScalaString
     extends OcdScalaBoxType
     with `type.String`
 
@@ -88,6 +88,38 @@ case object `scala.List<String?>?`
   val defaultValue = "None"
 }
 
+case object `scala.Set<String>`
+    extends ScalaString with `box.OneSetOfOne` {
+
+  val scalaClass = "Set[String]"
+
+  val defaultValue = "Set[String].empty"
+}
+
+case object `scala.Set<String>?`
+    extends ScalaString with `box.NullableSetOfOne` {
+
+  val scalaClass = "Option[Set[String]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Set<String?>`
+    extends ScalaString with `box.OneSetOfNullable` {
+
+  val scalaClass = "Set[Option[String]]"
+
+  val defaultValue = "Set[Option[String]].empty"
+}
+
+case object `scala.Set<String?>?`
+    extends ScalaString with `box.NullableSetOfNullable` {
+
+  val scalaClass = "Option[Set[Option[String]]]"
+
+  val defaultValue = "None"
+}
+
 case object `scala.Queue<String>`
     extends ScalaString with `box.OneQueueOfOne` {
 
@@ -120,34 +152,98 @@ case object `scala.Queue<String?>?`
   val defaultValue = "None"
 }
 
-case object `scala.Set<String>`
-    extends ScalaString with `box.OneSetOfOne` {
+case object `scala.LinkedList<String>`
+    extends ScalaString with `box.OneLinkedListOfOne` {
 
-  val scalaClass = "Set[String]"
+  val scalaClass = "LinkedList[String]"
 
-  val defaultValue = "Set[String].empty"
+  val defaultValue = "LinkedList[String].empty"
 }
 
-case object `scala.Set<String>?`
-    extends ScalaString with `box.NullableSetOfOne` {
+case object `scala.LinkedList<String>?`
+    extends ScalaString with `box.NullableLinkedListOfOne` {
 
-  val scalaClass = "Option[Set[String]]"
+  val scalaClass = "Option[LinkedList[String]]"
 
   val defaultValue = "None"
 }
 
-case object `scala.Set<String?>`
-    extends ScalaString with `box.OneSetOfNullable` {
+case object `scala.LinkedList<String?>`
+    extends ScalaString with `box.OneLinkedListOfNullable` {
 
-  val scalaClass = "Set[Option[String]]"
+  val scalaClass = "LinkedList[Option[String]]"
 
-  val defaultValue = "Set[Option[String]].empty"
+  val defaultValue = "LinkedList[Option[String]].empty"
 }
 
-case object `scala.Set<String?>?`
-    extends ScalaString with `box.NullableSetOfNullable` {
+case object `scala.LinkedList<String?>?`
+    extends ScalaString with `box.NullableLinkedListOfNullable` {
 
-  val scalaClass = "Option[Set[Option[String]]]"
+  val scalaClass = "Option[LinkedList[Option[String]]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Stack<String>`
+    extends ScalaString with `box.OneStackOfOne` {
+
+  val scalaClass = "Stack[String]"
+
+  val defaultValue = "Stack[String].empty"
+}
+
+case object `scala.Stack<String>?`
+    extends ScalaString with `box.NullableStackOfOne` {
+
+  val scalaClass = "Option[Stack[String]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Stack<String?>`
+    extends ScalaString with `box.OneStackOfNullable` {
+
+  val scalaClass = "Stack[Option[String]]"
+
+  val defaultValue = "Stack[Option[String]].empty"
+}
+
+case object `scala.Stack<String?>?`
+    extends ScalaString with `box.NullableStackOfNullable` {
+
+  val scalaClass = "Option[Stack[Option[String]]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Vector<String>`
+    extends ScalaString with `box.OneVectorOfOne` {
+
+  val scalaClass = "Vector[String]"
+
+  val defaultValue = "Vector[String].empty"
+}
+
+case object `scala.Vector<String>?`
+    extends ScalaString with `box.NullableVectorOfOne` {
+
+  val scalaClass = "Option[Vector[String]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Vector<String?>`
+    extends ScalaString with `box.OneVectorOfNullable` {
+
+  val scalaClass = "Vector[Option[String]]"
+
+  val defaultValue = "Vector[Option[String]].empty"
+}
+
+case object `scala.Vector<String?>?`
+    extends ScalaString with `box.NullableVectorOfNullable` {
+
+  val scalaClass = "Option[Vector[Option[String]]]"
 
   val defaultValue = "None"
 }

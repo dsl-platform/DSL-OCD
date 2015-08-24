@@ -4,7 +4,7 @@ package scalas
 import types._
 import boxes._
 
-sealed trait ScalaIp
+sealed abstract class ScalaIp
     extends OcdScalaBoxType
     with `type.Ip`
 
@@ -88,6 +88,38 @@ case object `scala.List<Ip?>?`
   val defaultValue = "None"
 }
 
+case object `scala.Set<Ip>`
+    extends ScalaIp with `box.OneSetOfOne` {
+
+  val scalaClass = "Set[java.net.InetAddress]"
+
+  val defaultValue = "Set[java.net.InetAddress].empty"
+}
+
+case object `scala.Set<Ip>?`
+    extends ScalaIp with `box.NullableSetOfOne` {
+
+  val scalaClass = "Option[Set[java.net.InetAddress]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Set<Ip?>`
+    extends ScalaIp with `box.OneSetOfNullable` {
+
+  val scalaClass = "Set[Option[java.net.InetAddress]]"
+
+  val defaultValue = "Set[Option[java.net.InetAddress]].empty"
+}
+
+case object `scala.Set<Ip?>?`
+    extends ScalaIp with `box.NullableSetOfNullable` {
+
+  val scalaClass = "Option[Set[Option[java.net.InetAddress]]]"
+
+  val defaultValue = "None"
+}
+
 case object `scala.Queue<Ip>`
     extends ScalaIp with `box.OneQueueOfOne` {
 
@@ -120,34 +152,98 @@ case object `scala.Queue<Ip?>?`
   val defaultValue = "None"
 }
 
-case object `scala.Set<Ip>`
-    extends ScalaIp with `box.OneSetOfOne` {
+case object `scala.LinkedList<Ip>`
+    extends ScalaIp with `box.OneLinkedListOfOne` {
 
-  val scalaClass = "Set[java.net.InetAddress]"
+  val scalaClass = "LinkedList[java.net.InetAddress]"
 
-  val defaultValue = "Set[java.net.InetAddress].empty"
+  val defaultValue = "LinkedList[java.net.InetAddress].empty"
 }
 
-case object `scala.Set<Ip>?`
-    extends ScalaIp with `box.NullableSetOfOne` {
+case object `scala.LinkedList<Ip>?`
+    extends ScalaIp with `box.NullableLinkedListOfOne` {
 
-  val scalaClass = "Option[Set[java.net.InetAddress]]"
+  val scalaClass = "Option[LinkedList[java.net.InetAddress]]"
 
   val defaultValue = "None"
 }
 
-case object `scala.Set<Ip?>`
-    extends ScalaIp with `box.OneSetOfNullable` {
+case object `scala.LinkedList<Ip?>`
+    extends ScalaIp with `box.OneLinkedListOfNullable` {
 
-  val scalaClass = "Set[Option[java.net.InetAddress]]"
+  val scalaClass = "LinkedList[Option[java.net.InetAddress]]"
 
-  val defaultValue = "Set[Option[java.net.InetAddress]].empty"
+  val defaultValue = "LinkedList[Option[java.net.InetAddress]].empty"
 }
 
-case object `scala.Set<Ip?>?`
-    extends ScalaIp with `box.NullableSetOfNullable` {
+case object `scala.LinkedList<Ip?>?`
+    extends ScalaIp with `box.NullableLinkedListOfNullable` {
 
-  val scalaClass = "Option[Set[Option[java.net.InetAddress]]]"
+  val scalaClass = "Option[LinkedList[Option[java.net.InetAddress]]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Stack<Ip>`
+    extends ScalaIp with `box.OneStackOfOne` {
+
+  val scalaClass = "Stack[java.net.InetAddress]"
+
+  val defaultValue = "Stack[java.net.InetAddress].empty"
+}
+
+case object `scala.Stack<Ip>?`
+    extends ScalaIp with `box.NullableStackOfOne` {
+
+  val scalaClass = "Option[Stack[java.net.InetAddress]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Stack<Ip?>`
+    extends ScalaIp with `box.OneStackOfNullable` {
+
+  val scalaClass = "Stack[Option[java.net.InetAddress]]"
+
+  val defaultValue = "Stack[Option[java.net.InetAddress]].empty"
+}
+
+case object `scala.Stack<Ip?>?`
+    extends ScalaIp with `box.NullableStackOfNullable` {
+
+  val scalaClass = "Option[Stack[Option[java.net.InetAddress]]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Vector<Ip>`
+    extends ScalaIp with `box.OneVectorOfOne` {
+
+  val scalaClass = "Vector[java.net.InetAddress]"
+
+  val defaultValue = "Vector[java.net.InetAddress].empty"
+}
+
+case object `scala.Vector<Ip>?`
+    extends ScalaIp with `box.NullableVectorOfOne` {
+
+  val scalaClass = "Option[Vector[java.net.InetAddress]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Vector<Ip?>`
+    extends ScalaIp with `box.OneVectorOfNullable` {
+
+  val scalaClass = "Vector[Option[java.net.InetAddress]]"
+
+  val defaultValue = "Vector[Option[java.net.InetAddress]].empty"
+}
+
+case object `scala.Vector<Ip?>?`
+    extends ScalaIp with `box.NullableVectorOfNullable` {
+
+  val scalaClass = "Option[Vector[Option[java.net.InetAddress]]]"
 
   val defaultValue = "None"
 }

@@ -4,7 +4,7 @@ package javas
 import types._
 import boxes._
 
-sealed trait JavaDouble
+sealed abstract class JavaDouble
     extends OcdJavaBoxType
     with `type.Double` {
 
@@ -362,6 +362,158 @@ case object `java.List<Double?>?`
   val hasGenerics = true
 }
 
+case object `java.Set<Double>`
+    extends JavaDouble with `box.OneSetOfOne` {
+
+  val javaClass = "java.util.Set<Double>"
+  val javaType = JavaCollectionType("java.util.Set", JavaClass("Double"))
+  val javaDescription = "OneSetOfOneDoubles"
+
+  def defaultValue = SingleJavaValue("new java.util.HashSet<Double>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    SetOfJavaValues("Double",
+      SingleJavaValue("0.0")
+    )
+  , SetOfJavaValues("Double",
+      SingleJavaValue("Double.NaN")
+    )
+  , SetOfJavaValues("Double",
+      SingleJavaValue("0.0")
+    , SingleJavaValue("1E-307")
+    , SingleJavaValue("9E307")
+    , SingleJavaValue("-1.23456789012345E-10")
+    , SingleJavaValue("1.23456789012345E20")
+    , SingleJavaValue("Double.NEGATIVE_INFINITY")
+    , SingleJavaValue("Double.POSITIVE_INFINITY")
+    , SingleJavaValue("Double.NaN")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Set<Double>?`
+    extends JavaDouble with `box.NullableSetOfOne` {
+
+  val javaClass = "java.util.Set<Double>"
+  val javaType = JavaCollectionType("java.util.Set", JavaClass("Double"))
+  val javaDescription = "NullableSetOfOneDoubles"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    SetOfJavaValues("Double",
+      SingleJavaValue("0.0")
+    )
+  , SetOfJavaValues("Double",
+      SingleJavaValue("Double.NaN")
+    )
+  , SetOfJavaValues("Double",
+      SingleJavaValue("0.0")
+    , SingleJavaValue("1E-307")
+    , SingleJavaValue("9E307")
+    , SingleJavaValue("-1.23456789012345E-10")
+    , SingleJavaValue("1.23456789012345E20")
+    , SingleJavaValue("Double.NEGATIVE_INFINITY")
+    , SingleJavaValue("Double.POSITIVE_INFINITY")
+    , SingleJavaValue("Double.NaN")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Set<Double?>`
+    extends JavaDouble with `box.OneSetOfNullable` {
+
+  val javaClass = "java.util.Set<Double>"
+  val javaType = JavaCollectionType("java.util.Set", JavaClass("Double"))
+  val javaDescription = "OneSetOfNullableDoubles"
+
+  def defaultValue = SingleJavaValue("new java.util.HashSet<Double>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    SetOfJavaValues("Double",
+      SingleJavaValue("null")
+    )
+  , SetOfJavaValues("Double",
+      SingleJavaValue("0.0")
+    )
+  , SetOfJavaValues("Double",
+      SingleJavaValue("Double.NaN")
+    )
+  , SetOfJavaValues("Double",
+      SingleJavaValue("0.0")
+    , SingleJavaValue("1E-307")
+    , SingleJavaValue("9E307")
+    , SingleJavaValue("-1.23456789012345E-10")
+    , SingleJavaValue("1.23456789012345E20")
+    , SingleJavaValue("Double.NEGATIVE_INFINITY")
+    , SingleJavaValue("Double.POSITIVE_INFINITY")
+    , SingleJavaValue("Double.NaN")
+    )
+  , SetOfJavaValues("Double",
+      SingleJavaValue("null")
+    , SingleJavaValue("0.0")
+    , SingleJavaValue("1E-307")
+    , SingleJavaValue("9E307")
+    , SingleJavaValue("-1.23456789012345E-10")
+    , SingleJavaValue("1.23456789012345E20")
+    , SingleJavaValue("Double.NEGATIVE_INFINITY")
+    , SingleJavaValue("Double.POSITIVE_INFINITY")
+    , SingleJavaValue("Double.NaN")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Set<Double?>?`
+    extends JavaDouble with `box.NullableSetOfNullable` {
+
+  val javaClass = "java.util.Set<Double>"
+  val javaType = JavaCollectionType("java.util.Set", JavaClass("Double"))
+  val javaDescription = "NullableSetOfNullableDoubles"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    SetOfJavaValues("Double",
+      SingleJavaValue("null")
+    )
+  , SetOfJavaValues("Double",
+      SingleJavaValue("0.0")
+    )
+  , SetOfJavaValues("Double",
+      SingleJavaValue("Double.NaN")
+    )
+  , SetOfJavaValues("Double",
+      SingleJavaValue("0.0")
+    , SingleJavaValue("1E-307")
+    , SingleJavaValue("9E307")
+    , SingleJavaValue("-1.23456789012345E-10")
+    , SingleJavaValue("1.23456789012345E20")
+    , SingleJavaValue("Double.NEGATIVE_INFINITY")
+    , SingleJavaValue("Double.POSITIVE_INFINITY")
+    , SingleJavaValue("Double.NaN")
+    )
+  , SetOfJavaValues("Double",
+      SingleJavaValue("null")
+    , SingleJavaValue("0.0")
+    , SingleJavaValue("1E-307")
+    , SingleJavaValue("9E307")
+    , SingleJavaValue("-1.23456789012345E-10")
+    , SingleJavaValue("1.23456789012345E20")
+    , SingleJavaValue("Double.NEGATIVE_INFINITY")
+    , SingleJavaValue("Double.POSITIVE_INFINITY")
+    , SingleJavaValue("Double.NaN")
+    )
+  )
+
+  val hasGenerics = true
+}
+
 case object `java.Queue<Double>`
     extends JavaDouble with `box.OneQueueOfOne` {
 
@@ -514,23 +666,23 @@ case object `java.Queue<Double?>?`
   val hasGenerics = true
 }
 
-case object `java.Set<Double>`
-    extends JavaDouble with `box.OneSetOfOne` {
+case object `java.LinkedList<Double>`
+    extends JavaDouble with `box.OneLinkedListOfOne` {
 
-  val javaClass = "java.util.Set<Double>"
-  val javaType = JavaCollectionType("java.util.Set", JavaClass("Double"))
-  val javaDescription = "OneSetOfOneDoubles"
+  val javaClass = "java.util.LinkedList<Double>"
+  val javaType = JavaCollectionType("java.util.LinkedList", JavaClass("Double"))
+  val javaDescription = "OneLinkedListOfOneDoubles"
 
-  def defaultValue = SingleJavaValue("new java.util.HashSet<Double>(0)")
+  def defaultValue = SingleJavaValue("new java.util.LinkedList<Double>()")
 
   def nonDefaultValues = IndexedSeq(
-    SetOfJavaValues("Double",
+    LinkedListOfJavaValues("Double",
       SingleJavaValue("0.0")
     )
-  , SetOfJavaValues("Double",
+  , LinkedListOfJavaValues("Double",
       SingleJavaValue("Double.NaN")
     )
-  , SetOfJavaValues("Double",
+  , LinkedListOfJavaValues("Double",
       SingleJavaValue("0.0")
     , SingleJavaValue("1E-307")
     , SingleJavaValue("9E307")
@@ -545,23 +697,23 @@ case object `java.Set<Double>`
   val hasGenerics = true
 }
 
-case object `java.Set<Double>?`
-    extends JavaDouble with `box.NullableSetOfOne` {
+case object `java.LinkedList<Double>?`
+    extends JavaDouble with `box.NullableLinkedListOfOne` {
 
-  val javaClass = "java.util.Set<Double>"
-  val javaType = JavaCollectionType("java.util.Set", JavaClass("Double"))
-  val javaDescription = "NullableSetOfOneDoubles"
+  val javaClass = "java.util.LinkedList<Double>"
+  val javaType = JavaCollectionType("java.util.LinkedList", JavaClass("Double"))
+  val javaDescription = "NullableLinkedListOfOneDoubles"
 
   def defaultValue = SingleJavaValue("null")
 
   def nonDefaultValues = IndexedSeq(
-    SetOfJavaValues("Double",
+    LinkedListOfJavaValues("Double",
       SingleJavaValue("0.0")
     )
-  , SetOfJavaValues("Double",
+  , LinkedListOfJavaValues("Double",
       SingleJavaValue("Double.NaN")
     )
-  , SetOfJavaValues("Double",
+  , LinkedListOfJavaValues("Double",
       SingleJavaValue("0.0")
     , SingleJavaValue("1E-307")
     , SingleJavaValue("9E307")
@@ -576,26 +728,26 @@ case object `java.Set<Double>?`
   val hasGenerics = true
 }
 
-case object `java.Set<Double?>`
-    extends JavaDouble with `box.OneSetOfNullable` {
+case object `java.LinkedList<Double?>`
+    extends JavaDouble with `box.OneLinkedListOfNullable` {
 
-  val javaClass = "java.util.Set<Double>"
-  val javaType = JavaCollectionType("java.util.Set", JavaClass("Double"))
-  val javaDescription = "OneSetOfNullableDoubles"
+  val javaClass = "java.util.LinkedList<Double>"
+  val javaType = JavaCollectionType("java.util.LinkedList", JavaClass("Double"))
+  val javaDescription = "OneLinkedListOfNullableDoubles"
 
-  def defaultValue = SingleJavaValue("new java.util.HashSet<Double>(0)")
+  def defaultValue = SingleJavaValue("new java.util.LinkedList<Double>()")
 
   def nonDefaultValues = IndexedSeq(
-    SetOfJavaValues("Double",
+    LinkedListOfJavaValues("Double",
       SingleJavaValue("null")
     )
-  , SetOfJavaValues("Double",
+  , LinkedListOfJavaValues("Double",
       SingleJavaValue("0.0")
     )
-  , SetOfJavaValues("Double",
+  , LinkedListOfJavaValues("Double",
       SingleJavaValue("Double.NaN")
     )
-  , SetOfJavaValues("Double",
+  , LinkedListOfJavaValues("Double",
       SingleJavaValue("0.0")
     , SingleJavaValue("1E-307")
     , SingleJavaValue("9E307")
@@ -605,7 +757,7 @@ case object `java.Set<Double?>`
     , SingleJavaValue("Double.POSITIVE_INFINITY")
     , SingleJavaValue("Double.NaN")
     )
-  , SetOfJavaValues("Double",
+  , LinkedListOfJavaValues("Double",
       SingleJavaValue("null")
     , SingleJavaValue("0.0")
     , SingleJavaValue("1E-307")
@@ -621,26 +773,26 @@ case object `java.Set<Double?>`
   val hasGenerics = true
 }
 
-case object `java.Set<Double?>?`
-    extends JavaDouble with `box.NullableSetOfNullable` {
+case object `java.LinkedList<Double?>?`
+    extends JavaDouble with `box.NullableLinkedListOfNullable` {
 
-  val javaClass = "java.util.Set<Double>"
-  val javaType = JavaCollectionType("java.util.Set", JavaClass("Double"))
-  val javaDescription = "NullableSetOfNullableDoubles"
+  val javaClass = "java.util.LinkedList<Double>"
+  val javaType = JavaCollectionType("java.util.LinkedList", JavaClass("Double"))
+  val javaDescription = "NullableLinkedListOfNullableDoubles"
 
   def defaultValue = SingleJavaValue("null")
 
   def nonDefaultValues = IndexedSeq(
-    SetOfJavaValues("Double",
+    LinkedListOfJavaValues("Double",
       SingleJavaValue("null")
     )
-  , SetOfJavaValues("Double",
+  , LinkedListOfJavaValues("Double",
       SingleJavaValue("0.0")
     )
-  , SetOfJavaValues("Double",
+  , LinkedListOfJavaValues("Double",
       SingleJavaValue("Double.NaN")
     )
-  , SetOfJavaValues("Double",
+  , LinkedListOfJavaValues("Double",
       SingleJavaValue("0.0")
     , SingleJavaValue("1E-307")
     , SingleJavaValue("9E307")
@@ -650,7 +802,311 @@ case object `java.Set<Double?>?`
     , SingleJavaValue("Double.POSITIVE_INFINITY")
     , SingleJavaValue("Double.NaN")
     )
-  , SetOfJavaValues("Double",
+  , LinkedListOfJavaValues("Double",
+      SingleJavaValue("null")
+    , SingleJavaValue("0.0")
+    , SingleJavaValue("1E-307")
+    , SingleJavaValue("9E307")
+    , SingleJavaValue("-1.23456789012345E-10")
+    , SingleJavaValue("1.23456789012345E20")
+    , SingleJavaValue("Double.NEGATIVE_INFINITY")
+    , SingleJavaValue("Double.POSITIVE_INFINITY")
+    , SingleJavaValue("Double.NaN")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Stack<Double>`
+    extends JavaDouble with `box.OneStackOfOne` {
+
+  val javaClass = "java.util.Stack<Double>"
+  val javaType = JavaCollectionType("java.util.Stack", JavaClass("Double"))
+  val javaDescription = "OneStackOfOneDoubles"
+
+  def defaultValue = SingleJavaValue("new java.util.Stack<Double>()")
+
+  def nonDefaultValues = IndexedSeq(
+    StackOfJavaValues("Double",
+      SingleJavaValue("0.0")
+    )
+  , StackOfJavaValues("Double",
+      SingleJavaValue("Double.NaN")
+    )
+  , StackOfJavaValues("Double",
+      SingleJavaValue("0.0")
+    , SingleJavaValue("1E-307")
+    , SingleJavaValue("9E307")
+    , SingleJavaValue("-1.23456789012345E-10")
+    , SingleJavaValue("1.23456789012345E20")
+    , SingleJavaValue("Double.NEGATIVE_INFINITY")
+    , SingleJavaValue("Double.POSITIVE_INFINITY")
+    , SingleJavaValue("Double.NaN")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Stack<Double>?`
+    extends JavaDouble with `box.NullableStackOfOne` {
+
+  val javaClass = "java.util.Stack<Double>"
+  val javaType = JavaCollectionType("java.util.Stack", JavaClass("Double"))
+  val javaDescription = "NullableStackOfOneDoubles"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    StackOfJavaValues("Double",
+      SingleJavaValue("0.0")
+    )
+  , StackOfJavaValues("Double",
+      SingleJavaValue("Double.NaN")
+    )
+  , StackOfJavaValues("Double",
+      SingleJavaValue("0.0")
+    , SingleJavaValue("1E-307")
+    , SingleJavaValue("9E307")
+    , SingleJavaValue("-1.23456789012345E-10")
+    , SingleJavaValue("1.23456789012345E20")
+    , SingleJavaValue("Double.NEGATIVE_INFINITY")
+    , SingleJavaValue("Double.POSITIVE_INFINITY")
+    , SingleJavaValue("Double.NaN")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Stack<Double?>`
+    extends JavaDouble with `box.OneStackOfNullable` {
+
+  val javaClass = "java.util.Stack<Double>"
+  val javaType = JavaCollectionType("java.util.Stack", JavaClass("Double"))
+  val javaDescription = "OneStackOfNullableDoubles"
+
+  def defaultValue = SingleJavaValue("new java.util.Stack<Double>()")
+
+  def nonDefaultValues = IndexedSeq(
+    StackOfJavaValues("Double",
+      SingleJavaValue("null")
+    )
+  , StackOfJavaValues("Double",
+      SingleJavaValue("0.0")
+    )
+  , StackOfJavaValues("Double",
+      SingleJavaValue("Double.NaN")
+    )
+  , StackOfJavaValues("Double",
+      SingleJavaValue("0.0")
+    , SingleJavaValue("1E-307")
+    , SingleJavaValue("9E307")
+    , SingleJavaValue("-1.23456789012345E-10")
+    , SingleJavaValue("1.23456789012345E20")
+    , SingleJavaValue("Double.NEGATIVE_INFINITY")
+    , SingleJavaValue("Double.POSITIVE_INFINITY")
+    , SingleJavaValue("Double.NaN")
+    )
+  , StackOfJavaValues("Double",
+      SingleJavaValue("null")
+    , SingleJavaValue("0.0")
+    , SingleJavaValue("1E-307")
+    , SingleJavaValue("9E307")
+    , SingleJavaValue("-1.23456789012345E-10")
+    , SingleJavaValue("1.23456789012345E20")
+    , SingleJavaValue("Double.NEGATIVE_INFINITY")
+    , SingleJavaValue("Double.POSITIVE_INFINITY")
+    , SingleJavaValue("Double.NaN")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Stack<Double?>?`
+    extends JavaDouble with `box.NullableStackOfNullable` {
+
+  val javaClass = "java.util.Stack<Double>"
+  val javaType = JavaCollectionType("java.util.Stack", JavaClass("Double"))
+  val javaDescription = "NullableStackOfNullableDoubles"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    StackOfJavaValues("Double",
+      SingleJavaValue("null")
+    )
+  , StackOfJavaValues("Double",
+      SingleJavaValue("0.0")
+    )
+  , StackOfJavaValues("Double",
+      SingleJavaValue("Double.NaN")
+    )
+  , StackOfJavaValues("Double",
+      SingleJavaValue("0.0")
+    , SingleJavaValue("1E-307")
+    , SingleJavaValue("9E307")
+    , SingleJavaValue("-1.23456789012345E-10")
+    , SingleJavaValue("1.23456789012345E20")
+    , SingleJavaValue("Double.NEGATIVE_INFINITY")
+    , SingleJavaValue("Double.POSITIVE_INFINITY")
+    , SingleJavaValue("Double.NaN")
+    )
+  , StackOfJavaValues("Double",
+      SingleJavaValue("null")
+    , SingleJavaValue("0.0")
+    , SingleJavaValue("1E-307")
+    , SingleJavaValue("9E307")
+    , SingleJavaValue("-1.23456789012345E-10")
+    , SingleJavaValue("1.23456789012345E20")
+    , SingleJavaValue("Double.NEGATIVE_INFINITY")
+    , SingleJavaValue("Double.POSITIVE_INFINITY")
+    , SingleJavaValue("Double.NaN")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Vector<Double>`
+    extends JavaDouble with `box.OneVectorOfOne` {
+
+  val javaClass = "java.util.Vector<Double>"
+  val javaType = JavaCollectionType("java.util.Vector", JavaClass("Double"))
+  val javaDescription = "OneVectorOfOneDoubles"
+
+  def defaultValue = SingleJavaValue("new java.util.Vector<Double>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    VectorOfJavaValues("Double",
+      SingleJavaValue("0.0")
+    )
+  , VectorOfJavaValues("Double",
+      SingleJavaValue("Double.NaN")
+    )
+  , VectorOfJavaValues("Double",
+      SingleJavaValue("0.0")
+    , SingleJavaValue("1E-307")
+    , SingleJavaValue("9E307")
+    , SingleJavaValue("-1.23456789012345E-10")
+    , SingleJavaValue("1.23456789012345E20")
+    , SingleJavaValue("Double.NEGATIVE_INFINITY")
+    , SingleJavaValue("Double.POSITIVE_INFINITY")
+    , SingleJavaValue("Double.NaN")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Vector<Double>?`
+    extends JavaDouble with `box.NullableVectorOfOne` {
+
+  val javaClass = "java.util.Vector<Double>"
+  val javaType = JavaCollectionType("java.util.Vector", JavaClass("Double"))
+  val javaDescription = "NullableVectorOfOneDoubles"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    VectorOfJavaValues("Double",
+      SingleJavaValue("0.0")
+    )
+  , VectorOfJavaValues("Double",
+      SingleJavaValue("Double.NaN")
+    )
+  , VectorOfJavaValues("Double",
+      SingleJavaValue("0.0")
+    , SingleJavaValue("1E-307")
+    , SingleJavaValue("9E307")
+    , SingleJavaValue("-1.23456789012345E-10")
+    , SingleJavaValue("1.23456789012345E20")
+    , SingleJavaValue("Double.NEGATIVE_INFINITY")
+    , SingleJavaValue("Double.POSITIVE_INFINITY")
+    , SingleJavaValue("Double.NaN")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Vector<Double?>`
+    extends JavaDouble with `box.OneVectorOfNullable` {
+
+  val javaClass = "java.util.Vector<Double>"
+  val javaType = JavaCollectionType("java.util.Vector", JavaClass("Double"))
+  val javaDescription = "OneVectorOfNullableDoubles"
+
+  def defaultValue = SingleJavaValue("new java.util.Vector<Double>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    VectorOfJavaValues("Double",
+      SingleJavaValue("null")
+    )
+  , VectorOfJavaValues("Double",
+      SingleJavaValue("0.0")
+    )
+  , VectorOfJavaValues("Double",
+      SingleJavaValue("Double.NaN")
+    )
+  , VectorOfJavaValues("Double",
+      SingleJavaValue("0.0")
+    , SingleJavaValue("1E-307")
+    , SingleJavaValue("9E307")
+    , SingleJavaValue("-1.23456789012345E-10")
+    , SingleJavaValue("1.23456789012345E20")
+    , SingleJavaValue("Double.NEGATIVE_INFINITY")
+    , SingleJavaValue("Double.POSITIVE_INFINITY")
+    , SingleJavaValue("Double.NaN")
+    )
+  , VectorOfJavaValues("Double",
+      SingleJavaValue("null")
+    , SingleJavaValue("0.0")
+    , SingleJavaValue("1E-307")
+    , SingleJavaValue("9E307")
+    , SingleJavaValue("-1.23456789012345E-10")
+    , SingleJavaValue("1.23456789012345E20")
+    , SingleJavaValue("Double.NEGATIVE_INFINITY")
+    , SingleJavaValue("Double.POSITIVE_INFINITY")
+    , SingleJavaValue("Double.NaN")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Vector<Double?>?`
+    extends JavaDouble with `box.NullableVectorOfNullable` {
+
+  val javaClass = "java.util.Vector<Double>"
+  val javaType = JavaCollectionType("java.util.Vector", JavaClass("Double"))
+  val javaDescription = "NullableVectorOfNullableDoubles"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    VectorOfJavaValues("Double",
+      SingleJavaValue("null")
+    )
+  , VectorOfJavaValues("Double",
+      SingleJavaValue("0.0")
+    )
+  , VectorOfJavaValues("Double",
+      SingleJavaValue("Double.NaN")
+    )
+  , VectorOfJavaValues("Double",
+      SingleJavaValue("0.0")
+    , SingleJavaValue("1E-307")
+    , SingleJavaValue("9E307")
+    , SingleJavaValue("-1.23456789012345E-10")
+    , SingleJavaValue("1.23456789012345E20")
+    , SingleJavaValue("Double.NEGATIVE_INFINITY")
+    , SingleJavaValue("Double.POSITIVE_INFINITY")
+    , SingleJavaValue("Double.NaN")
+    )
+  , VectorOfJavaValues("Double",
       SingleJavaValue("null")
     , SingleJavaValue("0.0")
     , SingleJavaValue("1E-307")

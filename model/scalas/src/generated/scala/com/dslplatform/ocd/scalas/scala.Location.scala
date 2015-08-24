@@ -4,7 +4,7 @@ package scalas
 import types._
 import boxes._
 
-sealed trait ScalaLocation
+sealed abstract class ScalaLocation
     extends OcdScalaBoxType
     with `type.Location`
 
@@ -88,6 +88,38 @@ case object `scala.List<Location?>?`
   val defaultValue = "None"
 }
 
+case object `scala.Set<Location>`
+    extends ScalaLocation with `box.OneSetOfOne` {
+
+  val scalaClass = "Set[java.awt.geom.Point2D]"
+
+  val defaultValue = "Set[java.awt.geom.Point2D].empty"
+}
+
+case object `scala.Set<Location>?`
+    extends ScalaLocation with `box.NullableSetOfOne` {
+
+  val scalaClass = "Option[Set[java.awt.geom.Point2D]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Set<Location?>`
+    extends ScalaLocation with `box.OneSetOfNullable` {
+
+  val scalaClass = "Set[Option[java.awt.geom.Point2D]]"
+
+  val defaultValue = "Set[Option[java.awt.geom.Point2D]].empty"
+}
+
+case object `scala.Set<Location?>?`
+    extends ScalaLocation with `box.NullableSetOfNullable` {
+
+  val scalaClass = "Option[Set[Option[java.awt.geom.Point2D]]]"
+
+  val defaultValue = "None"
+}
+
 case object `scala.Queue<Location>`
     extends ScalaLocation with `box.OneQueueOfOne` {
 
@@ -120,34 +152,98 @@ case object `scala.Queue<Location?>?`
   val defaultValue = "None"
 }
 
-case object `scala.Set<Location>`
-    extends ScalaLocation with `box.OneSetOfOne` {
+case object `scala.LinkedList<Location>`
+    extends ScalaLocation with `box.OneLinkedListOfOne` {
 
-  val scalaClass = "Set[java.awt.geom.Point2D]"
+  val scalaClass = "LinkedList[java.awt.geom.Point2D]"
 
-  val defaultValue = "Set[java.awt.geom.Point2D].empty"
+  val defaultValue = "LinkedList[java.awt.geom.Point2D].empty"
 }
 
-case object `scala.Set<Location>?`
-    extends ScalaLocation with `box.NullableSetOfOne` {
+case object `scala.LinkedList<Location>?`
+    extends ScalaLocation with `box.NullableLinkedListOfOne` {
 
-  val scalaClass = "Option[Set[java.awt.geom.Point2D]]"
+  val scalaClass = "Option[LinkedList[java.awt.geom.Point2D]]"
 
   val defaultValue = "None"
 }
 
-case object `scala.Set<Location?>`
-    extends ScalaLocation with `box.OneSetOfNullable` {
+case object `scala.LinkedList<Location?>`
+    extends ScalaLocation with `box.OneLinkedListOfNullable` {
 
-  val scalaClass = "Set[Option[java.awt.geom.Point2D]]"
+  val scalaClass = "LinkedList[Option[java.awt.geom.Point2D]]"
 
-  val defaultValue = "Set[Option[java.awt.geom.Point2D]].empty"
+  val defaultValue = "LinkedList[Option[java.awt.geom.Point2D]].empty"
 }
 
-case object `scala.Set<Location?>?`
-    extends ScalaLocation with `box.NullableSetOfNullable` {
+case object `scala.LinkedList<Location?>?`
+    extends ScalaLocation with `box.NullableLinkedListOfNullable` {
 
-  val scalaClass = "Option[Set[Option[java.awt.geom.Point2D]]]"
+  val scalaClass = "Option[LinkedList[Option[java.awt.geom.Point2D]]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Stack<Location>`
+    extends ScalaLocation with `box.OneStackOfOne` {
+
+  val scalaClass = "Stack[java.awt.geom.Point2D]"
+
+  val defaultValue = "Stack[java.awt.geom.Point2D].empty"
+}
+
+case object `scala.Stack<Location>?`
+    extends ScalaLocation with `box.NullableStackOfOne` {
+
+  val scalaClass = "Option[Stack[java.awt.geom.Point2D]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Stack<Location?>`
+    extends ScalaLocation with `box.OneStackOfNullable` {
+
+  val scalaClass = "Stack[Option[java.awt.geom.Point2D]]"
+
+  val defaultValue = "Stack[Option[java.awt.geom.Point2D]].empty"
+}
+
+case object `scala.Stack<Location?>?`
+    extends ScalaLocation with `box.NullableStackOfNullable` {
+
+  val scalaClass = "Option[Stack[Option[java.awt.geom.Point2D]]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Vector<Location>`
+    extends ScalaLocation with `box.OneVectorOfOne` {
+
+  val scalaClass = "Vector[java.awt.geom.Point2D]"
+
+  val defaultValue = "Vector[java.awt.geom.Point2D].empty"
+}
+
+case object `scala.Vector<Location>?`
+    extends ScalaLocation with `box.NullableVectorOfOne` {
+
+  val scalaClass = "Option[Vector[java.awt.geom.Point2D]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Vector<Location?>`
+    extends ScalaLocation with `box.OneVectorOfNullable` {
+
+  val scalaClass = "Vector[Option[java.awt.geom.Point2D]]"
+
+  val defaultValue = "Vector[Option[java.awt.geom.Point2D]].empty"
+}
+
+case object `scala.Vector<Location?>?`
+    extends ScalaLocation with `box.NullableVectorOfNullable` {
+
+  val scalaClass = "Option[Vector[Option[java.awt.geom.Point2D]]]"
 
   val defaultValue = "None"
 }

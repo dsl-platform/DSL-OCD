@@ -4,7 +4,7 @@ package scalas
 import types._
 import boxes._
 
-sealed trait ScalaBoolean
+sealed abstract class ScalaBoolean
     extends OcdScalaBoxType
     with `type.Boolean`
 
@@ -88,6 +88,38 @@ case object `scala.List<Boolean?>?`
   val defaultValue = "None"
 }
 
+case object `scala.Set<Boolean>`
+    extends ScalaBoolean with `box.OneSetOfOne` {
+
+  val scalaClass = "Set[Boolean]"
+
+  val defaultValue = "Set[Boolean].empty"
+}
+
+case object `scala.Set<Boolean>?`
+    extends ScalaBoolean with `box.NullableSetOfOne` {
+
+  val scalaClass = "Option[Set[Boolean]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Set<Boolean?>`
+    extends ScalaBoolean with `box.OneSetOfNullable` {
+
+  val scalaClass = "Set[Option[Boolean]]"
+
+  val defaultValue = "Set[Option[Boolean]].empty"
+}
+
+case object `scala.Set<Boolean?>?`
+    extends ScalaBoolean with `box.NullableSetOfNullable` {
+
+  val scalaClass = "Option[Set[Option[Boolean]]]"
+
+  val defaultValue = "None"
+}
+
 case object `scala.Queue<Boolean>`
     extends ScalaBoolean with `box.OneQueueOfOne` {
 
@@ -120,34 +152,98 @@ case object `scala.Queue<Boolean?>?`
   val defaultValue = "None"
 }
 
-case object `scala.Set<Boolean>`
-    extends ScalaBoolean with `box.OneSetOfOne` {
+case object `scala.LinkedList<Boolean>`
+    extends ScalaBoolean with `box.OneLinkedListOfOne` {
 
-  val scalaClass = "Set[Boolean]"
+  val scalaClass = "LinkedList[Boolean]"
 
-  val defaultValue = "Set[Boolean].empty"
+  val defaultValue = "LinkedList[Boolean].empty"
 }
 
-case object `scala.Set<Boolean>?`
-    extends ScalaBoolean with `box.NullableSetOfOne` {
+case object `scala.LinkedList<Boolean>?`
+    extends ScalaBoolean with `box.NullableLinkedListOfOne` {
 
-  val scalaClass = "Option[Set[Boolean]]"
+  val scalaClass = "Option[LinkedList[Boolean]]"
 
   val defaultValue = "None"
 }
 
-case object `scala.Set<Boolean?>`
-    extends ScalaBoolean with `box.OneSetOfNullable` {
+case object `scala.LinkedList<Boolean?>`
+    extends ScalaBoolean with `box.OneLinkedListOfNullable` {
 
-  val scalaClass = "Set[Option[Boolean]]"
+  val scalaClass = "LinkedList[Option[Boolean]]"
 
-  val defaultValue = "Set[Option[Boolean]].empty"
+  val defaultValue = "LinkedList[Option[Boolean]].empty"
 }
 
-case object `scala.Set<Boolean?>?`
-    extends ScalaBoolean with `box.NullableSetOfNullable` {
+case object `scala.LinkedList<Boolean?>?`
+    extends ScalaBoolean with `box.NullableLinkedListOfNullable` {
 
-  val scalaClass = "Option[Set[Option[Boolean]]]"
+  val scalaClass = "Option[LinkedList[Option[Boolean]]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Stack<Boolean>`
+    extends ScalaBoolean with `box.OneStackOfOne` {
+
+  val scalaClass = "Stack[Boolean]"
+
+  val defaultValue = "Stack[Boolean].empty"
+}
+
+case object `scala.Stack<Boolean>?`
+    extends ScalaBoolean with `box.NullableStackOfOne` {
+
+  val scalaClass = "Option[Stack[Boolean]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Stack<Boolean?>`
+    extends ScalaBoolean with `box.OneStackOfNullable` {
+
+  val scalaClass = "Stack[Option[Boolean]]"
+
+  val defaultValue = "Stack[Option[Boolean]].empty"
+}
+
+case object `scala.Stack<Boolean?>?`
+    extends ScalaBoolean with `box.NullableStackOfNullable` {
+
+  val scalaClass = "Option[Stack[Option[Boolean]]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Vector<Boolean>`
+    extends ScalaBoolean with `box.OneVectorOfOne` {
+
+  val scalaClass = "Vector[Boolean]"
+
+  val defaultValue = "Vector[Boolean].empty"
+}
+
+case object `scala.Vector<Boolean>?`
+    extends ScalaBoolean with `box.NullableVectorOfOne` {
+
+  val scalaClass = "Option[Vector[Boolean]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Vector<Boolean?>`
+    extends ScalaBoolean with `box.OneVectorOfNullable` {
+
+  val scalaClass = "Vector[Option[Boolean]]"
+
+  val defaultValue = "Vector[Option[Boolean]].empty"
+}
+
+case object `scala.Vector<Boolean?>?`
+    extends ScalaBoolean with `box.NullableVectorOfNullable` {
+
+  val scalaClass = "Option[Vector[Option[Boolean]]]"
 
   val defaultValue = "None"
 }

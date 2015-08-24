@@ -4,7 +4,7 @@ package javas
 import types._
 import boxes._
 
-sealed trait JavaIp
+sealed abstract class JavaIp
     extends OcdJavaBoxType
     with `type.Ip` {
 
@@ -297,6 +297,128 @@ case object `java.List<Ip?>?`
   val hasGenerics = true
 }
 
+case object `java.Set<Ip>`
+    extends JavaIp with `box.OneSetOfOne` {
+
+  val javaClass = "java.util.Set<java.net.InetAddress>"
+  val javaType = JavaCollectionType("java.util.Set", JavaClass("java.net.InetAddress"))
+  val javaDescription = "OneSetOfOneIps"
+
+  def defaultValue = SingleJavaValue("new java.util.HashSet<java.net.InetAddress>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    SetOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
+    )
+  , SetOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Set<Ip>?`
+    extends JavaIp with `box.NullableSetOfOne` {
+
+  val javaClass = "java.util.Set<java.net.InetAddress>"
+  val javaType = JavaCollectionType("java.util.Set", JavaClass("java.net.InetAddress"))
+  val javaDescription = "NullableSetOfOneIps"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    SetOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
+    )
+  , SetOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Set<Ip?>`
+    extends JavaIp with `box.OneSetOfNullable` {
+
+  val javaClass = "java.util.Set<java.net.InetAddress>"
+  val javaType = JavaCollectionType("java.util.Set", JavaClass("java.net.InetAddress"))
+  val javaDescription = "OneSetOfNullableIps"
+
+  def defaultValue = SingleJavaValue("new java.util.HashSet<java.net.InetAddress>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    SetOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("null")
+    )
+  , SetOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
+    )
+  , SetOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
+    )
+  , SetOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("null")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Set<Ip?>?`
+    extends JavaIp with `box.NullableSetOfNullable` {
+
+  val javaClass = "java.util.Set<java.net.InetAddress>"
+  val javaType = JavaCollectionType("java.util.Set", JavaClass("java.net.InetAddress"))
+  val javaDescription = "NullableSetOfNullableIps"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    SetOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("null")
+    )
+  , SetOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
+    )
+  , SetOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
+    )
+  , SetOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("null")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
+    )
+  )
+
+  val hasGenerics = true
+}
+
 case object `java.Queue<Ip>`
     extends JavaIp with `box.OneQueueOfOne` {
 
@@ -419,20 +541,20 @@ case object `java.Queue<Ip?>?`
   val hasGenerics = true
 }
 
-case object `java.Set<Ip>`
-    extends JavaIp with `box.OneSetOfOne` {
+case object `java.LinkedList<Ip>`
+    extends JavaIp with `box.OneLinkedListOfOne` {
 
-  val javaClass = "java.util.Set<java.net.InetAddress>"
-  val javaType = JavaCollectionType("java.util.Set", JavaClass("java.net.InetAddress"))
-  val javaDescription = "OneSetOfOneIps"
+  val javaClass = "java.util.LinkedList<java.net.InetAddress>"
+  val javaType = JavaCollectionType("java.util.LinkedList", JavaClass("java.net.InetAddress"))
+  val javaDescription = "OneLinkedListOfOneIps"
 
-  def defaultValue = SingleJavaValue("new java.util.HashSet<java.net.InetAddress>(0)")
+  def defaultValue = SingleJavaValue("new java.util.LinkedList<java.net.InetAddress>()")
 
   def nonDefaultValues = IndexedSeq(
-    SetOfJavaValues("java.net.InetAddress",
+    LinkedListOfJavaValues("java.net.InetAddress",
       SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
     )
-  , SetOfJavaValues("java.net.InetAddress",
+  , LinkedListOfJavaValues("java.net.InetAddress",
       SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
@@ -444,20 +566,20 @@ case object `java.Set<Ip>`
   val hasGenerics = true
 }
 
-case object `java.Set<Ip>?`
-    extends JavaIp with `box.NullableSetOfOne` {
+case object `java.LinkedList<Ip>?`
+    extends JavaIp with `box.NullableLinkedListOfOne` {
 
-  val javaClass = "java.util.Set<java.net.InetAddress>"
-  val javaType = JavaCollectionType("java.util.Set", JavaClass("java.net.InetAddress"))
-  val javaDescription = "NullableSetOfOneIps"
+  val javaClass = "java.util.LinkedList<java.net.InetAddress>"
+  val javaType = JavaCollectionType("java.util.LinkedList", JavaClass("java.net.InetAddress"))
+  val javaDescription = "NullableLinkedListOfOneIps"
 
   def defaultValue = SingleJavaValue("null")
 
   def nonDefaultValues = IndexedSeq(
-    SetOfJavaValues("java.net.InetAddress",
+    LinkedListOfJavaValues("java.net.InetAddress",
       SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
     )
-  , SetOfJavaValues("java.net.InetAddress",
+  , LinkedListOfJavaValues("java.net.InetAddress",
       SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
@@ -469,30 +591,30 @@ case object `java.Set<Ip>?`
   val hasGenerics = true
 }
 
-case object `java.Set<Ip?>`
-    extends JavaIp with `box.OneSetOfNullable` {
+case object `java.LinkedList<Ip?>`
+    extends JavaIp with `box.OneLinkedListOfNullable` {
 
-  val javaClass = "java.util.Set<java.net.InetAddress>"
-  val javaType = JavaCollectionType("java.util.Set", JavaClass("java.net.InetAddress"))
-  val javaDescription = "OneSetOfNullableIps"
+  val javaClass = "java.util.LinkedList<java.net.InetAddress>"
+  val javaType = JavaCollectionType("java.util.LinkedList", JavaClass("java.net.InetAddress"))
+  val javaDescription = "OneLinkedListOfNullableIps"
 
-  def defaultValue = SingleJavaValue("new java.util.HashSet<java.net.InetAddress>(0)")
+  def defaultValue = SingleJavaValue("new java.util.LinkedList<java.net.InetAddress>()")
 
   def nonDefaultValues = IndexedSeq(
-    SetOfJavaValues("java.net.InetAddress",
+    LinkedListOfJavaValues("java.net.InetAddress",
       SingleJavaValue("null")
     )
-  , SetOfJavaValues("java.net.InetAddress",
+  , LinkedListOfJavaValues("java.net.InetAddress",
       SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
     )
-  , SetOfJavaValues("java.net.InetAddress",
+  , LinkedListOfJavaValues("java.net.InetAddress",
       SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
     )
-  , SetOfJavaValues("java.net.InetAddress",
+  , LinkedListOfJavaValues("java.net.InetAddress",
       SingleJavaValue("null")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
@@ -505,30 +627,274 @@ case object `java.Set<Ip?>`
   val hasGenerics = true
 }
 
-case object `java.Set<Ip?>?`
-    extends JavaIp with `box.NullableSetOfNullable` {
+case object `java.LinkedList<Ip?>?`
+    extends JavaIp with `box.NullableLinkedListOfNullable` {
 
-  val javaClass = "java.util.Set<java.net.InetAddress>"
-  val javaType = JavaCollectionType("java.util.Set", JavaClass("java.net.InetAddress"))
-  val javaDescription = "NullableSetOfNullableIps"
+  val javaClass = "java.util.LinkedList<java.net.InetAddress>"
+  val javaType = JavaCollectionType("java.util.LinkedList", JavaClass("java.net.InetAddress"))
+  val javaDescription = "NullableLinkedListOfNullableIps"
 
   def defaultValue = SingleJavaValue("null")
 
   def nonDefaultValues = IndexedSeq(
-    SetOfJavaValues("java.net.InetAddress",
+    LinkedListOfJavaValues("java.net.InetAddress",
       SingleJavaValue("null")
     )
-  , SetOfJavaValues("java.net.InetAddress",
+  , LinkedListOfJavaValues("java.net.InetAddress",
       SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
     )
-  , SetOfJavaValues("java.net.InetAddress",
+  , LinkedListOfJavaValues("java.net.InetAddress",
       SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
     )
-  , SetOfJavaValues("java.net.InetAddress",
+  , LinkedListOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("null")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Stack<Ip>`
+    extends JavaIp with `box.OneStackOfOne` {
+
+  val javaClass = "java.util.Stack<java.net.InetAddress>"
+  val javaType = JavaCollectionType("java.util.Stack", JavaClass("java.net.InetAddress"))
+  val javaDescription = "OneStackOfOneIps"
+
+  def defaultValue = SingleJavaValue("new java.util.Stack<java.net.InetAddress>()")
+
+  def nonDefaultValues = IndexedSeq(
+    StackOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
+    )
+  , StackOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Stack<Ip>?`
+    extends JavaIp with `box.NullableStackOfOne` {
+
+  val javaClass = "java.util.Stack<java.net.InetAddress>"
+  val javaType = JavaCollectionType("java.util.Stack", JavaClass("java.net.InetAddress"))
+  val javaDescription = "NullableStackOfOneIps"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    StackOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
+    )
+  , StackOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Stack<Ip?>`
+    extends JavaIp with `box.OneStackOfNullable` {
+
+  val javaClass = "java.util.Stack<java.net.InetAddress>"
+  val javaType = JavaCollectionType("java.util.Stack", JavaClass("java.net.InetAddress"))
+  val javaDescription = "OneStackOfNullableIps"
+
+  def defaultValue = SingleJavaValue("new java.util.Stack<java.net.InetAddress>()")
+
+  def nonDefaultValues = IndexedSeq(
+    StackOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("null")
+    )
+  , StackOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
+    )
+  , StackOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
+    )
+  , StackOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("null")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Stack<Ip?>?`
+    extends JavaIp with `box.NullableStackOfNullable` {
+
+  val javaClass = "java.util.Stack<java.net.InetAddress>"
+  val javaType = JavaCollectionType("java.util.Stack", JavaClass("java.net.InetAddress"))
+  val javaDescription = "NullableStackOfNullableIps"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    StackOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("null")
+    )
+  , StackOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
+    )
+  , StackOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
+    )
+  , StackOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("null")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Vector<Ip>`
+    extends JavaIp with `box.OneVectorOfOne` {
+
+  val javaClass = "java.util.Vector<java.net.InetAddress>"
+  val javaType = JavaCollectionType("java.util.Vector", JavaClass("java.net.InetAddress"))
+  val javaDescription = "OneVectorOfOneIps"
+
+  def defaultValue = SingleJavaValue("new java.util.Vector<java.net.InetAddress>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    VectorOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
+    )
+  , VectorOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Vector<Ip>?`
+    extends JavaIp with `box.NullableVectorOfOne` {
+
+  val javaClass = "java.util.Vector<java.net.InetAddress>"
+  val javaType = JavaCollectionType("java.util.Vector", JavaClass("java.net.InetAddress"))
+  val javaDescription = "NullableVectorOfOneIps"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    VectorOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
+    )
+  , VectorOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Vector<Ip?>`
+    extends JavaIp with `box.OneVectorOfNullable` {
+
+  val javaClass = "java.util.Vector<java.net.InetAddress>"
+  val javaType = JavaCollectionType("java.util.Vector", JavaClass("java.net.InetAddress"))
+  val javaDescription = "OneVectorOfNullableIps"
+
+  def defaultValue = SingleJavaValue("new java.util.Vector<java.net.InetAddress>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    VectorOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("null")
+    )
+  , VectorOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
+    )
+  , VectorOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
+    )
+  , VectorOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("null")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Vector<Ip?>?`
+    extends JavaIp with `box.NullableVectorOfNullable` {
+
+  val javaClass = "java.util.Vector<java.net.InetAddress>"
+  val javaType = JavaCollectionType("java.util.Vector", JavaClass("java.net.InetAddress"))
+  val javaDescription = "NullableVectorOfNullableIps"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    VectorOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("null")
+    )
+  , VectorOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
+    )
+  , VectorOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
+    )
+  , VectorOfJavaValues("java.net.InetAddress",
       SingleJavaValue("null")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")

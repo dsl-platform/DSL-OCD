@@ -4,7 +4,7 @@ package scalas
 import types._
 import boxes._
 
-sealed trait ScalaTimestamp
+sealed abstract class ScalaTimestamp
     extends OcdScalaBoxType
     with `type.Timestamp`
 
@@ -88,6 +88,38 @@ case object `scala.List<Timestamp?>?`
   val defaultValue = "None"
 }
 
+case object `scala.Set<Timestamp>`
+    extends ScalaTimestamp with `box.OneSetOfOne` {
+
+  val scalaClass = "Set[org.joda.time.DateTime]"
+
+  val defaultValue = "Set[org.joda.time.DateTime].empty"
+}
+
+case object `scala.Set<Timestamp>?`
+    extends ScalaTimestamp with `box.NullableSetOfOne` {
+
+  val scalaClass = "Option[Set[org.joda.time.DateTime]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Set<Timestamp?>`
+    extends ScalaTimestamp with `box.OneSetOfNullable` {
+
+  val scalaClass = "Set[Option[org.joda.time.DateTime]]"
+
+  val defaultValue = "Set[Option[org.joda.time.DateTime]].empty"
+}
+
+case object `scala.Set<Timestamp?>?`
+    extends ScalaTimestamp with `box.NullableSetOfNullable` {
+
+  val scalaClass = "Option[Set[Option[org.joda.time.DateTime]]]"
+
+  val defaultValue = "None"
+}
+
 case object `scala.Queue<Timestamp>`
     extends ScalaTimestamp with `box.OneQueueOfOne` {
 
@@ -120,34 +152,98 @@ case object `scala.Queue<Timestamp?>?`
   val defaultValue = "None"
 }
 
-case object `scala.Set<Timestamp>`
-    extends ScalaTimestamp with `box.OneSetOfOne` {
+case object `scala.LinkedList<Timestamp>`
+    extends ScalaTimestamp with `box.OneLinkedListOfOne` {
 
-  val scalaClass = "Set[org.joda.time.DateTime]"
+  val scalaClass = "LinkedList[org.joda.time.DateTime]"
 
-  val defaultValue = "Set[org.joda.time.DateTime].empty"
+  val defaultValue = "LinkedList[org.joda.time.DateTime].empty"
 }
 
-case object `scala.Set<Timestamp>?`
-    extends ScalaTimestamp with `box.NullableSetOfOne` {
+case object `scala.LinkedList<Timestamp>?`
+    extends ScalaTimestamp with `box.NullableLinkedListOfOne` {
 
-  val scalaClass = "Option[Set[org.joda.time.DateTime]]"
+  val scalaClass = "Option[LinkedList[org.joda.time.DateTime]]"
 
   val defaultValue = "None"
 }
 
-case object `scala.Set<Timestamp?>`
-    extends ScalaTimestamp with `box.OneSetOfNullable` {
+case object `scala.LinkedList<Timestamp?>`
+    extends ScalaTimestamp with `box.OneLinkedListOfNullable` {
 
-  val scalaClass = "Set[Option[org.joda.time.DateTime]]"
+  val scalaClass = "LinkedList[Option[org.joda.time.DateTime]]"
 
-  val defaultValue = "Set[Option[org.joda.time.DateTime]].empty"
+  val defaultValue = "LinkedList[Option[org.joda.time.DateTime]].empty"
 }
 
-case object `scala.Set<Timestamp?>?`
-    extends ScalaTimestamp with `box.NullableSetOfNullable` {
+case object `scala.LinkedList<Timestamp?>?`
+    extends ScalaTimestamp with `box.NullableLinkedListOfNullable` {
 
-  val scalaClass = "Option[Set[Option[org.joda.time.DateTime]]]"
+  val scalaClass = "Option[LinkedList[Option[org.joda.time.DateTime]]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Stack<Timestamp>`
+    extends ScalaTimestamp with `box.OneStackOfOne` {
+
+  val scalaClass = "Stack[org.joda.time.DateTime]"
+
+  val defaultValue = "Stack[org.joda.time.DateTime].empty"
+}
+
+case object `scala.Stack<Timestamp>?`
+    extends ScalaTimestamp with `box.NullableStackOfOne` {
+
+  val scalaClass = "Option[Stack[org.joda.time.DateTime]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Stack<Timestamp?>`
+    extends ScalaTimestamp with `box.OneStackOfNullable` {
+
+  val scalaClass = "Stack[Option[org.joda.time.DateTime]]"
+
+  val defaultValue = "Stack[Option[org.joda.time.DateTime]].empty"
+}
+
+case object `scala.Stack<Timestamp?>?`
+    extends ScalaTimestamp with `box.NullableStackOfNullable` {
+
+  val scalaClass = "Option[Stack[Option[org.joda.time.DateTime]]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Vector<Timestamp>`
+    extends ScalaTimestamp with `box.OneVectorOfOne` {
+
+  val scalaClass = "Vector[org.joda.time.DateTime]"
+
+  val defaultValue = "Vector[org.joda.time.DateTime].empty"
+}
+
+case object `scala.Vector<Timestamp>?`
+    extends ScalaTimestamp with `box.NullableVectorOfOne` {
+
+  val scalaClass = "Option[Vector[org.joda.time.DateTime]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Vector<Timestamp?>`
+    extends ScalaTimestamp with `box.OneVectorOfNullable` {
+
+  val scalaClass = "Vector[Option[org.joda.time.DateTime]]"
+
+  val defaultValue = "Vector[Option[org.joda.time.DateTime]].empty"
+}
+
+case object `scala.Vector<Timestamp?>?`
+    extends ScalaTimestamp with `box.NullableVectorOfNullable` {
+
+  val scalaClass = "Option[Vector[Option[org.joda.time.DateTime]]]"
 
   val defaultValue = "None"
 }

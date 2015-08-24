@@ -4,7 +4,7 @@ package javas
 import types._
 import boxes._
 
-sealed trait JavaDecimal
+sealed abstract class JavaDecimal
     extends OcdJavaBoxType
     with `type.Decimal` {
 
@@ -320,6 +320,140 @@ case object `java.List<Decimal?>?`
   val hasGenerics = true
 }
 
+case object `java.Set<Decimal>`
+    extends JavaDecimal with `box.OneSetOfOne` {
+
+  val javaClass = "java.util.Set<java.math.BigDecimal>"
+  val javaType = JavaCollectionType("java.util.Set", JavaClass("java.math.BigDecimal"))
+  val javaDescription = "OneSetOfOneDecimals"
+
+  def defaultValue = SingleJavaValue("new java.util.HashSet<java.math.BigDecimal>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    SetOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("java.math.BigDecimal.ZERO")
+    )
+  , SetOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("new java.math.BigDecimal(\"1E28\")")
+    )
+  , SetOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("java.math.BigDecimal.ZERO")
+    , SingleJavaValue("java.math.BigDecimal.ONE")
+    , SingleJavaValue("new java.math.BigDecimal(\"3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679\").setScale(28, java.math.BigDecimal.ROUND_HALF_UP)")
+    , SingleJavaValue("new java.math.BigDecimal(\"-1E-28\")")
+    , SingleJavaValue("new java.math.BigDecimal(\"1E28\")")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Set<Decimal>?`
+    extends JavaDecimal with `box.NullableSetOfOne` {
+
+  val javaClass = "java.util.Set<java.math.BigDecimal>"
+  val javaType = JavaCollectionType("java.util.Set", JavaClass("java.math.BigDecimal"))
+  val javaDescription = "NullableSetOfOneDecimals"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    SetOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("java.math.BigDecimal.ZERO")
+    )
+  , SetOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("new java.math.BigDecimal(\"1E28\")")
+    )
+  , SetOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("java.math.BigDecimal.ZERO")
+    , SingleJavaValue("java.math.BigDecimal.ONE")
+    , SingleJavaValue("new java.math.BigDecimal(\"3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679\").setScale(28, java.math.BigDecimal.ROUND_HALF_UP)")
+    , SingleJavaValue("new java.math.BigDecimal(\"-1E-28\")")
+    , SingleJavaValue("new java.math.BigDecimal(\"1E28\")")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Set<Decimal?>`
+    extends JavaDecimal with `box.OneSetOfNullable` {
+
+  val javaClass = "java.util.Set<java.math.BigDecimal>"
+  val javaType = JavaCollectionType("java.util.Set", JavaClass("java.math.BigDecimal"))
+  val javaDescription = "OneSetOfNullableDecimals"
+
+  def defaultValue = SingleJavaValue("new java.util.HashSet<java.math.BigDecimal>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    SetOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("null")
+    )
+  , SetOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("java.math.BigDecimal.ZERO")
+    )
+  , SetOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("new java.math.BigDecimal(\"1E28\")")
+    )
+  , SetOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("java.math.BigDecimal.ZERO")
+    , SingleJavaValue("java.math.BigDecimal.ONE")
+    , SingleJavaValue("new java.math.BigDecimal(\"3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679\").setScale(28, java.math.BigDecimal.ROUND_HALF_UP)")
+    , SingleJavaValue("new java.math.BigDecimal(\"-1E-28\")")
+    , SingleJavaValue("new java.math.BigDecimal(\"1E28\")")
+    )
+  , SetOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("null")
+    , SingleJavaValue("java.math.BigDecimal.ZERO")
+    , SingleJavaValue("java.math.BigDecimal.ONE")
+    , SingleJavaValue("new java.math.BigDecimal(\"3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679\").setScale(28, java.math.BigDecimal.ROUND_HALF_UP)")
+    , SingleJavaValue("new java.math.BigDecimal(\"-1E-28\")")
+    , SingleJavaValue("new java.math.BigDecimal(\"1E28\")")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Set<Decimal?>?`
+    extends JavaDecimal with `box.NullableSetOfNullable` {
+
+  val javaClass = "java.util.Set<java.math.BigDecimal>"
+  val javaType = JavaCollectionType("java.util.Set", JavaClass("java.math.BigDecimal"))
+  val javaDescription = "NullableSetOfNullableDecimals"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    SetOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("null")
+    )
+  , SetOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("java.math.BigDecimal.ZERO")
+    )
+  , SetOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("new java.math.BigDecimal(\"1E28\")")
+    )
+  , SetOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("java.math.BigDecimal.ZERO")
+    , SingleJavaValue("java.math.BigDecimal.ONE")
+    , SingleJavaValue("new java.math.BigDecimal(\"3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679\").setScale(28, java.math.BigDecimal.ROUND_HALF_UP)")
+    , SingleJavaValue("new java.math.BigDecimal(\"-1E-28\")")
+    , SingleJavaValue("new java.math.BigDecimal(\"1E28\")")
+    )
+  , SetOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("null")
+    , SingleJavaValue("java.math.BigDecimal.ZERO")
+    , SingleJavaValue("java.math.BigDecimal.ONE")
+    , SingleJavaValue("new java.math.BigDecimal(\"3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679\").setScale(28, java.math.BigDecimal.ROUND_HALF_UP)")
+    , SingleJavaValue("new java.math.BigDecimal(\"-1E-28\")")
+    , SingleJavaValue("new java.math.BigDecimal(\"1E28\")")
+    )
+  )
+
+  val hasGenerics = true
+}
+
 case object `java.Queue<Decimal>`
     extends JavaDecimal with `box.OneQueueOfOne` {
 
@@ -454,23 +588,23 @@ case object `java.Queue<Decimal?>?`
   val hasGenerics = true
 }
 
-case object `java.Set<Decimal>`
-    extends JavaDecimal with `box.OneSetOfOne` {
+case object `java.LinkedList<Decimal>`
+    extends JavaDecimal with `box.OneLinkedListOfOne` {
 
-  val javaClass = "java.util.Set<java.math.BigDecimal>"
-  val javaType = JavaCollectionType("java.util.Set", JavaClass("java.math.BigDecimal"))
-  val javaDescription = "OneSetOfOneDecimals"
+  val javaClass = "java.util.LinkedList<java.math.BigDecimal>"
+  val javaType = JavaCollectionType("java.util.LinkedList", JavaClass("java.math.BigDecimal"))
+  val javaDescription = "OneLinkedListOfOneDecimals"
 
-  def defaultValue = SingleJavaValue("new java.util.HashSet<java.math.BigDecimal>(0)")
+  def defaultValue = SingleJavaValue("new java.util.LinkedList<java.math.BigDecimal>()")
 
   def nonDefaultValues = IndexedSeq(
-    SetOfJavaValues("java.math.BigDecimal",
+    LinkedListOfJavaValues("java.math.BigDecimal",
       SingleJavaValue("java.math.BigDecimal.ZERO")
     )
-  , SetOfJavaValues("java.math.BigDecimal",
+  , LinkedListOfJavaValues("java.math.BigDecimal",
       SingleJavaValue("new java.math.BigDecimal(\"1E28\")")
     )
-  , SetOfJavaValues("java.math.BigDecimal",
+  , LinkedListOfJavaValues("java.math.BigDecimal",
       SingleJavaValue("java.math.BigDecimal.ZERO")
     , SingleJavaValue("java.math.BigDecimal.ONE")
     , SingleJavaValue("new java.math.BigDecimal(\"3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679\").setScale(28, java.math.BigDecimal.ROUND_HALF_UP)")
@@ -482,23 +616,23 @@ case object `java.Set<Decimal>`
   val hasGenerics = true
 }
 
-case object `java.Set<Decimal>?`
-    extends JavaDecimal with `box.NullableSetOfOne` {
+case object `java.LinkedList<Decimal>?`
+    extends JavaDecimal with `box.NullableLinkedListOfOne` {
 
-  val javaClass = "java.util.Set<java.math.BigDecimal>"
-  val javaType = JavaCollectionType("java.util.Set", JavaClass("java.math.BigDecimal"))
-  val javaDescription = "NullableSetOfOneDecimals"
+  val javaClass = "java.util.LinkedList<java.math.BigDecimal>"
+  val javaType = JavaCollectionType("java.util.LinkedList", JavaClass("java.math.BigDecimal"))
+  val javaDescription = "NullableLinkedListOfOneDecimals"
 
   def defaultValue = SingleJavaValue("null")
 
   def nonDefaultValues = IndexedSeq(
-    SetOfJavaValues("java.math.BigDecimal",
+    LinkedListOfJavaValues("java.math.BigDecimal",
       SingleJavaValue("java.math.BigDecimal.ZERO")
     )
-  , SetOfJavaValues("java.math.BigDecimal",
+  , LinkedListOfJavaValues("java.math.BigDecimal",
       SingleJavaValue("new java.math.BigDecimal(\"1E28\")")
     )
-  , SetOfJavaValues("java.math.BigDecimal",
+  , LinkedListOfJavaValues("java.math.BigDecimal",
       SingleJavaValue("java.math.BigDecimal.ZERO")
     , SingleJavaValue("java.math.BigDecimal.ONE")
     , SingleJavaValue("new java.math.BigDecimal(\"3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679\").setScale(28, java.math.BigDecimal.ROUND_HALF_UP)")
@@ -510,33 +644,33 @@ case object `java.Set<Decimal>?`
   val hasGenerics = true
 }
 
-case object `java.Set<Decimal?>`
-    extends JavaDecimal with `box.OneSetOfNullable` {
+case object `java.LinkedList<Decimal?>`
+    extends JavaDecimal with `box.OneLinkedListOfNullable` {
 
-  val javaClass = "java.util.Set<java.math.BigDecimal>"
-  val javaType = JavaCollectionType("java.util.Set", JavaClass("java.math.BigDecimal"))
-  val javaDescription = "OneSetOfNullableDecimals"
+  val javaClass = "java.util.LinkedList<java.math.BigDecimal>"
+  val javaType = JavaCollectionType("java.util.LinkedList", JavaClass("java.math.BigDecimal"))
+  val javaDescription = "OneLinkedListOfNullableDecimals"
 
-  def defaultValue = SingleJavaValue("new java.util.HashSet<java.math.BigDecimal>(0)")
+  def defaultValue = SingleJavaValue("new java.util.LinkedList<java.math.BigDecimal>()")
 
   def nonDefaultValues = IndexedSeq(
-    SetOfJavaValues("java.math.BigDecimal",
+    LinkedListOfJavaValues("java.math.BigDecimal",
       SingleJavaValue("null")
     )
-  , SetOfJavaValues("java.math.BigDecimal",
+  , LinkedListOfJavaValues("java.math.BigDecimal",
       SingleJavaValue("java.math.BigDecimal.ZERO")
     )
-  , SetOfJavaValues("java.math.BigDecimal",
+  , LinkedListOfJavaValues("java.math.BigDecimal",
       SingleJavaValue("new java.math.BigDecimal(\"1E28\")")
     )
-  , SetOfJavaValues("java.math.BigDecimal",
+  , LinkedListOfJavaValues("java.math.BigDecimal",
       SingleJavaValue("java.math.BigDecimal.ZERO")
     , SingleJavaValue("java.math.BigDecimal.ONE")
     , SingleJavaValue("new java.math.BigDecimal(\"3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679\").setScale(28, java.math.BigDecimal.ROUND_HALF_UP)")
     , SingleJavaValue("new java.math.BigDecimal(\"-1E-28\")")
     , SingleJavaValue("new java.math.BigDecimal(\"1E28\")")
     )
-  , SetOfJavaValues("java.math.BigDecimal",
+  , LinkedListOfJavaValues("java.math.BigDecimal",
       SingleJavaValue("null")
     , SingleJavaValue("java.math.BigDecimal.ZERO")
     , SingleJavaValue("java.math.BigDecimal.ONE")
@@ -549,33 +683,301 @@ case object `java.Set<Decimal?>`
   val hasGenerics = true
 }
 
-case object `java.Set<Decimal?>?`
-    extends JavaDecimal with `box.NullableSetOfNullable` {
+case object `java.LinkedList<Decimal?>?`
+    extends JavaDecimal with `box.NullableLinkedListOfNullable` {
 
-  val javaClass = "java.util.Set<java.math.BigDecimal>"
-  val javaType = JavaCollectionType("java.util.Set", JavaClass("java.math.BigDecimal"))
-  val javaDescription = "NullableSetOfNullableDecimals"
+  val javaClass = "java.util.LinkedList<java.math.BigDecimal>"
+  val javaType = JavaCollectionType("java.util.LinkedList", JavaClass("java.math.BigDecimal"))
+  val javaDescription = "NullableLinkedListOfNullableDecimals"
 
   def defaultValue = SingleJavaValue("null")
 
   def nonDefaultValues = IndexedSeq(
-    SetOfJavaValues("java.math.BigDecimal",
+    LinkedListOfJavaValues("java.math.BigDecimal",
       SingleJavaValue("null")
     )
-  , SetOfJavaValues("java.math.BigDecimal",
+  , LinkedListOfJavaValues("java.math.BigDecimal",
       SingleJavaValue("java.math.BigDecimal.ZERO")
     )
-  , SetOfJavaValues("java.math.BigDecimal",
+  , LinkedListOfJavaValues("java.math.BigDecimal",
       SingleJavaValue("new java.math.BigDecimal(\"1E28\")")
     )
-  , SetOfJavaValues("java.math.BigDecimal",
+  , LinkedListOfJavaValues("java.math.BigDecimal",
       SingleJavaValue("java.math.BigDecimal.ZERO")
     , SingleJavaValue("java.math.BigDecimal.ONE")
     , SingleJavaValue("new java.math.BigDecimal(\"3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679\").setScale(28, java.math.BigDecimal.ROUND_HALF_UP)")
     , SingleJavaValue("new java.math.BigDecimal(\"-1E-28\")")
     , SingleJavaValue("new java.math.BigDecimal(\"1E28\")")
     )
-  , SetOfJavaValues("java.math.BigDecimal",
+  , LinkedListOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("null")
+    , SingleJavaValue("java.math.BigDecimal.ZERO")
+    , SingleJavaValue("java.math.BigDecimal.ONE")
+    , SingleJavaValue("new java.math.BigDecimal(\"3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679\").setScale(28, java.math.BigDecimal.ROUND_HALF_UP)")
+    , SingleJavaValue("new java.math.BigDecimal(\"-1E-28\")")
+    , SingleJavaValue("new java.math.BigDecimal(\"1E28\")")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Stack<Decimal>`
+    extends JavaDecimal with `box.OneStackOfOne` {
+
+  val javaClass = "java.util.Stack<java.math.BigDecimal>"
+  val javaType = JavaCollectionType("java.util.Stack", JavaClass("java.math.BigDecimal"))
+  val javaDescription = "OneStackOfOneDecimals"
+
+  def defaultValue = SingleJavaValue("new java.util.Stack<java.math.BigDecimal>()")
+
+  def nonDefaultValues = IndexedSeq(
+    StackOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("java.math.BigDecimal.ZERO")
+    )
+  , StackOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("new java.math.BigDecimal(\"1E28\")")
+    )
+  , StackOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("java.math.BigDecimal.ZERO")
+    , SingleJavaValue("java.math.BigDecimal.ONE")
+    , SingleJavaValue("new java.math.BigDecimal(\"3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679\").setScale(28, java.math.BigDecimal.ROUND_HALF_UP)")
+    , SingleJavaValue("new java.math.BigDecimal(\"-1E-28\")")
+    , SingleJavaValue("new java.math.BigDecimal(\"1E28\")")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Stack<Decimal>?`
+    extends JavaDecimal with `box.NullableStackOfOne` {
+
+  val javaClass = "java.util.Stack<java.math.BigDecimal>"
+  val javaType = JavaCollectionType("java.util.Stack", JavaClass("java.math.BigDecimal"))
+  val javaDescription = "NullableStackOfOneDecimals"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    StackOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("java.math.BigDecimal.ZERO")
+    )
+  , StackOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("new java.math.BigDecimal(\"1E28\")")
+    )
+  , StackOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("java.math.BigDecimal.ZERO")
+    , SingleJavaValue("java.math.BigDecimal.ONE")
+    , SingleJavaValue("new java.math.BigDecimal(\"3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679\").setScale(28, java.math.BigDecimal.ROUND_HALF_UP)")
+    , SingleJavaValue("new java.math.BigDecimal(\"-1E-28\")")
+    , SingleJavaValue("new java.math.BigDecimal(\"1E28\")")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Stack<Decimal?>`
+    extends JavaDecimal with `box.OneStackOfNullable` {
+
+  val javaClass = "java.util.Stack<java.math.BigDecimal>"
+  val javaType = JavaCollectionType("java.util.Stack", JavaClass("java.math.BigDecimal"))
+  val javaDescription = "OneStackOfNullableDecimals"
+
+  def defaultValue = SingleJavaValue("new java.util.Stack<java.math.BigDecimal>()")
+
+  def nonDefaultValues = IndexedSeq(
+    StackOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("null")
+    )
+  , StackOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("java.math.BigDecimal.ZERO")
+    )
+  , StackOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("new java.math.BigDecimal(\"1E28\")")
+    )
+  , StackOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("java.math.BigDecimal.ZERO")
+    , SingleJavaValue("java.math.BigDecimal.ONE")
+    , SingleJavaValue("new java.math.BigDecimal(\"3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679\").setScale(28, java.math.BigDecimal.ROUND_HALF_UP)")
+    , SingleJavaValue("new java.math.BigDecimal(\"-1E-28\")")
+    , SingleJavaValue("new java.math.BigDecimal(\"1E28\")")
+    )
+  , StackOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("null")
+    , SingleJavaValue("java.math.BigDecimal.ZERO")
+    , SingleJavaValue("java.math.BigDecimal.ONE")
+    , SingleJavaValue("new java.math.BigDecimal(\"3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679\").setScale(28, java.math.BigDecimal.ROUND_HALF_UP)")
+    , SingleJavaValue("new java.math.BigDecimal(\"-1E-28\")")
+    , SingleJavaValue("new java.math.BigDecimal(\"1E28\")")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Stack<Decimal?>?`
+    extends JavaDecimal with `box.NullableStackOfNullable` {
+
+  val javaClass = "java.util.Stack<java.math.BigDecimal>"
+  val javaType = JavaCollectionType("java.util.Stack", JavaClass("java.math.BigDecimal"))
+  val javaDescription = "NullableStackOfNullableDecimals"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    StackOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("null")
+    )
+  , StackOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("java.math.BigDecimal.ZERO")
+    )
+  , StackOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("new java.math.BigDecimal(\"1E28\")")
+    )
+  , StackOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("java.math.BigDecimal.ZERO")
+    , SingleJavaValue("java.math.BigDecimal.ONE")
+    , SingleJavaValue("new java.math.BigDecimal(\"3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679\").setScale(28, java.math.BigDecimal.ROUND_HALF_UP)")
+    , SingleJavaValue("new java.math.BigDecimal(\"-1E-28\")")
+    , SingleJavaValue("new java.math.BigDecimal(\"1E28\")")
+    )
+  , StackOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("null")
+    , SingleJavaValue("java.math.BigDecimal.ZERO")
+    , SingleJavaValue("java.math.BigDecimal.ONE")
+    , SingleJavaValue("new java.math.BigDecimal(\"3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679\").setScale(28, java.math.BigDecimal.ROUND_HALF_UP)")
+    , SingleJavaValue("new java.math.BigDecimal(\"-1E-28\")")
+    , SingleJavaValue("new java.math.BigDecimal(\"1E28\")")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Vector<Decimal>`
+    extends JavaDecimal with `box.OneVectorOfOne` {
+
+  val javaClass = "java.util.Vector<java.math.BigDecimal>"
+  val javaType = JavaCollectionType("java.util.Vector", JavaClass("java.math.BigDecimal"))
+  val javaDescription = "OneVectorOfOneDecimals"
+
+  def defaultValue = SingleJavaValue("new java.util.Vector<java.math.BigDecimal>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    VectorOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("java.math.BigDecimal.ZERO")
+    )
+  , VectorOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("new java.math.BigDecimal(\"1E28\")")
+    )
+  , VectorOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("java.math.BigDecimal.ZERO")
+    , SingleJavaValue("java.math.BigDecimal.ONE")
+    , SingleJavaValue("new java.math.BigDecimal(\"3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679\").setScale(28, java.math.BigDecimal.ROUND_HALF_UP)")
+    , SingleJavaValue("new java.math.BigDecimal(\"-1E-28\")")
+    , SingleJavaValue("new java.math.BigDecimal(\"1E28\")")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Vector<Decimal>?`
+    extends JavaDecimal with `box.NullableVectorOfOne` {
+
+  val javaClass = "java.util.Vector<java.math.BigDecimal>"
+  val javaType = JavaCollectionType("java.util.Vector", JavaClass("java.math.BigDecimal"))
+  val javaDescription = "NullableVectorOfOneDecimals"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    VectorOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("java.math.BigDecimal.ZERO")
+    )
+  , VectorOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("new java.math.BigDecimal(\"1E28\")")
+    )
+  , VectorOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("java.math.BigDecimal.ZERO")
+    , SingleJavaValue("java.math.BigDecimal.ONE")
+    , SingleJavaValue("new java.math.BigDecimal(\"3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679\").setScale(28, java.math.BigDecimal.ROUND_HALF_UP)")
+    , SingleJavaValue("new java.math.BigDecimal(\"-1E-28\")")
+    , SingleJavaValue("new java.math.BigDecimal(\"1E28\")")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Vector<Decimal?>`
+    extends JavaDecimal with `box.OneVectorOfNullable` {
+
+  val javaClass = "java.util.Vector<java.math.BigDecimal>"
+  val javaType = JavaCollectionType("java.util.Vector", JavaClass("java.math.BigDecimal"))
+  val javaDescription = "OneVectorOfNullableDecimals"
+
+  def defaultValue = SingleJavaValue("new java.util.Vector<java.math.BigDecimal>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    VectorOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("null")
+    )
+  , VectorOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("java.math.BigDecimal.ZERO")
+    )
+  , VectorOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("new java.math.BigDecimal(\"1E28\")")
+    )
+  , VectorOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("java.math.BigDecimal.ZERO")
+    , SingleJavaValue("java.math.BigDecimal.ONE")
+    , SingleJavaValue("new java.math.BigDecimal(\"3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679\").setScale(28, java.math.BigDecimal.ROUND_HALF_UP)")
+    , SingleJavaValue("new java.math.BigDecimal(\"-1E-28\")")
+    , SingleJavaValue("new java.math.BigDecimal(\"1E28\")")
+    )
+  , VectorOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("null")
+    , SingleJavaValue("java.math.BigDecimal.ZERO")
+    , SingleJavaValue("java.math.BigDecimal.ONE")
+    , SingleJavaValue("new java.math.BigDecimal(\"3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679\").setScale(28, java.math.BigDecimal.ROUND_HALF_UP)")
+    , SingleJavaValue("new java.math.BigDecimal(\"-1E-28\")")
+    , SingleJavaValue("new java.math.BigDecimal(\"1E28\")")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Vector<Decimal?>?`
+    extends JavaDecimal with `box.NullableVectorOfNullable` {
+
+  val javaClass = "java.util.Vector<java.math.BigDecimal>"
+  val javaType = JavaCollectionType("java.util.Vector", JavaClass("java.math.BigDecimal"))
+  val javaDescription = "NullableVectorOfNullableDecimals"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    VectorOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("null")
+    )
+  , VectorOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("java.math.BigDecimal.ZERO")
+    )
+  , VectorOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("new java.math.BigDecimal(\"1E28\")")
+    )
+  , VectorOfJavaValues("java.math.BigDecimal",
+      SingleJavaValue("java.math.BigDecimal.ZERO")
+    , SingleJavaValue("java.math.BigDecimal.ONE")
+    , SingleJavaValue("new java.math.BigDecimal(\"3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679\").setScale(28, java.math.BigDecimal.ROUND_HALF_UP)")
+    , SingleJavaValue("new java.math.BigDecimal(\"-1E-28\")")
+    , SingleJavaValue("new java.math.BigDecimal(\"1E28\")")
+    )
+  , VectorOfJavaValues("java.math.BigDecimal",
       SingleJavaValue("null")
     , SingleJavaValue("java.math.BigDecimal.ZERO")
     , SingleJavaValue("java.math.BigDecimal.ONE")

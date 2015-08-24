@@ -4,7 +4,7 @@ package scalas
 import types._
 import boxes._
 
-sealed trait ScalaPoint
+sealed abstract class ScalaPoint
     extends OcdScalaBoxType
     with `type.Point`
 
@@ -88,6 +88,38 @@ case object `scala.List<Point?>?`
   val defaultValue = "None"
 }
 
+case object `scala.Set<Point>`
+    extends ScalaPoint with `box.OneSetOfOne` {
+
+  val scalaClass = "Set[java.awt.Point]"
+
+  val defaultValue = "Set[java.awt.Point].empty"
+}
+
+case object `scala.Set<Point>?`
+    extends ScalaPoint with `box.NullableSetOfOne` {
+
+  val scalaClass = "Option[Set[java.awt.Point]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Set<Point?>`
+    extends ScalaPoint with `box.OneSetOfNullable` {
+
+  val scalaClass = "Set[Option[java.awt.Point]]"
+
+  val defaultValue = "Set[Option[java.awt.Point]].empty"
+}
+
+case object `scala.Set<Point?>?`
+    extends ScalaPoint with `box.NullableSetOfNullable` {
+
+  val scalaClass = "Option[Set[Option[java.awt.Point]]]"
+
+  val defaultValue = "None"
+}
+
 case object `scala.Queue<Point>`
     extends ScalaPoint with `box.OneQueueOfOne` {
 
@@ -120,34 +152,98 @@ case object `scala.Queue<Point?>?`
   val defaultValue = "None"
 }
 
-case object `scala.Set<Point>`
-    extends ScalaPoint with `box.OneSetOfOne` {
+case object `scala.LinkedList<Point>`
+    extends ScalaPoint with `box.OneLinkedListOfOne` {
 
-  val scalaClass = "Set[java.awt.Point]"
+  val scalaClass = "LinkedList[java.awt.Point]"
 
-  val defaultValue = "Set[java.awt.Point].empty"
+  val defaultValue = "LinkedList[java.awt.Point].empty"
 }
 
-case object `scala.Set<Point>?`
-    extends ScalaPoint with `box.NullableSetOfOne` {
+case object `scala.LinkedList<Point>?`
+    extends ScalaPoint with `box.NullableLinkedListOfOne` {
 
-  val scalaClass = "Option[Set[java.awt.Point]]"
+  val scalaClass = "Option[LinkedList[java.awt.Point]]"
 
   val defaultValue = "None"
 }
 
-case object `scala.Set<Point?>`
-    extends ScalaPoint with `box.OneSetOfNullable` {
+case object `scala.LinkedList<Point?>`
+    extends ScalaPoint with `box.OneLinkedListOfNullable` {
 
-  val scalaClass = "Set[Option[java.awt.Point]]"
+  val scalaClass = "LinkedList[Option[java.awt.Point]]"
 
-  val defaultValue = "Set[Option[java.awt.Point]].empty"
+  val defaultValue = "LinkedList[Option[java.awt.Point]].empty"
 }
 
-case object `scala.Set<Point?>?`
-    extends ScalaPoint with `box.NullableSetOfNullable` {
+case object `scala.LinkedList<Point?>?`
+    extends ScalaPoint with `box.NullableLinkedListOfNullable` {
 
-  val scalaClass = "Option[Set[Option[java.awt.Point]]]"
+  val scalaClass = "Option[LinkedList[Option[java.awt.Point]]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Stack<Point>`
+    extends ScalaPoint with `box.OneStackOfOne` {
+
+  val scalaClass = "Stack[java.awt.Point]"
+
+  val defaultValue = "Stack[java.awt.Point].empty"
+}
+
+case object `scala.Stack<Point>?`
+    extends ScalaPoint with `box.NullableStackOfOne` {
+
+  val scalaClass = "Option[Stack[java.awt.Point]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Stack<Point?>`
+    extends ScalaPoint with `box.OneStackOfNullable` {
+
+  val scalaClass = "Stack[Option[java.awt.Point]]"
+
+  val defaultValue = "Stack[Option[java.awt.Point]].empty"
+}
+
+case object `scala.Stack<Point?>?`
+    extends ScalaPoint with `box.NullableStackOfNullable` {
+
+  val scalaClass = "Option[Stack[Option[java.awt.Point]]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Vector<Point>`
+    extends ScalaPoint with `box.OneVectorOfOne` {
+
+  val scalaClass = "Vector[java.awt.Point]"
+
+  val defaultValue = "Vector[java.awt.Point].empty"
+}
+
+case object `scala.Vector<Point>?`
+    extends ScalaPoint with `box.NullableVectorOfOne` {
+
+  val scalaClass = "Option[Vector[java.awt.Point]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Vector<Point?>`
+    extends ScalaPoint with `box.OneVectorOfNullable` {
+
+  val scalaClass = "Vector[Option[java.awt.Point]]"
+
+  val defaultValue = "Vector[Option[java.awt.Point]].empty"
+}
+
+case object `scala.Vector<Point?>?`
+    extends ScalaPoint with `box.NullableVectorOfNullable` {
+
+  val scalaClass = "Option[Vector[Option[java.awt.Point]]]"
 
   val defaultValue = "None"
 }

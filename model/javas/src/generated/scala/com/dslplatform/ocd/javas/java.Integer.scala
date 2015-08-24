@@ -4,7 +4,7 @@ package javas
 import types._
 import boxes._
 
-sealed trait JavaInteger
+sealed abstract class JavaInteger
     extends OcdJavaBoxType
     with `type.Integer` {
 
@@ -320,6 +320,140 @@ case object `java.List<Integer?>?`
   val hasGenerics = true
 }
 
+case object `java.Set<Integer>`
+    extends JavaInteger with `box.OneSetOfOne` {
+
+  val javaClass = "java.util.Set<Integer>"
+  val javaType = JavaCollectionType("java.util.Set", JavaClass("Integer"))
+  val javaDescription = "OneSetOfOneIntegers"
+
+  def defaultValue = SingleJavaValue("new java.util.HashSet<Integer>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    SetOfJavaValues("Integer",
+      SingleJavaValue("0")
+    )
+  , SetOfJavaValues("Integer",
+      SingleJavaValue("1000000000")
+    )
+  , SetOfJavaValues("Integer",
+      SingleJavaValue("0")
+    , SingleJavaValue("Integer.MIN_VALUE")
+    , SingleJavaValue("Integer.MAX_VALUE")
+    , SingleJavaValue("-1000000000")
+    , SingleJavaValue("1000000000")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Set<Integer>?`
+    extends JavaInteger with `box.NullableSetOfOne` {
+
+  val javaClass = "java.util.Set<Integer>"
+  val javaType = JavaCollectionType("java.util.Set", JavaClass("Integer"))
+  val javaDescription = "NullableSetOfOneIntegers"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    SetOfJavaValues("Integer",
+      SingleJavaValue("0")
+    )
+  , SetOfJavaValues("Integer",
+      SingleJavaValue("1000000000")
+    )
+  , SetOfJavaValues("Integer",
+      SingleJavaValue("0")
+    , SingleJavaValue("Integer.MIN_VALUE")
+    , SingleJavaValue("Integer.MAX_VALUE")
+    , SingleJavaValue("-1000000000")
+    , SingleJavaValue("1000000000")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Set<Integer?>`
+    extends JavaInteger with `box.OneSetOfNullable` {
+
+  val javaClass = "java.util.Set<Integer>"
+  val javaType = JavaCollectionType("java.util.Set", JavaClass("Integer"))
+  val javaDescription = "OneSetOfNullableIntegers"
+
+  def defaultValue = SingleJavaValue("new java.util.HashSet<Integer>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    SetOfJavaValues("Integer",
+      SingleJavaValue("null")
+    )
+  , SetOfJavaValues("Integer",
+      SingleJavaValue("0")
+    )
+  , SetOfJavaValues("Integer",
+      SingleJavaValue("1000000000")
+    )
+  , SetOfJavaValues("Integer",
+      SingleJavaValue("0")
+    , SingleJavaValue("Integer.MIN_VALUE")
+    , SingleJavaValue("Integer.MAX_VALUE")
+    , SingleJavaValue("-1000000000")
+    , SingleJavaValue("1000000000")
+    )
+  , SetOfJavaValues("Integer",
+      SingleJavaValue("null")
+    , SingleJavaValue("0")
+    , SingleJavaValue("Integer.MIN_VALUE")
+    , SingleJavaValue("Integer.MAX_VALUE")
+    , SingleJavaValue("-1000000000")
+    , SingleJavaValue("1000000000")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Set<Integer?>?`
+    extends JavaInteger with `box.NullableSetOfNullable` {
+
+  val javaClass = "java.util.Set<Integer>"
+  val javaType = JavaCollectionType("java.util.Set", JavaClass("Integer"))
+  val javaDescription = "NullableSetOfNullableIntegers"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    SetOfJavaValues("Integer",
+      SingleJavaValue("null")
+    )
+  , SetOfJavaValues("Integer",
+      SingleJavaValue("0")
+    )
+  , SetOfJavaValues("Integer",
+      SingleJavaValue("1000000000")
+    )
+  , SetOfJavaValues("Integer",
+      SingleJavaValue("0")
+    , SingleJavaValue("Integer.MIN_VALUE")
+    , SingleJavaValue("Integer.MAX_VALUE")
+    , SingleJavaValue("-1000000000")
+    , SingleJavaValue("1000000000")
+    )
+  , SetOfJavaValues("Integer",
+      SingleJavaValue("null")
+    , SingleJavaValue("0")
+    , SingleJavaValue("Integer.MIN_VALUE")
+    , SingleJavaValue("Integer.MAX_VALUE")
+    , SingleJavaValue("-1000000000")
+    , SingleJavaValue("1000000000")
+    )
+  )
+
+  val hasGenerics = true
+}
+
 case object `java.Queue<Integer>`
     extends JavaInteger with `box.OneQueueOfOne` {
 
@@ -454,23 +588,23 @@ case object `java.Queue<Integer?>?`
   val hasGenerics = true
 }
 
-case object `java.Set<Integer>`
-    extends JavaInteger with `box.OneSetOfOne` {
+case object `java.LinkedList<Integer>`
+    extends JavaInteger with `box.OneLinkedListOfOne` {
 
-  val javaClass = "java.util.Set<Integer>"
-  val javaType = JavaCollectionType("java.util.Set", JavaClass("Integer"))
-  val javaDescription = "OneSetOfOneIntegers"
+  val javaClass = "java.util.LinkedList<Integer>"
+  val javaType = JavaCollectionType("java.util.LinkedList", JavaClass("Integer"))
+  val javaDescription = "OneLinkedListOfOneIntegers"
 
-  def defaultValue = SingleJavaValue("new java.util.HashSet<Integer>(0)")
+  def defaultValue = SingleJavaValue("new java.util.LinkedList<Integer>()")
 
   def nonDefaultValues = IndexedSeq(
-    SetOfJavaValues("Integer",
+    LinkedListOfJavaValues("Integer",
       SingleJavaValue("0")
     )
-  , SetOfJavaValues("Integer",
+  , LinkedListOfJavaValues("Integer",
       SingleJavaValue("1000000000")
     )
-  , SetOfJavaValues("Integer",
+  , LinkedListOfJavaValues("Integer",
       SingleJavaValue("0")
     , SingleJavaValue("Integer.MIN_VALUE")
     , SingleJavaValue("Integer.MAX_VALUE")
@@ -482,23 +616,23 @@ case object `java.Set<Integer>`
   val hasGenerics = true
 }
 
-case object `java.Set<Integer>?`
-    extends JavaInteger with `box.NullableSetOfOne` {
+case object `java.LinkedList<Integer>?`
+    extends JavaInteger with `box.NullableLinkedListOfOne` {
 
-  val javaClass = "java.util.Set<Integer>"
-  val javaType = JavaCollectionType("java.util.Set", JavaClass("Integer"))
-  val javaDescription = "NullableSetOfOneIntegers"
+  val javaClass = "java.util.LinkedList<Integer>"
+  val javaType = JavaCollectionType("java.util.LinkedList", JavaClass("Integer"))
+  val javaDescription = "NullableLinkedListOfOneIntegers"
 
   def defaultValue = SingleJavaValue("null")
 
   def nonDefaultValues = IndexedSeq(
-    SetOfJavaValues("Integer",
+    LinkedListOfJavaValues("Integer",
       SingleJavaValue("0")
     )
-  , SetOfJavaValues("Integer",
+  , LinkedListOfJavaValues("Integer",
       SingleJavaValue("1000000000")
     )
-  , SetOfJavaValues("Integer",
+  , LinkedListOfJavaValues("Integer",
       SingleJavaValue("0")
     , SingleJavaValue("Integer.MIN_VALUE")
     , SingleJavaValue("Integer.MAX_VALUE")
@@ -510,33 +644,33 @@ case object `java.Set<Integer>?`
   val hasGenerics = true
 }
 
-case object `java.Set<Integer?>`
-    extends JavaInteger with `box.OneSetOfNullable` {
+case object `java.LinkedList<Integer?>`
+    extends JavaInteger with `box.OneLinkedListOfNullable` {
 
-  val javaClass = "java.util.Set<Integer>"
-  val javaType = JavaCollectionType("java.util.Set", JavaClass("Integer"))
-  val javaDescription = "OneSetOfNullableIntegers"
+  val javaClass = "java.util.LinkedList<Integer>"
+  val javaType = JavaCollectionType("java.util.LinkedList", JavaClass("Integer"))
+  val javaDescription = "OneLinkedListOfNullableIntegers"
 
-  def defaultValue = SingleJavaValue("new java.util.HashSet<Integer>(0)")
+  def defaultValue = SingleJavaValue("new java.util.LinkedList<Integer>()")
 
   def nonDefaultValues = IndexedSeq(
-    SetOfJavaValues("Integer",
+    LinkedListOfJavaValues("Integer",
       SingleJavaValue("null")
     )
-  , SetOfJavaValues("Integer",
+  , LinkedListOfJavaValues("Integer",
       SingleJavaValue("0")
     )
-  , SetOfJavaValues("Integer",
+  , LinkedListOfJavaValues("Integer",
       SingleJavaValue("1000000000")
     )
-  , SetOfJavaValues("Integer",
+  , LinkedListOfJavaValues("Integer",
       SingleJavaValue("0")
     , SingleJavaValue("Integer.MIN_VALUE")
     , SingleJavaValue("Integer.MAX_VALUE")
     , SingleJavaValue("-1000000000")
     , SingleJavaValue("1000000000")
     )
-  , SetOfJavaValues("Integer",
+  , LinkedListOfJavaValues("Integer",
       SingleJavaValue("null")
     , SingleJavaValue("0")
     , SingleJavaValue("Integer.MIN_VALUE")
@@ -549,33 +683,301 @@ case object `java.Set<Integer?>`
   val hasGenerics = true
 }
 
-case object `java.Set<Integer?>?`
-    extends JavaInteger with `box.NullableSetOfNullable` {
+case object `java.LinkedList<Integer?>?`
+    extends JavaInteger with `box.NullableLinkedListOfNullable` {
 
-  val javaClass = "java.util.Set<Integer>"
-  val javaType = JavaCollectionType("java.util.Set", JavaClass("Integer"))
-  val javaDescription = "NullableSetOfNullableIntegers"
+  val javaClass = "java.util.LinkedList<Integer>"
+  val javaType = JavaCollectionType("java.util.LinkedList", JavaClass("Integer"))
+  val javaDescription = "NullableLinkedListOfNullableIntegers"
 
   def defaultValue = SingleJavaValue("null")
 
   def nonDefaultValues = IndexedSeq(
-    SetOfJavaValues("Integer",
+    LinkedListOfJavaValues("Integer",
       SingleJavaValue("null")
     )
-  , SetOfJavaValues("Integer",
+  , LinkedListOfJavaValues("Integer",
       SingleJavaValue("0")
     )
-  , SetOfJavaValues("Integer",
+  , LinkedListOfJavaValues("Integer",
       SingleJavaValue("1000000000")
     )
-  , SetOfJavaValues("Integer",
+  , LinkedListOfJavaValues("Integer",
       SingleJavaValue("0")
     , SingleJavaValue("Integer.MIN_VALUE")
     , SingleJavaValue("Integer.MAX_VALUE")
     , SingleJavaValue("-1000000000")
     , SingleJavaValue("1000000000")
     )
-  , SetOfJavaValues("Integer",
+  , LinkedListOfJavaValues("Integer",
+      SingleJavaValue("null")
+    , SingleJavaValue("0")
+    , SingleJavaValue("Integer.MIN_VALUE")
+    , SingleJavaValue("Integer.MAX_VALUE")
+    , SingleJavaValue("-1000000000")
+    , SingleJavaValue("1000000000")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Stack<Integer>`
+    extends JavaInteger with `box.OneStackOfOne` {
+
+  val javaClass = "java.util.Stack<Integer>"
+  val javaType = JavaCollectionType("java.util.Stack", JavaClass("Integer"))
+  val javaDescription = "OneStackOfOneIntegers"
+
+  def defaultValue = SingleJavaValue("new java.util.Stack<Integer>()")
+
+  def nonDefaultValues = IndexedSeq(
+    StackOfJavaValues("Integer",
+      SingleJavaValue("0")
+    )
+  , StackOfJavaValues("Integer",
+      SingleJavaValue("1000000000")
+    )
+  , StackOfJavaValues("Integer",
+      SingleJavaValue("0")
+    , SingleJavaValue("Integer.MIN_VALUE")
+    , SingleJavaValue("Integer.MAX_VALUE")
+    , SingleJavaValue("-1000000000")
+    , SingleJavaValue("1000000000")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Stack<Integer>?`
+    extends JavaInteger with `box.NullableStackOfOne` {
+
+  val javaClass = "java.util.Stack<Integer>"
+  val javaType = JavaCollectionType("java.util.Stack", JavaClass("Integer"))
+  val javaDescription = "NullableStackOfOneIntegers"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    StackOfJavaValues("Integer",
+      SingleJavaValue("0")
+    )
+  , StackOfJavaValues("Integer",
+      SingleJavaValue("1000000000")
+    )
+  , StackOfJavaValues("Integer",
+      SingleJavaValue("0")
+    , SingleJavaValue("Integer.MIN_VALUE")
+    , SingleJavaValue("Integer.MAX_VALUE")
+    , SingleJavaValue("-1000000000")
+    , SingleJavaValue("1000000000")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Stack<Integer?>`
+    extends JavaInteger with `box.OneStackOfNullable` {
+
+  val javaClass = "java.util.Stack<Integer>"
+  val javaType = JavaCollectionType("java.util.Stack", JavaClass("Integer"))
+  val javaDescription = "OneStackOfNullableIntegers"
+
+  def defaultValue = SingleJavaValue("new java.util.Stack<Integer>()")
+
+  def nonDefaultValues = IndexedSeq(
+    StackOfJavaValues("Integer",
+      SingleJavaValue("null")
+    )
+  , StackOfJavaValues("Integer",
+      SingleJavaValue("0")
+    )
+  , StackOfJavaValues("Integer",
+      SingleJavaValue("1000000000")
+    )
+  , StackOfJavaValues("Integer",
+      SingleJavaValue("0")
+    , SingleJavaValue("Integer.MIN_VALUE")
+    , SingleJavaValue("Integer.MAX_VALUE")
+    , SingleJavaValue("-1000000000")
+    , SingleJavaValue("1000000000")
+    )
+  , StackOfJavaValues("Integer",
+      SingleJavaValue("null")
+    , SingleJavaValue("0")
+    , SingleJavaValue("Integer.MIN_VALUE")
+    , SingleJavaValue("Integer.MAX_VALUE")
+    , SingleJavaValue("-1000000000")
+    , SingleJavaValue("1000000000")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Stack<Integer?>?`
+    extends JavaInteger with `box.NullableStackOfNullable` {
+
+  val javaClass = "java.util.Stack<Integer>"
+  val javaType = JavaCollectionType("java.util.Stack", JavaClass("Integer"))
+  val javaDescription = "NullableStackOfNullableIntegers"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    StackOfJavaValues("Integer",
+      SingleJavaValue("null")
+    )
+  , StackOfJavaValues("Integer",
+      SingleJavaValue("0")
+    )
+  , StackOfJavaValues("Integer",
+      SingleJavaValue("1000000000")
+    )
+  , StackOfJavaValues("Integer",
+      SingleJavaValue("0")
+    , SingleJavaValue("Integer.MIN_VALUE")
+    , SingleJavaValue("Integer.MAX_VALUE")
+    , SingleJavaValue("-1000000000")
+    , SingleJavaValue("1000000000")
+    )
+  , StackOfJavaValues("Integer",
+      SingleJavaValue("null")
+    , SingleJavaValue("0")
+    , SingleJavaValue("Integer.MIN_VALUE")
+    , SingleJavaValue("Integer.MAX_VALUE")
+    , SingleJavaValue("-1000000000")
+    , SingleJavaValue("1000000000")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Vector<Integer>`
+    extends JavaInteger with `box.OneVectorOfOne` {
+
+  val javaClass = "java.util.Vector<Integer>"
+  val javaType = JavaCollectionType("java.util.Vector", JavaClass("Integer"))
+  val javaDescription = "OneVectorOfOneIntegers"
+
+  def defaultValue = SingleJavaValue("new java.util.Vector<Integer>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    VectorOfJavaValues("Integer",
+      SingleJavaValue("0")
+    )
+  , VectorOfJavaValues("Integer",
+      SingleJavaValue("1000000000")
+    )
+  , VectorOfJavaValues("Integer",
+      SingleJavaValue("0")
+    , SingleJavaValue("Integer.MIN_VALUE")
+    , SingleJavaValue("Integer.MAX_VALUE")
+    , SingleJavaValue("-1000000000")
+    , SingleJavaValue("1000000000")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Vector<Integer>?`
+    extends JavaInteger with `box.NullableVectorOfOne` {
+
+  val javaClass = "java.util.Vector<Integer>"
+  val javaType = JavaCollectionType("java.util.Vector", JavaClass("Integer"))
+  val javaDescription = "NullableVectorOfOneIntegers"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    VectorOfJavaValues("Integer",
+      SingleJavaValue("0")
+    )
+  , VectorOfJavaValues("Integer",
+      SingleJavaValue("1000000000")
+    )
+  , VectorOfJavaValues("Integer",
+      SingleJavaValue("0")
+    , SingleJavaValue("Integer.MIN_VALUE")
+    , SingleJavaValue("Integer.MAX_VALUE")
+    , SingleJavaValue("-1000000000")
+    , SingleJavaValue("1000000000")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Vector<Integer?>`
+    extends JavaInteger with `box.OneVectorOfNullable` {
+
+  val javaClass = "java.util.Vector<Integer>"
+  val javaType = JavaCollectionType("java.util.Vector", JavaClass("Integer"))
+  val javaDescription = "OneVectorOfNullableIntegers"
+
+  def defaultValue = SingleJavaValue("new java.util.Vector<Integer>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    VectorOfJavaValues("Integer",
+      SingleJavaValue("null")
+    )
+  , VectorOfJavaValues("Integer",
+      SingleJavaValue("0")
+    )
+  , VectorOfJavaValues("Integer",
+      SingleJavaValue("1000000000")
+    )
+  , VectorOfJavaValues("Integer",
+      SingleJavaValue("0")
+    , SingleJavaValue("Integer.MIN_VALUE")
+    , SingleJavaValue("Integer.MAX_VALUE")
+    , SingleJavaValue("-1000000000")
+    , SingleJavaValue("1000000000")
+    )
+  , VectorOfJavaValues("Integer",
+      SingleJavaValue("null")
+    , SingleJavaValue("0")
+    , SingleJavaValue("Integer.MIN_VALUE")
+    , SingleJavaValue("Integer.MAX_VALUE")
+    , SingleJavaValue("-1000000000")
+    , SingleJavaValue("1000000000")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Vector<Integer?>?`
+    extends JavaInteger with `box.NullableVectorOfNullable` {
+
+  val javaClass = "java.util.Vector<Integer>"
+  val javaType = JavaCollectionType("java.util.Vector", JavaClass("Integer"))
+  val javaDescription = "NullableVectorOfNullableIntegers"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    VectorOfJavaValues("Integer",
+      SingleJavaValue("null")
+    )
+  , VectorOfJavaValues("Integer",
+      SingleJavaValue("0")
+    )
+  , VectorOfJavaValues("Integer",
+      SingleJavaValue("1000000000")
+    )
+  , VectorOfJavaValues("Integer",
+      SingleJavaValue("0")
+    , SingleJavaValue("Integer.MIN_VALUE")
+    , SingleJavaValue("Integer.MAX_VALUE")
+    , SingleJavaValue("-1000000000")
+    , SingleJavaValue("1000000000")
+    )
+  , VectorOfJavaValues("Integer",
       SingleJavaValue("null")
     , SingleJavaValue("0")
     , SingleJavaValue("Integer.MIN_VALUE")

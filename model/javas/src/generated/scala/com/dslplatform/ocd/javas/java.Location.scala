@@ -4,7 +4,7 @@ package javas
 import types._
 import boxes._
 
-sealed trait JavaLocation
+sealed abstract class JavaLocation
     extends OcdJavaBoxType
     with `type.Location` {
 
@@ -334,6 +334,146 @@ case object `java.List<Location?>?`
   val hasGenerics = true
 }
 
+case object `java.Set<Location>`
+    extends JavaLocation with `box.OneSetOfOne` {
+
+  val javaClass = "java.util.Set<java.awt.geom.Point2D>"
+  val javaType = JavaCollectionType("java.util.Set", JavaClass("java.awt.geom.Point2D"))
+  val javaDescription = "OneSetOfOneLocations"
+
+  def defaultValue = SingleJavaValue("new java.util.HashSet<java.awt.geom.Point2D>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    SetOfJavaValues("java.awt.geom.Point2D",
+      SingleJavaValue("new java.awt.geom.Point2D.Float()")
+    )
+  , SetOfJavaValues("java.awt.geom.Point2D",
+      SingleJavaValue("new java.awt.geom.Point2D.Double(-2.000000000000345, 1.000000000000234)")
+    )
+  , SetOfJavaValues("java.awt.geom.Point2D",
+      SingleJavaValue("new java.awt.geom.Point2D.Float()")
+    , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.Point(-1000000000, 1000000000)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Float(Float.MIN_VALUE, Float.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Float(-1.0000001f, 1.0000001f)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Double(-2.000000000000345, 1.000000000000234)")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Set<Location>?`
+    extends JavaLocation with `box.NullableSetOfOne` {
+
+  val javaClass = "java.util.Set<java.awt.geom.Point2D>"
+  val javaType = JavaCollectionType("java.util.Set", JavaClass("java.awt.geom.Point2D"))
+  val javaDescription = "NullableSetOfOneLocations"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    SetOfJavaValues("java.awt.geom.Point2D",
+      SingleJavaValue("new java.awt.geom.Point2D.Float()")
+    )
+  , SetOfJavaValues("java.awt.geom.Point2D",
+      SingleJavaValue("new java.awt.geom.Point2D.Double(-2.000000000000345, 1.000000000000234)")
+    )
+  , SetOfJavaValues("java.awt.geom.Point2D",
+      SingleJavaValue("new java.awt.geom.Point2D.Float()")
+    , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.Point(-1000000000, 1000000000)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Float(Float.MIN_VALUE, Float.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Float(-1.0000001f, 1.0000001f)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Double(-2.000000000000345, 1.000000000000234)")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Set<Location?>`
+    extends JavaLocation with `box.OneSetOfNullable` {
+
+  val javaClass = "java.util.Set<java.awt.geom.Point2D>"
+  val javaType = JavaCollectionType("java.util.Set", JavaClass("java.awt.geom.Point2D"))
+  val javaDescription = "OneSetOfNullableLocations"
+
+  def defaultValue = SingleJavaValue("new java.util.HashSet<java.awt.geom.Point2D>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    SetOfJavaValues("java.awt.geom.Point2D",
+      SingleJavaValue("null")
+    )
+  , SetOfJavaValues("java.awt.geom.Point2D",
+      SingleJavaValue("new java.awt.geom.Point2D.Float()")
+    )
+  , SetOfJavaValues("java.awt.geom.Point2D",
+      SingleJavaValue("new java.awt.geom.Point2D.Double(-2.000000000000345, 1.000000000000234)")
+    )
+  , SetOfJavaValues("java.awt.geom.Point2D",
+      SingleJavaValue("new java.awt.geom.Point2D.Float()")
+    , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.Point(-1000000000, 1000000000)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Float(Float.MIN_VALUE, Float.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Float(-1.0000001f, 1.0000001f)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Double(-2.000000000000345, 1.000000000000234)")
+    )
+  , SetOfJavaValues("java.awt.geom.Point2D",
+      SingleJavaValue("null")
+    , SingleJavaValue("new java.awt.geom.Point2D.Float()")
+    , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.Point(-1000000000, 1000000000)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Float(Float.MIN_VALUE, Float.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Float(-1.0000001f, 1.0000001f)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Double(-2.000000000000345, 1.000000000000234)")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Set<Location?>?`
+    extends JavaLocation with `box.NullableSetOfNullable` {
+
+  val javaClass = "java.util.Set<java.awt.geom.Point2D>"
+  val javaType = JavaCollectionType("java.util.Set", JavaClass("java.awt.geom.Point2D"))
+  val javaDescription = "NullableSetOfNullableLocations"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    SetOfJavaValues("java.awt.geom.Point2D",
+      SingleJavaValue("null")
+    )
+  , SetOfJavaValues("java.awt.geom.Point2D",
+      SingleJavaValue("new java.awt.geom.Point2D.Float()")
+    )
+  , SetOfJavaValues("java.awt.geom.Point2D",
+      SingleJavaValue("new java.awt.geom.Point2D.Double(-2.000000000000345, 1.000000000000234)")
+    )
+  , SetOfJavaValues("java.awt.geom.Point2D",
+      SingleJavaValue("new java.awt.geom.Point2D.Float()")
+    , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.Point(-1000000000, 1000000000)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Float(Float.MIN_VALUE, Float.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Float(-1.0000001f, 1.0000001f)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Double(-2.000000000000345, 1.000000000000234)")
+    )
+  , SetOfJavaValues("java.awt.geom.Point2D",
+      SingleJavaValue("null")
+    , SingleJavaValue("new java.awt.geom.Point2D.Float()")
+    , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.Point(-1000000000, 1000000000)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Float(Float.MIN_VALUE, Float.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Float(-1.0000001f, 1.0000001f)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Double(-2.000000000000345, 1.000000000000234)")
+    )
+  )
+
+  val hasGenerics = true
+}
+
 case object `java.Queue<Location>`
     extends JavaLocation with `box.OneQueueOfOne` {
 
@@ -474,23 +614,23 @@ case object `java.Queue<Location?>?`
   val hasGenerics = true
 }
 
-case object `java.Set<Location>`
-    extends JavaLocation with `box.OneSetOfOne` {
+case object `java.LinkedList<Location>`
+    extends JavaLocation with `box.OneLinkedListOfOne` {
 
-  val javaClass = "java.util.Set<java.awt.geom.Point2D>"
-  val javaType = JavaCollectionType("java.util.Set", JavaClass("java.awt.geom.Point2D"))
-  val javaDescription = "OneSetOfOneLocations"
+  val javaClass = "java.util.LinkedList<java.awt.geom.Point2D>"
+  val javaType = JavaCollectionType("java.util.LinkedList", JavaClass("java.awt.geom.Point2D"))
+  val javaDescription = "OneLinkedListOfOneLocations"
 
-  def defaultValue = SingleJavaValue("new java.util.HashSet<java.awt.geom.Point2D>(0)")
+  def defaultValue = SingleJavaValue("new java.util.LinkedList<java.awt.geom.Point2D>()")
 
   def nonDefaultValues = IndexedSeq(
-    SetOfJavaValues("java.awt.geom.Point2D",
+    LinkedListOfJavaValues("java.awt.geom.Point2D",
       SingleJavaValue("new java.awt.geom.Point2D.Float()")
     )
-  , SetOfJavaValues("java.awt.geom.Point2D",
+  , LinkedListOfJavaValues("java.awt.geom.Point2D",
       SingleJavaValue("new java.awt.geom.Point2D.Double(-2.000000000000345, 1.000000000000234)")
     )
-  , SetOfJavaValues("java.awt.geom.Point2D",
+  , LinkedListOfJavaValues("java.awt.geom.Point2D",
       SingleJavaValue("new java.awt.geom.Point2D.Float()")
     , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MAX_VALUE)")
     , SingleJavaValue("new java.awt.Point(-1000000000, 1000000000)")
@@ -503,23 +643,23 @@ case object `java.Set<Location>`
   val hasGenerics = true
 }
 
-case object `java.Set<Location>?`
-    extends JavaLocation with `box.NullableSetOfOne` {
+case object `java.LinkedList<Location>?`
+    extends JavaLocation with `box.NullableLinkedListOfOne` {
 
-  val javaClass = "java.util.Set<java.awt.geom.Point2D>"
-  val javaType = JavaCollectionType("java.util.Set", JavaClass("java.awt.geom.Point2D"))
-  val javaDescription = "NullableSetOfOneLocations"
+  val javaClass = "java.util.LinkedList<java.awt.geom.Point2D>"
+  val javaType = JavaCollectionType("java.util.LinkedList", JavaClass("java.awt.geom.Point2D"))
+  val javaDescription = "NullableLinkedListOfOneLocations"
 
   def defaultValue = SingleJavaValue("null")
 
   def nonDefaultValues = IndexedSeq(
-    SetOfJavaValues("java.awt.geom.Point2D",
+    LinkedListOfJavaValues("java.awt.geom.Point2D",
       SingleJavaValue("new java.awt.geom.Point2D.Float()")
     )
-  , SetOfJavaValues("java.awt.geom.Point2D",
+  , LinkedListOfJavaValues("java.awt.geom.Point2D",
       SingleJavaValue("new java.awt.geom.Point2D.Double(-2.000000000000345, 1.000000000000234)")
     )
-  , SetOfJavaValues("java.awt.geom.Point2D",
+  , LinkedListOfJavaValues("java.awt.geom.Point2D",
       SingleJavaValue("new java.awt.geom.Point2D.Float()")
     , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MAX_VALUE)")
     , SingleJavaValue("new java.awt.Point(-1000000000, 1000000000)")
@@ -532,26 +672,26 @@ case object `java.Set<Location>?`
   val hasGenerics = true
 }
 
-case object `java.Set<Location?>`
-    extends JavaLocation with `box.OneSetOfNullable` {
+case object `java.LinkedList<Location?>`
+    extends JavaLocation with `box.OneLinkedListOfNullable` {
 
-  val javaClass = "java.util.Set<java.awt.geom.Point2D>"
-  val javaType = JavaCollectionType("java.util.Set", JavaClass("java.awt.geom.Point2D"))
-  val javaDescription = "OneSetOfNullableLocations"
+  val javaClass = "java.util.LinkedList<java.awt.geom.Point2D>"
+  val javaType = JavaCollectionType("java.util.LinkedList", JavaClass("java.awt.geom.Point2D"))
+  val javaDescription = "OneLinkedListOfNullableLocations"
 
-  def defaultValue = SingleJavaValue("new java.util.HashSet<java.awt.geom.Point2D>(0)")
+  def defaultValue = SingleJavaValue("new java.util.LinkedList<java.awt.geom.Point2D>()")
 
   def nonDefaultValues = IndexedSeq(
-    SetOfJavaValues("java.awt.geom.Point2D",
+    LinkedListOfJavaValues("java.awt.geom.Point2D",
       SingleJavaValue("null")
     )
-  , SetOfJavaValues("java.awt.geom.Point2D",
+  , LinkedListOfJavaValues("java.awt.geom.Point2D",
       SingleJavaValue("new java.awt.geom.Point2D.Float()")
     )
-  , SetOfJavaValues("java.awt.geom.Point2D",
+  , LinkedListOfJavaValues("java.awt.geom.Point2D",
       SingleJavaValue("new java.awt.geom.Point2D.Double(-2.000000000000345, 1.000000000000234)")
     )
-  , SetOfJavaValues("java.awt.geom.Point2D",
+  , LinkedListOfJavaValues("java.awt.geom.Point2D",
       SingleJavaValue("new java.awt.geom.Point2D.Float()")
     , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MAX_VALUE)")
     , SingleJavaValue("new java.awt.Point(-1000000000, 1000000000)")
@@ -559,7 +699,7 @@ case object `java.Set<Location?>`
     , SingleJavaValue("new java.awt.geom.Point2D.Float(-1.0000001f, 1.0000001f)")
     , SingleJavaValue("new java.awt.geom.Point2D.Double(-2.000000000000345, 1.000000000000234)")
     )
-  , SetOfJavaValues("java.awt.geom.Point2D",
+  , LinkedListOfJavaValues("java.awt.geom.Point2D",
       SingleJavaValue("null")
     , SingleJavaValue("new java.awt.geom.Point2D.Float()")
     , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MAX_VALUE)")
@@ -573,26 +713,26 @@ case object `java.Set<Location?>`
   val hasGenerics = true
 }
 
-case object `java.Set<Location?>?`
-    extends JavaLocation with `box.NullableSetOfNullable` {
+case object `java.LinkedList<Location?>?`
+    extends JavaLocation with `box.NullableLinkedListOfNullable` {
 
-  val javaClass = "java.util.Set<java.awt.geom.Point2D>"
-  val javaType = JavaCollectionType("java.util.Set", JavaClass("java.awt.geom.Point2D"))
-  val javaDescription = "NullableSetOfNullableLocations"
+  val javaClass = "java.util.LinkedList<java.awt.geom.Point2D>"
+  val javaType = JavaCollectionType("java.util.LinkedList", JavaClass("java.awt.geom.Point2D"))
+  val javaDescription = "NullableLinkedListOfNullableLocations"
 
   def defaultValue = SingleJavaValue("null")
 
   def nonDefaultValues = IndexedSeq(
-    SetOfJavaValues("java.awt.geom.Point2D",
+    LinkedListOfJavaValues("java.awt.geom.Point2D",
       SingleJavaValue("null")
     )
-  , SetOfJavaValues("java.awt.geom.Point2D",
+  , LinkedListOfJavaValues("java.awt.geom.Point2D",
       SingleJavaValue("new java.awt.geom.Point2D.Float()")
     )
-  , SetOfJavaValues("java.awt.geom.Point2D",
+  , LinkedListOfJavaValues("java.awt.geom.Point2D",
       SingleJavaValue("new java.awt.geom.Point2D.Double(-2.000000000000345, 1.000000000000234)")
     )
-  , SetOfJavaValues("java.awt.geom.Point2D",
+  , LinkedListOfJavaValues("java.awt.geom.Point2D",
       SingleJavaValue("new java.awt.geom.Point2D.Float()")
     , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MAX_VALUE)")
     , SingleJavaValue("new java.awt.Point(-1000000000, 1000000000)")
@@ -600,7 +740,287 @@ case object `java.Set<Location?>?`
     , SingleJavaValue("new java.awt.geom.Point2D.Float(-1.0000001f, 1.0000001f)")
     , SingleJavaValue("new java.awt.geom.Point2D.Double(-2.000000000000345, 1.000000000000234)")
     )
-  , SetOfJavaValues("java.awt.geom.Point2D",
+  , LinkedListOfJavaValues("java.awt.geom.Point2D",
+      SingleJavaValue("null")
+    , SingleJavaValue("new java.awt.geom.Point2D.Float()")
+    , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.Point(-1000000000, 1000000000)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Float(Float.MIN_VALUE, Float.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Float(-1.0000001f, 1.0000001f)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Double(-2.000000000000345, 1.000000000000234)")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Stack<Location>`
+    extends JavaLocation with `box.OneStackOfOne` {
+
+  val javaClass = "java.util.Stack<java.awt.geom.Point2D>"
+  val javaType = JavaCollectionType("java.util.Stack", JavaClass("java.awt.geom.Point2D"))
+  val javaDescription = "OneStackOfOneLocations"
+
+  def defaultValue = SingleJavaValue("new java.util.Stack<java.awt.geom.Point2D>()")
+
+  def nonDefaultValues = IndexedSeq(
+    StackOfJavaValues("java.awt.geom.Point2D",
+      SingleJavaValue("new java.awt.geom.Point2D.Float()")
+    )
+  , StackOfJavaValues("java.awt.geom.Point2D",
+      SingleJavaValue("new java.awt.geom.Point2D.Double(-2.000000000000345, 1.000000000000234)")
+    )
+  , StackOfJavaValues("java.awt.geom.Point2D",
+      SingleJavaValue("new java.awt.geom.Point2D.Float()")
+    , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.Point(-1000000000, 1000000000)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Float(Float.MIN_VALUE, Float.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Float(-1.0000001f, 1.0000001f)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Double(-2.000000000000345, 1.000000000000234)")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Stack<Location>?`
+    extends JavaLocation with `box.NullableStackOfOne` {
+
+  val javaClass = "java.util.Stack<java.awt.geom.Point2D>"
+  val javaType = JavaCollectionType("java.util.Stack", JavaClass("java.awt.geom.Point2D"))
+  val javaDescription = "NullableStackOfOneLocations"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    StackOfJavaValues("java.awt.geom.Point2D",
+      SingleJavaValue("new java.awt.geom.Point2D.Float()")
+    )
+  , StackOfJavaValues("java.awt.geom.Point2D",
+      SingleJavaValue("new java.awt.geom.Point2D.Double(-2.000000000000345, 1.000000000000234)")
+    )
+  , StackOfJavaValues("java.awt.geom.Point2D",
+      SingleJavaValue("new java.awt.geom.Point2D.Float()")
+    , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.Point(-1000000000, 1000000000)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Float(Float.MIN_VALUE, Float.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Float(-1.0000001f, 1.0000001f)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Double(-2.000000000000345, 1.000000000000234)")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Stack<Location?>`
+    extends JavaLocation with `box.OneStackOfNullable` {
+
+  val javaClass = "java.util.Stack<java.awt.geom.Point2D>"
+  val javaType = JavaCollectionType("java.util.Stack", JavaClass("java.awt.geom.Point2D"))
+  val javaDescription = "OneStackOfNullableLocations"
+
+  def defaultValue = SingleJavaValue("new java.util.Stack<java.awt.geom.Point2D>()")
+
+  def nonDefaultValues = IndexedSeq(
+    StackOfJavaValues("java.awt.geom.Point2D",
+      SingleJavaValue("null")
+    )
+  , StackOfJavaValues("java.awt.geom.Point2D",
+      SingleJavaValue("new java.awt.geom.Point2D.Float()")
+    )
+  , StackOfJavaValues("java.awt.geom.Point2D",
+      SingleJavaValue("new java.awt.geom.Point2D.Double(-2.000000000000345, 1.000000000000234)")
+    )
+  , StackOfJavaValues("java.awt.geom.Point2D",
+      SingleJavaValue("new java.awt.geom.Point2D.Float()")
+    , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.Point(-1000000000, 1000000000)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Float(Float.MIN_VALUE, Float.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Float(-1.0000001f, 1.0000001f)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Double(-2.000000000000345, 1.000000000000234)")
+    )
+  , StackOfJavaValues("java.awt.geom.Point2D",
+      SingleJavaValue("null")
+    , SingleJavaValue("new java.awt.geom.Point2D.Float()")
+    , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.Point(-1000000000, 1000000000)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Float(Float.MIN_VALUE, Float.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Float(-1.0000001f, 1.0000001f)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Double(-2.000000000000345, 1.000000000000234)")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Stack<Location?>?`
+    extends JavaLocation with `box.NullableStackOfNullable` {
+
+  val javaClass = "java.util.Stack<java.awt.geom.Point2D>"
+  val javaType = JavaCollectionType("java.util.Stack", JavaClass("java.awt.geom.Point2D"))
+  val javaDescription = "NullableStackOfNullableLocations"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    StackOfJavaValues("java.awt.geom.Point2D",
+      SingleJavaValue("null")
+    )
+  , StackOfJavaValues("java.awt.geom.Point2D",
+      SingleJavaValue("new java.awt.geom.Point2D.Float()")
+    )
+  , StackOfJavaValues("java.awt.geom.Point2D",
+      SingleJavaValue("new java.awt.geom.Point2D.Double(-2.000000000000345, 1.000000000000234)")
+    )
+  , StackOfJavaValues("java.awt.geom.Point2D",
+      SingleJavaValue("new java.awt.geom.Point2D.Float()")
+    , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.Point(-1000000000, 1000000000)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Float(Float.MIN_VALUE, Float.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Float(-1.0000001f, 1.0000001f)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Double(-2.000000000000345, 1.000000000000234)")
+    )
+  , StackOfJavaValues("java.awt.geom.Point2D",
+      SingleJavaValue("null")
+    , SingleJavaValue("new java.awt.geom.Point2D.Float()")
+    , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.Point(-1000000000, 1000000000)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Float(Float.MIN_VALUE, Float.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Float(-1.0000001f, 1.0000001f)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Double(-2.000000000000345, 1.000000000000234)")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Vector<Location>`
+    extends JavaLocation with `box.OneVectorOfOne` {
+
+  val javaClass = "java.util.Vector<java.awt.geom.Point2D>"
+  val javaType = JavaCollectionType("java.util.Vector", JavaClass("java.awt.geom.Point2D"))
+  val javaDescription = "OneVectorOfOneLocations"
+
+  def defaultValue = SingleJavaValue("new java.util.Vector<java.awt.geom.Point2D>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    VectorOfJavaValues("java.awt.geom.Point2D",
+      SingleJavaValue("new java.awt.geom.Point2D.Float()")
+    )
+  , VectorOfJavaValues("java.awt.geom.Point2D",
+      SingleJavaValue("new java.awt.geom.Point2D.Double(-2.000000000000345, 1.000000000000234)")
+    )
+  , VectorOfJavaValues("java.awt.geom.Point2D",
+      SingleJavaValue("new java.awt.geom.Point2D.Float()")
+    , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.Point(-1000000000, 1000000000)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Float(Float.MIN_VALUE, Float.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Float(-1.0000001f, 1.0000001f)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Double(-2.000000000000345, 1.000000000000234)")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Vector<Location>?`
+    extends JavaLocation with `box.NullableVectorOfOne` {
+
+  val javaClass = "java.util.Vector<java.awt.geom.Point2D>"
+  val javaType = JavaCollectionType("java.util.Vector", JavaClass("java.awt.geom.Point2D"))
+  val javaDescription = "NullableVectorOfOneLocations"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    VectorOfJavaValues("java.awt.geom.Point2D",
+      SingleJavaValue("new java.awt.geom.Point2D.Float()")
+    )
+  , VectorOfJavaValues("java.awt.geom.Point2D",
+      SingleJavaValue("new java.awt.geom.Point2D.Double(-2.000000000000345, 1.000000000000234)")
+    )
+  , VectorOfJavaValues("java.awt.geom.Point2D",
+      SingleJavaValue("new java.awt.geom.Point2D.Float()")
+    , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.Point(-1000000000, 1000000000)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Float(Float.MIN_VALUE, Float.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Float(-1.0000001f, 1.0000001f)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Double(-2.000000000000345, 1.000000000000234)")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Vector<Location?>`
+    extends JavaLocation with `box.OneVectorOfNullable` {
+
+  val javaClass = "java.util.Vector<java.awt.geom.Point2D>"
+  val javaType = JavaCollectionType("java.util.Vector", JavaClass("java.awt.geom.Point2D"))
+  val javaDescription = "OneVectorOfNullableLocations"
+
+  def defaultValue = SingleJavaValue("new java.util.Vector<java.awt.geom.Point2D>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    VectorOfJavaValues("java.awt.geom.Point2D",
+      SingleJavaValue("null")
+    )
+  , VectorOfJavaValues("java.awt.geom.Point2D",
+      SingleJavaValue("new java.awt.geom.Point2D.Float()")
+    )
+  , VectorOfJavaValues("java.awt.geom.Point2D",
+      SingleJavaValue("new java.awt.geom.Point2D.Double(-2.000000000000345, 1.000000000000234)")
+    )
+  , VectorOfJavaValues("java.awt.geom.Point2D",
+      SingleJavaValue("new java.awt.geom.Point2D.Float()")
+    , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.Point(-1000000000, 1000000000)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Float(Float.MIN_VALUE, Float.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Float(-1.0000001f, 1.0000001f)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Double(-2.000000000000345, 1.000000000000234)")
+    )
+  , VectorOfJavaValues("java.awt.geom.Point2D",
+      SingleJavaValue("null")
+    , SingleJavaValue("new java.awt.geom.Point2D.Float()")
+    , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.Point(-1000000000, 1000000000)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Float(Float.MIN_VALUE, Float.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Float(-1.0000001f, 1.0000001f)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Double(-2.000000000000345, 1.000000000000234)")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Vector<Location?>?`
+    extends JavaLocation with `box.NullableVectorOfNullable` {
+
+  val javaClass = "java.util.Vector<java.awt.geom.Point2D>"
+  val javaType = JavaCollectionType("java.util.Vector", JavaClass("java.awt.geom.Point2D"))
+  val javaDescription = "NullableVectorOfNullableLocations"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    VectorOfJavaValues("java.awt.geom.Point2D",
+      SingleJavaValue("null")
+    )
+  , VectorOfJavaValues("java.awt.geom.Point2D",
+      SingleJavaValue("new java.awt.geom.Point2D.Float()")
+    )
+  , VectorOfJavaValues("java.awt.geom.Point2D",
+      SingleJavaValue("new java.awt.geom.Point2D.Double(-2.000000000000345, 1.000000000000234)")
+    )
+  , VectorOfJavaValues("java.awt.geom.Point2D",
+      SingleJavaValue("new java.awt.geom.Point2D.Float()")
+    , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.Point(-1000000000, 1000000000)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Float(Float.MIN_VALUE, Float.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Float(-1.0000001f, 1.0000001f)")
+    , SingleJavaValue("new java.awt.geom.Point2D.Double(-2.000000000000345, 1.000000000000234)")
+    )
+  , VectorOfJavaValues("java.awt.geom.Point2D",
       SingleJavaValue("null")
     , SingleJavaValue("new java.awt.geom.Point2D.Float()")
     , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MAX_VALUE)")

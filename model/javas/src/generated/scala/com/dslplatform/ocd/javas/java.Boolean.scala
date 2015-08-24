@@ -4,7 +4,7 @@ package javas
 import types._
 import boxes._
 
-sealed trait JavaBoolean
+sealed abstract class JavaBoolean
     extends OcdJavaBoxType
     with `type.Boolean` {
 
@@ -278,6 +278,122 @@ case object `java.List<Boolean?>?`
   val hasGenerics = true
 }
 
+case object `java.Set<Boolean>`
+    extends JavaBoolean with `box.OneSetOfOne` {
+
+  val javaClass = "java.util.Set<Boolean>"
+  val javaType = JavaCollectionType("java.util.Set", JavaClass("Boolean"))
+  val javaDescription = "OneSetOfOneBooleans"
+
+  def defaultValue = SingleJavaValue("new java.util.HashSet<Boolean>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    SetOfJavaValues("Boolean",
+      SingleJavaValue("false")
+    )
+  , SetOfJavaValues("Boolean",
+      SingleJavaValue("true")
+    )
+  , SetOfJavaValues("Boolean",
+      SingleJavaValue("false")
+    , SingleJavaValue("true")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Set<Boolean>?`
+    extends JavaBoolean with `box.NullableSetOfOne` {
+
+  val javaClass = "java.util.Set<Boolean>"
+  val javaType = JavaCollectionType("java.util.Set", JavaClass("Boolean"))
+  val javaDescription = "NullableSetOfOneBooleans"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    SetOfJavaValues("Boolean",
+      SingleJavaValue("false")
+    )
+  , SetOfJavaValues("Boolean",
+      SingleJavaValue("true")
+    )
+  , SetOfJavaValues("Boolean",
+      SingleJavaValue("false")
+    , SingleJavaValue("true")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Set<Boolean?>`
+    extends JavaBoolean with `box.OneSetOfNullable` {
+
+  val javaClass = "java.util.Set<Boolean>"
+  val javaType = JavaCollectionType("java.util.Set", JavaClass("Boolean"))
+  val javaDescription = "OneSetOfNullableBooleans"
+
+  def defaultValue = SingleJavaValue("new java.util.HashSet<Boolean>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    SetOfJavaValues("Boolean",
+      SingleJavaValue("null")
+    )
+  , SetOfJavaValues("Boolean",
+      SingleJavaValue("false")
+    )
+  , SetOfJavaValues("Boolean",
+      SingleJavaValue("true")
+    )
+  , SetOfJavaValues("Boolean",
+      SingleJavaValue("false")
+    , SingleJavaValue("true")
+    )
+  , SetOfJavaValues("Boolean",
+      SingleJavaValue("null")
+    , SingleJavaValue("false")
+    , SingleJavaValue("true")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Set<Boolean?>?`
+    extends JavaBoolean with `box.NullableSetOfNullable` {
+
+  val javaClass = "java.util.Set<Boolean>"
+  val javaType = JavaCollectionType("java.util.Set", JavaClass("Boolean"))
+  val javaDescription = "NullableSetOfNullableBooleans"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    SetOfJavaValues("Boolean",
+      SingleJavaValue("null")
+    )
+  , SetOfJavaValues("Boolean",
+      SingleJavaValue("false")
+    )
+  , SetOfJavaValues("Boolean",
+      SingleJavaValue("true")
+    )
+  , SetOfJavaValues("Boolean",
+      SingleJavaValue("false")
+    , SingleJavaValue("true")
+    )
+  , SetOfJavaValues("Boolean",
+      SingleJavaValue("null")
+    , SingleJavaValue("false")
+    , SingleJavaValue("true")
+    )
+  )
+
+  val hasGenerics = true
+}
+
 case object `java.Queue<Boolean>`
     extends JavaBoolean with `box.OneQueueOfOne` {
 
@@ -394,23 +510,23 @@ case object `java.Queue<Boolean?>?`
   val hasGenerics = true
 }
 
-case object `java.Set<Boolean>`
-    extends JavaBoolean with `box.OneSetOfOne` {
+case object `java.LinkedList<Boolean>`
+    extends JavaBoolean with `box.OneLinkedListOfOne` {
 
-  val javaClass = "java.util.Set<Boolean>"
-  val javaType = JavaCollectionType("java.util.Set", JavaClass("Boolean"))
-  val javaDescription = "OneSetOfOneBooleans"
+  val javaClass = "java.util.LinkedList<Boolean>"
+  val javaType = JavaCollectionType("java.util.LinkedList", JavaClass("Boolean"))
+  val javaDescription = "OneLinkedListOfOneBooleans"
 
-  def defaultValue = SingleJavaValue("new java.util.HashSet<Boolean>(0)")
+  def defaultValue = SingleJavaValue("new java.util.LinkedList<Boolean>()")
 
   def nonDefaultValues = IndexedSeq(
-    SetOfJavaValues("Boolean",
+    LinkedListOfJavaValues("Boolean",
       SingleJavaValue("false")
     )
-  , SetOfJavaValues("Boolean",
+  , LinkedListOfJavaValues("Boolean",
       SingleJavaValue("true")
     )
-  , SetOfJavaValues("Boolean",
+  , LinkedListOfJavaValues("Boolean",
       SingleJavaValue("false")
     , SingleJavaValue("true")
     )
@@ -419,23 +535,23 @@ case object `java.Set<Boolean>`
   val hasGenerics = true
 }
 
-case object `java.Set<Boolean>?`
-    extends JavaBoolean with `box.NullableSetOfOne` {
+case object `java.LinkedList<Boolean>?`
+    extends JavaBoolean with `box.NullableLinkedListOfOne` {
 
-  val javaClass = "java.util.Set<Boolean>"
-  val javaType = JavaCollectionType("java.util.Set", JavaClass("Boolean"))
-  val javaDescription = "NullableSetOfOneBooleans"
+  val javaClass = "java.util.LinkedList<Boolean>"
+  val javaType = JavaCollectionType("java.util.LinkedList", JavaClass("Boolean"))
+  val javaDescription = "NullableLinkedListOfOneBooleans"
 
   def defaultValue = SingleJavaValue("null")
 
   def nonDefaultValues = IndexedSeq(
-    SetOfJavaValues("Boolean",
+    LinkedListOfJavaValues("Boolean",
       SingleJavaValue("false")
     )
-  , SetOfJavaValues("Boolean",
+  , LinkedListOfJavaValues("Boolean",
       SingleJavaValue("true")
     )
-  , SetOfJavaValues("Boolean",
+  , LinkedListOfJavaValues("Boolean",
       SingleJavaValue("false")
     , SingleJavaValue("true")
     )
@@ -444,30 +560,30 @@ case object `java.Set<Boolean>?`
   val hasGenerics = true
 }
 
-case object `java.Set<Boolean?>`
-    extends JavaBoolean with `box.OneSetOfNullable` {
+case object `java.LinkedList<Boolean?>`
+    extends JavaBoolean with `box.OneLinkedListOfNullable` {
 
-  val javaClass = "java.util.Set<Boolean>"
-  val javaType = JavaCollectionType("java.util.Set", JavaClass("Boolean"))
-  val javaDescription = "OneSetOfNullableBooleans"
+  val javaClass = "java.util.LinkedList<Boolean>"
+  val javaType = JavaCollectionType("java.util.LinkedList", JavaClass("Boolean"))
+  val javaDescription = "OneLinkedListOfNullableBooleans"
 
-  def defaultValue = SingleJavaValue("new java.util.HashSet<Boolean>(0)")
+  def defaultValue = SingleJavaValue("new java.util.LinkedList<Boolean>()")
 
   def nonDefaultValues = IndexedSeq(
-    SetOfJavaValues("Boolean",
+    LinkedListOfJavaValues("Boolean",
       SingleJavaValue("null")
     )
-  , SetOfJavaValues("Boolean",
+  , LinkedListOfJavaValues("Boolean",
       SingleJavaValue("false")
     )
-  , SetOfJavaValues("Boolean",
+  , LinkedListOfJavaValues("Boolean",
       SingleJavaValue("true")
     )
-  , SetOfJavaValues("Boolean",
+  , LinkedListOfJavaValues("Boolean",
       SingleJavaValue("false")
     , SingleJavaValue("true")
     )
-  , SetOfJavaValues("Boolean",
+  , LinkedListOfJavaValues("Boolean",
       SingleJavaValue("null")
     , SingleJavaValue("false")
     , SingleJavaValue("true")
@@ -477,30 +593,262 @@ case object `java.Set<Boolean?>`
   val hasGenerics = true
 }
 
-case object `java.Set<Boolean?>?`
-    extends JavaBoolean with `box.NullableSetOfNullable` {
+case object `java.LinkedList<Boolean?>?`
+    extends JavaBoolean with `box.NullableLinkedListOfNullable` {
 
-  val javaClass = "java.util.Set<Boolean>"
-  val javaType = JavaCollectionType("java.util.Set", JavaClass("Boolean"))
-  val javaDescription = "NullableSetOfNullableBooleans"
+  val javaClass = "java.util.LinkedList<Boolean>"
+  val javaType = JavaCollectionType("java.util.LinkedList", JavaClass("Boolean"))
+  val javaDescription = "NullableLinkedListOfNullableBooleans"
 
   def defaultValue = SingleJavaValue("null")
 
   def nonDefaultValues = IndexedSeq(
-    SetOfJavaValues("Boolean",
+    LinkedListOfJavaValues("Boolean",
       SingleJavaValue("null")
     )
-  , SetOfJavaValues("Boolean",
+  , LinkedListOfJavaValues("Boolean",
       SingleJavaValue("false")
     )
-  , SetOfJavaValues("Boolean",
+  , LinkedListOfJavaValues("Boolean",
       SingleJavaValue("true")
     )
-  , SetOfJavaValues("Boolean",
+  , LinkedListOfJavaValues("Boolean",
       SingleJavaValue("false")
     , SingleJavaValue("true")
     )
-  , SetOfJavaValues("Boolean",
+  , LinkedListOfJavaValues("Boolean",
+      SingleJavaValue("null")
+    , SingleJavaValue("false")
+    , SingleJavaValue("true")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Stack<Boolean>`
+    extends JavaBoolean with `box.OneStackOfOne` {
+
+  val javaClass = "java.util.Stack<Boolean>"
+  val javaType = JavaCollectionType("java.util.Stack", JavaClass("Boolean"))
+  val javaDescription = "OneStackOfOneBooleans"
+
+  def defaultValue = SingleJavaValue("new java.util.Stack<Boolean>()")
+
+  def nonDefaultValues = IndexedSeq(
+    StackOfJavaValues("Boolean",
+      SingleJavaValue("false")
+    )
+  , StackOfJavaValues("Boolean",
+      SingleJavaValue("true")
+    )
+  , StackOfJavaValues("Boolean",
+      SingleJavaValue("false")
+    , SingleJavaValue("true")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Stack<Boolean>?`
+    extends JavaBoolean with `box.NullableStackOfOne` {
+
+  val javaClass = "java.util.Stack<Boolean>"
+  val javaType = JavaCollectionType("java.util.Stack", JavaClass("Boolean"))
+  val javaDescription = "NullableStackOfOneBooleans"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    StackOfJavaValues("Boolean",
+      SingleJavaValue("false")
+    )
+  , StackOfJavaValues("Boolean",
+      SingleJavaValue("true")
+    )
+  , StackOfJavaValues("Boolean",
+      SingleJavaValue("false")
+    , SingleJavaValue("true")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Stack<Boolean?>`
+    extends JavaBoolean with `box.OneStackOfNullable` {
+
+  val javaClass = "java.util.Stack<Boolean>"
+  val javaType = JavaCollectionType("java.util.Stack", JavaClass("Boolean"))
+  val javaDescription = "OneStackOfNullableBooleans"
+
+  def defaultValue = SingleJavaValue("new java.util.Stack<Boolean>()")
+
+  def nonDefaultValues = IndexedSeq(
+    StackOfJavaValues("Boolean",
+      SingleJavaValue("null")
+    )
+  , StackOfJavaValues("Boolean",
+      SingleJavaValue("false")
+    )
+  , StackOfJavaValues("Boolean",
+      SingleJavaValue("true")
+    )
+  , StackOfJavaValues("Boolean",
+      SingleJavaValue("false")
+    , SingleJavaValue("true")
+    )
+  , StackOfJavaValues("Boolean",
+      SingleJavaValue("null")
+    , SingleJavaValue("false")
+    , SingleJavaValue("true")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Stack<Boolean?>?`
+    extends JavaBoolean with `box.NullableStackOfNullable` {
+
+  val javaClass = "java.util.Stack<Boolean>"
+  val javaType = JavaCollectionType("java.util.Stack", JavaClass("Boolean"))
+  val javaDescription = "NullableStackOfNullableBooleans"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    StackOfJavaValues("Boolean",
+      SingleJavaValue("null")
+    )
+  , StackOfJavaValues("Boolean",
+      SingleJavaValue("false")
+    )
+  , StackOfJavaValues("Boolean",
+      SingleJavaValue("true")
+    )
+  , StackOfJavaValues("Boolean",
+      SingleJavaValue("false")
+    , SingleJavaValue("true")
+    )
+  , StackOfJavaValues("Boolean",
+      SingleJavaValue("null")
+    , SingleJavaValue("false")
+    , SingleJavaValue("true")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Vector<Boolean>`
+    extends JavaBoolean with `box.OneVectorOfOne` {
+
+  val javaClass = "java.util.Vector<Boolean>"
+  val javaType = JavaCollectionType("java.util.Vector", JavaClass("Boolean"))
+  val javaDescription = "OneVectorOfOneBooleans"
+
+  def defaultValue = SingleJavaValue("new java.util.Vector<Boolean>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    VectorOfJavaValues("Boolean",
+      SingleJavaValue("false")
+    )
+  , VectorOfJavaValues("Boolean",
+      SingleJavaValue("true")
+    )
+  , VectorOfJavaValues("Boolean",
+      SingleJavaValue("false")
+    , SingleJavaValue("true")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Vector<Boolean>?`
+    extends JavaBoolean with `box.NullableVectorOfOne` {
+
+  val javaClass = "java.util.Vector<Boolean>"
+  val javaType = JavaCollectionType("java.util.Vector", JavaClass("Boolean"))
+  val javaDescription = "NullableVectorOfOneBooleans"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    VectorOfJavaValues("Boolean",
+      SingleJavaValue("false")
+    )
+  , VectorOfJavaValues("Boolean",
+      SingleJavaValue("true")
+    )
+  , VectorOfJavaValues("Boolean",
+      SingleJavaValue("false")
+    , SingleJavaValue("true")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Vector<Boolean?>`
+    extends JavaBoolean with `box.OneVectorOfNullable` {
+
+  val javaClass = "java.util.Vector<Boolean>"
+  val javaType = JavaCollectionType("java.util.Vector", JavaClass("Boolean"))
+  val javaDescription = "OneVectorOfNullableBooleans"
+
+  def defaultValue = SingleJavaValue("new java.util.Vector<Boolean>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    VectorOfJavaValues("Boolean",
+      SingleJavaValue("null")
+    )
+  , VectorOfJavaValues("Boolean",
+      SingleJavaValue("false")
+    )
+  , VectorOfJavaValues("Boolean",
+      SingleJavaValue("true")
+    )
+  , VectorOfJavaValues("Boolean",
+      SingleJavaValue("false")
+    , SingleJavaValue("true")
+    )
+  , VectorOfJavaValues("Boolean",
+      SingleJavaValue("null")
+    , SingleJavaValue("false")
+    , SingleJavaValue("true")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Vector<Boolean?>?`
+    extends JavaBoolean with `box.NullableVectorOfNullable` {
+
+  val javaClass = "java.util.Vector<Boolean>"
+  val javaType = JavaCollectionType("java.util.Vector", JavaClass("Boolean"))
+  val javaDescription = "NullableVectorOfNullableBooleans"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    VectorOfJavaValues("Boolean",
+      SingleJavaValue("null")
+    )
+  , VectorOfJavaValues("Boolean",
+      SingleJavaValue("false")
+    )
+  , VectorOfJavaValues("Boolean",
+      SingleJavaValue("true")
+    )
+  , VectorOfJavaValues("Boolean",
+      SingleJavaValue("false")
+    , SingleJavaValue("true")
+    )
+  , VectorOfJavaValues("Boolean",
       SingleJavaValue("null")
     , SingleJavaValue("false")
     , SingleJavaValue("true")

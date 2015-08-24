@@ -4,7 +4,7 @@ package scalas
 import types._
 import boxes._
 
-sealed trait ScalaGuid
+sealed abstract class ScalaGuid
     extends OcdScalaBoxType
     with `type.Guid`
 
@@ -88,6 +88,38 @@ case object `scala.List<Guid?>?`
   val defaultValue = "None"
 }
 
+case object `scala.Set<Guid>`
+    extends ScalaGuid with `box.OneSetOfOne` {
+
+  val scalaClass = "Set[java.util.UUID]"
+
+  val defaultValue = "Set[java.util.UUID].empty"
+}
+
+case object `scala.Set<Guid>?`
+    extends ScalaGuid with `box.NullableSetOfOne` {
+
+  val scalaClass = "Option[Set[java.util.UUID]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Set<Guid?>`
+    extends ScalaGuid with `box.OneSetOfNullable` {
+
+  val scalaClass = "Set[Option[java.util.UUID]]"
+
+  val defaultValue = "Set[Option[java.util.UUID]].empty"
+}
+
+case object `scala.Set<Guid?>?`
+    extends ScalaGuid with `box.NullableSetOfNullable` {
+
+  val scalaClass = "Option[Set[Option[java.util.UUID]]]"
+
+  val defaultValue = "None"
+}
+
 case object `scala.Queue<Guid>`
     extends ScalaGuid with `box.OneQueueOfOne` {
 
@@ -120,34 +152,98 @@ case object `scala.Queue<Guid?>?`
   val defaultValue = "None"
 }
 
-case object `scala.Set<Guid>`
-    extends ScalaGuid with `box.OneSetOfOne` {
+case object `scala.LinkedList<Guid>`
+    extends ScalaGuid with `box.OneLinkedListOfOne` {
 
-  val scalaClass = "Set[java.util.UUID]"
+  val scalaClass = "LinkedList[java.util.UUID]"
 
-  val defaultValue = "Set[java.util.UUID].empty"
+  val defaultValue = "LinkedList[java.util.UUID].empty"
 }
 
-case object `scala.Set<Guid>?`
-    extends ScalaGuid with `box.NullableSetOfOne` {
+case object `scala.LinkedList<Guid>?`
+    extends ScalaGuid with `box.NullableLinkedListOfOne` {
 
-  val scalaClass = "Option[Set[java.util.UUID]]"
+  val scalaClass = "Option[LinkedList[java.util.UUID]]"
 
   val defaultValue = "None"
 }
 
-case object `scala.Set<Guid?>`
-    extends ScalaGuid with `box.OneSetOfNullable` {
+case object `scala.LinkedList<Guid?>`
+    extends ScalaGuid with `box.OneLinkedListOfNullable` {
 
-  val scalaClass = "Set[Option[java.util.UUID]]"
+  val scalaClass = "LinkedList[Option[java.util.UUID]]"
 
-  val defaultValue = "Set[Option[java.util.UUID]].empty"
+  val defaultValue = "LinkedList[Option[java.util.UUID]].empty"
 }
 
-case object `scala.Set<Guid?>?`
-    extends ScalaGuid with `box.NullableSetOfNullable` {
+case object `scala.LinkedList<Guid?>?`
+    extends ScalaGuid with `box.NullableLinkedListOfNullable` {
 
-  val scalaClass = "Option[Set[Option[java.util.UUID]]]"
+  val scalaClass = "Option[LinkedList[Option[java.util.UUID]]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Stack<Guid>`
+    extends ScalaGuid with `box.OneStackOfOne` {
+
+  val scalaClass = "Stack[java.util.UUID]"
+
+  val defaultValue = "Stack[java.util.UUID].empty"
+}
+
+case object `scala.Stack<Guid>?`
+    extends ScalaGuid with `box.NullableStackOfOne` {
+
+  val scalaClass = "Option[Stack[java.util.UUID]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Stack<Guid?>`
+    extends ScalaGuid with `box.OneStackOfNullable` {
+
+  val scalaClass = "Stack[Option[java.util.UUID]]"
+
+  val defaultValue = "Stack[Option[java.util.UUID]].empty"
+}
+
+case object `scala.Stack<Guid?>?`
+    extends ScalaGuid with `box.NullableStackOfNullable` {
+
+  val scalaClass = "Option[Stack[Option[java.util.UUID]]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Vector<Guid>`
+    extends ScalaGuid with `box.OneVectorOfOne` {
+
+  val scalaClass = "Vector[java.util.UUID]"
+
+  val defaultValue = "Vector[java.util.UUID].empty"
+}
+
+case object `scala.Vector<Guid>?`
+    extends ScalaGuid with `box.NullableVectorOfOne` {
+
+  val scalaClass = "Option[Vector[java.util.UUID]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Vector<Guid?>`
+    extends ScalaGuid with `box.OneVectorOfNullable` {
+
+  val scalaClass = "Vector[Option[java.util.UUID]]"
+
+  val defaultValue = "Vector[Option[java.util.UUID]].empty"
+}
+
+case object `scala.Vector<Guid?>?`
+    extends ScalaGuid with `box.NullableVectorOfNullable` {
+
+  val scalaClass = "Option[Vector[Option[java.util.UUID]]]"
 
   val defaultValue = "None"
 }

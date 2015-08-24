@@ -4,7 +4,7 @@ package scalas
 import types._
 import boxes._
 
-sealed trait ScalaRectangle
+sealed abstract class ScalaRectangle
     extends OcdScalaBoxType
     with `type.Rectangle`
 
@@ -88,6 +88,38 @@ case object `scala.List<Rectangle?>?`
   val defaultValue = "None"
 }
 
+case object `scala.Set<Rectangle>`
+    extends ScalaRectangle with `box.OneSetOfOne` {
+
+  val scalaClass = "Set[java.awt.geom.Rectangle2D]"
+
+  val defaultValue = "Set[java.awt.geom.Rectangle2D].empty"
+}
+
+case object `scala.Set<Rectangle>?`
+    extends ScalaRectangle with `box.NullableSetOfOne` {
+
+  val scalaClass = "Option[Set[java.awt.geom.Rectangle2D]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Set<Rectangle?>`
+    extends ScalaRectangle with `box.OneSetOfNullable` {
+
+  val scalaClass = "Set[Option[java.awt.geom.Rectangle2D]]"
+
+  val defaultValue = "Set[Option[java.awt.geom.Rectangle2D]].empty"
+}
+
+case object `scala.Set<Rectangle?>?`
+    extends ScalaRectangle with `box.NullableSetOfNullable` {
+
+  val scalaClass = "Option[Set[Option[java.awt.geom.Rectangle2D]]]"
+
+  val defaultValue = "None"
+}
+
 case object `scala.Queue<Rectangle>`
     extends ScalaRectangle with `box.OneQueueOfOne` {
 
@@ -120,34 +152,98 @@ case object `scala.Queue<Rectangle?>?`
   val defaultValue = "None"
 }
 
-case object `scala.Set<Rectangle>`
-    extends ScalaRectangle with `box.OneSetOfOne` {
+case object `scala.LinkedList<Rectangle>`
+    extends ScalaRectangle with `box.OneLinkedListOfOne` {
 
-  val scalaClass = "Set[java.awt.geom.Rectangle2D]"
+  val scalaClass = "LinkedList[java.awt.geom.Rectangle2D]"
 
-  val defaultValue = "Set[java.awt.geom.Rectangle2D].empty"
+  val defaultValue = "LinkedList[java.awt.geom.Rectangle2D].empty"
 }
 
-case object `scala.Set<Rectangle>?`
-    extends ScalaRectangle with `box.NullableSetOfOne` {
+case object `scala.LinkedList<Rectangle>?`
+    extends ScalaRectangle with `box.NullableLinkedListOfOne` {
 
-  val scalaClass = "Option[Set[java.awt.geom.Rectangle2D]]"
+  val scalaClass = "Option[LinkedList[java.awt.geom.Rectangle2D]]"
 
   val defaultValue = "None"
 }
 
-case object `scala.Set<Rectangle?>`
-    extends ScalaRectangle with `box.OneSetOfNullable` {
+case object `scala.LinkedList<Rectangle?>`
+    extends ScalaRectangle with `box.OneLinkedListOfNullable` {
 
-  val scalaClass = "Set[Option[java.awt.geom.Rectangle2D]]"
+  val scalaClass = "LinkedList[Option[java.awt.geom.Rectangle2D]]"
 
-  val defaultValue = "Set[Option[java.awt.geom.Rectangle2D]].empty"
+  val defaultValue = "LinkedList[Option[java.awt.geom.Rectangle2D]].empty"
 }
 
-case object `scala.Set<Rectangle?>?`
-    extends ScalaRectangle with `box.NullableSetOfNullable` {
+case object `scala.LinkedList<Rectangle?>?`
+    extends ScalaRectangle with `box.NullableLinkedListOfNullable` {
 
-  val scalaClass = "Option[Set[Option[java.awt.geom.Rectangle2D]]]"
+  val scalaClass = "Option[LinkedList[Option[java.awt.geom.Rectangle2D]]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Stack<Rectangle>`
+    extends ScalaRectangle with `box.OneStackOfOne` {
+
+  val scalaClass = "Stack[java.awt.geom.Rectangle2D]"
+
+  val defaultValue = "Stack[java.awt.geom.Rectangle2D].empty"
+}
+
+case object `scala.Stack<Rectangle>?`
+    extends ScalaRectangle with `box.NullableStackOfOne` {
+
+  val scalaClass = "Option[Stack[java.awt.geom.Rectangle2D]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Stack<Rectangle?>`
+    extends ScalaRectangle with `box.OneStackOfNullable` {
+
+  val scalaClass = "Stack[Option[java.awt.geom.Rectangle2D]]"
+
+  val defaultValue = "Stack[Option[java.awt.geom.Rectangle2D]].empty"
+}
+
+case object `scala.Stack<Rectangle?>?`
+    extends ScalaRectangle with `box.NullableStackOfNullable` {
+
+  val scalaClass = "Option[Stack[Option[java.awt.geom.Rectangle2D]]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Vector<Rectangle>`
+    extends ScalaRectangle with `box.OneVectorOfOne` {
+
+  val scalaClass = "Vector[java.awt.geom.Rectangle2D]"
+
+  val defaultValue = "Vector[java.awt.geom.Rectangle2D].empty"
+}
+
+case object `scala.Vector<Rectangle>?`
+    extends ScalaRectangle with `box.NullableVectorOfOne` {
+
+  val scalaClass = "Option[Vector[java.awt.geom.Rectangle2D]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Vector<Rectangle?>`
+    extends ScalaRectangle with `box.OneVectorOfNullable` {
+
+  val scalaClass = "Vector[Option[java.awt.geom.Rectangle2D]]"
+
+  val defaultValue = "Vector[Option[java.awt.geom.Rectangle2D]].empty"
+}
+
+case object `scala.Vector<Rectangle?>?`
+    extends ScalaRectangle with `box.NullableVectorOfNullable` {
+
+  val scalaClass = "Option[Vector[Option[java.awt.geom.Rectangle2D]]]"
 
   val defaultValue = "None"
 }

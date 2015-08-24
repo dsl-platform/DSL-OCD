@@ -4,7 +4,7 @@ package scalas
 import types._
 import boxes._
 
-sealed trait ScalaFloat
+sealed abstract class ScalaFloat
     extends OcdScalaBoxType
     with `type.Float`
 
@@ -88,6 +88,38 @@ case object `scala.List<Float?>?`
   val defaultValue = "None"
 }
 
+case object `scala.Set<Float>`
+    extends ScalaFloat with `box.OneSetOfOne` {
+
+  val scalaClass = "Set[Float]"
+
+  val defaultValue = "Set[Float].empty"
+}
+
+case object `scala.Set<Float>?`
+    extends ScalaFloat with `box.NullableSetOfOne` {
+
+  val scalaClass = "Option[Set[Float]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Set<Float?>`
+    extends ScalaFloat with `box.OneSetOfNullable` {
+
+  val scalaClass = "Set[Option[Float]]"
+
+  val defaultValue = "Set[Option[Float]].empty"
+}
+
+case object `scala.Set<Float?>?`
+    extends ScalaFloat with `box.NullableSetOfNullable` {
+
+  val scalaClass = "Option[Set[Option[Float]]]"
+
+  val defaultValue = "None"
+}
+
 case object `scala.Queue<Float>`
     extends ScalaFloat with `box.OneQueueOfOne` {
 
@@ -120,34 +152,98 @@ case object `scala.Queue<Float?>?`
   val defaultValue = "None"
 }
 
-case object `scala.Set<Float>`
-    extends ScalaFloat with `box.OneSetOfOne` {
+case object `scala.LinkedList<Float>`
+    extends ScalaFloat with `box.OneLinkedListOfOne` {
 
-  val scalaClass = "Set[Float]"
+  val scalaClass = "LinkedList[Float]"
 
-  val defaultValue = "Set[Float].empty"
+  val defaultValue = "LinkedList[Float].empty"
 }
 
-case object `scala.Set<Float>?`
-    extends ScalaFloat with `box.NullableSetOfOne` {
+case object `scala.LinkedList<Float>?`
+    extends ScalaFloat with `box.NullableLinkedListOfOne` {
 
-  val scalaClass = "Option[Set[Float]]"
+  val scalaClass = "Option[LinkedList[Float]]"
 
   val defaultValue = "None"
 }
 
-case object `scala.Set<Float?>`
-    extends ScalaFloat with `box.OneSetOfNullable` {
+case object `scala.LinkedList<Float?>`
+    extends ScalaFloat with `box.OneLinkedListOfNullable` {
 
-  val scalaClass = "Set[Option[Float]]"
+  val scalaClass = "LinkedList[Option[Float]]"
 
-  val defaultValue = "Set[Option[Float]].empty"
+  val defaultValue = "LinkedList[Option[Float]].empty"
 }
 
-case object `scala.Set<Float?>?`
-    extends ScalaFloat with `box.NullableSetOfNullable` {
+case object `scala.LinkedList<Float?>?`
+    extends ScalaFloat with `box.NullableLinkedListOfNullable` {
 
-  val scalaClass = "Option[Set[Option[Float]]]"
+  val scalaClass = "Option[LinkedList[Option[Float]]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Stack<Float>`
+    extends ScalaFloat with `box.OneStackOfOne` {
+
+  val scalaClass = "Stack[Float]"
+
+  val defaultValue = "Stack[Float].empty"
+}
+
+case object `scala.Stack<Float>?`
+    extends ScalaFloat with `box.NullableStackOfOne` {
+
+  val scalaClass = "Option[Stack[Float]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Stack<Float?>`
+    extends ScalaFloat with `box.OneStackOfNullable` {
+
+  val scalaClass = "Stack[Option[Float]]"
+
+  val defaultValue = "Stack[Option[Float]].empty"
+}
+
+case object `scala.Stack<Float?>?`
+    extends ScalaFloat with `box.NullableStackOfNullable` {
+
+  val scalaClass = "Option[Stack[Option[Float]]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Vector<Float>`
+    extends ScalaFloat with `box.OneVectorOfOne` {
+
+  val scalaClass = "Vector[Float]"
+
+  val defaultValue = "Vector[Float].empty"
+}
+
+case object `scala.Vector<Float>?`
+    extends ScalaFloat with `box.NullableVectorOfOne` {
+
+  val scalaClass = "Option[Vector[Float]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Vector<Float?>`
+    extends ScalaFloat with `box.OneVectorOfNullable` {
+
+  val scalaClass = "Vector[Option[Float]]"
+
+  val defaultValue = "Vector[Option[Float]].empty"
+}
+
+case object `scala.Vector<Float?>?`
+    extends ScalaFloat with `box.NullableVectorOfNullable` {
+
+  val scalaClass = "Option[Vector[Option[Float]]]"
 
   val defaultValue = "None"
 }

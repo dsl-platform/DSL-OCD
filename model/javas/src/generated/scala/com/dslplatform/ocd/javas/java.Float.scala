@@ -4,7 +4,7 @@ package javas
 import types._
 import boxes._
 
-sealed trait JavaFloat
+sealed abstract class JavaFloat
     extends OcdJavaBoxType
     with `type.Float` {
 
@@ -376,6 +376,164 @@ case object `java.List<Float?>?`
   val hasGenerics = true
 }
 
+case object `java.Set<Float>`
+    extends JavaFloat with `box.OneSetOfOne` {
+
+  val javaClass = "java.util.Set<Float>"
+  val javaType = JavaCollectionType("java.util.Set", JavaClass("Float"))
+  val javaDescription = "OneSetOfOneFloats"
+
+  def defaultValue = SingleJavaValue("new java.util.HashSet<Float>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    SetOfJavaValues("Float",
+      SingleJavaValue("0.0f")
+    )
+  , SetOfJavaValues("Float",
+      SingleJavaValue("Float.POSITIVE_INFINITY")
+    )
+  , SetOfJavaValues("Float",
+      SingleJavaValue("0.0f")
+    , SingleJavaValue("-1.2345E-10f")
+    , SingleJavaValue("1.2345E20f")
+    , SingleJavaValue("-1E-5f")
+    , SingleJavaValue("-1E-32f")
+    , SingleJavaValue("1E32f")
+    , SingleJavaValue("Float.NaN")
+    , SingleJavaValue("Float.NEGATIVE_INFINITY")
+    , SingleJavaValue("Float.POSITIVE_INFINITY")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Set<Float>?`
+    extends JavaFloat with `box.NullableSetOfOne` {
+
+  val javaClass = "java.util.Set<Float>"
+  val javaType = JavaCollectionType("java.util.Set", JavaClass("Float"))
+  val javaDescription = "NullableSetOfOneFloats"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    SetOfJavaValues("Float",
+      SingleJavaValue("0.0f")
+    )
+  , SetOfJavaValues("Float",
+      SingleJavaValue("Float.POSITIVE_INFINITY")
+    )
+  , SetOfJavaValues("Float",
+      SingleJavaValue("0.0f")
+    , SingleJavaValue("-1.2345E-10f")
+    , SingleJavaValue("1.2345E20f")
+    , SingleJavaValue("-1E-5f")
+    , SingleJavaValue("-1E-32f")
+    , SingleJavaValue("1E32f")
+    , SingleJavaValue("Float.NaN")
+    , SingleJavaValue("Float.NEGATIVE_INFINITY")
+    , SingleJavaValue("Float.POSITIVE_INFINITY")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Set<Float?>`
+    extends JavaFloat with `box.OneSetOfNullable` {
+
+  val javaClass = "java.util.Set<Float>"
+  val javaType = JavaCollectionType("java.util.Set", JavaClass("Float"))
+  val javaDescription = "OneSetOfNullableFloats"
+
+  def defaultValue = SingleJavaValue("new java.util.HashSet<Float>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    SetOfJavaValues("Float",
+      SingleJavaValue("null")
+    )
+  , SetOfJavaValues("Float",
+      SingleJavaValue("0.0f")
+    )
+  , SetOfJavaValues("Float",
+      SingleJavaValue("Float.POSITIVE_INFINITY")
+    )
+  , SetOfJavaValues("Float",
+      SingleJavaValue("0.0f")
+    , SingleJavaValue("-1.2345E-10f")
+    , SingleJavaValue("1.2345E20f")
+    , SingleJavaValue("-1E-5f")
+    , SingleJavaValue("-1E-32f")
+    , SingleJavaValue("1E32f")
+    , SingleJavaValue("Float.NaN")
+    , SingleJavaValue("Float.NEGATIVE_INFINITY")
+    , SingleJavaValue("Float.POSITIVE_INFINITY")
+    )
+  , SetOfJavaValues("Float",
+      SingleJavaValue("null")
+    , SingleJavaValue("0.0f")
+    , SingleJavaValue("-1.2345E-10f")
+    , SingleJavaValue("1.2345E20f")
+    , SingleJavaValue("-1E-5f")
+    , SingleJavaValue("-1E-32f")
+    , SingleJavaValue("1E32f")
+    , SingleJavaValue("Float.NaN")
+    , SingleJavaValue("Float.NEGATIVE_INFINITY")
+    , SingleJavaValue("Float.POSITIVE_INFINITY")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Set<Float?>?`
+    extends JavaFloat with `box.NullableSetOfNullable` {
+
+  val javaClass = "java.util.Set<Float>"
+  val javaType = JavaCollectionType("java.util.Set", JavaClass("Float"))
+  val javaDescription = "NullableSetOfNullableFloats"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    SetOfJavaValues("Float",
+      SingleJavaValue("null")
+    )
+  , SetOfJavaValues("Float",
+      SingleJavaValue("0.0f")
+    )
+  , SetOfJavaValues("Float",
+      SingleJavaValue("Float.POSITIVE_INFINITY")
+    )
+  , SetOfJavaValues("Float",
+      SingleJavaValue("0.0f")
+    , SingleJavaValue("-1.2345E-10f")
+    , SingleJavaValue("1.2345E20f")
+    , SingleJavaValue("-1E-5f")
+    , SingleJavaValue("-1E-32f")
+    , SingleJavaValue("1E32f")
+    , SingleJavaValue("Float.NaN")
+    , SingleJavaValue("Float.NEGATIVE_INFINITY")
+    , SingleJavaValue("Float.POSITIVE_INFINITY")
+    )
+  , SetOfJavaValues("Float",
+      SingleJavaValue("null")
+    , SingleJavaValue("0.0f")
+    , SingleJavaValue("-1.2345E-10f")
+    , SingleJavaValue("1.2345E20f")
+    , SingleJavaValue("-1E-5f")
+    , SingleJavaValue("-1E-32f")
+    , SingleJavaValue("1E32f")
+    , SingleJavaValue("Float.NaN")
+    , SingleJavaValue("Float.NEGATIVE_INFINITY")
+    , SingleJavaValue("Float.POSITIVE_INFINITY")
+    )
+  )
+
+  val hasGenerics = true
+}
+
 case object `java.Queue<Float>`
     extends JavaFloat with `box.OneQueueOfOne` {
 
@@ -534,23 +692,23 @@ case object `java.Queue<Float?>?`
   val hasGenerics = true
 }
 
-case object `java.Set<Float>`
-    extends JavaFloat with `box.OneSetOfOne` {
+case object `java.LinkedList<Float>`
+    extends JavaFloat with `box.OneLinkedListOfOne` {
 
-  val javaClass = "java.util.Set<Float>"
-  val javaType = JavaCollectionType("java.util.Set", JavaClass("Float"))
-  val javaDescription = "OneSetOfOneFloats"
+  val javaClass = "java.util.LinkedList<Float>"
+  val javaType = JavaCollectionType("java.util.LinkedList", JavaClass("Float"))
+  val javaDescription = "OneLinkedListOfOneFloats"
 
-  def defaultValue = SingleJavaValue("new java.util.HashSet<Float>(0)")
+  def defaultValue = SingleJavaValue("new java.util.LinkedList<Float>()")
 
   def nonDefaultValues = IndexedSeq(
-    SetOfJavaValues("Float",
+    LinkedListOfJavaValues("Float",
       SingleJavaValue("0.0f")
     )
-  , SetOfJavaValues("Float",
+  , LinkedListOfJavaValues("Float",
       SingleJavaValue("Float.POSITIVE_INFINITY")
     )
-  , SetOfJavaValues("Float",
+  , LinkedListOfJavaValues("Float",
       SingleJavaValue("0.0f")
     , SingleJavaValue("-1.2345E-10f")
     , SingleJavaValue("1.2345E20f")
@@ -566,23 +724,23 @@ case object `java.Set<Float>`
   val hasGenerics = true
 }
 
-case object `java.Set<Float>?`
-    extends JavaFloat with `box.NullableSetOfOne` {
+case object `java.LinkedList<Float>?`
+    extends JavaFloat with `box.NullableLinkedListOfOne` {
 
-  val javaClass = "java.util.Set<Float>"
-  val javaType = JavaCollectionType("java.util.Set", JavaClass("Float"))
-  val javaDescription = "NullableSetOfOneFloats"
+  val javaClass = "java.util.LinkedList<Float>"
+  val javaType = JavaCollectionType("java.util.LinkedList", JavaClass("Float"))
+  val javaDescription = "NullableLinkedListOfOneFloats"
 
   def defaultValue = SingleJavaValue("null")
 
   def nonDefaultValues = IndexedSeq(
-    SetOfJavaValues("Float",
+    LinkedListOfJavaValues("Float",
       SingleJavaValue("0.0f")
     )
-  , SetOfJavaValues("Float",
+  , LinkedListOfJavaValues("Float",
       SingleJavaValue("Float.POSITIVE_INFINITY")
     )
-  , SetOfJavaValues("Float",
+  , LinkedListOfJavaValues("Float",
       SingleJavaValue("0.0f")
     , SingleJavaValue("-1.2345E-10f")
     , SingleJavaValue("1.2345E20f")
@@ -598,26 +756,26 @@ case object `java.Set<Float>?`
   val hasGenerics = true
 }
 
-case object `java.Set<Float?>`
-    extends JavaFloat with `box.OneSetOfNullable` {
+case object `java.LinkedList<Float?>`
+    extends JavaFloat with `box.OneLinkedListOfNullable` {
 
-  val javaClass = "java.util.Set<Float>"
-  val javaType = JavaCollectionType("java.util.Set", JavaClass("Float"))
-  val javaDescription = "OneSetOfNullableFloats"
+  val javaClass = "java.util.LinkedList<Float>"
+  val javaType = JavaCollectionType("java.util.LinkedList", JavaClass("Float"))
+  val javaDescription = "OneLinkedListOfNullableFloats"
 
-  def defaultValue = SingleJavaValue("new java.util.HashSet<Float>(0)")
+  def defaultValue = SingleJavaValue("new java.util.LinkedList<Float>()")
 
   def nonDefaultValues = IndexedSeq(
-    SetOfJavaValues("Float",
+    LinkedListOfJavaValues("Float",
       SingleJavaValue("null")
     )
-  , SetOfJavaValues("Float",
+  , LinkedListOfJavaValues("Float",
       SingleJavaValue("0.0f")
     )
-  , SetOfJavaValues("Float",
+  , LinkedListOfJavaValues("Float",
       SingleJavaValue("Float.POSITIVE_INFINITY")
     )
-  , SetOfJavaValues("Float",
+  , LinkedListOfJavaValues("Float",
       SingleJavaValue("0.0f")
     , SingleJavaValue("-1.2345E-10f")
     , SingleJavaValue("1.2345E20f")
@@ -628,7 +786,7 @@ case object `java.Set<Float?>`
     , SingleJavaValue("Float.NEGATIVE_INFINITY")
     , SingleJavaValue("Float.POSITIVE_INFINITY")
     )
-  , SetOfJavaValues("Float",
+  , LinkedListOfJavaValues("Float",
       SingleJavaValue("null")
     , SingleJavaValue("0.0f")
     , SingleJavaValue("-1.2345E-10f")
@@ -645,26 +803,26 @@ case object `java.Set<Float?>`
   val hasGenerics = true
 }
 
-case object `java.Set<Float?>?`
-    extends JavaFloat with `box.NullableSetOfNullable` {
+case object `java.LinkedList<Float?>?`
+    extends JavaFloat with `box.NullableLinkedListOfNullable` {
 
-  val javaClass = "java.util.Set<Float>"
-  val javaType = JavaCollectionType("java.util.Set", JavaClass("Float"))
-  val javaDescription = "NullableSetOfNullableFloats"
+  val javaClass = "java.util.LinkedList<Float>"
+  val javaType = JavaCollectionType("java.util.LinkedList", JavaClass("Float"))
+  val javaDescription = "NullableLinkedListOfNullableFloats"
 
   def defaultValue = SingleJavaValue("null")
 
   def nonDefaultValues = IndexedSeq(
-    SetOfJavaValues("Float",
+    LinkedListOfJavaValues("Float",
       SingleJavaValue("null")
     )
-  , SetOfJavaValues("Float",
+  , LinkedListOfJavaValues("Float",
       SingleJavaValue("0.0f")
     )
-  , SetOfJavaValues("Float",
+  , LinkedListOfJavaValues("Float",
       SingleJavaValue("Float.POSITIVE_INFINITY")
     )
-  , SetOfJavaValues("Float",
+  , LinkedListOfJavaValues("Float",
       SingleJavaValue("0.0f")
     , SingleJavaValue("-1.2345E-10f")
     , SingleJavaValue("1.2345E20f")
@@ -675,7 +833,323 @@ case object `java.Set<Float?>?`
     , SingleJavaValue("Float.NEGATIVE_INFINITY")
     , SingleJavaValue("Float.POSITIVE_INFINITY")
     )
-  , SetOfJavaValues("Float",
+  , LinkedListOfJavaValues("Float",
+      SingleJavaValue("null")
+    , SingleJavaValue("0.0f")
+    , SingleJavaValue("-1.2345E-10f")
+    , SingleJavaValue("1.2345E20f")
+    , SingleJavaValue("-1E-5f")
+    , SingleJavaValue("-1E-32f")
+    , SingleJavaValue("1E32f")
+    , SingleJavaValue("Float.NaN")
+    , SingleJavaValue("Float.NEGATIVE_INFINITY")
+    , SingleJavaValue("Float.POSITIVE_INFINITY")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Stack<Float>`
+    extends JavaFloat with `box.OneStackOfOne` {
+
+  val javaClass = "java.util.Stack<Float>"
+  val javaType = JavaCollectionType("java.util.Stack", JavaClass("Float"))
+  val javaDescription = "OneStackOfOneFloats"
+
+  def defaultValue = SingleJavaValue("new java.util.Stack<Float>()")
+
+  def nonDefaultValues = IndexedSeq(
+    StackOfJavaValues("Float",
+      SingleJavaValue("0.0f")
+    )
+  , StackOfJavaValues("Float",
+      SingleJavaValue("Float.POSITIVE_INFINITY")
+    )
+  , StackOfJavaValues("Float",
+      SingleJavaValue("0.0f")
+    , SingleJavaValue("-1.2345E-10f")
+    , SingleJavaValue("1.2345E20f")
+    , SingleJavaValue("-1E-5f")
+    , SingleJavaValue("-1E-32f")
+    , SingleJavaValue("1E32f")
+    , SingleJavaValue("Float.NaN")
+    , SingleJavaValue("Float.NEGATIVE_INFINITY")
+    , SingleJavaValue("Float.POSITIVE_INFINITY")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Stack<Float>?`
+    extends JavaFloat with `box.NullableStackOfOne` {
+
+  val javaClass = "java.util.Stack<Float>"
+  val javaType = JavaCollectionType("java.util.Stack", JavaClass("Float"))
+  val javaDescription = "NullableStackOfOneFloats"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    StackOfJavaValues("Float",
+      SingleJavaValue("0.0f")
+    )
+  , StackOfJavaValues("Float",
+      SingleJavaValue("Float.POSITIVE_INFINITY")
+    )
+  , StackOfJavaValues("Float",
+      SingleJavaValue("0.0f")
+    , SingleJavaValue("-1.2345E-10f")
+    , SingleJavaValue("1.2345E20f")
+    , SingleJavaValue("-1E-5f")
+    , SingleJavaValue("-1E-32f")
+    , SingleJavaValue("1E32f")
+    , SingleJavaValue("Float.NaN")
+    , SingleJavaValue("Float.NEGATIVE_INFINITY")
+    , SingleJavaValue("Float.POSITIVE_INFINITY")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Stack<Float?>`
+    extends JavaFloat with `box.OneStackOfNullable` {
+
+  val javaClass = "java.util.Stack<Float>"
+  val javaType = JavaCollectionType("java.util.Stack", JavaClass("Float"))
+  val javaDescription = "OneStackOfNullableFloats"
+
+  def defaultValue = SingleJavaValue("new java.util.Stack<Float>()")
+
+  def nonDefaultValues = IndexedSeq(
+    StackOfJavaValues("Float",
+      SingleJavaValue("null")
+    )
+  , StackOfJavaValues("Float",
+      SingleJavaValue("0.0f")
+    )
+  , StackOfJavaValues("Float",
+      SingleJavaValue("Float.POSITIVE_INFINITY")
+    )
+  , StackOfJavaValues("Float",
+      SingleJavaValue("0.0f")
+    , SingleJavaValue("-1.2345E-10f")
+    , SingleJavaValue("1.2345E20f")
+    , SingleJavaValue("-1E-5f")
+    , SingleJavaValue("-1E-32f")
+    , SingleJavaValue("1E32f")
+    , SingleJavaValue("Float.NaN")
+    , SingleJavaValue("Float.NEGATIVE_INFINITY")
+    , SingleJavaValue("Float.POSITIVE_INFINITY")
+    )
+  , StackOfJavaValues("Float",
+      SingleJavaValue("null")
+    , SingleJavaValue("0.0f")
+    , SingleJavaValue("-1.2345E-10f")
+    , SingleJavaValue("1.2345E20f")
+    , SingleJavaValue("-1E-5f")
+    , SingleJavaValue("-1E-32f")
+    , SingleJavaValue("1E32f")
+    , SingleJavaValue("Float.NaN")
+    , SingleJavaValue("Float.NEGATIVE_INFINITY")
+    , SingleJavaValue("Float.POSITIVE_INFINITY")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Stack<Float?>?`
+    extends JavaFloat with `box.NullableStackOfNullable` {
+
+  val javaClass = "java.util.Stack<Float>"
+  val javaType = JavaCollectionType("java.util.Stack", JavaClass("Float"))
+  val javaDescription = "NullableStackOfNullableFloats"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    StackOfJavaValues("Float",
+      SingleJavaValue("null")
+    )
+  , StackOfJavaValues("Float",
+      SingleJavaValue("0.0f")
+    )
+  , StackOfJavaValues("Float",
+      SingleJavaValue("Float.POSITIVE_INFINITY")
+    )
+  , StackOfJavaValues("Float",
+      SingleJavaValue("0.0f")
+    , SingleJavaValue("-1.2345E-10f")
+    , SingleJavaValue("1.2345E20f")
+    , SingleJavaValue("-1E-5f")
+    , SingleJavaValue("-1E-32f")
+    , SingleJavaValue("1E32f")
+    , SingleJavaValue("Float.NaN")
+    , SingleJavaValue("Float.NEGATIVE_INFINITY")
+    , SingleJavaValue("Float.POSITIVE_INFINITY")
+    )
+  , StackOfJavaValues("Float",
+      SingleJavaValue("null")
+    , SingleJavaValue("0.0f")
+    , SingleJavaValue("-1.2345E-10f")
+    , SingleJavaValue("1.2345E20f")
+    , SingleJavaValue("-1E-5f")
+    , SingleJavaValue("-1E-32f")
+    , SingleJavaValue("1E32f")
+    , SingleJavaValue("Float.NaN")
+    , SingleJavaValue("Float.NEGATIVE_INFINITY")
+    , SingleJavaValue("Float.POSITIVE_INFINITY")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Vector<Float>`
+    extends JavaFloat with `box.OneVectorOfOne` {
+
+  val javaClass = "java.util.Vector<Float>"
+  val javaType = JavaCollectionType("java.util.Vector", JavaClass("Float"))
+  val javaDescription = "OneVectorOfOneFloats"
+
+  def defaultValue = SingleJavaValue("new java.util.Vector<Float>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    VectorOfJavaValues("Float",
+      SingleJavaValue("0.0f")
+    )
+  , VectorOfJavaValues("Float",
+      SingleJavaValue("Float.POSITIVE_INFINITY")
+    )
+  , VectorOfJavaValues("Float",
+      SingleJavaValue("0.0f")
+    , SingleJavaValue("-1.2345E-10f")
+    , SingleJavaValue("1.2345E20f")
+    , SingleJavaValue("-1E-5f")
+    , SingleJavaValue("-1E-32f")
+    , SingleJavaValue("1E32f")
+    , SingleJavaValue("Float.NaN")
+    , SingleJavaValue("Float.NEGATIVE_INFINITY")
+    , SingleJavaValue("Float.POSITIVE_INFINITY")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Vector<Float>?`
+    extends JavaFloat with `box.NullableVectorOfOne` {
+
+  val javaClass = "java.util.Vector<Float>"
+  val javaType = JavaCollectionType("java.util.Vector", JavaClass("Float"))
+  val javaDescription = "NullableVectorOfOneFloats"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    VectorOfJavaValues("Float",
+      SingleJavaValue("0.0f")
+    )
+  , VectorOfJavaValues("Float",
+      SingleJavaValue("Float.POSITIVE_INFINITY")
+    )
+  , VectorOfJavaValues("Float",
+      SingleJavaValue("0.0f")
+    , SingleJavaValue("-1.2345E-10f")
+    , SingleJavaValue("1.2345E20f")
+    , SingleJavaValue("-1E-5f")
+    , SingleJavaValue("-1E-32f")
+    , SingleJavaValue("1E32f")
+    , SingleJavaValue("Float.NaN")
+    , SingleJavaValue("Float.NEGATIVE_INFINITY")
+    , SingleJavaValue("Float.POSITIVE_INFINITY")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Vector<Float?>`
+    extends JavaFloat with `box.OneVectorOfNullable` {
+
+  val javaClass = "java.util.Vector<Float>"
+  val javaType = JavaCollectionType("java.util.Vector", JavaClass("Float"))
+  val javaDescription = "OneVectorOfNullableFloats"
+
+  def defaultValue = SingleJavaValue("new java.util.Vector<Float>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    VectorOfJavaValues("Float",
+      SingleJavaValue("null")
+    )
+  , VectorOfJavaValues("Float",
+      SingleJavaValue("0.0f")
+    )
+  , VectorOfJavaValues("Float",
+      SingleJavaValue("Float.POSITIVE_INFINITY")
+    )
+  , VectorOfJavaValues("Float",
+      SingleJavaValue("0.0f")
+    , SingleJavaValue("-1.2345E-10f")
+    , SingleJavaValue("1.2345E20f")
+    , SingleJavaValue("-1E-5f")
+    , SingleJavaValue("-1E-32f")
+    , SingleJavaValue("1E32f")
+    , SingleJavaValue("Float.NaN")
+    , SingleJavaValue("Float.NEGATIVE_INFINITY")
+    , SingleJavaValue("Float.POSITIVE_INFINITY")
+    )
+  , VectorOfJavaValues("Float",
+      SingleJavaValue("null")
+    , SingleJavaValue("0.0f")
+    , SingleJavaValue("-1.2345E-10f")
+    , SingleJavaValue("1.2345E20f")
+    , SingleJavaValue("-1E-5f")
+    , SingleJavaValue("-1E-32f")
+    , SingleJavaValue("1E32f")
+    , SingleJavaValue("Float.NaN")
+    , SingleJavaValue("Float.NEGATIVE_INFINITY")
+    , SingleJavaValue("Float.POSITIVE_INFINITY")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Vector<Float?>?`
+    extends JavaFloat with `box.NullableVectorOfNullable` {
+
+  val javaClass = "java.util.Vector<Float>"
+  val javaType = JavaCollectionType("java.util.Vector", JavaClass("Float"))
+  val javaDescription = "NullableVectorOfNullableFloats"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    VectorOfJavaValues("Float",
+      SingleJavaValue("null")
+    )
+  , VectorOfJavaValues("Float",
+      SingleJavaValue("0.0f")
+    )
+  , VectorOfJavaValues("Float",
+      SingleJavaValue("Float.POSITIVE_INFINITY")
+    )
+  , VectorOfJavaValues("Float",
+      SingleJavaValue("0.0f")
+    , SingleJavaValue("-1.2345E-10f")
+    , SingleJavaValue("1.2345E20f")
+    , SingleJavaValue("-1E-5f")
+    , SingleJavaValue("-1E-32f")
+    , SingleJavaValue("1E32f")
+    , SingleJavaValue("Float.NaN")
+    , SingleJavaValue("Float.NEGATIVE_INFINITY")
+    , SingleJavaValue("Float.POSITIVE_INFINITY")
+    )
+  , VectorOfJavaValues("Float",
       SingleJavaValue("null")
     , SingleJavaValue("0.0f")
     , SingleJavaValue("-1.2345E-10f")

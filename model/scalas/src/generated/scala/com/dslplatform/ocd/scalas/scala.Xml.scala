@@ -4,7 +4,7 @@ package scalas
 import types._
 import boxes._
 
-sealed trait ScalaXml
+sealed abstract class ScalaXml
     extends OcdScalaBoxType
     with `type.Xml`
 
@@ -88,6 +88,38 @@ case object `scala.List<Xml?>?`
   val defaultValue = "None"
 }
 
+case object `scala.Set<Xml>`
+    extends ScalaXml with `box.OneSetOfOne` {
+
+  val scalaClass = "Set[scala.xml.Elem]"
+
+  val defaultValue = "Set[scala.xml.Elem].empty"
+}
+
+case object `scala.Set<Xml>?`
+    extends ScalaXml with `box.NullableSetOfOne` {
+
+  val scalaClass = "Option[Set[scala.xml.Elem]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Set<Xml?>`
+    extends ScalaXml with `box.OneSetOfNullable` {
+
+  val scalaClass = "Set[Option[scala.xml.Elem]]"
+
+  val defaultValue = "Set[Option[scala.xml.Elem]].empty"
+}
+
+case object `scala.Set<Xml?>?`
+    extends ScalaXml with `box.NullableSetOfNullable` {
+
+  val scalaClass = "Option[Set[Option[scala.xml.Elem]]]"
+
+  val defaultValue = "None"
+}
+
 case object `scala.Queue<Xml>`
     extends ScalaXml with `box.OneQueueOfOne` {
 
@@ -120,34 +152,98 @@ case object `scala.Queue<Xml?>?`
   val defaultValue = "None"
 }
 
-case object `scala.Set<Xml>`
-    extends ScalaXml with `box.OneSetOfOne` {
+case object `scala.LinkedList<Xml>`
+    extends ScalaXml with `box.OneLinkedListOfOne` {
 
-  val scalaClass = "Set[scala.xml.Elem]"
+  val scalaClass = "LinkedList[scala.xml.Elem]"
 
-  val defaultValue = "Set[scala.xml.Elem].empty"
+  val defaultValue = "LinkedList[scala.xml.Elem].empty"
 }
 
-case object `scala.Set<Xml>?`
-    extends ScalaXml with `box.NullableSetOfOne` {
+case object `scala.LinkedList<Xml>?`
+    extends ScalaXml with `box.NullableLinkedListOfOne` {
 
-  val scalaClass = "Option[Set[scala.xml.Elem]]"
+  val scalaClass = "Option[LinkedList[scala.xml.Elem]]"
 
   val defaultValue = "None"
 }
 
-case object `scala.Set<Xml?>`
-    extends ScalaXml with `box.OneSetOfNullable` {
+case object `scala.LinkedList<Xml?>`
+    extends ScalaXml with `box.OneLinkedListOfNullable` {
 
-  val scalaClass = "Set[Option[scala.xml.Elem]]"
+  val scalaClass = "LinkedList[Option[scala.xml.Elem]]"
 
-  val defaultValue = "Set[Option[scala.xml.Elem]].empty"
+  val defaultValue = "LinkedList[Option[scala.xml.Elem]].empty"
 }
 
-case object `scala.Set<Xml?>?`
-    extends ScalaXml with `box.NullableSetOfNullable` {
+case object `scala.LinkedList<Xml?>?`
+    extends ScalaXml with `box.NullableLinkedListOfNullable` {
 
-  val scalaClass = "Option[Set[Option[scala.xml.Elem]]]"
+  val scalaClass = "Option[LinkedList[Option[scala.xml.Elem]]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Stack<Xml>`
+    extends ScalaXml with `box.OneStackOfOne` {
+
+  val scalaClass = "Stack[scala.xml.Elem]"
+
+  val defaultValue = "Stack[scala.xml.Elem].empty"
+}
+
+case object `scala.Stack<Xml>?`
+    extends ScalaXml with `box.NullableStackOfOne` {
+
+  val scalaClass = "Option[Stack[scala.xml.Elem]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Stack<Xml?>`
+    extends ScalaXml with `box.OneStackOfNullable` {
+
+  val scalaClass = "Stack[Option[scala.xml.Elem]]"
+
+  val defaultValue = "Stack[Option[scala.xml.Elem]].empty"
+}
+
+case object `scala.Stack<Xml?>?`
+    extends ScalaXml with `box.NullableStackOfNullable` {
+
+  val scalaClass = "Option[Stack[Option[scala.xml.Elem]]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Vector<Xml>`
+    extends ScalaXml with `box.OneVectorOfOne` {
+
+  val scalaClass = "Vector[scala.xml.Elem]"
+
+  val defaultValue = "Vector[scala.xml.Elem].empty"
+}
+
+case object `scala.Vector<Xml>?`
+    extends ScalaXml with `box.NullableVectorOfOne` {
+
+  val scalaClass = "Option[Vector[scala.xml.Elem]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Vector<Xml?>`
+    extends ScalaXml with `box.OneVectorOfNullable` {
+
+  val scalaClass = "Vector[Option[scala.xml.Elem]]"
+
+  val defaultValue = "Vector[Option[scala.xml.Elem]].empty"
+}
+
+case object `scala.Vector<Xml?>?`
+    extends ScalaXml with `box.NullableVectorOfNullable` {
+
+  val scalaClass = "Option[Vector[Option[scala.xml.Elem]]]"
 
   val defaultValue = "None"
 }

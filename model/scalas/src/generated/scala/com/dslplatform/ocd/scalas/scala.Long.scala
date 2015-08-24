@@ -4,7 +4,7 @@ package scalas
 import types._
 import boxes._
 
-sealed trait ScalaLong
+sealed abstract class ScalaLong
     extends OcdScalaBoxType
     with `type.Long`
 
@@ -88,6 +88,38 @@ case object `scala.List<Long?>?`
   val defaultValue = "None"
 }
 
+case object `scala.Set<Long>`
+    extends ScalaLong with `box.OneSetOfOne` {
+
+  val scalaClass = "Set[Long]"
+
+  val defaultValue = "Set[Long].empty"
+}
+
+case object `scala.Set<Long>?`
+    extends ScalaLong with `box.NullableSetOfOne` {
+
+  val scalaClass = "Option[Set[Long]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Set<Long?>`
+    extends ScalaLong with `box.OneSetOfNullable` {
+
+  val scalaClass = "Set[Option[Long]]"
+
+  val defaultValue = "Set[Option[Long]].empty"
+}
+
+case object `scala.Set<Long?>?`
+    extends ScalaLong with `box.NullableSetOfNullable` {
+
+  val scalaClass = "Option[Set[Option[Long]]]"
+
+  val defaultValue = "None"
+}
+
 case object `scala.Queue<Long>`
     extends ScalaLong with `box.OneQueueOfOne` {
 
@@ -120,34 +152,98 @@ case object `scala.Queue<Long?>?`
   val defaultValue = "None"
 }
 
-case object `scala.Set<Long>`
-    extends ScalaLong with `box.OneSetOfOne` {
+case object `scala.LinkedList<Long>`
+    extends ScalaLong with `box.OneLinkedListOfOne` {
 
-  val scalaClass = "Set[Long]"
+  val scalaClass = "LinkedList[Long]"
 
-  val defaultValue = "Set[Long].empty"
+  val defaultValue = "LinkedList[Long].empty"
 }
 
-case object `scala.Set<Long>?`
-    extends ScalaLong with `box.NullableSetOfOne` {
+case object `scala.LinkedList<Long>?`
+    extends ScalaLong with `box.NullableLinkedListOfOne` {
 
-  val scalaClass = "Option[Set[Long]]"
+  val scalaClass = "Option[LinkedList[Long]]"
 
   val defaultValue = "None"
 }
 
-case object `scala.Set<Long?>`
-    extends ScalaLong with `box.OneSetOfNullable` {
+case object `scala.LinkedList<Long?>`
+    extends ScalaLong with `box.OneLinkedListOfNullable` {
 
-  val scalaClass = "Set[Option[Long]]"
+  val scalaClass = "LinkedList[Option[Long]]"
 
-  val defaultValue = "Set[Option[Long]].empty"
+  val defaultValue = "LinkedList[Option[Long]].empty"
 }
 
-case object `scala.Set<Long?>?`
-    extends ScalaLong with `box.NullableSetOfNullable` {
+case object `scala.LinkedList<Long?>?`
+    extends ScalaLong with `box.NullableLinkedListOfNullable` {
 
-  val scalaClass = "Option[Set[Option[Long]]]"
+  val scalaClass = "Option[LinkedList[Option[Long]]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Stack<Long>`
+    extends ScalaLong with `box.OneStackOfOne` {
+
+  val scalaClass = "Stack[Long]"
+
+  val defaultValue = "Stack[Long].empty"
+}
+
+case object `scala.Stack<Long>?`
+    extends ScalaLong with `box.NullableStackOfOne` {
+
+  val scalaClass = "Option[Stack[Long]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Stack<Long?>`
+    extends ScalaLong with `box.OneStackOfNullable` {
+
+  val scalaClass = "Stack[Option[Long]]"
+
+  val defaultValue = "Stack[Option[Long]].empty"
+}
+
+case object `scala.Stack<Long?>?`
+    extends ScalaLong with `box.NullableStackOfNullable` {
+
+  val scalaClass = "Option[Stack[Option[Long]]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Vector<Long>`
+    extends ScalaLong with `box.OneVectorOfOne` {
+
+  val scalaClass = "Vector[Long]"
+
+  val defaultValue = "Vector[Long].empty"
+}
+
+case object `scala.Vector<Long>?`
+    extends ScalaLong with `box.NullableVectorOfOne` {
+
+  val scalaClass = "Option[Vector[Long]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Vector<Long?>`
+    extends ScalaLong with `box.OneVectorOfNullable` {
+
+  val scalaClass = "Vector[Option[Long]]"
+
+  val defaultValue = "Vector[Option[Long]].empty"
+}
+
+case object `scala.Vector<Long?>?`
+    extends ScalaLong with `box.NullableVectorOfNullable` {
+
+  val scalaClass = "Option[Vector[Option[Long]]]"
 
   val defaultValue = "None"
 }

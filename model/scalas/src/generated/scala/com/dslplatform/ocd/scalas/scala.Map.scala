@@ -4,7 +4,7 @@ package scalas
 import types._
 import boxes._
 
-sealed trait ScalaMap
+sealed abstract class ScalaMap
     extends OcdScalaBoxType
     with `type.Map`
 
@@ -88,6 +88,38 @@ case object `scala.List<Map?>?`
   val defaultValue = "None"
 }
 
+case object `scala.Set<Map>`
+    extends ScalaMap with `box.OneSetOfOne` {
+
+  val scalaClass = "Set[Map[String, String]]"
+
+  val defaultValue = "Set[Map[String, String]].empty"
+}
+
+case object `scala.Set<Map>?`
+    extends ScalaMap with `box.NullableSetOfOne` {
+
+  val scalaClass = "Option[Set[Map[String, String]]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Set<Map?>`
+    extends ScalaMap with `box.OneSetOfNullable` {
+
+  val scalaClass = "Set[Option[Map[String, String]]]"
+
+  val defaultValue = "Set[Option[Map[String, String]]].empty"
+}
+
+case object `scala.Set<Map?>?`
+    extends ScalaMap with `box.NullableSetOfNullable` {
+
+  val scalaClass = "Option[Set[Option[Map[String, String]]]]"
+
+  val defaultValue = "None"
+}
+
 case object `scala.Queue<Map>`
     extends ScalaMap with `box.OneQueueOfOne` {
 
@@ -120,34 +152,98 @@ case object `scala.Queue<Map?>?`
   val defaultValue = "None"
 }
 
-case object `scala.Set<Map>`
-    extends ScalaMap with `box.OneSetOfOne` {
+case object `scala.LinkedList<Map>`
+    extends ScalaMap with `box.OneLinkedListOfOne` {
 
-  val scalaClass = "Set[Map[String, String]]"
+  val scalaClass = "LinkedList[Map[String, String]]"
 
-  val defaultValue = "Set[Map[String, String]].empty"
+  val defaultValue = "LinkedList[Map[String, String]].empty"
 }
 
-case object `scala.Set<Map>?`
-    extends ScalaMap with `box.NullableSetOfOne` {
+case object `scala.LinkedList<Map>?`
+    extends ScalaMap with `box.NullableLinkedListOfOne` {
 
-  val scalaClass = "Option[Set[Map[String, String]]]"
+  val scalaClass = "Option[LinkedList[Map[String, String]]]"
 
   val defaultValue = "None"
 }
 
-case object `scala.Set<Map?>`
-    extends ScalaMap with `box.OneSetOfNullable` {
+case object `scala.LinkedList<Map?>`
+    extends ScalaMap with `box.OneLinkedListOfNullable` {
 
-  val scalaClass = "Set[Option[Map[String, String]]]"
+  val scalaClass = "LinkedList[Option[Map[String, String]]]"
 
-  val defaultValue = "Set[Option[Map[String, String]]].empty"
+  val defaultValue = "LinkedList[Option[Map[String, String]]].empty"
 }
 
-case object `scala.Set<Map?>?`
-    extends ScalaMap with `box.NullableSetOfNullable` {
+case object `scala.LinkedList<Map?>?`
+    extends ScalaMap with `box.NullableLinkedListOfNullable` {
 
-  val scalaClass = "Option[Set[Option[Map[String, String]]]]"
+  val scalaClass = "Option[LinkedList[Option[Map[String, String]]]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Stack<Map>`
+    extends ScalaMap with `box.OneStackOfOne` {
+
+  val scalaClass = "Stack[Map[String, String]]"
+
+  val defaultValue = "Stack[Map[String, String]].empty"
+}
+
+case object `scala.Stack<Map>?`
+    extends ScalaMap with `box.NullableStackOfOne` {
+
+  val scalaClass = "Option[Stack[Map[String, String]]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Stack<Map?>`
+    extends ScalaMap with `box.OneStackOfNullable` {
+
+  val scalaClass = "Stack[Option[Map[String, String]]]"
+
+  val defaultValue = "Stack[Option[Map[String, String]]].empty"
+}
+
+case object `scala.Stack<Map?>?`
+    extends ScalaMap with `box.NullableStackOfNullable` {
+
+  val scalaClass = "Option[Stack[Option[Map[String, String]]]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Vector<Map>`
+    extends ScalaMap with `box.OneVectorOfOne` {
+
+  val scalaClass = "Vector[Map[String, String]]"
+
+  val defaultValue = "Vector[Map[String, String]].empty"
+}
+
+case object `scala.Vector<Map>?`
+    extends ScalaMap with `box.NullableVectorOfOne` {
+
+  val scalaClass = "Option[Vector[Map[String, String]]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Vector<Map?>`
+    extends ScalaMap with `box.OneVectorOfNullable` {
+
+  val scalaClass = "Vector[Option[Map[String, String]]]"
+
+  val defaultValue = "Vector[Option[Map[String, String]]].empty"
+}
+
+case object `scala.Vector<Map?>?`
+    extends ScalaMap with `box.NullableVectorOfNullable` {
+
+  val scalaClass = "Option[Vector[Option[Map[String, String]]]]"
 
   val defaultValue = "None"
 }

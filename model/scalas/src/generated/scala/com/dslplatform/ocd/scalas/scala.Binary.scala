@@ -4,7 +4,7 @@ package scalas
 import types._
 import boxes._
 
-sealed trait ScalaBinary
+sealed abstract class ScalaBinary
     extends OcdScalaBoxType
     with `type.Binary`
 
@@ -88,6 +88,38 @@ case object `scala.List<Binary?>?`
   val defaultValue = "None"
 }
 
+case object `scala.Set<Binary>`
+    extends ScalaBinary with `box.OneSetOfOne` {
+
+  val scalaClass = "Set[Array[Byte]]"
+
+  val defaultValue = "Set[Array[Byte]].empty"
+}
+
+case object `scala.Set<Binary>?`
+    extends ScalaBinary with `box.NullableSetOfOne` {
+
+  val scalaClass = "Option[Set[Array[Byte]]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Set<Binary?>`
+    extends ScalaBinary with `box.OneSetOfNullable` {
+
+  val scalaClass = "Set[Option[Array[Byte]]]"
+
+  val defaultValue = "Set[Option[Array[Byte]]].empty"
+}
+
+case object `scala.Set<Binary?>?`
+    extends ScalaBinary with `box.NullableSetOfNullable` {
+
+  val scalaClass = "Option[Set[Option[Array[Byte]]]]"
+
+  val defaultValue = "None"
+}
+
 case object `scala.Queue<Binary>`
     extends ScalaBinary with `box.OneQueueOfOne` {
 
@@ -120,34 +152,98 @@ case object `scala.Queue<Binary?>?`
   val defaultValue = "None"
 }
 
-case object `scala.Set<Binary>`
-    extends ScalaBinary with `box.OneSetOfOne` {
+case object `scala.LinkedList<Binary>`
+    extends ScalaBinary with `box.OneLinkedListOfOne` {
 
-  val scalaClass = "Set[Array[Byte]]"
+  val scalaClass = "LinkedList[Array[Byte]]"
 
-  val defaultValue = "Set[Array[Byte]].empty"
+  val defaultValue = "LinkedList[Array[Byte]].empty"
 }
 
-case object `scala.Set<Binary>?`
-    extends ScalaBinary with `box.NullableSetOfOne` {
+case object `scala.LinkedList<Binary>?`
+    extends ScalaBinary with `box.NullableLinkedListOfOne` {
 
-  val scalaClass = "Option[Set[Array[Byte]]]"
+  val scalaClass = "Option[LinkedList[Array[Byte]]]"
 
   val defaultValue = "None"
 }
 
-case object `scala.Set<Binary?>`
-    extends ScalaBinary with `box.OneSetOfNullable` {
+case object `scala.LinkedList<Binary?>`
+    extends ScalaBinary with `box.OneLinkedListOfNullable` {
 
-  val scalaClass = "Set[Option[Array[Byte]]]"
+  val scalaClass = "LinkedList[Option[Array[Byte]]]"
 
-  val defaultValue = "Set[Option[Array[Byte]]].empty"
+  val defaultValue = "LinkedList[Option[Array[Byte]]].empty"
 }
 
-case object `scala.Set<Binary?>?`
-    extends ScalaBinary with `box.NullableSetOfNullable` {
+case object `scala.LinkedList<Binary?>?`
+    extends ScalaBinary with `box.NullableLinkedListOfNullable` {
 
-  val scalaClass = "Option[Set[Option[Array[Byte]]]]"
+  val scalaClass = "Option[LinkedList[Option[Array[Byte]]]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Stack<Binary>`
+    extends ScalaBinary with `box.OneStackOfOne` {
+
+  val scalaClass = "Stack[Array[Byte]]"
+
+  val defaultValue = "Stack[Array[Byte]].empty"
+}
+
+case object `scala.Stack<Binary>?`
+    extends ScalaBinary with `box.NullableStackOfOne` {
+
+  val scalaClass = "Option[Stack[Array[Byte]]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Stack<Binary?>`
+    extends ScalaBinary with `box.OneStackOfNullable` {
+
+  val scalaClass = "Stack[Option[Array[Byte]]]"
+
+  val defaultValue = "Stack[Option[Array[Byte]]].empty"
+}
+
+case object `scala.Stack<Binary?>?`
+    extends ScalaBinary with `box.NullableStackOfNullable` {
+
+  val scalaClass = "Option[Stack[Option[Array[Byte]]]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Vector<Binary>`
+    extends ScalaBinary with `box.OneVectorOfOne` {
+
+  val scalaClass = "Vector[Array[Byte]]"
+
+  val defaultValue = "Vector[Array[Byte]].empty"
+}
+
+case object `scala.Vector<Binary>?`
+    extends ScalaBinary with `box.NullableVectorOfOne` {
+
+  val scalaClass = "Option[Vector[Array[Byte]]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Vector<Binary?>`
+    extends ScalaBinary with `box.OneVectorOfNullable` {
+
+  val scalaClass = "Vector[Option[Array[Byte]]]"
+
+  val defaultValue = "Vector[Option[Array[Byte]]].empty"
+}
+
+case object `scala.Vector<Binary?>?`
+    extends ScalaBinary with `box.NullableVectorOfNullable` {
+
+  val scalaClass = "Option[Vector[Option[Array[Byte]]]]"
 
   val defaultValue = "None"
 }

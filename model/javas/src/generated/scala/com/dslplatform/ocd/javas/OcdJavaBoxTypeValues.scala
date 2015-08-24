@@ -13,14 +13,26 @@ trait OcdJavaBoxTypeValues {
   , `java.List<Binary>?`
   , `java.List<Binary?>`
   , `java.List<Binary?>?`
-  , `java.Queue<Binary>`
-  , `java.Queue<Binary>?`
-  , `java.Queue<Binary?>`
-  , `java.Queue<Binary?>?`
   , `java.Set<Binary>`
   , `java.Set<Binary>?`
   , `java.Set<Binary?>`
   , `java.Set<Binary?>?`
+  , `java.Queue<Binary>`
+  , `java.Queue<Binary>?`
+  , `java.Queue<Binary?>`
+  , `java.Queue<Binary?>?`
+  , `java.LinkedList<Binary>`
+  , `java.LinkedList<Binary>?`
+  , `java.LinkedList<Binary?>`
+  , `java.LinkedList<Binary?>?`
+  , `java.Stack<Binary>`
+  , `java.Stack<Binary>?`
+  , `java.Stack<Binary?>`
+  , `java.Stack<Binary?>?`
+  , `java.Vector<Binary>`
+  , `java.Vector<Binary>?`
+  , `java.Vector<Binary?>`
+  , `java.Vector<Binary?>?`
   , `java.Boolean`
   , `java.Boolean?`
   , `java.Boolean[]`
@@ -31,14 +43,26 @@ trait OcdJavaBoxTypeValues {
   , `java.List<Boolean>?`
   , `java.List<Boolean?>`
   , `java.List<Boolean?>?`
-  , `java.Queue<Boolean>`
-  , `java.Queue<Boolean>?`
-  , `java.Queue<Boolean?>`
-  , `java.Queue<Boolean?>?`
   , `java.Set<Boolean>`
   , `java.Set<Boolean>?`
   , `java.Set<Boolean?>`
   , `java.Set<Boolean?>?`
+  , `java.Queue<Boolean>`
+  , `java.Queue<Boolean>?`
+  , `java.Queue<Boolean?>`
+  , `java.Queue<Boolean?>?`
+  , `java.LinkedList<Boolean>`
+  , `java.LinkedList<Boolean>?`
+  , `java.LinkedList<Boolean?>`
+  , `java.LinkedList<Boolean?>?`
+  , `java.Stack<Boolean>`
+  , `java.Stack<Boolean>?`
+  , `java.Stack<Boolean?>`
+  , `java.Stack<Boolean?>?`
+  , `java.Vector<Boolean>`
+  , `java.Vector<Boolean>?`
+  , `java.Vector<Boolean?>`
+  , `java.Vector<Boolean?>?`
   , `java.Date`
   , `java.Date?`
   , `java.Date[]`
@@ -49,14 +73,26 @@ trait OcdJavaBoxTypeValues {
   , `java.List<Date>?`
   , `java.List<Date?>`
   , `java.List<Date?>?`
-  , `java.Queue<Date>`
-  , `java.Queue<Date>?`
-  , `java.Queue<Date?>`
-  , `java.Queue<Date?>?`
   , `java.Set<Date>`
   , `java.Set<Date>?`
   , `java.Set<Date?>`
   , `java.Set<Date?>?`
+  , `java.Queue<Date>`
+  , `java.Queue<Date>?`
+  , `java.Queue<Date?>`
+  , `java.Queue<Date?>?`
+  , `java.LinkedList<Date>`
+  , `java.LinkedList<Date>?`
+  , `java.LinkedList<Date?>`
+  , `java.LinkedList<Date?>?`
+  , `java.Stack<Date>`
+  , `java.Stack<Date>?`
+  , `java.Stack<Date?>`
+  , `java.Stack<Date?>?`
+  , `java.Vector<Date>`
+  , `java.Vector<Date>?`
+  , `java.Vector<Date?>`
+  , `java.Vector<Date?>?`
   , `java.Decimal`
   , `java.Decimal?`
   , `java.Decimal[]`
@@ -67,14 +103,26 @@ trait OcdJavaBoxTypeValues {
   , `java.List<Decimal>?`
   , `java.List<Decimal?>`
   , `java.List<Decimal?>?`
-  , `java.Queue<Decimal>`
-  , `java.Queue<Decimal>?`
-  , `java.Queue<Decimal?>`
-  , `java.Queue<Decimal?>?`
   , `java.Set<Decimal>`
   , `java.Set<Decimal>?`
   , `java.Set<Decimal?>`
   , `java.Set<Decimal?>?`
+  , `java.Queue<Decimal>`
+  , `java.Queue<Decimal>?`
+  , `java.Queue<Decimal?>`
+  , `java.Queue<Decimal?>?`
+  , `java.LinkedList<Decimal>`
+  , `java.LinkedList<Decimal>?`
+  , `java.LinkedList<Decimal?>`
+  , `java.LinkedList<Decimal?>?`
+  , `java.Stack<Decimal>`
+  , `java.Stack<Decimal>?`
+  , `java.Stack<Decimal?>`
+  , `java.Stack<Decimal?>?`
+  , `java.Vector<Decimal>`
+  , `java.Vector<Decimal>?`
+  , `java.Vector<Decimal?>`
+  , `java.Vector<Decimal?>?`
   , `java.Decimal(9)`
   , `java.Decimal(9)?`
   , `java.Decimal(9)[]`
@@ -85,14 +133,26 @@ trait OcdJavaBoxTypeValues {
   , `java.List<Decimal(9)>?`
   , `java.List<Decimal(9)?>`
   , `java.List<Decimal(9)?>?`
-  , `java.Queue<Decimal(9)>`
-  , `java.Queue<Decimal(9)>?`
-  , `java.Queue<Decimal(9)?>`
-  , `java.Queue<Decimal(9)?>?`
   , `java.Set<Decimal(9)>`
   , `java.Set<Decimal(9)>?`
   , `java.Set<Decimal(9)?>`
   , `java.Set<Decimal(9)?>?`
+  , `java.Queue<Decimal(9)>`
+  , `java.Queue<Decimal(9)>?`
+  , `java.Queue<Decimal(9)?>`
+  , `java.Queue<Decimal(9)?>?`
+  , `java.LinkedList<Decimal(9)>`
+  , `java.LinkedList<Decimal(9)>?`
+  , `java.LinkedList<Decimal(9)?>`
+  , `java.LinkedList<Decimal(9)?>?`
+  , `java.Stack<Decimal(9)>`
+  , `java.Stack<Decimal(9)>?`
+  , `java.Stack<Decimal(9)?>`
+  , `java.Stack<Decimal(9)?>?`
+  , `java.Vector<Decimal(9)>`
+  , `java.Vector<Decimal(9)>?`
+  , `java.Vector<Decimal(9)?>`
+  , `java.Vector<Decimal(9)?>?`
   , `java.Double`
   , `java.Double?`
   , `java.Double[]`
@@ -103,14 +163,26 @@ trait OcdJavaBoxTypeValues {
   , `java.List<Double>?`
   , `java.List<Double?>`
   , `java.List<Double?>?`
-  , `java.Queue<Double>`
-  , `java.Queue<Double>?`
-  , `java.Queue<Double?>`
-  , `java.Queue<Double?>?`
   , `java.Set<Double>`
   , `java.Set<Double>?`
   , `java.Set<Double?>`
   , `java.Set<Double?>?`
+  , `java.Queue<Double>`
+  , `java.Queue<Double>?`
+  , `java.Queue<Double?>`
+  , `java.Queue<Double?>?`
+  , `java.LinkedList<Double>`
+  , `java.LinkedList<Double>?`
+  , `java.LinkedList<Double?>`
+  , `java.LinkedList<Double?>?`
+  , `java.Stack<Double>`
+  , `java.Stack<Double>?`
+  , `java.Stack<Double?>`
+  , `java.Stack<Double?>?`
+  , `java.Vector<Double>`
+  , `java.Vector<Double>?`
+  , `java.Vector<Double?>`
+  , `java.Vector<Double?>?`
   , `java.Float`
   , `java.Float?`
   , `java.Float[]`
@@ -121,14 +193,26 @@ trait OcdJavaBoxTypeValues {
   , `java.List<Float>?`
   , `java.List<Float?>`
   , `java.List<Float?>?`
-  , `java.Queue<Float>`
-  , `java.Queue<Float>?`
-  , `java.Queue<Float?>`
-  , `java.Queue<Float?>?`
   , `java.Set<Float>`
   , `java.Set<Float>?`
   , `java.Set<Float?>`
   , `java.Set<Float?>?`
+  , `java.Queue<Float>`
+  , `java.Queue<Float>?`
+  , `java.Queue<Float?>`
+  , `java.Queue<Float?>?`
+  , `java.LinkedList<Float>`
+  , `java.LinkedList<Float>?`
+  , `java.LinkedList<Float?>`
+  , `java.LinkedList<Float?>?`
+  , `java.Stack<Float>`
+  , `java.Stack<Float>?`
+  , `java.Stack<Float?>`
+  , `java.Stack<Float?>?`
+  , `java.Vector<Float>`
+  , `java.Vector<Float>?`
+  , `java.Vector<Float?>`
+  , `java.Vector<Float?>?`
   , `java.Guid`
   , `java.Guid?`
   , `java.Guid[]`
@@ -139,14 +223,26 @@ trait OcdJavaBoxTypeValues {
   , `java.List<Guid>?`
   , `java.List<Guid?>`
   , `java.List<Guid?>?`
-  , `java.Queue<Guid>`
-  , `java.Queue<Guid>?`
-  , `java.Queue<Guid?>`
-  , `java.Queue<Guid?>?`
   , `java.Set<Guid>`
   , `java.Set<Guid>?`
   , `java.Set<Guid?>`
   , `java.Set<Guid?>?`
+  , `java.Queue<Guid>`
+  , `java.Queue<Guid>?`
+  , `java.Queue<Guid?>`
+  , `java.Queue<Guid?>?`
+  , `java.LinkedList<Guid>`
+  , `java.LinkedList<Guid>?`
+  , `java.LinkedList<Guid?>`
+  , `java.LinkedList<Guid?>?`
+  , `java.Stack<Guid>`
+  , `java.Stack<Guid>?`
+  , `java.Stack<Guid?>`
+  , `java.Stack<Guid?>?`
+  , `java.Vector<Guid>`
+  , `java.Vector<Guid>?`
+  , `java.Vector<Guid?>`
+  , `java.Vector<Guid?>?`
   , `java.Image`
   , `java.Image?`
   , `java.Image[]`
@@ -157,14 +253,26 @@ trait OcdJavaBoxTypeValues {
   , `java.List<Image>?`
   , `java.List<Image?>`
   , `java.List<Image?>?`
-  , `java.Queue<Image>`
-  , `java.Queue<Image>?`
-  , `java.Queue<Image?>`
-  , `java.Queue<Image?>?`
   , `java.Set<Image>`
   , `java.Set<Image>?`
   , `java.Set<Image?>`
   , `java.Set<Image?>?`
+  , `java.Queue<Image>`
+  , `java.Queue<Image>?`
+  , `java.Queue<Image?>`
+  , `java.Queue<Image?>?`
+  , `java.LinkedList<Image>`
+  , `java.LinkedList<Image>?`
+  , `java.LinkedList<Image?>`
+  , `java.LinkedList<Image?>?`
+  , `java.Stack<Image>`
+  , `java.Stack<Image>?`
+  , `java.Stack<Image?>`
+  , `java.Stack<Image?>?`
+  , `java.Vector<Image>`
+  , `java.Vector<Image>?`
+  , `java.Vector<Image?>`
+  , `java.Vector<Image?>?`
   , `java.Integer`
   , `java.Integer?`
   , `java.Integer[]`
@@ -175,14 +283,26 @@ trait OcdJavaBoxTypeValues {
   , `java.List<Integer>?`
   , `java.List<Integer?>`
   , `java.List<Integer?>?`
-  , `java.Queue<Integer>`
-  , `java.Queue<Integer>?`
-  , `java.Queue<Integer?>`
-  , `java.Queue<Integer?>?`
   , `java.Set<Integer>`
   , `java.Set<Integer>?`
   , `java.Set<Integer?>`
   , `java.Set<Integer?>?`
+  , `java.Queue<Integer>`
+  , `java.Queue<Integer>?`
+  , `java.Queue<Integer?>`
+  , `java.Queue<Integer?>?`
+  , `java.LinkedList<Integer>`
+  , `java.LinkedList<Integer>?`
+  , `java.LinkedList<Integer?>`
+  , `java.LinkedList<Integer?>?`
+  , `java.Stack<Integer>`
+  , `java.Stack<Integer>?`
+  , `java.Stack<Integer?>`
+  , `java.Stack<Integer?>?`
+  , `java.Vector<Integer>`
+  , `java.Vector<Integer>?`
+  , `java.Vector<Integer?>`
+  , `java.Vector<Integer?>?`
   , `java.Ip`
   , `java.Ip?`
   , `java.Ip[]`
@@ -193,14 +313,26 @@ trait OcdJavaBoxTypeValues {
   , `java.List<Ip>?`
   , `java.List<Ip?>`
   , `java.List<Ip?>?`
-  , `java.Queue<Ip>`
-  , `java.Queue<Ip>?`
-  , `java.Queue<Ip?>`
-  , `java.Queue<Ip?>?`
   , `java.Set<Ip>`
   , `java.Set<Ip>?`
   , `java.Set<Ip?>`
   , `java.Set<Ip?>?`
+  , `java.Queue<Ip>`
+  , `java.Queue<Ip>?`
+  , `java.Queue<Ip?>`
+  , `java.Queue<Ip?>?`
+  , `java.LinkedList<Ip>`
+  , `java.LinkedList<Ip>?`
+  , `java.LinkedList<Ip?>`
+  , `java.LinkedList<Ip?>?`
+  , `java.Stack<Ip>`
+  , `java.Stack<Ip>?`
+  , `java.Stack<Ip?>`
+  , `java.Stack<Ip?>?`
+  , `java.Vector<Ip>`
+  , `java.Vector<Ip>?`
+  , `java.Vector<Ip?>`
+  , `java.Vector<Ip?>?`
   , `java.Location`
   , `java.Location?`
   , `java.Location[]`
@@ -211,14 +343,26 @@ trait OcdJavaBoxTypeValues {
   , `java.List<Location>?`
   , `java.List<Location?>`
   , `java.List<Location?>?`
-  , `java.Queue<Location>`
-  , `java.Queue<Location>?`
-  , `java.Queue<Location?>`
-  , `java.Queue<Location?>?`
   , `java.Set<Location>`
   , `java.Set<Location>?`
   , `java.Set<Location?>`
   , `java.Set<Location?>?`
+  , `java.Queue<Location>`
+  , `java.Queue<Location>?`
+  , `java.Queue<Location?>`
+  , `java.Queue<Location?>?`
+  , `java.LinkedList<Location>`
+  , `java.LinkedList<Location>?`
+  , `java.LinkedList<Location?>`
+  , `java.LinkedList<Location?>?`
+  , `java.Stack<Location>`
+  , `java.Stack<Location>?`
+  , `java.Stack<Location?>`
+  , `java.Stack<Location?>?`
+  , `java.Vector<Location>`
+  , `java.Vector<Location>?`
+  , `java.Vector<Location?>`
+  , `java.Vector<Location?>?`
   , `java.Long`
   , `java.Long?`
   , `java.Long[]`
@@ -229,14 +373,26 @@ trait OcdJavaBoxTypeValues {
   , `java.List<Long>?`
   , `java.List<Long?>`
   , `java.List<Long?>?`
-  , `java.Queue<Long>`
-  , `java.Queue<Long>?`
-  , `java.Queue<Long?>`
-  , `java.Queue<Long?>?`
   , `java.Set<Long>`
   , `java.Set<Long>?`
   , `java.Set<Long?>`
   , `java.Set<Long?>?`
+  , `java.Queue<Long>`
+  , `java.Queue<Long>?`
+  , `java.Queue<Long?>`
+  , `java.Queue<Long?>?`
+  , `java.LinkedList<Long>`
+  , `java.LinkedList<Long>?`
+  , `java.LinkedList<Long?>`
+  , `java.LinkedList<Long?>?`
+  , `java.Stack<Long>`
+  , `java.Stack<Long>?`
+  , `java.Stack<Long?>`
+  , `java.Stack<Long?>?`
+  , `java.Vector<Long>`
+  , `java.Vector<Long>?`
+  , `java.Vector<Long?>`
+  , `java.Vector<Long?>?`
   , `java.Map`
   , `java.Map?`
   , `java.Map[]`
@@ -247,14 +403,26 @@ trait OcdJavaBoxTypeValues {
   , `java.List<Map>?`
   , `java.List<Map?>`
   , `java.List<Map?>?`
-  , `java.Queue<Map>`
-  , `java.Queue<Map>?`
-  , `java.Queue<Map?>`
-  , `java.Queue<Map?>?`
   , `java.Set<Map>`
   , `java.Set<Map>?`
   , `java.Set<Map?>`
   , `java.Set<Map?>?`
+  , `java.Queue<Map>`
+  , `java.Queue<Map>?`
+  , `java.Queue<Map?>`
+  , `java.Queue<Map?>?`
+  , `java.LinkedList<Map>`
+  , `java.LinkedList<Map>?`
+  , `java.LinkedList<Map?>`
+  , `java.LinkedList<Map?>?`
+  , `java.Stack<Map>`
+  , `java.Stack<Map>?`
+  , `java.Stack<Map?>`
+  , `java.Stack<Map?>?`
+  , `java.Vector<Map>`
+  , `java.Vector<Map>?`
+  , `java.Vector<Map?>`
+  , `java.Vector<Map?>?`
   , `java.Money`
   , `java.Money?`
   , `java.Money[]`
@@ -265,14 +433,26 @@ trait OcdJavaBoxTypeValues {
   , `java.List<Money>?`
   , `java.List<Money?>`
   , `java.List<Money?>?`
-  , `java.Queue<Money>`
-  , `java.Queue<Money>?`
-  , `java.Queue<Money?>`
-  , `java.Queue<Money?>?`
   , `java.Set<Money>`
   , `java.Set<Money>?`
   , `java.Set<Money?>`
   , `java.Set<Money?>?`
+  , `java.Queue<Money>`
+  , `java.Queue<Money>?`
+  , `java.Queue<Money?>`
+  , `java.Queue<Money?>?`
+  , `java.LinkedList<Money>`
+  , `java.LinkedList<Money>?`
+  , `java.LinkedList<Money?>`
+  , `java.LinkedList<Money?>?`
+  , `java.Stack<Money>`
+  , `java.Stack<Money>?`
+  , `java.Stack<Money?>`
+  , `java.Stack<Money?>?`
+  , `java.Vector<Money>`
+  , `java.Vector<Money>?`
+  , `java.Vector<Money?>`
+  , `java.Vector<Money?>?`
   , `java.Point`
   , `java.Point?`
   , `java.Point[]`
@@ -283,14 +463,26 @@ trait OcdJavaBoxTypeValues {
   , `java.List<Point>?`
   , `java.List<Point?>`
   , `java.List<Point?>?`
-  , `java.Queue<Point>`
-  , `java.Queue<Point>?`
-  , `java.Queue<Point?>`
-  , `java.Queue<Point?>?`
   , `java.Set<Point>`
   , `java.Set<Point>?`
   , `java.Set<Point?>`
   , `java.Set<Point?>?`
+  , `java.Queue<Point>`
+  , `java.Queue<Point>?`
+  , `java.Queue<Point?>`
+  , `java.Queue<Point?>?`
+  , `java.LinkedList<Point>`
+  , `java.LinkedList<Point>?`
+  , `java.LinkedList<Point?>`
+  , `java.LinkedList<Point?>?`
+  , `java.Stack<Point>`
+  , `java.Stack<Point>?`
+  , `java.Stack<Point?>`
+  , `java.Stack<Point?>?`
+  , `java.Vector<Point>`
+  , `java.Vector<Point>?`
+  , `java.Vector<Point?>`
+  , `java.Vector<Point?>?`
   , `java.Rectangle`
   , `java.Rectangle?`
   , `java.Rectangle[]`
@@ -301,14 +493,26 @@ trait OcdJavaBoxTypeValues {
   , `java.List<Rectangle>?`
   , `java.List<Rectangle?>`
   , `java.List<Rectangle?>?`
-  , `java.Queue<Rectangle>`
-  , `java.Queue<Rectangle>?`
-  , `java.Queue<Rectangle?>`
-  , `java.Queue<Rectangle?>?`
   , `java.Set<Rectangle>`
   , `java.Set<Rectangle>?`
   , `java.Set<Rectangle?>`
   , `java.Set<Rectangle?>?`
+  , `java.Queue<Rectangle>`
+  , `java.Queue<Rectangle>?`
+  , `java.Queue<Rectangle?>`
+  , `java.Queue<Rectangle?>?`
+  , `java.LinkedList<Rectangle>`
+  , `java.LinkedList<Rectangle>?`
+  , `java.LinkedList<Rectangle?>`
+  , `java.LinkedList<Rectangle?>?`
+  , `java.Stack<Rectangle>`
+  , `java.Stack<Rectangle>?`
+  , `java.Stack<Rectangle?>`
+  , `java.Stack<Rectangle?>?`
+  , `java.Vector<Rectangle>`
+  , `java.Vector<Rectangle>?`
+  , `java.Vector<Rectangle?>`
+  , `java.Vector<Rectangle?>?`
   , `java.String`
   , `java.String?`
   , `java.String[]`
@@ -319,14 +523,26 @@ trait OcdJavaBoxTypeValues {
   , `java.List<String>?`
   , `java.List<String?>`
   , `java.List<String?>?`
-  , `java.Queue<String>`
-  , `java.Queue<String>?`
-  , `java.Queue<String?>`
-  , `java.Queue<String?>?`
   , `java.Set<String>`
   , `java.Set<String>?`
   , `java.Set<String?>`
   , `java.Set<String?>?`
+  , `java.Queue<String>`
+  , `java.Queue<String>?`
+  , `java.Queue<String?>`
+  , `java.Queue<String?>?`
+  , `java.LinkedList<String>`
+  , `java.LinkedList<String>?`
+  , `java.LinkedList<String?>`
+  , `java.LinkedList<String?>?`
+  , `java.Stack<String>`
+  , `java.Stack<String>?`
+  , `java.Stack<String?>`
+  , `java.Stack<String?>?`
+  , `java.Vector<String>`
+  , `java.Vector<String>?`
+  , `java.Vector<String?>`
+  , `java.Vector<String?>?`
   , `java.String(9)`
   , `java.String(9)?`
   , `java.String(9)[]`
@@ -337,14 +553,26 @@ trait OcdJavaBoxTypeValues {
   , `java.List<String(9)>?`
   , `java.List<String(9)?>`
   , `java.List<String(9)?>?`
-  , `java.Queue<String(9)>`
-  , `java.Queue<String(9)>?`
-  , `java.Queue<String(9)?>`
-  , `java.Queue<String(9)?>?`
   , `java.Set<String(9)>`
   , `java.Set<String(9)>?`
   , `java.Set<String(9)?>`
   , `java.Set<String(9)?>?`
+  , `java.Queue<String(9)>`
+  , `java.Queue<String(9)>?`
+  , `java.Queue<String(9)?>`
+  , `java.Queue<String(9)?>?`
+  , `java.LinkedList<String(9)>`
+  , `java.LinkedList<String(9)>?`
+  , `java.LinkedList<String(9)?>`
+  , `java.LinkedList<String(9)?>?`
+  , `java.Stack<String(9)>`
+  , `java.Stack<String(9)>?`
+  , `java.Stack<String(9)?>`
+  , `java.Stack<String(9)?>?`
+  , `java.Vector<String(9)>`
+  , `java.Vector<String(9)>?`
+  , `java.Vector<String(9)?>`
+  , `java.Vector<String(9)?>?`
   , `java.Text`
   , `java.Text?`
   , `java.Text[]`
@@ -355,14 +583,26 @@ trait OcdJavaBoxTypeValues {
   , `java.List<Text>?`
   , `java.List<Text?>`
   , `java.List<Text?>?`
-  , `java.Queue<Text>`
-  , `java.Queue<Text>?`
-  , `java.Queue<Text?>`
-  , `java.Queue<Text?>?`
   , `java.Set<Text>`
   , `java.Set<Text>?`
   , `java.Set<Text?>`
   , `java.Set<Text?>?`
+  , `java.Queue<Text>`
+  , `java.Queue<Text>?`
+  , `java.Queue<Text?>`
+  , `java.Queue<Text?>?`
+  , `java.LinkedList<Text>`
+  , `java.LinkedList<Text>?`
+  , `java.LinkedList<Text?>`
+  , `java.LinkedList<Text?>?`
+  , `java.Stack<Text>`
+  , `java.Stack<Text>?`
+  , `java.Stack<Text?>`
+  , `java.Stack<Text?>?`
+  , `java.Vector<Text>`
+  , `java.Vector<Text>?`
+  , `java.Vector<Text?>`
+  , `java.Vector<Text?>?`
   , `java.Timestamp`
   , `java.Timestamp?`
   , `java.Timestamp[]`
@@ -373,14 +613,26 @@ trait OcdJavaBoxTypeValues {
   , `java.List<Timestamp>?`
   , `java.List<Timestamp?>`
   , `java.List<Timestamp?>?`
-  , `java.Queue<Timestamp>`
-  , `java.Queue<Timestamp>?`
-  , `java.Queue<Timestamp?>`
-  , `java.Queue<Timestamp?>?`
   , `java.Set<Timestamp>`
   , `java.Set<Timestamp>?`
   , `java.Set<Timestamp?>`
   , `java.Set<Timestamp?>?`
+  , `java.Queue<Timestamp>`
+  , `java.Queue<Timestamp>?`
+  , `java.Queue<Timestamp?>`
+  , `java.Queue<Timestamp?>?`
+  , `java.LinkedList<Timestamp>`
+  , `java.LinkedList<Timestamp>?`
+  , `java.LinkedList<Timestamp?>`
+  , `java.LinkedList<Timestamp?>?`
+  , `java.Stack<Timestamp>`
+  , `java.Stack<Timestamp>?`
+  , `java.Stack<Timestamp?>`
+  , `java.Stack<Timestamp?>?`
+  , `java.Vector<Timestamp>`
+  , `java.Vector<Timestamp>?`
+  , `java.Vector<Timestamp?>`
+  , `java.Vector<Timestamp?>?`
   , `java.Url`
   , `java.Url?`
   , `java.Url[]`
@@ -391,14 +643,26 @@ trait OcdJavaBoxTypeValues {
   , `java.List<Url>?`
   , `java.List<Url?>`
   , `java.List<Url?>?`
-  , `java.Queue<Url>`
-  , `java.Queue<Url>?`
-  , `java.Queue<Url?>`
-  , `java.Queue<Url?>?`
   , `java.Set<Url>`
   , `java.Set<Url>?`
   , `java.Set<Url?>`
   , `java.Set<Url?>?`
+  , `java.Queue<Url>`
+  , `java.Queue<Url>?`
+  , `java.Queue<Url?>`
+  , `java.Queue<Url?>?`
+  , `java.LinkedList<Url>`
+  , `java.LinkedList<Url>?`
+  , `java.LinkedList<Url?>`
+  , `java.LinkedList<Url?>?`
+  , `java.Stack<Url>`
+  , `java.Stack<Url>?`
+  , `java.Stack<Url?>`
+  , `java.Stack<Url?>?`
+  , `java.Vector<Url>`
+  , `java.Vector<Url>?`
+  , `java.Vector<Url?>`
+  , `java.Vector<Url?>?`
   , `java.Xml`
   , `java.Xml?`
   , `java.Xml[]`
@@ -409,13 +673,25 @@ trait OcdJavaBoxTypeValues {
   , `java.List<Xml>?`
   , `java.List<Xml?>`
   , `java.List<Xml?>?`
-  , `java.Queue<Xml>`
-  , `java.Queue<Xml>?`
-  , `java.Queue<Xml?>`
-  , `java.Queue<Xml?>?`
   , `java.Set<Xml>`
   , `java.Set<Xml>?`
   , `java.Set<Xml?>`
   , `java.Set<Xml?>?`
+  , `java.Queue<Xml>`
+  , `java.Queue<Xml>?`
+  , `java.Queue<Xml?>`
+  , `java.Queue<Xml?>?`
+  , `java.LinkedList<Xml>`
+  , `java.LinkedList<Xml>?`
+  , `java.LinkedList<Xml?>`
+  , `java.LinkedList<Xml?>?`
+  , `java.Stack<Xml>`
+  , `java.Stack<Xml>?`
+  , `java.Stack<Xml?>`
+  , `java.Stack<Xml?>?`
+  , `java.Vector<Xml>`
+  , `java.Vector<Xml>?`
+  , `java.Vector<Xml?>`
+  , `java.Vector<Xml?>?`
   )
 }

@@ -4,7 +4,7 @@ package scalas
 import types._
 import boxes._
 
-sealed trait ScalaStringWithMaxLengthOf9
+sealed abstract class ScalaStringWithMaxLengthOf9
     extends OcdScalaBoxType
     with `type.String(9)`
 
@@ -88,6 +88,38 @@ case object `scala.List<String(9)?>?`
   val defaultValue = "None"
 }
 
+case object `scala.Set<String(9)>`
+    extends ScalaStringWithMaxLengthOf9 with `box.OneSetOfOne` {
+
+  val scalaClass = "Set[String]"
+
+  val defaultValue = "Set[String].empty"
+}
+
+case object `scala.Set<String(9)>?`
+    extends ScalaStringWithMaxLengthOf9 with `box.NullableSetOfOne` {
+
+  val scalaClass = "Option[Set[String]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Set<String(9)?>`
+    extends ScalaStringWithMaxLengthOf9 with `box.OneSetOfNullable` {
+
+  val scalaClass = "Set[Option[String]]"
+
+  val defaultValue = "Set[Option[String]].empty"
+}
+
+case object `scala.Set<String(9)?>?`
+    extends ScalaStringWithMaxLengthOf9 with `box.NullableSetOfNullable` {
+
+  val scalaClass = "Option[Set[Option[String]]]"
+
+  val defaultValue = "None"
+}
+
 case object `scala.Queue<String(9)>`
     extends ScalaStringWithMaxLengthOf9 with `box.OneQueueOfOne` {
 
@@ -120,34 +152,98 @@ case object `scala.Queue<String(9)?>?`
   val defaultValue = "None"
 }
 
-case object `scala.Set<String(9)>`
-    extends ScalaStringWithMaxLengthOf9 with `box.OneSetOfOne` {
+case object `scala.LinkedList<String(9)>`
+    extends ScalaStringWithMaxLengthOf9 with `box.OneLinkedListOfOne` {
 
-  val scalaClass = "Set[String]"
+  val scalaClass = "LinkedList[String]"
 
-  val defaultValue = "Set[String].empty"
+  val defaultValue = "LinkedList[String].empty"
 }
 
-case object `scala.Set<String(9)>?`
-    extends ScalaStringWithMaxLengthOf9 with `box.NullableSetOfOne` {
+case object `scala.LinkedList<String(9)>?`
+    extends ScalaStringWithMaxLengthOf9 with `box.NullableLinkedListOfOne` {
 
-  val scalaClass = "Option[Set[String]]"
+  val scalaClass = "Option[LinkedList[String]]"
 
   val defaultValue = "None"
 }
 
-case object `scala.Set<String(9)?>`
-    extends ScalaStringWithMaxLengthOf9 with `box.OneSetOfNullable` {
+case object `scala.LinkedList<String(9)?>`
+    extends ScalaStringWithMaxLengthOf9 with `box.OneLinkedListOfNullable` {
 
-  val scalaClass = "Set[Option[String]]"
+  val scalaClass = "LinkedList[Option[String]]"
 
-  val defaultValue = "Set[Option[String]].empty"
+  val defaultValue = "LinkedList[Option[String]].empty"
 }
 
-case object `scala.Set<String(9)?>?`
-    extends ScalaStringWithMaxLengthOf9 with `box.NullableSetOfNullable` {
+case object `scala.LinkedList<String(9)?>?`
+    extends ScalaStringWithMaxLengthOf9 with `box.NullableLinkedListOfNullable` {
 
-  val scalaClass = "Option[Set[Option[String]]]"
+  val scalaClass = "Option[LinkedList[Option[String]]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Stack<String(9)>`
+    extends ScalaStringWithMaxLengthOf9 with `box.OneStackOfOne` {
+
+  val scalaClass = "Stack[String]"
+
+  val defaultValue = "Stack[String].empty"
+}
+
+case object `scala.Stack<String(9)>?`
+    extends ScalaStringWithMaxLengthOf9 with `box.NullableStackOfOne` {
+
+  val scalaClass = "Option[Stack[String]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Stack<String(9)?>`
+    extends ScalaStringWithMaxLengthOf9 with `box.OneStackOfNullable` {
+
+  val scalaClass = "Stack[Option[String]]"
+
+  val defaultValue = "Stack[Option[String]].empty"
+}
+
+case object `scala.Stack<String(9)?>?`
+    extends ScalaStringWithMaxLengthOf9 with `box.NullableStackOfNullable` {
+
+  val scalaClass = "Option[Stack[Option[String]]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Vector<String(9)>`
+    extends ScalaStringWithMaxLengthOf9 with `box.OneVectorOfOne` {
+
+  val scalaClass = "Vector[String]"
+
+  val defaultValue = "Vector[String].empty"
+}
+
+case object `scala.Vector<String(9)>?`
+    extends ScalaStringWithMaxLengthOf9 with `box.NullableVectorOfOne` {
+
+  val scalaClass = "Option[Vector[String]]"
+
+  val defaultValue = "None"
+}
+
+case object `scala.Vector<String(9)?>`
+    extends ScalaStringWithMaxLengthOf9 with `box.OneVectorOfNullable` {
+
+  val scalaClass = "Vector[Option[String]]"
+
+  val defaultValue = "Vector[Option[String]].empty"
+}
+
+case object `scala.Vector<String(9)?>?`
+    extends ScalaStringWithMaxLengthOf9 with `box.NullableVectorOfNullable` {
+
+  val scalaClass = "Option[Vector[Option[String]]]"
 
   val defaultValue = "None"
 }

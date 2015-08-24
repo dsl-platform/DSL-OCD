@@ -4,7 +4,7 @@ package javas
 import types._
 import boxes._
 
-sealed trait JavaPoint
+sealed abstract class JavaPoint
     extends OcdJavaBoxType
     with `type.Point` {
 
@@ -320,6 +320,140 @@ case object `java.List<Point?>?`
   val hasGenerics = true
 }
 
+case object `java.Set<Point>`
+    extends JavaPoint with `box.OneSetOfOne` {
+
+  val javaClass = "java.util.Set<java.awt.Point>"
+  val javaType = JavaCollectionType("java.util.Set", JavaClass("java.awt.Point"))
+  val javaDescription = "OneSetOfOnePoints"
+
+  def defaultValue = SingleJavaValue("new java.util.HashSet<java.awt.Point>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    SetOfJavaValues("java.awt.Point",
+      SingleJavaValue("new java.awt.Point()")
+    )
+  , SetOfJavaValues("java.awt.Point",
+      SingleJavaValue("new java.awt.Point(0, 1000000000)")
+    )
+  , SetOfJavaValues("java.awt.Point",
+      SingleJavaValue("new java.awt.Point()")
+    , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MIN_VALUE)")
+    , SingleJavaValue("new java.awt.Point(Integer.MAX_VALUE, Integer.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.Point(0, -1000000000)")
+    , SingleJavaValue("new java.awt.Point(0, 1000000000)")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Set<Point>?`
+    extends JavaPoint with `box.NullableSetOfOne` {
+
+  val javaClass = "java.util.Set<java.awt.Point>"
+  val javaType = JavaCollectionType("java.util.Set", JavaClass("java.awt.Point"))
+  val javaDescription = "NullableSetOfOnePoints"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    SetOfJavaValues("java.awt.Point",
+      SingleJavaValue("new java.awt.Point()")
+    )
+  , SetOfJavaValues("java.awt.Point",
+      SingleJavaValue("new java.awt.Point(0, 1000000000)")
+    )
+  , SetOfJavaValues("java.awt.Point",
+      SingleJavaValue("new java.awt.Point()")
+    , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MIN_VALUE)")
+    , SingleJavaValue("new java.awt.Point(Integer.MAX_VALUE, Integer.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.Point(0, -1000000000)")
+    , SingleJavaValue("new java.awt.Point(0, 1000000000)")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Set<Point?>`
+    extends JavaPoint with `box.OneSetOfNullable` {
+
+  val javaClass = "java.util.Set<java.awt.Point>"
+  val javaType = JavaCollectionType("java.util.Set", JavaClass("java.awt.Point"))
+  val javaDescription = "OneSetOfNullablePoints"
+
+  def defaultValue = SingleJavaValue("new java.util.HashSet<java.awt.Point>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    SetOfJavaValues("java.awt.Point",
+      SingleJavaValue("null")
+    )
+  , SetOfJavaValues("java.awt.Point",
+      SingleJavaValue("new java.awt.Point()")
+    )
+  , SetOfJavaValues("java.awt.Point",
+      SingleJavaValue("new java.awt.Point(0, 1000000000)")
+    )
+  , SetOfJavaValues("java.awt.Point",
+      SingleJavaValue("new java.awt.Point()")
+    , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MIN_VALUE)")
+    , SingleJavaValue("new java.awt.Point(Integer.MAX_VALUE, Integer.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.Point(0, -1000000000)")
+    , SingleJavaValue("new java.awt.Point(0, 1000000000)")
+    )
+  , SetOfJavaValues("java.awt.Point",
+      SingleJavaValue("null")
+    , SingleJavaValue("new java.awt.Point()")
+    , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MIN_VALUE)")
+    , SingleJavaValue("new java.awt.Point(Integer.MAX_VALUE, Integer.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.Point(0, -1000000000)")
+    , SingleJavaValue("new java.awt.Point(0, 1000000000)")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Set<Point?>?`
+    extends JavaPoint with `box.NullableSetOfNullable` {
+
+  val javaClass = "java.util.Set<java.awt.Point>"
+  val javaType = JavaCollectionType("java.util.Set", JavaClass("java.awt.Point"))
+  val javaDescription = "NullableSetOfNullablePoints"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    SetOfJavaValues("java.awt.Point",
+      SingleJavaValue("null")
+    )
+  , SetOfJavaValues("java.awt.Point",
+      SingleJavaValue("new java.awt.Point()")
+    )
+  , SetOfJavaValues("java.awt.Point",
+      SingleJavaValue("new java.awt.Point(0, 1000000000)")
+    )
+  , SetOfJavaValues("java.awt.Point",
+      SingleJavaValue("new java.awt.Point()")
+    , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MIN_VALUE)")
+    , SingleJavaValue("new java.awt.Point(Integer.MAX_VALUE, Integer.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.Point(0, -1000000000)")
+    , SingleJavaValue("new java.awt.Point(0, 1000000000)")
+    )
+  , SetOfJavaValues("java.awt.Point",
+      SingleJavaValue("null")
+    , SingleJavaValue("new java.awt.Point()")
+    , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MIN_VALUE)")
+    , SingleJavaValue("new java.awt.Point(Integer.MAX_VALUE, Integer.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.Point(0, -1000000000)")
+    , SingleJavaValue("new java.awt.Point(0, 1000000000)")
+    )
+  )
+
+  val hasGenerics = true
+}
+
 case object `java.Queue<Point>`
     extends JavaPoint with `box.OneQueueOfOne` {
 
@@ -454,23 +588,23 @@ case object `java.Queue<Point?>?`
   val hasGenerics = true
 }
 
-case object `java.Set<Point>`
-    extends JavaPoint with `box.OneSetOfOne` {
+case object `java.LinkedList<Point>`
+    extends JavaPoint with `box.OneLinkedListOfOne` {
 
-  val javaClass = "java.util.Set<java.awt.Point>"
-  val javaType = JavaCollectionType("java.util.Set", JavaClass("java.awt.Point"))
-  val javaDescription = "OneSetOfOnePoints"
+  val javaClass = "java.util.LinkedList<java.awt.Point>"
+  val javaType = JavaCollectionType("java.util.LinkedList", JavaClass("java.awt.Point"))
+  val javaDescription = "OneLinkedListOfOnePoints"
 
-  def defaultValue = SingleJavaValue("new java.util.HashSet<java.awt.Point>(0)")
+  def defaultValue = SingleJavaValue("new java.util.LinkedList<java.awt.Point>()")
 
   def nonDefaultValues = IndexedSeq(
-    SetOfJavaValues("java.awt.Point",
+    LinkedListOfJavaValues("java.awt.Point",
       SingleJavaValue("new java.awt.Point()")
     )
-  , SetOfJavaValues("java.awt.Point",
+  , LinkedListOfJavaValues("java.awt.Point",
       SingleJavaValue("new java.awt.Point(0, 1000000000)")
     )
-  , SetOfJavaValues("java.awt.Point",
+  , LinkedListOfJavaValues("java.awt.Point",
       SingleJavaValue("new java.awt.Point()")
     , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MIN_VALUE)")
     , SingleJavaValue("new java.awt.Point(Integer.MAX_VALUE, Integer.MAX_VALUE)")
@@ -482,23 +616,23 @@ case object `java.Set<Point>`
   val hasGenerics = true
 }
 
-case object `java.Set<Point>?`
-    extends JavaPoint with `box.NullableSetOfOne` {
+case object `java.LinkedList<Point>?`
+    extends JavaPoint with `box.NullableLinkedListOfOne` {
 
-  val javaClass = "java.util.Set<java.awt.Point>"
-  val javaType = JavaCollectionType("java.util.Set", JavaClass("java.awt.Point"))
-  val javaDescription = "NullableSetOfOnePoints"
+  val javaClass = "java.util.LinkedList<java.awt.Point>"
+  val javaType = JavaCollectionType("java.util.LinkedList", JavaClass("java.awt.Point"))
+  val javaDescription = "NullableLinkedListOfOnePoints"
 
   def defaultValue = SingleJavaValue("null")
 
   def nonDefaultValues = IndexedSeq(
-    SetOfJavaValues("java.awt.Point",
+    LinkedListOfJavaValues("java.awt.Point",
       SingleJavaValue("new java.awt.Point()")
     )
-  , SetOfJavaValues("java.awt.Point",
+  , LinkedListOfJavaValues("java.awt.Point",
       SingleJavaValue("new java.awt.Point(0, 1000000000)")
     )
-  , SetOfJavaValues("java.awt.Point",
+  , LinkedListOfJavaValues("java.awt.Point",
       SingleJavaValue("new java.awt.Point()")
     , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MIN_VALUE)")
     , SingleJavaValue("new java.awt.Point(Integer.MAX_VALUE, Integer.MAX_VALUE)")
@@ -510,33 +644,33 @@ case object `java.Set<Point>?`
   val hasGenerics = true
 }
 
-case object `java.Set<Point?>`
-    extends JavaPoint with `box.OneSetOfNullable` {
+case object `java.LinkedList<Point?>`
+    extends JavaPoint with `box.OneLinkedListOfNullable` {
 
-  val javaClass = "java.util.Set<java.awt.Point>"
-  val javaType = JavaCollectionType("java.util.Set", JavaClass("java.awt.Point"))
-  val javaDescription = "OneSetOfNullablePoints"
+  val javaClass = "java.util.LinkedList<java.awt.Point>"
+  val javaType = JavaCollectionType("java.util.LinkedList", JavaClass("java.awt.Point"))
+  val javaDescription = "OneLinkedListOfNullablePoints"
 
-  def defaultValue = SingleJavaValue("new java.util.HashSet<java.awt.Point>(0)")
+  def defaultValue = SingleJavaValue("new java.util.LinkedList<java.awt.Point>()")
 
   def nonDefaultValues = IndexedSeq(
-    SetOfJavaValues("java.awt.Point",
+    LinkedListOfJavaValues("java.awt.Point",
       SingleJavaValue("null")
     )
-  , SetOfJavaValues("java.awt.Point",
+  , LinkedListOfJavaValues("java.awt.Point",
       SingleJavaValue("new java.awt.Point()")
     )
-  , SetOfJavaValues("java.awt.Point",
+  , LinkedListOfJavaValues("java.awt.Point",
       SingleJavaValue("new java.awt.Point(0, 1000000000)")
     )
-  , SetOfJavaValues("java.awt.Point",
+  , LinkedListOfJavaValues("java.awt.Point",
       SingleJavaValue("new java.awt.Point()")
     , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MIN_VALUE)")
     , SingleJavaValue("new java.awt.Point(Integer.MAX_VALUE, Integer.MAX_VALUE)")
     , SingleJavaValue("new java.awt.Point(0, -1000000000)")
     , SingleJavaValue("new java.awt.Point(0, 1000000000)")
     )
-  , SetOfJavaValues("java.awt.Point",
+  , LinkedListOfJavaValues("java.awt.Point",
       SingleJavaValue("null")
     , SingleJavaValue("new java.awt.Point()")
     , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MIN_VALUE)")
@@ -549,33 +683,301 @@ case object `java.Set<Point?>`
   val hasGenerics = true
 }
 
-case object `java.Set<Point?>?`
-    extends JavaPoint with `box.NullableSetOfNullable` {
+case object `java.LinkedList<Point?>?`
+    extends JavaPoint with `box.NullableLinkedListOfNullable` {
 
-  val javaClass = "java.util.Set<java.awt.Point>"
-  val javaType = JavaCollectionType("java.util.Set", JavaClass("java.awt.Point"))
-  val javaDescription = "NullableSetOfNullablePoints"
+  val javaClass = "java.util.LinkedList<java.awt.Point>"
+  val javaType = JavaCollectionType("java.util.LinkedList", JavaClass("java.awt.Point"))
+  val javaDescription = "NullableLinkedListOfNullablePoints"
 
   def defaultValue = SingleJavaValue("null")
 
   def nonDefaultValues = IndexedSeq(
-    SetOfJavaValues("java.awt.Point",
+    LinkedListOfJavaValues("java.awt.Point",
       SingleJavaValue("null")
     )
-  , SetOfJavaValues("java.awt.Point",
+  , LinkedListOfJavaValues("java.awt.Point",
       SingleJavaValue("new java.awt.Point()")
     )
-  , SetOfJavaValues("java.awt.Point",
+  , LinkedListOfJavaValues("java.awt.Point",
       SingleJavaValue("new java.awt.Point(0, 1000000000)")
     )
-  , SetOfJavaValues("java.awt.Point",
+  , LinkedListOfJavaValues("java.awt.Point",
       SingleJavaValue("new java.awt.Point()")
     , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MIN_VALUE)")
     , SingleJavaValue("new java.awt.Point(Integer.MAX_VALUE, Integer.MAX_VALUE)")
     , SingleJavaValue("new java.awt.Point(0, -1000000000)")
     , SingleJavaValue("new java.awt.Point(0, 1000000000)")
     )
-  , SetOfJavaValues("java.awt.Point",
+  , LinkedListOfJavaValues("java.awt.Point",
+      SingleJavaValue("null")
+    , SingleJavaValue("new java.awt.Point()")
+    , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MIN_VALUE)")
+    , SingleJavaValue("new java.awt.Point(Integer.MAX_VALUE, Integer.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.Point(0, -1000000000)")
+    , SingleJavaValue("new java.awt.Point(0, 1000000000)")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Stack<Point>`
+    extends JavaPoint with `box.OneStackOfOne` {
+
+  val javaClass = "java.util.Stack<java.awt.Point>"
+  val javaType = JavaCollectionType("java.util.Stack", JavaClass("java.awt.Point"))
+  val javaDescription = "OneStackOfOnePoints"
+
+  def defaultValue = SingleJavaValue("new java.util.Stack<java.awt.Point>()")
+
+  def nonDefaultValues = IndexedSeq(
+    StackOfJavaValues("java.awt.Point",
+      SingleJavaValue("new java.awt.Point()")
+    )
+  , StackOfJavaValues("java.awt.Point",
+      SingleJavaValue("new java.awt.Point(0, 1000000000)")
+    )
+  , StackOfJavaValues("java.awt.Point",
+      SingleJavaValue("new java.awt.Point()")
+    , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MIN_VALUE)")
+    , SingleJavaValue("new java.awt.Point(Integer.MAX_VALUE, Integer.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.Point(0, -1000000000)")
+    , SingleJavaValue("new java.awt.Point(0, 1000000000)")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Stack<Point>?`
+    extends JavaPoint with `box.NullableStackOfOne` {
+
+  val javaClass = "java.util.Stack<java.awt.Point>"
+  val javaType = JavaCollectionType("java.util.Stack", JavaClass("java.awt.Point"))
+  val javaDescription = "NullableStackOfOnePoints"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    StackOfJavaValues("java.awt.Point",
+      SingleJavaValue("new java.awt.Point()")
+    )
+  , StackOfJavaValues("java.awt.Point",
+      SingleJavaValue("new java.awt.Point(0, 1000000000)")
+    )
+  , StackOfJavaValues("java.awt.Point",
+      SingleJavaValue("new java.awt.Point()")
+    , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MIN_VALUE)")
+    , SingleJavaValue("new java.awt.Point(Integer.MAX_VALUE, Integer.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.Point(0, -1000000000)")
+    , SingleJavaValue("new java.awt.Point(0, 1000000000)")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Stack<Point?>`
+    extends JavaPoint with `box.OneStackOfNullable` {
+
+  val javaClass = "java.util.Stack<java.awt.Point>"
+  val javaType = JavaCollectionType("java.util.Stack", JavaClass("java.awt.Point"))
+  val javaDescription = "OneStackOfNullablePoints"
+
+  def defaultValue = SingleJavaValue("new java.util.Stack<java.awt.Point>()")
+
+  def nonDefaultValues = IndexedSeq(
+    StackOfJavaValues("java.awt.Point",
+      SingleJavaValue("null")
+    )
+  , StackOfJavaValues("java.awt.Point",
+      SingleJavaValue("new java.awt.Point()")
+    )
+  , StackOfJavaValues("java.awt.Point",
+      SingleJavaValue("new java.awt.Point(0, 1000000000)")
+    )
+  , StackOfJavaValues("java.awt.Point",
+      SingleJavaValue("new java.awt.Point()")
+    , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MIN_VALUE)")
+    , SingleJavaValue("new java.awt.Point(Integer.MAX_VALUE, Integer.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.Point(0, -1000000000)")
+    , SingleJavaValue("new java.awt.Point(0, 1000000000)")
+    )
+  , StackOfJavaValues("java.awt.Point",
+      SingleJavaValue("null")
+    , SingleJavaValue("new java.awt.Point()")
+    , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MIN_VALUE)")
+    , SingleJavaValue("new java.awt.Point(Integer.MAX_VALUE, Integer.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.Point(0, -1000000000)")
+    , SingleJavaValue("new java.awt.Point(0, 1000000000)")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Stack<Point?>?`
+    extends JavaPoint with `box.NullableStackOfNullable` {
+
+  val javaClass = "java.util.Stack<java.awt.Point>"
+  val javaType = JavaCollectionType("java.util.Stack", JavaClass("java.awt.Point"))
+  val javaDescription = "NullableStackOfNullablePoints"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    StackOfJavaValues("java.awt.Point",
+      SingleJavaValue("null")
+    )
+  , StackOfJavaValues("java.awt.Point",
+      SingleJavaValue("new java.awt.Point()")
+    )
+  , StackOfJavaValues("java.awt.Point",
+      SingleJavaValue("new java.awt.Point(0, 1000000000)")
+    )
+  , StackOfJavaValues("java.awt.Point",
+      SingleJavaValue("new java.awt.Point()")
+    , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MIN_VALUE)")
+    , SingleJavaValue("new java.awt.Point(Integer.MAX_VALUE, Integer.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.Point(0, -1000000000)")
+    , SingleJavaValue("new java.awt.Point(0, 1000000000)")
+    )
+  , StackOfJavaValues("java.awt.Point",
+      SingleJavaValue("null")
+    , SingleJavaValue("new java.awt.Point()")
+    , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MIN_VALUE)")
+    , SingleJavaValue("new java.awt.Point(Integer.MAX_VALUE, Integer.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.Point(0, -1000000000)")
+    , SingleJavaValue("new java.awt.Point(0, 1000000000)")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Vector<Point>`
+    extends JavaPoint with `box.OneVectorOfOne` {
+
+  val javaClass = "java.util.Vector<java.awt.Point>"
+  val javaType = JavaCollectionType("java.util.Vector", JavaClass("java.awt.Point"))
+  val javaDescription = "OneVectorOfOnePoints"
+
+  def defaultValue = SingleJavaValue("new java.util.Vector<java.awt.Point>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    VectorOfJavaValues("java.awt.Point",
+      SingleJavaValue("new java.awt.Point()")
+    )
+  , VectorOfJavaValues("java.awt.Point",
+      SingleJavaValue("new java.awt.Point(0, 1000000000)")
+    )
+  , VectorOfJavaValues("java.awt.Point",
+      SingleJavaValue("new java.awt.Point()")
+    , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MIN_VALUE)")
+    , SingleJavaValue("new java.awt.Point(Integer.MAX_VALUE, Integer.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.Point(0, -1000000000)")
+    , SingleJavaValue("new java.awt.Point(0, 1000000000)")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Vector<Point>?`
+    extends JavaPoint with `box.NullableVectorOfOne` {
+
+  val javaClass = "java.util.Vector<java.awt.Point>"
+  val javaType = JavaCollectionType("java.util.Vector", JavaClass("java.awt.Point"))
+  val javaDescription = "NullableVectorOfOnePoints"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    VectorOfJavaValues("java.awt.Point",
+      SingleJavaValue("new java.awt.Point()")
+    )
+  , VectorOfJavaValues("java.awt.Point",
+      SingleJavaValue("new java.awt.Point(0, 1000000000)")
+    )
+  , VectorOfJavaValues("java.awt.Point",
+      SingleJavaValue("new java.awt.Point()")
+    , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MIN_VALUE)")
+    , SingleJavaValue("new java.awt.Point(Integer.MAX_VALUE, Integer.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.Point(0, -1000000000)")
+    , SingleJavaValue("new java.awt.Point(0, 1000000000)")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Vector<Point?>`
+    extends JavaPoint with `box.OneVectorOfNullable` {
+
+  val javaClass = "java.util.Vector<java.awt.Point>"
+  val javaType = JavaCollectionType("java.util.Vector", JavaClass("java.awt.Point"))
+  val javaDescription = "OneVectorOfNullablePoints"
+
+  def defaultValue = SingleJavaValue("new java.util.Vector<java.awt.Point>(0)")
+
+  def nonDefaultValues = IndexedSeq(
+    VectorOfJavaValues("java.awt.Point",
+      SingleJavaValue("null")
+    )
+  , VectorOfJavaValues("java.awt.Point",
+      SingleJavaValue("new java.awt.Point()")
+    )
+  , VectorOfJavaValues("java.awt.Point",
+      SingleJavaValue("new java.awt.Point(0, 1000000000)")
+    )
+  , VectorOfJavaValues("java.awt.Point",
+      SingleJavaValue("new java.awt.Point()")
+    , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MIN_VALUE)")
+    , SingleJavaValue("new java.awt.Point(Integer.MAX_VALUE, Integer.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.Point(0, -1000000000)")
+    , SingleJavaValue("new java.awt.Point(0, 1000000000)")
+    )
+  , VectorOfJavaValues("java.awt.Point",
+      SingleJavaValue("null")
+    , SingleJavaValue("new java.awt.Point()")
+    , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MIN_VALUE)")
+    , SingleJavaValue("new java.awt.Point(Integer.MAX_VALUE, Integer.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.Point(0, -1000000000)")
+    , SingleJavaValue("new java.awt.Point(0, 1000000000)")
+    )
+  )
+
+  val hasGenerics = true
+}
+
+case object `java.Vector<Point?>?`
+    extends JavaPoint with `box.NullableVectorOfNullable` {
+
+  val javaClass = "java.util.Vector<java.awt.Point>"
+  val javaType = JavaCollectionType("java.util.Vector", JavaClass("java.awt.Point"))
+  val javaDescription = "NullableVectorOfNullablePoints"
+
+  def defaultValue = SingleJavaValue("null")
+
+  def nonDefaultValues = IndexedSeq(
+    VectorOfJavaValues("java.awt.Point",
+      SingleJavaValue("null")
+    )
+  , VectorOfJavaValues("java.awt.Point",
+      SingleJavaValue("new java.awt.Point()")
+    )
+  , VectorOfJavaValues("java.awt.Point",
+      SingleJavaValue("new java.awt.Point(0, 1000000000)")
+    )
+  , VectorOfJavaValues("java.awt.Point",
+      SingleJavaValue("new java.awt.Point()")
+    , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MIN_VALUE)")
+    , SingleJavaValue("new java.awt.Point(Integer.MAX_VALUE, Integer.MAX_VALUE)")
+    , SingleJavaValue("new java.awt.Point(0, -1000000000)")
+    , SingleJavaValue("new java.awt.Point(0, 1000000000)")
+    )
+  , VectorOfJavaValues("java.awt.Point",
       SingleJavaValue("null")
     , SingleJavaValue("new java.awt.Point()")
     , SingleJavaValue("new java.awt.Point(Integer.MIN_VALUE, Integer.MIN_VALUE)")
