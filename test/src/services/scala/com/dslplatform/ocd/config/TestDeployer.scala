@@ -237,7 +237,7 @@ private[config] class TestDeployer(
 
     private def copyTemplate(scriptName: String, target: Path, permissions: PosixFilePermission*) = {
         val path = target / scriptName
-        logger.trace("Creating the "+ scriptName + " script: " + path.path)
+        logger.trace("Creating the " + scriptName + " script: " + path.path)
 
         val body = applyTemplates(IOUtils.toString(
             classOf[TestDeployer].getResourceAsStream("/template." + scriptName)))

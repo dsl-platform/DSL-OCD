@@ -31,11 +31,11 @@ private[domain] class AggregateWithSurrogateKeyAndOnePropertyWithinOneValueSetup
   def aggregateComment = s"AggregateTypeWithSurrogateKeyAnd${propertyType.dslDesc}PropertyWithinOneValue"
 
   def shortName = propertyType.dslDescShort
-  def AggregateName = "Aggregate" + shortName
+  def AggregateName = "A" + shortName
   def aggregateName = AggregateName.fcil
   def propertyName = "p" + shortName
   def PropertyName = propertyName.fciu
-  def valueName = "v"+shortName
+  def valueName = "v" + shortName
   def ValueName = valueName.fciu
 
   private val dslPath = s"aggregates/${ModuleName}/${AggregateName}.dsl"
@@ -109,11 +109,61 @@ class AggregateWithSurrogateKeyAndOnePropertyWithinOneValueTestProject(
     }
 """)
 
-//    private val uriProperty = OcdJavaBoxTypeProperty("URI", `java.String`)
-//    private val idProperty = OcdJavaBoxTypeProperty("ID", `java.Integer`)
+    private val uriProperty = OcdJavaBoxTypeProperty("URI", `java.String`)
+    private val idProperty = OcdJavaBoxTypeProperty("ID", `java.Integer`)
 
     override def tests = Seq(
-      new TestJavaOneValueInAggregate {
+      new TestJavaPropertyFieldType {
+        def conceptName = aggregateConcept
+        def property = uriProperty
+        def visibility = Visibility.Private
+      }
+    , new TestJavaPropertyGetterType {
+        def conceptName = aggregateConcept
+        def property = uriProperty
+        def visibility = Visibility.Public
+      }
+    , new TestJavaPropertySetterType {
+        def conceptName = aggregateConcept
+        def property = uriProperty
+        def visibility = Visibility.Private
+        override def testNonExistence = true
+      }
+    , new TestJavaPropertyFieldType {
+        def conceptName = aggregateConcept
+        def property = idProperty
+        def visibility = Visibility.Private
+      }
+    , new TestJavaPropertyGetterType {
+        def conceptName = aggregateConcept
+        def property = idProperty
+        def visibility = Visibility.Public
+      }
+    , new TestJavaPropertySetterType {
+        def conceptName = aggregateConcept
+        def property = idProperty
+        def visibility = Visibility.Private
+      }
+    , new TestJavaPropertyFieldType {
+        def conceptName = aggregateConcept
+        def property = javaProperty
+        def visibility = Visibility.Private
+      }
+    , new TestJavaPropertyGetterType {
+        def conceptName = aggregateConcept
+        def property = javaProperty
+        def visibility = Visibility.Public
+      }
+    , new TestJavaPropertySetterType {
+        def conceptName = aggregateConcept
+        def property = javaProperty
+        def visibility = Visibility.Public
+      }
+    , new TestJavaPropertyDefaultValue {
+        def conceptName = aggregateConcept
+        def property = javaProperty
+      }
+    , new TestJavaOneValueInAggregate {
         def conceptName = aggregateConcept
         def property = javaProperty
         def isDefault = true
@@ -145,7 +195,7 @@ object AggregateWithSurrogateKeyAndOneValueTestProject {
     (setups.groupBy(_.propertyType.typeNameSafe) map { case (typeNameSafe, typeSetups) =>
       new ITestProject {
         def projectPath = "aggregates/surrogate-one-value-" + typeNameSafe
-        def ProjectNameCamel = "SurrogateOneValue"+typeNameSafe
+        def ProjectNameCamel = "SurrogateOneValue" + typeNameSafe
         def projectName = s"OCD Single Property within One Value in Aggregate With Surrogate Key Tests (${typeNameSafe})"
         val dslFiles = typeSetups.dslFiles
         val testFiles = typeSetups.map(new AggregateWithSurrogateKeyAndOnePropertyWithinOneValueTestProject(_)).testFiles

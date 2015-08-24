@@ -13,7 +13,7 @@ import javatest.property._
 
 private[domain] object CalculatedPropertyInSnowflakeSetup {
   val setups = for {
-    t <- OcdType.useCaseValues // if t.typeNameSafe == "Integer"
+    t <- OcdType.useCaseValues
     b <- OcdBox.values
     d = OcdDslBoxType.resolve(t, b)
     if !(b.collectionFamily == Some(CollectionFamily.Queue) && b.areElementsNullable == Some(true)) // Queue cannot contain null elements
@@ -296,8 +296,8 @@ object CalculatedPropertyInSnowflakeTestProject {
     (setups.groupBy(_.propertyType.typeNameSafe) map { case (typeNameSafe, typeSetups) =>
       new ITestProject {
         def projectPath = "snowflakes/calculated-single-" + typeNameSafe
-        def ProjectNameCamel = "CalculatedSingle"+typeNameSafe
-        def projectNameCamel = "calculatedSingle"+typeNameSafe
+        def ProjectNameCamel = "CalculatedSingle" + typeNameSafe
+        def projectNameCamel = "calculatedSingle" + typeNameSafe
         def projectName = s"OCD Single Calculated Property in Snowflake Tests (${typeNameSafe})"
         val dslFiles = typeSetups.dslFiles
         val testFiles = typeSetups.map(new CalculatedPropertyInSnowflakeTestProject(_)).testFiles

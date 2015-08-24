@@ -193,7 +193,7 @@ object AggregateWithOnePropertyTestProject {
     (setups.groupBy(_.propertyType.typeNameSafe) map { case (typeNameSafe, typeSetups) =>
       new ITestProject {
         def projectPath = "aggregates/primary-single-" + typeNameSafe
-        def ProjectNameCamel = "PrimarySingle"+typeNameSafe
+        def ProjectNameCamel = "PrimarySingle" + typeNameSafe
         def projectName = s"OCD Single Primary Key Property in Aggregate Tests (${typeNameSafe})"
         val dslFiles = typeSetups.dslFiles
         val testFiles = typeSetups.map(new AggregateWithOnePropertyTestProject(_)).testFiles
