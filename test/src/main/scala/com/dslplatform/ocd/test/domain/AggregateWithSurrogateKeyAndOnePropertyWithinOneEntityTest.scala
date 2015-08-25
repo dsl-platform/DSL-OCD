@@ -13,10 +13,8 @@ import javatest.property._
 
 private[domain] object AggregateWithSurrogateKeyAndOnePropertyWithinOneEntitySetup {
   val setups = for {
-    t <- OcdType.useCaseValues.take(2)
+    t <- OcdType.useCaseValues
     b <- OcdBox.values
-    if b.collectionFamily != Some(CollectionFamily.Vector)
-    if b.collectionFamily != Some(CollectionFamily.Stack)
     if !(b.collectionFamily == Some(CollectionFamily.Queue) && b.areElementsNullable == Some(true)) // Queue cannot contain null elements
 //    if (t.typeName != "String" && t.typeName != "Text" && t.typeName != "Binary") || !b.isCollection
     d = OcdDslBoxType.resolve(t, b)
@@ -145,25 +143,6 @@ class AggregateWithSurrogateKeyAndOnePropertyWithinOneEntityTestProject(
         def conceptName = aggregateConcept
         def property = idProperty
         def visibility = Visibility.Private
-      }
-    , new TestJavaPropertyFieldType {
-        def conceptName = aggregateConcept
-        def property = javaProperty
-        def visibility = Visibility.Private
-      }
-    , new TestJavaPropertyGetterType {
-        def conceptName = aggregateConcept
-        def property = javaProperty
-        def visibility = Visibility.Public
-      }
-    , new TestJavaPropertySetterType {
-        def conceptName = aggregateConcept
-        def property = javaProperty
-        def visibility = Visibility.Public
-      }
-    , new TestJavaPropertyDefaultValue {
-        def conceptName = aggregateConcept
-        def property = javaProperty
       }
     , new TestJavaOneEntityInAggregate {
         def conceptName = aggregateConcept

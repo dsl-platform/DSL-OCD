@@ -144,25 +144,6 @@ class AggregateWithSurrogateKeyAndOnePropertyWithinOneValueTestProject(
         def property = idProperty
         def visibility = Visibility.Private
       }
-    , new TestJavaPropertyFieldType {
-        def conceptName = aggregateConcept
-        def property = javaProperty
-        def visibility = Visibility.Private
-      }
-    , new TestJavaPropertyGetterType {
-        def conceptName = aggregateConcept
-        def property = javaProperty
-        def visibility = Visibility.Public
-      }
-    , new TestJavaPropertySetterType {
-        def conceptName = aggregateConcept
-        def property = javaProperty
-        def visibility = Visibility.Public
-      }
-    , new TestJavaPropertyDefaultValue {
-        def conceptName = aggregateConcept
-        def property = javaProperty
-      }
     , new TestJavaOneValueInAggregate {
         def conceptName = aggregateConcept
         def property = javaProperty

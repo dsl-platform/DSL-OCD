@@ -27,6 +27,7 @@ class EntryPoint(
       AggregateWithSurrogateKeyAndOnePropertyTestProject.projects ++
       CalculatedPropertyInSnowflakeTestProject.projects ++
       AggregateWithSurrogateKeyAndOneValueTestProject.projects ++
+      AggregateWithSurrogateKeyAndOneEntityTestProject.projects ++
       Nil
 
     testDeployer.deployTests(turtles ++ projects)

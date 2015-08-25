@@ -73,6 +73,7 @@ trait TestJavaPropertySetterType
     public void test${PropertyName}PropertySetterGenericType${testSuffix}() throws NoSuchMethodException, NoSuchFieldException {
         org.junit.Assert.assertEquals(
                 new Object() {
+                    @SuppressWarnings("unused")
                     ${visibility.javaFieldPrefix}${
                       modifiers.filterNot(Modifier.Static ==).map(_.javaFieldPrefix).mkString
                     }${propertyType.javaClass} ${propertyName} = ${propertyType.defaultValue};

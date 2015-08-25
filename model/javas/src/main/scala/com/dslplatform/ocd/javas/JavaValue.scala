@@ -98,7 +98,7 @@ case class StackOfJavaValues(
   override val toString = "new java.util.Stack<" + elementClass + values.map(_ match {
     case x if x.isNull => "(" + elementClass + ") " + x
     case x => x
-  }).mkString(">() {{ addAll(java.util.Arrays.<" + elementClass + ">asList(", ", ", ")); }}")
+  }).mkString(">() {{ addAll(java.util.Arrays.<" + elementClass + ">asList(", ", ", ")); } private static final long serialVersionUID = 0; }")
 }
 
 case class VectorOfJavaValues(
@@ -120,5 +120,5 @@ case class MapOfJavaValues(
 
   override val toString = "new java.util.HashMap<" + keyClass + ", " + valueClass + ">() " + (values.map{ case (k, v) =>
     "put(" + k + ", " + v + ");"
-  }).mkString("{{ ", " ", " }}")
+  }).mkString("{{ ", " ", " } private static final long serialVersionUID = 0; }")
 }

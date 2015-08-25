@@ -169,6 +169,7 @@
       <arg value="settings=active-record,manual-json" />
       <arg value="postgres=${dbHost}:${dbPort}/${dbName}?user=${dbSuperUser}&amp;password=${dbSuperPassword}" />
       <arg value="sql=${migration.tmp}" />
+      <arg value="force" />
       <arg value="apply" />
     </java>
     <move file="GeneratedModel.dll" todir="${generated.model}" />

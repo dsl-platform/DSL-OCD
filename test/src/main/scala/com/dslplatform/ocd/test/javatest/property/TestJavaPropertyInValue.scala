@@ -69,11 +69,15 @@ trait TestJavaPropertyInValue
         // check that the property was properly assigned
         ${assertEquals("domainValue")}
 
+        logger.trace("Serializing ${conceptName}: {}", domainValue);
         final com.dslplatform.patterns.Bytes serialized = jsonSerialization.serialize(domainValue);
+        logger.debug("Serialized ${conceptName}: {}", serialized.toUtf8());
+
         final ${conceptName} domainValueDeserialized = jsonSerialization.deserialize(
                 ${conceptName}.class,
                 serialized.content,
                 serialized.length);
+        logger.trace("Deserialized ${conceptName}: {}", domainValueDeserialized);
 
         // check that the property was properly deserialized
         ${assertEquals("domainValueDeserialized")}
