@@ -13,30 +13,32 @@ import javatest.property._
 
 private[domain] object AggregateWithSurrogateKeyAndOnePropertyWithinOneEntitySetup {
   val setups = for {
+    st <- AggregateRootSugar.values
     t <- OcdType.useCaseValues
     b <- OcdBox.values
     if !(b.collectionFamily == Some(CollectionFamily.Queue) && b.areElementsNullable == Some(true)) // Queue cannot contain null elements
 //    if (t.typeName != "String" && t.typeName != "Text" && t.typeName != "Binary") || !b.isCollection
     d = OcdDslBoxType.resolve(t, b)
   } yield {
-    new AggregateWithSurrogateKeyAndOnePropertyWithinOneEntitySetup(d)
+    new AggregateWithSurrogateKeyAndOnePropertyWithinOneEntitySetup(st, d)
   }
 }
 
 private[domain] class AggregateWithSurrogateKeyAndOnePropertyWithinOneEntitySetup(
-    val propertyType: OcdDslBoxType
+    val sugarType: AggregateRootSugar
+  , val propertyType: OcdDslBoxType
   ) extends TestSetup {
 
   def ModuleName = "AggregateOneEntity" + propertyType.typeNameSafe
-  def aggregateComment = s"AggregateTypeWithSurrogateKeyAnd${propertyType.dslDesc}PropertyWithinOneEntity"
+  def aggregateComment = s"${sugarType}WithSurrogateKeyAnd${propertyType.dslDesc}PropertyWithinOneEntity"
 
   def shortName = propertyType.dslDescShort
-  def AggregateName = "A" + shortName
+  def AggregateName = sugarType.shortName + shortName
   def aggregateName = AggregateName.fcil
-  def propertyName = "p" + shortName
-  def PropertyName = propertyName.fciu
-  def entityName = "e" + shortName
-  def EntityName = entityName.fciu
+  def EntityName = sugarType.shortName.head + "E" + shortName
+  def entityName = EntityName.fcil
+  def PropertyName = "P" + shortName
+  def propertyName = PropertyName.fcil
 
   private val dslPath = s"aggregates/${ModuleName}/${AggregateName}.dsl"
 
@@ -44,7 +46,7 @@ private[domain] class AggregateWithSurrogateKeyAndOnePropertyWithinOneEntitySetu
 s"""module ${ModuleName}
 {
   // ${aggregateComment}
-  aggregate ${AggregateName} {
+  ${sugarType.sugarDsl} ${AggregateName} {
     ${EntityName} ${entityName};
   }
 
@@ -110,7 +112,8 @@ class AggregateWithSurrogateKeyAndOnePropertyWithinOneEntityTestProject(
 """)
 
     private val uriProperty = OcdJavaBoxTypeProperty("URI", `java.String`)
-    private val idProperty = OcdJavaBoxTypeProperty("ID", `java.Integer`)
+    private val javaIdType = OcdJavaBoxType.resolve(setup.sugarType.surrogateKeyType, `box.One`)
+    private val idProperty = OcdJavaBoxTypeProperty("ID", javaIdType)
 
     override def tests = Seq(
       new TestJavaPropertyFieldType {

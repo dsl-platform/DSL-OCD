@@ -53,7 +53,7 @@ trait TestJavaOneEntityInAggregate
 ${isDefault match {
            case true => s"""
         final ${conceptName} aggregate =
-                new ${conceptName}();
+                new ${conceptName}(new ${entityConceptName}()); // FIXME: remove
         final ${propertyType.javaClass} testValue = aggregate.get${EntityName}().get${PropertyName}();"""
 
            case _ => s"""
@@ -87,7 +87,7 @@ ${isDefault match {
     public void test${PropertyName}WithinOne${EntityName}${testID}PropertyEntityInAggregateAfterActiveRecordPersist() throws IOException {${setupBlock}${isDefault match {
            case true => s"""
         final ${conceptName} aggregate =
-                new ${conceptName}();
+                new ${conceptName}(new ${entityConceptName}()); // FIXME: remove
         final ${propertyType.javaClass} testValue = aggregate.get${EntityName}().get${PropertyName}();"""
 
            case _ => s"""
@@ -122,7 +122,7 @@ ${isDefault match {
     public void test${PropertyName}WithinOne${EntityName}${testID}PropertyEntityInAggregateAfterRepositoryPersist() throws IOException, InterruptedException, ExecutionException {${setupBlock}${isDefault match {
            case true => s"""
         final ${conceptName} aggregate =
-                new ${conceptName}();
+                new ${conceptName}(new ${entityConceptName}()); // FIXME: remove
         final ${propertyType.javaClass} testValue = aggregate.get${EntityName}().get${PropertyName}();"""
 
            case _ => s"""

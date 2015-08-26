@@ -13,30 +13,32 @@ import javatest.property._
 
 private[domain] object AggregateWithSurrogateKeyAndOnePropertyWithinOneValueSetup {
   val setups = for {
+    st <- AggregateRootSugar.values
     t <- OcdType.useCaseValues
     b <- OcdBox.values
     if !(b.collectionFamily == Some(CollectionFamily.Queue) && b.areElementsNullable == Some(true)) // Queue cannot contain null elements
 //    if (t.typeName != "String" && t.typeName != "Text" && t.typeName != "Binary") || !b.isCollection
     d = OcdDslBoxType.resolve(t, b)
   } yield {
-    new AggregateWithSurrogateKeyAndOnePropertyWithinOneValueSetup(d)
+    new AggregateWithSurrogateKeyAndOnePropertyWithinOneValueSetup(st, d)
   }
 }
 
 private[domain] class AggregateWithSurrogateKeyAndOnePropertyWithinOneValueSetup(
-    val propertyType: OcdDslBoxType
+    val sugarType: AggregateRootSugar
+  , val propertyType: OcdDslBoxType
   ) extends TestSetup {
 
   def ModuleName = "AggregateOneValue" + propertyType.typeNameSafe
-  def aggregateComment = s"AggregateTypeWithSurrogateKeyAnd${propertyType.dslDesc}PropertyWithinOneValue"
+  def aggregateComment = s"${sugarType}WithSurrogateKeyAnd${propertyType.dslDesc}PropertyWithinOneValue"
 
   def shortName = propertyType.dslDescShort
-  def AggregateName = "A" + shortName
+  def AggregateName = sugarType.shortName + shortName
   def aggregateName = AggregateName.fcil
-  def propertyName = "p" + shortName
-  def PropertyName = propertyName.fciu
-  def valueName = "v" + shortName
-  def ValueName = valueName.fciu
+  def ValueName = "V" + shortName
+  def valueName = ValueName.fcil
+  def PropertyName = "P" + shortName
+  def propertyName = PropertyName.fcil
 
   private val dslPath = s"aggregates/${ModuleName}/${AggregateName}.dsl"
 
@@ -44,10 +46,11 @@ private[domain] class AggregateWithSurrogateKeyAndOnePropertyWithinOneValueSetup
 s"""module ${ModuleName}
 {
   // ${aggregateComment}
-  aggregate ${AggregateName} {
+  ${sugarType.sugarDsl} ${AggregateName} {
     ${ValueName} ${valueName};
   }
 
+  // should merge with twins
   value ${ValueName} {
     ${propertyType.dslName} ${propertyName};
   }
@@ -110,7 +113,8 @@ class AggregateWithSurrogateKeyAndOnePropertyWithinOneValueTestProject(
 """)
 
     private val uriProperty = OcdJavaBoxTypeProperty("URI", `java.String`)
-    private val idProperty = OcdJavaBoxTypeProperty("ID", `java.Integer`)
+    private val javaIdType = OcdJavaBoxType.resolve(setup.sugarType.surrogateKeyType, `box.One`)
+    private val idProperty = OcdJavaBoxTypeProperty("ID", javaIdType)
 
     override def tests = Seq(
       new TestJavaPropertyFieldType {

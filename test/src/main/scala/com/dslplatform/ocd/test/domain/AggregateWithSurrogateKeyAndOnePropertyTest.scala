@@ -7,17 +7,8 @@ import types._
 import boxes._
 import dsls._
 import javas._
-
 import javatest._
 import javatest.property._
-
-sealed abstract class AggregateRootSugar(val sugarDsl: String, val surrogateKeyType: OcdType, val shortName: String)
-object AggregateRootSugar {
-  case object StandardAggregate extends AggregateRootSugar("aggregate", `type.Integer`, "SA")
-  case object BigAggregate extends AggregateRootSugar("big aggregate root", `type.Long`, "BA")
-  case object GuidAggregate extends AggregateRootSugar("guid root", `type.Guid`, "GA")
-  val values: IndexedSeq[AggregateRootSugar] = IndexedSeq(StandardAggregate, BigAggregate, GuidAggregate)
-}
 
 private[domain] object AggregateWithSurrogateKeyAndOnePropertySetup {
   val setups = for {

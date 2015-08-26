@@ -14,10 +14,10 @@ class EntryPoint(
 
   def run(): Unit = {
     val turtles = Seq(
-      TestJavaAssertsBorderValuesTurtle
-    , TestJavaPropertyFieldTypeTurtle
-    , TestJavaPropertyGetterTypeTurtle
-    , TestJavaPropertySetterTypeTurtle
+//      TestJavaAssertsBorderValuesTurtle
+//    , TestJavaPropertyFieldTypeTurtle
+//    , TestJavaPropertyGetterTypeTurtle
+//    , TestJavaPropertySetterTypeTurtle
     )
 
     import test.javatest.property._
