@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <project name="common" xmlns:if="ant:if" xmlns:unless="ant:unless">
   <property name="dbSuperUser" value="OCDSUPERUSER" />
   <property name="dbSuperPassword" value="D11B6BE3-E928-4C9A-AABC-545BA449CC76" />
@@ -162,8 +162,8 @@
     <antcall target="copy-revenj-template" />
     <java classname="com.dslplatform.compiler.client.Main" fork="true">
       <classpath>
-        <pathelement location="${dsl-compiler-client}"/>
-        <pathelement location="${ojdbc}"/>
+        <pathelement location="${dsl-compiler-client}" />
+        <pathelement location="${ojdbc}" />
       </classpath>
       <arg value="dsl=${dsl.src}" />
       <arg value="compiler=${tools.dsl-compiler}" />
@@ -226,7 +226,7 @@
     </copy>
   </target>
 
-  <property environment="env"/>
+  <property environment="env" />
   <condition property="bootclasspath1" value="-bootclasspath" else="-g"><!-- find a better else="noop" variable, linux javac doesn't understand empty parameters -->
     <isset property="env.JDK16_HOME" />
   </condition>
@@ -238,8 +238,8 @@
     <javac srcdir="${java.generated.dir}" destdir="${target.main}" fork="true" deprecation="true" encoding="UTF-8" source="1.6" target="1.6" includeantruntime="false">
       <classpath refid="compile.classpath" />
       <compilerarg value="-Xlint:all" />
-      <compilerarg value="${bootclasspath1}"/>
-      <compilerarg value="${bootclasspath2}"/>
+      <compilerarg value="${bootclasspath1}" />
+      <compilerarg value="${bootclasspath2}" />
     </javac>
     <copy todir="${target.main}">
       <fileset dir="${resources.generated.dir}" />
@@ -256,8 +256,8 @@
       <classpath refid="test.classpath" />
       <classpath location="${target.main}" />
       <compilerarg value="-Xlint:all" />
-      <compilerarg value="${bootclasspath1}"/>
-      <compilerarg value="${bootclasspath2}"/>
+      <compilerarg value="${bootclasspath1}" />
+      <compilerarg value="${bootclasspath2}" />
     </javac>
     <copy todir="${target.test}">
       <fileset dir="${resources.test.dir}" />
@@ -272,7 +272,13 @@
     <exec executable="mono" spawn="true" osfamily="unix">
       <arg value="${revenj.exe}" />
     </exec>
-    <exec executable="${revenj.exe}" spawn="true" osfamily="windows" />
+    <exec executable="cmd.exe" spawn="false" osfamily="windows">
+      <arg value="/C" />
+      <arg value="START" />
+      <arg value="/MIN" />
+      <arg value="&quot;${ProjectNameCamel}-Revenj.NET&quot;" />
+      <arg value="${revenj.exe}" />
+    </exec>
     <sleep seconds="1" />
   </target>
 
@@ -281,8 +287,13 @@
       <arg value="-c" />
       <arg value="ps aux | grep '${revenj.exe}' | grep -v grep | awk '{print $2;}' | xargs kill -9 " />
     </exec>
-    <exec executable="taskkill" osfamily="windows">
-      <arg line="/im ${revenj.exe.name} /f /t" />
+    <exec executable="taskkill.exe" osfamily="windows">
+      <arg value="/F" />
+      <arg value="/T" />
+      <arg value="/IM" />
+      <arg value="${revenj.exe.name}" />
+      <arg value="/FI" />
+      <arg value="&quot;WINDOWTITLE eq ${ProjectNameCamel}-Revenj.NET&quot;" />
     </exec>
   </target>
 
