@@ -45,14 +45,12 @@ trait TestJavaPropertyInAggregate
     @org.junit.Test
     public void test${PropertyName}${testID}PropertyInAggregateJsonSerialization() throws IOException {${isDefault match {
            case true => s"""
-        final ${conceptName} aggregate =
-                new ${conceptName}();
+        final ${conceptName} aggregate = new ${conceptName}();
         final ${propertyType.javaClass} testValue = aggregate.get${PropertyName}();"""
 
            case _ => s"""
         final ${propertyType.javaClass} testValue = ${testValue};
-        final ${conceptName} aggregate =
-                new ${conceptName}()
+        final ${conceptName} aggregate = new ${conceptName}()
                 .set${PropertyName}(testValue);"""}}
 
         // check that the property was properly assigned
@@ -78,14 +76,12 @@ trait TestJavaPropertyInAggregate
     @org.junit.Test
     public void test${PropertyName}${testID}PropertyValueInAggregateAfterActiveRecordPersist() throws IOException {${setupBlock}${isDefault match {
            case true => s"""
-        final ${conceptName} aggregate =
-                new ${conceptName}();
+        final ${conceptName} aggregate = new ${conceptName}();
         final ${propertyType.javaClass} testValue = aggregate.get${PropertyName}();"""
 
            case _ => s"""
         final ${propertyType.javaClass} testValue = ${testValue};
-        final ${conceptName} aggregate =
-                new ${conceptName}()
+        final ${conceptName} aggregate = new ${conceptName}()
                 .set${PropertyName}(testValue);"""}}
 
         // persist via active record pattern
@@ -94,9 +90,7 @@ trait TestJavaPropertyInAggregate
         // check that the property retrieved from revenj (persist will mutate the aggregate)
         ${assertEquals(s"aggregate")}
 
-        final ${conceptName} aggregateFound =
-                ${conceptName}.find(aggregate.getURI());
-
+        final ${conceptName} aggregateFound = ${conceptName}.find(aggregate.getURI());
         // check the property retrieved from the database
         ${assertEquals("aggregateFound")}
 
@@ -113,22 +107,18 @@ trait TestJavaPropertyInAggregate
     @org.junit.Test
     public void test${PropertyName}${testID}PropertyValueInAggregateAfterRepositoryPersist() throws IOException, InterruptedException, ExecutionException {${setupBlock}${isDefault match {
            case true => s"""
-        final ${conceptName} aggregate =
-                new ${conceptName}();
+        final ${conceptName} aggregate = new ${conceptName}();
         final ${propertyType.javaClass} testValue = aggregate.get${PropertyName}();"""
 
            case _ => s"""
         final ${propertyType.javaClass} testValue = ${testValue};
-        final ${conceptName} aggregate =
-                new ${conceptName}()
+        final ${conceptName} aggregate = new ${conceptName}()
                 .set${PropertyName}(testValue);"""}}
 
         // persist via active record pattern
         final String uri = ${repositoryName}.insert(new ${conceptName}[] { aggregate }).get().get(0);
 
-        final ${conceptName} aggregateFound =
-                ${repositoryName}.find(uri).get();
-
+        final ${conceptName} aggregateFound = ${repositoryName}.find(uri).get();
         // check the property retrieved from the database
         ${assertEquals("aggregateFound")}
     }

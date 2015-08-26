@@ -52,14 +52,12 @@ trait TestJavaOneEntityInAggregate
     public void test${PropertyName}WithinOne${EntityName}${testID}PropertyInAggregateJsonSerialization() throws IOException {
 ${isDefault match {
            case true => s"""
-        final ${conceptName} aggregate =
-                new ${conceptName}(new ${entityConceptName}()); // FIXME: remove
+        final ${conceptName} aggregate = new ${conceptName}();
         final ${propertyType.javaClass} testValue = aggregate.get${EntityName}().get${PropertyName}();"""
 
            case _ => s"""
         final ${propertyType.javaClass} testValue = ${testValue};
-        final ${conceptName} aggregate =
-                new ${conceptName}()
+        final ${conceptName} aggregate = new ${conceptName}()
                 .set${EntityName}(new ${entityConceptName}().set${PropertyName}(testValue));"""
         }
 }
@@ -86,14 +84,12 @@ ${isDefault match {
     @org.junit.Test
     public void test${PropertyName}WithinOne${EntityName}${testID}PropertyEntityInAggregateAfterActiveRecordPersist() throws IOException {${setupBlock}${isDefault match {
            case true => s"""
-        final ${conceptName} aggregate =
-                new ${conceptName}(new ${entityConceptName}()); // FIXME: remove
+        final ${conceptName} aggregate = new ${conceptName}();
         final ${propertyType.javaClass} testValue = aggregate.get${EntityName}().get${PropertyName}();"""
 
            case _ => s"""
         final ${propertyType.javaClass} testValue = ${testValue};
-        final ${conceptName} aggregate =
-                new ${conceptName}()
+        final ${conceptName} aggregate = new ${conceptName}()
                   .set${EntityName}(new ${entityConceptName}().set${PropertyName}(testValue));"""}}
 
         // persist via active record pattern
@@ -102,9 +98,7 @@ ${isDefault match {
         // check that the property retrieved from revenj (persist will mutate the aggregate)
         ${assertEquals(s"aggregate")}
 
-        final ${conceptName} aggregateFound =
-                ${conceptName}.find(aggregate.getURI());
-
+        final ${conceptName} aggregateFound = ${conceptName}.find(aggregate.getURI());
         // check the property retrieved from the database
         ${assertEquals("aggregateFound")}
 
@@ -121,22 +115,18 @@ ${isDefault match {
     @org.junit.Test
     public void test${PropertyName}WithinOne${EntityName}${testID}PropertyEntityInAggregateAfterRepositoryPersist() throws IOException, InterruptedException, ExecutionException {${setupBlock}${isDefault match {
            case true => s"""
-        final ${conceptName} aggregate =
-                new ${conceptName}(new ${entityConceptName}()); // FIXME: remove
+        final ${conceptName} aggregate = new ${conceptName}();
         final ${propertyType.javaClass} testValue = aggregate.get${EntityName}().get${PropertyName}();"""
 
            case _ => s"""
         final ${propertyType.javaClass} testValue = ${testValue};
-        final ${conceptName} aggregate =
-                new ${conceptName}()
+        final ${conceptName} aggregate = new ${conceptName}()
                   .set${EntityName}(new ${entityConceptName}().set${PropertyName}(testValue));"""}}
 
         // persist via repository
         final String uri = ${repositoryName}.insert(new ${conceptName}[] { aggregate }).get().get(0);
 
-        final ${conceptName} aggregateFound =
-                ${repositoryName}.find(uri).get();
-
+        final ${conceptName} aggregateFound = ${repositoryName}.find(uri).get();
         // check the property retrieved from the database
         ${assertEquals("aggregateFound")}
     }

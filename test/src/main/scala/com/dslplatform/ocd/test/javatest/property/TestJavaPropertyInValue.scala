@@ -56,14 +56,12 @@ trait TestJavaPropertyInValue
     @org.junit.Test
     public void test${PropertyName}${testID}PropertyValueJsonSerialization() throws IOException {${setupBlock}${isDefault match {
            case true => s"""
-        final ${conceptName} domainValue =
-                new ${conceptName}();
+        final ${conceptName} domainValue = new ${conceptName}();
         final ${javaClass} testValue = domainValue.get${PropertyName}();"""
 
            case _ => s"""
         final ${javaClass} testValue = ${testValue};
-        final ${conceptName} domainValue =
-                new ${conceptName}()
+        final ${conceptName} domainValue = new ${conceptName}()
                 .set${PropertyName}(testValue);"""}}
 
         // check that the property was properly assigned
