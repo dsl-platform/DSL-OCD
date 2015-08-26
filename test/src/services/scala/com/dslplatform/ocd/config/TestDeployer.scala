@@ -307,7 +307,7 @@ private[config] class TestDeployer(
         , "dbPassword" -> "ocdpassword"
         , "dbOwner" -> "postgres"
         , "dbOwnerPassword" -> "ocdpassword"
-        , "revenjHost" -> "[::1]"
+        , "revenjHost" -> "127.0.0.1" // "[::1]"
         , "revenjPort" -> projectNamesAndPortsRepository.generateProjectRevenjPort(projectShortName).toString()
         , "toolsPath" -> (testSettings.workspace.path.path + "/tools")
         , "dslSource" -> dslSource.path
