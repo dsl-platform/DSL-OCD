@@ -22,13 +22,14 @@ class EntryPoint(
 
     import test.javatest.property._
     val projects =
-//      ValueWithOnePropertyTestProject.projects ++
-//      AggregateWithOnePropertyTestProject.projects ++
+      ValueWithOnePropertyTestProject.projects ++
+      AggregateWithOnePropertyTestProject.projects ++
       AggregateWithSurrogateKeyAndOneValueWithinOneEntityTestProject.projects ++
-//      AggregateWithSurrogateKeyAndOnePropertyTestProject.projects ++
-//      CalculatedPropertyInSnowflakeTestProject.projects ++
-//      AggregateWithSurrogateKeyAndOneValueTestProject.projects ++
-//      AggregateWithSurrogateKeyAndOneEntityTestProject.projects ++
+      AggregateWithSurrogateKeyAndOneEntityWithinOneEntityTestProject.projects ++
+      AggregateWithSurrogateKeyAndOnePropertyTestProject.projects ++
+      CalculatedPropertyInSnowflakeTestProject.projects ++
+      AggregateWithSurrogateKeyAndOneValueTestProject.projects ++
+      AggregateWithSurrogateKeyAndOneEntityTestProject.projects ++
       Nil
 
     testDeployer.deployTests(turtles ++ projects)

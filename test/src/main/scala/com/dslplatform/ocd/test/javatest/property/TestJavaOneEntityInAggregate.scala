@@ -57,10 +57,9 @@ ${isDefault match {
 
            case _ => s"""
         final ${propertyType.javaClass} testValue = ${testValue};
-        final ${conceptName} aggregate = new ${conceptName}()
-                .set${EntityName}(new ${entityConceptName}().set${PropertyName}(testValue));"""
-        }
-}
+        final ${conceptName} aggregate = new ${conceptName}();
+        aggregate.get${EntityName}().set${PropertyName}(testValue);"""
+}}
 
         // check that the property was properly assigned
         ${assertEquals("aggregate")}
@@ -89,8 +88,8 @@ ${isDefault match {
 
            case _ => s"""
         final ${propertyType.javaClass} testValue = ${testValue};
-        final ${conceptName} aggregate = new ${conceptName}()
-                  .set${EntityName}(new ${entityConceptName}().set${PropertyName}(testValue));"""}}
+        final ${conceptName} aggregate = new ${conceptName}();
+        aggregate.get${EntityName}().set${PropertyName}(testValue));"""}}
 
         // persist via active record pattern
         aggregate.create();
@@ -120,8 +119,8 @@ ${isDefault match {
 
            case _ => s"""
         final ${propertyType.javaClass} testValue = ${testValue};
-        final ${conceptName} aggregate = new ${conceptName}()
-                  .set${EntityName}(new ${entityConceptName}().set${PropertyName}(testValue));"""}}
+        final ${conceptName} aggregate = new ${conceptName}();
+        aggregate.get${EntityName}().set${PropertyName}(testValue));"""}}
 
         // persist via repository
         final String uri = ${repositoryName}.insert(new ${conceptName}[] { aggregate }).get().get(0);
