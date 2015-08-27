@@ -29,6 +29,7 @@
   <property name="dsl-compiler-client" location="/${tools.build}/dsl-clc-1.4.0.jar" />
   <property name="ojdbc" location="/${tools.build}/ojdbc6-12.1.0.2.0.jar" />
   <property name="tools.dsl-compiler" location="${tools.build}/${dsl-compiler}" />
+  <property name="tools.ping" location="/${tools.build}/dsl-ocd-util-ping-0.1.0.jar" />
 
   <property name="dsl.src" value="../dsl" />
   <property name="generated.model" value="model" />
@@ -76,7 +77,7 @@
   </target>
 
   <target name="drop-db" description="Tries to drop this project's database. Does not fail the build on failure, since the database might already be dropped.">
-    <!--sql driver="org.postgresql.Driver" url="jdbc:postgresql://${dbHost}:${dbPort}/postgres" userid="${dbOwner}" password="${dbOwnerPassword}" autocommit="true" onerror="continue">
+    <!--sql driver="org.postgresql.Driver" url="jdbc:postgresql://${dbHost}:${dbPort}/postgres" userid="${dbSuperUser}" password="${dbSuperPassword}" autocommit="true" onerror="continue">
       <classpath refid="postgres.classpath" />
       DROP DATABASE IF EXISTS "${dbName}";
     </sql-->
@@ -89,7 +90,6 @@
   <target name="clean-java-client-project" description="Deletes the project Java client copy">
     <delete dir="${project.java_client}" />
   </target>
-
 
   <target name="clean-test" description="Deletes the test result for the project">
     <delete file="TEST-${testName}.xml" />
@@ -160,7 +160,7 @@
       <available file="${tools.revenj}" type="dir" />
     </condition>
     <antcall target="copy-revenj-template" />
-    <java classname="com.dslplatform.compiler.client.Main" fork="true">
+    <java classname="com.dslplatform.compiler.client.Main" fork="true" timeout="90000">
       <classpath>
         <pathelement location="${dsl-compiler-client}" />
         <pathelement location="${ojdbc}" />
@@ -279,7 +279,13 @@
       <arg value="&quot;${ProjectNameCamel}-Revenj.NET&quot;" />
       <arg value="${revenj.exe}" />
     </exec>
-    <sleep seconds="1" />
+    <java jar="${tools.ping}" fork="true">
+      <arg value="-t" />
+      <arg value="30000ms" />
+      <arg value="-i" />
+      <arg value="100ms" />
+      <arg value="http://${revenjHost}:${revenjPort}/ping" />
+    </java>
   </target>
 
   <target name="kill-revenj" description="Tries to kill our instance of revenj">
