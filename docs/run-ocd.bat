@@ -22,6 +22,8 @@ git clone --depth 1 ssh://git@github.com/element-doo/DSL-OCD.git
 set HOME=%DSL_SSH_OLD_HOME%
 
 :cloned
+if not exist DSL-OCD goto :EOF
+
 cd DSL-OCD\test
 call sbt run
 
