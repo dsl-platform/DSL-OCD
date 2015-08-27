@@ -28,6 +28,7 @@
   <property name="tools.java_client" location="${tools}/java_client" />
   <property name="dsl-compiler-client" location="/${tools.build}/dsl-clc-1.4.0.jar" />
   <property name="tools.dsl-compiler" location="${tools.build}/${dsl-compiler}" />
+  <property name="tools.ping" location="/${tools.build}/dsl-ocd-util-ping-0.1.0.jar" />
 
   <property name="dsl.src" value="../dsl" />
   <property name="generated.model" value="model" />
@@ -88,7 +89,6 @@
   <target name="clean-java-client-project" description="Deletes the project Java client copy">
     <delete dir="${project.java_client}" />
   </target>
-
 
   <target name="clean-test" description="Deletes the test result for the project">
     <delete file="TEST-${testName}.xml" />
@@ -275,7 +275,13 @@
       <arg value="&quot;${ProjectNameCamel}-Revenj.NET&quot;" />
       <arg value="${revenj.exe}" />
     </exec>
-    <sleep seconds="1" />
+    <java jar="${tools.ping}" fork="true">
+      <arg value="-t" />
+      <arg value="30000ms" />
+      <arg value="-i" />
+      <arg value="100ms" />
+      <arg value="http://${revenjHost}:${revenjPort}/ping" />
+    </java>
   </target>
 
   <target name="kill-revenj" description="Tries to kill our instance of revenj">

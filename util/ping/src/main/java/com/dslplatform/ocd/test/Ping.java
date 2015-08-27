@@ -1,6 +1,7 @@
 package com.dslplatform.ocd.test;
 
 import java.io.IOException;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Random;
@@ -60,11 +61,19 @@ public class Ping {
                             System.out.print(sb);
                         }
 
-                        url.openStream().close();
-                        if (success.compareAndSet(false, true)) {
-                            System.out.println("PONG!");
+                        final HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                        try {
+                            final int response = connection.getResponseCode();
+                            if (response == 404 || response == 200) {
+                                if (success.compareAndSet(false, true)) {
+                                    System.out.println("PONG!");
+                                }
+                                System.exit(0);
+                            }
                         }
-                        System.exit(0);
+                        finally {
+                            connection.disconnect();
+                        }
                     }
                     catch (final IOException e) {}
                 }

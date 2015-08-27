@@ -6,7 +6,7 @@ val NGSPrivateSnapshots = "NGS Private Snapshots" at "http://ngs.hr/nexus/conten
 
 organization := "com.dslplatform.ocd"
 name := "DSL-OCD-Util-Testing"
-version := "0.1.0-SNAPSHOT"
+version := "0.1.0"
 
 unmanagedSourceDirectories in Compile := Seq(
   (javaSource in Compile).value
