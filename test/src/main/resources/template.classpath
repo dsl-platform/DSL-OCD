@@ -22,7 +22,7 @@
   <classpathentry kind="lib" path="java_client/jackson-databind-2.6.0.jar"/>
 -->
 
-  <classpathentry kind="lib" path="#{toolsPath}/lib/dsl-ocd-util-testing-0.1.0-SNAPSHOT.jar"/>
+  <classpathentry kind="lib" path="#{toolsPath}/lib/dsl-ocd-util-testing-0.1.0.jar"/>
   <classpathentry kind="lib" path="#{toolsPath}/lib/dsl-ocd-model-java-asserts-0.1.0-SNAPSHOT.jar"/>
 
   <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
