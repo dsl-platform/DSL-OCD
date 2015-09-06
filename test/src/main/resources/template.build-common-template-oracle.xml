@@ -160,7 +160,7 @@
       <available file="${tools.revenj}" type="dir" />
     </condition>
     <antcall target="copy-revenj-template" />
-    <java classname="com.dslplatform.compiler.client.Main" fork="true" timeout="90000">
+    <java classname="com.dslplatform.compiler.client.Main" fork="true" timeout="300000">
       <classpath>
         <pathelement location="${dsl-compiler-client}" />
         <pathelement location="${ojdbc}" />

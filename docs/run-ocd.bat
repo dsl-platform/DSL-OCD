@@ -18,6 +18,12 @@ goto :cloned
 :ssh
 set DSL_SSH_OLD_HOME=%HOME%
 set HOME=DSL-OCD-SSH
+
+:: git bash ver 2.xx 32bit
+if exist "c:\Program Files (x86)\Git\usr\bin\ssh.exe" set GIT_SSH=c:\Program Files (x86)\Git\usr\bin\ssh.exe
+:: git bash ver 1.xx 32bit
+if exist "c:\Program Files (x86)\Git\bin\ssh.exe" set GIT_SSH=c:\Program Files (x86)\Git\bin\ssh.exe
+
 git clone --depth 1 ssh://git@github.com/element-doo/DSL-OCD.git
 set HOME=%DSL_SSH_OLD_HOME%
 

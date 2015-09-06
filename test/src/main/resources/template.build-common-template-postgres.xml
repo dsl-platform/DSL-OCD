@@ -159,7 +159,7 @@
       <available file="${tools.revenj}" type="dir" />
     </condition>
     <antcall target="copy-revenj-template" />
-    <java jar="${dsl-compiler-client}" fork="true" timeout="90000">
+    <java jar="${dsl-compiler-client}" fork="true" timeout="300000">
       <classpath refid="compile.classpath" />
       <arg value="dsl=${dsl.src}" />
       <arg value="compiler=${tools.dsl-compiler}" />
