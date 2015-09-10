@@ -26,7 +26,7 @@
   <property name="tools.build" location="${tools}/build" />
   <property name="tools.revenj" location="${tools}/revenj.net" />
   <property name="tools.java_client" location="${tools}/java_client" />
-  <property name="dsl-compiler-client" location="/${tools.build}/dsl-clc-1.4.0.jar" />
+  <property name="dsl-compiler-client" location="/${tools.build}/dsl-clc-1.4.2-SNAPSHOT.jar" />
   <property name="tools.dsl-compiler" location="${tools.build}/${dsl-compiler}" />
   <property name="tools.ping" location="/${tools.build}/dsl-ocd-util-ping-0.1.0.jar" />
 
