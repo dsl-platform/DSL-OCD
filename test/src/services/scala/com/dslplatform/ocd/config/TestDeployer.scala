@@ -367,8 +367,8 @@ private[config] class TestDeployer(
 
       // Copy the common build template file
       val commonBuildTemplateName = database match {
-        case Database.PostgreSQL => "/template.build-common-template-postgres.xml"
-        case Database.Oracle => "/template.build-common-template-oracle.xml"
+        case Database.PostgreSQL => "/template.build-common-template-revenj.net-postgres.xml"
+        case Database.Oracle => "/template.build-common-template-revenj.net-oracle.xml"
       }
       val commonTemplate = new java.io.File(classOf[TestDeployer].getResource(commonBuildTemplateName).toURI)
       val commonTemplateTarget = new java.io.File((root / "build-common-template.xml").toURI)
