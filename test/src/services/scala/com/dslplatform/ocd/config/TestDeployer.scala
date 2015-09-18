@@ -376,8 +376,8 @@ private[config] class TestDeployer(
 
       // Copy the revenj config template file
       val revenjPath = database match {
-        case Database.PostgreSQL => "/template.revenj.net"
-        case Database.Oracle => "/template.dotnet_server_oracle_64"
+        case Database.PostgreSQL => "/template.revenj.postgres"
+        case Database.Oracle => "/template.revenj.oracle"
       }
       val revenjConfigTemplate = new java.io.File(classOf[TestDeployer].getResource(revenjPath + "/Revenj.Http.exe.config.template").toURI)
       val revenjConfigTemplateTarget = new java.io.File((configTargetPath / "Revenj.Http.exe.config.template").toURI)
