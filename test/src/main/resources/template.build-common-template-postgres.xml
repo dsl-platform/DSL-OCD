@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="common" xmlns:if="ant:if" xmlns:unless="ant:unless">
-  <property name="dbSuperUser" value="OCDSUPERUSER" />
-  <property name="dbSuperPassword" value="D11B6BE3-E928-4C9A-AABC-545BA449CC76" />
-  <property name="dbUser" value="ocduser" />
-  <property name="dbPassword" value="116469d7-4764-49af-9315-367d826fc8fd" />
-  <property name="dbHost" value="localhost" />
-  <property name="dbPort" value="5432" />
+  <loadproperties srcFile="${user.home}\.config\DSL-OCD\test.config"/>
 
   <property name="java.generated.dir" location="src/generated/java" />
   <property name="resources.generated.dir" location="src/generated/resources" />
