@@ -35,6 +35,29 @@
     </sequential>
   </macrodef>
 
+  <macrodef name="get-jetty-stop-port">
+    <attribute name="port"/>
+    <attribute name="result"/>
+    <sequential>
+      <script language="javascript">
+        stopPort = 10000 + parseInt('@{port}');
+        project.setProperty('@{result}', stopPort);
+      </script>
+    </sequential>
+  </macrodef>
+
+  <macrodef name="get-jetty-stop-key">
+    <attribute name="host"/>
+    <attribute name="port"/>
+    <attribute name="result"/>
+    <sequential>
+      <script language="javascript">
+        stopKey = 'stopkey-' + '@{host}' + '-' + '@{port}';
+        project.setProperty('@{result}', stopKey);
+      </script>
+    </sequential>
+  </macrodef>
+
   <target name="collect-reports" description="Collects the test results of all subprojects">
     <junitreport todir="${report.root}" tofile="OCD-Tests-Summary.xml">
       <fileset dir=".">
