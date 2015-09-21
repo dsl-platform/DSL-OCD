@@ -17,46 +17,7 @@
     <format property="test.timestamp" pattern="yyyy-MM-dd_hh:mm:ss" />
   </tstamp>
 
-  <macrodef name="do-xsl-transform" uri="com.dslplatform.ocd">
-    <attribute name="in" />
-    <attribute name="out" />
-    <attribute name="style" />
-    <attribute name="classpath" default="${saxon.jar}" />
-    <attribute name="taskname" default="ocd:xslt" />
-    <element name="params" optional="true" implicit="true" />
-    <sequential>
-      <java classname="net.sf.saxon.Transform" classpath="@{classpath}" taskname="@{taskname}" fork="true">
-        <classpath path="${saxon.jar}" />
-        <arg value="-s:@{in}" />
-        <arg value="-xsl:@{style}" />
-        <arg value="-o:@{out}" />
-        <params />
-      </java>
-    </sequential>
-  </macrodef>
-
-  <macrodef name="get-jetty-stop-port">
-    <attribute name="port"/>
-    <attribute name="result"/>
-    <sequential>
-      <script language="javascript">
-        stopPort = 10000 + parseInt('@{port}');
-        project.setProperty('@{result}', stopPort);
-      </script>
-    </sequential>
-  </macrodef>
-
-  <macrodef name="get-jetty-stop-key">
-    <attribute name="host"/>
-    <attribute name="port"/>
-    <attribute name="result"/>
-    <sequential>
-      <script language="javascript">
-        stopKey = 'stopkey-' + '@{host}' + '-' + '@{port}';
-        project.setProperty('@{result}', stopKey);
-      </script>
-    </sequential>
-  </macrodef>
+  <import file="macrodef.xml" />
 
   <target name="collect-reports" description="Collects the test results of all subprojects">
     <junitreport todir="${report.root}" tofile="OCD-Tests-Summary.xml">

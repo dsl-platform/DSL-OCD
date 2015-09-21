@@ -14,6 +14,7 @@
   <filter token="revenjPort" value="${revenjPort}" />
 
   <property name="tools" location="../../../tools" />
+  <import file="../../../macrodef.xml" />
   <import file="../../../build-common-template.xml" />
 
 </project>
