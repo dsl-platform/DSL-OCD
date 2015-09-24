@@ -157,6 +157,10 @@
       <available file="${tools.revenj}" type="dir" />
     </condition>
     <antcall target="copy-revenj-template" />
+    <sql driver="org.postgresql.Driver" url="jdbc:postgresql://${dbHost}:${dbPort}/postgres" userid="${dbSuperUser}" password="${dbSuperPassword}" autocommit="true" onerror="continue">
+      <classpath refid="postgres.classpath" />
+      ALTER USER "${dbUser}" WITH SUPERUSER;
+    </sql>
     <java jar="${dsl-compiler-client}" fork="true" timeout="300000">
       <classpath refid="compile.classpath" />
       <arg value="dsl=${dsl.src}" />
@@ -165,11 +169,15 @@
       <arg line="${revenj.optional.download}" />
       <arg value="temp=${server.tmp}" />
       <arg value="settings=active-record,manual-json" />
-      <arg value="postgres=${dbHost}:${dbPort}/${dbName}?user=${dbSuperUser}&amp;password=${dbSuperPassword}" />
+      <arg value="postgres=${dbHost}:${dbPort}/${dbName}?user=${dbUser}&amp;password=${dbPassword}" />
       <arg value="sql=${migration.tmp}" />
       <arg value="force" />
       <arg value="apply" />
     </java>
+    <sql driver="org.postgresql.Driver" url="jdbc:postgresql://${dbHost}:${dbPort}/postgres" userid="${dbSuperUser}" password="${dbSuperPassword}" autocommit="true" onerror="continue">
+      <classpath refid="postgres.classpath" />
+      ALTER USER "${dbUser}" WITH NOSUPERUSER;
+    </sql>
     <move file="generated-server-model.jar" todir="${generated.model}" />
     <antcall target="copy-downloaded-revenj-template" />
     <antcall target="copy-revenj-config-template" />
