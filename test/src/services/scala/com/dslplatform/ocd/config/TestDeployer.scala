@@ -356,6 +356,11 @@ private[config] class TestDeployer(
       val masterReportBuilderTarget = new java.io.File((root / "build.xml").toURI)
       copyPath(masterReportBuilder.toPath, masterReportBuilderTarget.toPath)
 
+      // Copy the macrodef.xml
+      val macrodef = new java.io.File(classOf[TestDeployer].getResource("/template.macrodef.xml").toURI)
+      val macrodefTarget = new java.io.File((root / "macrodef.xml").toURI)
+      copyPath(macrodef.toPath, macrodefTarget.toPath)
+
       sealed trait Revenj { val name: String }
       object Revenj {
         case object DotNet extends Revenj { val name = "revenj.net" }
