@@ -36,6 +36,12 @@ private[config] class TestSettingsLoader(logger: Logger) {
 
       val xkcd = XKCD.now
       logger.debug("Test XKCD: " + xkcd)
+
+      val revenj = Revenj.find(properties getProperty "targetRevenj")
+      logger.debug("Target Revenj: " + revenj)
+
+      val database = Database.find(properties getProperty "targetDatabase")
+      logger.debug("Target Database: " + database)
     }
 
     logger.trace("Test settings successfully extracted!")

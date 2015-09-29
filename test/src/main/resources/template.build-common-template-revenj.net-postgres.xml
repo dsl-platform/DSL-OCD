@@ -165,7 +165,7 @@
       <arg value="target=revenj.net" />
       <arg line="${revenj.optional.download}" />
       <arg value="temp=${server.tmp}" />
-      <arg value="settings=active-record,manual-json" />
+      <arg value="settings=${serverSettings}" />
       <arg value="postgres=${dbHost}:${dbPort}/${dbName}?user=${dbUser}&amp;password=${dbPassword}" />
       <arg value="sql=${migration.tmp}" />
       <arg value="force" />
@@ -211,7 +211,7 @@
       <arg value="target=java_client" />
       <arg line="${java_client.optional.download}" />
       <arg value="temp=${client.tmp}" />
-      <arg value="settings=active-record,manual-json" />
+      <arg value="settings=${clientSettings}" />
       <arg value="namespace=ocd" />
     </java>
     <delete file="generated-model-java.jar" />

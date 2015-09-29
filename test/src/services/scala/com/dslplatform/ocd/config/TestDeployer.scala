@@ -361,37 +361,15 @@ private[config] class TestDeployer(
       val macrodefTarget = new java.io.File((root / "macrodef.xml").toURI)
       copyPath(macrodef.toPath, macrodefTarget.toPath)
 
-      sealed trait Revenj { val name: String }
-      object Revenj {
-        case object DotNet extends Revenj { val name = "revenj.net" }
-        case object Java extends Revenj { val name = "revenj.java" }
-        val values = IndexedSeq(DotNet: Revenj, Java)
-      }
-
-      sealed trait Database { val name: String }
-      object Database {
-        case object PostgreSQL extends Database { val name = "postgres" }
-        case object Oracle extends Database { val name = "oracle" }
-        val values = IndexedSeq(PostgreSQL: Database, Oracle)
-      }
-
-      val revenj: Revenj = Revenj.DotNet
-      val database: Database = Database.PostgreSQL
-
       // Copy the common build template file
-      val commonBuildTemplateName = s"/template.build-common-template-${revenj.name}-${database.name}.xml"
+      val commonBuildTemplateName = s"/template.build-common-template-${testSettings.revenj.templateName}-${testSettings.database.templateName}.xml"
       val commonTemplate = new java.io.File(classOf[TestDeployer].getResource(commonBuildTemplateName).toURI)
       val commonTemplateTarget = new java.io.File((root / "build-common-template.xml").toURI)
       copyPath(commonTemplate.toPath, commonTemplateTarget.toPath)
 
       // Copy the revenj config template file
-      val revenjPath = s"/template.revenj.${database.name}"
-      val revenjConfigTemplateName = revenj match {
-        case Revenj.DotNet => "Revenj.Http.exe.config.template"
-        case Revenj.Java => "revenj.properties.template"
-      }
-      val revenjConfigTemplate = new java.io.File(classOf[TestDeployer].getResource(revenjPath + s"/$revenjConfigTemplateName").toURI)
-      val revenjConfigTemplateTarget = new java.io.File((configTargetPath / revenjConfigTemplateName).toURI)
+      val revenjConfigTemplate = new java.io.File(classOf[TestDeployer].getResource(s"/template.revenj.${testSettings.database.templateName}/${testSettings.revenj.configName}").toURI)
+      val revenjConfigTemplateTarget = new java.io.File((configTargetPath / testSettings.revenj.configName).toURI)
       copyPath(revenjConfigTemplate.toPath, revenjConfigTemplateTarget.toPath)
     }
 
