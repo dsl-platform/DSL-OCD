@@ -1,7 +1,10 @@
 package com.dslplatform.ocd;
 
 import java.io.FileInputStream;
+
 import java.util.List;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.parsers.DocumentBuilder;
@@ -26,6 +29,7 @@ public class OcdReportGenerator {
     private final TestsuitesDao testsuitesDao;
     private final String outputDir;
     private final boolean generateWins;
+    private final ConfigHelper configHelper;
 
     public OcdReportGenerator(final String outputDirectory, final String inputFilename) {
         this(outputDirectory, inputFilename, false);
@@ -41,6 +45,7 @@ public class OcdReportGenerator {
                     .createUnmarshaller()
                     .unmarshal(new FileInputStream(inputFilename));
             this.generateWins = generateWins;
+            this.configHelper = new ConfigHelper();
             this.testsuitesDao = new TestsuitesDao(testsuites);
 
         } catch(final Exception e){
@@ -92,6 +97,7 @@ public class OcdReportGenerator {
                 , dh.body(
                     dh.div_container(
                         dh.h1("Testsuites summary")
+                        , this.settingsTable(dh)
                         , this.summaryTable(dh)
                         , this.failedTestuitesTable(dh)
                         , this.successfulTestsuitesTable(dh)))));
@@ -185,6 +191,16 @@ public class OcdReportGenerator {
                 dh.table_row("Type:", e.getType())
                 , dh.table_row("Message:", e.getMessage())
                 , dh.table_row("Text:", dh.code(e.getContent())));
+        return table;
+    }
+
+    private Element settingsTable(final DomHelper dh) {
+        final Map<String, String> items = new LinkedHashMap<String, String>();
+        items.put("Revenj", this.configHelper.get("targetRevenj"));
+        items.put("Database", this.configHelper.get("targetDatabase"));
+        items.put("Server settings", this.configHelper.get("serverSettings"));
+        items.put("Client settings", this.configHelper.get("clientSettings"));
+        final Element table = dh.dl(items);
         return table;
     }
 
@@ -347,7 +363,6 @@ public class OcdReportGenerator {
     }
 
     public static void main(final String[] args) throws Exception {
-
         if(args.length != 2 && args.length != 3){
             System.out.println();
             System.out.println("Example usage:");

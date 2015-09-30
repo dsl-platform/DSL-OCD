@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.StringWriter;
 
+import java.util.Map;
+
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
@@ -225,6 +227,17 @@ public class DomHelper {
 
     public Element br() {
         return this.element("br");
+    }
+
+    public Element dl(final Map<String, String> items) {
+        final Element dl = this.element("dl", this.attr("class", "dl-horizontal"));
+        for (Map.Entry<String, String> item : items.entrySet()) {
+            final Element dt = this.element("dt", item.getKey());
+            final Element dd = this.element("dd", item.getValue());
+            dl.appendChild(dt);
+            dl.appendChild(dd);
+        }
+        return dl;
     }
 
     public Attr href(final String value) {
