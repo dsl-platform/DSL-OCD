@@ -361,23 +361,4 @@ public class OcdReportGenerator {
     private String testcasePath(final Testsuite ts, final Testcase tc){
         return this.outputDir + "testsuites/" + ts.hashCode() + "/" + tc.hashCode() +".html";
     }
-
-    public static void main(final String[] args) throws Exception {
-        if(args.length != 2 && args.length != 3){
-            System.out.println();
-            System.out.println("Example usage:");
-            System.out.println("java -jar ocd-report-generator.jar OCD-Tests-Summary.xml site [generate-wins-pages]");
-        } else{
-            final String outputDirectory = args[0];
-            final String inputFile = args[1];
-
-            final OcdReportGenerator generator;
-            if(args.length == 3){
-               generator = new OcdReportGenerator(outputDirectory, inputFile, true);
-            } else {
-               generator = new OcdReportGenerator(outputDirectory, inputFile);
-            }
-            generator.generate();
-        }
-    }
 }

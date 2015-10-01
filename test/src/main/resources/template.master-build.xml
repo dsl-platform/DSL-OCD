@@ -29,6 +29,7 @@
 
   <target name="generate-html-report" description="Generates the HTML report, using the OCD-Tests-Summary.xml collected from the subprojects">
     <java jar="${ocd-report-generator}" fork="true">
+      <arg value="${user.dir}" />
       <arg value="${report.target}" />
       <arg value="${report.root}/OCD-Tests-Summary.xml" />
     </java>

@@ -35,6 +35,11 @@
       <artifactId>jaxb-runtime</artifactId>
       <version>2.2.11</version>
     </dependency>
+    <dependency>
+      <groupId>org.apache.ant</groupId>
+      <artifactId>ant</artifactId>
+      <version>1.9.6</version>
+    </dependency>
   </dependencies>
 
   <properties>
@@ -62,7 +67,7 @@
           <archive>
             <manifest>
               <addClasspath>true</addClasspath>
-              <mainClass>com.dslplatform.ocd.OcdReportGenerator</mainClass>
+              <mainClass>com.dslplatform.ocd.EntryPoint</mainClass>
             </manifest>
           </archive>
         </configuration>
