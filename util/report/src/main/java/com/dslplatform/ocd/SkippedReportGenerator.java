@@ -1,18 +1,7 @@
 package com.dslplatform.ocd;
 
-import java.io.FileOutputStream;
-
-import java.io.OutputStream;
-import java.io.ByteArrayOutputStream;
-import java.util.Map.Entry;
-import java.io.FileNotFoundException;
-import java.io.PrintStream;
-import org.apache.tools.ant.DefaultLogger;
-import org.apache.tools.ant.ProjectHelper;
-import org.apache.tools.ant.Project;
-import java.io.IOException;
-import java.io.File;
-import java.io.FilenameFilter;
+import java.io.*;
+import org.apache.tools.ant.*;
 
 public class SkippedReportGenerator {
   private static final String[] TestGroups = new String[] { "aggregates", "snowflakes", "values" };
@@ -44,11 +33,13 @@ public class SkippedReportGenerator {
   }
   
   private void generateGroup(final File groupFolder) {
-    final File[] testFolders = groupFolder.listFiles();
-    for (final File testFolder : testFolders) {
-      final File projectFolder = new File(testFolder + "/java_project");
-      if (isTestSkipped(projectFolder)) {
-        generateTest(projectFolder);
+    if (groupFolder.exists()) {
+      final File[] testFolders = groupFolder.listFiles();
+      for (final File testFolder : testFolders) {
+        final File projectFolder = new File(testFolder + "/java_project");
+        if (isTestSkipped(projectFolder)) {
+          generateTest(projectFolder);
+        }
       }
     }
   }
@@ -71,9 +62,9 @@ public class SkippedReportGenerator {
     }
     ant.fireBuildFinished(null);
     
-    final String fullName = ant.getProperties().get("testName").toString();
+    //final String fullName = ant.getProperties().get("testName").toString();
     final String shortName = ant.getProperties().get("ProjectNameCamel").toString();
-    final File logFile = new File(this.outFolder, "/" + fullName + ".txt");
+    final File logFile = new File(this.outFolder, "/" + shortName + ".txt");
     
     try (final OutputStream fos = new FileOutputStream(logFile)) {
       logStream.writeTo(fos);
