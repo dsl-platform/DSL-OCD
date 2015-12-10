@@ -11,7 +11,7 @@
   <property name="server.tmp" location="server.tmp" />
   <property name="migration.tmp" location="migration.tmp" />
 
-  <property name="dsl-compiler" value="dsl-compiler-1.3-SNAPSHOT.exe" />
+  <property name="dsl-compiler" value="dsl-compiler-1.4.5821.25032.exe" />
   <property name="project.dsl-compiler.temporary.download" location="${client.tmp}/${dsl-compiler}" />
   <property name="project.java_client" location="java_client" />
 
@@ -19,7 +19,7 @@
   <property name="tools.build" location="${tools}/build" />
   <property name="tools.revenj" location="${tools}/revenj.java" />
   <property name="tools.java_client" location="${tools}/java_client" />
-  <property name="dsl-compiler-client" location="/${tools.build}/dsl-clc-1.5.0.jar" />
+  <property name="dsl-compiler-client" location="/${tools.build}/dsl-clc-1.5.1-SNAPSHOT.jar" />
   <property name="tools.dsl-compiler" location="${tools.build}/${dsl-compiler}" />
   <property name="tools.ping" location="/${tools.build}/dsl-ocd-util-ping-0.1.0.jar" />
   <property name="tools.jetty-runner" location="/${tools.build}/jetty-runner.jar" />
@@ -35,7 +35,7 @@
   <property name="target.test.packaged" location="${target}/${projectShortName}-test.jar" />
 
   <property name="project.revenj" location="revenj.java" />
-  <property name="revenj.war" location="revenj.java/revenj-servlet.war" />
+  <property name="revenj.war" location="revenj.java/revenj-servlet-0.7.2-SNAPSHOT.war" />
   <property name="revenj.config.template" location="${tools}/config/revenj.properties.template" />
   <property name="revenj.config" location="${project.revenj}/revenj.properties" />
   
@@ -64,7 +64,7 @@
     </fileset>
   </path>
 
-  <path id="postgres.classpath" location="${tools.build}/postgresql-9.4-1205-jdbc42.jar" />
+  <path id="postgres.classpath" location="${tools.build}/postgresql-9.4-1206-jdbc42.jar" />
 
   <target name="create-db" description="Tries to create this project's database. Does not fail the build on failure, since the database might already exist.">
     <sql driver="org.postgresql.Driver" url="jdbc:postgresql://${dbHost}:${dbPort}/postgres" userid="${dbSuperUser}" password="${dbSuperPassword}" autocommit="true" onerror="continue">
@@ -169,7 +169,7 @@
       <arg line="${revenj.optional.download}" />
       <arg value="temp=${server.tmp}" />
       <arg value="settings=${serverSettings}" />
-      <arg value="postgres=${dbHost}:${dbPort}/${dbName}?user=${dbUser}&amp;password=${dbPassword}&amp;protocolVersion=2" />
+      <arg value="postgres=${dbHost}:${dbPort}/${dbName}?user=${dbUser}&amp;password=${dbPassword}" />
       <arg value="sql=${migration.tmp}" />
       <arg value="force" />
       <arg value="apply" />
