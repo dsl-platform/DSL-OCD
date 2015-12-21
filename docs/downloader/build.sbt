@@ -1,5 +1,5 @@
 libraryDependencies ++= Seq(
-  "org.revenj" % "revenj-core" % "0.7.2"
+  "org.revenj" % "revenj-core" % "0.8.0"
 )
 
 packAutoSettings
