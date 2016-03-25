@@ -20,26 +20,36 @@ def download() = {
   val firstEntry = zis.getNextEntry
   assert(firstEntry.getName == "dsl-compiler.exe")
 
-  val buffer = new Array[Byte](firstEntry.getSize.toInt)
+  val expectedLength = firstEntry.getSize.toInt
+
+  val buffer = new Array[Byte](1 << 20)
   val tempFile = java.util.UUID.randomUUID + ".exe"
+
+  val bis = new java.io.BufferedInputStream(zis)
   val fos = new java.io.FileOutputStream(tempFile)
 
   def slurp(soFar: Int = 0): Int = {
-    val read = zis.read(buffer)
-    if (read != -1) {
-      val total = soFar + read
-      fos.write(buffer, 0, read)
-      println(s"Wrote $total bytes ...")
-      slurp(total)
+    val toRead = math.min(expectedLength - soFar, buffer.length)
+    if (toRead > 0) {
+      val read = bis.read(buffer, 0, toRead)
+      if (read != -1) {
+        fos.write(buffer, 0, read)
+        val total = soFar + read
+        println(s"Wrote $total bytes ...")
+        slurp(total)
+      } else {
+        soFar
+      }
     } else {
       soFar
     }
   }
-  val size = slurp()
-  assert(size == buffer.length, "Size mismatch!")
 
-  zis.close()
+  val size = slurp()
+  assert(size == expectedLength, "Size mismatch!")
+  bis.close()
   fos.close()
+
   (tempFile, size)
 }
 
@@ -50,8 +60,13 @@ def testVersion(tempFile: String): String = {
   val stderr = new java.io.ByteArrayOutputStream
   val stdoutWriter = new java.io.PrintWriter(stdout)
   val stderrWriter = new java.io.PrintWriter(stderr)
-//  val exitValue = tempFile ! ProcessLogger(stdoutWriter.println, stderrWriter.println)
-  val exitValue = Seq("mono", tempFile) ! ProcessLogger(stdoutWriter.println, stderrWriter.println)
+
+  (if (java.io.File.separator == "/") {
+    Seq("mono", tempFile)
+  } else {
+    Seq(tempFile)
+  }) ! ProcessLogger(stdoutWriter.println, stderrWriter.println)
+
   stdoutWriter.close()
   stderrWriter.close()
 
