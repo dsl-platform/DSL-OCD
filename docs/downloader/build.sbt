@@ -1,7 +1,13 @@
+scalaVersion := "2.11.8"
+autoScalaLibrary := false
+crossPaths := false
+
+resolvers += Resolver.mavenLocal
+
 libraryDependencies ++= Seq(
-  "org.revenj" % "revenj-core" % "0.8.0"
+  "org.revenj" % "revenj-servlet" % "0.9.4"
 )
 
 packAutoSettings
-
-resolvers += Resolver.mavenLocal
+packCopyDependenciesUseSymbolicLinks := false
+packCopyDependenciesTarget := file("dependencies")
