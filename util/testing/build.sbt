@@ -78,8 +78,6 @@ javacOptions := Seq(
 crossPaths := false
 autoScalaLibrary := false
 
-graphSettings
-
 // ### ECLIPSE ### //
 
 EclipseKeys.executionEnvironment := Some(EclipseExecutionEnvironment.JavaSE16)

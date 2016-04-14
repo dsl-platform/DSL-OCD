@@ -79,8 +79,6 @@ javacOptions := Seq(
 , "-target", "1.6"
 ) ++ (javacOptions in doc).value
 
-graphSettings
-
 // ### ECLIPSE ### //
 
 EclipseKeys.executionEnvironment := Some(EclipseExecutionEnvironment.JavaSE16)
