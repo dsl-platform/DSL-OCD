@@ -31,15 +31,6 @@ private[config] class TestDeployer(
   }
 
   class TestSetup(testProject: ITestProject, projectNamesAndPortsRepository : ProjectNamesAndPortsRepository) {
-//    private def javaParentBasedOnCurrentOs: String = {
-//      if (SystemUtils.IS_OS_WINDOWS) {
-//        "java_windows"
-//      } else if (SystemUtils.IS_OS_LINUX) {
-//        "java_linux"
-//      } else{
-//        sys.error("Unsupported OS, cannot deploy project java tools resource.")
-//      }
-//    }
 
     private val projectRoot = root / (testProject.projectPath, '/')
     private val libPath = root / "tools" / "java" / "lib"
@@ -50,8 +41,6 @@ private[config] class TestDeployer(
     private val dslSource = projectRoot / "dsl"
 
     private val DSL_PROJECT_INI = "dsl-project.ini"
-//    private val REVENJ_CONFIG_TEMPLATE_DIRNAME = "revenj"
-//    private val REVENJ_CONFIG_TEMPLATE_FILENAME = "Revenj.Http.exe.config.template"
 
     private def languageProjectRoot(language: Language) =
       projectRoot / language.language.toLowerCase.concat("_project")
@@ -125,25 +114,7 @@ private[config] class TestDeployer(
           logger.trace("Creating the generated resource path: " + resourcePath.path)
           resourcePath.createDirectory(true, false)
         }
-
-        /* TODO: See for .ini if it's at all neccessary, or for the tests .ini from testIniPath is used (the one called 'template.dsl-project.ini').
-         * If so, this probably needs to be deleted, and replace with the other .ini file. */
-        val projectIniPath = generatedResources(language) / DSL_PROJECT_INI
-        val projectIniSource = "/config/" + projectIniPath.relativize(root).path.replace('\\', '/')
-
-        try {
-          val projectIniBody = IOUtils.toByteArray(
-                classOf[TestDeployer].getResourceAsStream(
-                    projectIniSource))
-
-          logger.trace("Creating the DSL project file: " + projectIniPath.path)
-          projectIniPath.write(projectIniBody)
-        }
-        catch {
-          case _: Exception =>
-            logger.warn(s"Could not copy $DSL_PROJECT_INI from: " + projectIniSource)
-        }
-      }
+     }
 
     private def deployMain(): Unit =
       testProject.testFiles foreach { case (language, files) =>
@@ -158,14 +129,6 @@ private[config] class TestDeployer(
           logger.trace("Creating the main resource path: " + resourcePath.path)
           resourcePath.createDirectory(true, false)
         }
-
-//        val path = resourcePath / "dsl.props"
-//        logger.trace("Deploying the dsl.props file: " + path.path)
-//
-//        val body = applyTemplates(IOUtils.toString(
-//          classOf[TestDeployer].getResourceAsStream("/template.dsl.props")))
-//
-//        path.write(body)
       }
 
     private def cleanTests(): Unit = {
