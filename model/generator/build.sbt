@@ -33,7 +33,7 @@ credentials in ThisBuild ++= {
 }.toSeq
 
 // ### COMPILE SETTINGS ### //
-scalaVersion := "2.11.7"
+scalaVersion := "2.11.8"
 
 scalacOptions := Seq(
   "-deprecation"
