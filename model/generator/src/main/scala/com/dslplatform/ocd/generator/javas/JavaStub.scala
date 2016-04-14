@@ -207,7 +207,7 @@ trait JavaStub {
   val nonDefaultValues: Seq[TestValue]
 
   def borderSingleValues =
-    (if (isDissalowed) Nil else Seq(defaultSingle)) ++ nonDefaultValues
+    (if (isDisallowed) Nil else Seq(defaultSingle)) ++ nonDefaultValues
 
   def defaultValue(box: Box) = box match {
     case Box(SingleFamily.Nullable, _, _*) =>
@@ -269,7 +269,7 @@ trait JavaStub {
       s"""JavaSimpleType("${cv}")"""
   }
 
-  def isDissalowed = defaultSingle eq DisallowedNullValue
+  def isDisallowed = defaultSingle eq DisallowedNullValue
 
   def nonDefaultValues(box: Box): Seq[TestValue] = box match {
     /* box.One */
@@ -278,12 +278,12 @@ trait JavaStub {
 
     /* box.Nullable */
     case Box(SingleFamily.Nullable, None, aliases @ _*) =>
-       (if (isDissalowed) Nil else Seq(defaultSingle)) ++
+       (if (isDisallowed) Nil else Seq(defaultSingle)) ++
        nonDefaultValues(Box(SingleFamily.One, None, aliases: _*))
 
     /* box.OneArrayOfOne,  box.OneListOfOne, box.OneSetOfOne*/
     case Box(SingleFamily.One, Some((_, SingleFamily.One)), _*) =>
-      (if (isDissalowed) Nil else Seq(
+      (if (isDisallowed) Nil else Seq(
         defaultConcreteType(box, defaultSingle)
       )) ++
       Seq(
@@ -300,7 +300,7 @@ trait JavaStub {
       Seq(
         defaultConcreteType(box, NullJavaValue)
       ) ++
-      (if (isDissalowed) Nil else Seq(
+      (if (isDisallowed) Nil else Seq(
         defaultConcreteType(box, defaultSingle)
       )) ++
       Seq(

@@ -23,7 +23,7 @@ trait TestJavaPropertyInAggregate
 
   private def assertEquals(target: String) = property match {
     case _ if isDisallowed(isDefault) =>
-      s"""// special null check for dissalowed null value in a non-nullable property
+      s"""// special null check for disallowed null value in a non-nullable property
         org.junit.Assert.assertNull(${target}.get${PropertyName}());"""
 
     case p: OcdJavaBoxTypeProperty if p.boxType.isPrecise =>

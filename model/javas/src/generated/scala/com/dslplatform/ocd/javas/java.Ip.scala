@@ -20,7 +20,7 @@ case object `java.Ip`
   val javaType = JavaSimpleType("java.net.InetAddress")
   val javaDescription = "OneIp"
 
-  def defaultValue = DisallowedNullValue
+  def defaultValue = SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
 
   def nonDefaultValues = IndexedSeq(
     SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
@@ -43,7 +43,8 @@ case object `java.Ip?`
   def defaultValue = SingleJavaValue("null")
 
   def nonDefaultValues = IndexedSeq(
-    SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
+    SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+  , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
   , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
   , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
   , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
@@ -64,10 +65,14 @@ case object `java.Ip[]`
 
   def nonDefaultValues = IndexedSeq(
     ArrayOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    )
+  , ArrayOfJavaValues("java.net.InetAddress",
       SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
     )
   , ArrayOfJavaValues("java.net.InetAddress",
-      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
@@ -89,10 +94,14 @@ case object `java.Ip[]?`
 
   def nonDefaultValues = IndexedSeq(
     ArrayOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    )
+  , ArrayOfJavaValues("java.net.InetAddress",
       SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
     )
   , ArrayOfJavaValues("java.net.InetAddress",
-      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
@@ -117,10 +126,14 @@ case object `java.Ip?[]`
       SingleJavaValue("null")
     )
   , ArrayOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    )
+  , ArrayOfJavaValues("java.net.InetAddress",
       SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
     )
   , ArrayOfJavaValues("java.net.InetAddress",
-      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
@@ -128,6 +141,7 @@ case object `java.Ip?[]`
     )
   , ArrayOfJavaValues("java.net.InetAddress",
       SingleJavaValue("null")
+    , SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
@@ -153,10 +167,14 @@ case object `java.Ip?[]?`
       SingleJavaValue("null")
     )
   , ArrayOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    )
+  , ArrayOfJavaValues("java.net.InetAddress",
       SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
     )
   , ArrayOfJavaValues("java.net.InetAddress",
-      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
@@ -164,6 +182,7 @@ case object `java.Ip?[]?`
     )
   , ArrayOfJavaValues("java.net.InetAddress",
       SingleJavaValue("null")
+    , SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
@@ -186,10 +205,14 @@ case object `java.List<Ip>`
 
   def nonDefaultValues = IndexedSeq(
     ListOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    )
+  , ListOfJavaValues("java.net.InetAddress",
       SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
     )
   , ListOfJavaValues("java.net.InetAddress",
-      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
@@ -211,10 +234,14 @@ case object `java.List<Ip>?`
 
   def nonDefaultValues = IndexedSeq(
     ListOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    )
+  , ListOfJavaValues("java.net.InetAddress",
       SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
     )
   , ListOfJavaValues("java.net.InetAddress",
-      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
@@ -239,10 +266,14 @@ case object `java.List<Ip?>`
       SingleJavaValue("null")
     )
   , ListOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    )
+  , ListOfJavaValues("java.net.InetAddress",
       SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
     )
   , ListOfJavaValues("java.net.InetAddress",
-      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
@@ -250,6 +281,7 @@ case object `java.List<Ip?>`
     )
   , ListOfJavaValues("java.net.InetAddress",
       SingleJavaValue("null")
+    , SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
@@ -275,10 +307,14 @@ case object `java.List<Ip?>?`
       SingleJavaValue("null")
     )
   , ListOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    )
+  , ListOfJavaValues("java.net.InetAddress",
       SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
     )
   , ListOfJavaValues("java.net.InetAddress",
-      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
@@ -286,6 +322,7 @@ case object `java.List<Ip?>?`
     )
   , ListOfJavaValues("java.net.InetAddress",
       SingleJavaValue("null")
+    , SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
@@ -308,10 +345,14 @@ case object `java.Set<Ip>`
 
   def nonDefaultValues = IndexedSeq(
     SetOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    )
+  , SetOfJavaValues("java.net.InetAddress",
       SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
     )
   , SetOfJavaValues("java.net.InetAddress",
-      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
@@ -333,10 +374,14 @@ case object `java.Set<Ip>?`
 
   def nonDefaultValues = IndexedSeq(
     SetOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    )
+  , SetOfJavaValues("java.net.InetAddress",
       SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
     )
   , SetOfJavaValues("java.net.InetAddress",
-      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
@@ -361,10 +406,14 @@ case object `java.Set<Ip?>`
       SingleJavaValue("null")
     )
   , SetOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    )
+  , SetOfJavaValues("java.net.InetAddress",
       SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
     )
   , SetOfJavaValues("java.net.InetAddress",
-      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
@@ -372,6 +421,7 @@ case object `java.Set<Ip?>`
     )
   , SetOfJavaValues("java.net.InetAddress",
       SingleJavaValue("null")
+    , SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
@@ -397,10 +447,14 @@ case object `java.Set<Ip?>?`
       SingleJavaValue("null")
     )
   , SetOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    )
+  , SetOfJavaValues("java.net.InetAddress",
       SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
     )
   , SetOfJavaValues("java.net.InetAddress",
-      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
@@ -408,6 +462,7 @@ case object `java.Set<Ip?>?`
     )
   , SetOfJavaValues("java.net.InetAddress",
       SingleJavaValue("null")
+    , SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
@@ -430,10 +485,14 @@ case object `java.Queue<Ip>`
 
   def nonDefaultValues = IndexedSeq(
     QueueOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    )
+  , QueueOfJavaValues("java.net.InetAddress",
       SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
     )
   , QueueOfJavaValues("java.net.InetAddress",
-      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
@@ -455,10 +514,14 @@ case object `java.Queue<Ip>?`
 
   def nonDefaultValues = IndexedSeq(
     QueueOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    )
+  , QueueOfJavaValues("java.net.InetAddress",
       SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
     )
   , QueueOfJavaValues("java.net.InetAddress",
-      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
@@ -483,10 +546,14 @@ case object `java.Queue<Ip?>`
       SingleJavaValue("null")
     )
   , QueueOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    )
+  , QueueOfJavaValues("java.net.InetAddress",
       SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
     )
   , QueueOfJavaValues("java.net.InetAddress",
-      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
@@ -494,6 +561,7 @@ case object `java.Queue<Ip?>`
     )
   , QueueOfJavaValues("java.net.InetAddress",
       SingleJavaValue("null")
+    , SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
@@ -519,10 +587,14 @@ case object `java.Queue<Ip?>?`
       SingleJavaValue("null")
     )
   , QueueOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    )
+  , QueueOfJavaValues("java.net.InetAddress",
       SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
     )
   , QueueOfJavaValues("java.net.InetAddress",
-      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
@@ -530,6 +602,7 @@ case object `java.Queue<Ip?>?`
     )
   , QueueOfJavaValues("java.net.InetAddress",
       SingleJavaValue("null")
+    , SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
@@ -552,10 +625,14 @@ case object `java.LinkedList<Ip>`
 
   def nonDefaultValues = IndexedSeq(
     LinkedListOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    )
+  , LinkedListOfJavaValues("java.net.InetAddress",
       SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
     )
   , LinkedListOfJavaValues("java.net.InetAddress",
-      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
@@ -577,10 +654,14 @@ case object `java.LinkedList<Ip>?`
 
   def nonDefaultValues = IndexedSeq(
     LinkedListOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    )
+  , LinkedListOfJavaValues("java.net.InetAddress",
       SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
     )
   , LinkedListOfJavaValues("java.net.InetAddress",
-      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
@@ -605,10 +686,14 @@ case object `java.LinkedList<Ip?>`
       SingleJavaValue("null")
     )
   , LinkedListOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    )
+  , LinkedListOfJavaValues("java.net.InetAddress",
       SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
     )
   , LinkedListOfJavaValues("java.net.InetAddress",
-      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
@@ -616,6 +701,7 @@ case object `java.LinkedList<Ip?>`
     )
   , LinkedListOfJavaValues("java.net.InetAddress",
       SingleJavaValue("null")
+    , SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
@@ -641,10 +727,14 @@ case object `java.LinkedList<Ip?>?`
       SingleJavaValue("null")
     )
   , LinkedListOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    )
+  , LinkedListOfJavaValues("java.net.InetAddress",
       SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
     )
   , LinkedListOfJavaValues("java.net.InetAddress",
-      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
@@ -652,6 +742,7 @@ case object `java.LinkedList<Ip?>?`
     )
   , LinkedListOfJavaValues("java.net.InetAddress",
       SingleJavaValue("null")
+    , SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
@@ -674,10 +765,14 @@ case object `java.Stack<Ip>`
 
   def nonDefaultValues = IndexedSeq(
     StackOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    )
+  , StackOfJavaValues("java.net.InetAddress",
       SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
     )
   , StackOfJavaValues("java.net.InetAddress",
-      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
@@ -699,10 +794,14 @@ case object `java.Stack<Ip>?`
 
   def nonDefaultValues = IndexedSeq(
     StackOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    )
+  , StackOfJavaValues("java.net.InetAddress",
       SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
     )
   , StackOfJavaValues("java.net.InetAddress",
-      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
@@ -727,10 +826,14 @@ case object `java.Stack<Ip?>`
       SingleJavaValue("null")
     )
   , StackOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    )
+  , StackOfJavaValues("java.net.InetAddress",
       SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
     )
   , StackOfJavaValues("java.net.InetAddress",
-      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
@@ -738,6 +841,7 @@ case object `java.Stack<Ip?>`
     )
   , StackOfJavaValues("java.net.InetAddress",
       SingleJavaValue("null")
+    , SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
@@ -763,10 +867,14 @@ case object `java.Stack<Ip?>?`
       SingleJavaValue("null")
     )
   , StackOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    )
+  , StackOfJavaValues("java.net.InetAddress",
       SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
     )
   , StackOfJavaValues("java.net.InetAddress",
-      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
@@ -774,6 +882,7 @@ case object `java.Stack<Ip?>?`
     )
   , StackOfJavaValues("java.net.InetAddress",
       SingleJavaValue("null")
+    , SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
@@ -796,10 +905,14 @@ case object `java.Vector<Ip>`
 
   def nonDefaultValues = IndexedSeq(
     VectorOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    )
+  , VectorOfJavaValues("java.net.InetAddress",
       SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
     )
   , VectorOfJavaValues("java.net.InetAddress",
-      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
@@ -821,10 +934,14 @@ case object `java.Vector<Ip>?`
 
   def nonDefaultValues = IndexedSeq(
     VectorOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    )
+  , VectorOfJavaValues("java.net.InetAddress",
       SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
     )
   , VectorOfJavaValues("java.net.InetAddress",
-      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
@@ -849,10 +966,14 @@ case object `java.Vector<Ip?>`
       SingleJavaValue("null")
     )
   , VectorOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    )
+  , VectorOfJavaValues("java.net.InetAddress",
       SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
     )
   , VectorOfJavaValues("java.net.InetAddress",
-      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
@@ -860,6 +981,7 @@ case object `java.Vector<Ip?>`
     )
   , VectorOfJavaValues("java.net.InetAddress",
       SingleJavaValue("null")
+    , SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
@@ -885,10 +1007,14 @@ case object `java.Vector<Ip?>?`
       SingleJavaValue("null")
     )
   , VectorOfJavaValues("java.net.InetAddress",
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    )
+  , VectorOfJavaValues("java.net.InetAddress",
       SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"ffff::ffff\")")
     )
   , VectorOfJavaValues("java.net.InetAddress",
-      SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
+      SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
+    , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"::1\")")
@@ -896,6 +1022,7 @@ case object `java.Vector<Ip?>?`
     )
   , VectorOfJavaValues("java.net.InetAddress",
       SingleJavaValue("null")
+    , SingleJavaValue("com.dslplatform.client.Utils.LOOPBACK")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"127.0.0.1\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"0\")")
     , SingleJavaValue("com.dslplatform.ocd.test.TypeFactory.buildIP(\"255.255.255.255\")")
