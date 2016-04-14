@@ -13,7 +13,7 @@
   <property name="server.tmp" location="server.tmp" />
   <property name="migration.tmp" location="migration.tmp" />
 
-  <property name="dsl-compiler" value="dsl-compiler-1.4.5823.42214.exe" />
+  <property name="dsl-compiler" value="dsl-compiler-1.5.5948.14735.exe" />
   <property name="project.dsl-compiler.temporary.download" location="${client.tmp}/${dsl-compiler}" />
   <property name="project.java_client" location="java_client" />
 
@@ -21,7 +21,7 @@
   <property name="tools.build" location="${tools}/build" />
   <property name="tools.revenj" location="${tools}/dotnet_server_oracle_64" />
   <property name="tools.java_client" location="${tools}/java_client" />
-  <property name="dsl-compiler-client" location="/${tools.build}/dsl-clc-1.5.0.jar" />
+  <property name="dsl-compiler-client" location="/${tools.build}/dsl-clc-1.6.1.jar" />
   <property name="ojdbc" location="/${tools.build}/ojdbc6-12.1.0.2.0.jar" />
   <property name="tools.dsl-compiler" location="${tools.build}/${dsl-compiler}" />
   <property name="tools.ping" location="/${tools.build}/dsl-ocd-util-ping-0.1.0.jar" />
@@ -61,8 +61,6 @@
       <include name="**/*.jar" />
     </fileset>
   </path>
-
-  <path id="postgres.classpath" location="${tools.build}/postgresql-9.4-1205-jdbc42.jar" />
 
   <target name="create-db" description="Tries to create this project's database. Does not fail the build on failure, since the database might already exist.">
     <!--sql driver="org.postgresql.Driver" url="jdbc:postgresql://${dbHost}:${dbPort}/postgres" userid="${dbSuperUser}" password="${dbSuperPassword}" autocommit="true" onerror="continue">
@@ -165,7 +163,7 @@
       <arg value="target=dotnet_server_oracle_64" />
       <arg line="${revenj.optional.download}" />
       <arg value="temp=${server.tmp}" />
-      <arg value="settings=active-record,manual-json" />
+      <arg value="settings=${serverSettings}" />
       <arg value="oracle=${dbUser}/${dbPassword}@${dbHost}:${dbPort}:xe" />
       <arg value="sql=${migration.tmp}" />
       <arg value="force" />
@@ -207,7 +205,7 @@
       <arg value="target=java_client" />
       <arg line="${java_client.optional.download}" />
       <arg value="temp=${client.tmp}" />
-      <arg value="settings=active-record,manual-json" />
+      <arg value="settings=${clientSettings}" />
       <arg value="namespace=ocd" />
     </java>
     <delete file="generated-model-java.jar" />

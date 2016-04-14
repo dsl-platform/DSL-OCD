@@ -64,7 +64,7 @@
     </fileset>
   </path>
 
-  <path id="postgres.classpath" location="${tools.build}/postgresql-9.4.1208.jar" />
+  <path id="postgres.classpath" location="${tools.build}/postgresql-9.4.1208.jre6.jar" />
 
   <target name="create-db" description="Tries to create this project's database. Does not fail the build on failure, since the database might already exist.">
     <sql driver="org.postgresql.Driver" url="jdbc:postgresql://${dbHost}:${dbPort}/postgres" userid="${dbSuperUser}" password="${dbSuperPassword}" autocommit="true" onerror="continue">
