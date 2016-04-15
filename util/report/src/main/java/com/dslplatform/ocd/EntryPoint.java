@@ -8,7 +8,7 @@ public class EntryPoint {
         System.out.println("java -jar ocd-report-generator.jar root site OCD-Tests-Summary.xml [generate-wins-pages]");
     } else {
       runOcdReportGenerator(args[1], args[2], args.length == 4);
-      runSkippedReportGenerator(args[0], args[1]);
+      //runSkippedReportGenerator(args[0], args[1]);
     }
   }
   
