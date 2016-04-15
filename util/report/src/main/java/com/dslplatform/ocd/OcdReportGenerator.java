@@ -54,7 +54,7 @@ public class OcdReportGenerator {
     }
 
     public void generate() {
-        this.indexPage().writeToFile(this.indexPath());
+        this.indexPage().writeToFile(this.indexPath(), false);
 
         final List<Testsuite> fails = this.testsuitesDao.getFailedTestsuites();
         for(final Testsuite ts: fails) this.generate(ts);
@@ -67,9 +67,9 @@ public class OcdReportGenerator {
 
     private void generate(final Testsuite ts){
         final DomHelper testsuitePage = this.testsuitePage(ts);
-        testsuitePage.writeToFile(this.testsuitePath(ts));
+        testsuitePage.writeToFile(this.testsuitePath(ts), false);
         final DomHelper testsuiteStacktracePage = this.stacktracePage(ts);
-        testsuiteStacktracePage.writeToFile(this.testSuiteStacktracePath(ts));
+        testsuiteStacktracePage.writeToFile(this.testSuiteStacktracePath(ts), true);
 
         for(final Testcase tc: ts.getTestcase()){
             this.generate(ts, tc);
@@ -79,7 +79,7 @@ public class OcdReportGenerator {
     private void generate(final Testsuite ts, final Testcase tc){
         if(tc.getError().size()>0 || tc.getFailure().size()>0 || this.generateWins) {
             final DomHelper testcasePage = this.testcasePage(ts, tc);
-            testcasePage.writeToFile(this.testcasePath(ts, tc));
+            testcasePage.writeToFile(this.testcasePath(ts, tc), false);
         }
     }
 

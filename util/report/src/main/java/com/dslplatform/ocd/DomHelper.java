@@ -36,17 +36,20 @@ public class DomHelper {
         }
     }
 
-    public void writeToFile(final String filename) {
+    public void writeToFile(final String filename, boolean isStackTrace) {
         FileOutputStream fileOutputStream = null;
         try {
             final File file = new File(filename);
             new File(file.getParent()).mkdirs();
             fileOutputStream = new FileOutputStream(file);
 
-            final byte[] bytesContent = this.getDocumentAsString()
+            final byte[] bytesContent = isStackTrace ? this.getDocumentAsString()
                     .replaceAll("&lt;", "<")
                     .replaceAll("&gt;", ">")
-                    .getBytes("UTF-8");
+                    .getBytes("UTF-8")
+                    :
+                    this.getDocumentAsString().getBytes("UTF-8")
+                    ;
 
             fileOutputStream.write(bytesContent);
             fileOutputStream.flush();
