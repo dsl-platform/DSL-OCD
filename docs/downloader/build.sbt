@@ -10,7 +10,7 @@ libraryDependencies ++= Seq(
 //  "com.dslplatform" % "dsl-client-java" % "1.4.2-SNAPSHOT"
 //, "com.fasterxml.jackson.core" % "jackson-databind" % "2.7.3"
 
-  "org.revenj" % "revenj-servlet" % "0.9.5-SNAPSHOT"
+  "org.revenj" % "revenj-servlet" % "0.9.5-20160416"
 )
 
 packAutoSettings

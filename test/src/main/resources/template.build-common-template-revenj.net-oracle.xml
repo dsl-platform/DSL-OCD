@@ -13,7 +13,7 @@
   <property name="server.tmp" location="server.tmp" />
   <property name="migration.tmp" location="migration.tmp" />
 
-  <property name="dsl-compiler" value="dsl-compiler-1.5.5948.14735.exe" />
+  <property name="dsl-compiler" value="dsl-compiler-1.5.5949.27333.exe" />
   <property name="project.dsl-compiler.temporary.download" location="${client.tmp}/${dsl-compiler}" />
   <property name="project.java_client" location="java_client" />
 
@@ -21,7 +21,7 @@
   <property name="tools.build" location="${tools}/build" />
   <property name="tools.revenj" location="${tools}/dotnet_server_oracle_64" />
   <property name="tools.java_client" location="${tools}/java_client" />
-  <property name="dsl-compiler-client" location="/${tools.build}/dsl-clc-1.6.1.jar" />
+  <property name="dsl-compiler-client" location="/${tools.build}/dsl-clc-1.6.2-20160416.jar" />
   <property name="ojdbc" location="/${tools.build}/ojdbc6-12.1.0.2.0.jar" />
   <property name="tools.dsl-compiler" location="${tools.build}/${dsl-compiler}" />
   <property name="tools.ping" location="/${tools.build}/dsl-ocd-util-ping-0.1.0.jar" />
