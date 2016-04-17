@@ -11,7 +11,7 @@
   <property name="server.tmp" location="server.tmp" />
   <property name="migration.tmp" location="migration.tmp" />
 
-  <property name="dsl-compiler" value="dsl-compiler-1.5.5949.27333.exe" />
+  <property name="dsl-compiler" value="dsl-compiler-1.5.5951.17547.exe" />
   <property name="project.dsl-compiler.temporary.download" location="${client.tmp}/${dsl-compiler}" />
   <property name="project.java_client" location="java_client" />
 
