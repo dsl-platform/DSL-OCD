@@ -25,6 +25,9 @@ private[config] class TestDeployer(
   private val toolsTargetPath = root / "tools"
   private val configTargetPath = toolsTargetPath / "config"
 
+  private val templateToolsPath  =
+    Path(new java.io.File(classOf[TestDeployer].getResource("/template.tools").toURI))
+
   if (!root.exists) {
     logger.trace("Creating the root target path: " + root.path)
     root.createDirectory(true, false)
@@ -73,8 +76,7 @@ private[config] class TestDeployer(
       testRoot(language) / "resources"
 
     private def cleanDsl(): Unit = {
-      logger.debug("Cleaning generated DSL ...")
-      logger.trace("Deleting: " + dslSource.path)
+      logger.trace("Cleaning generated DSL: " + dslSource.path)
 
       val remaining = dslSource.deleteRecursively(true, true)._2
       if (remaining > 0) {
@@ -135,9 +137,8 @@ private[config] class TestDeployer(
       val languages = testProject.testFiles.keys.toSet
 
       languages foreach { language =>
-        logger.debug(s"Cleaning tests ($language) ...")
         val path = testRoot(language)
-        logger.trace("Deleting: " + path.path)
+        logger.trace(s"Cleaning tests ($language): " + path.path)
 
         val remaining = path.deleteRecursively(true, true)._2
         if (remaining > 0) {
@@ -216,6 +217,8 @@ private[config] class TestDeployer(
         }
     }
 
+    private val JarExpansion = """(.*?path=")(.*)/\*\*\.jar(".*)""".r
+
     private def deployEclipseProject(): Unit =
       testProject.testFiles.keys foreach { case language =>
         val languageRoot = languageProjectRoot(language)
@@ -223,19 +226,28 @@ private[config] class TestDeployer(
         language match {
           case JAVA =>
             val projectPath = languageRoot / ".project"
-            val classpathPath = languageRoot / ".classpath"
-
             logger.trace("Creating Eclipse .project file: " + projectPath.path)
-            logger.trace("Creating Eclipse .classpath file: " + classpathPath.path)
-
             val projectBody = applyTemplates(IOUtils.toString(
               classOf[TestDeployer].getResourceAsStream("/template.project"), "UTF-8"))
+            projectPath.write(projectBody)
 
-            val classpathBody = applyTemplates(IOUtils.toString(
-              classOf[TestDeployer].getResourceAsStream("/template.classpath"), "UTF-8"))
+            val classpathPath = languageRoot / ".classpath"
+            logger.trace("Creating Eclipse .classpath file: " + classpathPath.path)
+            val classpathBody = IOUtils.toString(
+              classOf[TestDeployer].getResourceAsStream("/template.classpath"), "UTF-8")
+            val classpathBodyExpandedJars =
+              (classpathBody.split("\n") map {
+                case JarExpansion(before, path, after) =>
+                  val src = if (path == "#{toolsPath}/lib") "lib" else path
+                  ((templateToolsPath / src ** "*.jar").toSeq map { jar =>
+                    before + path + '/' + jar.name + after
+                  }).sorted.mkString("\n")
 
-            projectPath.write(projectBody)(UTF8)
-            classpathPath.write(classpathBody)(UTF8)
+                case line =>
+                  line
+                }
+              ).mkString("\n")
+            classpathPath.write(applyTemplates(classpathBodyExpandedJars))
 
           case _ =>
         }
@@ -272,7 +284,7 @@ private[config] class TestDeployer(
         , "dbOwnerPassword" -> "ocdpassword"
         , "revenjHost" -> "127.0.0.1" // "[::1]"
         , "revenjPort" -> projectNamesAndPortsRepository.generateProjectRevenjPort(projectShortName).toString()
-        , "toolsPath" -> (testSettings.workspace.path.path + "/tools")
+        , "toolsPath" -> (testSettings.workspace.path.path.replace('\\', '/') + "/tools")
         , "dslSource" -> dslSource.path
         , "revenjPath" -> revenjConfigTemplateTargetPath.path
         )
@@ -289,8 +301,7 @@ private[config] class TestDeployer(
    */
   private def copyStatic() {
       // Copy the tools resources
-      val toolsTemplateDir = new java.io.File(classOf[TestDeployer].getResource("/template.tools").toURI);
-      val toolsTargetDir = new java.io.File((toolsTargetPath).toURI);
+      val toolsTargetDir = new java.io.File((toolsTargetPath).toURI)
 
       if (!toolsTargetPath.exists) {
           logger.trace("Creating the tools target path: " + toolsTargetPath.path)
@@ -302,7 +313,7 @@ private[config] class TestDeployer(
           configTargetPath.createDirectory(true, false)
       }
 
-      copyPath(toolsTemplateDir.toPath, toolsTargetDir.toPath)
+      copyPath(templateToolsPath.jfile.toPath, toolsTargetDir.toPath)
 
       // Copy the .gitignore for diff via versioning
       val gitignore = new java.io.File(classOf[TestDeployer].getResource("/template..gitignore").toURI)
