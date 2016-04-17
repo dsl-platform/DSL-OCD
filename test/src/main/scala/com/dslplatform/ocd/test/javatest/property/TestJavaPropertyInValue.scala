@@ -5,6 +5,7 @@ package property
 
 import types._
 import javas._
+import boxes._
 
 trait TestJavaPropertyInValue
     extends TestComponentWithProperty {
@@ -51,6 +52,7 @@ trait TestJavaPropertyInValue
         """
   }) + "org.junit.Assert.assertEquals(domainValue, domainValueDeserialized);"
 
+
   def testComponentBody = s"""
     /* Testing the "${propertyName}" ${testID} value property JSON serialization */
     @org.junit.Test
@@ -79,7 +81,32 @@ trait TestJavaPropertyInValue
 
         // check that the property was properly deserialized
         ${assertEquals("domainValueDeserialized")}
+${property.box.collectionFamily match {
+          case Some(CollectionFamily.Set) =>
+            val arrayList = javaClass.replace("Set", "ArrayList")
+            val linkedHashSet = javaClass.replace("Set", "LinkedHashSet")
 
+            s"""
+        ${property.box.isNullable.ifTrue(
+                s"if (domainValueDeserialized.get${PropertyName}() != null) ")}{
+            // shuffle the set to check equality properly
+            final ${arrayList} deserializedTestValues =
+                    new ${arrayList}(domainValueDeserialized.get${PropertyName}());
+
+            final long shuffleSeed = new java.util.Random().nextLong();
+            final java.util.Random shuffleRandom = new java.util.Random(shuffleSeed);
+
+            java.util.Collections.shuffle(deserializedTestValues, shuffleRandom);
+            domainValueDeserialized.set${PropertyName}(
+                    new ${linkedHashSet}(deserializedTestValues));
+            logger.trace("Shuffled the set (#" + shuffleSeed + ") in ${conceptName}: {}", deserializedTestValues);
+        }
+
+        // check equality after shuffling
+        ${assertEquals("domainValueDeserialized")}
+"""
+          case _ => ""
+        }}
         ${assertEqualHashCodes}
 
         ${assertEqualValues}

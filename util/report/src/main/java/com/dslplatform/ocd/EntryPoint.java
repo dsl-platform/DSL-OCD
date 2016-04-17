@@ -11,7 +11,7 @@ public class EntryPoint {
       //runSkippedReportGenerator(args[0], args[1]);
     }
   }
-  
+
   private static void runOcdReportGenerator(
       final String outputDirectory,
       final String inputFile,
@@ -19,7 +19,7 @@ public class EntryPoint {
     final OcdReportGenerator generator = new OcdReportGenerator(outputDirectory, inputFile, generateWinsPages);
     generator.generate();
   }
-  
+
   private static void runSkippedReportGenerator(
       final String projectDirectory,
       final String outputDirectory) {

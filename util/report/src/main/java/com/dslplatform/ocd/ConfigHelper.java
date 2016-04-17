@@ -10,7 +10,7 @@ public class ConfigHelper {
   public static final String TestConfig = "test.config";
 
   private final Properties props;
-  
+
   private static Properties loadPropsFromFile(final String filename) {
     try {
       final InputStream fis = new FileInputStream(filename);
@@ -21,23 +21,23 @@ public class ConfigHelper {
       throw new RuntimeException("Could not load properties file '" + filename + "'");
     }
   }
-  
+
   public ConfigHelper() {
     this(
         System.getProperty("user.home") + "/.config/" + ConfigFolder + "/" + OcdConfig,
         System.getProperty("user.home") + "/.config/" + ConfigFolder + "/" + TestConfig
     );
   }
-  
+
   public ConfigHelper(final String ocdPath, final String testPath) {
     final Properties ocdProps = loadPropsFromFile(ocdPath);
     final Properties testProps = loadPropsFromFile(testPath);
-    
+
     this.props = new Properties();
     this.props.putAll(ocdProps);
     this.props.putAll(testProps);
   }
-  
+
   public String get(final String key) {
     return props.getProperty(key);
   }

@@ -38,10 +38,10 @@
   <property name="revenj.war" location="revenj.java/revenj-servlet-0.9.5-20160416.war" />
   <property name="revenj.config.template" location="${tools}/config/revenj.properties.template" />
   <property name="revenj.config" location="${project.revenj}/revenj.properties" />
-  
+
   <get-jetty-stop-port port="${revenjPort}" result="jetty-stop-port" />
   <get-jetty-stop-key host="${revenjHost}" port="${revenjPort}" result="jetty-stop-key" />
-  
+
   <filter token="dbSuperUser" value="${dbSuperUser}" />
   <filter token="dbSuperPassword" value="${dbSuperPassword}" />
   <filter token="dbUser" value="${dbUser}" />
