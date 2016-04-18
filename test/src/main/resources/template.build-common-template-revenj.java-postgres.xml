@@ -35,7 +35,7 @@
   <property name="target.test.packaged" location="${target}/${projectShortName}-test.jar" />
 
   <property name="project.revenj" location="revenj.java" />
-  <property name="revenj.war" location="revenj.java/revenj-servlet-0.9.5-20160418.war" />
+  <property name="revenj.war" location="revenj.java/revenj-servlet-0.9.6-20160418-175000.war" />
   <property name="revenj.config.template" location="${tools}/config/revenj.properties.template" />
   <property name="revenj.config" location="${project.revenj}/revenj.properties" />
 
