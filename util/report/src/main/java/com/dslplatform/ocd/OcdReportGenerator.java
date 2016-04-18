@@ -31,19 +31,19 @@ public class OcdReportGenerator {
     private final boolean generateWins;
     private final ConfigHelper configHelper;
 
-    public OcdReportGenerator(final String outputDirectory, final String inputFilename) {
-        this(outputDirectory, inputFilename, false);
+    public OcdReportGenerator(final String siteOutputDirectory, final String aggregatedTestsFilename) {
+        this(siteOutputDirectory, aggregatedTestsFilename, false);
     }
 
-    public OcdReportGenerator(final String outputDirectory, final String inputFilename, final boolean generateWins) {
+    public OcdReportGenerator(final String siteOutputDirectory, final String aggregatedTestsFilename, final boolean generateWins) {
         try {
             this.documentBuilderFactory = DocumentBuilderFactory.newInstance();
             this.documentBuilder = this.documentBuilderFactory.newDocumentBuilder();
-            this.outputDir = outputDirectory.endsWith("/") ? outputDirectory : outputDirectory + "/";
+            this.outputDir = siteOutputDirectory.endsWith("/") ? siteOutputDirectory : siteOutputDirectory + "/";
             final Testsuites testsuites = (Testsuites) JAXBContext
                     .newInstance("com.dslplatform.ocd.generated")
                     .createUnmarshaller()
-                    .unmarshal(new FileInputStream(inputFilename));
+                    .unmarshal(new FileInputStream(aggregatedTestsFilename));
             this.generateWins = generateWins;
             this.configHelper = new ConfigHelper();
             this.testsuitesDao = new TestsuitesDao(testsuites);

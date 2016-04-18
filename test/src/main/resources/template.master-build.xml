@@ -17,8 +17,6 @@
     <format property="test.timestamp" pattern="yyyy-MM-dd_hh:mm:ss" />
   </tstamp>
 
-  <import file="macrodef.xml" />
-
   <target name="collect-reports" description="Collects the test results of all subprojects">
     <junitreport todir="${report.root}" tofile="OCD-Tests-Summary.xml">
       <fileset dir=".">

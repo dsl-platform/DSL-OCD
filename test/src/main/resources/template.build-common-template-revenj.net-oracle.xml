@@ -19,7 +19,8 @@
 
   <property name="tools.lib" location="${tools}/lib" />
   <property name="tools.build" location="${tools}/build" />
-  <property name="tools.revenj" location="${tools}/dotnet_server_oracle_64" />
+  <property name="dsl-compiler.target" location="dotnet_server_oracle_64" />
+  <property name="tools.revenj" location="${tools}/${dsl-compiler.target}" />
   <property name="tools.java_client" location="${tools}/java_client" />
   <property name="dsl-compiler-client" location="/${tools.build}/dsl-clc-1.6.2-20160419-133000.jar" />
   <property name="ojdbc" location="/${tools.build}/ojdbc6-12.1.0.2.0.jar" />
