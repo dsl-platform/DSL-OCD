@@ -32,6 +32,9 @@ class EntryPoint(
       AggregateWithSurrogateKeyAndOneEntityTestProject.projects ++
       Nil
 
-    testDeployer.deployTests(turtles ++ projects)
+    testDeployer.deployTests(
+//      turtles ++ 
+      projects
+    )
   }
 }
