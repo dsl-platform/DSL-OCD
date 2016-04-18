@@ -12,7 +12,7 @@ if exist DSL-OCD-Target move DSL-OCD-Target DSL-Trash
 start /MIN cmd /c rmdir /S /Q DSL-Trash
 
 if exist DSL-OCD-SSH goto :ssh
-git clone --depth 1 https://melezov@github.com/element-doo/DSL-OCD.git
+git clone --depth 1 https://melezov@github.com/mentat-labs/DSL-OCD.git
 goto :cloned
 
 :ssh
@@ -24,7 +24,7 @@ if exist "c:\Program Files (x86)\Git\usr\bin\ssh.exe" set GIT_SSH=c:\Program Fil
 :: git bash ver 1.xx 32bit
 if exist "c:\Program Files (x86)\Git\bin\ssh.exe" set GIT_SSH=c:\Program Files (x86)\Git\bin\ssh.exe
 
-git clone --depth 1 ssh://git@github.com/element-doo/DSL-OCD.git
+git clone --depth 1 ssh://git@github.com/mentat-labs/DSL-OCD.git
 set HOME=%DSL_SSH_OLD_HOME%
 
 :cloned

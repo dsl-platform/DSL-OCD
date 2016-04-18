@@ -4,7 +4,7 @@ bash -c '[ -d ~/.ivy2/cache/com.dslplatform.ocd ] && rm -rf ~/.ivy2/cache/com.ds
 bash -c '[ -d DSL-OCD ] && rm -rf DSL-OCD'
 bash -c '[ -d DSL-OCD-Target ] && rm -rf DSL-OCD-Target'
 
-#git clone --depth 1 https://melezov@github.com/element-doo/DSL-OCD.git
+#git clone --depth 1 https://melezov@github.com/mentat-labs/DSL-OCD.git
 
 DSL_SSH_OLD_HOME=$HOME
 HOME=`pwd`/DSL-OCD-SSH
@@ -14,7 +14,7 @@ chmod 400 $HOME/.ssh/* -R
 ssh -o StrictHostKeychecking=no github.com
 eval `/usr/bin/ssh-agent`
 ssh-add $HOME/.ssh/id_rsa
-git clone --depth 1 ssh://git@github.com/element-doo/DSL-OCD.git
+git clone --depth 1 ssh://git@github.com/mentat-labs/DSL-OCD.git
 HOME=$DSL_SSH_OLD_HOME
 
 cd DSL-OCD/test
