@@ -103,10 +103,10 @@ ${isDefault match {
         ${assertEquals("aggregateFound")}
 
         // aggregates are compared via URI equality - both URIs have be initialized at this point
-        org.junit.Assert.assertEquals(aggregate, aggregateFound);
+        com.dslplatform.ocd.test.FancyAsserts.assertEquals(aggregate, aggregateFound);
 
         // hashCodes are generated from the URI
-        org.junit.Assert.assertEquals(aggregate.hashCode(), aggregateFound.hashCode());
+        com.dslplatform.ocd.test.FancyAsserts.assertEquals(aggregate.hashCode(), aggregateFound.hashCode());
     }
 """
 

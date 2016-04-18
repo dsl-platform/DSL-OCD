@@ -8,6 +8,11 @@ organization := "com.dslplatform.ocd"
 name := "DSL-OCD-Util-Testing"
 version := "0.1.0"
 
+libraryDependencies ++= Seq(
+  "junit" % "junit" % "4.12"
+, "commons-lang" % "commons-lang" % "2.4"
+)
+
 unmanagedSourceDirectories in Compile := Seq(
   (javaSource in Compile).value
 )

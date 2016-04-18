@@ -41,7 +41,7 @@ trait TestJavaPropertyInValue
         // """
     case _ => """// values are checked internally by comparing hashcodes of all properties
         """
-  }) + "org.junit.Assert.assertEquals(domainValue.hashCode(), domainValueDeserialized.hashCode());"
+  }) + "com.dslplatform.ocd.test.FancyAsserts.assertEquals(domainValue.hashCode(), domainValueDeserialized.hashCode());"
 
   private def assertEqualValues = (property match {
     case p: OcdJavaBoxTypeProperty if !p.boxType.isEqualable =>
@@ -50,7 +50,7 @@ trait TestJavaPropertyInValue
         // """
     case _ => """// values are checked internally by comparing all properties for equality
         """
-  }) + "org.junit.Assert.assertEquals(domainValue, domainValueDeserialized);"
+  }) + "com.dslplatform.ocd.test.FancyAsserts.assertEquals(domainValue, domainValueDeserialized);"
 
 
   def testComponentBody = s"""

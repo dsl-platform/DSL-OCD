@@ -26,7 +26,7 @@ trait TestJavaPropertyGetterType
     /* Testing the "${propertyName}" property getter ${visibility.name} visibility via reflection (no instantiation) */
     @org.junit.Test
     public void test${PropertyName}PropertyGetter${visibility}Visibility${testSuffix}() throws NoSuchMethodException {
-        org.junit.Assert.assertEquals(
+        com.dslplatform.ocd.test.FancyAsserts.assertEquals(
                 ${visibility.javaModifier},
                 ${conceptName}.class.getDeclaredMethod(
                     "${getterName}").getModifiers() & 7);
@@ -37,7 +37,7 @@ trait TestJavaPropertyGetterType
     /* Testing the "${propertyName}" property getter modifiers ${if (modifiers.isEmpty) "" else modifiers.map(_.name).mkString("(", ", ", ") ")}via reflection (no instantiation) */
     @org.junit.Test
     public void test${PropertyName}PropertyGetterModifiers${testSuffix}() throws NoSuchMethodException {
-        org.junit.Assert.assertEquals(
+        com.dslplatform.ocd.test.FancyAsserts.assertEquals(
                 ${modifiers.map(_.javaModifier).mkString(" | ") match { case x if x.nonEmpty => x; case _ => "0"}},
                 ${conceptName}.class.getDeclaredMethod(
                     "${getterName}").getModifiers() & ~7);
@@ -48,7 +48,7 @@ trait TestJavaPropertyGetterType
     /* Testing the "${propertyName}" property getter class via reflection (no instantiation) */
     @org.junit.Test
     public void test${PropertyName}PropertyGetterClass${testSuffix}() throws NoSuchMethodException {
-        org.junit.Assert.assertEquals(
+        com.dslplatform.ocd.test.FancyAsserts.assertEquals(
                 ${baseClass},
                 ${conceptName}.class.getDeclaredMethod(
                         "${getterName}").getReturnType());
@@ -59,7 +59,7 @@ trait TestJavaPropertyGetterType
     /* Testing the "${propertyName}" property getter generic type via reflection (no instantiation) */
     @org.junit.Test
     public void test${PropertyName}PropertyGetterGenericType${testSuffix}() throws NoSuchMethodException {
-        org.junit.Assert.assertEquals(
+        com.dslplatform.ocd.test.FancyAsserts.assertEquals(
                 new Object() {
                     @SuppressWarnings("unused")
                     ${visibility.javaFieldPrefix}${

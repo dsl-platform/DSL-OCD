@@ -22,7 +22,7 @@ trait TestJavaPropertyFieldType
     /* Testing the "${propertyName}" property field ${visibility.name} visibility via reflection (no instantiation) */
     @org.junit.Test
     public void test${PropertyName}PropertyField${visibility}Visibility${testSuffix}() throws NoSuchFieldException {
-        org.junit.Assert.assertEquals(
+        com.dslplatform.ocd.test.FancyAsserts.assertEquals(
                 ${visibility.javaModifier},
                 ${conceptName}.class.getDeclaredField(
                     "${propertyName}").getModifiers() & 7);
@@ -33,7 +33,7 @@ trait TestJavaPropertyFieldType
     /* Testing the "${propertyName}" property field modifiers ${modifiers.nonEmpty.ifTrue(modifiers.map(_.name).mkString("(", ", ", ") "))}via reflection (no instantiation) */
     @org.junit.Test
     public void test${PropertyName}PropertyFieldModifiers${testSuffix}() throws NoSuchFieldException {
-        org.junit.Assert.assertEquals(
+        com.dslplatform.ocd.test.FancyAsserts.assertEquals(
                 ${modifiers.map(_.javaModifier).mkString(" | ") match { case x if x.nonEmpty => x; case _ => "0"}},
                 ${conceptName}.class.getDeclaredField(
                     "${propertyName}").getModifiers() & ~7);
@@ -44,7 +44,7 @@ trait TestJavaPropertyFieldType
     /* Testing the "${propertyName}" property field class via reflection (no instantiation) */
     @org.junit.Test
     public void test${PropertyName}PropertyFieldClass${testSuffix}() throws NoSuchFieldException {
-        org.junit.Assert.assertEquals(
+        com.dslplatform.ocd.test.FancyAsserts.assertEquals(
                 ${property.javaType.baseClass}.class,
                 ${conceptName}.class.getDeclaredField(
                         "${propertyName}").getType());
@@ -55,7 +55,7 @@ trait TestJavaPropertyFieldType
     /* Testing the "${propertyName}" property field generic type via reflection (no instantiation) */
     @org.junit.Test
     public void test${PropertyName}PropertyFieldGenericType${testSuffix}() throws NoSuchFieldException {
-        org.junit.Assert.assertEquals(
+        com.dslplatform.ocd.test.FancyAsserts.assertEquals(
                 new Object() {
                     @SuppressWarnings("unused")
                     ${visibility.javaFieldPrefix}${
