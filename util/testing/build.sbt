@@ -6,7 +6,7 @@ val NGSPrivateSnapshots = "NGS Private Snapshots" at "http://ngs.hr/nexus/conten
 
 organization := "com.dslplatform.ocd"
 name := "DSL-OCD-Util-Testing"
-version := "0.1.0"
+version := "0.2.0"
 
 libraryDependencies ++= Seq(
   "junit" % "junit" % "4.12"

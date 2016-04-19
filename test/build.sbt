@@ -6,7 +6,6 @@ val NGSPrivateSnapshots = "NGS Private Snapshots" at "http://ngs.hr/nexus/conten
 
 organization := "com.dslplatform.ocd"
 name := "DSL-OCD-Test-Generator"
-version := "0.1.0-SNAPSHOT"
 
 unmanagedSourceDirectories in Compile :=
   Seq("interfaces", "services", "turtles").map {
@@ -22,9 +21,9 @@ unmanagedSourceDirectories in Test := Nil
 // ### DEPENDENCIES ### //
 
 libraryDependencies ++= Seq(
-  "com.dslplatform.ocd" %% "dsl-ocd-model-dsls" % "0.1.0-SNAPSHOT"
-, "com.dslplatform.ocd" %% "dsl-ocd-model-javas" % "0.1.0-SNAPSHOT"
-, "com.dslplatform.ocd" %% "dsl-ocd-model-scalas" % "0.1.0-SNAPSHOT"
+  "com.dslplatform.ocd" %% "dsl-ocd-model-dsls" % "0.2.0"
+, "com.dslplatform.ocd" %% "dsl-ocd-model-javas" % "0.2.0"
+, "com.dslplatform.ocd" %% "dsl-ocd-model-scalas" % "0.2.0"
 , "com.dslplatform" % "dsl-compiler-client-cmdline" % "0.8.13"
 , "hr.element.etb" %% "etb-util" % "0.2.23"
 , "io.jvm.uuid" %% "scala-uuid" % "0.2.1"

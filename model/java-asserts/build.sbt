@@ -6,7 +6,7 @@ val NGSPrivateSnapshots = "NGS Private Snapshots" at "http://ngs.hr/nexus/conten
 
 organization := "com.dslplatform.ocd"
 name := "DSL-OCD-Model-Java-Asserts"
-version := "0.1.0-SNAPSHOT"
+version := "0.2.0"
 
 unmanagedSourceDirectories in Compile := Seq(
   sourceDirectory.value / "generated" / "java"
@@ -15,8 +15,8 @@ unmanagedSourceDirectories in Compile := Seq(
 unmanagedSourceDirectories in Test := Nil
 
 libraryDependencies ++= Seq(
-  "com.dslplatform.ocd" % "dsl-ocd-util-testing" % "0.1.0-SNAPSHOT"
-, "joda-time" % "joda-time" % "2.7"
+  "com.dslplatform.ocd" % "dsl-ocd-util-testing" % "0.2.0"
+, "joda-time" % "joda-time" % "2.9.3"
 , "junit" % "junit" % "4.12"
 )
 

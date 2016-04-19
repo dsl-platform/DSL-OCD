@@ -6,7 +6,6 @@ val NGSPrivateSnapshots = "NGS Private Snapshots" at "http://ngs.hr/nexus/conten
 
 organization := "com.dslplatform.ocd"
 name := "DSL-OCD-Model-Generator"
-version := "0.1.0-SNAPSHOT"
 
 unmanagedSourceDirectories in Compile := Seq(
   (scalaSource in Compile).value
@@ -17,7 +16,7 @@ unmanagedSourceDirectories in Test := Nil
 // ### DEPENDENCIES ### //
 
 libraryDependencies ++= Seq(
-  "com.dslplatform.ocd" %% "dsl-ocd-util-generator" % "0.1.0-SNAPSHOT"
+  "com.dslplatform.ocd" %% "dsl-ocd-util-generator" % "0.2.0"
 , "com.github.scala-incubator.io" %% "scala-io-file" % "0.4.3-1"
 , "org.scala-lang.modules" %% "scala-xml" % "1.0.5"
 )

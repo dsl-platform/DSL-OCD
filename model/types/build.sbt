@@ -6,7 +6,7 @@ val NGSPrivateSnapshots = "NGS Private Snapshots" at "http://ngs.hr/nexus/conten
 
 organization := "com.dslplatform.ocd"
 name := "DSL-OCD-Model-Types"
-version := "0.1.0-SNAPSHOT"
+version := "0.2.0"
 
 unmanagedSourceDirectories in Compile := Seq(
   (scalaSource in Compile).value
@@ -16,7 +16,7 @@ unmanagedSourceDirectories in Compile := Seq(
 unmanagedSourceDirectories in Test := Nil
 
 libraryDependencies := Seq(
-  "com.dslplatform.ocd" %% "dsl-ocd-model-kinds" % "0.1.0-SNAPSHOT"
+  "com.dslplatform.ocd" %% "dsl-ocd-model-kinds" % "0.2.0"
 )
 
 // ### RESOLVERS ### //

@@ -23,9 +23,14 @@ package object test {
     }
   }
 
-  object OcdTypeSingletonExtender {
-    import types._
+  import types._
 
+  val overrideTypes = Seq(
+//    `type.Double`
+//    `type.Point`
+  )
+
+  object OcdTypeSingletonExtender {
     private val postgresSupportedTyes = Seq(
       `type.Binary`
 //    , `type.Bits`
@@ -102,9 +107,12 @@ package object test {
   implicit class OcdTypeSingletonExtender(val ocdType: types.OcdType.type) extends AnyVal {
     import OcdTypeSingletonExtender._
 
-    def useCaseValues(testSettings: ITestSettings): Seq[types.OcdType] = testSettings.database match {
-      case Database.Oracle => oracleSupportedTyes
-      case Database.PostgreSQL => postgresSupportedTyes
+    def useCaseValues(testSettings: ITestSettings): Seq[types.OcdType] = overrideTypes match {
+      case overrides if overrides.nonEmpty => overrides
+      case _ => testSettings.database match {
+        case Database.Oracle => oracleSupportedTyes
+        case Database.PostgreSQL => postgresSupportedTyes
+      }
     }
   }
 
