@@ -11,12 +11,16 @@ import javas._
 import javatest._
 import javatest.property._
 
-private[domain] object CalculatedPropertyInSnowflakeSetup {
+private[domain] class CalculatedPropertyInSnowflakeSetupFactory(
+    testSettings: ITestSettings
+  ) extends SetupFactory(testSettings) {
+
   val setups = for {
-    t <- OcdType.useCaseValues
+    t <- OcdType.useCaseValues(testSettings)
     b <- OcdBox.values
     d = OcdDslBoxType.resolve(t, b)
     if !(b.collectionFamily == Some(CollectionFamily.Queue) && b.areElementsNullable == Some(true)) // Queue cannot contain null elements
+    if !isOracle || (t.typeName != "String" && t.typeName != "Text" && t.typeName != "Binary" || !b.isCollection)
   } yield {
     new CalculatedPropertyInSnowflakeSetup(d)
   }
@@ -289,10 +293,13 @@ class CalculatedPropertyInSnowflakeTestProject(
   }
 }
 
-object CalculatedPropertyInSnowflakeTestProject {
-  private val setups = CalculatedPropertyInSnowflakeSetup.setups
+class CalculatedPropertyInSnowflakeTestProjectFactory(
+    testSettings: ITestSettings
+  ) extends ProjectFactory(testSettings) {
 
-  val projects =
+  private lazy val setups = new CalculatedPropertyInSnowflakeSetupFactory(testSettings).setups
+
+  def projects =
     (setups.groupBy(_.propertyType.typeNameSafe) map { case (typeNameSafe, typeSetups) =>
       new ITestProject {
         def projectPath = "snowflakes/calculated-single-" + typeNameSafe

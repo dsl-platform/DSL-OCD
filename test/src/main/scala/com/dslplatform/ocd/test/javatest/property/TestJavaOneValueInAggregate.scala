@@ -46,6 +46,17 @@ trait TestJavaOneValueInAggregate
     case _ => ???
   }
 
+  private def assertValueEqualityAndHashCode =
+    s"""// nested values must be equal
+        com.dslplatform.ocd.test.FancyAsserts.assertEquals(
+                aggregate.get${ValueName}(),
+                aggregateFound.get${ValueName}());
+
+        // nested values hashCode() must be equal
+        com.dslplatform.ocd.test.FancyAsserts.assertEquals(
+                aggregate.get${ValueName}().hashCode(),
+                aggregateFound.get${ValueName}().hashCode());"""
+
   def jsonSerializationTest = s"""
     /* Testing the "${propertyName}" within one ${ValueName} ${testID} aggregate property JSON serialization */
     @org.junit.Test
@@ -94,12 +105,14 @@ ${isDefault match {
         // persist via active record pattern
         aggregate.create();
 
-        // check that the property retrieved from revenj (persist will mutate the aggregate)
+        // check that the property retrieved from revenj (create will mutate the aggregate)
         ${assertEquals(s"aggregate")}
 
         final ${conceptName} aggregateFound = ${conceptName}.find(aggregate.getURI());
         // check the property retrieved from the database
         ${assertEquals("aggregateFound")}
+
+        ${assertValueEqualityAndHashCode}
 
         // aggregates are compared via URI equality - both URIs have be initialized at this point
         com.dslplatform.ocd.test.FancyAsserts.assertEquals(aggregate, aggregateFound);
@@ -126,8 +139,14 @@ ${isDefault match {
         final String uri = ${repositoryName}.insert(new ${conceptName}[] { aggregate }).get().get(0);
 
         final ${conceptName} aggregateFound = ${repositoryName}.find(uri).get();
+
+        // compare URIs
+        com.dslplatform.ocd.test.FancyAsserts.assertEquals(uri, aggregateFound.getURI());
+
         // check the property retrieved from the database
         ${assertEquals("aggregateFound")}
+
+        ${assertValueEqualityAndHashCode}
     }
 """
 }

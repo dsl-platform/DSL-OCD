@@ -1,13 +1,6 @@
 package com.dslplatform.ocd
 package config
 
-import com.dslplatform.compiler.client.api.params.Credentials
-import com.dslplatform.compiler.client.api.params.ProjectID
-import com.dslplatform.compiler.client.cmdline.logger.LoggerSystem
-import com.dslplatform.compiler.client.api.ApiCall
-import com.dslplatform.compiler.client.api.Actions
-import com.dslplatform.compiler.client.api.ApiProperties
-
 private[config] class TestSettingsLoader(logger: Logger) {
   def load(relativePath: String) = {
     val testIni = Path(

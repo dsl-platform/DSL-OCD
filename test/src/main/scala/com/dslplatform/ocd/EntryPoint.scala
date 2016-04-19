@@ -1,6 +1,6 @@
 package com.dslplatform.ocd
 
-import config.ITestDeployer
+import config._
 import test.javatest.property.turtle._
 import test.domain._
 
@@ -10,6 +10,7 @@ object EntryPoint extends App {
 
 class EntryPoint(
     logger: Logger
+  , testSettings: ITestSettings
   , testDeployer: ITestDeployer) {
 
   def run(): Unit = {
@@ -20,22 +21,21 @@ class EntryPoint(
 //    , TestJavaPropertySetterTypeTurtle
     )
 
-    import test.javatest.property._
-    val projects =
-      AggregateWithOnePropertyTestProject.projects ++
-      AggregateWithSurrogateKeyAndOnePropertyTestProject.projects ++
-      AggregateWithSurrogateKeyAndOnePropertyWithinOneEntityTestProject.projects ++
-      AggregateWithSurrogateKeyAndOnePropertyWithinOneValueTestProject.projects ++
-      AggregateWithSurrogateKeyAndOnePropertyWithinOneEntityWithinOneEntityTestProject.projects ++
-      AggregateWithSurrogateKeyAndOnePropertyWithinOneValueWithinOneEntityTestProject.projects ++
-      AggregateWithSurrogateKeyAndOnePropertyWithinOneValueWithinOneValueTestProject.projects ++
-      CalculatedPropertyInSnowflakeTestProject.projects ++
-      ValueWithOnePropertyTestProject.projects ++
-      Nil
+    val projects = Seq(
+      new AggregateWithOnePropertyTestProjectFactory(testSettings)
+    , new AggregateWithSurrogateKeyAndOnePropertyTestProjectFactory(testSettings)
+    , new AggregateWithSurrogateKeyAndOnePropertyWithinOneEntityTestProjectFactory(testSettings)
+    , new AggregateWithSurrogateKeyAndOnePropertyWithinOneValueTestProjectFactory(testSettings)
+    , new AggregateWithSurrogateKeyAndOnePropertyWithinOneEntityWithinOneEntityTestProjectFactory(testSettings)
+    , new AggregateWithSurrogateKeyAndOnePropertyWithinOneValueWithinOneEntityTestProjectFactory(testSettings)
+    , new AggregateWithSurrogateKeyAndOnePropertyWithinOneValueWithinOneValueTestProjectFactory(testSettings)
+    , new CalculatedPropertyInSnowflakeTestProjectFactory(testSettings)
+    , new ValueWithOnePropertyTestProjectFactory(testSettings)
+    )
 
     testDeployer.deployTests(
       turtles ++
-      projects
+      projects.flatMap(_.projects)
     )
   }
 }

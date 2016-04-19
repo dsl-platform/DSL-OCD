@@ -94,7 +94,7 @@ ${isDefault match {
         // persist via active record pattern
         aggregate.create();
 
-        // check that the property retrieved from revenj (persist will mutate the aggregate)
+        // check that the property retrieved from revenj (create will mutate the aggregate)
         ${assertEquals(s"aggregate")}
 
         final ${conceptName} aggregateFound = ${conceptName}.find(aggregate.getURI());
@@ -126,6 +126,10 @@ ${isDefault match {
         final String uri = ${repositoryName}.insert(new ${conceptName}[] { aggregate }).get().get(0);
 
         final ${conceptName} aggregateFound = ${repositoryName}.find(uri).get();
+
+        // compare URIs
+        com.dslplatform.ocd.test.FancyAsserts.assertEquals(uri, aggregateFound.getURI());
+
         // check the property retrieved from the database
         ${assertEquals("aggregateFound")}
     }

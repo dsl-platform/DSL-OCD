@@ -1,5 +1,7 @@
 package com.dslplatform.ocd
 
+import com.dslplatform.ocd.config.{Database, ITestSettings}
+
 package object test {
   implicit class DslFilesCollage(val setups: Traversable[TestSetup]) extends AnyVal {
     def dslFiles = setups.foldLeft(new MFiles){ _ ++= _.dslFiles }.toMap
@@ -21,10 +23,10 @@ package object test {
     }
   }
 
-  implicit class OcdTypeSingletonExtender(val ocdType: types.OcdType.type) extends AnyVal {
+  object OcdTypeSingletonExtender {
     import types._
 
-    def useCaseValues = IndexedSeq(
+    private val postgresSupportedTyes = Seq(
       `type.Binary`
 //    , `type.Bits`
     , `type.Boolean`
@@ -36,18 +38,18 @@ package object test {
 //    , `type.Email`
     , `type.Float`
     , `type.Guid`
-    , `type.Image`     // ORA 0 points
+    , `type.Image`
     , `type.Integer`
     , `type.Ip`
 //    , `type.Json`
-    , `type.Location`  // ORA 0 points
+    , `type.Location`
     , `type.Long`
-    , `type.Map`       // ORA 0 points
+    , `type.Map`
     , `type.Money`
 //    , `type.Native`
 //    , `type.Phone`
-    , `type.Point`     // ORA 0 points
-    , `type.Rectangle` // ORA 0 points
+    , `type.Point`
+    , `type.Rectangle`
 //    , `type.S3`
 //    , `type.Secret`
 //    , `type.Stream`
@@ -56,9 +58,54 @@ package object test {
     , `type.Text`
 //    , `type.Time`
     , `type.Timestamp`
-    , `type.Url`       // ORA 0 points
-    , `type.Xml`       // ORA 0 points
+    , `type.Url`
+    , `type.Xml`
     )
+
+    private val oracleSupportedTyes = Seq(
+      `type.Binary`
+//    , `type.Bits`
+    , `type.Boolean`
+//    , `type.Color`
+    , `type.Date`
+    , `type.Decimal`
+    , `type.Decimal(9)`
+    , `type.Double`
+//    , `type.Email`
+    , `type.Float`
+    , `type.Guid`
+//    , `type.Image`
+    , `type.Integer`
+    , `type.Ip`
+//    , `type.Json`
+//    , `type.Location`
+    , `type.Long`
+//    , `type.Map`
+    , `type.Money`
+//    , `type.Native`
+//    , `type.Phone`
+//    , `type.Point`
+//    , `type.Rectangle`
+//    , `type.S3`
+//    , `type.Secret`
+//    , `type.Stream`
+    , `type.String`
+    , `type.String(9)`
+    , `type.Text`
+//    , `type.Time`
+    , `type.Timestamp`
+//    , `type.Url`
+//    , `type.Xml`
+    )
+  }
+
+  implicit class OcdTypeSingletonExtender(val ocdType: types.OcdType.type) extends AnyVal {
+    import OcdTypeSingletonExtender._
+
+    def useCaseValues(testSettings: ITestSettings): Seq[types.OcdType] = testSettings.database match {
+      case Database.Oracle => oracleSupportedTyes
+      case Database.PostgreSQL => postgresSupportedTyes
+    }
   }
 
   implicit class ClassyDSLTyper(val ocdDsl: dsls.OcdDslBoxType.type) extends AnyVal {

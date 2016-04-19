@@ -11,12 +11,15 @@ import javas._
 import javatest._
 import javatest.property._
 
-private[domain] object ValueWithOnePropertySetup {
+private[domain] class ValueWithOnePropertySetupFactory(
+    testSettings: ITestSettings
+  ) extends SetupFactory(testSettings) {
+
   val setups = for {
-    t <- OcdType.useCaseValues
+    t <- OcdType.useCaseValues(testSettings)
     b <- OcdBox.values
     if !(b.collectionFamily == Some(CollectionFamily.Queue) && b.areElementsNullable == Some(true)) // Queue cannot contain null elements
-//    if (t.typeName != "String" && t.typeName != "Text" && t.typeName != "Binary") || !b.isCollection // Perhaps not needed for Oracle?
+    if !isOracle || (t.typeName != "String" && t.typeName != "Text" && t.typeName != "Binary" || !b.isCollection)
     d = OcdDslBoxType.resolve(t, b)
   } yield {
     new ValueWithOnePropertySetup(d)
@@ -127,10 +130,13 @@ class ValueWithOnePropertyTestProject(
   }
 }
 
-object ValueWithOnePropertyTestProject {
-  val setups = ValueWithOnePropertySetup.setups
+class ValueWithOnePropertyTestProjectFactory(
+    testSettings: ITestSettings
+  ) extends ProjectFactory(testSettings) {
 
-  val projects =
+  private lazy val setups = new ValueWithOnePropertySetupFactory(testSettings).setups
+
+  def projects =
     (setups.groupBy(_.propertyType.typeNameSafe) map { case (typeNameSafe, typeSetups) =>
     new ITestProject {
       def projectPath = "values/value-single-" + typeNameSafe

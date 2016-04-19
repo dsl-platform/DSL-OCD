@@ -10,13 +10,16 @@ import javas._
 import javatest._
 import javatest.property._
 
-private[domain] object AggregateWithSurrogateKeyAndOnePropertySetup {
+private[domain] class AggregateWithSurrogateKeyAndOnePropertySetupFactory(
+    testSettings: ITestSettings
+  ) extends SetupFactory(testSettings) {
+
   val setups = for {
     st <- AggregateRootSugar.values
-    t <- OcdType.useCaseValues
+    t <- OcdType.useCaseValues(testSettings)
     b <- OcdBox.values
     if !(b.collectionFamily == Some(CollectionFamily.Queue) && b.areElementsNullable == Some(true)) // Queue cannot contain null elements
-//    if (t.typeName != "String" && t.typeName != "Text" && t.typeName != "Binary") || !b.isCollection
+    if !isOracle || (t.typeName != "String" && t.typeName != "Text" && t.typeName != "Binary" || !b.isCollection)
     d = OcdDslBoxType.resolve(t, b)
   } yield {
     new AggregateWithSurrogateKeyAndOnePropertySetup(st, d)
@@ -178,10 +181,13 @@ class AggregateWithSurrogateKeyAndOnePropertyTestProject(
   }
 }
 
-object AggregateWithSurrogateKeyAndOnePropertyTestProject {
-  private val setups = AggregateWithSurrogateKeyAndOnePropertySetup.setups
+class AggregateWithSurrogateKeyAndOnePropertyTestProjectFactory(
+    testSettings: ITestSettings
+  ) extends ProjectFactory(testSettings) {
 
-  val projects =
+  private lazy val setups = new AggregateWithSurrogateKeyAndOnePropertySetupFactory(testSettings).setups
+
+  def projects =
     (setups.groupBy(_.propertyType.typeNameSafe) map { case (typeNameSafe, typeSetups) =>
       new ITestProject {
         def projectPath = "aggregates/surrogate-single-" + typeNameSafe

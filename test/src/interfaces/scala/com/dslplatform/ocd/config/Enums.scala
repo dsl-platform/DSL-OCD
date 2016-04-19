@@ -33,7 +33,6 @@ object Revenj extends EnumObj[Revenj] {
   val values = IndexedSeq(DotNet, Java)
 }
 
-
 sealed trait Database extends Enum { val templateName: String }
 object Database extends EnumObj[Database] {
   case object PostgreSQL extends Database { val templateName = "postgres" }
