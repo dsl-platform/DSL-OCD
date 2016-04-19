@@ -3,6 +3,9 @@ package com.dslplatform.ocd.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.dslplatform.ocd.NonCompiledTestsCollector;
+import com.dslplatform.ocd.Utils;
+import com.dslplatform.ocd.generated.Property;
 import com.dslplatform.ocd.generated.Testcase;
 import com.dslplatform.ocd.generated.Testsuite;
 import com.dslplatform.ocd.generated.Testsuites;
@@ -10,14 +13,15 @@ import com.dslplatform.ocd.generated.Testsuites;
 public class TestsuitesDao {
 
     private final Testsuites testsuites;
+
     public TestsuitesDao(final Testsuites testsuites){
         this.testsuites = testsuites;
     }
 
     public static String getSuccessRateAsString(final Testsuite ts) {
-        final Integer tests = Integer.parseInt(ts.getTests());
-        final Integer failures = Integer.parseInt(ts.getFailures());
-        final Integer errors = Integer.parseInt(ts.getErrors());
+        final Integer tests = Utils.parseInt(ts.getTests());
+        final Integer failures = Utils.parseInt(ts.getFailures());
+        final Integer errors = Utils.parseInt(ts.getErrors());
         final Double successRate = 100 * ((double)(tests - failures - errors)) / tests;
         return String.format("%.2f", successRate);
     }
@@ -30,8 +34,8 @@ public class TestsuitesDao {
     public List<Testsuite> getSuccessfulTestsuites() {
         final List<Testsuite> testsuites = new ArrayList<Testsuite>();
         for(final Testsuite ts : this.testsuites.getTestsuite()){
-            final int errors = Integer.parseInt(ts.getErrors());
-            final int failures = Integer.parseInt(ts.getFailures());
+            final int errors = Utils.parseInt(ts.getErrors());
+            final int failures = Utils.parseInt(ts.getFailures());
             if(errors == 0 && failures == 0)
                 testsuites.add(ts);
         }
@@ -41,8 +45,8 @@ public class TestsuitesDao {
     public List<Testsuite> getFailedTestsuites() {
         final List<Testsuite> testsuites = new ArrayList<Testsuite>();
         for(final Testsuite ts : this.testsuites.getTestsuite()){
-            final int errors = Integer.parseInt(ts.getErrors());
-            final int failures = Integer.parseInt(ts.getFailures());
+            final int errors = Utils.parseInt(ts.getErrors());
+            final int failures = Utils.parseInt(ts.getFailures());
             if(errors > 0 || failures > 0)
                 testsuites.add(ts);
         }
@@ -76,7 +80,7 @@ public class TestsuitesDao {
     public int getTestCount(){
         int sum=0;
         for(final Testsuite testsuite: this.testsuites.getTestsuite()){
-            final int tests = Integer.parseInt(testsuite.getTests());
+            final int tests = Utils.parseInt(testsuite.getTests());
             sum += tests;
         }
         return sum;
@@ -85,7 +89,7 @@ public class TestsuitesDao {
     public int getErrorCount(){
         int sum=0;
         for(final Testsuite testsuite: this.testsuites.getTestsuite()){
-            final int errors = Integer.parseInt(testsuite.getErrors());
+            final int errors = Utils.parseInt(testsuite.getErrors());
             sum += errors;
         }
         return sum;
@@ -94,7 +98,7 @@ public class TestsuitesDao {
     public int getFailureCount(){
         int sum=0;
         for(final Testsuite testsuite: this.testsuites.getTestsuite()){
-            final int failures = Integer.parseInt(testsuite.getFailures());
+            final int failures = Utils.parseInt(testsuite.getFailures());
             sum += failures;
         }
         return sum;
@@ -103,9 +107,22 @@ public class TestsuitesDao {
     public Double getTime(){
         Double sum = Double.valueOf(0);
         for(final Testsuite testsuite: this.testsuites.getTestsuite()){
-            final Double time = Double.parseDouble(testsuite.getTime());
-            sum += time;
+            final Double time = Utils.parseDouble(testsuite.getTime());
+            if(time != null) sum += time;
         }
         return sum;
+    }
+
+    public String getProperty(Testsuite ts, String name) {
+        String result = null;
+
+        if(ts!= null && ts.getProperties() != null && ts.getProperties().getProperty() != null)
+        for(Property prop: ts.getProperties().getProperty()) {
+            if(prop.getName()!=null && prop.getName().equals(name)){
+                result = prop.getValue();
+            }
+        }
+
+        return result;
     }
 }

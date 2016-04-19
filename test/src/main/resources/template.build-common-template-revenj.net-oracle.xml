@@ -87,6 +87,12 @@
 
   <target name="clean-test" description="Deletes the test result for the project">
     <delete file="TEST-${testName}.xml" />
+    <antcall target="clean-log" />
+  </target>
+
+  <target name="clean-log" description="Deletes the project logs.">
+    <delete file="${build.log}" />
+    <delete file="${server.log}" />
   </target>
 
   <target name="clean" description="Performs a project clean, but tries to save time by not deleting the downloaded static dependencies. (Does not delete test results.)">

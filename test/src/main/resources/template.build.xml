@@ -15,6 +15,10 @@
 
   <property name="tools" location="../../../tools" />
 
+  <property name="build.log" location="${basedir}/TEST-${testName}_build.log" />
+  <property name="server.log" location="${basedir}/TEST-${testName}_server.log" />
+
   <record name="${basedir}/TEST-${testName}_build.log" action="start" append="false" />
+  <import file="../../../macrodef.xml" />
   <import file="../../../build-common-template.xml" />
 </project>

@@ -1,29 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="common" xmlns:if="ant:if" xmlns:unless="ant:unless">
-
-  <macrodef name="get-jetty-stop-port">
-    <attribute name="port"/>
-    <attribute name="result"/>
-    <sequential>
-      <script language="javascript">
-        stopPort = 10000 + parseInt('@{port}');
-        project.setProperty('@{result}', stopPort);
-      </script>
-    </sequential>
-  </macrodef>
-
-  <macrodef name="get-jetty-stop-key">
-    <attribute name="host"/>
-    <attribute name="port"/>
-    <attribute name="result"/>
-    <sequential>
-      <script language="javascript">
-        stopKey = 'stopkey-' + '@{host}' + '-' + '@{port}';
-        project.setProperty('@{result}', stopKey);
-      </script>
-    </sequential>
-  </macrodef>
-
   <loadproperties srcFile="${user.home}\.config\DSL-OCD\test.config"/>
 
   <property name="java.generated.dir" location="src/generated/java" />
@@ -42,7 +18,7 @@
   <property name="tools.lib" location="${tools}/lib" />
   <property name="tools.build" location="${tools}/build" />
   <property name="dsl-compiler.target" location="revenj.java" />
-  <property name="tools.revenj" location="${tools}/${dsl-compiler.target}" />
+  <property name="tools.revenj" location="${tools}/revenj.java" />
   <property name="tools.java_client" location="${tools}/java_client" />
   <property name="dsl-compiler-client" location="/${tools.build}/dsl-clc-1.6.2-20160419-133000.jar" />
   <property name="tools.dsl-compiler" location="${tools.build}/${dsl-compiler}" />
@@ -115,6 +91,12 @@
 
   <target name="clean-test" description="Deletes the test result for the project">
     <delete file="TEST-${testName}.xml" />
+    <antcall target="clean-log" />
+  </target>
+
+  <target name="clean-log" description="Deletes the project logs.">
+    <delete file="${build.log}" />
+    <delete file="${server.log}" />
   </target>
 
   <target name="clean" description="Performs a project clean, but tries to save time by not deleting the downloaded static dependencies. (Does not delete test results.)">
@@ -295,12 +277,15 @@
     <jar destfile="${target.test.packaged}" basedir="${target.test}" />
   </target>
 
-  <target name="run-revenj" description="Tries to invoke mono on our local Revenj instance, if it exists.">
+  <target name="run-revenj" description="Tries start jetty on our local Revenj instance">
+    <delete file="${server.log}" />
     <java jar="${tools.jetty-runner}" dir="${project.revenj}" fork="true" spawn="true">
       <arg value="--host" /> <arg value="${revenjHost}" />
       <arg value="--port" /> <arg value="${revenjPort}" />
       <arg value="--stop-port" /> <arg value="${jetty-stop-port}" />
       <arg value="--stop-key" /> <arg value="${jetty-stop-key}" />
+      <arg value="--out" /> <arg value="${server.log}" />
+      <arg value="--log" /> <arg value="${server.log}" />
       <arg value="${revenj.war}" />
     </java>
     <java jar="${tools.ping}" fork="true">

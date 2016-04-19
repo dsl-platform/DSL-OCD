@@ -329,6 +329,11 @@ private[config] class TestDeployer(
       val masterReportBuilderTarget = new java.io.File((root / "build.xml").toURI)
       copyPath(masterReportBuilder.toPath, masterReportBuilderTarget.toPath)
 
+      // Copy the macrodef.xml
+      val macrodef = new java.io.File(classOf[TestDeployer].getResource("/template.macrodef.xml").toURI)
+      val macrodefTarget = new java.io.File((root / "macrodef.xml").toURI)
+      copyPath(macrodef.toPath, macrodefTarget.toPath)
+
       // Copy the common build template file
       val commonBuildTemplateName = s"/template.build-common-template-${testSettings.revenj.templateName}-${testSettings.database.templateName}.xml"
       val commonTemplate = new java.io.File(classOf[TestDeployer].getResource(commonBuildTemplateName).toURI)
