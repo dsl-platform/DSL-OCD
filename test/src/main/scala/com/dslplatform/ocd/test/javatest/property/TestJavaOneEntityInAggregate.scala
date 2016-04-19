@@ -130,5 +130,4 @@ ${isDefault match {
         ${assertEquals("aggregateFound")}
     }
 """
-
 }

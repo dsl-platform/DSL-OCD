@@ -36,17 +36,17 @@ package object test {
 //    , `type.Email`
     , `type.Float`
     , `type.Guid`
-    , `type.Image` // ORA 0 points
+    , `type.Image`     // ORA 0 points
     , `type.Integer`
     , `type.Ip`
 //    , `type.Json`
-    , `type.Location` // ORA 0 points
+    , `type.Location`  // ORA 0 points
     , `type.Long`
-    , `type.Map` // ORA 0 points
+    , `type.Map`       // ORA 0 points
     , `type.Money`
 //    , `type.Native`
 //    , `type.Phone`
-    , `type.Point` // ORA 0 points
+    , `type.Point`     // ORA 0 points
     , `type.Rectangle` // ORA 0 points
 //    , `type.S3`
 //    , `type.Secret`
@@ -56,8 +56,8 @@ package object test {
     , `type.Text`
 //    , `type.Time`
     , `type.Timestamp`
-    , `type.Url` // ORA 0 points
-    , `type.Xml` // ORA 0 points
+    , `type.Url`       // ORA 0 points
+    , `type.Xml`       // ORA 0 points
     )
   }
 

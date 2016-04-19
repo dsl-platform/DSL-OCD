@@ -11,10 +11,8 @@ import java.nio.file.attribute.PosixFilePermission
 import org.apache.commons.io.IOUtils
 import org.apache.commons.lang.SystemUtils
 
-import scalax.io.Codec.UTF8
 import test.javatest.JavaInfo
 import test.javatest.TestSuiteCreator
-
 
 private[config] class TestDeployer(
     logger: Logger
@@ -219,12 +217,17 @@ private[config] class TestDeployer(
 
     private val JarExpansion = """(.*?path=")(.*)/\*\*\.jar(".*)""".r
 
-    private def deployEclipseProject(): Unit =
+    private def deployEclipseProject(): Unit = {
       testProject.testFiles.keys foreach { case language =>
         val languageRoot = languageProjectRoot(language)
 
         language match {
           case JAVA =>
+            val gitignorePath = languageRoot / ".gitignore"
+            logger.trace("Creating .gitignore file: " + gitignorePath.path)
+            val gitignore = Path(new java.io.File(classOf[TestDeployer].getResource("/template..gitignore").toURI))
+            gitignore.copyTo(target = gitignorePath, replaceExisting = true)
+
             val projectPath = languageRoot / ".project"
             logger.trace("Creating Eclipse .project file: " + projectPath.path)
             val projectBody = applyTemplates(IOUtils.toString(
@@ -252,6 +255,7 @@ private[config] class TestDeployer(
           case _ =>
         }
       }
+    }
 
     def deploy(): Unit = {
       logger.debug("Deploying {} ...", testProject.projectName)
@@ -315,11 +319,6 @@ private[config] class TestDeployer(
 
       copyPath(templateToolsPath.jfile.toPath, toolsTargetDir.toPath)
 
-      // Copy the .gitignore for diff via versioning
-      val gitignore = new java.io.File(classOf[TestDeployer].getResource("/template..gitignore").toURI)
-      val gitignoreTarget = new java.io.File((root / ".gitignore").toURI)
-      copyPath(gitignore.toPath, gitignoreTarget.toPath)
-
       /* Copy the xsl sheets for JUnit report transformation: */
       val xslTemplateDir = new java.io.File(classOf[TestDeployer].getResource("/template.report").toURI)
       val xslTargetDir = new java.io.File((root / "report").toURI)
@@ -368,7 +367,17 @@ private class CopyDirVisitor(logger: Logger, sourcePath: java.nio.file.Path, tar
 
     override def visitFile(file: java.nio.file.Path, attrs: BasicFileAttributes): FileVisitResult = {
       val targetFile = targetPath.resolve(sourcePath.relativize(file))
-      Files.copy(file, targetFile, StandardCopyOption.COPY_ATTRIBUTES, StandardCopyOption.REPLACE_EXISTING)
+      try {
+        Files.copy(file, targetFile, StandardCopyOption.COPY_ATTRIBUTES, StandardCopyOption.REPLACE_EXISTING)
+      }
+      catch {
+        case e: java.io.IOException =>
+          if (file.getFileName.toString == "jetty-runner.jar") {
+            logger.warn("Could not overwrite jetty-runner, it is being used!")
+          } else {
+            throw e
+          }
+      }
 
       if (!SystemUtils.IS_OS_WINDOWS) {
         val perms = Files.getPosixFilePermissions(file)

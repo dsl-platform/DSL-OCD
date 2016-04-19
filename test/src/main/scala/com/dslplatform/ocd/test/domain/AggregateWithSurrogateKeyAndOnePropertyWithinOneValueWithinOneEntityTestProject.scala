@@ -11,7 +11,7 @@ import javas._
 import javatest._
 import javatest.property._
 
-private[domain] object AggregateWithSurrogateKeyAndOnePropertyWithinOneValueSetup {
+private[domain] object AggregateWithSurrogateKeyAndOnePropertyWithinOneValueWithinOneEntitySetup {
   val setups = for {
     st <- AggregateRootSugar.values
     t <- OcdType.useCaseValues
@@ -20,21 +20,23 @@ private[domain] object AggregateWithSurrogateKeyAndOnePropertyWithinOneValueSetu
 //    if (t.typeName != "String" && t.typeName != "Text" && t.typeName != "Binary") || !b.isCollection
     d = OcdDslBoxType.resolve(t, b)
   } yield {
-    new AggregateWithSurrogateKeyAndOnePropertyWithinOneValueSetup(st, d)
+    new AggregateWithSurrogateKeyAndOnePropertyWithinOneValueWithinOneEntitySetup(st, d)
   }
 }
 
-private[domain] class AggregateWithSurrogateKeyAndOnePropertyWithinOneValueSetup(
+private[domain] class AggregateWithSurrogateKeyAndOnePropertyWithinOneValueWithinOneEntitySetup(
     val sugarType: AggregateRootSugar
   , val propertyType: OcdDslBoxType
   ) extends TestSetup {
 
-  def ModuleName = "AggregateOneValue" + propertyType.typeNameSafe
-  def aggregateComment = s"${sugarType}WithSurrogateKeyAnd${propertyType.dslDesc}PropertyWithinOneValue"
+  def ModuleName = "AggregateOneEntityOneValue" + propertyType.typeNameSafe
+  def aggregateComment = s"${sugarType}WithSurrogateKeyAnd${propertyType.dslDesc}PropertyWithinOneEntityAndOneValue"
 
   def shortName = propertyType.dslDescShort
   def AggregateName = sugarType.shortName + shortName
   def aggregateName = AggregateName.fcil
+  def EntityName = sugarType.shortName.head + "E" + shortName
+  def entityName = EntityName.fcil
   def ValueName = "V" + shortName
   def valueName = ValueName.fcil
   def PropertyName = "P" + shortName
@@ -47,6 +49,10 @@ s"""module ${ModuleName}
 {
   // ${aggregateComment}
   ${sugarType.sugarDsl} ${AggregateName} {
+    ${EntityName} ${entityName};
+  }
+
+  entity ${EntityName} {
     ${ValueName} ${valueName};
   }
 
@@ -60,13 +66,13 @@ s"""module ${ModuleName}
   val dslFiles = Map(dslPath -> dslBody)
 }
 
-class AggregateWithSurrogateKeyAndOnePropertyWithinOneValueTestProject(
-    setup: AggregateWithSurrogateKeyAndOnePropertyWithinOneValueSetup
+class AggregateWithSurrogateKeyAndOnePropertyWithinOneValueWithinOneEntityTestProject(
+    setup: AggregateWithSurrogateKeyAndOnePropertyWithinOneValueWithinOneEntitySetup
   ) extends ITestProject {
 
-  def projectPath = "aggregates/surrogate-one-value-" + setup.AggregateName
-  def ProjectNameCamel = "SurrogateOneValue" + setup.AggregateName
-  def projectName = s"OCD Single Property within One Value in Aggregate With Surrogate Key Tests (${setup.AggregateName})"
+  def projectPath = "aggregates/surrogate-one-entity-one-value-" + setup.AggregateName
+  def ProjectNameCamel = "SurrogateOneEntityOneValue" + setup.AggregateName
+  def projectName = s"OCD Single Property within One Value within One Entity in Aggregate With Surrogate Key Tests (${setup.AggregateName})"
 
   def dslFiles = setup.dslFiles
 
@@ -94,7 +100,6 @@ class AggregateWithSurrogateKeyAndOnePropertyWithinOneValueTestProject(
     val repoName = setup.AggregateName.fcil + "Repository"
 
     val aggregateConcept = "ocd." + setup.ModuleName + "." + setup.AggregateName
-    val valueConcept = "ocd." + setup.ModuleName + "." + setup.ValueName
     val javaProperty = OcdJavaBoxTypeProperty(setup.propertyName, ojbt)
 
     override def leadingBlocks = Seq(s"""
@@ -148,42 +153,42 @@ class AggregateWithSurrogateKeyAndOnePropertyWithinOneValueTestProject(
         def property = idProperty
         def visibility = Visibility.Private
       }
-    , new TestJavaOneValueInAggregate {
+    , new TestJavaOneValueInOneEntityInAggregate {
         def conceptName = aggregateConcept
         def property = javaProperty
         def isDefault = true
         def testID = "Default"
         def testValue = ojbt.defaultValue
         def valueName = setup.valueName
-        def valueConceptName = valueConcept
+        def entityName = setup.entityName
         def repositoryName = repoName
       }
     ) ++ ojbt.nonDefaultValues.zipWithIndex.map { case (ndv, index) =>
-      new TestJavaOneValueInAggregate {
+      new TestJavaOneValueInOneEntityInAggregate {
         def conceptName = aggregateConcept
         def property = javaProperty
         def isDefault = false
         def testID = "NonDefault" + (index + 1)
         def testValue = ndv
         def valueName = setup.valueName
-        def valueConceptName = valueConcept
+        def entityName = setup.entityName
         def repositoryName = repoName
       }
     }
   }
 }
 
-object AggregateWithSurrogateKeyAndOneValueTestProject {
-  private val setups = AggregateWithSurrogateKeyAndOnePropertyWithinOneValueSetup.setups
+object AggregateWithSurrogateKeyAndOnePropertyWithinOneValueWithinOneEntityTestProject {
+  private val setups = AggregateWithSurrogateKeyAndOnePropertyWithinOneValueWithinOneEntitySetup.setups
 
   val projects =
     (setups.groupBy(_.propertyType.typeNameSafe) map { case (typeNameSafe, typeSetups) =>
       new ITestProject {
-        def projectPath = "aggregates/surrogate-one-value-" + typeNameSafe
-        def ProjectNameCamel = "SurrogateOneValue" + typeNameSafe
-        def projectName = s"OCD Single Property within One Value in Aggregate With Surrogate Key Tests (${typeNameSafe})"
+        def projectPath = "aggregates/surrogate-one-entity-one-value-" + typeNameSafe
+        def ProjectNameCamel = "SurrogateOneEntityOneValue" + typeNameSafe
+        def projectName = s"OCD Single Property within One Value within One Entity in Aggregate With Surrogate Key Tests (${typeNameSafe})"
         val dslFiles = typeSetups.dslFiles
-        val testFiles = typeSetups.map(new AggregateWithSurrogateKeyAndOnePropertyWithinOneValueTestProject(_)).testFiles
+        val testFiles = typeSetups.map(new AggregateWithSurrogateKeyAndOnePropertyWithinOneValueWithinOneEntityTestProject(_)).testFiles
       }
     }) toSeq
 }
