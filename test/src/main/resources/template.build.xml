@@ -1,17 +1,19 @@
 <?xml version="1.0"?>
 <project name="#{projectName}" xmlns:if="ant:if" xmlns:unless="ant:unless">
 
+  <loadproperties srcFile="../../../projectNamesAndPortsRepository.properties" />
+
   <property name="projectShortName" value="#{projectShortName}" />
   <property name="ProjectNameCamel" value="#{ProjectNameCamel}" />
   <property name="testName" value="com.dslplatform.ocd.test.#{ProjectNameCamel}" />
 
   <property name="dbName" value="#{dbName}" />
-  <property name="revenjHost" value="#{revenjHost}" />
-  <property name="revenjPort" value="#{revenjPort}" />
+  <property name="revenjHost" value="${#{projectShortName}.revenjHost}" />
+  <property name="revenjPort" value="${#{projectShortName}.revenjPort}" />
 
   <filter token="dbName" value="${dbName}" />
-  <filter token="revenjHost" value="${revenjHost}" />
-  <filter token="revenjPort" value="${revenjPort}" />
+  <filter token="revenjHost" value="${#{projectShortName}.revenjHost}" />
+  <filter token="revenjPort" value="${#{projectShortName}.revenjPort}" />
 
   <property name="tools" location="../../../tools" />
 

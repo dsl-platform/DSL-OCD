@@ -287,7 +287,7 @@ private[config] class TestDeployer(
         , "dbOwner" -> "postgres"
         , "dbOwnerPassword" -> "ocdpassword"
         , "revenjHost" -> "127.0.0.1" // "[::1]"
-        , "revenjPort" -> projectNamesAndPortsRepository.generateProjectRevenjPort(projectShortName).toString()
+        , "revenjPort" -> projectNamesAndPortsRepository.generateProjectRevenjPort(projectShortName, "127.0.0.1").toString()
         , "toolsPath" -> (testSettings.workspace.path.path.replace('\\', '/') + "/tools")
         , "dslSource" -> dslSource.path
         , "revenjPath" -> revenjConfigTemplateTargetPath.path
@@ -409,19 +409,22 @@ private class ProjectNamesAndPortsRepository(logger: Logger, testSettings: ITest
    val propsIt = props.stringPropertyNames().iterator();
    while(propsIt.hasNext()) {
     val propName = propsIt.next()
-    val propVal = props.getProperty(propName).toInt
-    if (propVal > portSequence) {
-      portSequence = propVal
-    }
+     if(propName.endsWith(".port")) {
+       val propVal = props.getProperty(propName).toInt
+       if (propVal > portSequence) {
+         portSequence = propVal
+       }
+     }
    }
   }
 
-  def generateProjectRevenjPort(projectDatabaseName: String) = {
-    if(this.props.containsKey(projectDatabaseName)) {
-      this.apply(projectDatabaseName)
+  def generateProjectRevenjPort(projectShortName: String, projectHost: String) = {
+    this.props.setProperty(projectShortName + ".revenjHost", projectHost);
+    if(this.props.containsKey(projectShortName)) {
+      this.apply(projectShortName + ".revenjPort");
     }else{
       this.portSequence += 1
-      this.update(projectDatabaseName, portSequence)
+      this.update(projectShortName + ".revenjPort", portSequence)
       this.portSequence
     }
   }

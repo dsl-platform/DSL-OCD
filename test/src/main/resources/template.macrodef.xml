@@ -21,4 +21,12 @@
             </script>
         </sequential>
     </macrodef>
+
+    <macrodef name="sanitize-ports">
+        <sequential>
+            <java jar="${tools.port-corrector}" fork="true">
+                <arg value="projectNamesAndPortsRepository.properties" />
+            </java>
+        </sequential>
+    </macrodef>
 </project>

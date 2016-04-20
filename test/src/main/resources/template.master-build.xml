@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
 <project name="Master test report builder" xmlns:ocd="com.dslplatform.ocd">
 
+  <loadproperties srcFile="projectNamesAndPortsRepository.properties" />
+
   <property name="report.root" location="report" />
   <property name="report.src" location="report/OCD-Tests-Summary.xml" />
   <property name="report.target" location="report/site/" />
@@ -12,6 +14,8 @@
   <property name="tools" location="tools" />
   <property name="tools.revenj" location="tools/revenj" />
   <property name="tools.java_client" location="tools/java_client" />
+  <property name="tools.revenj" location="tools/revenj" />
+  <property name="tools.port-corrector" location="tools/build/dsl-ocd-util-port-corrector-0.1.0.jar" />
 
   <import file="macrodef.xml" />
 
@@ -186,6 +190,7 @@
     </subant>
   </target>
   <target name="all" description="Runs the full build and test suite">
+    <sanitize-ports />
     <subant failonerror="false">
       <fileset dir="." includes="**/build.xml" excludes="build.xml" />
       <target name="all" />
