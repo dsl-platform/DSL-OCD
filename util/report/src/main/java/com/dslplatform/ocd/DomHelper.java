@@ -75,9 +75,13 @@ public class DomHelper {
         a.setValue(value);
         return a;
     }
-
     public Node text(final Object data) {
-        return this.document.createTextNode(data.toString().replace("\n", "<br/>"));
+        return text(data, true);
+    }
+
+    public Node text(final Object data, boolean htmlIfyNewlines) {
+        if(htmlIfyNewlines) return this.document.createTextNode(data.toString().replace("\n", "<br/>"));
+        return this.document.createTextNode(data.toString());
     }
 
     public Element element(final String tagName) {
@@ -175,8 +179,8 @@ public class DomHelper {
         return this.element("a", children);
     }
 
-    public Element code(final Object ... children) {
-        return this.element("code", children);
+    public Element code(final String content) {
+        return this.element("code", this.text(content, false));
     }
 
     public Element html(final Object ... children) {

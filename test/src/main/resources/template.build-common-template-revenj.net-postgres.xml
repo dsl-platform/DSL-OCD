@@ -19,7 +19,8 @@
 
   <property name="tools.lib" location="${tools}/lib" />
   <property name="tools.build" location="${tools}/build" />
-  <property name="tools.revenj" location="${tools}/revenj.net" />
+  <property name="dsl-compiler.target" location="revenj.net" />
+  <property name="tools.revenj" location="${tools}/${dsl-compiler.target}" />
   <property name="tools.java_client" location="${tools}/java_client" />
   <property name="dsl-compiler-client" location="/${tools.build}/dsl-clc-1.6.2-20160419-133000.jar" />
   <property name="tools.dsl-compiler" location="${tools.build}/${dsl-compiler}" />
@@ -35,7 +36,7 @@
   <property name="target.test.packaged" location="${target}/${projectShortName}-test.jar" />
 
   <property name="project.revenj" location="revenj.net" />
-  <property name="revenj.exe" location="revenj.net/Revenj.Http.exe" />
+  <property name="revenj.exe" location="${project.revenj}/Revenj.Http.exe" />
   <property name="revenj.config.template" location="${tools}/config/Revenj.Http.exe.config.template" />
   <property name="revenj.config" location="${project.revenj}/Revenj.Http.exe.config" />
 
@@ -87,6 +88,12 @@
 
   <target name="clean-test" description="Deletes the test result for the project">
     <delete file="TEST-${testName}.xml" />
+    <antcall target="clean-log" />
+  </target>
+
+  <target name="clean-log" description="Deletes the project logs.">
+    <delete file="${build.log}" />
+    <delete file="${server.log}" />
   </target>
 
   <target name="clean" description="Performs a project clean, but tries to save time by not deleting the downloaded static dependencies. (Does not delete test results.)">

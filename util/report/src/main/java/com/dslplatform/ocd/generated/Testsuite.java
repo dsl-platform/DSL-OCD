@@ -24,29 +24,29 @@ import javax.xml.bind.annotation.XmlType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  *
  * <pre>
- * &lt;complexType>
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element ref="{}properties" minOccurs="0"/>
- *         &lt;element ref="{}testcase" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element ref="{}system-out" minOccurs="0"/>
- *         &lt;element ref="{}system-err" minOccurs="0"/>
- *       &lt;/sequence>
- *       &lt;attribute name="name" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="tests" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="failures" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="errors" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="time" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="disabled" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="skipped" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="timestamp" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="hostname" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="package" type="{http://www.w3.org/2001/XMLSchema}string" />
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element ref="{}properties" minOccurs="0"/&gt;
+ *         &lt;element ref="{}testcase" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *         &lt;element ref="{}system-out" minOccurs="0"/&gt;
+ *         &lt;element ref="{}system-err" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *       &lt;attribute name="name" use="required" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *       &lt;attribute name="tests" use="required" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *       &lt;attribute name="failures" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *       &lt;attribute name="errors" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *       &lt;attribute name="time" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *       &lt;attribute name="disabled" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *       &lt;attribute name="skipped" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *       &lt;attribute name="timestamp" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *       &lt;attribute name="hostname" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *       &lt;attribute name="package" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  *
  *

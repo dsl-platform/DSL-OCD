@@ -13,11 +13,11 @@
   <property name="tools.revenj" location="tools/revenj" />
   <property name="tools.java_client" location="tools/java_client" />
 
+  <import file="macrodef.xml" />
+
   <tstamp>
     <format property="test.timestamp" pattern="yyyy-MM-dd_hh:mm:ss" />
   </tstamp>
-
-  <import file="macrodef.xml" />
 
   <target name="collect-reports" description="Collects the test results of all subprojects">
     <junitreport todir="${report.root}" tofile="OCD-Tests-Summary.xml">
@@ -32,6 +32,7 @@
       <arg value="${user.dir}" />
       <arg value="${report.target}" />
       <arg value="${report.root}/OCD-Tests-Summary.xml" />
+      <arg value="generate-wins-by-all-means" />
     </java>
   </target>
 
