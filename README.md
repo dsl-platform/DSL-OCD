@@ -32,16 +32,8 @@ Grant `SUPERUSER` to `OCDSUPERUSER`:
     $ psql
     postgres=# ALTER ROLE "OCDSUPERUSER" WITH SUPERUSER;
 
-**This is a temporary hack**
-
-Grant `SUPERUSER` to `ocduser`:
-
-    $ psql
-    postgres=# ALTER ROLE "ocduser" WITH SUPERUSER;
-
 ### Firewall ###
 If testing on Windows run `docs\firewall.bat`, `docs\firewall-rule.bat`
-
 
 CONFIGURATION
 -------------

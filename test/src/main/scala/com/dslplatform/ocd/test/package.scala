@@ -26,8 +26,9 @@ package object test {
   import types._
 
   val overrideTypes = Seq(
+//    `type.Integer`
 //    `type.Double`
-//    `type.Point`
+    `type.Point`
   )
 
   object OcdTypeSingletonExtender {

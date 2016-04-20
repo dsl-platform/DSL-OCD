@@ -1,13 +1,7 @@
 .cache
-.cache-main
 .classpath
 .idea
 .project
 .settings
 .target
 target
-*.class
-*.tmp
-*~
-#*#
-staging
