@@ -19,7 +19,7 @@
 
   <property name="tools.lib" location="${tools}/lib" />
   <property name="tools.build" location="${tools}/build" />
-  <property name="dsl-compiler.target" location="dotnet_server_oracle_64" />
+  <property name="dsl-compiler.target" location="dotnet_server_oracle_32" />
   <property name="tools.revenj" location="${tools}/${dsl-compiler.target}" />
   <property name="tools.java_client" location="${tools}/java_client" />
   <property name="dsl-compiler-client" location="/${tools.build}/dsl-clc-1.6.2-20160419-133000.jar" />
@@ -36,7 +36,7 @@
   <property name="target.main.packaged" location="${target}/${projectShortName}.jar" />
   <property name="target.test.packaged" location="${target}/${projectShortName}-test.jar" />
 
-  <property name="project.revenj" location="dotnet_server_oracle_64" />
+  <property name="project.revenj" location="dotnet_server_oracle_32" />
   <property name="revenj.exe" location="${project.revenj}/Revenj.Http.exe" />
   <property name="revenj.config.template" location="${tools}/config/Revenj.Http.exe.config.template" />
   <property name="revenj.config" location="${project.revenj}/Revenj.Http.exe.config" />
@@ -167,7 +167,7 @@
       </classpath>
       <arg value="dsl=${dsl.src}" />
       <arg value="compiler=${tools.dsl-compiler}" />
-      <arg value="target=dotnet_server_oracle_64" />
+      <arg value="target=dotnet_server_oracle_32" />
       <arg line="${revenj.optional.download}" />
       <arg value="temp=${server.tmp}" />
       <arg value="settings=${serverSettings}" />
