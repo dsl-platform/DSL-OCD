@@ -3,23 +3,22 @@ package config
 
 class TestSettings(logger: Logger) {
   def load(relativePath: String) = {
-    val testIni = Path(
+    val testIni = File(
       sys.props("user.home")
         .replace('\\', '/')
         .replaceFirst("\\+$", "") + "/.config/" + relativePath
-    , '/'
     )
 
     logger.info("Loading test settings from: " + testIni.path)
 
     val properties =
-      testIni.inputStream acquireAndGet { is =>
+      testIni.inputStream apply { is =>
         val props = new Properties
         props load is
         props
       }
 
-    def fromPath(path: String): Path = Path(new java.io.File(path).getAbsoluteFile)
+    def fromPath(path: String): File = File(new java.io.File(path).getAbsolutePath)
 
     val settings = new ITestSettings {
       val xkcd = XKCD.now

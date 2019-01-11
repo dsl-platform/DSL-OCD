@@ -2,9 +2,6 @@ package com.dslplatform.ocd
 package generator
 package dsls
 
-import scalax.file._
-import types._
-import boxes._
 import scala.collection.mutable.LinkedHashMap
 
 object DslBoxTypeGenerator

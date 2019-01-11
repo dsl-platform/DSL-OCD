@@ -3,6 +3,8 @@ package config
 
 import test.javatest.{JavaInfo, TestSuiteCreator}
 
+import scala.util.Try
+
 class TestDeployer(
     logger: Logger
   , testSettings: ITestSettings
@@ -61,17 +63,18 @@ class TestDeployer(
     }
   }
 
-  private def cleanAndCopy(source: Path, target: Path): Unit = {
+  private def cleanAndCopy(source: File, target: File): Unit = {
     if(target.exists) {
       logger.trace("Cleaning target path: " + target.path)
-      target.deleteRecursively(true, true)
+      target.delete()
     }
     logger.trace(s"Copying ${source.path} to ${target.path}")
-    source.copyTo(target = target, replaceExisting = true)
+    target.parent.createDirectories()
+    source.copyTo(destination = target, overwrite = true)
   }
 
   class TestSetup(testProject: ITestProject, namesAndPorts: NamesAndPorts) {
-    private val projectRoot = rootTarget / (testProject.projectPath, '/')
+    private val projectRoot = rootTarget / testProject.projectPath
     private val projectShortName = testProject.projectPath.replaceAll(".*/", "")
 
     private val serverHost = "127.0.0.1" // [::1]
@@ -120,15 +123,15 @@ class TestDeployer(
 
     private def deployDsl(): Unit = {
       logger.trace("Cleaning generated DSL: {}", dslTarget.path)
-      val remaining = dslTarget.deleteRecursively(true, true)._2
-      if (remaining > 0) {
-        logger.warn("Could not delete all generated DSL ({})!", remaining)
+      val deleted = Try(dslTarget.delete()).isSuccess
+      if (!deleted) {
+        logger.warn("Could not delete all generated DSL!")
       }
       val dsls = testProject.dslFiles
       if (dsls.nonEmpty) {
         logger.debug("Deploying {} DSL files to {} ...", dsls.size, dslTarget.path)
         dsls.par foreach { case (filename, body) =>
-          val path = dslTarget / (filename, '/')
+          val path = dslTarget / filename
           logger.trace("Deploying DSL: {}", path.path)
           path.write(body)
         }
@@ -145,31 +148,31 @@ class TestDeployer(
       logger.trace("Preparing the generated code paths ...")
       val languages = testProject.testFiles.keys
 
-      languages foreach { case language =>
+      languages foreach { language =>
         val generatedRoot = generatedCode(language)
         if (!generatedRoot.exists) {
           logger.trace("Creating the generated path: " + generatedRoot.path)
-          generatedRoot.createDirectory(true, false)
+          generatedRoot.createDirectories()
         }
 
         val resourcePath = generatedResources(language)
         if (!resourcePath.exists) {
           logger.trace("Creating the generated resource path: " + resourcePath.path)
-          resourcePath.createDirectory(true, false)
+          resourcePath.createDirectories()
         }
       }
 
-      languages foreach { case language =>
+      languages foreach { language =>
         val mainRoot = mainCode(language)
         if (!mainRoot.exists) {
           logger.trace("Creating the main path: {}", mainRoot.path)
-          mainRoot.createDirectory(true, false)
+          mainRoot.createDirectories()
         }
 
         val resourcePath = mainResources(language)
         if (!resourcePath.exists) {
           logger.trace("Creating the main resource path: {}", resourcePath.path)
-          resourcePath.createDirectory(true, false)
+          resourcePath.createDirectories()
         }
       }
 
@@ -184,9 +187,9 @@ class TestDeployer(
         val path = testRoot(language)
         logger.trace(s"Cleaning ($language) tests: " + path.path)
 
-        val remaining = path.deleteRecursively(true, true)._2
-        if (remaining > 0) {
-          logger.warn(s"Could not delete all code for {} (remaining: {})!", language, remaining)
+        val deleted = Try(path.delete()).isSuccess
+        if (!deleted) {
+          logger.warn(s"Could not delete all code for {}!", language)
         }
       }
 
@@ -205,14 +208,14 @@ class TestDeployer(
 
         val suiteWithTests = files + suite.toEntry
         suiteWithTests.par foreach { case (filename, body) =>
-          val path = testRootForLanguage / (filename, '/')
+          val path = testRootForLanguage / filename
           logger.trace("Deploying test: {}", path.path)
           path.write(Patches.fixTests(body))
         }
 
         logger.trace("Deploying test resources ...")
         val testResourcesPath = testResources(language)
-        (testResourcesTemplate ***) foreach { testResource =>
+        testResourcesTemplate.listRecursively foreach { testResource =>
           logger.trace("Deploying test resource: {}", testResource.path)
           copyTemplate(testResource, testResourcesPath / testResource.name)
         }
@@ -233,9 +236,9 @@ class TestDeployer(
         }
       }
 
-    private def copyTemplate(source: Path, target: Path, process: String => String = templateApplication) = {
+    private def copyTemplate(source: File, target: File, process: String => String = templateApplication) = {
       logger.trace(s"Creating the ${source.name} script: {}", target.path)
-      val body = process(source.string)
+      val body = process(source.contentAsString)
       target write body
     }
 
@@ -264,7 +267,7 @@ class TestDeployer(
             case "compile/revenj.java" => "temp/server/dependencies"
             case other => sys.error("Unknown classpath reference: " + other)
           }
-          ((toolsTemplate / Path.fromString(path) ** "*.jar").toSeq map { jar =>
+          ((toolsTemplate / path).list(_.extension.contains("jar")).toSeq map { jar =>
             before + pathFix + '/' + jar.name + after
           }).sorted.mkString("\n")
         case line =>

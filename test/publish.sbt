@@ -11,14 +11,15 @@ scalacOptions in (Compile, doc) ++= Seq(
   "-doc-source-url", {
     val base = "https://github.com/dsl-platform/DSL-OCD/"
     val tag = if (isSnapshot.value) "tree/master" else s"blob/v${version.value}"
+    val section = baseDirectory.value.getParentFile.getName
     val project = baseDirectory.value.getName
-    base + tag + "/" + project + "\u20AC{FILE_PATH}.scala"
-  }
+    base + tag + "/" + section + "/" + project + "\u20AC{FILE_PATH}.scala"
+  },
 )
 
 packageOptions := Seq(Package.ManifestAttributes(
   ("Implementation-Vendor", "DSL Platform"),
-  ("Sealed", "true")
+  ("Sealed", "true"),
 ))
 
 publishTo := Some(if (isSnapshot.value) Opts.resolver.sonatypeSnapshots else Opts.resolver.sonatypeStaging)

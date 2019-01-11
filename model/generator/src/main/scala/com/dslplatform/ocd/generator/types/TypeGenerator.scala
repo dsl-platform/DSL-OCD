@@ -1,7 +1,6 @@
 package com.dslplatform.ocd
 package generator.types
 
-import scalax.file._
 import com.dslplatform.ocd.generator.Generator
 
 object TypeGenerator

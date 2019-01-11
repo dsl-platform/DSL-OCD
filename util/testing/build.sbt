@@ -2,7 +2,7 @@
 
 organization := "com.dslplatform.ocd"
 name := "DSL-OCD-Util-Testing"
-version := "0.2.2"
+version := "0.4.0"
 
 unmanagedSourceDirectories in Compile := Seq(
   (javaSource in Compile).value
@@ -15,8 +15,8 @@ autoScalaLibrary := false
 // ### DEPENDENCIES ### //
 
 libraryDependencies ++= Seq(
-  "junit" % "junit" % "4.12"
-, "commons-lang" % "commons-lang" % "2.6"
+  "junit"              % "junit"         % "4.12",
+  "org.apache.commons" % "commons-lang3" % "3.8.1",
 )
 
 packageOptions in (Compile, packageBin) +=

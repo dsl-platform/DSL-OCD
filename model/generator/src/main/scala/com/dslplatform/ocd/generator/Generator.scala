@@ -1,24 +1,22 @@
 package com.dslplatform.ocd
 package generator
 
-import scalax.file._
 import java.util.Properties
 
-trait Generator {
-  private def readPath(path: String): Path =
-    Path(path.replace('\\', '/'), '/')
+import better.files._
 
+trait Generator {
   private val props = {
     val tmp = new Properties()
-    val config = readPath(sys.props("user.home")) /
+    val config = File(sys.props("user.home")) /
       ".config" / "DSL-OCD" / "ocd.config"
-    config.inputStream acquireAndGet { tmp.load }
+    config.inputStream apply { tmp.load }
     tmp
   }
 
   private val generated = props.getProperty("model")
 
-  private def gene(name: String, language: String) = readPath(generated) /
+  private def gene(name: String, language: String) = File(generated) /
     name / "src" / "generated" / language / "com" / "dslplatform" / "ocd"
 
   def spawnDirectory(name: String, language: String) = {
@@ -27,11 +25,10 @@ trait Generator {
 
     if (root.isDirectory) {
       println(s"Cleaning directory: ${root.path} ...")
-      root.*** foreach(_.delete(true))
-    }
-    else {
+      root.list.foreach(_.delete())
+    } else {
       println(s"Creating directory: ${root.path} ...")
-      root.createDirectory(true, true)
+      root.createDirectories()
     }
 
     root

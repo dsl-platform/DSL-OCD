@@ -5,11 +5,11 @@ object EntryPoint
     extends App {
 
   Seq(
-    boxes.BoxGenerator
-  , types.TypeGenerator
-  , dsls.DslBoxTypeGenerator
-  , javas.JavaGenerator
-  , javas.JavaAssertGenerator
-  , scalas.ScalaGenerator
-  ).par.foreach(_.generate)
+    boxes.BoxGenerator,
+    types.TypeGenerator,
+    dsls.DslBoxTypeGenerator,
+    javas.JavaGenerator,
+    javas.JavaAssertGenerator,
+    scalas.ScalaGenerator,
+  ).par.foreach(_.generate())
 }

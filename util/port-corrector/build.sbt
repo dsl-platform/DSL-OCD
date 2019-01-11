@@ -2,10 +2,10 @@
 
 organization := "com.dslplatform.ocd"
 name := "DSL-OCD-Util-Port-Corrector"
-version := "0.2.2"
+version := "0.4.0"
 
 unmanagedSourceDirectories in Compile := Seq(
-  (javaSource in Compile).value
+  (javaSource in Compile).value,
 )
 unmanagedSourceDirectories in Test := Nil
 

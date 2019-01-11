@@ -5,7 +5,6 @@ package javas
 import types._
 import boxes._
 
-import scalax.file._
 import scala.collection.mutable.LinkedHashSet
 
 object JavaGenerator

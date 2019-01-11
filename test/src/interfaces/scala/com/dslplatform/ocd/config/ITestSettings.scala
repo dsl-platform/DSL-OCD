@@ -4,7 +4,7 @@ package config
 trait ITestSettings {
   def xkcd: XKCD
   def workspace: Workspace
-  def templates: Path
+  def templates: File
 
   def revenj: Revenj
   def database: Database

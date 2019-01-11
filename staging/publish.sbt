@@ -13,12 +13,12 @@ scalacOptions in (Compile, doc) ++= Seq(
     val tag = if (isSnapshot.value) "tree/master" else s"blob/v${version.value}"
     val project = baseDirectory.value.getName
     base + tag + "/" + project + "\u20AC{FILE_PATH}.scala"
-  }
+  },
 )
 
 packageOptions := Seq(Package.ManifestAttributes(
   ("Implementation-Vendor", "DSL Platform"),
-  ("Sealed", "true")
+  ("Sealed", "true"),
 ))
 
 publishTo := Some(if (isSnapshot.value) Opts.resolver.sonatypeSnapshots else Opts.resolver.sonatypeStaging)

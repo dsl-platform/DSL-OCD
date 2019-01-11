@@ -2,8 +2,6 @@ package com.dslplatform.ocd
 package generator
 package boxes
 
-import scalax.file._
-
 object BoxGenerator
     extends Generator
     with BoxValues {

@@ -15,8 +15,8 @@ package object ocd
   type Files = Map[String, String]
   type MFiles = MMap[String, String]
 
-  type Path = scalax.file.Path
-  val Path = scalax.file.Path
+  type File = better.files.File
+  val File = better.files.File
 
   val XKCD = config.XKCD
   val Workspace = config.Workspace

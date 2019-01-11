@@ -29,7 +29,7 @@ class NamesAndPorts(
 
   private val props = new Properties()
   if (propertiesSourceFile.exists) {
-    propertiesSourceFile.inputStream acquireAndGet { props.load }
+    propertiesSourceFile.inputStream apply { props.load }
     for (propName <- props.stringPropertyNames.asScala) {
       if (propName endsWith ".port") {
         val propVal = props.getProperty(propName).toInt
@@ -54,7 +54,7 @@ class NamesAndPorts(
   private[this] def update(projectDatabase: String, port: Int): Unit = {
     props synchronized {
       props.setProperty(projectDatabase, port.toString)
-      this.propertiesSourceFile.outputStream() acquireAndGet {
+      this.propertiesSourceFile.outputStream() apply {
         val orderedProps = new Properties {
           override def keys() = java.util.Collections.enumeration(new java.util.TreeSet[AnyRef](super.keySet()))
         }

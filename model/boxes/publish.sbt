@@ -14,12 +14,12 @@ scalacOptions in (Compile, doc) ++= Seq(
     val section = baseDirectory.value.getParentFile.getName
     val project = baseDirectory.value.getName
     base + tag + "/" + section + "/" + project + "\u20AC{FILE_PATH}.scala"
-  }
+  },
 )
 
 packageOptions := Seq(Package.ManifestAttributes(
   ("Implementation-Vendor", "DSL Platform"),
-  ("Sealed", "true")
+  ("Sealed", "true"),
 ))
 
 publishTo := Some(if (isSnapshot.value) Opts.resolver.sonatypeSnapshots else Opts.resolver.sonatypeStaging)

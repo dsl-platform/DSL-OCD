@@ -1,35 +1,27 @@
 package com.dslplatform.ocd.config
 
-import java.io.File
-
-import scalax.file.Path
+import java.io.{File => JFile}
+import better.files._
 
 object Workspace {
   def apply(localPath: String): Workspace =
-    apply(new File(localPath))
-
-  def apply(file: File): Workspace =
-    apply(Path(file))
-
-  def apply(path: Path): Workspace =
-    new Workspace(path)
+    new Workspace(File(localPath))
 }
 
-class Workspace(val localPath: Path) {
-  val path = localPath.toRealPath()
-  val file = path.fileOption.get
+case class Workspace(path: File) {
+  val file = path.toJava
 
-  def /(child: String) = new Workspace(path / child)
+  def /(child: String): Workspace = new Workspace(path / child)
 
   def install(): this.type = {
-    path.createDirectory(true, false)
+    path.createDirectories()
     this
   }
 
   def install(child: String): Workspace =
     /(child).install()
 
-  def temporary[T](f: Workspace => T) = {
+  def temporary[T](f: Workspace => T): T = {
     val ws = install(XKCD.now.toString)
     try {
       f(ws)
@@ -38,8 +30,8 @@ class Workspace(val localPath: Path) {
     }
   }
 
-  def uninstall() =
-    path.deleteRecursively(true, true)._2 == 0
+  def uninstall(): Unit =
+    path.delete()
 
   override val toString = file.getPath
 }
