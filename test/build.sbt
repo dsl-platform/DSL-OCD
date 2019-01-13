@@ -16,13 +16,15 @@ unmanagedSourceDirectories in Test := Nil
 // ### DEPENDENCIES ### //
 
 libraryDependencies ++= Seq(
-  "com.dslplatform.ocd"    %% "dsl-ocd-model-dsls"   % "0.4.0",
-  "com.dslplatform.ocd"    %% "dsl-ocd-model-javas"  % "0.4.0",
-  "com.dslplatform.ocd"    %% "dsl-ocd-model-scalas" % "0.4.0",
-  "com.github.nscala-time" %% "nscala-time"          % "2.20.0",
-  "io.jvm.uuid"            %% "scala-uuid"           % "0.3.0",
-  "com.github.pathikrit"   %% "better-files"         % "3.7.0",
-  "ch.qos.logback"         %  "logback-classic"      % "1.2.3",
+  "com.dslplatform.ocd"        %% "dsl-ocd-model-dsls"   % "0.4.0",
+  "com.dslplatform.ocd"        %% "dsl-ocd-model-javas"  % "0.4.0",
+  "com.dslplatform.ocd"        %% "dsl-ocd-model-scalas" % "0.4.0",
+  "com.github.nscala-time"     %% "nscala-time"          % "2.20.0",
+  "io.jvm.uuid"                %% "scala-uuid"           % "0.3.0",
+  "com.github.pathikrit"       %% "better-files"         % "3.7.0",
+  "commons-io"                 %  "commons-io"           % "2.6",
+  "com.typesafe.scala-logging" %% "scala-logging"        % "3.9.2",
+  "ch.qos.logback"             %  "logback-classic"      % "1.2.3",
 )
 
 resolvers += Resolver.mavenLocal

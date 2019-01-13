@@ -1,6 +1,7 @@
 package com.dslplatform.ocd
 package staging
 
+import org.apache.commons.io.FileUtils
 import org.eclipse.jgit.api.Git
 import org.eclipse.jgit.lib.BatchingProgressMonitor
 
@@ -8,8 +9,8 @@ object Source {
   private[this] def git(username: String, project: String, branch: String): Unit = {
     val target = repositories / project
     if (target.exists) {
-      logger.debug("Cleaning existing clone: {}", target.path)
-      target.deleteRecursively(force = true, continueOnFailure = false)
+      logger.debug("Cleaning existing clone: {}", target.pathAsString)
+      target.deleteRecursively()
     }
 
     val progressMonitor = new BatchingProgressMonitor {
@@ -32,7 +33,7 @@ object Source {
     Git.cloneRepository()
       .setURI(s"https://github.com/$username/$project.git")
       .setBranch(branch)
-      .setDirectory(target.fileOption.get)
+      .setDirectory(target.toJava)
       .setProgressMonitor(progressMonitor)
       .call()
     logger.info("<-- Finished GIT @ {}/{}", project, branch)

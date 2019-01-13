@@ -5,11 +5,11 @@ object Main
     extends App {
 
   def time[R](section: String, runSection: => Unit): Unit = {
-    logger.info(s"### ${section} START ###")
+    logger.info(s"### $section START ###")
     val startAt = System.currentTimeMillis
     runSection
     val endAt = System.currentTimeMillis
-    logger.info(s"### ${section} END (took: ${endAt - startAt} ms) ###")
+    logger.info(s"### $section END (took: ${endAt - startAt} ms) ###")
   }
 
   val allArgs = args ++ Seq(

@@ -9,8 +9,8 @@
   <property name="tools" location="tools"/>
   <property name="tools.revenj" location="tools/revenj"/>
   <property name="tools.java_client" location="tools/java_client"/>
-  <property name="tools.util-report" location="tools/build/dsl-ocd-util/dsl-ocd-util-report-0.2.2-161224-000735.jar"/>
-  <property name="tools.util-port-corrector" location="tools/build/dsl-ocd-util/dsl-ocd-util-port-corrector-0.2.2-161224-000735.jar"/>
+  <property name="tools.util-report" location="tools/build/dsl-ocd-util/dsl-ocd-util-report-0.4.0-190113-123456.jar"/>
+  <property name="tools.util-port-corrector" location="tools/build/dsl-ocd-util/dsl-ocd-util-port-corrector-0.4.0-190113-123456.jar"/>
 
   <import file="macrodef.xml"/>
 

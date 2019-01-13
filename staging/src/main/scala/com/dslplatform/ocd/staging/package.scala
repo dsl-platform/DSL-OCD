@@ -5,6 +5,7 @@ import java.text.NumberFormat
 import java.util.Locale
 
 import com.typesafe.scalalogging.Logger
+import org.apache.commons.io.FileUtils
 import org.slf4j.LoggerFactory
 
 import scala.concurrent.{Await, ExecutionContext}
@@ -13,18 +14,28 @@ package object staging
     extends com.github.nscala_time.time.Imports
     with scala.collection.convert.DecorateAsScala {
 
-  val Path = scalax.file.Path
-  type Path = scalax.file.Path
+  val File = better.files.File
+  type File = better.files.File
+
+  implicit class PimpedFile(file: File) {
+    def deleteRecursively(): Unit = {
+      if (file.isDirectory) {
+        FileUtils.deleteDirectory(file.toJava)
+      } else {
+        file.delete()
+      }
+    }
+  }
 
   type Future[T] = scala.concurrent.Future[T]
   val Future = scala.concurrent.Future
 
   val now = DateTime.now
-  val xkcd = now.toString("YYMMdd-HHmmss")
+  val xkcd = "190113-123456" //  now.toString("YYMMdd-HHmmss")
 
   val logger = Logger(LoggerFactory.getLogger("dsl-ocd-staging"))
 
-  lazy val templates: Path = {
+  lazy val templates: File = {
     val properties = new java.util.Properties
     val configPath = sys.props("user.home")
       .replace('\\', '/')
@@ -32,7 +43,7 @@ package object staging
     val fis = new FileInputStream(configPath)
     properties.load(fis)
     fis.close()
-    Path(properties.getProperty("templates").replace('\\', '/'), '/').toAbsolute
+    File(properties.getProperty("templates"))
   }
 
   val repositories = templates / "staging"
@@ -56,12 +67,12 @@ package object staging
     nf.format(number)
   }
 
-  def backup(path: Path): Unit = {
-    val backup = path.parent.get / (path.name + ".backup")
+  def backup(path: File): Unit = {
+    val backup = path.parent / (path.name + ".backup")
     if (backup.exists) {
-      backup.copyTo(target = path, replaceExisting = true)
+      backup.copyTo(destination = path, overwrite = true)
     } else {
-      path.copyTo(target = backup)
+      path.copyTo(destination = backup)
     }
   }
 }

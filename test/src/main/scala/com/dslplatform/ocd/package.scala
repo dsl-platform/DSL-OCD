@@ -2,12 +2,16 @@ package com.dslplatform
 
 import java.util.Locale
 
+import org.apache.commons.io.FileUtils
+
 package object ocd
     extends com.github.nscala_time.time.Imports
     with io.jvm.uuid.Imports
     with scala.collection.convert.DecorateAsScala {
 
-  type Logger = org.slf4j.Logger
+  type Logger = com.typesafe.scalalogging.Logger
+  val Logger = com.typesafe.scalalogging.Logger
+
   type Properties = java.util.Properties
 
   type MMap[K, V] = scala.collection.mutable.LinkedHashMap[K, V]
@@ -17,6 +21,16 @@ package object ocd
 
   type File = better.files.File
   val File = better.files.File
+
+  implicit class PimpedFile(file: File) {
+    def deleteRecursively(): Unit = {
+      if (file.isDirectory) {
+        FileUtils.deleteDirectory(file.toJava)
+      } else {
+        file.delete()
+      }
+    }
+  }
 
   val XKCD = config.XKCD
   val Workspace = config.Workspace

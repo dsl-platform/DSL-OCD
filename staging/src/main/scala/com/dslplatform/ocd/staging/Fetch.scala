@@ -15,7 +15,7 @@ object Fetch {
   def apply(skipFetch: Boolean, includePrereleases: Boolean): Unit = if (!skipFetch) {
     if (releases.exists) {
       logger.trace("Cleaning old github-releases ...")
-      releases.deleteRecursively(force = true, continueOnFailure = false)
+      releases.deleteRecursively()
     }
 
     def extractAssets(release: GHRelease) =
@@ -57,13 +57,15 @@ object Fetch {
 
       val target = releases / (asset.getName.replaceFirst("\\.zip$", "") + "-" + version)
       if (target.exists) {
-        logger.trace("Cleaning previous download: {} ...", target.path)
-        target.deleteRecursively(force = true, continueOnFailure = false)
+        logger.trace("Cleaning previous download: {} ...", target.pathAsString)
+        target.deleteRecursively()
       }
 
       for (entry <- ZipArchive.fromURL(assetUrl)) {
         logger.trace(s"Extracting {}: {}", asset.getName, entry.name)
-        (target / entry.name) write (entry.toByteArray)
+        val file = target / entry.name
+        file.parent.createDirectories()
+        file.writeByteArray(entry.toByteArray)
       }
 
       logger.debug("Downloaded and extracted: {}", target.name)

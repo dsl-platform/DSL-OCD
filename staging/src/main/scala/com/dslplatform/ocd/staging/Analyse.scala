@@ -8,18 +8,18 @@ object Analyse {
       project: String, path: String
     , replacements: ((Option[String], String), String)*): String = {
 
-    val target = repositories / project / (path.replace('\\', '/'), '/')
+    val target = repositories / project / path
     backup(target)
 
     val ((firstCheck, firstPattern), firstReplacement) = replacements.head
-    val firstMatcher = Pattern.compile(firstPattern).matcher(target.string)
-    assert(firstMatcher.find(), s"Could not find $firstPattern in ${target.path}")
+    val firstMatcher = Pattern.compile(firstPattern).matcher(target.contentAsString)
+    assert(firstMatcher.find(), s"Could not find $firstPattern in ${target.pathAsString}")
 
     val origVersion = firstMatcher.group(2)
     for (check <- firstCheck) yield {
       logger.debug(s"Original version of $project/$path was: $origVersion")
       if (origVersion != check) {
-        logger.warn(s"Version of $project/$path dependency ${origVersion} differs from expected: ${check}")
+        logger.warn(s"Version of $project/$path dependency $origVersion differs from expected: $check")
       }
       origVersion
     }
@@ -30,12 +30,12 @@ object Analyse {
 
     val body = replacements.tail.foldLeft(nextBody) { case (acc, ((nextCheck, nextPattern), nextReplacement)) =>
       val nextMatcher = Pattern.compile(nextPattern).matcher(acc)
-      assert(nextMatcher.find(), s"Could not find $nextPattern in ${target.path}")
+      assert(nextMatcher.find(), s"Could not find $nextPattern in ${target.pathAsString}")
 
       val nextVersion = nextMatcher.group(2)
       for (check <- nextCheck) {
         if (nextVersion != check) {
-          logger.warn(s"Version of $project/$path dependency ${nextVersion} differs from expected: ${check}")
+          logger.warn(s"Version of $project/$path dependency $nextVersion differs from expected: $check")
         }
       }
       acc.replaceFirst(nextPattern, nextReplacement)
@@ -45,20 +45,11 @@ object Analyse {
     origVersion
   }
 
-  lazy val dslClcVersion = {
-    val version = sed("dsl-compiler-client", "CommandLineClient/pom.xml",
-      None ->
-        "(<version>)([^<]+)(</version>)" ->
-        s"$$1$$2-$xkcd$$3"
-    )
-
-    (repositories / "dsl-compiler-client" / "CommandLineClient" /
-        "src" / "main" / "resources" /
-        "com" / "dslplatform" / "compiler" / "client" / "dsl-clc.properties")
-      .write(s"version=${version}-$xkcd\ndate=${now.toLocalDate}")
-
-    version
-  }
+  lazy val dslClcVersion = sed("dsl-compiler-client", "CommandLineClient/pom.xml",
+    None ->
+      "(<version>)([^<]+)(</version>)" ->
+      s"$$1$$2-$xkcd$$3"
+  )
 
   lazy val dslJsonVersion = sed("dsl-json", "library/pom.xml",
     None ->
@@ -72,7 +63,7 @@ object Analyse {
       s"$$1$$2-$xkcd$$3"
     , Some(dslJsonVersion) ->
       """(<dependency>\s+<groupId>com.dslplatform</groupId>\s+<artifactId>dsl-json</artifactId>\s+<version>)([^<]+)(</version>)""" ->
-      s"$$1${dslJsonVersion}-$xkcd$$3"
+      s"$$1$dslJsonVersion-$xkcd$$3"
   )
 
   lazy val dslJsonJodaVersion = sed("dsl-json", "joda/pom.xml",
@@ -81,7 +72,7 @@ object Analyse {
       s"$$1$$2-$xkcd$$3"
     , Some(dslJsonVersion) ->
       """(<dependency>\s+<groupId>com.dslplatform</groupId>\s+<artifactId>dsl-json</artifactId>\s+<version>)([^<]+)(</version>)""" ->
-      s"$$1${dslJsonVersion}-$xkcd$$3"
+      s"$$1$dslJsonVersion-$xkcd$$3"
   )
 
   lazy val dslClientJavaVersion = {
@@ -96,7 +87,7 @@ object Analyse {
         "$1$2$1resolvers += Resolver.mavenLocal"
 //      , Some(dslJsonVersion) ->
 //        """(val dslJson = "com.dslplatform" % "dsl-json-joda" % ")([^"]+)(")""" ->
-//        s"$$1${dslJsonVersion}-$xkcd$$3"
+//        s"$$1$dslJsonVersion-$xkcd$$3"
     )
     version
   }
@@ -114,7 +105,7 @@ object Analyse {
       "(<version>)([^<]+)(</version>)" -> s"$$1$$2-$xkcd$$3"
     , Some(revenjCoreJavaVersion) ->
       """(<dependency>\s+<groupId>org.revenj</groupId>\s+<artifactId>revenj-core</artifactId>\s+<version>)([^<]+)(</version>)""" ->
-      s"$$1${revenjCoreJavaVersion}-$xkcd$$3"
+      s"$$1$revenjCoreJavaVersion-$xkcd$$3"
   )
 
   lazy val revenjCoreScalaVersion = sed("revenj", "scala/build.sbt",
@@ -128,7 +119,7 @@ object Analyse {
       s"$$1$$2-$xkcd$$3"
     , None ->
       """(?s)(revenj-core.+?version := ")([^"]+)(")""" ->
-        s"$$1${revenjCoreScalaVersion}-$xkcd$$3"
+        s"$$1$revenjCoreScalaVersion-$xkcd$$3"
   )
 
   def apply(skipAnalyse: Boolean): Unit = if (!skipAnalyse) {

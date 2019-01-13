@@ -1,4 +1,5 @@
-package com.dslplatform.ocd.config
+package com.dslplatform.ocd
+package config
 
 import java.io.{File => JFile}
 import better.files._
@@ -31,7 +32,7 @@ case class Workspace(path: File) {
   }
 
   def uninstall(): Unit =
-    path.delete()
+    path.deleteRecursively()
 
   override val toString = file.getPath
 }

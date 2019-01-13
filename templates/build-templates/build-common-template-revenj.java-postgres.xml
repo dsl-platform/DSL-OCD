@@ -21,9 +21,9 @@
   <property name="target.main" location="${target}/classes"/>
   <property name="target.test" location="${target}/test-classes"/>
 
-  <property name="dsl-clc" value="dsl-clc-1.8.4-161224-000735.jar"/>
-  <property name="dsl-compiler" value="dsl-compiler-1.7.6200.20202-161224-000735.exe"/>
-  <property name="revenj.war" value="revenj-servlet-1.1.0-161224-000735.war"/>
+  <property name="dsl-clc" value="dsl-clc-1.9.6-190113-123456.jar"/>
+  <property name="dsl-compiler" value="dsl-compiler-2.2.6899.41411-190113-123456.exe"/>
+  <property name="revenj.war" value="revenj-servlet-1.3.0-190113-123456.war"/>
 
   <property name="client" value="java_client"/>
   <property name="server" value="revenj.java"/>
@@ -37,9 +37,9 @@
   <property name="tools.dsl-clc" location="${tools.build}/dsl-compiler/${dsl-clc}"/>
   <property name="tools.dsl-compiler" location="${tools.build}/dsl-compiler/${dsl-compiler}"/>
 
-  <property name="tools.util-ping" location="${tools.build}/dsl-ocd-util/dsl-ocd-util-ping-0.2.2-161224-000735.jar"/>
-  <property name="tools.jetty-runner" location="${tools.build}/jetty-runner/jetty-runner-9.4.0.v20161208.jar"/>
-  <property name="tools.jetty-stopper" location="${tools.build}/jetty-runner/jetty-start-9.4.0.v20161208.jar"/>
+  <property name="tools.util-ping" location="${tools.build}/dsl-ocd-util/dsl-ocd-util-ping-0.4.0-190113-123456.jar"/>
+  <property name="tools.jetty-runner" location="${tools.build}/jetty-runner/jetty-runner-9.4.14.v20181114.jar"/>
+  <property name="tools.jetty-stopper" location="${tools.build}/jetty-runner/jetty-start-9.4.14.v20181114.jar"/>
 
   <property name="workspace.client" location="${temp.client}/workspace"/>
   <property name="workspace.server" location="${temp.server}/workspace"/>
@@ -68,7 +68,7 @@
   <property name="dbUser" value="${projectShortName}-user"/>
   <property name="dbPassword" value="${projectShortName}-password"/>
 
-  <path id="postgres.classpath" location="${tools.build}/jdbc/postgresql-9.4.1212.jre6.jar"/>
+  <path id="postgres.classpath" location="${tools.build}/jdbc/postgresql-42.2.5.jre6.jar"/>
 
   <!-- ########### -->
   <!-- # FILTERS # -->

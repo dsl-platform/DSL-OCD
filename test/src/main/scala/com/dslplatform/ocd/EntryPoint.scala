@@ -7,7 +7,7 @@ import test.javatest.property.turtle._
 import test.domain._
 
 object EntryPoint extends App {
-  val logger = LoggerFactory getLogger "DSL-OCD"
+  val logger = Logger(LoggerFactory getLogger "DSL-OCD")
 
   val testSettings = new TestSettings(logger)
     .load("DSL-OCD/ocd.config")
@@ -15,9 +15,9 @@ object EntryPoint extends App {
   val testDeployer = new TestDeployer(logger, testSettings)
 
   new EntryPoint(
-    logger = logger
-  , testSettings = testSettings
-  , testDeployer = testDeployer
+    logger = logger,
+    testSettings = testSettings,
+    testDeployer = testDeployer,
   ).run()
 }
 
@@ -35,7 +35,7 @@ class EntryPoint(
 
     locally {
       import test._
-      if (logger.isDebugEnabled) {
+      logger.whenDebugEnabled {
         types.OcdType.useCaseValues(testSettings) foreach { tpe =>
           logger.debug("Using use-case type: {}", tpe.typeName)
         }
@@ -49,10 +49,10 @@ class EntryPoint(
       logger.debug("Initializing turtles ...")
 
       Seq[ITestProject](
-        new TestJavaAssertsBorderValuesTurtle(testSettings)
-      , new TestJavaPropertyFieldTypeTurtle(testSettings)
-      , new TestJavaPropertyGetterTypeTurtle(testSettings)
-      , new TestJavaPropertySetterTypeTurtle(testSettings)
+        new TestJavaAssertsBorderValuesTurtle(testSettings),
+        new TestJavaPropertyFieldTypeTurtle(testSettings),
+        new TestJavaPropertyGetterTypeTurtle(testSettings),
+        new TestJavaPropertySetterTypeTurtle(testSettings),
       )
     }
 
@@ -60,18 +60,18 @@ class EntryPoint(
       logger.debug("Initializing project factories ...")
 
       Seq[ProjectFactory](
-        new AggregateWithOnePropertyTestProjectFactory(testSettings)
-      , new AggregateWithSurrogateKeyAndOnePropertyTestProjectFactory(testSettings)
-      , new AggregateWithSurrogateKeyAndOnePropertyWithinOneEntityTestProjectFactory(testSettings)
-      , new AggregateWithSurrogateKeyAndOnePropertyWithinOneValueTestProjectFactory(testSettings)
-      , new AggregateWithSurrogateKeyAndOnePropertyWithinOneEntityWithinOneEntityTestProjectFactory(testSettings)
-      , new AggregateWithSurrogateKeyAndOnePropertyWithinOneValueWithinOneEntityTestProjectFactory(testSettings)
-      , new AggregateWithSurrogateKeyAndOnePropertyWithinOneValueWithinOneValueTestProjectFactory(testSettings)
-//      , new AggregateWithSurrogateKeyAndCollectionsOfValuesTestProjectFactory(testSettings)
-      , new EventWithOnePropertyTestProjectFactory(testSettings)
-      , new EventWithOnePropertyWithinOneValueTestProjectFactory(testSettings)
-      , new CalculatedPropertyInSnowflakeTestProjectFactory(testSettings)
-      , new ValueWithOnePropertyTestProjectFactory(testSettings)
+        new AggregateWithOnePropertyTestProjectFactory(testSettings),
+        new AggregateWithSurrogateKeyAndOnePropertyTestProjectFactory(testSettings),
+        new AggregateWithSurrogateKeyAndOnePropertyWithinOneEntityTestProjectFactory(testSettings),
+        new AggregateWithSurrogateKeyAndOnePropertyWithinOneValueTestProjectFactory(testSettings),
+        new AggregateWithSurrogateKeyAndOnePropertyWithinOneEntityWithinOneEntityTestProjectFactory(testSettings),
+        new AggregateWithSurrogateKeyAndOnePropertyWithinOneValueWithinOneEntityTestProjectFactory(testSettings),
+        new AggregateWithSurrogateKeyAndOnePropertyWithinOneValueWithinOneValueTestProjectFactory(testSettings),
+//        new AggregateWithSurrogateKeyAndCollectionsOfValuesTestProjectFactory(testSettings),
+        new EventWithOnePropertyTestProjectFactory(testSettings),
+        new EventWithOnePropertyWithinOneValueTestProjectFactory(testSettings),
+        new CalculatedPropertyInSnowflakeTestProjectFactory(testSettings),
+        new ValueWithOnePropertyTestProjectFactory(testSettings),
       )
     }
 

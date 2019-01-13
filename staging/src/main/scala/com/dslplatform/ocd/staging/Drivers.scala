@@ -1,20 +1,22 @@
 package com.dslplatform.ocd.staging
 
-import scalax.io.Resource
+import java.net.URL
+
+import better.files._
 
 object Drivers {
   private[this] val home = repositories / "drivers"
 
   private[this] def clean(): Unit = {
     if (home.isDirectory) {
-      logger.debug("Cleaning drivers home: {} ...", home.path)
-      home.deleteRecursively(force = true, continueOnFailure = true)
+      logger.debug("Cleaning drivers home: {} ...", home.pathAsString)
+      home.deleteRecursively()
     }
   }
 
   private[this] def postgresqlJdbc(): Unit = {
     val web = "https://jdbc.postgresql.org/"
-    val body = Resource.fromURL(web).string
+    val body = new URL(web).openStream().asString()
     val pattern = """PostgreSQL JDBC Driver ([-\.\d]+) Released""".r
 
     val lastRelease = pattern.findFirstMatchIn(body)
@@ -24,18 +26,19 @@ object Drivers {
     logger.info("Latest PostgreSQL JDBC version: {}", lastRelease)
 
     val versions = Map(
-      "JDBC 4  - JRE 6" -> ".jre6"
-    , "JDBC 41 - JRE 7" -> ".jre7"
-    , "JDBC 42 - JRE 8" -> ""
+      "JDBC 4  - JRE 6" -> ".jre6",
+      "JDBC 41 - JRE 7" -> ".jre7",
+      "JDBC 42 - JRE 8" -> "",
     )
 
     for ((desc, suffix) <- versions.par) {
-      val standardisedReleaseName = s"postgresql-${lastRelease.replace('-', '.')}${suffix}.jar"
+      val standardisedReleaseName = s"postgresql-${lastRelease.replace('-', '.')}$suffix.jar"
       val url = s"${web}download/$standardisedReleaseName"
       val target = home / "postgresql-jdbc" / standardisedReleaseName
       logger.trace("Downloading {} @ {} ...", desc, url)
-      Resource.fromURL(url).copyDataTo(target)
-      logger.debug("Downloaded {} to {}", desc, target.path)
+      target.parent.createDirectories()
+      target.writeByteArray(new URL(url).openStream().byteArray)
+      logger.debug("Downloaded {} to {}", desc, target.pathAsString)
     }
   }
 
@@ -46,8 +49,8 @@ object Drivers {
   def apply(skipDrivers: Boolean): Unit = if (!skipDrivers) {
     clean()
     par(
-      () => postgresqlJdbc()
-    , () => oracleJdbc()
+      () => postgresqlJdbc(),
+      () => oracleJdbc(),
     )
   }
 }

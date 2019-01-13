@@ -6,8 +6,8 @@ import test.javatest.{JavaInfo, TestSuiteCreator}
 import scala.util.Try
 
 class TestDeployer(
-    logger: Logger
-  , testSettings: ITestSettings
+    logger: Logger,
+    testSettings: ITestSettings,
   ) extends ITestDeployer {
 
   private val rootTarget = testSettings.workspace.path
@@ -66,7 +66,7 @@ class TestDeployer(
   private def cleanAndCopy(source: File, target: File): Unit = {
     if(target.exists) {
       logger.trace("Cleaning target path: " + target.path)
-      target.delete()
+      target.deleteRecursively()
     }
     logger.trace(s"Copying ${source.path} to ${target.path}")
     target.parent.createDirectories()
@@ -123,9 +123,9 @@ class TestDeployer(
 
     private def deployDsl(): Unit = {
       logger.trace("Cleaning generated DSL: {}", dslTarget.path)
-      val deleted = Try(dslTarget.delete()).isSuccess
-      if (!deleted) {
-        logger.warn("Could not delete all generated DSL!")
+      val deleted = Try(dslTarget.deleteRecursively())
+      if (deleted.isFailure) {
+        logger.warn("Could not delete all generated DSL: {}", deleted.failed.get.getMessage)
       }
       val dsls = testProject.dslFiles
       if (dsls.nonEmpty) {
@@ -133,13 +133,15 @@ class TestDeployer(
         dsls.par foreach { case (filename, body) =>
           val path = dslTarget / filename
           logger.trace("Deploying DSL: {}", path.path)
+          path.parent.createDirectories()
           path.write(body)
         }
       } else {
         val src = dslTemplates / "empty.dsl"
         val path = dslTarget / src.name
         logger.trace("Deploying empty DSL: {}", path.path)
-        src.copyTo(path)
+        path.parent.createDirectories()
+        src copyTo path
       }
       logger.trace("Done deploying DSL files!")
     }
@@ -187,9 +189,9 @@ class TestDeployer(
         val path = testRoot(language)
         logger.trace(s"Cleaning ($language) tests: " + path.path)
 
-        val deleted = Try(path.delete()).isSuccess
-        if (!deleted) {
-          logger.warn(s"Could not delete all code for {}!", language)
+        val deleted = Try(path.deleteRecursively())
+        if (deleted.isFailure) {
+          logger.warn(s"Could not delete all code for {}: {}!", language, deleted.failed.get.getMessage)
         }
       }
 
@@ -210,6 +212,7 @@ class TestDeployer(
         suiteWithTests.par foreach { case (filename, body) =>
           val path = testRootForLanguage / filename
           logger.trace("Deploying test: {}", path.path)
+          path.parent.createDirectories()
           path.write(Patches.fixTests(body))
         }
 
@@ -239,13 +242,14 @@ class TestDeployer(
     private def copyTemplate(source: File, target: File, process: String => String = templateApplication) = {
       logger.trace(s"Creating the ${source.name} script: {}", target.path)
       val body = process(source.contentAsString)
+      target.parent.createDirectories()
       target write body
     }
 
     private val projectParamTemplates = Map(
-      "projectName" -> testProject.projectName
-    , "ProjectNameCamel" -> testProject.ProjectNameCamel
-    , "projectShortName" -> projectShortName
+      "projectName" -> testProject.projectName,
+      "ProjectNameCamel" -> testProject.ProjectNameCamel,
+      "projectShortName" -> projectShortName,
     )
 
     private val templateApplication = (stringWithTemplateProperties: String) =>
@@ -267,7 +271,7 @@ class TestDeployer(
             case "compile/revenj.java" => "temp/server/dependencies"
             case other => sys.error("Unknown classpath reference: " + other)
           }
-          ((toolsTemplate / path).list(_.extension.contains("jar")).toSeq map { jar =>
+          ((toolsTemplate / path).list(_.extension.contains(".jar")).toSeq map { jar =>
             before + pathFix + '/' + jar.name + after
           }).sorted.mkString("\n")
         case line =>
