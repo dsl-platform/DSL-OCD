@@ -23,6 +23,7 @@ trait ScalaValues {
   , "Money" -> ScalaMoney
   , "Point" -> ScalaPoint
   , "Rectangle" -> ScalaRectangle
+  , "Short" -> ScalaShort
   , "String" -> ScalaString
   , "String(9)" -> ScalaStringWithMaxLength
   , "Text" -> ScalaText

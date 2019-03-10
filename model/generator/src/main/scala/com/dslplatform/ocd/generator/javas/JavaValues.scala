@@ -25,6 +25,7 @@ trait JavaValues {
   , "Point" -> JavaPoint
   , "Properties" -> JavaProperties
   , "Rectangle" -> JavaRectangle
+  , "Short" -> JavaShort
   , "String" -> JavaString
   , "String(9)" -> JavaStringWithMaxLength
   , "Text" -> JavaText

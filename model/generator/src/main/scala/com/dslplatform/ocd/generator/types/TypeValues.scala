@@ -34,6 +34,7 @@ trait TypeValues {
   , Type("Re", "Rectangle", "Box")
   , Type("S3", "S3")
   , Type("Se", "Secret")
+  , Type("Sh", "Short")
   , Type("Sm", "Stream")
   , Type("St", "String")
   , Type(s"S${DefaultStringLength}", TypeName(s"String(${DefaultStringLength})", s"StringWithMaxLengthOf${DefaultStringLength}", s"StringsWithMaxLengthOf${DefaultStringLength}"))
