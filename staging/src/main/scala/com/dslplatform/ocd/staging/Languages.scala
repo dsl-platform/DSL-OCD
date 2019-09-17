@@ -57,7 +57,7 @@ object Languages {
   def apply(skipDrivers: Boolean): Unit = if (!skipDrivers) {
     clean()
     par(
-      () => scala("2.11", "2.12")
+      () => scala("2.11", "2.12", "2.13")
     )
   }
 }

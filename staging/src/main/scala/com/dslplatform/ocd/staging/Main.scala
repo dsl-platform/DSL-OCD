@@ -31,18 +31,18 @@ object Main
 
   time("Staging",
     try {
-      time("Source", Source(skipSource))
-      time("Analyse", Analyse(skipAnalyse))
-      time("Compile", Compile(skipCompile))
-      time("Fetch", Fetch(skipFetch, includePrereleases))
-      time("Download", Download(skipDownload))
-      time("Util", Util(skipUtil))
-      time("Model", Model(skipModel))
-      time("Drivers", Drivers(skipDrivers))
-      time("Languages", Languages(skipLanguages))
-      time("Gather", Gather(skipGather))
-      time("Deploy", Deploy(skipDeploy))
-      time("Test", Test(skipTest))
+//      time("Source",    Source(skipSource))
+//      time("Analyse",   Analyse(skipAnalyse))
+//      time("Compile",   Compile(skipCompile))
+//      time("Fetch",     Fetch(skipFetch, includePrereleases))
+//      time("Download",  Download(skipDownload))
+//      time("Util",      Util(skipUtil))
+//      time("Model",     Model(skipModel))
+//      time("Drivers",   Drivers(skipDrivers))
+//      time("Languages", Languages(skipLanguages))
+      time("Gather",    Gather(skipGather))
+//      time("Deploy",    Deploy(skipDeploy))
+//      time("Test",      Test(skipTest))
     } finally {
       pool.shutdown()
     }

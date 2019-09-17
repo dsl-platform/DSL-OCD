@@ -15,9 +15,9 @@ object Compile {
   }
 
   case object MVN extends BuildTool {
-    protected val version = "3.6.0"
-    protected val url = s"http://ftp.carnet.hr/misc/apache/maven/maven-3/3.6.0/binaries/apache-maven-$version-bin.zip"
-    protected val sha1 = "8589fe27a6e0dd831ff967d3a7073bcb6d41b083"
+    val version = "3.6.2"
+    protected val url = s"http://ftp.carnet.hr/misc/apache/maven/maven-3/$version/binaries/apache-maven-$version-bin.zip"
+    protected val sha1 = "b05a237bad9bd60242cfe680fa1e36419d54115c"
     protected val home = userHome / ".m2"
     protected val expectedChildFolder = s"apache-maven-$version/"
 
@@ -51,9 +51,9 @@ object Compile {
   }
 
   case object SBT extends BuildTool {
-    protected val version = "1.2.8"
+    val version = "1.3.0"
     protected val url = s"https://github.com/sbt/sbt/releases/download/v$version/sbt-$version.zip"
-    protected val sha1 = "1a1e6f1297392311fc3d7e88ba99788a5b105e70"
+    protected val sha1 = "4acde6412e913e26223047dd9481bf701894a5be"
     protected val home = userHome / ".sbt"
     protected val expectedChildFolder = "sbt"
 
@@ -93,10 +93,10 @@ object Compile {
   }
 
   case object ANT extends BuildTool {
-    protected val version = "1.10.5"
+    val version = "1.10.7"
     protected val url = s"http://ftp.carnet.hr/misc/apache/ant/binaries/apache-ant-$version-bin.zip"
 
-    protected val sha1 = "1c2fce313b2ee6edfba7d56f2ecaca36e8985d6f"
+    protected val sha1 = "2bfd28dda5c311e8d272bb81434eb25b79600a38"
     protected val home = userHome / ".ant"
     protected val expectedChildFolder = s"apache-ant-$version/"
 
@@ -131,7 +131,7 @@ object Compile {
   }
 
   sealed trait BuildTool {
-    protected val version: String
+    val version: String
     protected val url: String
     protected val sha1: String
     protected val expectedChildFolder: String
@@ -199,7 +199,7 @@ object Compile {
       )
     },
     () => {
-      SBT("revenj", "scala", Seq("revenj-core_2.11", "revenj-core_2.12", "revenj-akka_2.11", "revenj-akka_2.12"),
+      SBT("revenj", "scala", Seq("revenj-core_2.11", "revenj-core_2.12", "revenj-core_2.13", "revenj-akka_2.11", "revenj-akka_2.12", "revenj-akka_2.13"),
         "project core", clean, `set no src`, `set no doc`, `+publishM2`,
         "project akka", clean, `set no src`, `set no doc`, `+publishM2`,
       )

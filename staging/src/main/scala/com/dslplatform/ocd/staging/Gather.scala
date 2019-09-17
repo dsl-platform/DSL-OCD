@@ -19,18 +19,19 @@ object Gather {
 
   private[this] def downloadDependencies(target: String, scalaVersion: String, dependencies: String*): Unit = {
     val fullScalaVersion = scalaVersion match {
-      case "2.12" => "2.12.8"
+      case "2.13" => "2.13.0"
+      case "2.12" => "2.12.10"
       case "2.11" => "2.11.12"
-      case _ => ???
+      case _ => sys.error(s"Invalid scala Version: $scalaVersion")
     }
 
     val downloadFolder = home / target / "downloader"
     val projectFolder = downloadFolder / "project"
     projectFolder.createDirectories()
 
-    (projectFolder / "plugins.sbt") write """addSbtPlugin("org.xerial.sbt" % "sbt-pack" % "0.11")
+    (projectFolder / "plugins.sbt") write """addSbtPlugin("org.xerial.sbt" % "sbt-pack" % "0.12")
 """
-    (projectFolder / "build.properties") write """sbt.version=1.2.8
+    (projectFolder / "build.properties") write s"""sbt.version=${SBT.version}
 """
     (downloadFolder / "build.sbt") write s"""
 version := "0.0.0-unused"
@@ -81,7 +82,7 @@ packCopyDependenciesTarget := file("dependencies")
   }
 
   private[this] def utilJettyRunner(): Unit = {
-    downloadDependencies("jetty-runner", "2.12",
+    downloadDependencies("jetty-runner", "2.13",
      s""""org.eclipse.jetty" % "jetty-runner" % "9.4.14.v20181114" intransitive()""",
      s""""org.eclipse.jetty" % "jetty-start" % "9.4.14.v20181114"""",
     )
@@ -94,7 +95,7 @@ packCopyDependenciesTarget := file("dependencies")
   }
 
   private[this] def utilTesting(): Unit = {
-    downloadDependencies("util-testing", "2.12",
+    downloadDependencies("util-testing", "2.13",
       s""""com.dslplatform.ocd" % "dsl-ocd-model-java-asserts" % "${Util.Version}-$xkcd"""",
       """"ch.qos.logback" % "logback-classic" % "1.2.3"""",
     )
@@ -119,13 +120,13 @@ packCopyDependenciesTarget := file("dependencies")
   }
 
   private[this] def dslClientJava(): Unit =
-    downloadDependencies("dsl-client-java", "2.12",
+    downloadDependencies("dsl-client-java", "2.13",
       s""""com.dslplatform" % "dsl-client-java" % "${Analyse.dslClientJavaVersion}-$xkcd"""",
       """"com.fasterxml.jackson.core" % "jackson-databind" % "2.9.8"""",
     )
 
   private[this] def revenjCoreJava(): Unit =
-    downloadDependencies("revenj-core_java", "2.12",
+    downloadDependencies("revenj-core_java", "2.13",
       s""""org.revenj" % "revenj-core" % "${Analyse.revenjCoreJavaVersion}-$xkcd"""",
       """"com.fasterxml.jackson.core" % "jackson-databind" % "2.9.8"""",
     )
@@ -171,13 +172,13 @@ packCopyDependenciesTarget := file("dependencies")
   private[this] def revenjCoreScala(scalaVersion: String): Unit =
     downloadDependencies(s"revenj-core_scala_$scalaVersion", scalaVersion,
       s""""net.revenj" %% "revenj-core" % "${Analyse.revenjCoreScalaVersion}-$xkcd"""",
-      """"org.scala-lang.modules" %% "scala-xml" % "1.1.1"""",
+      """"org.scala-lang.modules" %% "scala-xml" % "1.2.0"""",
     )
 
   private[this] def revenjAkkaScala(scalaVersion: String): Unit =
     downloadDependencies(s"revenj-akka_scala_$scalaVersion", scalaVersion,
       s""""net.revenj" %% "revenj-akka" % "${Analyse.revenjAkkaScalaVersion}-$xkcd"""",
-      """"org.scala-lang.modules" %% "scala-xml" % "1.1.1"""",
+      """"org.scala-lang.modules" %% "scala-xml" % "1.2.0"""",
     )
 
   private[this] def revenjCoreNet(): Unit = {
@@ -222,8 +223,10 @@ packCopyDependenciesTarget := file("dependencies")
       () => revenjServletJava(),
       () => revenjCoreScala("2.11"),
       () => revenjCoreScala("2.12"),
+//      () => revenjCoreScala("2.13"),
       () => revenjAkkaScala("2.11"),
       () => revenjAkkaScala("2.12"),
+//      () => revenjAkkaScala("2.13"),
       () => revenjCoreNet(),
       () => revenjServerNet(),
       () => postgreSqlJdbc(),

@@ -31,7 +31,12 @@ package object staging
   val Future = scala.concurrent.Future
 
   val now = DateTime.now
-  val xkcd = "190113-123456" //  now.toString("YYMMdd-HHmmss")
+  val xkcd = {
+//    val init = now.toString("YYMMdd-HHmmss")
+//    println("XKDC: " + init)
+//    init
+    "190916-214627"
+  }
 
   val logger = Logger(LoggerFactory.getLogger("dsl-ocd-staging"))
 
